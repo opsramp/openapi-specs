@@ -1,0 +1,1767 @@
+paths:
+  /api/v2/applicationservice:
+    post:
+      description: |-
+        This endpoint is used to get the service status and to start and stop application services.
+
+        An access token must be generated to use this API.
+
+        Supported services are network, squid, postgresql, vprobe, and ntp.
+
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/applicationservice
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X POST https://{GatewayIP}:5480/api/v2/applicationservice 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Bearer {accessToken}' 
+        { 
+            "service": "<network/squid/postgresql/vprobe/ntp>",
+            "action": "<start/stop/status/restart>"
+        }
+        ```
+      operationId: gateways/gateway-application-service-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Service Squid Proxy started successfully.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                service:
+                  type: string
+                  description: Name of the service.
+                  enum:
+                    - network
+                    - squid
+                    - postgresql
+                    - ntp
+                action:
+                  type: string
+                  description: 'Action item: status, start, or stop.'
+                  enum:
+                    - start
+                    - stop
+                    - status
+                    - restart
+              required:
+                - service
+                - action
+            examples:
+              example-1:
+                value:
+                  service: squid
+                  action: start
+        description: ''
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-application-service-post/'
+      summary: 'Status, start, and stop service'
+      parameters: []
+    parameters: null
+  '/api/v2/download/gateway/{packageName}':
+    get:
+      description: |-
+        This API is used to download gateway files from the OpsRamp download server.
+
+        ## Sample URL
+        ```
+        https://{api-url}/api/v2/download/gateway/iso
+        ```
+      operationId: gateways/gateway-download/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  expires_in:
+                    type: integer
+                  url:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    expires_in: 900
+                    url: 'https://dl01.opsramp.com/itop/download/gateway/d3873201-c303-4846-8ce4-b9fd4cf1306b'
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-download/'
+      summary: Download gateway
+    parameters:
+      - schema:
+          type: string
+          enum:
+            - 'NULL'
+            - ova
+            - iso
+            - windows
+            - google
+          default: 'NULL'
+        in: path
+        name: packageName
+        required: true
+        description: Refers to the gateway package.
+  /api/v2/externalproxy:
+    post:
+      description: |-
+        This endpoint is used to configure the external proxy connection on the gateway.
+
+        An access token must be generated to use this API.
+
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/externalproxy
+        ```
+
+        ## Sample cURL
+        ```
+        curl -k -X POST https://{GatewayIP}:5480/api/v2/externalproxy 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Bearer {accessToken}' 
+        -H 'Content-Type: application/json' -k -d ''
+        { 
+            connection":"<direct/proxy>", 
+            "proxy_ip": "<ip>", 
+            "proxy_port": "<port>", 
+            "proxy_usr": "<username>",
+            "proxy_pwd”: "<proxypassword>"
+        }
+        ```
+      operationId: gateways/gateway-externalproxy-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Successfully updated proxy settings.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                connection:
+                  type: string
+                  description: 'Type of network connection: direct or proxy'
+                  enum:
+                    - direct
+                    - proxy
+                proxy_ip:
+                  type: string
+                  description: Proxy IP address for the network.
+                proxy_port:
+                  type: string
+                  description: Port for the proxy IP address.
+                proxy_usr:
+                  type: string
+                  description: Proxy user name.
+                proxy_pwd:
+                  type: string
+                  description: Proxy password.
+              required:
+                - connection
+                - proxy_ip
+                - proxy_port
+            examples:
+              example-1:
+                value:
+                  connection: <direct/proxy>
+                  proxy_ip: <ip>
+                  proxy_port: <port>
+                  proxy_usr: <proxyuser>
+                  proxy_pwd: <proxypassword>
+        description: ''
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-externalproxy-post/'
+      summary: Set external proxy connection
+      parameters: []
+  /api/v2/generalinfo:
+    get:
+      summary: Get gateway information
+      description: |-
+        This endpoint is used to get general information from the gateway. This includes appliance details and network information.
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/generalinfo
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X GET https://{gateway_IP_address}:5480/api/v2/generalinfo 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Token <TOKEN>'
+        ```
+      operationId: gateways/gateway-generalinfo-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Appliance Information:
+                    type: object
+                    properties:
+                      Model:
+                        type: string
+                      Registration Status:
+                        type: string
+                      Firmware Build Tag:
+                        type: string
+                      Tunnel Status:
+                        type: string
+                  Network Information:
+                    type: object
+                    properties:
+                      IP Address:
+                        type: string
+                      Subnet Mask:
+                        type: string
+                      Default Interface:
+                        type: string
+                      MAC Address:
+                        type: string
+                      DHCP:
+                        type: string
+                      Default Gateway:
+                        type: string
+                      DNS Entries:
+                        type: string
+                      Domain Name:
+                        type: string
+                      Host Name:
+                        type: string
+              examples:
+                example-1:
+                  value:
+                    Appliance Information:
+                      Model: XXXX
+                      Registration Status: XXXX
+                      'Firmware Build Tag ': XXXX
+                      Tunnel Status: XXXx
+                    Network Information:
+                      IP Address: XXXX
+                      Subnet Mask: XXXX
+                      Default Interface: XXXX
+                      MAC Address: XXXX
+                      DHCP: XXXX
+                      Default Gateway: XXXX
+                      DNS Entries: XXXX
+                      Domain Name: XXXX
+                      'Host Name ': XXXX
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-generalinfo-get/'
+  /api/v2/getntpdetails:
+    get:
+      summary: Get NTP details
+      description: |-
+        This endpoint is used to get the NTP details from the gateway.
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/getntpdetails
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X GET https://{GatewayIP}:5480/api/v2/getntpdetails 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Token <TOKEN>'
+        ```
+      operationId: gateways/gateway-ntp-details-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  servers:
+                    type: string
+                  NTP Status:
+                    type: string
+                    enum:
+                      - 'ON'
+                      - 'OFF'
+                  time:
+                    type: string
+                    format: date-time
+              examples:
+                example-1:
+                  value:
+                    servers: 'xxx,xxx'
+                    NTP Status: ON/OFF
+                    time: 'Tue May 19 21:40:08 UTC 2020'
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntp-details-get/'
+  /api/v2/tenants/{tenantId}/agents/{platform}/download/{package-name}:
+    get:
+      summary: Download agent for Linux
+      description: |-
+        This endpoint is used to download the agent for Linux resources.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: agents/agents-gateways-agent-linux-download-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-linux-download-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: platform
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: package-name
+        required: true
+  /api/v2/tenants/{tenantId}/agents/deployAgentsScript:
+    get:
+      summary: Download agent installation script for Linux
+      description: |-
+        This endpoint is used to download the agent installation script for Linux resources.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: agents/agents-gateways-agent-linux-install-script-get/
+      tags:
+        - agents-gateways
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-linux-install-script-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/agents/{platform}/info?distName={distName}&architecture={arch}:
+    get:
+      summary: Get agent package for Linux
+      description: |-
+        This endpoint is used to download the agent for Linux resources.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: agents/agents-gateways-agent-package-linux-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-package-linux-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: platform
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: distName
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: arch
+        required: true
+  /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices:
+    post:
+      summary: Assign agent policy for resources
+      description: |-
+        The endpoint to assign agent policy for resources.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: agents/agents-gateways-agent-policy-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-policy-post/
+    post2:
+      summary: Enable or disable alert correlation policy
+      description: |-
+        This endpoint is used to enable, disable, and create an observed mode on an alert correlation policy.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: alert-correlation-policy-enable-disable-post/
+      tags:
+        - agents-gateways
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/alerts/alert-correlation-policy-enable-disable-post/
+    get:
+      summary: Search rosters
+      description: |-
+        This endpoint is used to fetch the rosters within an organization.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: rosters-search-get/
+      tags:
+        - agents-gateways
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/alerts/rosters-search-get/
+    get3:
+      summary: Integration activity
+      description: |-
+        This endpoint is used to retrieve the details of an installation activity of installed integration activity.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: integrations-integration-activity-get/
+      tags:
+        - agents-gateways
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/integrations/integrations-integration-activity-get/
+    VERB:
+      summary: Update resource with synthetic support
+      description: |-
+        This endpoint is used to update details of a resource with synthetics support.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: resources-update-synthetic-post/
+      tags:
+        - agents-gateways
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/resource-management/resources-update-synthetic-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: policyId
+        required: true
+  /api/v2/tenants/{tenantId}/agentProfiles/{profileId}/devices:
+    post:
+      summary: Assign agent profile for resources
+      description: |-
+        This endpoint is used to assign an agent profile for resources.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: agents/agents-gateways-agent-profile-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-profile-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: profileId
+        required: true
+  /tenants/{tenantId}/agents/windows:
+    get:
+      summary: Download agent for Windows
+      description: |-
+        This endpoint is used to download the agent for Windows resources.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: agents/agents-gateways-agent-windows-download-get/
+      tags:
+        - agents-gateways
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-windows-download-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/apiTokenGen:
+    post:
+      summary: Generate access token for gateway
+      description: |-
+        This endpoint is used to generate an access token on the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-generate-access-token-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-generate-access-token-post/
+    3:
+      summary: Register gateway
+      description: |-
+        This endpoint is used to register the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-register-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-register-post/
+    4:
+      summary: Turn on and off Squid proxy service
+      description: |-
+        This endpoint is used to turn on and off the Squid proxy server on the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-turn-onoff-proxy-post/
+      tags:
+        - agents-gateways
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-turn-onoff-proxy-post/
+    5:
+      summary: Patch compliance introduction
+      description: |-
+        Patch compliance introduction.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: patch-compliance-introduction/
+      tags:
+        - agents-gateways
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/patching/patch-compliance-introduction/
+    6:
+      summary: Device groups introduction
+      description: |-
+        Introduction to device group APIs.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: device-group-introduction/
+      tags:
+        - agents-gateways
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/resource-management/device-group-introduction/
+    7:
+      summary: Impact dependency introduction
+      description: |-
+        Impact dependency introduction.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: impact-dependency-introduction/
+      tags:
+        - agents-gateways
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/resource-management/impact-dependency-introduction/
+    8:
+      summary: Decommission resources introduction
+      description: |-
+        An introduction to decommissioning resources.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: resources-decommission-introduction/
+      tags:
+        - agents-gateways
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/resource-management/resources-decommission-introduction/
+    9:
+      summary: Users and user groups introduction
+      description: |-
+        An introduction to user and user group endpoints.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: users-and-user-groups-introduction/
+      tags:
+        - agents-gateways
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/users-and-user-groups-introduction/
+    10:
+      summary: Custom forms introduction
+      description: |-
+        An introduction to custom forms.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: custom-forms-introduction/
+      tags:
+        - agents-gateways
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/custom-forms-introduction/
+    11:
+      summary: Priority mapping introduction
+      description: |-
+        An introduction to forward and reverse priority mapping.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: priority-mapping-introduction/
+      tags:
+        - agents-gateways
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/priority-mapping-introduction/
+  /api/v2/networksettings:
+    post:
+      summary: Set network settings
+      description: |-
+        This endpoint is used to specify the network settings on the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-network-settings-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-network-settings-post/
+  /api/v2/nginx:
+    post:
+      summary: Status and restart NGINX service
+      description: |-
+        This endpoint is used to get the NGINX service status and to restart the NGINX service on the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-nginx-service-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-nginx-service-post/
+  /api/v2/getntpdetails:
+    get:
+      summary: Get NTP details
+      description: |-
+        This endpoint is used to get the NTP details from the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-ntp-details-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntp-details-get/
+  /api/v2/ntpmanualconfig:
+    post:
+      summary: Manually set NTP date and time
+      description: |-
+        This endpoint is used to manually set the NTP date and time on the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-ntp-manualconfig-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntp-manualconfig-post/
+  /api/v2/ntpservice:
+    post:
+      summary: Start and stop NTP service
+      description: |-
+        This endpoint is used to start and stop the NTP service on the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-ntp-service-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntp-service-post/
+  /api/v2/ntpupdateips:
+    post:
+      summary: Set NTP servers
+      description: |-
+        This endpoint is used to update the NTP server IP addresses on the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-ntp-servicer-ips-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntp-servicer-ips-post/
+  /api/v2/ntpsyncips:
+    post:
+      summary: Synchronize NTP servers
+      description: |-
+        This endpoint is used to synchronize the time from the NTP servers on the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-ntpsync-ips-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntpsync-ips-post/
+  /api/v2/restartnetwork:
+    post:
+      summary: Restart network service
+      description: |-
+        This endpoint is used to restart the network service on the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-restart-network-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-restart-network-post/
+  /api/v2/staticroute:
+    post:
+      summary: Set static route configuration
+      description: |-
+        This endpoint is used to set the static route configuration on the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-staticroute-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-staticroute-post/
+  /api/v2/gettimezoneinfo:
+    get:
+      summary: Get timezone details
+      description: |-
+        This endpoint is used to get timezone information from the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-timezone-info-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-timezone-info-get/
+  /api/v2/settimezone:
+    post:
+      summary: Set timezone
+      description: |-
+        This endpoint is used to set the timezone on the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-timezone-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-timezone-post/
+  /api/v2/tenants/{tenantId}/managementProfiles/{id}/attach:
+    get:
+      summary: Attach gateway to management profile
+      description: |-
+        This endpoint is used to attach a gateway to a management profile.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: management-profiles/management-profile-attach-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-attach-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+  /api/v2/tenants/{tenantId}/managementProfiles:
+    post:
+      summary: Create management profile
+      description: |-
+        This endpoint is used to create a management profile.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: management-profiles/management-profile-create-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-create-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/managementProfiles/{id}:
+    delete:
+      summary: Delete management profile
+      description: |-
+        This endpoint is used to delete a management profile.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: management-profiles/management-profile-delete/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-delete/
+    get:
+      summary: Get management profile
+      description: |-
+        This endpoint is used to retrieve the details of a management profile.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: management-profiles/management-profile-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-get/
+    post:
+      summary: Update management profile
+      description: |-
+        This endpoint is used to update a management profile.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: management-profiles/management-profile-update-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+  /api/v2/tenants/{tenantId}/managementProfiles/{id}/detach:
+    get:
+      summary: Detach gateway from management profile
+      description: |-
+        This endpoint is used to detach a Gateway from management profile.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: management-profiles/management-profile-detach-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-detach-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+  /api/v2/tenants/{tenantId}/managementProfiles/{id}/reconnectTunnel:
+    get:
+      summary: Reconnect management profile tunnel
+      description: |-
+        This endpoint is used to reconnect the tunnel.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: management-profiles/management-profile-reconnect-tunnel-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-reconnect-tunnel-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+  /api/v2/tenants/{tenantId}/managementProfiles/search:
+    get:
+      summary: Search management profile
+      description: |-
+        This endpoint is used to search for management profiles.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: management-profiles/management-profile-search-get/
+      tags:
+        - agents-gateways
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-search-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true

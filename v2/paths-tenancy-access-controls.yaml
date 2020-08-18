@@ -1,0 +1,2278 @@
+paths:
+  /api/v2/tenants/{tenantId}/notes:
+    post:
+      summary: Create client notes
+      description: |-
+        This endpoint is used to create client notes.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: client-notes-create-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/client-notes-create-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/notes/{noteId}:
+    delete:
+      summary: Delete resource note
+      description: |-
+        This endpoint is used to delete a resource note.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: resource-notes-delete/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/resource-management/resource-notes-delete/
+    get:
+      summary: Get resource note
+      description: |-
+        This endpoint is used to fetch the details of a resource note.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: resource-notes-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/resource-management/resource-notes-get/
+    delete:
+      summary: Delete client note
+      description: |-
+        This endpoint is used to delete a client note.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: client-notes-delete/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/client-notes-delete/
+    get:
+      summary: Get client note
+      description: |-
+        This endpoint is used to retrieve the details of a client note.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: client-notes-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/client-notes-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: noteId
+        required: true
+  /api/v2/tenants/{tenantId}/notes/search:
+    get:
+      summary: Search client note
+      description: |-
+        This endpoint is used to retrieve client notes under a specific client.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: client-notes-search-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/client-notes-search-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/notes/{id}:
+    post:
+      summary: Update client notes
+      description: |-
+        This endpoint is used to update the details in a client note.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: client-notes-update-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/client-notes-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+  /api/v2/tenants/{varId}/clients/{clientId}/{action}:
+    post:
+      summary: Activate or deactivate client
+      description: |-
+        This endpoint is used to activate or deactivate a client.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: clients-activate-deactivate-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/clients-activate-deactivate-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: varId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: clientId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: action
+        required: true
+  /api/v2/tenants/{varId}/clients/{clientId}:
+    get:
+      summary: Get client
+      description: |-
+        This endpoint is used to retrieve the details of a client.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: clients-client-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/clients-client-get/
+    post:
+      summary: Update clients
+      description: |-
+        This endpoint is used to update a client.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: clients-update-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/clients-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: varId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: clientId
+        required: true
+  /api/v2/tenants/{varId}/clients:
+    post:
+      summary: Create clients
+      description: |-
+        This endpoint is used to create a client.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: clients-create-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/clients-create-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: varId
+        required: true
+  /api/v2/tenants/{varId}/clients/minimal:
+    get:
+      summary: Get minimal details of clients
+      description: |-
+        This endpoint is used to retrieve the minimal details of clients.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: clients-minimal-details-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/clients-minimal-details-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: varId
+        required: true
+  /api/v2/tenants/{varId}/clients/search:
+    get:
+      summary: Search clients
+      description: |-
+        This endpoint is used to search for the clients.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: clients-search-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/clients-search-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: varId
+        required: true
+  /api/v2/cfg/alertSource/available/custIntg/{intgId}:
+    get:
+      summary: Get alert technologies
+      description: |-
+        This endpoint is used to retrieve the list of available custom (and email alert integration) alert sources.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: configuration-management-alert-technologies-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/configuration-management-alert-technologies-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: intgId
+        required: true
+  /api/v2/cfg/tenants/channels:
+    get:
+      summary: Get channels
+      description: |-
+        This endpoint is used to retrieve the list of channels.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: configuration-management-channels-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/configuration-management-channels-get/
+  /api/v2/cfg/countries:
+    get:
+      summary: Get countries
+      description: |-
+        This endpoint is used to retrieve the list of countries based on country code.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: configuration-management-countries-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/configuration-management-countries-get/
+  /api/v2/cfg/tenants/nocs:
+    get:
+      summary: Get tenant NOCs
+      description: |-
+        This endpoint is used to retrieve the list of NOCs of a tenant.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: configuration-management-tenant-nocs-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/configuration-management-tenant-nocs-get/
+  /api/v2/cfg/timezones:
+    get:
+      summary: Get timezones
+      description: |-
+        This endpoint is used to retrieve the list of timezones.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: configuration-management-timezones-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/configuration-management-timezones-get/
+  /api/v2/tenants/{tenantId}/credentialSets:
+    post:
+      summary: Create credential sets
+      description: |-
+        This endpoint is used to create a credential set.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: credential-sets-create-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/credential-sets-create-post/
+    get:
+      summary: Get credential sets
+      description: |-
+        This endpoint is used to delete a credential set.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: credential-sets-list-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/credential-sets-list-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/credentialSets/{credentialSetId}:
+    delete:
+      summary: Delete a credential set
+      description: |-
+        This endpoint is used to delete a credential set.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: credential-sets-delete/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/credential-sets-delete/
+    get:
+      summary: Get credential set
+      description: |-
+        This endpoint is used to fetch the details of a credential set.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: credential-sets-details-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/credential-sets-details-get/
+    post:
+      summary: Update credential set
+      description: |-
+        This endpoint is used to update a credential set.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: credential-sets-update-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/credential-sets-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: credentialSetId
+        required: true
+  /api/v2/tenants/{tenantId}/credentialSets/minimal:
+    get:
+      summary: Get minimal details of client credential sets
+      description: |-
+        This endpoint is used to retrieve the minimal details of client credential sets.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: credential-sets-minimal-client-details-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/credential-sets-minimal-client-details-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/devices/{deviceId}/credentialSets/minimal:
+    get:
+      summary: Get minimal details of device credential sets
+      description: |-
+        This endpoint is used to retrieve the minimal details of client credential sets.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: credential-sets-minimal-device-details-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/credential-sets-minimal-device-details-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: deviceId
+        required: true
+  /api/v2/tenants/{varId}/:
+    get:
+      summary: Get partner details
+      description: |-
+        This API is used to get details of a partner.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: partner-details-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/partner-details-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: varId
+        required: true
+  /api/v2/tenants/{tenantId}/roles:
+    post:
+      summary: Create roles
+      description: |-
+        This endpoint is used to create a partner-level or client-level role.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: roles-create-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/roles-create-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/roles/{roleId}:
+    delete:
+      summary: Delete role
+      description: |-
+        This endpoint is used to delete a role.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: roles-role-delete/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/roles-role-delete/
+    VERB:
+      summary: Get role
+      description: |-
+        This endpoint is used to retrieve the details of a role.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: roles-role-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/roles-role-get/
+    post:
+      summary: Update roles
+      description: |-
+        This endpoint is used to update the details of a role.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: roles-update-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/roles-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: roleId
+        required: true
+  /api/v2/tenants/{tenantId}/roles/search:
+    get:
+      summary: Search roles
+      description: |-
+        This endpoint is used to retrieve roles under a partner or client.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: roles-search-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/roles-search-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/permissionSets:
+    get:
+      summary: Search permission sets
+      description: |-
+        This endpoint is used to retrieve the list of permission sets assigned to a tenant.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: tenancy-search-permission-sets-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/tenancy-search-permission-sets-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/userGroups/{userGroupId}/users:
+    post:
+      summary: Add users to a user group
+      description: |-
+        This endpoint is used to add users to an existing user group.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: user-groups-add-users-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/user-groups-add-users-post/
+    delete:
+      summary: Remove users from a user group
+      description: |-
+        This endpoint is used to remove users from an existing user group.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: user-groups-remove-users-delete/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/user-groups-remove-users-delete/
+    get:
+      summary: Get users of a user group
+      description: |-
+        This endpoint is used to fetch users belonging to a user group.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: user-groups-users-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/user-groups-users-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: userGroupId
+        required: true
+  /api/v2/tenants/{tenantId}/userGroups:
+    post:
+      summary: Create user group
+      description: |-
+        This endpoint is used to create a partner-level or client-level user group.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: user-groups-create-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/user-groups-create-post/
+    get:
+      summary: Search user groups
+      description: |-
+        This endpoint is used to retrieve the list of user groups available within a tenant.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: user-groups-search-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/user-groups-search-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/userGroups/{userGroupId}:
+    post:
+      summary: Update user group
+      description: |-
+        This endpoint is used to update a user group’s properties.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: user-groups-update-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/user-groups-update-post/
+    delete:
+      summary: Delete a user group
+      description: |-
+        This endpoint is used to delete a user group under a tenant.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: user-groups-user-group-delete/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/user-groups-user-group-delete/
+    get:
+      summary: Get user group
+      description: |-
+        This endpoint is used to retrieve the details of a user group.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: user-groups-user-group-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/user-groups-user-group-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: userGroupId
+        required: true
+  /api/v2/tenants/{tenantId}/users/{userId}/{action}:
+    VERB:
+      summary: Activate user
+      description: |-
+        The endpoint to assign agent policy for resources.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: users-activate-user-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/users-activate-user-post/
+    VERB2:
+      summary: Deactivate user
+      description: |-
+        This endpoint is used to deactivate a user.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: users-deactivate-user-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/users-deactivate-user-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: userId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: action
+        required: true
+  :
+    2:
+      summary: Generate access token for gateway
+      description: |-
+        This endpoint is used to generate an access token on the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-generate-access-token-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-generate-access-token-post/
+    3:
+      summary: Register gateway
+      description: |-
+        This endpoint is used to register the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-register-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-register-post/
+    4:
+      summary: Turn on and off Squid proxy service
+      description: |-
+        This endpoint is used to turn on and off the Squid proxy server on the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-turn-onoff-proxy-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-turn-onoff-proxy-post/
+    5:
+      summary: Patch compliance introduction
+      description: |-
+        Patch compliance introduction.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: patch-compliance-introduction/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/patching/patch-compliance-introduction/
+    6:
+      summary: Device groups introduction
+      description: |-
+        Introduction to device group APIs.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: device-group-introduction/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/resource-management/device-group-introduction/
+    7:
+      summary: Impact dependency introduction
+      description: |-
+        Impact dependency introduction.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: impact-dependency-introduction/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/resource-management/impact-dependency-introduction/
+    8:
+      summary: Decommission resources introduction
+      description: |-
+        An introduction to decommissioning resources.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: resources-decommission-introduction/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/resource-management/resources-decommission-introduction/
+    9:
+      summary: Users and user groups introduction
+      description: |-
+        An introduction to user and user group endpoints.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: users-and-user-groups-introduction/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/users-and-user-groups-introduction/
+    10:
+      summary: Custom forms introduction
+      description: |-
+        An introduction to custom forms.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: custom-forms-introduction/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/custom-forms-introduction/
+    11:
+      summary: Priority mapping introduction
+      description: |-
+        An introduction to forward and reverse priority mapping.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: priority-mapping-introduction/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/priority-mapping-introduction/
+  /api/v2/tenants/{orgId}/users/{userId}/changePassword:
+    post:
+      summary: Change password
+      description: |-
+        This endpoint is used to change the password.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: users-change-password-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/users-change-password-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: userId
+        required: true
+  /api/v2/tenants/{orgId}/users:
+    post:
+      summary: Create user
+      description: |-
+        This endpoint is used to create a user.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: users-create-user-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/users-create-user-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+  /api/v2/tenants/{tenantId}/users/loginHistory/search:
+    get:
+      summary: Get login audit report
+      description: |-
+        This endpoint is used to retrieve the login history details of users.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: users-login-audit-report-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/users-login-audit-report-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{orgId}/users/minimal:
+    get:
+      summary: Get minimal details of users
+      description: |-
+        This endpoint is used to retrieve the minimal details of the users.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: users-minimal-details-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/users-minimal-details-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+  /pi/v2/tenants/{tenantId}/users/search:
+    get:
+      summary: Search users
+      description: |-
+        This endpoint is used to fetch users within a tenant.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: users-search-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/users-search-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{orgId}/users/{userId}:
+    post:
+      summary: Update user
+      description: |-
+        This endpoint is used to update the details of a user.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: users-update-user-post/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/users-update-user-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: userId
+        required: true
+  /api/v2/tenants/{tenantId}/users/{userId}:
+    get:
+      summary: Get user
+      description: |-
+        This endpoint is used to retrieve the details of a user.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: users-user-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/users-user-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: userId
+        required: true
+  /api/v2/tenants/{orgId}/userGroups:
+    get:
+      summary: Get user groups
+      description: |-
+        This endpoint is used to retrieve the details of the user groups.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: users-user-groups-details-get/
+      tags:
+        - tenancy-access-controls
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/users-user-groups-details-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true

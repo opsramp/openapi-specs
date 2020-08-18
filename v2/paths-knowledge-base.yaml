@@ -1,0 +1,1074 @@
+paths:
+  /api/v2/tenants/{tenantId}/kb/{articleId}/activitylog:
+    get:
+      summary: Get article activity log
+      description: |-
+        This endpoint is used to get activity log with provided details of an article.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-article-activity-log-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-activity-log-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+  /api/v2/tenants/{tenantId}/kb/article/{articleId}/comment:
+    post:
+      summary: Add comment
+      description: |-
+        This endpoint is used to update comments to the article.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-article-add-comment-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-add-comment-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+  /api/v2/tenants/{tenantId}/kb/articlesList?categoryId=&pageNo={pageNo}&pageSize={pageSize}:
+    get:
+      summary: Get list of articles
+      description: |-
+        This endpoint is used to get list of articles.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-article-article-lists-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-article-lists-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: pageNo
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: pageSize
+        required: true
+  /api/v2/tenants/{tenantId}/kb/articles/search:
+    get:
+      summary: Search articles
+      description: |-
+        This endpoint is used to search for the list of articles in a knowledge base category.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-article-articles-search-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-articles-search-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/kb/article/{articleId}/comments/{commentId}resources/{resourceId}:
+    get:
+      summary: Download article attachment (comments)
+      description: |-
+        This endpoint is used to download any attachment (comments) of an article.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-article-attachment-comments-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-attachment-comments-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: commentId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
+  /api/v2/tenants/{tenantId}/kb/article/{articleId}/resources/{resourceId}:
+    get:
+      summary: Download article attachment
+      description: |-
+        This endpoint is used to download any attachment of an article.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-article-attachment-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-attachment-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
+  /api/v2/tenants/{tenantId}/kb/article:
+    post:
+      summary: Create article
+      description: |-
+        This endpoint is used to create a knowledge base article.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-article-create-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-create-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/kb/article/{articleId}/delete:
+    delete:
+      summary: Delete article
+      description: |-
+        This endpoint is used to delete a knowledge base category.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-article-delete/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-delete/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+  /api/v2/tenants/{tenantId}/kb/article/{articleId}:
+    get:
+      summary: Get article
+      description: |-
+        This endpoint is used to get the knowledge base article.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-article-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-get/
+    post:
+      summary: Update article
+      description: |-
+        This endpoint is used to update a knowledge base article.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-article-update-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+  /api/v2/tenants/{tenantId}/kb/article/{articleId}/comments:
+    get:
+      summary: Get list of comments
+      description: |-
+        This endpoint is used to get list of comments of an article.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-article-list-comments-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-list-comments-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+  /api/v2/tenants/{tenantId}/kb/article/{articleId}/share:
+    post:
+      summary: Share article
+      description: |-
+        This endpoint is used to share the knowledge base article.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-article-share-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-share-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+  /api/v2/tenants/{tenantId}/kb/category/{categoryId}:
+    get:
+      summary: Get a KB category
+      description: |-
+        This endpoint is used to retrieve a knowledge base category.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-categories-category-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-categories-category-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: categoryId
+        required: true
+  /api/v2/tenants/{tenantId}/kb/category/create:
+    post:
+      summary: Create KB category
+      description: |-
+        This endpoint is used to create a knowledge base category.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-category-create-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-category-create-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/kb/category/delete/{categoryId}:
+    delete:
+      summary: Delete a KB category
+      description: |-
+        This endpoint is used to delete a knowledge base category.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-category-delete/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-category-delete/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: categoryId
+        required: true
+  /api/v2/tenants/{tenantId}/kb/categorylist?pageNo={pageNo}&pageSize={pageSize}:
+    get:
+      summary: Get list of KB categories
+      description: |-
+        This endpoint is used to retrieve list of knowledge base categories.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-category-list-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-category-list-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: pageNo
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: pageSize
+        required: true
+  /api/v2/tenants/{tenantId}/kb/category/restore/{categoryId}:
+    post:
+      summary: Restore category
+      description: |-
+        This endpoint is used to retrieve a knowledge base category from TRASH.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-category-restore-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-category-restore-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: categoryId
+        required: true
+  /api/v2/tenants/{tenantId}/kb/categorylist/{categoryId}:
+    get:
+      summary: Get sub-category
+      description: |-
+        This endpoint is used to retrieve the list of sub-categories of a knowledge base category.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-category-subcategory-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-category-subcategory-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: categoryId
+        required: true
+  /api/v2/tenants/{tenantId}/kb/category/update/{categoryId}:
+    post:
+      summary: Update a KB category
+      description: |-
+        This endpoint is used to update a knowledge base category.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-category-update-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-category-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: categoryId
+        required: true
+  /api/v2//tenants/{tenantId}/kb/template/{templateId}/delete:
+    delete:
+      summary: Delete template
+      description: |-
+        This endpoint is used to delete a knowledge base template.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-templates-delete/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-delete/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: templateId
+        required: true
+  /api/v2//tenants/{tenantId}/kb/templatesList?categoryId=&pageNo={pageNo}&pageSize={pageSize}:
+    get:
+      summary: Get list of templates
+      description: |-
+        This endpoint is used to get the list of knowledge base templates.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-templates-list-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-list-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: pageNo
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: pageSize
+        required: true
+  /api/v2//tenants/{tenantId}/kb/template:
+    post:
+      summary: Create template
+      description: |-
+        This endpoint is used to create a knowledge base template.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-templates-template-create-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-template-create-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2//tenants/{tenantId}/kb/template/{templatedId}:
+    post:
+      summary: Get template
+      description: |-
+        This endpoint is used to get the template details of a knowledge base article.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-templates-template-get-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-template-get-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: templatedId
+        required: true
+  /api/v2//tenants/{tenantId}/kb/article:
+    post:
+      summary: Update template
+      description: |-
+        This endpoint is used to update a knowledge base template.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: knowledge-base-templates-template-update-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-template-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true

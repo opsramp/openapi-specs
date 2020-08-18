@@ -1,0 +1,4137 @@
+paths:
+  /api/v2/tenants/{tenantId}/incidents/businessImpacts:
+    post:
+      summary: Create business impact
+      description: |-
+        This endpoint is used to create a business impact on an incident.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: business-impacts-create-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/business-impacts-create-post/
+    get:
+      summary: Get business impacts
+      description: |-
+        Business impact defines the severity of an entity in the business.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: business-impacts-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/business-impacts-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/incidents/businessImpacts/{uniqueId}:
+    post:
+      summary: Update business impact
+      description: |-
+        This endpoint is used to update a business impact on an incident.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: business-impacts-update-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/business-impacts-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: uniqueId
+        required: true
+  /api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/activitylog:
+    get:
+      summary: Get activity log of a change request
+      description: |-
+        This endpoint is used to retrieve user activities on a change request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: change-request-activity-log-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/change-request-activity-log-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: changeRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/responses:
+    post:
+      summary: Add response to a change request
+      description: |-
+        This endpoint is used to add a response to a change request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: change-request-add-response-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/change-request-add-response-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: changeRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/responses/search:
+    get:
+      summary: Get change request responses
+      description: |-
+        This endpoint is used to retrieve responses of a change request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: change-request-change-responses-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/change-request-change-responses-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: changeRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/close:
+    post:
+      summary: Close change request
+      description: |-
+        This endpoint is used to close a change request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: change-request-close-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/change-request-close-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: changeRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/changeRequests/categories:
+    post:
+      summary: Create change request categories
+      description: |-
+        This endpoint is used to create categories for the change request entity type.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: change-request-create-categories-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/change-request-create-categories-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/changeRequests:
+    post:
+      summary: Create change request
+      description: |-
+        This endpoint is used to create a change request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: change-request-create-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/change-request-create-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/responses/{responseId}/resources/{resourceId}:
+    get:
+      summary: Download change request response attachment
+      description: |-
+        This endpoint is used to download the response attachment attached to a change request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: change-request-download-change-attachment-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/change-request-download-change-attachment-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: changeRequestId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: responseId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
+  /api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}:
+    get:
+      summary: Get change request
+      description: |-
+        This endpoint is used to retrieve the details of a change request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: change-request-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/change-request-get/
+    post:
+      summary: Update change request
+      description: |-
+        This endpoint is used to update a change request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: change-request-update-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/change-request-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: changeRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/changeRequests/search:
+    get:
+      summary: Search change requests
+      description: |-
+        This endpoint is used to search for change requests.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: change-request-search-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/change-request-search-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/changeRequests/categories/{uniqueId}:
+    post:
+      summary: Update change request category
+      description: |-
+        This endpoint is used to update a category of the entity type Change Request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: change-request-update-category-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/change-request-update-category-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: uniqueId
+        required: true
+  /api/v2/tenants/{tenantId}/incidents/customForm:
+    get:
+      summary: Get incident custom form
+      description: |-
+        This endpoint is used to retrieve the custom form for an incident.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: custom-form-incident-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/custom-form-incident-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/problems/customForm:
+    get:
+      summary: Get problem custom form
+      description: |-
+        This endpoint is used to retrieve the custom form for a problem.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: custom-form-problem-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/custom-form-problem-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/serviceRequests/customForm:
+    get:
+      summary: Get service request custom form
+      description: |-
+        This endpoint is used to retrieve the custom form for a service request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: custom-form-service-request-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/custom-form-service-request-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/timeBoundRequests/customForm:
+    get:
+      summary: Get time-bound request custom form
+      description: |-
+        This endpoint is used to retrieve the custom form for a time-bound request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: custom-form-time-bound-request-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/custom-form-time-bound-request-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/changeRequests/customForm:
+    get:
+      summary: Get change request custom form
+      description: |-
+        This endpoint is used to retrieve the custom form for a change request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: custom-forms-change-request-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/custom-forms-change-request-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  :
+    2:
+      summary: Generate access token for gateway
+      description: |-
+        This endpoint is used to generate an access token on the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-generate-access-token-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-generate-access-token-post/
+    3:
+      summary: Register gateway
+      description: |-
+        This endpoint is used to register the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-register-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-register-post/
+    4:
+      summary: Turn on and off Squid proxy service
+      description: |-
+        This endpoint is used to turn on and off the Squid proxy server on the gateway.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: gateways/gateway-turn-onoff-proxy-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/agents-gateways/gateways/gateway-turn-onoff-proxy-post/
+    5:
+      summary: Patch compliance introduction
+      description: |-
+        Patch compliance introduction.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: patch-compliance-introduction/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/patching/patch-compliance-introduction/
+    6:
+      summary: Device groups introduction
+      description: |-
+        Introduction to device group APIs.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: device-group-introduction/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/resource-management/device-group-introduction/
+    7:
+      summary: Impact dependency introduction
+      description: |-
+        Impact dependency introduction.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: impact-dependency-introduction/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/resource-management/impact-dependency-introduction/
+    8:
+      summary: Decommission resources introduction
+      description: |-
+        An introduction to decommissioning resources.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: resources-decommission-introduction/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/resource-management/resources-decommission-introduction/
+    9:
+      summary: Users and user groups introduction
+      description: |-
+        An introduction to user and user group endpoints.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: users-and-user-groups-introduction/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tenancy-access-controls/users-and-user-groups-introduction/
+    10:
+      summary: Custom forms introduction
+      description: |-
+        An introduction to custom forms.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: custom-forms-introduction/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/custom-forms-introduction/
+    11:
+      summary: Priority mapping introduction
+      description: |-
+        An introduction to forward and reverse priority mapping.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: priority-mapping-introduction/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/priority-mapping-introduction/
+  /api/v2/tenants/{tenantId}/incidents/{incidentId}/activitylog:
+    get:
+      summary: Get activity log of an incident
+      description: |-
+        This endpoint is used to retrieve user activities on an incident.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: incident-activity-log-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/incident-activity-log-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: incidentId
+        required: true
+  /api/v2/tenants/{tenantId}/incidents/{incidentId}/responses:
+    post:
+      summary: Add response to an incident
+      description: |-
+        This endpoint is used to add a response to an incident.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: incident-add-responses-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/incident-add-responses-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: incidentId
+        required: true
+  /api/v2/tenants/{tenantId}/incidents/{incidentId}/close:
+    post:
+      summary: Close incident
+      description: |-
+        This endpoint is used to close an incident.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: incident-close-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/incident-close-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: incidentId
+        required: true
+  /api/v2/tenants/{tenantId}/incidents/categories:
+    post:
+      summary: Create incident categories
+      description: |-
+        This endpoint is used to create categories for the incident entity type.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: incident-create-categories-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/incident-create-categories-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/incidents:
+    post:
+      summary: Create incident
+      description: |-
+        This endpoint is used to create an incident.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: incident-create-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/incident-create-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/incidents/{incidentId}/responses/{responseId}/resources/{resourceId}:
+    get:
+      summary: Download incident response attachment
+      description: |-
+        This endpoint is used to download the response attachment attached to an incident.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: incident-download-response-attachment-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/incident-download-response-attachment-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: incidentId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: responseId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
+  /api/v2/tenants/{tenantId}/incidents/{incidentId}:
+    get:
+      summary: Get incident
+      description: |-
+        This endpoint is used to retrieve the details of an incident.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: incident-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/incident-get/
+    post:
+      summary: Update incident
+      description: |-
+        This endpoint is used to update an incident.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: incident-update-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/incident-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: incidentId
+        required: true
+  /api/v2/tenants/{tenantId}/incidents/{incidentId}/responses/search:
+    get:
+      summary: Get incident responses
+      description: |-
+        This endpoint is used to retrieve responses of an incident.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: incident-responses-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/incident-responses-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: incidentId
+        required: true
+  /api/v2/tenants/{tenantId}/incidents/search:
+    get:
+      summary: Search incidents
+      description: |-
+        This endpoint is used to search for incidents.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: incident-search-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/incident-search-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/incidents/categories/{uniqueId}:
+    post:
+      summary: Update incident category
+      description: |-
+        This endpoint is used to update a category of entity type Incident.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: incident-update-category-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/incident-update-category-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: uniqueId
+        required: true
+  /api/v2/tenants/{tenantId}/incidents/forwardMapping:
+    post:
+      summary: Create or update forward mapping
+      description: |-
+        This endpoint is used to create or update a forward mapping based on priority.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: priority-mapping-forward-mapping-create-update-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/priority-mapping-forward-mapping-create-update-post/
+    get:
+      summary: Get forward mapping details
+      description: |-
+        This endpoint is used to retrieve details of forward mapping priorities.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: priority-mapping-forward-mapping-details-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/priority-mapping-forward-mapping-details-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/incidents/reverseMapping:
+    post:
+      summary: Create or update reverse mapping
+      description: |-
+        This endpoint is used to create or update a reverse mapping of priorities for incidents.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: priority-mapping-reverse-mapping-create-update-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/priority-mapping-reverse-mapping-create-update-post/
+    get:
+      summary: Get reverse mapping details
+      description: |-
+        This endpoint is used to retrieve details of reverse mapping priorities.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: priority-mapping-reverse-mapping-details-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/priority-mapping-reverse-mapping-details-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/problems/{problemId}/activitylog:
+    get:
+      summary: Get activity log of a problem
+      description: |-
+        This endpoint is used to retrieve user activities on a problem.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: problem-activity-log-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/problem-activity-log-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: problemId
+        required: true
+  /api/v2/tenants/{tenantId}/problems/{problemId}/responses:
+    post:
+      summary: Add response to a problem
+      description: |-
+        This endpoint is used to add a response to a problem.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: problem-add-responses-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/problem-add-responses-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: problemId
+        required: true
+  /api/v2/tenants/{tenantId}/problems/{problemId}/close:
+    post:
+      summary: Close problem
+      description: |-
+        This endpoint is used to close a problem.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: problem-close-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/problem-close-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: problemId
+        required: true
+  /api/v2/tenants/{tenantId}/problems/categories:
+    post:
+      summary: Create problem categories
+      description: |-
+        This endpoint is used to create categories for the problem entity type.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: problem-create-categories-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/problem-create-categories-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/problems:
+    post:
+      summary: Create problem
+      description: |-
+        This endpoint is used to create a problem.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: problem-create-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/problem-create-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/problems/{problemId}/responses/{responseId}/resources/{resourceId}:
+    get:
+      summary: Download problem response attachment
+      description: |-
+        This endpoint is used to download the response attachment attached to a problem.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: problem-download-response-attachment-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/problem-download-response-attachment-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: problemId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: responseId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
+  //api/v2/tenants/{tenantId}/problems/{problemId}:
+    get:
+      summary: Get problem
+      description: |-
+        This endpoint is used to retrieve the details of a problem.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: problem-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/problem-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: problemId
+        required: true
+  /api/v2/tenants/{tenantId}/problems/{problemId}/responses/search:
+    get:
+      summary: Get problem responses
+      description: |-
+        This endpoint is used to retrieve responses of a problem.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: problem-responses-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/problem-responses-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: problemId
+        required: true
+  /api/v2/tenants/{tenantId}/problems/search:
+    get:
+      summary: Search problems
+      description: |-
+        This endpoint is used to search problems.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: problem-search-problems-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/problem-search-problems-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/problems/categories/{uniqueId}:
+    post:
+      summary: Update problem category
+      description: |-
+        This endpoint is used to update a category of the entity type Problem.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: problem-update-category-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/problem-update-category-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: uniqueId
+        required: true
+  /api/v2/tenants/{tenantId}/problems/{problemId}:
+    post:
+      summary: Update problem
+      description: |-
+        This endpoint is used to update a problem.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: problem-update-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/problem-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: problemId
+        required: true
+  /api/v2/tenants/{tenantId}/{ticketType}/categories/{parentCategoryId}:
+    get:
+      summary: Get service desk list of categories
+      description: |-
+        This endpoint is used to retrieve the list of categories for an entity type.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: service-desk-settings-categories-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/service-desk-settings-categories-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: ticketType
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: parentCategoryId
+        required: true
+  /api/v2/tenants/{tenantId}/customFields/{classCode}/{customFieldId}:
+    get:
+      summary: Get custom field
+      description: |-
+        This endpoint is used to retrieve the details of a custom field.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: service-desk-settings-custom-field-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/service-desk-settings-custom-field-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: classCode
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: customFieldId
+        required: true
+  /api/v2/tenants/{tenantId}/customFields/{classCode}:
+    get:
+      summary: Get custom fields
+      description: |-
+        This endpoint is used to retrieve details of custom fields attached to an entity.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: service-desk-settings-custom-fields-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/service-desk-settings-custom-fields-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: classCode
+        required: true
+  /api/v2/tenants/{tenantId}/{ticketType}/statusReasons:
+    get:
+      summary: Get status change reasons
+      description: |-
+        This endpoint is used to fetch the status change reasons of a ticket.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: service-desk-settings-status-change-reasons-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/service-desk-settings-status-change-reasons-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: ticketType
+        required: true
+  /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/activitylog:
+    get:
+      summary: Get activity log of a service request
+      description: |-
+        This endpoint is used to retrieve user activities on a service request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: service-request-activity-log-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/service-request-activity-log-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: serviceRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/responses:
+    post:
+      summary: Add response to a service request
+      description: |-
+        This endpoint is used to add a response to a service request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: service-request-add-responses-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/service-request-add-responses-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: serviceRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/close:
+    post:
+      summary: Close service request
+      description: |-
+        This endpoint is used to close a service request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: service-request-close-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/service-request-close-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: serviceRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/serviceRequests/categories:
+    post:
+      summary: Create service request categories
+      description: |-
+        This endpoint is used to create categories for the service request entity type.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: service-request-create-categories-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/service-request-create-categories-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/serviceRequests:
+    post:
+      summary: Create service request
+      description: |-
+        This endpoint is used to create a service request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: service-request-create-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/service-request-create-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/responses/{responseId}/resources/{resourceId}:
+    get:
+      summary: Download service request response attachment
+      description: |-
+        This endpoint is used to download the response attachment attached to a service request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: service-request-download-response-attachment-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/service-request-download-response-attachment-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: serviceRequestId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: responseId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
+  /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}:
+    get:
+      summary: Get service request
+      description: |-
+        This endpoint is used to retrieve the details of a service request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: service-request-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/service-request-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: serviceRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/responses/search:
+    get:
+      summary: Get service request responses
+      description: |-
+        This endpoint is used to retrieve responses of a service request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: service-request-responses-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/service-request-responses-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: serviceRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/serviceRequests/search:
+    get:
+      summary: Search service requests
+      description: |-
+        This endpoint is used to search for service requests.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: service-request-search-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/service-request-search-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/serviceRequests/categories/{uniqueId}:
+    post:
+      summary: Update service request category
+      description: |-
+        This endpoint is used to update a category of entity type Service Request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: service-request-update-category-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/service-request-update-category-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: uniqueId
+        required: true
+  /api/v2/tenants/{tenantId}/serviceRequests/{serviceReqId}:
+    post:
+      summary: Update service request
+      description: |-
+        This endpoint is used to update a service request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: service-request-update-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/service-request-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: serviceReqId
+        required: true
+  /api/v2/tenants/{tenantId}/{ticketType}/slaPolicies/{id}:
+    get:
+      summary: Get SLA policy
+      description: |-
+        This endpoint is used to retrieve the details of a service level agreement policy.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: sla-policies-policy-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/sla-policies-policy-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: ticketType
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+  /api/v2/tenants/{tenantId}/{ticketType}/slaPolicies/search:
+    get:
+      summary: Search SLA policies
+      description: |-
+        This endpoint is used to retrieve a list of all service level agreement policies along with their details.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: sla-policies-search-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/sla-policies-search-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: ticketType
+        required: true
+  /api/v2/tenants/{tenantId}/tasks/{taskId}/responses:
+    post:
+      summary: Add response to task
+      description: |-
+        This endpoint is used to add a response to a task.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: tasks-add-response-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/tasks-add-response-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: taskId
+        required: true
+  /api/v2/tenants/{tenantId}/tasks/{taskId}/close:
+    post:
+      summary: Close task
+      description: |-
+        This endpoint is used to close a task.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: tasks-close-task-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/tasks-close-task-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: taskId
+        required: true
+  /api/v2/tenants/{tenantId}/tasks:
+    post:
+      summary: Create task
+      description: |-
+        This endpoint is used to create a task.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: tasks-create-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/tasks-create-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/tasks/{taskId}/responses/{responseId}/resources/{resourceId}:
+    get:
+      summary: Download task response attachment
+      description: |-
+        This endpoint is used to download the response attachment attached to a task.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: tasks-response-attachment-download-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/tasks-response-attachment-download-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: taskId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: responseId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
+  /api/v2/tenants/{tenantId}/tasks/{taskId}/responses/search:
+    get:
+      summary: Get task responses
+      description: |-
+        This endpoint is used to retrieve responses of a task.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: tasks-responses-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/tasks-responses-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: taskId
+        required: true
+  /api/v2/tenants/{tenantId}/tasks/search:
+    get:
+      summary: Search tasks
+      description: |-
+        This endpoint is used to search for the tasks.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: tasks-search-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/tasks-search-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/tasks/{taskId}/activitylog:
+    get:
+      summary: Get activity log of a task
+      description: |-
+        This endpoint is used to retrieve a list of user activities on a task..
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: tasks-task-activity-log-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/tasks-task-activity-log-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: taskId
+        required: true
+  /api/v2/tenants/{tenantId}/tasks/{taskId}:
+    get:
+      summary: Get task
+      description: |-
+        This endpoint is used to retrieve details of a task.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: tasks-task-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/tasks-task-get/
+    post:
+      summary: Update task
+      description: |-
+        This endpoint is used to update a task.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: tasks-update-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/tasks-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: taskId
+        required: true
+  /api/v2/tenants/{tenantId}/{ticketType}/{ticketId}/notes:
+    post:
+      summary: Create ticket notes
+      description: |-
+        This endpoint is used to creates for a ticket.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: ticket-notes-create-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/ticket-notes-create-post/
+    get:
+      summary: Get multiple ticket notes
+      description: |-
+        This endpoint is used to retrieve multiple notes from a ticket.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: ticket-notes-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/ticket-notes-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: ticketType
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: ticketId
+        required: true
+  /api/v2/tenants/{tenantId}/{ticketType}/{ticketId}/notes/{noteId}:
+    delete:
+      summary: Delete ticket note
+      description: |-
+        This endpoint is used to delete note of a ticket.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: ticket-notes-note-delete/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/ticket-notes-note-delete/
+    get:
+      summary: Get a ticket note
+      description: |-
+        This endpoint is used to retrieve a note from a ticket.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: ticket-notes-note-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/ticket-notes-note-get/
+    post:
+      summary: Update ticket notes
+      description: |-
+        This endpoint is used to update a note of a ticket.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: ticket-notes-update-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/ticket-notes-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: ticketType
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: ticketId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: noteId
+        required: true
+  /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/activitylog:
+    get:
+      summary: Get activity log of a time bound request
+      description: |-
+        This endpoint is used to retrieve user activities on a time bound request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: time-bound-activity-log-get/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/time-bound-activity-log-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: timeBoundRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBountRequestId}/responses:
+    post:
+      summary: Add response to a time bound request
+      description: |-
+        This endpoint is used to add a response to a time bound request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: time-bound-add-response-post/
+      tags:
+        - tickets
+      responses:
+        '???':
+          description: UNKNOWN
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/time-bound-add-response-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: timeBountRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/close:
+    post:
+      summary: Close time bound request
+      description: |-
+        This endpoint is used to close a time bound request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: time-bound-close-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/time-bound-close-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: timeBoundRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/timeBoundRequests:
+    post:
+      summary: Create time bound request
+      description: |-
+        This endpoint is used to create a time bound request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: time-bound-create-request-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/time-bound-create-request-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/responses/{responseId}/resources/{resourceId}:
+    get:
+      summary: Download time bound request response attachment
+      description: |-
+        This endpoint is used to download the response attachment attached to a time bound request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: time-bound-download-response-attachment-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/time-bound-download-response-attachment-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: timeBoundRequestId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: responseId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
+  /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}:
+    get:
+      summary: Get time bound request
+      description: |-
+        This endpoint is used to retrieve the details of a time bound request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: time-bound-request-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/time-bound-request-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: timeBoundRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/responses/search:
+    get:
+      summary: Get time bound responses
+      description: |-
+        This endpoint is used to retrieve responses of a time bound request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: time-bound-responses-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/time-bound-responses-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: timeBoundRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/timeBoundRequests/search:
+    get:
+      summary: Search time bound requests
+      description: |-
+        This endpoint is used to search for time bound requests.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: time-bound-search-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/time-bound-search-get/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBountRequestId}:
+    post:
+      summary: Update time bound request
+      description: |-
+        This endpoint is used to update a time bound request.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: time-bound-update-request-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/time-bound-update-request-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: timeBountRequestId
+        required: true
+  /api/v2/tenants/{tenantId}/incidents/urgencies:
+    get:
+      summary: Get urgencies
+      description: |-
+        This endpoint is used to retrieve the list of urgencies of an incident.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: urgencies-get/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/urgencies-get/
+    post:
+      summary: Create urgency
+      description: |-
+        This endpoint is used to create urgency.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: urgencies-urgency-create-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/urgencies-urgency-create-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/tenants/{tenantId}/incidents/urgencies/{uniqueId}:
+    post:
+      summary: Update urgency
+      description: |-
+        This endpoint is used to update urgency.
+
+        ## Sample URLs
+        ```
+        
+        ```
+        ## Sample cURL
+        ```
+        
+        ```
+      operationId: urgencies-urgency-update-post/
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+              examples:
+                example-1:
+                  value:
+      requestBody:
+        content:
+          application/json:
+            schema:
+            examples:
+              example-1:
+      externalDocs:
+        url: https://docs.opsramp.com/api/tickets/urgencies-urgency-update-post/
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: uniqueId
+        required: true
