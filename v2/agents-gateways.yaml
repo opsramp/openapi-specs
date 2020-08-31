@@ -1,0 +1,2280 @@
+openapi: 3.0.0
+info:
+  title: Agents and Gateways
+  version: '1.0'
+  description: |-
+    Endpoints associated with agents and gateways.
+
+    ## go back and fix all the Token <TOKEN> in sample cURLs
+    ## For the following, variables are used INSIDE the query, and usage needs to be documented
+    - /api/v2/tenants/{tenantId}/rosters/search
+    - /api/v2/tenants/{tenantId}/integrations/activity
+
+    ## for resources-update-synthetic-post/
+    the path is totally wrong, doesn't make any sense
+
+    are the params `sslCertPath` and `SslCertKeyPath` really capitalized differently? And the sample request doen't match the listed parameters?
+
+    ## for alert-escalation-policy-by-alertid-get/
+    something is wrong, there's a whole list of parameters, but it's a GET endpoint, there's no request body to put them in.
+     
+    ## for integrations cloud-discovery-update-put/ and integrations cloud-discovery-update-put
+    does azure really use POST for updates while Google and AWS use PUT?
+  contact:
+    name: none
+tags:
+  - name: agents-gateways
+  - name: alerts
+  - name: automation
+  - name: exports
+  - name: integrations
+  - name: knowledge-base
+  - name: metrics
+  - name: monitoring
+  - name: patching
+  - name: resource-management
+  - name: tenancy-access-controls
+  - name: tickets
+servers:
+  - url: 'https://api.opsramp.com'
+    description: Partner - All Others
+  - url: 'https://{partner_name}.api.opsramp.com'
+    description: Partner - Custom Brand
+  - url: 'https://{client_name}.api.opsramp.com'
+    description: Partner and Client both Custom Branded
+paths:
+  /api/v2/applicationservice:
+    post:
+      description: |-
+        This endpoint is used to get the service status and to start and stop application services.
+
+        An access token must be generated to use this API.
+
+        Supported services are network, squid, postgresql, vprobe, and ntp.
+
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/applicationservice
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X POST https://{GatewayIP}:5480/api/v2/applicationservice 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Bearer {accessToken}' 
+        { 
+            "service": "<network/squid/postgresql/vprobe/ntp>",
+            "action": "<start/stop/status/restart>"
+        }
+        ```
+      operationId: gateways/gateway-application-service-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Service Squid Proxy started successfully.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                service:
+                  type: string
+                  description: Name of the service.
+                  enum:
+                    - network
+                    - squid
+                    - postgresql
+                    - ntp
+                action:
+                  type: string
+                  description: 'Action item: status, start, or stop.'
+                  enum:
+                    - start
+                    - stop
+                    - status
+                    - restart
+              required:
+                - service
+                - action
+            examples:
+              example-1:
+                value:
+                  service: squid
+                  action: start
+        description: ''
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-application-service-post/'
+      summary: 'Status, start, and stop service'
+      parameters: []
+  '/api/v2/download/gateway/{packageName}':
+    get:
+      description: |-
+        This API is used to download gateway files from the OpsRamp download server.
+
+        ## Sample URL
+        ```
+        https://{api-url}/api/v2/download/gateway/iso
+        ```
+      operationId: gateways/gateway-download/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  expires_in:
+                    type: integer
+                  url:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    expires_in: 900
+                    url: 'https://dl01.opsramp.com/itop/download/gateway/d3873201-c303-4846-8ce4-b9fd4cf1306b'
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-download/'
+      summary: Download gateway
+    parameters:
+      - schema:
+          type: string
+          enum:
+            - 'NULL'
+            - ova
+            - iso
+            - windows
+            - google
+          default: 'NULL'
+        in: path
+        name: packageName
+        required: true
+        description: Refers to the gateway package.
+  /api/v2/externalproxy:
+    post:
+      description: |-
+        This endpoint is used to configure the external proxy connection on the gateway.
+
+        An access token must be generated to use this API.
+
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/externalproxy
+        ```
+
+        ## Sample cURL
+        ```
+        curl -k -X POST https://{GatewayIP}:5480/api/v2/externalproxy 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Bearer {accessToken}' 
+        -H 'Content-Type: application/json' -k -d ''
+        { 
+            connection":"<direct/proxy>", 
+            "proxy_ip": "<ip>", 
+            "proxy_port": "<port>", 
+            "proxy_usr": "<username>",
+            "proxy_pwd”: "<proxypassword>"
+        }
+        ```
+      operationId: gateways/gateway-externalproxy-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Successfully updated proxy settings.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                connection:
+                  type: string
+                  description: 'Type of network connection: direct or proxy'
+                  enum:
+                    - direct
+                    - proxy
+                proxy_ip:
+                  type: string
+                  description: Proxy IP address for the network.
+                proxy_port:
+                  type: string
+                  description: Port for the proxy IP address.
+                proxy_usr:
+                  type: string
+                  description: Proxy user name.
+                proxy_pwd:
+                  type: string
+                  description: Proxy password.
+              required:
+                - connection
+                - proxy_ip
+                - proxy_port
+            examples:
+              example-1:
+                value:
+                  connection: <direct/proxy>
+                  proxy_ip: <ip>
+                  proxy_port: <port>
+                  proxy_usr: <proxyuser>
+                  proxy_pwd: <proxypassword>
+        description: ''
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-externalproxy-post/'
+      summary: Set external proxy connection
+      parameters: []
+  /api/v2/generalinfo:
+    get:
+      summary: Get gateway information
+      description: |-
+        This endpoint is used to get general information from the gateway. This includes appliance details and network information.
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/generalinfo
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X GET https://{gateway_IP_address}:5480/api/v2/generalinfo 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Token <TOKEN>'
+        ```
+      operationId: gateways/gateway-generalinfo-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Appliance Information:
+                    type: object
+                    properties:
+                      Model:
+                        type: string
+                      Registration Status:
+                        type: string
+                      Firmware Build Tag:
+                        type: string
+                      Tunnel Status:
+                        type: string
+                  Network Information:
+                    type: object
+                    properties:
+                      IP Address:
+                        type: string
+                      Subnet Mask:
+                        type: string
+                      Default Interface:
+                        type: string
+                      MAC Address:
+                        type: string
+                      DHCP:
+                        type: string
+                      Default Gateway:
+                        type: string
+                      DNS Entries:
+                        type: string
+                      Domain Name:
+                        type: string
+                      Host Name:
+                        type: string
+              examples:
+                example-1:
+                  value:
+                    Appliance Information:
+                      Model: XXXX
+                      Registration Status: XXXX
+                      'Firmware Build Tag ': XXXX
+                      Tunnel Status: XXXx
+                    Network Information:
+                      IP Address: XXXX
+                      Subnet Mask: XXXX
+                      Default Interface: XXXX
+                      MAC Address: XXXX
+                      DHCP: XXXX
+                      Default Gateway: XXXX
+                      DNS Entries: XXXX
+                      Domain Name: XXXX
+                      'Host Name ': XXXX
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-generalinfo-get/'
+  /api/v2/getntpdetails:
+    get:
+      summary: Get NTP details
+      description: |-
+        This endpoint is used to get the NTP details from the gateway.
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/getntpdetails
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X GET https://{GatewayIP}:5480/api/v2/getntpdetails 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Token <TOKEN>'
+        ```
+      operationId: gateways/gateway-ntp-details-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  servers:
+                    type: string
+                  NTP Status:
+                    type: string
+                    enum:
+                      - 'ON'
+                      - 'OFF'
+                  time:
+                    type: string
+                    format: date-time
+              examples:
+                example-1:
+                  value:
+                    servers: 'xxx,xxx'
+                    NTP Status: ON/OFF
+                    time: 'Tue May 19 21:40:08 UTC 2020'
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntp-details-get/'
+  '/api/v2/tenants/{tenantId}/agents/{platform}/download/{package-name}':
+    get:
+      summary: Download agent for Linux
+      description: |
+        This endpoint is used to download the agent for Linux resources.
+
+        This usually follows calling the Get Agent Package for Linux API.
+
+        1. To capture the agent file: Use the package name from the response headers with the specific header package-name. The content of the file is available in the response body.
+        2. Create a file with the same name as provided in the header and then write the contents of the response body into the file.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_15/agents/LINUX/download/opsramp-agent_5.4.1-1_amd64.deb
+        ```
+      operationId: agents/agents-gateways-agent-linux-download-get/
+      tags:
+        - agents-gateways
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-linux-download-get/'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: File
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+          enum:
+            - LINUX
+        in: path
+        name: platform
+        required: true
+        description: The operating system on which you want to deploy the agent.
+      - schema:
+          type: string
+        in: path
+        name: package-name
+        required: true
+        description: |-
+          The name of the package you want to download.
+
+          Use the value in "name":"{package-name}" response from the Get Agent Package for Linux API.
+  '/api/v2/tenants/{tenantId}/agents/deployAgentsScript':
+    get:
+      summary: Download agent installation script for Linux
+      description: |-
+        This endpoint is used to download the agent installation script for Linux resources.
+
+        This returns the JSON payload containing package name, package size, package checksum, and the package S3 bucket URL to directly download the agent.
+
+        ## Sample URLs
+        To download the Linux agent to directly connect to OpsRamp:
+        ```
+        https://{api-url}/api/v2/tenants/client_1/agents/deployAgentsScript
+        ```
+        To download the Linux agent to connect through the gateway to OpsRamp:
+
+        ```
+        https://{api-url}/api/v2/tenants/client_1/agents/deployAgentsScript?profileId=1
+        ```
+      operationId: agents/agents-gateways-agent-linux-install-script-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  downloadUrl:
+                    type: string
+                  version:
+                    type: string
+                  size:
+                    type: integer
+                  checksum:
+                    type: string
+                  generation:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    name: <package-name>
+                    downloadUrl: <direct-s3-download-url>
+                    version: <agent-version>
+                    size: 100
+                    checksum: <checksum>
+                    generation: G2
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-linux-install-script-get/'
+      parameters:
+        - schema:
+            type: string
+            default: 'NULL'
+          in: query
+          name: profileId
+          description: '(Optional) Used by the agent to connect to OpsRamp. If a profile ID is not provided, the agent connects directly to OpsRamp.'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  '/api/v2/tenants/{tenantId}/agents/{platform}/info':
+    get:
+      summary: Get agent package for Linux
+      description: |-
+        This endpoint is used to download the agent for Linux resources. This is usually followed by an API call to Download Linux Agent.
+
+        Returns the JSON payload containing package name, package size, package checksum. The response also contains package S3 bucket URL for downloading the agent directly.
+
+        ## Sample URLs
+        For 64-bit Ubuntu resources:
+        ```
+        https://{api-url}/api/v2/tenants/client_8/agents/LINUX/info?distName=ubuntu&architecture=amd64
+        ```
+        For 64-bit Red Hat resources:
+        ```
+        https://{api-url}/api/v2/tenants/client_8/agents/LINUX/info?distName=redhat&architecture=x86_64
+        ```
+      operationId: agents/agents-gateways-agent-package-linux-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  downloadUrl:
+                    type: string
+                  version:
+                    type: string
+                  size:
+                    type: integer
+                  checksum:
+                    type: string
+                  generation:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    name: <package-name>
+                    downloadUrl: <direct-s3-download-url>
+                    version: <agent-version>
+                    size: 1000
+                    checksum: <checksum>
+                    generation: G2
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-package-linux-get/'
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - ubuntu
+              - redhat
+              - amazon
+              - fedora
+              - sles
+          in: query
+          name: distName
+          required: true
+          description: Distribution name of the operating system on which you want to deploy the agent.
+        - schema:
+            type: string
+            enum:
+              - amd64
+              - i686
+              - x86_64
+              - i386
+          in: query
+          name: architecture
+          required: true
+          description: |-
+            64-bit and 32-bit operating system architectures.
+
+            For Ubuntu distributions, use amd64 (64-bit) or i686 (32-bit)
+
+            For all other distributions, use x86_64 (64-bit) or i386 (32-bit)
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+        description: ''
+      - schema:
+          type: string
+          enum:
+            - LINUX
+        in: path
+        name: platform
+        required: true
+        description: Operating system on which you want to deploy the agent.
+  '/api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices':
+    post:
+      summary: Assign agent policy for resources
+      description: |-
+        The endpoint to assign agent policy for resources.
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_5/agentPolicies/1/devices
+        ```
+      operationId: agents/agents-gateways-agent-policy-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  failedEntities:
+                    type: object
+                    properties:
+                      entityID:
+                        type: string
+                  failedCount:
+                    type: integer
+                  successCount:
+                    type: integer
+              examples:
+                example-1:
+                  value:
+                    failedEntities:
+                      023471da-698b-3a2e-1e93-6dbaca8eea23: No device 023471da-698b-3a2e-1e93-6dbaca8eea23 found under client client_5
+                    failedCount: 1
+                    successCount: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+            examples:
+              example-1:
+                value:
+                  - id: 042761ba-542e-4a7a-8e38-3ebbea7eeb16
+                  - id: 023471da-698b-3a2e-1e93-6dbaca8eea23
+                  - id: 855eb82e-3064-40a1-a26e-77efabe300da
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-policy-post/'
+    parameters:
+      - schema:
+          type: string
+        name: tenantId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: policyId
+        in: path
+        required: true
+  '/api/v2/tenants/{tenantId}/agentProfiles/{profileId}/devices':
+    post:
+      summary: Assign agent profile for resources
+      description: |-
+        This endpoint is used to assign an agent profile for resources.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_5/agentProfiles/10/devices
+        ```
+      operationId: agents/agents-gateways-agent-profile-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  failedEntities:
+                    type: object
+                    properties:
+                      entityId:
+                        type: string
+                  failedCount:
+                    type: string
+                  successCount:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    failedEntities:
+                      023471da-698b-3a2e-1e93-6dbaca8eea23: No device 023471da-698b-3a2e-1e93-6dbaca8eea23 found under client client_5
+                    failedCount: 1
+                    successCount: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+            examples:
+              example-1:
+                value:
+                  - id: 042761ba-542e-4a7a-8e38-3ebbea7eeb16
+                  - id: 023471da-698b-3a2e-1e93-6dbaca8eea23
+                  - id: 855eb82e-3064-40a1-a26e-77efabe300da
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-profile-post/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: profileId
+        required: true
+  '/tenants/{tenantId}/agents/windows':
+    get:
+      summary: Download agent for Windows
+      description: |-
+        This endpoint is used to download the agent for Windows resources.
+
+        ## Sample URLs
+        To download the Windows agent directly:
+        ```
+        https://{api-url}/api/v2/tenants/client_93/agents/windows
+        ```
+        To download the Windows agent through the gateway:
+        ```
+        https://{api-url}/api/v2/tenants/client_93/agents/windows?profileId=10
+        ```
+
+        This returns the JSON payload containing package name, package size, package checksum, and the package S3 bucket URL to directly download the agent.
+      operationId: agents/agents-gateways-agent-windows-download-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  downloadUrl:
+                    type: string
+                  version:
+                    type: string
+                  size:
+                    type: integer
+                  checksum:
+                    type: string
+                  generation:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    name: <package-name>
+                    downloadUrl: <direct-s3-download-url>
+                    version: <agent-version>
+                    size: 1000
+                    checksum: <checksum>
+                    generation: G2
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-windows-download-get/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  /api/v2/registration:
+    servers:
+      - url: 'http://{gatewayIp}:port'
+    post:
+      summary: Register gateway
+      description: |-
+        This endpoint is used to register the gateway.
+
+        ## Sample URLs
+        ```
+        https://192.168.xx.xx:5480/api/v2/registration
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X POST https://{Gateway_IP}:5480/api/v2/registration 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Token <TOKEN>' 
+        -H 'Content-Type: application/json' -k 
+        -d '{ "activationKey": "<key&>", "opsRampServer": "<OpsRampURL>"}'
+        ```
+        ```
+        curl -k -X POST https://192.168.xx.xx:5480/api/v2/registration 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Token e8e788658765be5f907cf29c60e23e6c6529296f' 
+        -H 'Content-Type: application/json' -k 
+        -d '{ 
+          "activationKey": "1a8ba0a0-791d-4a80-bc63-b6a7a09ffb84", 
+          "opsRampServer": "xxx.opsramp.com"
+          }’
+        ```
+      operationId: gateways/gateway-register-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+              examples:
+                example-1:
+                  value: Appliance Registered Successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                activationKey:
+                  type: string
+                  description: Activation token used to register the Gateway with the API server.
+                opsRampServer:
+                  type: string
+                  description: API server to which Gateway wants to connect.
+              required:
+                - activationKey
+                - opsRampServer
+            examples:
+              example-1:
+                value:
+                  activationKey: 360541b2-3f4e-407d-b61a-3aa73c638ed2
+                  opsRampServer: xxx.opsramp.com
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-register-post/'
+  '/api/v2/proxy={action}':
+    servers:
+      - url: 'http://{gatewayIp}:port'
+    post:
+      summary: Turn on and off Squid proxy service
+      description: |-
+        This endpoint is used to turn on and off the Squid proxy server on the gateway.
+
+        ## Sample URLs
+        ```
+        https://192.168.xx.xx:5480/api/v2/proxy=OFF
+        ```
+        ## Sample cURL
+        To enable the proxy service:
+        ```
+        curl -k -X POST https://{gatewayIP}:5480/api/v2/proxy=ON
+        ```
+        To disable the proxy service:
+        ```
+        curl -k -X POST https://192.168.xxx.xxx:5480/api/v2/proxy=OFF
+        ```
+      operationId: gateways/gateway-turn-onoff-proxy-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-on:
+                  value:
+                    Success: Squid Proxy Successfully Turned ON
+                example-off:
+                  value:
+                    Success: Squid Proxy Successfully Turned OFF
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-turn-onoff-proxy-post/'
+    parameters:
+      - schema:
+          type: string
+          enum:
+            - 'ON'
+            - 'OFF'
+        name: action
+        in: path
+        required: true
+  /api/v2/apiTokenGen:
+    post:
+      summary: Generate access token for gateway
+      description: |-
+        This endpoint is used to generate an access token on the gateway.
+
+        An access token is needed to:
+
+        - Register the gateway.
+        - Use all gateway-related activities.
+
+
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/apiTokenGen
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X POST https://{Gateway_IP}:5480/api/v2/apiTokenGen -F username=username -F password=password
+        ```
+        Use your gateway administrator credentials as the username and password.
+        ```
+        curl -k -X POST https://192.168.xxx.xxx:5480/api/v2/apiTokenGen -F username=abcd -F password=xyz@1234
+        ```
+      operationId: gateways/gateway-generate-access-token-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  expires_in:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    token: 4879423b58e637d140b77af3aeb09b53f1a4ed60
+                    expires_in: '3599.965947'
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-generate-access-token-post/'
+  /api/v2/networksettings:
+    post:
+      summary: Set network settings
+      description: |-
+        This endpoint is used to specify the network settings on the gateway.
+
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/networksettings
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X GET https://{gateway_IP_address}:5480/api/v2/networksettings 
+        -H 'Accept: application/json' -H 'Authorization: Token <TOKEN>' 
+        -H 'Content-Type: application/json' -k -d 
+        { 
+            "hostname": "<hostname>", 
+            "domainname": "<domainname>", 
+            "interface": "<interface>", 
+            "static_IP": "<True/False>", 
+            "ipaddr": "<ipaddr>", 
+            "subnet": "<subnet>", 
+            "gateway": "<gatewayIP>", 
+            "dnsArray": "<xxx,xxx>"
+         }
+        ```
+      operationId: gateways/gateway-network-settings-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Successfully updated network configuration.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hostname:
+                  type: string
+                  description: Host name for the gateway.
+                domainname:
+                  type: string
+                  description: Domain name for the gateway.
+                interface:
+                  type: string
+                  description: Interface for the gateway.
+                static_IP:
+                  type: string
+                  description: |-
+                    If true, static IP is used instead of the (default) DHCP IP address.
+                    If false, IP address, subnet, gatewayIP, and dnsArray parameters are not required.
+                ipaddr:
+                  type: string
+                  description: |-
+                    Static IP (instead of DHCP).
+                    Note: If static_IP is false, IP address, subnet, gatewayIP, and dnsArray parameters are not required.
+                subnet:
+                  type: string
+                  description: |-
+                    Subnet for the gateway.
+                    Note: If static_IP is false, IP address, subnet, gatewayIP, and dnsArray parameters are not required.
+                gateway:
+                  type: string
+                  description: "\tDefault gateway IP address.\nNote: If static_IP is false, IP address, subnet, gatewayIP, and dnsArray parameters are not required."
+                dnsArray:
+                  type: string
+                  description: |-
+                    DNS entries for the gateway.
+                    Note: If static_IP is false, IP address, subnet, gatewayIP, and dnsArray parameters are not required.
+              required:
+                - hostname
+                - domainname
+                - interface
+                - static_IP
+                - ipaddr
+                - subnet
+                - gateway
+                - dnsArray
+            examples:
+              example-1:
+                value:
+                  hostname: <hostname>
+                  domainname: <domainname>
+                  interface: <interface>
+                  static_IP: <True/False>
+                  ipaddr: <IP Address>
+                  subnet: <subnet>
+                  gateway: <Default Gateway>
+                  dnsArray: '<xxx,xxx>'
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-network-settings-post/'
+  /api/v2/nginx:
+    post:
+      summary: Status and restart NGINX service
+      description: |-
+        This endpoint is used to get the NGINX service status and to restart the NGINX service on the gateway.
+
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/nginx
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X POST https://{GatewayIP}:5480/api/v2/nginx 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Token <TOKEN>' 
+        { 
+            "action": "<restart/status>"
+        }
+        ```
+      operationId: gateways/gateway-nginx-service-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Service NGINX active (Running)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  description: 'Action item: restart or status'
+                  enum:
+                    - restart
+                    - status
+              required:
+                - action
+            examples:
+              example-1:
+                value:
+                  action: status
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-nginx-service-post/'
+  /api/v2/ntpmanualconfig:
+    post:
+      summary: Manually set NTP date and time
+      description: |-
+        This endpoint is used to manually set the NTP date and time on the gateway.
+
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/ntpmanualconfig
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X POST https://{GatewayIP}:5480/api/v2/ntpmanualconfig 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Token <TOKEN>' 
+        { 
+            "date": "<date>", 
+            "hour": "<hours>", 
+            "min": "<minutes>", 
+            "sec": "<seconds>"
+        }
+        ```
+      operationId: gateways/gateway-ntp-manualconfig-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Successfully updated time and date
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  description: Date (MM-DD-YYYY)
+                hour:
+                  type: string
+                  description: Hours (0-23)
+                min:
+                  type: string
+                  description: Minutes (0-59)
+                sec:
+                  type: string
+                  description: Seconds (0-59)
+              required:
+                - date
+                - hour
+                - min
+                - sec
+            examples:
+              example-1:
+                value:
+                  date: 06-21-2020
+                  hour: '8'
+                  min: '15'
+                  sec: '00'
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntp-manualconfig-post/'
+  /api/v2/ntpservice:
+    post:
+      summary: Start and stop NTP service
+      description: |-
+        This endpoint is used to start and stop the NTP service on the gateway.
+
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/ntpservice
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X POST https://{GatewayIP}:5480/api/v2/ntpservice 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Token <TOKEN>' 
+        { 
+            "service": "<ON/OFF>"
+        }
+        ```
+      operationId: gateways/gateway-ntp-service-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Switched ON the NTP Service Successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                service:
+                  type: string
+                  description: Use the ON and OFF switch to start or stop the NTP service.
+                  enum:
+                    - 'ON'
+                    - 'OFF'
+              required:
+                - service
+            examples:
+              example-1:
+                value:
+                  service: 'ON'
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntp-service-post/'
+  /api/v2/ntpupdateips:
+    post:
+      summary: Set NTP servers
+      description: |-
+        This endpoint is used to update the NTP server IP addresses on the gateway.
+
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/ntpupdateips
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X POST https://{GatewayIP}:5480/api/v2/ntpupdateips 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Token <TOKEN>' 
+        { 
+            "ntpArray": "192.168.xx.xx,172.26.xx.xx"
+        }
+        ```
+      operationId: gateways/gateway-ntp-servicer-ips-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Successfully updated NTP IP addresses.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ntpArray:
+                  type: string
+                  description: |
+                    NTP server IP addresses.
+              required:
+                - ntpArray
+            examples:
+              example-1:
+                value:
+                  ntpArray: '192.168.xx.xx,172.26.xx.xx'
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntp-servicer-ips-post/'
+  /api/v2/ntpsyncips:
+    post:
+      summary: Synchronize NTP servers
+      description: |-
+        This endpoint is used to synchronize the time from the NTP servers on the gateway.
+
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/ntpsyncips
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X POST https://{GatewayIP}:5480/api/v2/ntpsyncips 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Token <TOKEN>' 
+        { 
+            "ntpArray": "192.168.xx.xx,172.26.xx.xx" 
+        }
+        ```
+      operationId: gateways/gateway-ntpsync-ips-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Server IPs:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Server IPs: Successfully synchronized date using NTP.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ntpArray:
+                  type: string
+                  description: NTP server IP addresses.
+              required:
+                - ntpArray
+            examples:
+              example-1:
+                value:
+                  ntpArray: '192.168.xx.xx,172.26.xx.xx'
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntpsync-ips-post/'
+  /api/v2/restartnetwork:
+    post:
+      summary: Restart network service
+      description: |-
+        This endpoint is used to restart the network service on the gateway.
+
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/restartnetwork
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X POST https://{GatewayIP}:5480/api/v2/restartnetwork 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Token <TOKEN>' 
+        ```
+      operationId: gateways/gateway-restart-network-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Network service restarted successfully.
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-restart-network-post/'
+  /api/v2/staticroute:
+    post:
+      summary: Set static route configuration
+      description: |-
+        This endpoint is used to set the static route configuration on the gateway.
+
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/staticroute
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X POST https://{GatewayIP}:5480/api/v2/staticroute 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Token <TOKEN>' 
+        -H 'Content-Type: application/json' -k -d '
+        { 
+            "srouteIP":"<srouteIP>", 
+            "srouteGateway": "<srouteGateway>", 
+            "srouteMetric": "<srouteMetric>", 
+            "srouteInterface": “<srouteInterface>"
+        }
+        ```
+      operationId: gateways/gateway-staticroute-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Successfully added the static route configuration.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                srouteIP:
+                  type: string
+                  description: |
+                    Static route IP address.
+                srouteGateway:
+                  type: string
+                  description: |
+                    Static route gateway IP address.
+                srouteSubnet:
+                  type: string
+                  description: |
+                    Static route subnet.
+                srouteMetric:
+                  type: string
+                  description: Static route metric.
+                srouteInterface:
+                  type: string
+                  description: |
+                    Static route interface
+              required:
+                - srouteIP
+                - srouteGateway
+                - srouteSubnet
+                - srouteMetric
+                - srouteInterface
+            examples:
+              example-1:
+                value:
+                  srouteIP: <static route IP>
+                  srouteGateway: <static route Gateway>
+                  srouteSubnet: <static route subnet>
+                  srouteMetric: <static route Metric>
+                  srouteInterface: <static route Interface>
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-staticroute-post/'
+  /api/v2/gettimezoneinfo:
+    get:
+      summary: Get timezone details
+      description: |-
+        This endpoint is used to get timezone information from the gateway.
+
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/gettimezoneinfo
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X POST https://{GatewayIP}:5480/api/v2/gettimezoneinfo 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Token <TOKEN>'
+        ```
+      operationId: gateways/gateway-timezone-info-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '"Regions and Corresponding Timezone Information"':
+                    type: array
+                    items:
+                      type: string
+              examples:
+                example-1:
+                  value:
+                    Regions and Corresponding Timezone Information:
+                      '(GMT+10:00) Russia': Vladivostok
+                      '(GMT) UK ': London
+                      '(GMT+4:00) Armenia, Azerbaijan': Muscat
+                      '(GMT+5:00) Pakistan': Karachi
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-timezone-info-get/'
+  /api/v2/settimezone:
+    post:
+      summary: Set timezone
+      description: |-
+        This endpoint is used to set the timezone on the gateway.
+
+        ## Sample URLs
+        ```
+        https://192.168.xxx.xxx:5480/api/v2/settimezone
+        ```
+        ## Sample cURL
+        ```
+        curl -k -X POST https://{GatewayIP}:5480/api/v2/settimezone 
+        -H 'Accept: application/json' 
+        -H 'Authorization: Token <TOKEN>' 
+        { 
+            "timezone": "<zone>"
+        }
+        ```
+      operationId: gateways/gateway-timezone-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                timezone:
+                  type: string
+                  description: |
+                    NTP service timezone.
+              required:
+                - timezone
+            examples:
+              example-1:
+                value:
+                  timezone: UTC
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-timezone-post/'
+  '/api/v2/tenants/{tenantId}/managementProfiles/{id}/attach':
+    get:
+      summary: Attach gateway to management profile
+      description: |-
+        This endpoint is used to attach a gateway to a management profile and generates an activation token. The generated activation token is used in gateway registration.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/api/v2/tenants/client_69900/managementProfiles/76/attach
+        ```
+      operationId: management-profiles/management-profile-attach-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  type:
+                    type: string
+                  tunnelType:
+                    type: string
+                  activationToken:
+                    type: string
+                  registered:
+                    type: boolean
+                  createdDate:
+                    type: string
+                    description: 'Date format is yyyy-MM-ddTHH:mm:ssZ (GMT).'
+                    format: date-time
+              examples:
+                example-1:
+                  value:
+                    id: 76
+                    name: LB1 Gateway Profile
+                    description: Gateway Management Profile
+                    type: Gateway
+                    tunnelType: SSHD
+                    activationToken: d72eb58e-ff20-44e4-887c-341b0760eb00
+                    registered: false
+                    createdDate: '2016-06-22T07:34:40+0000'
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-attach-get/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+  '/api/v2/tenants/{tenantId}/managementProfiles':
+    post:
+      summary: Create management profile
+      description: |-
+        This endpoint is used to create a management profile.
+
+        ## Sample URLs
+        ```
+        https://{api/v2}/api/v2/tenants/client_69900/managementProfiles
+        ```
+      operationId: management-profiles/management-profile-create-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  type:
+                    type: string
+                  status:
+                    type: string
+                  createdDate:
+                    type: string
+                  device:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      generalInfo:
+                        type: object
+                        properties:
+                          ipAddresses:
+                            type: string
+                          hostName:
+                            type: string
+                      clientUniqueId:
+                        type: string
+                      type:
+                        type: string
+                  tunnelType:
+                    type: string
+                  registered:
+                    type: boolean
+                  activationToken:
+                    type: string
+              examples:
+                example-agent-profile:
+                  value:
+                    id: 78
+                    name: Agent Profile
+                    description: Management Profile for Agent
+                    type: Agent
+                    status: DOWN
+                    createdDate: '2016-06-22T09:57:09+0000'
+                    device:
+                      id: 014ec656-8dfa-404c-8269-015a96faa9b8
+                      generalInfo:
+                        ipAddresses: 172.28.2.138
+                        hostName: SJLPT177
+                      clientUniqueId: client_69900
+                      type: DEVICE
+                example-gateway-profile:
+                  value:
+                    id: 77
+                    name: Gateway Profile
+                    description: Management profile for Gateway
+                    type: Gateway
+                    createdDate: '2016-06-22T09:31:38+0000'
+                    tunnelType: SSHD
+                    registered: false
+                    activationToken: 6d8e4cc4-0be4-4706-bc1f-7e7e37a10b54
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The management profile name.
+                description:
+                  type: string
+                  description: (Optional) Summary describing the management profile.
+                type:
+                  type: string
+                  description: 'The management profile type. An example is: Agent.'
+                device:
+                  type: object
+                  description: 'The device details, applicable only for the agent management profile.'
+                  properties:
+                    id:
+                      type: string
+              required:
+                - name
+                - type
+                - device
+            examples:
+              example-agent-profile:
+                value:
+                  name: Agent Profile
+                  description: Management Profile for Agent
+                  type: Agent
+                  device:
+                    id: 014ec656-8dfa-404c-8269-015a96faa9b8
+              example-gateway-profile:
+                value:
+                  name: Gateway Profile
+                  description: Management Profile for Gateway
+                  type: Gateway
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-create-post/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  '/api/v2/tenants/{tenantId}/managementProfiles/{profileId}':
+    delete:
+      summary: Delete management profile
+      description: |-
+        This endpoint is used to delete a management profile.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_69900/managementProfiles/77
+        ```
+
+        To register the gateway:
+
+        1. Generate an access token using a username and password.
+        2. Use the access token to register the gateway.
+      operationId: management-profiles/management-profile-delete/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-delete/'
+    get:
+      summary: Get management profile
+      description: |-
+        This endpoint is used to retrieve the details of a management profile.
+
+        ## Sample URLs
+        ```
+        https://{api/v2}/api/v2/tenants/client_69900/managementProfiles/77
+        ```
+
+        Date format is yyyy-MM-ddTHH:mm:ssZ (GMT)
+      operationId: management-profiles/management-profile-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  type:
+                    type: string
+                  status:
+                    type: string
+                  createdDate:
+                    type: string
+                    format: date-time
+                  device:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      generalInfo:
+                        type: object
+                        properties:
+                          ipAddresses:
+                            type: string
+                          hostName:
+                            type: string
+                      clientUniqueId:
+                        type: string
+                      type:
+                        type: string
+                  statusUpdatedDate:
+                    type: string
+                    format: date-time
+                  softwareVersion:
+                    type: string
+                  tunnelType:
+                    type: string
+                  registered:
+                    type: boolean
+                  uuId:
+                    type: string
+              examples:
+                example-agent-profile:
+                  value:
+                    id: 75
+                    name: Agent Profile
+                    description: Agent Management Profile
+                    type: Agent
+                    status: DOWN
+                    createdDate: '2016-06-22T07:24:14+0000'
+                    device:
+                      id: 96dd7237-a0cf-40b7-ac5f-56b1bd5221d7
+                      generalInfo:
+                        ipAddresses: 172.28.2.233
+                        hostName: SJLPT159
+                      clientUniqueId: client_69900
+                      type: DEVICE
+                example-gateway-profile:
+                  value:
+                    id: 74
+                    name: Gateway Profile
+                    description: Gateway Management Profile
+                    type: Gateway
+                    status: DOWN
+                    statusUpdatedDate: '2016-06-20T06:54:46+0000'
+                    softwareVersion: 1.4.3
+                    createdDate: '2016-06-14T06:57:46+0000'
+                    device:
+                      id: fbfe0ecd-8200-4cbf-a13c-f309f341a8c8
+                      generalInfo:
+                        ipAddresses: 172.30.31.137
+                        hostName: 172.30.31.137
+                    tunnelType: SSHD
+                    registered: true
+                    uuId: d004de59-3e72-4c9a-82d7-df3f27f5a7aa
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-get/'
+    post:
+      summary: Update management profile
+      description: |
+        This endpoint is used to update a management profile.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/{tenantId}/managementProfiles/{id}
+        ```
+
+        Date format is yyyy-MM-ddTHH:mm:ssZ (GMT).
+      operationId: management-profiles/management-profile-update-post/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  type:
+                    type: string
+                  status:
+                    type: string
+                  createdDate:
+                    type: string
+                  device:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      generalInfo:
+                        type: object
+                        properties:
+                          ipAddresses:
+                            type: string
+                          hostName:
+                            type: string
+                      clientUniqueId:
+                        type: string
+                      type:
+                        type: string
+                  tunnelType:
+                    type: string
+                  registered:
+                    type: boolean
+                  activationToken:
+                    type: string
+              examples:
+                example-agent-profile:
+                  value:
+                    id: 78
+                    name: LB02 Agent Profile
+                    description: Agent Management Profile
+                    type: Agent
+                    status: DOWN
+                    createdDate: '2016-06-22T09:57:09+0000'
+                    device:
+                      id: 014ec656-8dfa-404c-8269-015a96faa9b8
+                      generalInfo:
+                        ipAddresses: 172.28.2.138
+                        hostName: SJLPT177
+                      clientUniqueId: client_69900
+                      type: DEVICE
+                example-gateway-profile:
+                  value:
+                    id: 77
+                    name: LB01 Gateway Profile
+                    description: Gateway Management Profile
+                    type: Gateway
+                    createdDate: '2016-06-22T09:31:38+0000'
+                    tunnelType: SSHD
+                    registered: false
+                    activationToken: 6d8e4cc4-0be4-4706-bc1f-7e7e37a10b54
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: |
+                    The management profile name.
+                description:
+                  type: string
+                  description: |
+                    Summary describing the management profile.
+                type:
+                  type: string
+                device:
+                  type: object
+                  description: |
+                    The device details, applicable only for the agent management profile.
+                  properties:
+                    id:
+                      type: string
+            examples:
+              example-agent-profile:
+                value:
+                  name: LB02 Agent Profile
+                  description: Agent Management Profile
+                  type: Agent
+                  device:
+                    id: 014ec656-8dfa-404c-8269-015a96faa9b8
+              example-gateway-profile:
+                value:
+                  name: LB01 Gateway Profile
+                  description: Gateway Management Profile
+                  type: Gateway
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-update-post/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: profileId
+        required: true
+  '/api/v2/tenants/{tenantId}/managementProfiles/{profileId}/detach':
+    get:
+      summary: Detach gateway from management profile
+      description: |-
+        This API is used to unmap/detach the gateway from the management profile and invalidate the activation token.
+
+        Date format is yyyy-MM-ddTHH:mm:ssZ (GMT).
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_69900/managementProfiles/76/detach
+        ```
+      operationId: management-profiles/management-profile-detach-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  type:
+                    type: string
+                  tunnelType:
+                    type: string
+                  registered:
+                    type: boolean
+                  createdDate:
+                    type: string
+                    format: date
+              examples:
+                example-1:
+                  value:
+                    id: 76
+                    name: LB1 Gateway Profile
+                    description: Gateway Management Profile
+                    type: Gateway
+                    tunnelType: SSHD
+                    registered: false
+                    createdDate: '2016-06-22T07:34:40+0000'
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-detach-get/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: profileId
+        required: true
+  '/api/v2/tenants/{tenantId}/managementProfiles/{profileId}/reconnectTunnel':
+    get:
+      summary: Reconnect management profile tunnel
+      description: |-
+        This endpoint is used to reconnect the tunnel.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_69900/managementProfiles/76/reconnectTunnel
+        ```
+      operationId: management-profiles/management-profile-reconnect-tunnel-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    message: Tunnel disconnected successfully on VG G01_Gateway. Please wait for few minutes(up to 5 minutes) to re-establish tunnel connection.
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-reconnect-tunnel-get/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: profileId
+        required: true
+  '/api/v2/tenants/{tenantId}/managementProfiles/search':
+    get:
+      summary: Search management profile
+      description: |-
+        This endpoint is used to search for management profiles.
+
+        ## Sample URLs
+        ```
+        https://{api/v2}/api/v2/tenants/client_69900/managementProfiles/search?pageNo=1&pageSize=10&isDescendingOrder=true&sortName=id&queryString=id:1043+name:Gateway_Profile
+        ```
+
+        ## Query Variables
+        |Variable|Value|Description|
+        |---|---|---|
+        |id|{id}|The management profile ID.|
+        |name|{name}|The management profile name.|
+        |type|Agent, Gateway|The anagement profile type. An example is: Agent.|
+        |startCreationDate|{startCreationDate}|Search for the management profile created within a certain duration. Start indicates the from date. An example is: 2016-06-10T10:40:20 0000 (GMT).|
+        |endCreationDate|{endCreationDate}|Search for the management profile created within a certain duration. End indicates the to date. An Example is: 2016-06-20T10:40:20 0000 (GMT).|
+
+        ### Notes
+        1. Special characters in the query string
+            1. Plus (+) indicates next field and must be URL encoded.
+            2. Color (:) indicates Equals. An example is: key: value.
+            3. Space characters must be URL encoded.
+        2. Date format must use this format: yyyy-MM-ddTHH: mm: ssZ (GMT).
+      operationId: management-profiles/management-profile-search-get/
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        type:
+                          type: string
+                        tunnelType:
+                          type: string
+                        activationToken:
+                          type: string
+                        registered:
+                          type: boolean
+                        createdDate:
+                          type: string
+                        status:
+                          type: string
+                        device:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            generalInfo:
+                              type: object
+                              properties:
+                                ipAddresses:
+                                  type: string
+                                hostName:
+                                  type: string
+                            clientUniqueId:
+                              type: string
+                            type:
+                              type: string
+                        statusUpdatedDate:
+                          type: string
+                        softwareVersion:
+                          type: string
+                        uuId:
+                          type: string
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  nextPageNo:
+                    type: integer
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - id: 76
+                        name: LB1 Gateway Profile
+                        description: Gateway Management Profile_LB1
+                        type: Gateway
+                        tunnelType: SSHD
+                        activationToken: 423e2e3c-a300-4218-a69c-9e3d8c3c3c63
+                        registered: false
+                        createdDate: '2016-06-22T07:34:40+0000'
+                      - id: 75
+                        name: Agent Profile
+                        description: Agent Management Profile
+                        type: Agent
+                        status: DOWN
+                        createdDate: '2016-06-22T07:24:14+0000'
+                        device:
+                          id: 96dd7237-a0cf-40b7-ac5f-56b1bd5221d7
+                          generalInfo:
+                            ipAddresses: 172.28.2.233
+                            hostName: SJLPT159
+                          clientUniqueId: client_69900
+                          type: DEVICE
+                      - id: 74
+                        name: Gateway Profile
+                        description: Gateway Management Profile
+                        type: Gateway
+                        status: DOWN
+                        statusUpdatedDate: '2016-06-20T06:54:46+0000'
+                        softwareVersion: 1.4.3
+                        createdDate: '2016-06-14T06:57:46+0000'
+                        device:
+                          id: fbfe0ecd-8200-4cbf-a13c-f309f341a8c8
+                          generalInfo:
+                            ipAddresses: 172.30.31.137
+                            hostName: 172.30.31.137
+                        tunnelType: SSHD
+                        registered: true
+                        uuId: d004de59-3e72-4c9a-82d7-df3f27f5a7aa
+                      - id: 37
+                        name: Default
+                        description: Default Management Profile
+                        type: Gateway
+                        status: DOWN
+                        statusUpdatedDate: '2016-06-12T06:54:46+0000'
+                        softwareVersion: 1.4.3
+                        createdDate: '2016-06-02T00:27:53+0000'
+                        device:
+                          id: cbee0ecd-5200-3fbf-f13c-c309f341a8c8
+                          generalInfo:
+                            ipAddresses: 172.30.32.110
+                            hostName: 172.30.32.110
+                        tunnelType: SSHD
+                        registered: true
+                        uuId: 95dd2fc2-4d13-11e3-8623-005056910D5D
+                    totalResults: 4
+                    orderBy: id
+                    pageNo: 1
+                    pageSize: 10
+                    totalPages: 1
+                    nextPage: false
+                    nextPageNo: 0
+                    previousPageNo: 0
+                    descendingOrder: true
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-search-get/'
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: pageNo
+          description: '{pageNo}'
+        - schema:
+            type: string
+          in: query
+          name: pageSize
+          description: '{pageSize}'
+        - schema:
+            type: boolean
+          in: query
+          name: isDescendingOrder
+          description: '{true/false}'
+        - schema:
+            type: string
+          in: query
+          name: sortName
+          description: '{field}'
+        - schema:
+            type: string
+          in: query
+          name: queryString
+          description: '{queryString}'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+security:
+  - accessToken: []
+components:
+  securitySchemes:
+    accessToken:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: ''
+          refreshUrl: ''
+          scopes: {}

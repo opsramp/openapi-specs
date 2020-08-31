@@ -1,0 +1,3404 @@
+openapi: 3.0.0
+info:
+  title: opsramp-knowledgebase
+  version: '1.0'
+  description: none
+  contact:
+    name: none
+tags:
+  - name: agents-gateways
+  - name: alerts
+  - name: automation
+  - name: exports
+  - name: integrations
+  - name: knowledge-base
+  - name: metrics
+  - name: monitoring
+  - name: patching
+  - name: resource-management
+  - name: tenancy-access-controls
+  - name: tickets
+servers:
+  - url: 'https://api.opsramp.com'
+    description: Partner - All Others
+  - url: 'https://{partner_name}.api.opsramp.com'
+    description: Partner - Custom Brand
+  - url: 'https://{client_name}.api.opsramp.com'
+    description: Partner and Client both Custom Branded
+paths:
+  '/api/v2/tenants/{tenantId}/kb/{articleId}/activitylog':
+    get:
+      summary: Get article activity log
+      description: |
+        This endpoint is used to get activity log with provided details of an article.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_11/kb/article/KB0000000036/activityLog?pageNo=1&pageSize=20
+        ```
+      operationId: knowledge-base-article-activity-log-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        operation:
+                          type: string
+                        message:
+                          type: string
+                        updateTIme:
+                          type: string
+                          format: date-time
+                        updatedBy:
+                          $ref: '#/components/schemas/user'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - operation: UPDATE
+                        message: Updated <b>content</b>Updated <b>subject</b> of article
+                        updateTIme: '2019-05-10T06:01:24+0000'
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                      - operation: ATTACH
+                        message: '<div><strong>Attached file(s) to article:</strong><div><i class=''icon-file''></i> 2.txt</div><div><i class=''icon-file''></i> 1.txt</div><div><i class=''icon-file''></i> bustkt.pdf</div><div><i class=''icon-file''></i> bustkt.pdf</div><div><i class=''icon-file''></i> queries.txt</div></div>'
+                        updateTIme: '2019-05-10T06:01:24+0000'
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                      - operation: ATTACH
+                        message: '<div><strong>Attached file(s) to article:</strong><div><i class=''icon-file''></i> 2.txt</div><div><i class=''icon-file''></i> 1.txt</div><div><i class=''icon-file''></i> bustkt.pdf</div><div><i class=''icon-file''></i> bustkt.pdf</div></div>'
+                        updateTIme: '2019-05-10T05:53:36+0000'
+                        updatedBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                      - operation: ATTACH
+                        message: '<div><strong>Attached file(s) to article:</strong><div><i class=''icon-file''></i> 2.txt</div><div><i class=''icon-file''></i> 1.txt</div><div><i class=''icon-file''></i> bustkt.pdf</div></div>'
+                        updateTIme: '2019-05-10T05:53:17+0000'
+                        updatedBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                      - operation: ATTACH
+                        message: '<div><strong>Attached file(s) to article:</strong><div><i class=''icon-file''></i> 2.txt</div><div><i class=''icon-file''></i> 1.txt</div></div><div><strong>Removed file(s):</strong><div><i class=''icon-file''></i> 3.txt</div><div><i class=''icon-file''></i> 3.txt</div><div><i class=''icon-file''></i> 3.txt</div></div>'
+                        updateTIme: '2019-05-10T05:53:02+0000'
+                        updatedBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                      - operation: ATTACH
+                        message: '<div><strong>Attached file(s) to article:</strong><div><i class=''icon-file''></i> 2.txt</div><div><i class=''icon-file''></i> 1.txt</div><div><i class=''icon-file''></i> 3.txt</div><div><i class=''icon-file''></i> 3.txt</div><div><i class=''icon-file''></i> 3.txt</div></div>'
+                        updateTIme: '2019-05-10T05:52:27+0000'
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                      - operation: UPDATE
+                        message: Updated <b>expiryDate</b> of article
+                        updateTIme: '2019-05-10T05:52:00+0000'
+                        updatedBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                      - operation: ATTACH
+                        message: '<div><strong>Attached file(s) to article:</strong><div><i class=''icon-file''></i> 2.txt</div><div><i class=''icon-file''></i> 1.txt</div><div><i class=''icon-file''></i> 3.txt</div><div><i class=''icon-file''></i> 3.txt</div></div>'
+                        updateTIme: '2019-05-10T05:51:08+0000'
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                      - operation: ATTACH
+                        message: '<div><strong>Attached file(s) to article:</strong><div><i class=''icon-file''></i> 2.txt</div><div><i class=''icon-file''></i> 1.txt</div><div><i class=''icon-file''></i> 3.txt</div></div>'
+                        updateTIme: '2019-05-10T05:41:38+0000'
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                      - operation: UPDATE
+                        message: Updated <b>content</b> of article
+                        updateTIme: '2019-05-08T12:19:45+0000'
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                      - operation: COMMENT
+                        message: Commented on the article and comment is <b><div class='ActivityLogDetails '> <p class='AttributeName ' > Queries Please</p> </div></b>
+                        updateTIme: '2019-05-08T12:05:58+0000'
+                        updatedBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                      - operation: UPDATE
+                        message: Updated <b>content</b>Updated <b>subject</b>Updated <b>expiryDate</b> of article
+                        updateTIme: '2019-05-08T12:03:01+0000'
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                      - operation: UPDATE
+                        message: Updated <b>expiryDate</b> of article
+                        updateTIme: '2019-05-08T11:23:20+0000'
+                        updatedBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                      - operation: UPDATE
+                        message: Added <b>Related Articles</b><br />Related articles are <br /><div class='ActivityLogDetails '><p class='AttributeName' ><b>All Data</div>
+                        updateTIme: '2019-05-08T11:23:20+0000'
+                        updatedBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                      - operation: UPDATE
+                        message: |-
+                          Added <b>uniqueId</b>
+                           of article
+                        updateTIme: '2019-05-08T10:55:37+0000'
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                      - operation: CREATE
+                        message: Created the Article in category <b>Cassandra</b>.
+                        updateTIme: '2019-05-08T10:55:27+0000'
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                    totalResults: 16
+                    orderBy: ''
+                    pageNo: 1
+                    pageSize: 20
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-activity-log-get/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/article/{articleId}/comment':
+    post:
+      summary: Add comment
+      description: |-
+        This endpoint is used to update comments to the article.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_11/kb/article/KB0000000031/comment
+        ```
+      operationId: knowledge-base-article-add-comment-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  comment:
+                    type: string
+                  createdTime:
+                    type: string
+                    format: date-time
+                  createdUser:
+                    $ref: '#/components/schemas/user'
+                  attachments:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/attachment'
+              examples:
+                example-1:
+                  value:
+                    comment: Test Update
+                    createdTime: '2019-05-16T08:07:43+0000'
+                    createdUser:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: john@opsramp.com
+                    attachments:
+                      - id: 24
+                        name: queries.txt
+                        createdDate: '2019-05-16T08:07:43+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000031/comments/45/resources/24'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                  description: |
+                    Defines the comment to be updated in the article.
+                attachments:
+                  type: array
+                  description: |
+                    (Optional) Defines the attachment of an article.
+                  items:
+                    $ref: '#/components/schemas/attachment'
+              required:
+                - comment
+            examples:
+              example-1:
+                value:
+                  comment: Test Update
+                  attachments:
+                    - name: queries.txt
+                      file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-add-comment-post/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/articlesList':
+    get:
+      summary: Get list of articles
+      description: |-
+        This endpoint is used to get list of articles.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_11/kb/articlesList?categoryId=&pageNo=1&pageSize=20
+        ```
+      operationId: knowledge-base-article-article-lists-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - id: KB0000000037
+                        subject: Test Ticket Ignore
+                        content: Test Ticket Ignore
+                        createdTime: '2019-05-10T11:43:32+0000'
+                        updatedTime: '2019-05-10T11:43:32+0000'
+                        createdBy:
+                          id: USR0000000007
+                          loginName: rgu@gmail.com
+                          lastName: Director
+                          firstName: RGU
+                          email: dev@opsramp.com
+                          phoneNumber: '9123456789'
+                          mobileNumber: '9123456789'
+                        updatedBy:
+                          id: USR0000000007
+                          loginName: rgu@gmail.com
+                          lastName: Director
+                          firstName: RGU
+                          email: dev@opsramp.com
+                          phoneNumber: '9123456789'
+                          mobileNumber: '9123456789'
+                        shared: false
+                        category:
+                          id: KB0000000001
+                          name: Data
+                          description: New Category
+                          path: Data
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000036
+                        subject: Need to update the Kafka Server Details
+                        content: Modify the Queirs Ann Data
+                        createdTime: '2019-05-08T10:55:26+0000'
+                        updatedTime: '2019-05-10T07:22:44+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        updatedBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        shared: true
+                        category:
+                          id: KBC0000000018
+                          name: Cassandra
+                          description: ''
+                          path: My Category>>DataBase>>Cassandra
+                          state: ACTIVE
+                        state: PUBLISHED
+                        attachments:
+                          - id: 23
+                            name: MetricNames.txt
+                            createdDate: '2019-05-10T07:22:48+0000'
+                            createdBy:
+                              id: USR0000000009
+                              loginName: Client_User
+                              lastName: User
+                              firstName: Client
+                              email: dev@opsramp.com
+                              phoneNumber: ''
+                            contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/23'
+                        expiryDate: '2019-07-28T18:30:00+0000'
+                        linkedArticles:
+                          - id: KB0000000035
+                            subject: All Data
+                            shared: false
+                      - id: KB0000000035
+                        subject: All Data
+                        content: All Data
+                        createdTime: '2019-05-08T09:23:19+0000'
+                        updatedTime: '2019-05-08T09:26:17+0000'
+                        createdBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        shared: false
+                        category:
+                          id: KBC0000000018
+                          name: Cassandra
+                          description: ''
+                          path: My Category>>DataBase>>Cassandra
+                          state: ACTIVE
+                        state: PUBLISHED
+                        attachments:
+                          - id: 12
+                            name: bustkt.pdf
+                            createdDate: '2019-05-08T09:26:17+0000'
+                            createdBy:
+                              id: USR0000000009
+                              loginName: Client_User
+                              lastName: User
+                              firstName: Client
+                              email: dev@opsramp.com
+                              phoneNumber: ''
+                            contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000035/resources/12'
+                          - id: 13
+                            name: CloudIndexes
+                            createdDate: '2019-05-08T09:26:23+0000'
+                            createdBy:
+                              id: USR0000000009
+                              loginName: Client_User
+                              lastName: User
+                              firstName: Client
+                              email: dev@opsramp.com
+                              phoneNumber: ''
+                            contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000035/resources/13'
+                      - id: KB0000000034
+                        subject: Oracle
+                        content: Oracle
+                        createdTime: '2019-05-08T09:23:00+0000'
+                        updatedTime: '2019-05-08T09:23:00+0000'
+                        createdBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        shared: false
+                        category:
+                          id: KBC0000000017
+                          name: Oracle
+                          description: ''
+                          path: My Category>>DataBase>>Oracle
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000033
+                        subject: Sql
+                        content: Sql
+                        createdTime: '2019-05-08T09:22:41+0000'
+                        updatedTime: '2019-05-08T09:22:41+0000'
+                        createdBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        shared: false
+                        category:
+                          id: KBC0000000016
+                          name: MySql
+                          description: ''
+                          path: My Category>>DataBase>>MySql
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000032
+                        subject: Cql Commands
+                        content: Cql Commands
+                        createdTime: '2019-05-08T09:21:20+0000'
+                        updatedTime: '2019-05-08T09:21:20+0000'
+                        createdBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        shared: false
+                        category:
+                          id: KBC0000000018
+                          name: Cassandra
+                          description: ''
+                          path: My Category>>DataBase>>Cassandra
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000031
+                        subject: C3 Article
+                        content: C3 Article .
+                        createdTime: '2019-05-07T08:53:32+0000'
+                        updatedTime: '2019-05-07T09:22:40+0000'
+                        createdBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        shared: false
+                        category:
+                          id: KBC0000000011
+                          name: C3
+                          description: ''
+                          path: C3
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000029
+                        subject: CAt2
+                        content: Cat
+                        createdTime: '2019-05-07T07:22:05+0000'
+                        updatedTime: '2019-05-07T07:25:55+0000'
+                        createdBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        shared: true
+                        category:
+                          id: KB0000000005
+                          name: Sub Client 2
+                          description: Sub Client 2
+                          path: Sub Client 2
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000023
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T10:41:28+0000'
+                        updatedTime: '2019-05-03T10:41:29+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        shared: false
+                        category:
+                          id: KB0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000022
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T10:40:07+0000'
+                        updatedTime: '2019-05-03T10:40:07+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        shared: false
+                        category:
+                          id: KB0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000021
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T10:38:55+0000'
+                        updatedTime: '2019-05-03T10:38:56+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        shared: false
+                        category:
+                          id: KB0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000020
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T10:25:32+0000'
+                        updatedTime: '2019-05-03T10:25:32+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        shared: false
+                        category:
+                          id: KB0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000019
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T10:24:13+0000'
+                        updatedTime: '2019-05-03T10:24:13+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        shared: false
+                        category:
+                          id: KB0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000016
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T10:00:19+0000'
+                        updatedTime: '2019-05-03T10:00:19+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        shared: false
+                        category:
+                          id: KB0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                        linkedArticles:
+                          - id: KB0000000009
+                            subject: Test Ticket Ignore
+                            shared: false
+                          - id: KB0000000008
+                            subject: New Article12
+                            shared: false
+                          - id: KB0000000004
+                            subject: Test Aticlet 2
+                            shared: false
+                      - id: KB0000000015
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T10:00:00+0000'
+                        updatedTime: '2019-05-03T10:00:00+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        shared: false
+                        category:
+                          id: KB0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                        linkedArticles:
+                          - id: KB0000000009
+                            subject: Test Ticket Ignore
+                            shared: false
+                          - id: KB0000000008
+                            subject: New Article12
+                            shared: false
+                      - id: KB0000000014
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T09:56:21+0000'
+                        updatedTime: '2019-05-03T09:56:21+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        shared: false
+                        category:
+                          id: KB0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                        linkedArticles:
+                          - id: KB0000000009
+                            subject: Test Ticket Ignore
+                            shared: false
+                      - id: KB0000000013
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T09:55:26+0000'
+                        updatedTime: '2019-05-03T09:55:26+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        shared: false
+                        category:
+                          id: KB0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                        linkedArticles:
+                          - id: KB0000000009
+                            subject: Test Ticket Ignore
+                            shared: false
+                      - id: KB0000000011
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T09:51:43+0000'
+                        updatedTime: '2019-05-03T09:51:57+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        shared: false
+                        category:
+                          id: KB0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000008
+                        subject: New Article12
+                        content: New Articlesdssd test
+                        createdTime: '2019-04-26T07:19:39+0000'
+                        updatedTime: '2019-04-29T10:16:31+0000'
+                        createdBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        shared: false
+                        category:
+                          id: KB0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000004
+                        subject: Test Aticlet 2
+                        content: Test Aticlet 2111
+                        createdTime: '2019-04-24T05:57:35+0000'
+                        updatedTime: '2019-04-29T10:24:50+0000'
+                        createdBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        shared: true
+                        category:
+                          id: KB0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                        linkedArticles:
+                          - id: KB0000000003
+                            subject: Article 1
+                            shared: false
+                    totalResults: 21
+                    orderBy: id
+                    pageNo: 1
+                    pageSize: 20
+                    totalPages: 2
+                    nextPage: true
+                    nextPageNo: 2
+                    previousPageNo: 0
+                    descendingOrder: true
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/article'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-article-lists-get/'
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+          in: query
+          name: pageSize
+        - schema:
+            type: string
+          in: query
+          name: categoryId
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/articles/search':
+    get:
+      summary: Search articles
+      description: "This endpoint is used to search for the list of articles in a knowledge base category.\n\n## Sample URLs\n```\nhttps://{api-url}/api/v2/tenants/client_11/kb/articles/search?pageNo=1&pageSize=20&queryString=state:Published+categoryId:KBC0000000002\n```\n\n## Query variables\n\n|Query Variable|Values|Description|\n|-----|-----|----|\n|id||Knowledge base article identification number.|\n|subject|Database|Subject of the knowledge base article.\n|content|Sample|Content\tContent of the knowledge base article.|\n|states|Published, Expired, Trash, Draft|Current status of the article.|\n|categoryId|KBC0000000002|ID of the knowledge base category.|\n|categoryName|Client|Name of the knowledge base category.|\n|startExpiryDate|yyyy-MM-ddTHH:mm:ssZ|Filter the articles based on their expiry date.<br>startExpiryDate denotes the starting range of the article expiry date.<br>Example: 2019-02-24T09:19:47 0000 (GMT)|\n|endExpiryDate|yyyy-MM-ddTHH:mm:ssZ|Filter the articles based on their expiry date. endExpiryDate denotes the ending range of the article expiry date.<br>Example: 2019-02-25T10:20:47 0000 (GMT)|\n\n>### Notes\n>There are special characters that can be used in a query string:\n>- (+) represents the next field and must be URL-encoded.\n>- (:) represents equals. An example is key : value.\n>- (,) indicates multiple values for a key. Example: priority: P0,P1.\n>- Space characters must be URL-encoded.\n>- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT)."
+      operationId: knowledge-base-article-articles-search-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/article'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - id: KB0000000008
+                        subject: New Article12
+                        content: New Articlesdssd test
+                        createdTime: '2019-04-26T07:19:39+0000'
+                        updatedTime: '2019-04-29T10:16:31+0000'
+                        createdBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: john@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: john@opsramp.com
+                          phoneNumber: ''
+                        shared: false
+                        category:
+                          id: KBC0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000004
+                        subject: Test Aticlet 2
+                        content: Test Aticlet 2111
+                        createdTime: '2019-04-24T05:57:35+0000'
+                        updatedTime: '2019-04-29T10:24:50+0000'
+                        createdBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: john@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: john@opsramp.com
+                          phoneNumber: ''
+                        shared: true
+                        category:
+                          id: KBC0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000032
+                        subject: Cql Commands
+                        content: Cql Commands
+                        createdTime: '2019-05-08T09:21:20+0000'
+                        updatedTime: '2019-05-08T09:21:20+0000'
+                        createdBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: john@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: john@opsramp.com
+                          phoneNumber: ''
+                        shared: false
+                        category:
+                          id: KBC0000000018
+                          name: Cassandra
+                          description: ''
+                          path: My Category>>DataBase>>Cassandra
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000029
+                        subject: CAt2
+                        content: Cat
+                        createdTime: '2019-05-07T07:22:05+0000'
+                        updatedTime: '2019-05-07T07:25:55+0000'
+                        createdBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: john@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        shared: true
+                        category:
+                          id: KBC0000000005
+                          name: Sub Client 2
+                          description: Sub Client 2
+                          path: Sub Client 2
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000023
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T10:41:28+0000'
+                        updatedTime: '2019-05-03T10:41:29+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        shared: false
+                        category:
+                          id: KBC0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000022
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T10:40:07+0000'
+                        updatedTime: '2019-05-03T10:40:07+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        shared: false
+                        category:
+                          id: KBC0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000021
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T10:38:55+0000'
+                        updatedTime: '2019-05-03T10:38:56+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        shared: false
+                        category:
+                          id: KBC0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000020
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T10:25:32+0000'
+                        updatedTime: '2019-05-03T10:25:32+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        shared: false
+                        category:
+                          id: KBC0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000019
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T10:24:13+0000'
+                        updatedTime: '2019-05-03T10:24:13+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        shared: false
+                        category:
+                          id: KBC0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000016
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T10:00:19+0000'
+                        updatedTime: '2019-05-03T10:00:19+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        shared: false
+                        category:
+                          id: KBC0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000015
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T10:00:00+0000'
+                        updatedTime: '2019-05-03T10:00:00+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        shared: false
+                        category:
+                          id: KBC0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000014
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T09:56:21+0000'
+                        updatedTime: '2019-05-03T09:56:21+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        shared: false
+                        category:
+                          id: KBC0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000013
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T09:55:26+0000'
+                        updatedTime: '2019-05-03T09:55:26+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        shared: false
+                        category:
+                          id: KBC0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000011
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T09:51:43+0000'
+                        updatedTime: '2019-05-03T09:51:57+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: john@opsramp.com
+                        shared: false
+                        category:
+                          id: KBC0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                    totalResults: 14
+                    orderBy: id
+                    pageNo: 1
+                    pageSize: 20
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-articles-search-get/'
+      parameters:
+        - schema:
+            type: integer
+            default: 1
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+            default: 100
+          in: query
+          name: pageSize
+        - schema:
+            type: string
+          in: query
+          name: queryString
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/article/{articleId}/comments/{commentId}resources/{resourceId}':
+    get:
+      summary: Download article attachment (comments)
+      description: |-
+        This endpoint is used to download any attachment (comments) of an article.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_7/article/kb/KB0000000036/comments/{commentId}/resources/23
+        ```
+
+        >The contentURL field of the Get Article API contains the attachment download URL:
+        >https:///api/v2/tenants/{tenantId}/article/{articleId}/comment/245
+      operationId: knowledge-base-article-attachment-comments-get/
+      tags:
+        - knowledge-base
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-attachment-comments-get/'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                properties: {}
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: commentId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/article/{articleId}/resources/{resourceId}':
+    get:
+      summary: Download article attachment
+      description: |-
+        This endpoint is used to download any attachment of an article.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_7/kb/article/KB0000000036/resources/23
+        ```
+        >The contentURL field of the Get Article API contains the attachment download URL:
+        >https://{api-url}/api/v2/tenants/{tenantId}/kb/article/{articleId}
+      operationId: knowledge-base-article-attachment-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-attachment-get/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/article':
+    post:
+      summary: Create article
+      description: |
+        This endpoint is used to create a knowledge base article.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_11/kb/article
+        ```
+      operationId: knowledge-base-article-create-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/article'
+              examples:
+                example-1:
+                  value:
+                    id: KB0000000036
+                    subject: Database Details
+                    content: Database Details
+                    createdTime: '2019-05-08T10:55:26+0000'
+                    updatedTime: '2019-05-08T10:55:26+0000'
+                    createdBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: john@opsramp.com
+                    updatedBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: john@opsramp.com
+                    shared: false
+                    category:
+                      id: KBC0000000018
+                      name: Cassandra
+                      description: ''
+                      path: My Category>>DataBase>>Cassandra
+                      state: ACTIVE
+                    state: PUBLISHED
+                    linkedArticles:
+                      - id: KB0000000035
+                        subject: All Data
+                        sharedArticle: false
+                    attachments:
+                      - id: 14
+                        name: 2.txt
+                        createdDate: '2019-05-08T10:55:27+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/14'
+                      - id: 15
+                        name: 1.txt
+                        createdDate: '2019-05-08T10:55:36+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/15'
+                    expiryDate: '2019-05-30T00:00:00+0000'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/article'
+            examples:
+              example-1:
+                value:
+                  subject: Database Details
+                  content: Database Details
+                  category:
+                    id: KBC0000000018
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-create-post/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/article/{articleId}/delete':
+    delete:
+      summary: Delete article
+      description: |-
+        This endpoint is used to delete a knowledge base category.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_11/kb/article/KB0000000036/delete
+        ```
+      operationId: knowledge-base-article-delete/
+      tags:
+        - knowledge-base
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-delete/'
+      responses:
+        '200':
+          description: OK
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/article/{articleId}':
+    get:
+      summary: Get article
+      description: |
+        This endpoint is used to get the knowledge base article.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_11/kb/article/KB0000000036
+        ```
+      operationId: knowledge-base-article-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/article'
+              examples:
+                example-1:
+                  value:
+                    id: KB0000000036
+                    subject: Need to update the Kafka Server Details
+                    content: Modify the Queirs Ann Data
+                    createdTime: '2019-05-08T10:55:26+0000'
+                    updatedTime: '2019-05-10T05:53:33+0000'
+                    createdBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: dev@opsramp.com
+                    updatedBy:
+                      id: USR0000000003
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: OpsRamp
+                      email: dev@opsramp.com
+                      phoneNumber: ''
+                    shared: false
+                    category:
+                      id: KBC0000000018
+                      name: Cassandra
+                      description: ''
+                      path: My Category>>DataBase>>Cassandra
+                      state: ACTIVE
+                    state: PUBLISHED
+                    attachments:
+                      - id: 14
+                        name: 2.txt
+                        createdDate: '2019-05-08T10:55:27+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/14'
+                      - id: 15
+                        name: 1.txt
+                        createdDate: '2019-05-08T10:55:36+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/15'
+                      - id: 20
+                        name: bustkt.pdf
+                        createdDate: '2019-05-10T05:53:15+0000'
+                        createdBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: john@opsramp.com
+                          phoneNumber: ''
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/20'
+                      - id: 21
+                        name: bustkt.pdf
+                        createdDate: '2019-05-10T05:53:33+0000'
+                        createdBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/21'
+                      - id: 22
+                        name: queries.txt
+                        createdDate: '2019-05-10T06:01:23+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/22'
+                    expiryDate: '2019-07-29T07:00:00+0000'
+                    linkedArticles:
+                      - id: KB0000000035
+                        subject: All Data
+                        sharedArticle: false
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-get/'
+    post:
+      summary: Update article
+      description: |
+        This endpoint is used to update a knowledge base article.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_11/kb/article/KB0000000036
+        ```
+      operationId: knowledge-base-article-update-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/article'
+              examples:
+                example-1:
+                  value:
+                    id: KB0000000036
+                    subject: Need to update the Kafka Server Details
+                    content: Modify the Queirs Ann Data
+                    createdTime: '2019-05-08T10:55:26+0000'
+                    updatedTime: '2019-05-10T05:53:33+0000'
+                    createdBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: dev@opsramp.com
+                    updatedBy:
+                      id: USR0000000003
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: OpsRamp
+                      email: dev@opsramp.com
+                      phoneNumber: ''
+                    shared: false
+                    category:
+                      id: KBC0000000018
+                      name: Cassandra
+                      description: ''
+                      path: My Category>>DataBase>>Cassandra
+                      state: ACTIVE
+                    state: PUBLISHED
+                    attachments:
+                      - id: 14
+                        name: 2.txt
+                        createdDate: '2019-05-08T10:55:27+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/14'
+                      - id: 15
+                        name: 1.txt
+                        createdDate: '2019-05-08T10:55:36+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/15'
+                      - id: 20
+                        name: bustkt.pdf
+                        createdDate: '2019-05-10T05:53:15+0000'
+                        createdBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: john@opsramp.com
+                          phoneNumber: ''
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/20'
+                      - id: 21
+                        name: bustkt.pdf
+                        createdDate: '2019-05-10T05:53:33+0000'
+                        createdBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/21'
+                      - id: 22
+                        name: queries.txt
+                        createdDate: '2019-05-10T06:01:23+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/22'
+                    expiryDate: '2019-07-29T07:00:00+0000'
+                    linkedArticles:
+                      - id: KB0000000035
+                        subject: All Data
+                        shared: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/article'
+            examples:
+              example-1:
+                value:
+                  subject: Need to update the Kafka Server Details
+                  content: Modify the Queirs Ann Data
+                  attachments:
+                    - name: queries.txt
+                      file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-update-post/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/article/{articleId}/comments':
+    get:
+      summary: Get list of comments
+      description: |
+        This endpoint is used to get list of comments of an article.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_11/kb/article/KB0000000031/comments
+        ```
+      operationId: knowledge-base-article-list-comments-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/comment'
+              examples:
+                example-1:
+                  value:
+                    - comment: Test Update
+                      createdTime: '2019-05-16T08:07:43+0000'
+                      createdUser:
+                        id: USR0000000002
+                        loginName: opsramp_api_user
+                        lastName: ' '
+                        firstName: OpsRamp API User
+                        email: john@opsramp.com
+                      attachments:
+                        - id: 24
+                          name: queries.txt
+                          createdDate: '2019-05-16T08:07:43+0000'
+                          createdBy:
+                            id: USR0000000002
+                            loginName: opsramp_api_user
+                            lastName: ' '
+                            firstName: OpsRamp API User
+                            email: john@opsramp.com
+                          contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/kb/article/KB0000000031/comments/45/resources/24'
+                    - comment: Test Update
+                      createdTime: '2019-05-16T08:06:21+0000'
+                      createdUser:
+                        id: USR0000000002
+                        loginName: opsramp_api_user
+                        lastName: ' '
+                        firstName: OpsRamp API User
+                        email: john@opsramp.com
+                    - comment: Comment from SP
+                      createdTime: '2019-05-07T09:44:19+0000'
+                      createdUser:
+                        id: USR0000000003
+                        loginName: superadmin
+                        lastName: Admin
+                        firstName: OpsRamp
+                        email: john@opsramp.com
+                        phoneNumber: ''
+                    - comment: Test
+                      createdTime: '2019-05-07T08:58:11+0000'
+                      createdUser:
+                        id: USR0000000009
+                        loginName: Client_User
+                        lastName: User
+                        firstName: Client
+                        email: john@opsramp.com
+                        phoneNumber: ''
+                    - comment: Test
+                      createdTime: '2019-05-07T08:57:39+0000'
+                      createdUser:
+                        id: USR0000000011
+                        loginName: Client_User_2
+                        lastName: User2
+                        firstName: CLient
+                        email: john@opsramp.com
+                        phoneNumber: ''
+                    - comment: Test Update
+                      createdTime: '2019-05-07T08:54:31+0000'
+                      createdUser:
+                        id: USR0000000002
+                        loginName: opsramp_api_user
+                        lastName: ' '
+                        firstName: OpsRamp API User
+                        email: john@opsramp.com
+                    - comment: Test Update
+                      createdTime: '2019-05-07T08:53:44+0000'
+                      createdUser:
+                        id: USR0000000002
+                        loginName: opsramp_api_user
+                        lastName: ' '
+                        firstName: OpsRamp API User
+                        email: john@opsramp.com
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-list-comments-get/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/article/{articleId}/share':
+    post:
+      summary: Share article
+      description: |-
+        This endpoint is used to share the knowledge base article.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/client_11/kb/article/KB0000000036/share
+        ```
+      operationId: knowledge-base-article-share-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/article'
+              examples:
+                example-1:
+                  value:
+                    id: KB0000000036
+                    subject: Need to update the Kafka Server Details
+                    content: Modify the Queirs Ann Data
+                    createdTime: '2019-05-08T10:55:26+0000'
+                    updatedTime: '2019-05-10T06:50:58+0000'
+                    createdBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: dev@opsramp.com
+                    updatedBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: dev@opsramp.com
+                    shared: true
+                    category:
+                      id: KBC0000000018
+                      name: Cassandra
+                      description: ''
+                      path: My Category>>DataBase>>Cassandra
+                      state: ACTIVE
+                    state: PUBLISHED
+                    attachments:
+                      - id: 14
+                        name: 2.txt
+                        createdDate: '2019-05-08T10:55:27+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/14'
+                      - id: 15
+                        name: 1.txt
+                        createdDate: '2019-05-08T10:55:36+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/15'
+                      - id: 20
+                        name: bustkt.pdf
+                        createdDate: '2019-05-10T05:53:15+0000'
+                        createdBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/20'
+                      - id: 21
+                        name: bustkt.pdf
+                        createdDate: '2019-05-10T05:53:33+0000'
+                        createdBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: dev@opsramp.com
+                          phoneNumber: ''
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/21'
+                      - id: 22
+                        name: queries.txt
+                        createdDate: '2019-05-10T06:01:23+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: dev@opsramp.com
+                        contentURL: 'https://api.opsramp.com/api/v2/tenants/client_11/article/KB0000000036/resources/22'
+                    expiryDate: '2019-07-29T07:00:00+0000'
+                    linkedArticles:
+                      - id: KB0000000035
+                        subject: All Data
+                        shared: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: |
+                Name of the knowledge base category.
+              properties:
+                id:
+                  type: string
+              required:
+                - id
+            examples:
+              example-1:
+                value:
+                  id: KBC0000000014
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-share-post/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: articleId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/category/{categoryId}':
+    get:
+      summary: Get a KB category
+      description: |-
+        This endpoint is used to retrieve a knowledge base category.
+
+        ## Sample URLs
+        ```
+        https://api.opsramp.com/api/v2/tenants/msp_7/kb/category/KBC0000000018
+        ```
+      operationId: knowledge-base-categories-category-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+              examples:
+                example-1:
+                  value:
+                    id: KBC0000000077
+                    name: API category updated
+                    description: sample description
+                    createdBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: helpdesk@opsramp.com
+                    updatedBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: helpdesk@opsramp.com
+                    path: API category updated
+                    state: ACTIVE
+                    createdDate: '2019-05-20T07:00:01+0000'
+                    updatedDate: '2019-05-20T07:31:28+0000'
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-categories-category-get/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: categoryId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/category/create':
+    post:
+      summary: Create KB category
+      description: |-
+        This endpoint is used to create a knowledge base category.
+
+        ## Sample URLs
+        ```
+        https://{api-url}/api/v2/tenants/{tenantId}/kb/category/create
+        ```
+      operationId: knowledge-base-category-create-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+              examples:
+                example-client:
+                  value:
+                    id: KBC0000000077
+                    name: Hello there
+                    description: test
+                    scope: CLIENT
+                    clientIds:
+                      - client_9
+                    parentCategory:
+                      id: KBC0000000076
+                      name: Test API category
+                    createdBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: helpdesk@opsramp.com
+                    updatedBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: helpdesk@opsramp.com
+                    path: Hello there
+                    state: ACTIVE
+                    createdDate: '2019-05-20T07:00:01+0000'
+                    updatedDate: '2019-05-20T07:00:01+0000'
+                example-partner:
+                  value:
+                    id: KBC0000000076
+                    name: Test API category
+                    description: Category
+                    createdBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: helpdesk@opsramp.com
+                    updatedBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: helpdesk@opsramp.com
+                    path: Test API category
+                    state: ACTIVE
+                    createdDate: '2019-05-20T06:44:44+0000'
+                    updatedDate: '2019-05-20T06:44:44+0000'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/category'
+            examples:
+              example-client:
+                value:
+                  name: Hello there
+                  description: test
+                  scope: CLIENT
+                  clientIds:
+                    - client_9
+                  parentCategory:
+                    id: KBC0000000076
+              example-partner:
+                value:
+                  name: Test API category
+                  description: Category
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-category-create-post/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/category/delete/{categoryId}':
+    delete:
+      summary: Delete a KB category
+      description: |
+        This endpoint is used to delete a knowledge base category.
+
+        ## Sample URLs
+        ```
+        https://api.opsramp.com//api/v2//tenants/client_11/kb/category/delete/KBC0000000077
+        ```
+      operationId: knowledge-base-category-delete/
+      tags:
+        - knowledge-base
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-category-delete/'
+      responses:
+        '200':
+          description: OK
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: categoryId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/categorylist':
+    get:
+      summary: Get list of KB categories
+      description: |
+        This endpoint is used to retrieve list of knowledge base categories.
+
+        ## Sample URLs
+        ```
+        https://api.opsramp.com//api/v2//tenants/client_11/kb/categorylist/?pageNo=1&pageSize=10
+        ```
+      operationId: knowledge-base-category-list-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        path:
+                          type: string
+                        state:
+                          type: string
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - id: KBC0000000078
+                        name: API category updated
+                        description: sample description
+                        path: API category updated>>API category updated
+                        state: ACTIVE
+                      - id: KBC0000000077
+                        name: API category updated
+                        description: sample description
+                        path: API category updated
+                        state: ACTIVE
+                      - id: KBC0000000076
+                        name: Test API category
+                        description: Category
+                        path: Test API category
+                        state: ACTIVE
+                      - id: KBC0000000067
+                        name: 'test '
+                        description: ''
+                        path: 'test '
+                        state: ACTIVE
+                      - id: KBC0000000066
+                        name: 'test '
+                        description: hekllo
+                        path: 'test '
+                        state: ACTIVE
+                      - id: KBC0000000065
+                        name: 'test '
+                        description: everything to be updated
+                        path: 'test '
+                        state: ACTIVE
+                      - id: KBC0000000064
+                        name: 'test '
+                        path: 'test >>test '
+                        state: ACTIVE
+                      - id: KBC0000000063
+                        name: 'test '
+                        description: everything to be updated
+                        path: 'test '
+                        state: ACTIVE
+                      - id: KBC0000000062
+                        name: 'test '
+                        description: Hello there
+                        path: 'test >>test '
+                        state: ACTIVE
+                      - id: KBC0000000061
+                        name: 'test '
+                        description: Hello there
+                        path: 'test '
+                        state: ACTIVE
+                    totalResults: 37
+                    orderBy: id
+                    pageNo: 1
+                    pageSize: 10
+                    totalPages: 4
+                    nextPage: true
+                    nextPageNo: 2
+                    previousPageNo: 0
+                    descendingOrder: true
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-category-list-get/'
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: state
+          description: |
+            Defines the current state of the category. Example: ACTIVE, INACTIVE.
+        - schema:
+            type: string
+          in: query
+          name: clientId
+          description: |
+            Defines the ID of the client and is used in Partner login.
+        - schema:
+            type: boolean
+            default: 'false'
+          in: query
+          name: isParent
+          description: |
+            Defines the list of parent categories. If selected TRUE, only parent categories are listed.
+        - schema:
+            type: integer
+            default: 1
+          in: query
+          name: pageNo
+          description: ''
+        - schema:
+            type: integer
+            default: 20
+          in: query
+          name: pageSize
+        - schema:
+            type: string
+            default: id
+          in: query
+          name: sortName
+        - schema:
+            type: boolean
+            default: 'false'
+          in: query
+          name: isDescendingOrder
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/category/restore/{categoryId}':
+    post:
+      summary: Restore category
+      description: |
+        This endpoint is used to retrieve a knowledge base category from TRASH.
+
+        ## Sample URLs
+        ```
+        https://api.opsramp.com//api/v2//tenants/client_11/kb/category/restore/KBC0000000077
+        ```
+      operationId: knowledge-base-category-restore-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+              examples:
+                example-1:
+                  value:
+                    id: KBC0000000077
+                    name: API category updated
+                    description: sample description
+                    createdBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: helpdesk@opsramp.com
+                    updatedBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: helpdesk@opsramp.com
+                    path: API category updated
+                    state: ACTIVE
+                    createdDate: '2019-05-20T07:00:01+0000'
+                    updatedDate: '2019-05-20T07:31:28+0000'
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-category-restore-post/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: categoryId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/categorylist/{categoryId}':
+    get:
+      summary: Get sub-category
+      description: |-
+        This endpoint is used to retrieve the list of sub-categories of a knowledge base category.
+
+        ## Sample URLs
+        ```
+        https://api.opsramp.com//api/v2//tenants/client_11/kb/categorylist/KBC0000000018
+        ```
+      operationId: knowledge-base-category-subcategory-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    path:
+                      type: string
+                    state:
+                      type: string
+              examples:
+                example-1:
+                  value:
+                    - id: KBC0000000019
+                      name: 'test '
+                      path: 'test >>category 1 '
+                      state: ACTIVE
+                    - id: KBC0000000042
+                      name: 'test '
+                      path: test >>category 1 >> category 2
+                      state: ACTIVE
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-category-subcategory-get/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: categoryId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/category/update/{categoryId}':
+    post:
+      summary: Update a KB category
+      description: |
+        This endpoint is used to update a knowledge base category.
+
+        ## Sample URLs
+        ```
+        https://api.opsramp.com//api/v2//tenants/client_11/kb/category/update/KBC0000000077
+        ```
+      operationId: knowledge-base-category-update-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+              examples:
+                example-1:
+                  value:
+                    id: KBC0000000077
+                    name: API category updated
+                    description: sample description
+                    createdBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: helpdesk@opsramp.com
+                    updatedBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: helpdesk@opsramp.com
+                    path: API category updated
+                    state: ACTIVE
+                    createdDate: '2019-05-20T07:00:01+0000'
+                    updatedDate: '2019-05-20T07:31:28+0000'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: |
+                    Name of the knowledge base category.
+                description:
+                  type: string
+                  description: 'Defines the scope of the knowledge base category. For a MSP tenant, scope is either PARTNER or CLIENT.'
+                scope:
+                  type: string
+                  description: |
+                    Defines the list of Client IDs. This is mandatory for a MSP tenant with CLIENT scope.
+                clientIds:
+                  type: array
+                  description: |
+                    Description of the knowledge base category.
+                  items:
+                    type: string
+            examples:
+              example-1:
+                value:
+                  name: API category updated
+                  description: sample description
+        description: All parameters are optional
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-category-update-post/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: categoryId
+        required: true
+  '/api/v2//tenants/{tenantId}/kb/template/{templateId}/delete':
+    delete:
+      summary: Delete template
+      description: |-
+        This endpoint is used to delete a knowledge base template.
+
+        ## Sample URLs
+        ```
+        https://api.opsramp.com//api/v2//tenants/client_11/kb/template/KB0000000033/delete
+        ```
+      operationId: knowledge-base-templates-delete/
+      tags:
+        - knowledge-base
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-delete/'
+      responses:
+        '200':
+          description: OK
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: templateId
+        required: true
+  '/api/v2/tenants/{tenantId}/kb/templatesList':
+    get:
+      summary: Get list of templates
+      description: |
+        This endpoint is used to get the list of knowledge base templates.
+
+        ## Sample URLs
+        ```
+        https://api.opsramp.com//api/v2//tenants/client_11/kb/templatesList?categoryId=&pageNo=1&pageSize=20
+        ```
+      operationId: knowledge-base-templates-list-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: '#/components/schemas/category'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - id: KB0000000041
+                        subject: Test Details Updated
+                        content: Test Details Updated
+                        createdTime: '2019-05-14T07:35:52+0000'
+                        updatedTime: '2019-05-14T08:42:36+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: lakshmi.balla@opsramp.com
+                        updatedBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: lakshmi.balla@opsramp.com
+                          phoneNumber: ''
+                        shared: false
+                        category:
+                          id: KB0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000040
+                        subject: Need to update the Kafka Server Details
+                        content: Modify the Queirs Ann Data
+                        createdTime: '2019-05-14T07:17:30+0000'
+                        updatedTime: '2019-05-14T07:17:30+0000'
+                        createdBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: lakshmi.balla@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: lakshmi.balla@opsramp.com
+                          phoneNumber: ''
+                        shared: false
+                        category:
+                          id: KBC0000000018
+                          name: Cassandra
+                          description: ''
+                          path: My Category>>DataBase>>Cassandra
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000039
+                        subject: Need to update the Kafka Server Details
+                        content: Modify the Queirs Ann Data
+                        createdTime: '2019-05-14T07:16:18+0000'
+                        updatedTime: '2019-05-14T07:16:44+0000'
+                        createdBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: lakshmi.balla@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: lakshmi.balla@opsramp.com
+                          phoneNumber: ''
+                        shared: false
+                        category:
+                          id: KBC0000000018
+                          name: Cassandra
+                          description: ''
+                          path: My Category>>DataBase>>Cassandra
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000038
+                        subject: Test
+                        content: Templates
+                        createdTime: '2019-05-14T07:14:11+0000'
+                        updatedTime: '2019-05-14T07:15:44+0000'
+                        createdBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: lakshmi.balla@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: lakshmi.balla@opsramp.com
+                          phoneNumber: ''
+                        shared: false
+                        category:
+                          id: KBC0000000011
+                          name: C3
+                          description: ''
+                          path: C3
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000017
+                        subject: Test Ticket Ignore API
+                        content: test
+                        createdTime: '2019-05-03T10:01:24+0000'
+                        updatedTime: '2019-05-03T10:01:24+0000'
+                        createdBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: lakshmi.balla@opsramp.com
+                        updatedBy:
+                          id: USR0000000002
+                          loginName: opsramp_api_user
+                          lastName: ' '
+                          firstName: OpsRamp API User
+                          email: lakshmi.balla@opsramp.com
+                        shared: false
+                        category:
+                          id: KB0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000007
+                        subject: TEMP@
+                        content: sdfsdfdsf
+                        createdTime: '2019-04-24T06:31:32+0000'
+                        updatedTime: '2019-04-26T09:04:59+0000'
+                        createdBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: lakshmi.balla@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: lakshmi.balla@opsramp.com
+                          phoneNumber: ''
+                        shared: false
+                        category:
+                          id: KB0000000008
+                          name: Temp2
+                          description: ''
+                          path: Sub Client 2>>Temp2
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000006
+                        subject: Article 1
+                        content: Article 1
+                        createdTime: '2019-04-24T06:18:20+0000'
+                        updatedTime: '2019-04-24T06:18:25+0000'
+                        createdBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: lakshmi.balla@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000009
+                          loginName: Client_User
+                          lastName: User
+                          firstName: Client
+                          email: lakshmi.balla@opsramp.com
+                          phoneNumber: ''
+                        shared: false
+                        category:
+                          id: KB0000000002
+                          name: Client
+                          description: Client
+                          path: Client
+                          state: ACTIVE
+                        state: PUBLISHED
+                      - id: KB0000000002
+                        subject: Databaase
+                        content: Test
+                        createdTime: '2019-04-24T04:30:48+0000'
+                        updatedTime: '2019-04-24T04:30:48+0000'
+                        createdBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: lakshmi.balla@opsramp.com
+                          phoneNumber: ''
+                        updatedBy:
+                          id: USR0000000003
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: OpsRamp
+                          email: lakshmi.balla@opsramp.com
+                          phoneNumber: ''
+                        shared: false
+                        category:
+                          id: KB0000000001
+                          name: Data
+                          description: New Category
+                          path: Data
+                          state: ACTIVE
+                        state: PUBLISHED
+                    totalResults: 8
+                    orderBy: id
+                    pageNo: 1
+                    pageSize: 20
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-list-get/'
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: categoryId
+          description: |
+            Name of the knowledge base category.
+        - schema:
+            type: string
+          in: query
+          name: subject
+          description: |
+            Defines the subject of the knowledge base article.
+        - schema:
+            type: string
+          in: query
+          name: content
+          description: |
+            Defines the content of the article.
+        - schema:
+            type: string
+          in: query
+          name: state
+          description: |-
+            (Optional) Defines the published status of the article.
+            Example: PUBLISH, DRAFT
+        - schema:
+            type: string
+          in: query
+          name: attachments
+          description: (Optional) Defines the details of attachments of the article.
+        - schema:
+            type: string
+          in: query
+          name: expiryDate
+          description: |-
+            (Optional) Defines the expiry date of the article. Date format: yyyy-MM-ddTHH:mm:ssZ.
+            Example: 2019-07-07T09:19:47 0000 (GMT)
+        - schema:
+            type: string
+          in: query
+          name: linkedArticles
+          description: (Optional) Defines the list of linked articles of the article.
+        - schema:
+            type: integer
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+          in: query
+          name: pageSize
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  '/api/v2//tenants/{tenantId}/kb/template':
+    post:
+      summary: Create template
+      description: |
+        This endpoint is used to create a knowledge base template.
+
+        ## Sample URLs
+        ```
+        https://api.opsramp.com//api/v2//tenants/client_11/kb/template
+        ```
+      operationId: knowledge-base-templates-template-create-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+              examples:
+                example-1:
+                  value:
+                    id: KB0000000042
+                    subject: New Template Created
+                    content: New Template Content Changes
+                    createdTime: '2019-05-14T08:45:49+0000'
+                    updatedTime: '2019-05-14T08:45:49+0000'
+                    createdBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: lakshmi.balla@opsramp.com
+                    updatedBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: lakshmi.balla@opsramp.com
+                    shared: false
+                    category:
+                      id: KB0000000002
+                      name: Client
+                      description: Client
+                      path: Client
+                      state: ACTIVE
+                    state: PUBLISHED
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/category'
+            examples:
+              example-1:
+                value:
+                  subject: New Template Created
+                  content: New Template Content Changes
+                  category:
+                    id: KB0000000002
+                    name: Client
+                  state: PUBLISHED
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-template-create-post/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+  '/api/v2//tenants/{tenantId}/kb/template/{templatedId}':
+    get:
+      summary: Get template
+      description: |-
+        This endpoint is used to get the template details of a knowledge base article.
+
+        ## Sample URLs
+        ```
+        https://api.opsramp.com//api/v2//tenants/template/kb/template/KB0000000041
+        ```
+      operationId: knowledge-base-templates-template-get/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+              examples:
+                example-1:
+                  value:
+                    id: KB0000000041
+                    subject: Test Details Updated
+                    content: Test Details Updated
+                    createdTime: '2019-05-14T07:35:52+0000'
+                    updatedTime: '2019-05-14T08:42:36+0000'
+                    createdBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: lakshmi.balla@opsramp.com
+                    updatedBy:
+                      id: USR0000000003
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: OpsRamp
+                      email: lakshmi.balla@opsramp.com
+                      phoneNumber: ''
+                    shared: false
+                    category:
+                      id: KB0000000002
+                      name: Client
+                      description: Client
+                      path: Client
+                      state: ACTIVE
+                    state: PUBLISHED
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-template-get-post/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: templatedId
+        required: true
+  '/api/v2//tenants/{tenantId}/kb/article':
+    post:
+      summary: Update template
+      description: |
+        This endpoint is used to update a knowledge base template.
+
+        ## Sample URLs
+        ```
+        https://api.opsramp.com//api/v2//tenants/client_11/kb/article
+        ```
+      operationId: knowledge-base-templates-template-update-post/
+      tags:
+        - knowledge-base
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+              examples:
+                example-1:
+                  value:
+                    id: KB0000000042
+                    subject: Updated the Template
+                    content: Updated the Template Content Changes
+                    createdTime: '2019-05-14T08:45:49+0000'
+                    updatedTime: '2019-05-42T09:45:29+0000'
+                    createdBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: dev@opsramp.com
+                    updatedBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: dev@opsramp.com
+                    shared: false
+                    category:
+                      id: KB0000000002
+                      name: Client
+                      description: Client
+                      path: Client
+                      state: ACTIVE
+                    state: PUBLISHED
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subject:
+                  type: string
+                  description: |
+                    Defines the subject of the knowledge base category.
+                content:
+                  type: string
+                  description: |
+                    Defines the content of the category.
+            examples:
+              example-1:
+                value:
+                  subject: Updated the Template
+                  content: Updated the Template Content Changes
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-template-update-post/'
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: tenantId
+        required: true
+security:
+  - accessToken: []
+components:
+  securitySchemes:
+    accessToken:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: ''
+          refreshUrl: ''
+          scopes: {}
+  schemas:
+    user:
+      title: user
+      type: object
+      properties:
+        id:
+          type: string
+        loginName:
+          type: string
+        lastName:
+          type: string
+        firstName:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        mobileNumber:
+          type: string
+    attachment:
+      title: attachment
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        createdBy:
+          $ref: '#/components/schemas/user'
+        contentURL:
+          type: string
+      description: |
+        (Optional) Defines the details of attachments of the article.
+    category:
+      title: category
+      type: object
+      description: |
+        Name of the knowledge base category.
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          description: |
+            Name of the knowledge base category.
+        path:
+          type: string
+        state:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/user'
+        updatedBy:
+          $ref: '#/components/schemas/user'
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type: string
+          format: date-time
+        scope:
+          type: string
+          description: |-
+            Defines the scope of the knowledge base category:
+            For a MSP tenant, scope is either PARTNER or CLIENT
+            For a CLIENT tenant, scope is not applicable
+          enum:
+            - PARTNER
+            - CLIENT
+        clientIds:
+          type: array
+          description: Defines the list of Client IDs. This is mandatory for a MSP tenant with CLIENT scope.
+          items:
+            type: string
+        parentCategory:
+          type: object
+          description: |
+            (Optional) Defines the parent category.
+          properties:
+            id:
+              type: string
+        description:
+          type: string
+          description: |
+            (Optional) Description of the knowledge base category.
+    article:
+      title: article
+      type: object
+      description: ''
+      properties:
+        id:
+          type: string
+        subject:
+          type: string
+          description: |
+            Defines the subject of the knowledge base article.
+        content:
+          type: string
+          description: |
+            Defines the content of the article.
+        createdTime:
+          type: string
+          format: date-time
+        updatedTime:
+          type: string
+          format: date-time
+        createdBy:
+          $ref: '#/components/schemas/user'
+        updatedBy:
+          $ref: '#/components/schemas/user'
+        shared:
+          type: boolean
+        category:
+          $ref: '#/components/schemas/category'
+        state:
+          type: string
+          description: |-
+            (Optional) Defines the published status of the article.
+            Example: PUBLISH, DRAFT
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/attachment'
+        expiryDate:
+          type: string
+          format: date-time
+          description: |-
+            (Optional) Defines the expiry date of the article.
+            Date format: yyyy-MM-ddTHH:mm:ssZ.
+            Example: 2019-07-07T09:19:47 0000 (GMT)
+        linkedArticles:
+          type: array
+          description: |
+            (Optional) Defines the list of linked articles of the article.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              subject:
+                type: string
+              shared:
+                type: boolean
+      required:
+        - subject
+        - content
+    comment:
+      title: comment
+      type: object
+      properties:
+        comment:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        createdUser:
+          $ref: '#/components/schemas/user'
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/attachment'
