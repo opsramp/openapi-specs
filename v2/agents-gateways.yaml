@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Agents and Gateways
-  version: '1.0'
+  version: 2.0
   description: |-
     Endpoints associated with agents and gateways.
 
@@ -20,6 +20,26 @@ info:
      
     ## for integrations cloud-discovery-update-put/ and integrations cloud-discovery-update-put
     does azure really use POST for updates while Google and AWS use PUT?
+
+    resource-management resources-create-post/
+    /api/v2/tenants/{tenantId}/resources
+    used to be many endpoints, but since distinction is in the JSON payload not the path, OpenAPI disallows dupoklicate paths. Because of this, cannot use unique objects to indicate mandatory attributes per type.
+
+    resource-management topology-data-by-relationships-get/
+    /api/v2/tenants/{tenantId}/topology/{resourceUUID}
+    Response uses weird keyes inconsistent with every other endpoint which include caps, spaces, and colons
+
+    Several endpoints could probably be revised and made more clear and simple with the addtion of <object>Full and <object>Minimal versions that can be used in different places as appropriate.
+
+    In tickets, some of the models are mis-named. I named them after the first instance I saw, but they turned out to be identical for all endpoints regardless of entity.
+
+    If the ticket entities in the Tickets API are in fact supposed to be identical regardless of the variations in the examples, the whole API can be simplified by redefining the path with a new parameter and rewording all the duplicate endpoints.
+
+    Probably the single most common error/inconsistency is boolean or integer values returned in JSON as a string (e.g 'true'), especially when the value is returned as a string in some examples and an integer or boolean in others.
+
+    Previous copy-paste errors such as on https://docs.opsramp.com/api/tickets/tasks-search-get/ where the example response for include=statusFlow is just a copy of the previous example for include=customFields and doesn't actually include the statusFlow field.
+
+    OpenAPI (or at least, Stoplight.io's implementation of OpenAPI) does not support empty strings when a specific string format is called out. This most often became a problem on fields like "updatedTime", which should be format date-time IF they are populated, but are often blank in examples, especially examples for Create rather than Update.
   contact:
     name: none
 tags:
@@ -55,16 +75,6 @@ paths:
         ## Sample URLs
         ```
         https://192.168.xxx.xxx:5480/api/v2/applicationservice
-        ```
-        ## Sample cURL
-        ```
-        curl -k -X POST https://{GatewayIP}:5480/api/v2/applicationservice 
-        -H 'Accept: application/json' 
-        -H 'Authorization: Bearer {accessToken}' 
-        { 
-            "service": "<network/squid/postgresql/vprobe/ntp>",
-            "action": "<start/stop/status/restart>"
-        }
         ```
       operationId: gateways/gateway-application-service-post/
       tags:
@@ -166,7 +176,7 @@ paths:
         description: Refers to the gateway package.
   /api/v2/externalproxy:
     post:
-      description: |-
+      description: |
         This endpoint is used to configure the external proxy connection on the gateway.
 
         An access token must be generated to use this API.
@@ -174,21 +184,6 @@ paths:
         ## Sample URLs
         ```
         https://192.168.xxx.xxx:5480/api/v2/externalproxy
-        ```
-
-        ## Sample cURL
-        ```
-        curl -k -X POST https://{GatewayIP}:5480/api/v2/externalproxy 
-        -H 'Accept: application/json' 
-        -H 'Authorization: Bearer {accessToken}' 
-        -H 'Content-Type: application/json' -k -d ''
-        { 
-            connection":"<direct/proxy>", 
-            "proxy_ip": "<ip>", 
-            "proxy_port": "<port>", 
-            "proxy_usr": "<username>",
-            "proxy_pwd”: "<proxypassword>"
-        }
         ```
       operationId: gateways/gateway-externalproxy-post/
       tags:
@@ -238,7 +233,7 @@ paths:
             examples:
               example-1:
                 value:
-                  connection: <direct/proxy>
+                  connection: direct
                   proxy_ip: <ip>
                   proxy_port: <port>
                   proxy_usr: <proxyuser>
@@ -251,17 +246,11 @@ paths:
   /api/v2/generalinfo:
     get:
       summary: Get gateway information
-      description: |-
+      description: |
         This endpoint is used to get general information from the gateway. This includes appliance details and network information.
         ## Sample URLs
         ```
         https://192.168.xxx.xxx:5480/api/v2/generalinfo
-        ```
-        ## Sample cURL
-        ```
-        curl -k -X GET https://{gateway_IP_address}:5480/api/v2/generalinfo 
-        -H 'Accept: application/json' 
-        -H 'Authorization: Token <TOKEN>'
         ```
       operationId: gateways/gateway-generalinfo-get/
       tags:
@@ -329,17 +318,11 @@ paths:
   /api/v2/getntpdetails:
     get:
       summary: Get NTP details
-      description: |-
+      description: |
         This endpoint is used to get the NTP details from the gateway.
         ## Sample URLs
         ```
         https://192.168.xxx.xxx:5480/api/v2/getntpdetails
-        ```
-        ## Sample cURL
-        ```
-        curl -k -X GET https://{GatewayIP}:5480/api/v2/getntpdetails 
-        -H 'Accept: application/json' 
-        -H 'Authorization: Token <TOKEN>'
         ```
       operationId: gateways/gateway-ntp-details-get/
       tags:
@@ -361,12 +344,11 @@ paths:
                       - 'OFF'
                   time:
                     type: string
-                    format: date-time
               examples:
                 example-1:
                   value:
                     servers: 'xxx,xxx'
-                    NTP Status: ON/OFF
+                    NTP Status: OFF
                     time: 'Tue May 19 21:40:08 UTC 2020'
       externalDocs:
         url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntp-details-get/'
@@ -672,9 +654,9 @@ paths:
                       entityId:
                         type: string
                   failedCount:
-                    type: string
+                    type: integer
                   successCount:
-                    type: string
+                    type: integer
               examples:
                 example-1:
                   value:
@@ -773,30 +755,12 @@ paths:
       - url: 'http://{gatewayIp}:port'
     post:
       summary: Register gateway
-      description: |-
+      description: |
         This endpoint is used to register the gateway.
 
         ## Sample URLs
         ```
         https://192.168.xx.xx:5480/api/v2/registration
-        ```
-        ## Sample cURL
-        ```
-        curl -k -X POST https://{Gateway_IP}:5480/api/v2/registration 
-        -H 'Accept: application/json' 
-        -H 'Authorization: Token <TOKEN>' 
-        -H 'Content-Type: application/json' -k 
-        -d '{ "activationKey": "<key&>", "opsRampServer": "<OpsRampURL>"}'
-        ```
-        ```
-        curl -k -X POST https://192.168.xx.xx:5480/api/v2/registration 
-        -H 'Accept: application/json' 
-        -H 'Authorization: Token e8e788658765be5f907cf29c60e23e6c6529296f' 
-        -H 'Content-Type: application/json' -k 
-        -d '{ 
-          "activationKey": "1a8ba0a0-791d-4a80-bc63-b6a7a09ffb84", 
-          "opsRampServer": "xxx.opsramp.com"
-          }’
         ```
       operationId: gateways/gateway-register-post/
       tags:
@@ -838,21 +802,12 @@ paths:
       - url: 'http://{gatewayIp}:port'
     post:
       summary: Turn on and off Squid proxy service
-      description: |-
+      description: |
         This endpoint is used to turn on and off the Squid proxy server on the gateway.
 
         ## Sample URLs
         ```
         https://192.168.xx.xx:5480/api/v2/proxy=OFF
-        ```
-        ## Sample cURL
-        To enable the proxy service:
-        ```
-        curl -k -X POST https://{gatewayIP}:5480/api/v2/proxy=ON
-        ```
-        To disable the proxy service:
-        ```
-        curl -k -X POST https://192.168.xxx.xxx:5480/api/v2/proxy=OFF
         ```
       operationId: gateways/gateway-turn-onoff-proxy-post/
       tags:
@@ -888,7 +843,7 @@ paths:
   /api/v2/apiTokenGen:
     post:
       summary: Generate access token for gateway
-      description: |-
+      description: |
         This endpoint is used to generate an access token on the gateway.
 
         An access token is needed to:
@@ -900,14 +855,6 @@ paths:
         ## Sample URLs
         ```
         https://192.168.xxx.xxx:5480/api/v2/apiTokenGen
-        ```
-        ## Sample cURL
-        ```
-        curl -k -X POST https://{Gateway_IP}:5480/api/v2/apiTokenGen -F username=username -F password=password
-        ```
-        Use your gateway administrator credentials as the username and password.
-        ```
-        curl -k -X POST https://192.168.xxx.xxx:5480/api/v2/apiTokenGen -F username=abcd -F password=xyz@1234
         ```
       operationId: gateways/gateway-generate-access-token-post/
       tags:
@@ -934,28 +881,12 @@ paths:
   /api/v2/networksettings:
     post:
       summary: Set network settings
-      description: |-
+      description: |
         This endpoint is used to specify the network settings on the gateway.
 
         ## Sample URLs
         ```
         https://192.168.xxx.xxx:5480/api/v2/networksettings
-        ```
-        ## Sample cURL
-        ```
-        curl -k -X GET https://{gateway_IP_address}:5480/api/v2/networksettings 
-        -H 'Accept: application/json' -H 'Authorization: Token <TOKEN>' 
-        -H 'Content-Type: application/json' -k -d 
-        { 
-            "hostname": "<hostname>", 
-            "domainname": "<domainname>", 
-            "interface": "<interface>", 
-            "static_IP": "<True/False>", 
-            "ipaddr": "<ipaddr>", 
-            "subnet": "<subnet>", 
-            "gateway": "<gatewayIP>", 
-            "dnsArray": "<xxx,xxx>"
-         }
         ```
       operationId: gateways/gateway-network-settings-post/
       tags:
@@ -1037,21 +968,12 @@ paths:
   /api/v2/nginx:
     post:
       summary: Status and restart NGINX service
-      description: |-
+      description: |
         This endpoint is used to get the NGINX service status and to restart the NGINX service on the gateway.
 
         ## Sample URLs
         ```
         https://192.168.xxx.xxx:5480/api/v2/nginx
-        ```
-        ## Sample cURL
-        ```
-        curl -k -X POST https://{GatewayIP}:5480/api/v2/nginx 
-        -H 'Accept: application/json' 
-        -H 'Authorization: Token <TOKEN>' 
-        { 
-            "action": "<restart/status>"
-        }
         ```
       operationId: gateways/gateway-nginx-service-post/
       tags:
@@ -1093,24 +1015,12 @@ paths:
   /api/v2/ntpmanualconfig:
     post:
       summary: Manually set NTP date and time
-      description: |-
+      description: |
         This endpoint is used to manually set the NTP date and time on the gateway.
 
         ## Sample URLs
         ```
         https://192.168.xxx.xxx:5480/api/v2/ntpmanualconfig
-        ```
-        ## Sample cURL
-        ```
-        curl -k -X POST https://{GatewayIP}:5480/api/v2/ntpmanualconfig 
-        -H 'Accept: application/json' 
-        -H 'Authorization: Token <TOKEN>' 
-        { 
-            "date": "<date>", 
-            "hour": "<hours>", 
-            "min": "<minutes>", 
-            "sec": "<seconds>"
-        }
         ```
       operationId: gateways/gateway-ntp-manualconfig-post/
       tags:
@@ -1164,21 +1074,12 @@ paths:
   /api/v2/ntpservice:
     post:
       summary: Start and stop NTP service
-      description: |-
+      description: |
         This endpoint is used to start and stop the NTP service on the gateway.
 
         ## Sample URLs
         ```
         https://192.168.xxx.xxx:5480/api/v2/ntpservice
-        ```
-        ## Sample cURL
-        ```
-        curl -k -X POST https://{GatewayIP}:5480/api/v2/ntpservice 
-        -H 'Accept: application/json' 
-        -H 'Authorization: Token <TOKEN>' 
-        { 
-            "service": "<ON/OFF>"
-        }
         ```
       operationId: gateways/gateway-ntp-service-post/
       tags:
@@ -1220,21 +1121,12 @@ paths:
   /api/v2/ntpupdateips:
     post:
       summary: Set NTP servers
-      description: |-
+      description: |
         This endpoint is used to update the NTP server IP addresses on the gateway.
 
         ## Sample URLs
         ```
         https://192.168.xxx.xxx:5480/api/v2/ntpupdateips
-        ```
-        ## Sample cURL
-        ```
-        curl -k -X POST https://{GatewayIP}:5480/api/v2/ntpupdateips 
-        -H 'Accept: application/json' 
-        -H 'Authorization: Token <TOKEN>' 
-        { 
-            "ntpArray": "192.168.xx.xx,172.26.xx.xx"
-        }
         ```
       operationId: gateways/gateway-ntp-servicer-ips-post/
       tags:
@@ -1274,21 +1166,12 @@ paths:
   /api/v2/ntpsyncips:
     post:
       summary: Synchronize NTP servers
-      description: |-
+      description: |
         This endpoint is used to synchronize the time from the NTP servers on the gateway.
 
         ## Sample URLs
         ```
         https://192.168.xxx.xxx:5480/api/v2/ntpsyncips
-        ```
-        ## Sample cURL
-        ```
-        curl -k -X POST https://{GatewayIP}:5480/api/v2/ntpsyncips 
-        -H 'Accept: application/json' 
-        -H 'Authorization: Token <TOKEN>' 
-        { 
-            "ntpArray": "192.168.xx.xx,172.26.xx.xx" 
-        }
         ```
       operationId: gateways/gateway-ntpsync-ips-post/
       tags:
@@ -1327,18 +1210,12 @@ paths:
   /api/v2/restartnetwork:
     post:
       summary: Restart network service
-      description: |-
+      description: |
         This endpoint is used to restart the network service on the gateway.
 
         ## Sample URLs
         ```
         https://192.168.xxx.xxx:5480/api/v2/restartnetwork
-        ```
-        ## Sample cURL
-        ```
-        curl -k -X POST https://{GatewayIP}:5480/api/v2/restartnetwork 
-        -H 'Accept: application/json' 
-        -H 'Authorization: Token <TOKEN>' 
         ```
       operationId: gateways/gateway-restart-network-post/
       tags:
@@ -1362,25 +1239,12 @@ paths:
   /api/v2/staticroute:
     post:
       summary: Set static route configuration
-      description: |-
+      description: |
         This endpoint is used to set the static route configuration on the gateway.
 
         ## Sample URLs
         ```
         https://192.168.xxx.xxx:5480/api/v2/staticroute
-        ```
-        ## Sample cURL
-        ```
-        curl -k -X POST https://{GatewayIP}:5480/api/v2/staticroute 
-        -H 'Accept: application/json' 
-        -H 'Authorization: Token <TOKEN>' 
-        -H 'Content-Type: application/json' -k -d '
-        { 
-            "srouteIP":"<srouteIP>", 
-            "srouteGateway": "<srouteGateway>", 
-            "srouteMetric": "<srouteMetric>", 
-            "srouteInterface": “<srouteInterface>"
-        }
         ```
       operationId: gateways/gateway-staticroute-post/
       tags:
@@ -1443,18 +1307,12 @@ paths:
   /api/v2/gettimezoneinfo:
     get:
       summary: Get timezone details
-      description: |-
+      description: |
         This endpoint is used to get timezone information from the gateway.
 
         ## Sample URLs
         ```
         https://192.168.xxx.xxx:5480/api/v2/gettimezoneinfo
-        ```
-        ## Sample cURL
-        ```
-        curl -k -X POST https://{GatewayIP}:5480/api/v2/gettimezoneinfo 
-        -H 'Accept: application/json' 
-        -H 'Authorization: Token <TOKEN>'
         ```
       operationId: gateways/gateway-timezone-info-get/
       tags:
@@ -1484,21 +1342,12 @@ paths:
   /api/v2/settimezone:
     post:
       summary: Set timezone
-      description: |-
+      description: |
         This endpoint is used to set the timezone on the gateway.
 
         ## Sample URLs
         ```
         https://192.168.xxx.xxx:5480/api/v2/settimezone
-        ```
-        ## Sample cURL
-        ```
-        curl -k -X POST https://{GatewayIP}:5480/api/v2/settimezone 
-        -H 'Accept: application/json' 
-        -H 'Authorization: Token <TOKEN>' 
-        { 
-            "timezone": "<zone>"
-        }
         ```
       operationId: gateways/gateway-timezone-post/
       tags:
@@ -1609,7 +1458,7 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: string
+                    type: integer
                   name:
                     type: string
                   description:
@@ -1692,7 +1541,6 @@ paths:
               required:
                 - name
                 - type
-                - device
             examples:
               example-agent-profile:
                 value:
@@ -1760,7 +1608,7 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: string
+                    type: integer
                   name:
                     type: string
                   description:
@@ -1858,7 +1706,7 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: string
+                    type: integer
                   name:
                     type: string
                   description:
@@ -2003,7 +1851,7 @@ paths:
                     type: boolean
                   createdDate:
                     type: string
-                    format: date
+                    format: date-time
               examples:
                 example-1:
                   value:
@@ -2110,7 +1958,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          type: string
+                          type: integer
                         name:
                           type: string
                         description:

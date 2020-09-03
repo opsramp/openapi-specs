@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: opsramp-exports
-  version: '1.0'
+  version: 2.0
   description: none
   contact:
     name: none
@@ -121,12 +121,10 @@ components:
         scheduleType:
           type: string
           description: |
-            Defines the batch type to export. Supported values: Inventory, Alerts, Tickets, Metrics.
+            Defines the schedule type. Example: ON-DEMAND.
           enum:
-            - Inventory
-            - Alerts
-            - Tickets
-            - Metrics
+            - ON-DEMAND
+            - RECURRING
         recurringType:
           type: string
           description: 'Defines the recurring type of batch export. Supported values: Daily, Weekly, Monthly.'
@@ -141,7 +139,12 @@ components:
         type:
           type: string
           description: |
-            Defines the schedule type. Example: ON-DEMAND.
+            Defines the batch type to export. Supported values: Inventory, Alerts, Tickets, Metrics.
+          enum:
+            - Inventory
+            - Alerts
+            - Tickets
+            - Metrics
         startHours:
           type: string
           description: |

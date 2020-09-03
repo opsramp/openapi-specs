@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: opsramp-alerts
-  version: '1.0'
+  version: 2.0
   description: none
   contact:
     name: none
@@ -356,7 +356,7 @@ paths:
                   pageSize:
                     type: integer
                   totalPages:
-                    type: string
+                    type: integer
                   nextPage:
                     type: boolean
                   previousPageNo:
@@ -946,7 +946,7 @@ paths:
                 value:
                   name: Correlate alerts on parked VMwares
                   filterCriteria:
-                    filterBased: 'true'
+                    filterBased: true
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
@@ -959,7 +959,7 @@ paths:
                         entityValue: Down
                   type: ALGORITHM
                   algorithmCorrelation:
-                    alertsTimeWindow: '20'
+                    alertsTimeWindow: 20
                     matchingConditions:
                       - property: subject
                         matchType: Identical
@@ -970,7 +970,7 @@ paths:
                 value:
                   name: Server-SJ Alerts
                   filterCriteria:
-                    filterBased: 'true'
+                    filterBased: true
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
@@ -987,7 +987,7 @@ paths:
                   name: Server-SJ Alerts
                   type: ALGORITHM
                   filterCriteria:
-                    filterBased: 'true'
+                    filterBased: true
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
@@ -997,7 +997,7 @@ paths:
                           ipAddress: 192.168.5.130
                           netmask: 255.255.255.192
                   algorithmCorrelation:
-                    alertsTimeWindow: '20'
+                    alertsTimeWindow: 20
                     matchingConditions:
                       - property: host_name
                         matchType: Identical
@@ -1007,7 +1007,7 @@ paths:
                   name: test_algorithm_correlation_ap
                   organizationMatchingType: ALL
                   filterCriteria:
-                    filterBased: 'true'
+                    filterBased: true
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
@@ -1020,7 +1020,7 @@ paths:
                         entityValue: a
                   type: ALGORITHM
                   algorithmCorrelation:
-                    alertsTimeWindow: '20'
+                    alertsTimeWindow: 20
                     matchingConditions:
                       - property: subject
                         matchType: Identical
@@ -1035,7 +1035,7 @@ paths:
                     - client_8
                     - client_9
                   filterCriteria:
-                    filterBased: 'true'
+                    filterBased: true
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
@@ -1048,7 +1048,7 @@ paths:
                         entityValue: a
                   type: ALGORITHM
                   algorithmCorrelation:
-                    alertsTimeWindow: '20'
+                    alertsTimeWindow: 20
                     matchingConditions:
                       - property: subject
                         matchType: Identical
@@ -1188,7 +1188,7 @@ paths:
                     type: object
                     properties:
                       alertsTimeWindow:
-                        type: string
+                        type: integer
                       matchingConditions:
                         type: array
                         items:
@@ -1758,7 +1758,7 @@ paths:
                   enabled: 'false'
                   precedence: 25
                   filterCriteria:
-                    filterBased: 'true'
+                    filterBased: true
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
@@ -1771,7 +1771,7 @@ paths:
                         entityValue: ESX
                   type: DEPENDENCY
                   dependencyCorrelation:
-                    alertsTimeWindow: '15'
+                    alertsTimeWindow: 15
                     upstreamMetrics:
                       - system.ping.pl
                       - system.process.cpu
@@ -1890,7 +1890,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        type: string
+                        type: integer
                       uniqueId:
                         type: string
                       name:
@@ -1986,7 +1986,7 @@ paths:
                           type: object
                           properties:
                             none:
-                              type: string
+                              type: boolean
                             priorityRules:
                               type: array
                               items:
@@ -2056,9 +2056,9 @@ paths:
                                   fieldType:
                                     type: string
                                   mandatory:
-                                    type: string
+                                    type: boolean
                                   editable:
-                                    type: string
+                                    type: boolean
                                   description:
                                     type: string
                                   value:
@@ -2070,11 +2070,11 @@ paths:
                             toEmail:
                               type: string
                             estimatedHours:
-                              type: boolean
+                              type: integer
                             timeSpent:
-                              type: boolean
+                              type: integer
                             estimatedMinutes:
-                              type: boolean
+                              type: integer
                             machineLearning:
                               type: object
                               properties:
@@ -2980,7 +2980,7 @@ paths:
                                 description:
                                   type: string
                                 id:
-                                  type: string
+                                  type: integer
                             cc:
                               type: string
                         updateIncident:
@@ -3069,16 +3069,18 @@ paths:
                       rules:
                         - key: 'Alert  : Description'
                           operator: CONTAINS
-                          value: critical
+                          value: 
+                            type: critical
                         - key: 'Alert : Occurrence Frequency'
                           operator: GREATERTHANOREQUALTO
                           value:
-                            occurrences: '5'
-                            frequency: '2'
+                            occurrences: 5
+                            frequency: 2
                             frequencyType: hours
                         - key: 'Resource : Resource Type'
                           operator: MATCH
-                          value: DEVICE
+                          value: 
+                            type: DEVICE
                     escalationType: AUTOMATIC_UNTIL_ACKNOWLEDGED_CLOSED_SUPPRESSED_TICKETED
                     escalations:
                       - waitMins: 5

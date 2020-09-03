@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: opsramp-integrations
-  version: '1.0'
+  version: 2.0
   description: none
   contact:
     name: none
@@ -1586,7 +1586,7 @@ paths:
         required: true
   '/api/v2/tenants/{tenantId}/deviceGroups':
     post:
-      summary: Create device groups
+      summary: Create and update device groups
       description: |-
         This endpoint is used to create and update device groups.
 
@@ -2758,11 +2758,6 @@ paths:
         ```
         https://{api-url}/api/v2/tenants/client_105261/policies/management/search?name=Web
         ```
-        ### Query variables
-
-        |Query Variable|Description|
-        |----|----|
-        |name|Device management policy name.|
       operationId: device-management-search-policy-get/
       tags:
         - resource-management
@@ -2850,7 +2845,9 @@ paths:
         - schema:
             type: string
           in: query
-          name: '{name}'
+          name: name
+          description: |
+            Device management policy name.
     parameters:
       - schema:
           type: string
@@ -3232,7 +3229,7 @@ paths:
                 value:
                   subject: Device created for maintain logs-updated
                   description: The Device is for auditing purpose only-updated
-                  expiryDateType: '2'
+                  expiryDateType: 2
                   startTime: '2016-03-26T10:10:10+0000'
                   expiryTime: '2016-04-26T10:10:10+0000'
       externalDocs:
@@ -3522,19 +3519,19 @@ paths:
                 value:
                   subject: Device created for maintain logs-updated
                   description: The Device is for auditing purpose only-updated
-                  expiryDateType: '1'
+                  expiryDateType: 1
               example-expiryDateType-2:
                 value:
                   subject: Device created for maintain logs-updated
                   description: The Device is for auditing purpose only-updated
-                  expiryDateType: '2'
+                  expiryDateType: 2
                   startTime: '2016-03-26T10:10:10+0000'
                   expiryTime: '2016-04-26T10:10:10+0000'
               example-expiryDateType-3:
                 value:
                   subject: Device created for maintain logs-updated
                   description: The Device is for auditing purpose only-updated
-                  expiryDateType: '3'
+                  expiryDateType: 3
         description: ''
       externalDocs:
         url: 'https://docs.opsramp.com/api/resource-management/resource-notes-update-post/'
@@ -4311,9 +4308,9 @@ paths:
         >Notes
         >There are special characters that can be used in a query string:
         >- (+) represents the next field and must be URL-encoded.
-        >- (:) represents equals. An example is key : value.
+        >- (:) represents equals. An example is `key : value`.
         >- Space characters must be URL-encoded.
-        >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+        >- Date format must be `yyyy-MM-ddTHH:mm:ssZ (GMT)`.
 
         ### Query variables
 
@@ -5082,6 +5079,10 @@ paths:
                   enum:
                     - AND
                     - OR
+                  description: |-
+                    AND - Show resource status Up if ALL the availability monitors assigned on the resource are in OK state, else show the status as Down.
+
+                    OR - Show resource status Up if ANY of the availability monitors assigned on the resource are in OK state, else show the status as Down.
             examples:
               example-1:
                 value:
@@ -5678,6 +5679,7 @@ paths:
         |isEquals|To search for the exact match of a variable.<br>- isEquals: true , to search for the exact match of a variable.<br>- isEquals: false to search for a similar match of a variable.<br>For example, to fetch list of resources in location West Valley and resource group, provide the query variable respectively as:<br>- deviceLocation: West Valley%2BisEquals: true<br>- deviceGroup: Windows Servers%2BisEquals:true<br>Note: This is an optional parameter for deviceGroup/deviceLocation/serviceGroup|
         |assetManagedTime|The most recent time a resource is managed. The asset managed time gets updated whenever a resource is managed or unmanaged.<br>Example: 2017-01-01T00:00:00 0000|
         |firstAssetManagedTime|The first time a resource is managed.<br>Example: 2017-01-31T00:00:00 0000|
+        |aliasIp|Alias IP address of the network you have.|
         |appRoles|Filter for resources based on applications running on the resources.List of supported applications:|
 
         |appRoles|appRoles|appRoles|appRoles|
@@ -5693,6 +5695,13 @@ paths:
         docker-container|lighttpd|oracle|weblogic
         elasticsearch|mesosmaster|postfix|websphere
         haproxy|mesosslave|postgresql|zookeeper
+
+        >### Notes
+        >There are special characters that can be used in a query string:
+        >- (+) represents the next field and must be URL-encoded.
+        >- (:) represents equals. An example is key : value.
+        >- Space characters must be URL-encoded.
+        >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
       operationId: resources-search-get/
       tags:
         - resource-management
@@ -7730,17 +7739,15 @@ components:
           description: |
             Description of the resource note.
         expiryDateType:
+          type: integer
           description: |-
             Type of expiry. Supported Values: Never Expire, Validity Period:
             - expiryDateType=1 to create resource note that would never expire.
             - expiryDateType=2 to create resource note with a validity period.
 
             Both startTime and endTime are mandatory to create a note with a validity period.
-          enum:
-            - '1'
-            - '2'
-            - '3'
-          type: integer
+          minimum: 1
+          maximum: 3
         startTime:
           type: string
           description: |
