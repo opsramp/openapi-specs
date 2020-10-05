@@ -1,30 +1,23 @@
 openapi: 3.0.0
 info:
   title: opsramp-alerts
-  version: 2.0
-  description: none
+  version: 2.0.0
+  description: API Documentation
   contact:
-    name: none
+    name: OpsRamp Support
+    email: support@opsramp.com
+    url: https://www.opsramp.com/about-opsramp/contact-us/
 tags:
-  - name: agents-gateways
   - name: alerts
-  - name: automation
-  - name: exports
-  - name: integrations
-  - name: knowledge-base
-  - name: metrics
-  - name: monitoring
-  - name: patching
-  - name: resource-management
-  - name: tenancy-access-controls
-  - name: tickets
 servers:
   - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: 'https://{partner_name}.api.opsramp.com'
-    description: Partner - Custom Brand
-  - url: 'https://{client_name}.api.opsramp.com'
-    description: Partner and Client both Custom Branded
+  - url: 'https://{subdomain}.api.opsramp.com'
+    description: Partner or Client custom branded sub-domain
+    variables:
+      subdomain:
+        default: demo
+        description: Custom sub-domain assigned to the client
 paths:
   '/api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}/{action}':
     post:
@@ -32,39 +25,7 @@ paths:
       operationId: alerts/alert-correlation-policy-enable-disable-post/
       tags:
         - alerts
-      description: |-
-        # Enable or disable alert correlation policy
-        This endpoint is used to enable, disable, and create an observed mode on an alert correlation policy.
-        ## Sample URLs
-        ### For Clients
-        To enable an alert correlation policy:
-        ```
-        https://{api-url}/api/v2/tenants/client_7/policies/alertCorrelation/POLICY-AC-3218d82f-25c6-4d4d-bd88-b83c5e30721c/enable
-        ```
-        To disable an alert correlation policy:
-        ```
-        https://{api-url}/api/v2/tenants/client_7/policies/alertCorrelation/POLICY-AC-ce200249-bcb0-47ef-8b24-9b5744053243/disable
-        ```
-        To enable observed mode for an alert correlation policy:
-        ```
-        https://api.opsramp.com/api/v2/tenants/client_9/policies/alertCorrelation/POLICY-AC-3218d82f-25c6-4d4d-bd88-b83c5e30721c/observed
-        ```
-        ### For Partners
-        To enable an alert correlation policy:
-        ```
-        https://api.opsramp.com/api/v2/tenants/msp_6/policies/alertCorrelation/POLICY-AC-ce200249-bcb0-47ef-8b24-9b5744053243/enable
-        ```
-        To disable an alert correlation policy:
-        ```
-        https://api.opsramp.com/api/v2/tenants/msp_6/policies/alertCorrelation/POLICY-AC-ce200249-bcb0-47ef-8b24-9b5744053243/disable
-        ```
-        To enable observed mode for an alert correlation policy:
-        ```
-        https://api.opsramp.com/api/v2/tenants/msp_6/policies/alertCorrelation/POLICY-AC-ce200249-bcb0-47ef-8b24-9b5744053243/observed
-        ```
-
-        ## Note
-        The response depends on the returned status code.
+      description: This endpoint is used to enable, disable, and create an observed mode on an alert correlation policy.
       responses:
         '200':
           description: OK
@@ -93,11 +54,6 @@ paths:
       summary: Search rosters
       description: |
         This endpoint is used to fetch the rosters within an organization.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/msp_5/rosters/search
-        ```
 
         ## Special Characters
         There are special characters that can be used in a query string:
@@ -303,19 +259,7 @@ paths:
   '/api/v2/tenants/{tenantId}/policies/alertCorrelation':
     get:
       summary: Get alert correlation policies of a client
-      description: |-
-        This endpoint is used to fetch alert correlation policies of a client.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_4/policies/alertCorrelation/
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/client_4/policies/alertCorrelation/?pageNo=1&pageSize=100
-        ```
-        ```
-        https://api.opsramp.com/api/v2/tenants/msp_3/policies/alertCorrelation/
-        ```
+      description: This endpoint is used to fetch alert correlation policies of a client.
       operationId: alert-correlation-policy-client-get/
       tags:
         - alerts
@@ -461,24 +405,7 @@ paths:
           name: pageSize
     post:
       summary: Create alert correlation policy
-      description: |-
-        This endpoint is used to create an alert correlation policy.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_7/policies/alertCorrelation
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_6/policies/alertCorrelation
-        ```
-
-        See examples for:
-        - Update alert correlation policy with dependency correlation  
-        - Create alert correlation policy with algorithm-based correlation  
-        - Create alert correlation policy with cooccurrence-based correlation
-        - Create alert correlation policy with IP address filter
-        - Create client scope partner alert correlation policy correlated with algorithm and ALL based on organizationMatchingType
-        - Create client scope partner alert correlation policy correlated with algorithm and INCLUDE based on organizationMatchingType
+      description: This endpoint is used to create an alert correlation policy.
       operationId: alert-correlation-policy-create-post/
       tags:
         - alerts
@@ -1070,14 +997,6 @@ paths:
         This endpoint is used to delete an alert correlation policy.
 
         The response depends on the returned status code.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_7/policies/alertCorrelation/POLICY-AC-3218d82f-25c6-4d4d-bd88-b83c5e30721c
-        ```
-        ```
-        https://api.opsramp.com/api/v2/tenants/msp_6/policies/alertCorrelation/POLICY-AC-ce200249-bcb0-47ef-8b24-9b5744053243
-        ```
       operationId: alert-correlation-policy-delete/
       tags:
         - alerts
@@ -1088,23 +1007,7 @@ paths:
         url: 'https://docs.opsramp.com/api/alerts/alert-correlation-policy-delete/'
     get:
       summary: Get alert correlation policy
-      description: |
-        This endpoint is used to retrieve the details of an alert correlation policy.
-
-        ## Sample URLs
-        ```
-        https://api.opsramp.com/api/v2/tenants/client_7/policies/alertCorrelation/POLICY-AC-3218d82f-25c6-4d4d-bd88-b83c5e30721c
-        ```
-        ```
-        https://api.opsramp.com/api/v2/tenants/msp_6/policies/alertCorrelation/POLICY-AC-ce200249-bcb0-47ef-8b24-9b5744053243
-        ```
-
-        Examples include responses from:
-        - alert correlation policy with a dependency correlation
-        - alert correlation policy with algorithm-based correlation
-        - alert correlation policy with cooccurrence-based correlation
-        - client scope partner correlated with Algorithm and ALL based upon organizationMatchingType
-        - client scope partner correlated with Algorithm and INCLUDE based upon organizationMatchingType
+      description: This endpoint is used to retrieve the details of an alert correlation policy.
       operationId: alert-correlation-policy-get/
       tags:
         - alerts
@@ -1402,16 +1305,7 @@ paths:
         url: 'https://docs.opsramp.com/api/alerts/alert-correlation-policy-get/'
     post:
       summary: Update alert correlation policy
-      description: |-
-        This endpoint is used to update an alert correlation policy.
-
-        ## Sample URLs
-        ```
-        https://api.opsramp.com/api/v2/tenants/client_7/policies/alertCorrelation/POLICY-AC-3218d82f-25c6-4d4d-bd88-b83c5e30721c
-        ```
-        ```
-        https://api.opsramp.com/api/v2/tenants/msp_6/policies/alertCorrelation/POLICY-AC-ce200249-bcb0-47ef-8b24-9b5744053243
-        ```
+      description: This endpoint is used to update an alert correlation policy.
       operationId: alert-correlation-policy-update-post/
       tags:
         - alerts
@@ -1798,34 +1692,6 @@ paths:
         This endpoint is used to enable, disable, and create an observed mode on an alert correlation policy.
 
         The response depends on the returned status code.
-
-        ## Sample URLs
-        ### For Clients
-        To enable an alert correlation policy:
-        ```
-        https://{api-url}/api/v2/tenants/client_7/policies/alertCorrelation/POLICY-AC-3218d82f-25c6-4d4d-bd88-b83c5e30721c/enable
-        ```
-        To disable an alert correlation policy:
-        ```
-        https://{api-url}/api/v2/tenants/client_7/policies/alertCorrelation/POLICY-AC-ce200249-bcb0-47ef-8b24-9b5744053243/disable
-        ```
-        To enable observed mode for an alert correlation policy:
-        ```
-        https://api.opsramp.com/api/v2/tenants/client_9/policies/alertCorrelation/POLICY-AC-3218d82f-25c6-4d4d-bd88-b83c5e30721c/observed
-        ```
-        ### For Partners
-        To enable an alert correlation policy:
-        ```
-        https://api.opsramp.com/api/v2/tenants/msp_6/policies/alertCorrelation/POLICY-AC-ce200249-bcb0-47ef-8b24-9b5744053243/enable
-        ```
-        To disable an alert correlation policy:
-        ```
-        https://api.opsramp.com/api/v2/tenants/msp_6/policies/alertCorrelation/POLICY-AC-ce200249-bcb0-47ef-8b24-9b5744053243/disable
-        ```
-        To enable observed mode for an alert correlation policy:
-        ```
-        https://api.opsramp.com/api/v2/tenants/msp_6/policies/alertCorrelation/POLICY-AC-ce200249-bcb0-47ef-8b24-9b5744053243/observed
-        ```
       operationId: alert-correlation-policy-enable-disable-post/
       tags:
         - alerts
@@ -1848,15 +1714,7 @@ paths:
   '/api/v2/tenants/{tenantId}/alerts/{alertId}/escalations':
     get:
       summary: Get alert escalation policy
-      description: |-
-        This endpoint is used to retrieve the alert escalation policy attached to an alert.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_7/alerts/280/escalations
-        ```
-
-        Response examples include a manual alert escalation policy response and a machine learning-based alert escalation policy response.
+      description: This endpoint is used to retrieve the alert escalation policy attached to an alert.
       operationId: alert-escalation-policy-by-alertid-get/
       tags:
         - alerts
@@ -2250,12 +2108,7 @@ paths:
       description: |
         A predefined action to be taken when an alert is not acknowledged.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_9/escalations
-        ```
-
-        ### Notes
+        ## Notes
         - resources: Used to define different resources to apply the escalate alert policy.
         - escalations: Used to define the users for escalated alerts notifications.
         - escalationType:
@@ -3378,18 +3231,7 @@ paths:
   '/api/v2/tenants/{tenantId}/escalations/{id}':
     delete:
       summary: Delete alert escalation policy
-      description: |-
-        This endpoint is used to delete an alert escalation policy.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/msp_5/escalations/POLICY-a4ba7d49-be21-b1ae-1857-afe9913ada3
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/client_7/escalations/POLICY-d576aa32-fdeb-ca6b-3eb5-6f7641886dcf
-        ```
-        ### Note
-        The response depends on the returned status code.
+      description: This endpoint is used to delete an alert escalation policy.
       operationId: alert-escalation-policy-delete/
       tags:
         - alerts
@@ -3400,16 +3242,7 @@ paths:
         url: 'https://docs.opsramp.com/api/alerts/alert-escalation-policy-delete/'
     get:
       summary: Get alert escalation details by ID
-      description: |-
-        This endpoint is used to retrieve the alert escalation details.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/msp_5/escalations/POLICY-a0250f66-bf3a-7568-edef-83e7e8ac4231
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/client_7/escalations/POLICY-e231dcc6-b338-466e-afc4-6638fc6de9a9
-        ```
+      description: This endpoint is used to retrieve the alert escalation details.
       operationId: alert-escalation-policy-get/
       tags:
         - alerts
@@ -3838,14 +3671,6 @@ paths:
       summary: Update alert escalation policy
       description: |-
         This endpoint is used to update an alert escalation policy.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/msp_5/escalations/POLICY-a0250f66-bf3a-7568-edef-83e7e8ac4231
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/client_7/escalations/POLICY-e231dcc6-b338-466e-afc4-6638fc6de9a9
-        ```
 
         When the escalation action is set to INCIDENT, an Incident is automatically created from the alert and assigned to the desired user/team.
         - Create New Incident
@@ -5730,14 +5555,7 @@ paths:
       description: |-
         This endpoint is used to disable an alert escalation policy.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/msp_5/escalations/POLICY-8b1cd650-4bf9-cfc7-2b28-0a8f24e448fc/disable
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/client_7/escalations/POLICY-4e78feba-6ffb-c09b-075e-81ad7286a1bb/disable
-        ```
-        ### Note
+        ## Notes
         The response depends on the returned status code.
       operationId: alert-escalation-policy-disable-post/
       tags:
@@ -5764,14 +5582,7 @@ paths:
       description: |-
         This endpoint is used to enable an alert escalation policy.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/msp_5/escalations/POLICY-8b1cd650-4bf9-cfc7-2b28-0a8f24e448fc/enable
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/client_7/escalations/POLICY-4e78feba-6ffb-c09b-075e-81ad7286a1bb/enable
-        ```
-        ### Note
+        ## Notes
         The response depends on the returned status code.
       operationId: alert-escalation-policy-enable-post/
       tags:
@@ -5798,17 +5609,7 @@ paths:
       description: |-
         This endpoint is used to fetch the alert escalation policies attached to an alert.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/msp_5/escalations/search
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/client_7/escalations/search?pageNo=1&pageSize=20&isDescendingOrder=false&sortName=id&queryString=name:Network
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/client_7/escalations/search?pageNo=1&pageSize=20&isDescendingOrder=false&sortName=id&queryString=name:Network+allList:true
-        ```
-        ### Notes
+        ## Notes
         There are special characters that can be used in a query string:
         (+) represents the next field and must be URL-encoded.
         (:) represents equals. An example is key : value.
@@ -5867,7 +5668,7 @@ paths:
           description: |-
             OK
 
-            ### Note
+            ## Notes
             `"mlBased"` indicates a machine-learning based alert escalation policy:
             - `"mlBased": true` indicates the machine-learning based escalation policy.
             - `"mlBased": false` indicates manual escalation policy.
@@ -6066,13 +5867,7 @@ paths:
   '/api/v2/tenants/{tenantId}/alerts/{alertId}/acknowledge':
     post:
       summary: Acknowledge alert
-      description: |-
-        The endpoint is used to acknowledge an alert.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_69919/alerts/6/acknowledge
-        ```
+      description: The endpoint is used to acknowledge an alert.
       operationId: alerts-acknowledge-alert-post/
       tags:
         - alerts
@@ -6082,7 +5877,7 @@ paths:
         '200':
           description: |-
             OK
-            ### Note
+            ## Notes
             The response depends on the returned status code.
     parameters:
       - schema:
@@ -6101,32 +5896,7 @@ paths:
       description: |-
         This endpoint is used to post an action on an alert.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/api/v2/tenants/client_93/alerts/100/actions/acknowledge
-        ```
-        ```
-        https://{api-url}/api/v2/api/v2/tenants/client_93/alerts/100/actions/suppress
-        ```
-        ```
-        https://{api-url}/api/v2/api/v2/tenants/client_93/alerts/100/actions/close
-        ```
-        ```
-        https://{api-url}/api/v2/api/v2/tenants/client_93/alerts/100/actions/unacknowledge
-        ```
-        ```
-        https://{api-url}/api/v2/api/v2/tenants/client_93/alerts/100/actions/unsuppress
-        ```
-        ## Supported action types
-        |Action|Description|
-        |-----|-----|
-        |Acknowledge|Accept the ownership of the alert and act upon it.|
-        |Suppress|Temporarily disable the alert.|
-        |Close|Close an incident if the alert has been resolved.|
-        |Unacknowledge|Undo the acknowledge action.|
-        |Unsuppress|Undo the suppress action.|
-
-        ### Note
+        ## Notes
         When unacknowledge or unsuppress is specified, the alert status becomes either open or ticketed (if there is an incident ID associated with the alert).
       operationId: alerts-alert-action-post/
       tags:
@@ -6149,7 +5919,7 @@ paths:
         '200':
           description: |-
             OK
-            ### Note
+            ## Notes
             The response depends on the returned status code.
     parameters:
       - schema:
@@ -6179,11 +5949,7 @@ paths:
       description: |-
         This endpoint is used to retrieve the details of an alert by event ID.
 
-        ## Sample URL
-        ```
-        https://<api-url>/api/v2/tenants/client_9/alerts/event/fa3245ca-6740-4f7a-bf06-02414c51595e
-        ```
-        ### Note
+        ## Notes
         - A list of event IDs is generated when alerts are created. This list is valid for 30 days.
         - Use the event IDs to search and retrieve alert details.
       operationId: alerts-alert-by-event-id-get/
@@ -6426,13 +6192,7 @@ paths:
   '/api/v2/tenants/{tenantId}/alerts/{alertId}/comments':
     get:
       summary: Get alert comments
-      description: |
-        This endpoint is used to retrieve the comments on an alert.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_8/alerts/289/comments
-        ```
+      description: This endpoint is used to retrieve the comments on an alert.
       operationId: alerts-alert-comments-get/
       tags:
         - alerts
@@ -6559,13 +6319,7 @@ paths:
       description: |-
         This endpoint retrieves alert details.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_8/alerts/93
-        ```
-
-
-        ### Note
+        ## Notes
         For an inference alert, resource name and client ID are provided in the response. For an RCA alert, device ID, Name, and IP address are provided in the response.
       operationId: alerts-alert-get/
       tags:
@@ -6856,13 +6610,7 @@ paths:
   /api/v2/alertTypes:
     get:
       summary: Get alert types
-      description: |-
-        This endpoint is used to retrieve the list of supported alert types.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/alertTypes
-        ```
+      description: This endpoint is used to retrieve the list of supported alert types.
       operationId: alerts-alert-types-get/
       tags:
         - alerts
@@ -6891,23 +6639,7 @@ paths:
   '/api/v2/tenants/{orgId}/users/{userId}/alertViews':
     get:
       summary: Get alert views
-      description: |-
-        This endpoint is used to retrieve a list of alert views.
-
-        ## Sample URLs
-        ```
-        https://<api-url>/api/v2/tenants/msp_5/users/USR0000001876/alertViews
-        ```
-
-        To request alert view with descending order, sort name ID, and view type as shared:
-        ```
-        https://<api-url>/api/v2/tenants/client_93/users/USR0000002115/alertViews?isDescendingOrder=true&sortName=id&viewType=Shared
-        ```
-
-        To request alert views with descending order, sort name, and default view as true:
-        ```
-        https://<api-url>/api/v2/tenants/client_93/users/USR0000002115/alertViews?isDescendingOrder=true&sortName=id&defaultView=true
-        ```
+      description: This endpoint is used to retrieve a list of alert views.
       operationId: alerts-alert-views-get/
       tags:
         - alerts
@@ -7004,13 +6736,7 @@ paths:
   '/api/v2/tenants/{orgId}/users/{userId}/alertViews/{viewId}':
     get:
       summary: Get alert view by view ID
-      description: |
-        This endpoint is used to retrieve an alert view of a user.
-
-        ## Sample URLs
-        ```
-        https://<api-url>/api/v2/tenants/msp_5/users/USR0000001876/alertViews/35
-        ```
+      description: This endpoint is used to retrieve an alert view of a user.
       operationId: alerts-alert-views-single-get/
       tags:
         - alerts
@@ -7148,13 +6874,7 @@ paths:
   '/api/v2/alerts/tenants/{tenantId}/alerts/{alertId}':
     get:
       summary: Get alerts by an alert ID
-      description: |-
-        This endpoint is used to retrieve the details of an alert by alert ID.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/alerts/tenants/client_107/alerts/40535
-        ```
+      description: This endpoint is used to retrieve the details of an alert by alert ID.
       operationId: alerts-alerts-by-alert-id-get/
       tags:
         - alerts
@@ -7295,13 +7015,7 @@ paths:
   '/api/v2/alerts/tenants/{tenantId}/tickets/{ticketId}':
     get:
       summary: Get alerts by incident ID
-      description: |-
-        This endpoint is used to retrieve the details of an alert attached to an incident.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/alerts/tenants/client_107/tickets/1622
-        ```
+      description: This endpoint is used to retrieve the details of an alert attached to an incident.
       operationId: alerts-alerts-by-incidents-get/
       tags:
         - alerts
@@ -7442,13 +7156,7 @@ paths:
   '/api/v2/tenants/{tenantId}/alerts/{alertId}/incidents/{IncidentId}/attach':
     post:
       summary: Attach incident to an alert
-      description: |-
-        This endpoint is used to attach an incident to an alert.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_7/alerts/63227/incidents/INC0000002315/attach
-        ```
+      description: This endpoint is used to attach an incident to an alert.
       operationId: alerts-attach-incident-post/
       tags:
         - alerts
@@ -7457,7 +7165,7 @@ paths:
           description: |-
             OK
 
-            ### Note
+            ## Notes
             The response depends on the returned status code.
       requestBody:
         content:
@@ -7560,12 +7268,7 @@ paths:
       description: |
         Create a single alert on a resource.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/alert
-        ```
-
-        ### Note
+        ## Notes
         - A list of event IDs is generated when alerts are created. This list is valid for 30 days.
         - Use the event IDs to search and retrieve alert details.
 
@@ -7808,11 +7511,7 @@ paths:
       description: |-
         This endpoint is used to generate multiple alerts on resources.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/alerts
-        ```
-        ### Note
+        ## Notes
         - A list of event IDs is generated when alerts are created. This list is valid for 30 days.
         - Use the event IDs to search and retrieve alert details.
       operationId: alerts-create-alerts-post/
@@ -7823,7 +7522,7 @@ paths:
           description: |-
             OK
 
-            ### Note
+            ## Notes
             The response depends on the returned status code.
           content:
             application/json:
@@ -8023,22 +7722,7 @@ paths:
       description: |
         This endpoint retrieves the occurrences of an alert based on the alert-triggered time.
 
-        ## Sample URLs
-        ```
-        https://<api-ur>/api/v2/tenants/client_7/alerts/175/occurrences
-        ```
-        ```
-        https://<api-url>/api/v2/tenants/client_7/alerts/175/occurrences?pageSize=100&amp;queryString=startTime:2016-01-01T00:00:00 0000+endTime:2017-12-31T00:00:00 0000
-        ```
-
-
-        ### Query variables
-        |Query Variable|Description|
-        |-----|-----|
-        |startTime|Search for an alert triggered within a specific duration where `startTime` represents the from date.|
-        |endTime|Search for an alert triggered within a specific duration where `endTime` represents the to date.|
-
-        ### Notes
+        ## Notes
         There are special characters that can be used in a query string:
         - (+) represents the next field and must be URL-encoded.
         - (:) represents equals. An example is key : value.
@@ -8173,11 +7857,6 @@ paths:
       description: |-
         This endpoint is used to search alerts.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_627314/alerts/search?pageNo=1&pageSize=2&isDescendingOrder=true&sortName=ts&queryString=clientIds:client_1,client_2+startDate:2015-06-10T05:39:51 0000+endDate:2015-08-10T05:39:51 0000+priority:P0,P1+states:CRITICAL,OK+uniqueId:10+deviceStatus:manage+resourceType:REDSHIFT+resourceIds:DEV0000015753,148e892d-84ce-496c-a123-f91e1a8a3f7d+actions:closed,ticketed+alertTypes:agent,obsolete+metrics:zenoss,xenapp+duration:7+alertTimeBase:updated+ticketId:INC0000000001
-        ```
-
         ### Query variables
         |Query Variable|Value|Description|
         |----|---|---|
@@ -8217,7 +7896,7 @@ paths:
         |startClosedTime||2015-08-10T05:39:51 0000|
         |endClosedTime||2015-08-10T05:39:51 0000|
 
-        ### Note
+        ## Notes
         - Special characters to use in the query string are:
             - (+) indicates next field and must be URL-encoded.
             - (:) indicates Equals. An example is key: value.
@@ -8627,13 +8306,7 @@ paths:
   '/api/v2/tenants/{tenantId}/alertStatusHistory/{alertId}':
     get:
       summary: Alert status history
-      description: |
-        This endpoint retrieves an alert’s status history.
-
-        ## Sample URLs
-        ```
-        https://api.opsramp.com/api/v2/tenants/client_9/alertStatusHistory/2156
-        ```
+      description: This endpoint retrieves an alert’s status history.
       operationId: alerts-status-history-get/
       tags:
         - alerts
@@ -8687,13 +8360,7 @@ paths:
   '/api/v2/tenants/{tenantId}/subAlertTypes':
     post:
       summary: Get sub alert types
-      description: |-
-        This endpoint is used to retrieve the sub-alert types.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_4/subAlertTypes?alertTypes=Monitoring
-        ```
+      description: This endpoint is used to retrieve the sub-alert types.
       operationId: alerts-sub-alert-types-get/
       tags:
         - alerts
@@ -8741,13 +8408,7 @@ paths:
   '/api/v2/tenants/{tenantId}/alerts/{alertId}/tickets/{ticketId}/update':
     put:
       summary: Update incident by an alert ID
-      description: |
-        This endpoint is used to attach and update an incident to an alert.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_7/alerts/16535/tickets/3215/update
-        ```
+      description: This endpoint is used to attach and update an incident to an alert.
       operationId: alerts-update-incident-by-alertid-put/
       tags:
         - alerts
@@ -8757,7 +8418,7 @@ paths:
         '200':
           description: |-
             OK
-            ### Note
+            ## Notes
             The response depends on the returned status code.
     parameters:
       - schema:
@@ -8778,16 +8439,7 @@ paths:
   '/api/v2/tenants/{tenantId}/policies/firstResponse':
     get:
       summary: Get first response policies of client
-      description: |-
-        This endpoint is used to view details of the first response policy.
-
-        ## Sample URLs
-        ```
-        https://api.opsramp.com/api/v2/tenants/client_4/policies/firstResponse/
-        ```
-        ```
-        https://api.opsramp.com/api/v2/tenants/client_4/policies/firstResponse/?pageNo=1&pageSize=100
-        ```
+      description: This endpoint is used to view details of the first response policy.
       operationId: first-response-policy-client-get/
       tags:
         - alerts
@@ -8865,13 +8517,7 @@ paths:
           name: pageSize
     post:
       summary: Create the first response policy
-      description: |-
-        This endpoint is used to create First Response Policy.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_7/policies/firstResponse
-        ```
+      description: This endpoint is used to create First Response Policy.
       operationId: first-response-policy-create-post/
       tags:
         - alerts
@@ -9110,14 +8756,7 @@ paths:
   '/api/v2/tenants/{tenantId}/policies/firstResponse/{policyId}':
     delete:
       summary: Delete first response policy
-      description: |
-        ## Sample URLs
-        ```
-        https://api.opsramp.com/api/v2/tenants/client_7/policies/firstResponse/POLICY-AC-3218d82f-25c6-4d4d-bd88-b83c5e30721c
-        ```
-        ```
-        https://api.opsramp.com/api/v2/tenants/client_7/policies/firstResponse/POLICY-AC-ce200249-bcb0-47ef-8b24-9b5744053243
-        ```
+      description: Delete first response policy
       operationId: first-response-policy-delete/
       tags:
         - alerts
@@ -9128,16 +8767,7 @@ paths:
           description: OK
     get:
       summary: Get first response policy
-      description: |-
-        This endpoint is used to view details of the First Response Policy.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_7/policies/firstResponse/POLICY-AC-3218d82f-25c6-4d4d-bd88-b83c5e30721c
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/client_7/policies/firstResponse/POLICY-AC-ce200249-bcb0-47ef-8b24-9b5744053243
-        ```
+      description: This endpoint is used to view details of the First Response Policy.
       operationId: first-response-policy-get/
       tags:
         - alerts
@@ -9242,13 +8872,7 @@ paths:
         url: 'https://docs.opsramp.com/api/alerts/first-response-policy-get/'
     post:
       summary: Update first response policy
-      description: |-
-        This endpoint is used to update the First Response Policy.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_7/policies/firstResponse/{policyId}
-        ```
+      description: This endpoint is used to update the First Response Policy.
       operationId: first-response-policy-update-post/
       tags:
         - alerts
@@ -9497,16 +9121,7 @@ paths:
   '/api/v2/tenants/{tenantId}/policies/firstResponse/{policyId}/{status}':
     post:
       summary: Enable or disable first response policy
-      description: |-
-        This endpoint is used to enable or disable the first response policy.
-
-        ## Sample URLs
-        ```
-        https://api.opsramp.com/api/v2/tenants/client_7/policies/firstResponse/POLICY-AC-3218d82f-25c6-4d4d-bd88-b83c5e30721c/enable
-        ```
-        ```
-        https://api.opsramp.com/api/v2/tenants/client_7/policies/firstResponse/POLICY-AC-ce200249-bcb0-47ef-8b24-9b5744053243/disable
-        ```
+      description: This endpoint is used to enable or disable the first response policy.
       operationId: first-response-policy-enable-disable-post/
       tags:
         - alerts
@@ -9537,14 +9152,7 @@ paths:
   /auth/oauth/token:
     post:
       summary: Get OAuth2 access token with client credentials
-      description: |-
-        This endpoint is used to generate an access token using client credentials.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/auth/oauth/token
-        ```
-        This access token is used at the partner-level for deleting the client’s first response policy.
+      description: This endpoint is used to generate an access token using client credentials.
       operationId: first-response-policy-oauth2-access-token-client-creds-get/
       tags:
         - alerts
@@ -9630,7 +9238,7 @@ paths:
   '/api/v2/tenants/{tenantId}/rosters':
     post:
       summary: Create rosters
-      description: "This endpoint is used to create partner-level or client-level rosters.\n\n## Sample URLs\nFor partner-level rosters:\n```\nhttps://{api-url}/api/v2/tenants/msp_5/rosters\n```\nFor client-level rosters:\n```\nhttps://{api-url}/api/v2/tenants/client_7/rosters\n```\n\n### Timezones\n|Region/City|Region/City|Region/City|\n|-----|-----|-----|\n|Pacific/Asia|Pacific/Honolulu|America/Anchorage|\n|America/Los_Angeles|America/Denver|America/Chicago|\n|America/New_York|America/Puerto_Rico|America/St_Johns|\n|America/Buenos_Aires|Atlantic/Azores|GMT|\n|Europe/Paris|Europe/Istanbul|Africa/Addis_Ababa|\n|Asia/Tehran|Asia/Yerevan|Asia/Karachi|\n|Asia/Calcutta|Asia/Dacca|Asia/Saigon|\n|Asia/Shanghai|Asia/Tokyo|Australia/Darwin|\n|Australia/Sydney|Pacific/Guadalcanal|Pacific/Auckland|\n\n### Pattern types for recurring schedule\n|Type|Fields|\n|-----|-----|\n|daily||\n||repeatFrequency|\n||startDate|\n||endPattern|\n|weekly||\n||repeatFrequency|\n||weekDays|\n||startDate|\n||endPattern|\n|monthly||\n||repeatFrequency|\n||repeatType|\n||weekIndex|\n||dayOfWeek|\n||dayOfMonth|\n||startDate|\n||endPattern|\n|yearly||\n||repeatFrequency|\n||startDate|\n||endPattern|\n\n### Sample payloads for recurring pattern types\n#### **Daily **- Create a roster to repeat once in five days:\n```\n\"pattern\": {\n\t\"type\": \"daily\",\n\t\"repeatFrequency\": 5\n}\n```\n#### **Weekly **- Create a roster to repeat once in 5 weeks on specific weekdays:\n```\n\"pattern\": {\n\t\"type\": \"weekly\",\n\t\"weekDays\": \"Wednesday,Thursday,Friday\",\n\t\"repeatFrequency\": 5\n}\n```\n#### **Monthly **- Create a roster to repeat once in 5 months on a specific weekday of a month:\n```\n\"pattern\": {\n\t\"type\": \"monthly\",\n\t\"repeatType\": \"DAY_OF_WEEK\",\n\t\"weekIndex\": \"First\",\n\t\"dayOfWeek\": \"Sunday\",\n\t\"repeatFrequency\": 5\n}\n```\n#### Create a roster to repeat once in 5 months on a specific day of a month:\n```\n\"pattern\": {\n\t\"type\": \"monthly\",\n\t\"repeatType\": \"DAY_OF_MONTH\",\n\t\"dayOfMonth\": \"1\",\n\t\"repeatFrequency\": 5\n}\n```\n#### **Yearly **- Create a roster to repeat once in 2 years:\n```\n\"pattern\": {\n\t\"type\": \"yearly\",\n\t\"repeatFrequency\": 2\n}\n```"
+      description: This endpoint is used to create partner-level or client-level rosters.
       operationId: rosters-create-post/
       tags:
         - alerts
@@ -10017,18 +9625,7 @@ paths:
   '/api/v2/tenants/{tenantId}/rosters/{id}':
     delete:
       summary: Delete roster
-      description: |-
-        This endpoint is used to delete a roster.
-
-        ## Sample URLs
-        For partner-level rosters:
-        ```
-        https://{api-url}/api/v2/tenants/msp_5/rosters/ES-b519563f-5b9f-4bcf-9a90-ce3cddf5c268
-        ```
-        For client-level rosters:
-        ```
-        https://{api-url}/api/v2/tenants/client_7/rosters/ES-d576aa32-fdeb-ca6b-3eb5-6f7641886dcf
-        ```
+      description: This endpoint is used to delete a roster.
       operationId: rosters-delete/
       tags:
         - alerts
@@ -10039,18 +9636,7 @@ paths:
           description: OK
     get:
       summary: Get roster
-      description: |
-        This endpoint is used to retrieve the details of a roster.
-
-        ## Sample URLs
-        For partner-level rosters:
-        ```
-        https://{api-url}/api/v2/tenants/msp_5/rosters/ES-65a340d8-61c9-4b0e-8b8e-7297500cde4e
-        ```
-        For client-level rosters:
-        ```
-        https://{api-url}/api/v2/tenants/client_7/rosters/ES-b519563f-5b9f-4bcf-9a90-ce3cddf5c268
-        ```
+      description: This endpoint is used to retrieve the details of a roster.
       operationId: rosters-get/
       tags:
         - alerts
@@ -10217,15 +9803,7 @@ paths:
         url: 'https://docs.opsramp.com/api/alerts/rosters-get/'
     post:
       summary: Update roster
-      description: |-
-        This endpoint is used to update the details of a roster.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/rosters/ES-c27584ee-29de-1cf2-4983-86308844e35d
-        ```
-
-        View the Create Rosters API for more details on supported fields.
+      description: This endpoint is used to update the details of a roster.
       operationId: rosters-update-post/
       tags:
         - alerts
@@ -10571,11 +10149,7 @@ paths:
       description: |-
         This endpoint is used to add resources to a scheduled maintenance window.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_8/scheduleMaintenances/SM-9e1e66c7-799c-4a70-9820-10fc6f4dc765/resources
-        ```
-        ### Note
+        ## Notes
         - Resources can only be added to Active, Pending, or Suspended scheduled maintenance windows.
         - To search for scheduled maintenance windows on the basis of status, use the search schedule maintenance API.
         - Entities can be added such as resource, device group, location to a schedule maintenance window. For example, all resource types such as Server, Storage, Volumes, RedShift, RDS or Lambda services are now supported.
@@ -10635,19 +10209,14 @@ paths:
           description: |-
             OK
 
-            ### Note
+            ## Notes
             The response depends on the returned status code.
     delete:
       summary: Remove resources from a schedule maintenance window
       description: |-
         This endpoint is used to remove resources from a scheduled maintenance window.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_8/scheduleMaintenances/SM-9e1e66c7-799c-4a70-9820-10fc6f4dc765/resources
-        ```
-
-        ### Note
+        ## Notes
         - Resources can only be removed from Active, Pending, or Suspended scheduled maintenance windows.
       operationId: schedule-maintenance-remove-resources-delete/
       tags:
@@ -10657,7 +10226,7 @@ paths:
           description: |-
             OK
 
-            ### Note
+            ## Notes
             The response depends on the returned status code.
       requestBody:
         content:
@@ -10720,7 +10289,7 @@ paths:
   '/api/v2/tenants/{tenantId}/scheduleMaintenances':
     post:
       summary: Create schedule
-      description: "This endpoint is used to create a daily recurring schedule.\n\n## Sample URLs\n```\nhttps://{api-url}/api/v2/tenants/client_93/scheduleMaintenances\n```\n\n### Timezones\n|Region/City|Region/City|Region/City|\n|-----|-----|-----|\n|Pacific/Asia|Pacific/Honolulu|America/Anchorage|\n|America/Los_Angeles|America/Denver|America/Chicago|\n|America/New_York|America/Puerto_Rico|America/St_Johns|\n|America/Buenos_Aires|Atlantic/Azores|GMT|\n|Europe/Paris|Europe/Istanbul|Africa/Addis_Ababa|\n|Asia/Tehran|Asia/Yerevan|Asia/Karachi|\n|Asia/Calcutta|Asia/Dacca|Asia/Saigon|\n|Asia/Shanghai|Asia/Tokyo|Australia/Darwin|\n|Australia/Sydney|Pacific/Guadalcanal|Pacific/Auckland|\n\n### Patterns for Daily and Frequency\n#### Daily and frequency: every weekday\n```\n\"pattern\": {\n\t\t\"type\": \"daily\",\n\t\t\"dayFrequency\": \"every weekday\"\n}\n```\n#### Daily and frequency: everyday\n```\n\"pattern\": {\n\t\t\"type\": \"daily\",\n\t\t\"dayFrequency\": \"everyday\"\n}\n```"
+      description: This endpoint is used to create a daily recurring schedule.
       operationId: schedule-maintenance-create-daily-post/
       tags:
         - alerts
@@ -11035,12 +10604,7 @@ paths:
       description: |-
         This endpoint is used to end a scheduled maintenance window.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/scheduleMaintenances/SM-a7aa1874-ee4f-4a12-add1-2313bd717d4e/end
-        ```
-
-        ### Notes
+        ## Notes
         - User can end only active schedule maintenance windows.
         - Active schedule maintenance windows that are one-time maintenance windows move to a completed state. Recurring maintenance windows move to pending state.
       operationId: schedule-maintenance-end-window-post/
@@ -11079,22 +10643,7 @@ paths:
   '/api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resources/{resourcesType}':
     get:
       summary: Get resources of a schedule maintenance window
-      description: |-
-        This endpoint is used to retrieve the list of devices (or device groups or sites) of a scheduled maintenance window.
-
-        ## Sample URLs
-        To retrieve the resources in a scheduled maintenance window:
-        ```
-        https://{api-url}/api/v2/tenants/client_44/scheduleMaintenances/SM-c11b6b44-c85a-426c-9963-0e977070ce98/resources/resources?pageNo=1&pageSize=5
-        ```
-        To retrieve the device groups in a scheduled maintenance window:
-        ```
-        https://{api-url}/api/v2/tenants/client_44/scheduleMaintenances/SM-c11b6b44-c85a-426c-9963-0e977070ce98/resources/deviceGroups?pageNo=1&pageSize=2
-        ```
-        To retrieve the sites in a scheduled maintenance window:
-        ```
-        https://{api-url}/api/v2/tenants/client_44/scheduleMaintenances/SM-c11b6b44-c85a-426c-9963-0e977070ce98/resources/sites?pageNo=1&pageSize=2
-        ```
+      description: This endpoint is used to retrieve the list of devices (or device groups or sites) of a scheduled maintenance window.
       operationId: schedule-maintenance-resources-get/
       tags:
         - alerts
@@ -11248,11 +10797,6 @@ paths:
       description: |
         This endpoint is used to activate a user.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/scheduleMaintenances/SM-c11b6b44-c85a-426c-9963-0e977070ce98/resume
-        ```
-
         Only suspended schedule maintenance windows can be resumed.
       operationId: schedule-maintenance-resume-window-post/
       tags:
@@ -11264,7 +10808,7 @@ paths:
           description: |-
             OK
 
-            ### Note
+            ## Notes
             The response depends on the returned status code.
     parameters:
       - schema:
@@ -11283,20 +10827,7 @@ paths:
       description: |-
         This endpoint is used to retrieve the scheduled maintenance windows under a specific tenant.
 
-        ## Sample URLs
-        To retrieve all scheduled maintenance windows within a client:
-        ```
-        https://{api-url}/api/v2/tenants/client_8/scheduleMaintenances/search
-        ```
-        To retrieve specific scheduled maintenance windows assigned to a device (or device group):
-        ```
-        https://{api-url}/api/v2/tenants/client_8/scheduleMaintenances/search?queryString=deviceName:HYDLPT220+siteName:SJC+deviceUniqueId:60c6f02e-5080-46a7-856b-f1f2a1997603+deviceGroupName:Application Server
-        ```
-        To retrieve scheduled maintenance windows on the basis of window status:
-        ```
-        https://{api-url}/api/v2/tenants/client_8/scheduleMaintenances/search?queryString=deviceName:HYDLPT220+deviceGroupName:Application Server+status:Suspended
-        ```
-        #### Notes
+        ## Notess
         There are special characters that can be used in a query string:
         - (+) represents the next field and must be URL-encoded.
         - (:) represents equals. An example is key : value.
@@ -11502,11 +11033,7 @@ paths:
       description: |-
         This endpoint is used to suspend a scheduled maintenance window.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/scheduleMaintenances/SM-c11b6b44-c85a-426c-9963-0e977070ce98/suspend
-        ```
-        ### Notes
+        ## Notes
         - Only active schedule maintenance windows can be suspended.
         - Dates in date range consider date as yyyy-MM-dd and ignore the time HH: mm: ss.
         - Send dates (start date & end date) in GMT format.
@@ -11518,7 +11045,7 @@ paths:
           description: |-
             OK
 
-            ### Note
+            ## Notes
             The response depends on the returned status code.
       requestBody:
         content:
@@ -11562,7 +11089,7 @@ paths:
   '/api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}':
     get:
       summary: Get schedule maintenance window
-      description: "This endpoint is used to retrieve the details of a scheduled maintenance window.\n\n## Sample URLs\n```\nhttps://{api-url}/api/v2/tenants/client_8/scheduleMaintenances/SM-c11b6b44-c85a-426c-9963-0e977070ce98\n```\n## Schedule maintenance patterns\n### Schedule maintenance: one-time\nOne-time schedule maintenance would cause the resource to initiate the tasks for a particular period of time. Define the start date and end date for maintenance:\n```\n\"schedule\": {\n\t\t\"type\": \"one-time\",\n\t\t\"startTime\": \"2016-08-11T10:00:00+0000\",\n\t\t\"endTime\": \"2016-08-15T23:00:00+0000\"\n}\n```\nDate format is yyyy-MM-ddTHH:mm:ssZ (GMT).\n### Schedule maintenance: recurring\n|Schedule Pattern|Fields|Description|\n|-----|-----|-----|\n|Daily|Selected day:<br>- \"type\" : \"daily\",<br>- \"dayFrequency\": \"everyday\",<br>- \"repeatFrequency\" : 2|Maintenance tasks are performed on certain days.<br>Example: If repeatFrequency is 2, then the maintenance task is performed for every two days.|\n||Every weekday:<br>- \"dayFrequency\": \"every weekday\"|Maintenance tasks are performed every week from Monday to Friday.|\n|Weekly|Weekdays:<br>- \"type\" : \"weekly\",<br>- \"weekDays\": \"Monday, Tuesday\"|Weekday on which maintenance tasks are performed. Supported weekdays are from Sunday to Saturday.|\n|Monthly|Day of every month:<br>- \"type\" : \"monthly\",<br>- \"dayOfMonth\": \"02,03\"|Maintenance tasks are performed on certain days of every month. From the sample values provided, resources are scheduled for maintenance on the second and third day of every month.|\n||Weekday of every month:<br>- \"type\" : \"monthly\",<br>- \"weekIndex\" : \"Last\",<br>- \"dayOfWeek\": \"Saturday\"|Weekday on which the maintenance tasks are performed. From the sample values provided, resources are scheduled for maintenance on the last Saturday of every month.|"
+      description: This endpoint is used to retrieve the details of a scheduled maintenance window.
       operationId: schedule-maintenance-schedule-window-get/
       tags:
         - alerts
@@ -11903,11 +11430,7 @@ paths:
       description: |-
         This endpoint is used to update a pending schedule maintenance window.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_5/scheduleMaintenances/SM-c11b6b44-c85a-426c-9963-0e977070ce98
-        ```
-        ### Notes
+        ## Notes
         - In this API, user can update schedule details such as name, schedule type, and alert conditions. Resource details cannot be updated.
         - To retrieve the list of pending schedule maintenance windows, use Search Schedule Maintenance Windows API.
         - For a  recurring schedule maintenance to end at a specific time period, provide the end date and time in the field endTime. Example: "2016-05-29T18:55:27+0000"
@@ -12089,16 +11612,7 @@ paths:
         url: 'https://docs.opsramp.com/api/alerts/schedule-maintenance-update-pending-post/'
     delete:
       summary: Delete scheduled maintenance window
-      description: |-
-        This endpoint is used to delete a scheduled maintenance window.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_69856/scheduleMaintenances/28
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/client_69856/scheduleMaintenances/SM-c11b6b44-c85a-426c-9963-0e977070ce98
-        ```
+      description: This endpoint is used to delete a scheduled maintenance window.
       operationId: schedule-maintenance-window-delete/
       tags:
         - alerts
@@ -12109,7 +11623,7 @@ paths:
           description: |-
             OK
 
-            ### Note
+            ## Notes
             The response depends on the returned status code.
     parameters:
       - schema:

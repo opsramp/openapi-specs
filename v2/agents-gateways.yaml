@@ -1,67 +1,23 @@
 openapi: 3.0.0
 info:
   title: Agents and Gateways
-  version: 2.0
-  description: |-
-    Endpoints associated with agents and gateways.
-
-    ## go back and fix all the Token <TOKEN> in sample cURLs
-    ## For the following, variables are used INSIDE the query, and usage needs to be documented
-    - /api/v2/tenants/{tenantId}/rosters/search
-    - /api/v2/tenants/{tenantId}/integrations/activity
-
-    ## for resources-update-synthetic-post/
-    the path is totally wrong, doesn't make any sense
-
-    are the params `sslCertPath` and `SslCertKeyPath` really capitalized differently? And the sample request doen't match the listed parameters?
-
-    ## for alert-escalation-policy-by-alertid-get/
-    something is wrong, there's a whole list of parameters, but it's a GET endpoint, there's no request body to put them in.
-     
-    ## for integrations cloud-discovery-update-put/ and integrations cloud-discovery-update-put
-    does azure really use POST for updates while Google and AWS use PUT?
-
-    resource-management resources-create-post/
-    /api/v2/tenants/{tenantId}/resources
-    used to be many endpoints, but since distinction is in the JSON payload not the path, OpenAPI disallows dupoklicate paths. Because of this, cannot use unique objects to indicate mandatory attributes per type.
-
-    resource-management topology-data-by-relationships-get/
-    /api/v2/tenants/{tenantId}/topology/{resourceUUID}
-    Response uses weird keyes inconsistent with every other endpoint which include caps, spaces, and colons
-
-    Several endpoints could probably be revised and made more clear and simple with the addtion of <object>Full and <object>Minimal versions that can be used in different places as appropriate.
-
-    In tickets, some of the models are mis-named. I named them after the first instance I saw, but they turned out to be identical for all endpoints regardless of entity.
-
-    If the ticket entities in the Tickets API are in fact supposed to be identical regardless of the variations in the examples, the whole API can be simplified by redefining the path with a new parameter and rewording all the duplicate endpoints.
-
-    Probably the single most common error/inconsistency is boolean or integer values returned in JSON as a string (e.g 'true'), especially when the value is returned as a string in some examples and an integer or boolean in others.
-
-    Previous copy-paste errors such as on https://docs.opsramp.com/api/tickets/tasks-search-get/ where the example response for include=statusFlow is just a copy of the previous example for include=customFields and doesn't actually include the statusFlow field.
-
-    OpenAPI (or at least, Stoplight.io's implementation of OpenAPI) does not support empty strings when a specific string format is called out. This most often became a problem on fields like "updatedTime", which should be format date-time IF they are populated, but are often blank in examples, especially examples for Create rather than Update.
+  version: 2.0.0
+  description: null
   contact:
-    name: none
+    name: OpsRamp Support
+    email: support@opsramp.com
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: agents-gateways
-  - name: alerts
-  - name: automation
-  - name: exports
-  - name: integrations
-  - name: knowledge-base
-  - name: metrics
-  - name: monitoring
-  - name: patching
-  - name: resource-management
-  - name: tenancy-access-controls
-  - name: tickets
 servers:
   - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: 'https://{partner_name}.api.opsramp.com'
-    description: Partner - Custom Brand
-  - url: 'https://{client_name}.api.opsramp.com'
-    description: Partner and Client both Custom Branded
+  - url: 'https://{subdomain}.api.opsramp.com'
+    description: Partner or Client custom branded sub-domain
+    variables:
+      subdomain:
+        default: demo
+        description: Custom sub-domain assigned to the client
 paths:
   /api/v2/applicationservice:
     post:
@@ -71,11 +27,6 @@ paths:
         An access token must be generated to use this API.
 
         Supported services are network, squid, postgresql, vprobe, and ntp.
-
-        ## Sample URLs
-        ```
-        https://192.168.xxx.xxx:5480/api/v2/applicationservice
-        ```
       operationId: gateways/gateway-application-service-post/
       tags:
         - agents-gateways
@@ -130,13 +81,7 @@ paths:
       parameters: []
   '/api/v2/download/gateway/{packageName}':
     get:
-      description: |-
-        This API is used to download gateway files from the OpsRamp download server.
-
-        ## Sample URL
-        ```
-        https://{api-url}/api/v2/download/gateway/iso
-        ```
+      description: This API is used to download gateway files from the OpsRamp download server.
       operationId: gateways/gateway-download/
       tags:
         - agents-gateways
@@ -180,11 +125,6 @@ paths:
         This endpoint is used to configure the external proxy connection on the gateway.
 
         An access token must be generated to use this API.
-
-        ## Sample URLs
-        ```
-        https://192.168.xxx.xxx:5480/api/v2/externalproxy
-        ```
       operationId: gateways/gateway-externalproxy-post/
       tags:
         - agents-gateways
@@ -246,12 +186,7 @@ paths:
   /api/v2/generalinfo:
     get:
       summary: Get gateway information
-      description: |
-        This endpoint is used to get general information from the gateway. This includes appliance details and network information.
-        ## Sample URLs
-        ```
-        https://192.168.xxx.xxx:5480/api/v2/generalinfo
-        ```
+      description: This endpoint is used to get general information from the gateway. This includes appliance details and network information.
       operationId: gateways/gateway-generalinfo-get/
       tags:
         - agents-gateways
@@ -318,12 +253,7 @@ paths:
   /api/v2/getntpdetails:
     get:
       summary: Get NTP details
-      description: |
-        This endpoint is used to get the NTP details from the gateway.
-        ## Sample URLs
-        ```
-        https://192.168.xxx.xxx:5480/api/v2/getntpdetails
-        ```
+      description: This endpoint is used to get the NTP details from the gateway.
       operationId: gateways/gateway-ntp-details-get/
       tags:
         - agents-gateways
@@ -348,7 +278,7 @@ paths:
                 example-1:
                   value:
                     servers: 'xxx,xxx'
-                    NTP Status: OFF
+                    NTP Status: 'OFF'
                     time: 'Tue May 19 21:40:08 UTC 2020'
       externalDocs:
         url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntp-details-get/'
@@ -362,11 +292,6 @@ paths:
 
         1. To capture the agent file: Use the package name from the response headers with the specific header package-name. The content of the file is available in the response body.
         2. Create a file with the same name as provided in the header and then write the contents of the response body into the file.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_15/agents/LINUX/download/opsramp-agent_5.4.1-1_amd64.deb
-        ```
       operationId: agents/agents-gateways-agent-linux-download-get/
       tags:
         - agents-gateways
@@ -409,17 +334,6 @@ paths:
         This endpoint is used to download the agent installation script for Linux resources.
 
         This returns the JSON payload containing package name, package size, package checksum, and the package S3 bucket URL to directly download the agent.
-
-        ## Sample URLs
-        To download the Linux agent to directly connect to OpsRamp:
-        ```
-        https://{api-url}/api/v2/tenants/client_1/agents/deployAgentsScript
-        ```
-        To download the Linux agent to connect through the gateway to OpsRamp:
-
-        ```
-        https://{api-url}/api/v2/tenants/client_1/agents/deployAgentsScript?profileId=1
-        ```
       operationId: agents/agents-gateways-agent-linux-install-script-get/
       tags:
         - agents-gateways
@@ -474,16 +388,6 @@ paths:
         This endpoint is used to download the agent for Linux resources. This is usually followed by an API call to Download Linux Agent.
 
         Returns the JSON payload containing package name, package size, package checksum. The response also contains package S3 bucket URL for downloading the agent directly.
-
-        ## Sample URLs
-        For 64-bit Ubuntu resources:
-        ```
-        https://{api-url}/api/v2/tenants/client_8/agents/LINUX/info?distName=ubuntu&architecture=amd64
-        ```
-        For 64-bit Red Hat resources:
-        ```
-        https://{api-url}/api/v2/tenants/client_8/agents/LINUX/info?distName=redhat&architecture=x86_64
-        ```
       operationId: agents/agents-gateways-agent-package-linux-get/
       tags:
         - agents-gateways
@@ -567,10 +471,6 @@ paths:
       summary: Assign agent policy for resources
       description: |-
         The endpoint to assign agent policy for resources.
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_5/agentPolicies/1/devices
-        ```
       operationId: agents/agents-gateways-agent-policy-post/
       tags:
         - agents-gateways
@@ -632,11 +532,6 @@ paths:
       summary: Assign agent profile for resources
       description: |-
         This endpoint is used to assign an agent profile for resources.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_5/agentProfiles/10/devices
-        ```
       operationId: agents/agents-gateways-agent-profile-post/
       tags:
         - agents-gateways
@@ -699,16 +594,6 @@ paths:
       description: |-
         This endpoint is used to download the agent for Windows resources.
 
-        ## Sample URLs
-        To download the Windows agent directly:
-        ```
-        https://{api-url}/api/v2/tenants/client_93/agents/windows
-        ```
-        To download the Windows agent through the gateway:
-        ```
-        https://{api-url}/api/v2/tenants/client_93/agents/windows?profileId=10
-        ```
-
         This returns the JSON payload containing package name, package size, package checksum, and the package S3 bucket URL to directly download the agent.
       operationId: agents/agents-gateways-agent-windows-download-get/
       tags:
@@ -755,13 +640,7 @@ paths:
       - url: 'http://{gatewayIp}:port'
     post:
       summary: Register gateway
-      description: |
-        This endpoint is used to register the gateway.
-
-        ## Sample URLs
-        ```
-        https://192.168.xx.xx:5480/api/v2/registration
-        ```
+      description: This endpoint is used to register the gateway.
       operationId: gateways/gateway-register-post/
       tags:
         - agents-gateways
@@ -802,13 +681,7 @@ paths:
       - url: 'http://{gatewayIp}:port'
     post:
       summary: Turn on and off Squid proxy service
-      description: |
-        This endpoint is used to turn on and off the Squid proxy server on the gateway.
-
-        ## Sample URLs
-        ```
-        https://192.168.xx.xx:5480/api/v2/proxy=OFF
-        ```
+      description: This endpoint is used to turn on and off the Squid proxy server on the gateway.
       operationId: gateways/gateway-turn-onoff-proxy-post/
       tags:
         - agents-gateways
@@ -843,19 +716,13 @@ paths:
   /api/v2/apiTokenGen:
     post:
       summary: Generate access token for gateway
-      description: |
+      description: |-
         This endpoint is used to generate an access token on the gateway.
 
         An access token is needed to:
 
         - Register the gateway.
         - Use all gateway-related activities.
-
-
-        ## Sample URLs
-        ```
-        https://192.168.xxx.xxx:5480/api/v2/apiTokenGen
-        ```
       operationId: gateways/gateway-generate-access-token-post/
       tags:
         - agents-gateways
@@ -881,13 +748,7 @@ paths:
   /api/v2/networksettings:
     post:
       summary: Set network settings
-      description: |
-        This endpoint is used to specify the network settings on the gateway.
-
-        ## Sample URLs
-        ```
-        https://192.168.xxx.xxx:5480/api/v2/networksettings
-        ```
+      description: This endpoint is used to specify the network settings on the gateway.
       operationId: gateways/gateway-network-settings-post/
       tags:
         - agents-gateways
@@ -968,13 +829,7 @@ paths:
   /api/v2/nginx:
     post:
       summary: Status and restart NGINX service
-      description: |
-        This endpoint is used to get the NGINX service status and to restart the NGINX service on the gateway.
-
-        ## Sample URLs
-        ```
-        https://192.168.xxx.xxx:5480/api/v2/nginx
-        ```
+      description: This endpoint is used to get the NGINX service status and to restart the NGINX service on the gateway.
       operationId: gateways/gateway-nginx-service-post/
       tags:
         - agents-gateways
@@ -1015,13 +870,7 @@ paths:
   /api/v2/ntpmanualconfig:
     post:
       summary: Manually set NTP date and time
-      description: |
-        This endpoint is used to manually set the NTP date and time on the gateway.
-
-        ## Sample URLs
-        ```
-        https://192.168.xxx.xxx:5480/api/v2/ntpmanualconfig
-        ```
+      description: This endpoint is used to manually set the NTP date and time on the gateway.
       operationId: gateways/gateway-ntp-manualconfig-post/
       tags:
         - agents-gateways
@@ -1074,13 +923,7 @@ paths:
   /api/v2/ntpservice:
     post:
       summary: Start and stop NTP service
-      description: |
-        This endpoint is used to start and stop the NTP service on the gateway.
-
-        ## Sample URLs
-        ```
-        https://192.168.xxx.xxx:5480/api/v2/ntpservice
-        ```
+      description: This endpoint is used to start and stop the NTP service on the gateway.
       operationId: gateways/gateway-ntp-service-post/
       tags:
         - agents-gateways
@@ -1121,13 +964,7 @@ paths:
   /api/v2/ntpupdateips:
     post:
       summary: Set NTP servers
-      description: |
-        This endpoint is used to update the NTP server IP addresses on the gateway.
-
-        ## Sample URLs
-        ```
-        https://192.168.xxx.xxx:5480/api/v2/ntpupdateips
-        ```
+      description: This endpoint is used to update the NTP server IP addresses on the gateway.
       operationId: gateways/gateway-ntp-servicer-ips-post/
       tags:
         - agents-gateways
@@ -1166,13 +1003,7 @@ paths:
   /api/v2/ntpsyncips:
     post:
       summary: Synchronize NTP servers
-      description: |
-        This endpoint is used to synchronize the time from the NTP servers on the gateway.
-
-        ## Sample URLs
-        ```
-        https://192.168.xxx.xxx:5480/api/v2/ntpsyncips
-        ```
+      description: This endpoint is used to synchronize the time from the NTP servers on the gateway.
       operationId: gateways/gateway-ntpsync-ips-post/
       tags:
         - agents-gateways
@@ -1210,13 +1041,7 @@ paths:
   /api/v2/restartnetwork:
     post:
       summary: Restart network service
-      description: |
-        This endpoint is used to restart the network service on the gateway.
-
-        ## Sample URLs
-        ```
-        https://192.168.xxx.xxx:5480/api/v2/restartnetwork
-        ```
+      description: This endpoint is used to restart the network service on the gateway.
       operationId: gateways/gateway-restart-network-post/
       tags:
         - agents-gateways
@@ -1239,13 +1064,7 @@ paths:
   /api/v2/staticroute:
     post:
       summary: Set static route configuration
-      description: |
-        This endpoint is used to set the static route configuration on the gateway.
-
-        ## Sample URLs
-        ```
-        https://192.168.xxx.xxx:5480/api/v2/staticroute
-        ```
+      description: This endpoint is used to set the static route configuration on the gateway.
       operationId: gateways/gateway-staticroute-post/
       tags:
         - agents-gateways
@@ -1307,13 +1126,7 @@ paths:
   /api/v2/gettimezoneinfo:
     get:
       summary: Get timezone details
-      description: |
-        This endpoint is used to get timezone information from the gateway.
-
-        ## Sample URLs
-        ```
-        https://192.168.xxx.xxx:5480/api/v2/gettimezoneinfo
-        ```
+      description: This endpoint is used to get timezone information from the gateway.
       operationId: gateways/gateway-timezone-info-get/
       tags:
         - agents-gateways
@@ -1342,13 +1155,7 @@ paths:
   /api/v2/settimezone:
     post:
       summary: Set timezone
-      description: |
-        This endpoint is used to set the timezone on the gateway.
-
-        ## Sample URLs
-        ```
-        https://192.168.xxx.xxx:5480/api/v2/settimezone
-        ```
+      description: This endpoint is used to set the timezone on the gateway.
       operationId: gateways/gateway-timezone-post/
       tags:
         - agents-gateways
@@ -1376,13 +1183,7 @@ paths:
   '/api/v2/tenants/{tenantId}/managementProfiles/{id}/attach':
     get:
       summary: Attach gateway to management profile
-      description: |-
-        This endpoint is used to attach a gateway to a management profile and generates an activation token. The generated activation token is used in gateway registration.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/api/v2/tenants/client_69900/managementProfiles/76/attach
-        ```
+      description: This endpoint is used to attach a gateway to a management profile and generates an activation token. The generated activation token is used in gateway registration.
       operationId: management-profiles/management-profile-attach-get/
       tags:
         - agents-gateways
@@ -1439,13 +1240,7 @@ paths:
   '/api/v2/tenants/{tenantId}/managementProfiles':
     post:
       summary: Create management profile
-      description: |-
-        This endpoint is used to create a management profile.
-
-        ## Sample URLs
-        ```
-        https://{api/v2}/api/v2/tenants/client_69900/managementProfiles
-        ```
+      description: This endpoint is used to create a management profile.
       operationId: management-profiles/management-profile-create-post/
       tags:
         - agents-gateways
@@ -1565,18 +1360,7 @@ paths:
   '/api/v2/tenants/{tenantId}/managementProfiles/{profileId}':
     delete:
       summary: Delete management profile
-      description: |-
-        This endpoint is used to delete a management profile.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_69900/managementProfiles/77
-        ```
-
-        To register the gateway:
-
-        1. Generate an access token using a username and password.
-        2. Use the access token to register the gateway.
+      description: This endpoint is used to delete a management profile.
       operationId: management-profiles/management-profile-delete/
       tags:
         - agents-gateways
@@ -1587,15 +1371,7 @@ paths:
         url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-delete/'
     get:
       summary: Get management profile
-      description: |-
-        This endpoint is used to retrieve the details of a management profile.
-
-        ## Sample URLs
-        ```
-        https://{api/v2}/api/v2/tenants/client_69900/managementProfiles/77
-        ```
-
-        Date format is yyyy-MM-ddTHH:mm:ssZ (GMT)
+      description: This endpoint is used to retrieve the details of a management profile.
       operationId: management-profiles/management-profile-get/
       tags:
         - agents-gateways
@@ -1685,15 +1461,7 @@ paths:
         url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-get/'
     post:
       summary: Update management profile
-      description: |
-        This endpoint is used to update a management profile.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/{tenantId}/managementProfiles/{id}
-        ```
-
-        Date format is yyyy-MM-ddTHH:mm:ssZ (GMT).
+      description: This endpoint is used to update a management profile.
       operationId: management-profiles/management-profile-update-post/
       tags:
         - agents-gateways
@@ -1817,15 +1585,7 @@ paths:
   '/api/v2/tenants/{tenantId}/managementProfiles/{profileId}/detach':
     get:
       summary: Detach gateway from management profile
-      description: |-
-        This API is used to unmap/detach the gateway from the management profile and invalidate the activation token.
-
-        Date format is yyyy-MM-ddTHH:mm:ssZ (GMT).
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_69900/managementProfiles/76/detach
-        ```
+      description: This API is used to unmap/detach the gateway from the management profile and invalidate the activation token.
       operationId: management-profiles/management-profile-detach-get/
       tags:
         - agents-gateways
@@ -1878,13 +1638,7 @@ paths:
   '/api/v2/tenants/{tenantId}/managementProfiles/{profileId}/reconnectTunnel':
     get:
       summary: Reconnect management profile tunnel
-      description: |-
-        This endpoint is used to reconnect the tunnel.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_69900/managementProfiles/76/reconnectTunnel
-        ```
+      description: This endpoint is used to reconnect the tunnel.
       operationId: management-profiles/management-profile-reconnect-tunnel-get/
       tags:
         - agents-gateways
@@ -1921,11 +1675,6 @@ paths:
       description: |-
         This endpoint is used to search for management profiles.
 
-        ## Sample URLs
-        ```
-        https://{api/v2}/api/v2/tenants/client_69900/managementProfiles/search?pageNo=1&pageSize=10&isDescendingOrder=true&sortName=id&queryString=id:1043+name:Gateway_Profile
-        ```
-
         ## Query Variables
         |Variable|Value|Description|
         |---|---|---|
@@ -1935,7 +1684,7 @@ paths:
         |startCreationDate|{startCreationDate}|Search for the management profile created within a certain duration. Start indicates the from date. An example is: 2016-06-10T10:40:20 0000 (GMT).|
         |endCreationDate|{endCreationDate}|Search for the management profile created within a certain duration. End indicates the to date. An Example is: 2016-06-20T10:40:20 0000 (GMT).|
 
-        ### Notes
+        ## Notes
         1. Special characters in the query string
             1. Plus (+) indicates next field and must be URL encoded.
             2. Color (:) indicates Equals. An example is: key: value.

@@ -1,35 +1,28 @@
 openapi: 3.0.0
 info:
   title: opsramp-automation
-  version: 2.0
-  description: none
+  version: 2.0.0
+  description: API Documentation
   contact:
-    name: none
+    name: OpsRamp Support
+    email: support@opsramp.com
+    url: https://www.opsramp.com/about-opsramp/contact-us/
 tags:
-  - name: agents-gateways
-  - name: alerts
   - name: automation
-  - name: exports
-  - name: integrations
-  - name: knowledge-base
-  - name: metrics
-  - name: monitoring
-  - name: patching
-  - name: resource-management
-  - name: tenancy-access-controls
-  - name: tickets
 servers:
   - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: 'https://{partner_name}.api.opsramp.com'
-    description: Partner - Custom Brand
-  - url: 'https://{client_name}.api.opsramp.com'
-    description: Partner and Client both Custom Branded
+  - url: 'https://{subdomain}.api.opsramp.com'
+    description: Partner or Client custom branded sub-domain
+    variables:
+      subdomain:
+        default: demo
+        description: Custom sub-domain assigned to the client
 paths:
   '/api/v2/tenants/{tenantId}/jobs':
     post:
       summary: Create job
-      description: "This endpoint is used to create a job.\n\n## Sample URLs\n```\nhttps://{api-url}/api/v2/tenants/client_93/jobs\n```\n```\nhttps://{api-url}/api/v2/tenants/msp_12/jobs\n```\n### Schedule patterns\nSchedule the job with a specific pattern of Daily, Weekly, Monthly, Run once and Never.\n\n#### Daily pattern\nSchedule a job to run every day or on every weekday:\n```\n\"pattern\": {\n\t\t\"type\": \"daily\",\n\t\t\"frequency\": \"everyday\"\n}\n```\n#### Weekly pattern\nSchedule a job to run on every weekday:\n```\n\"pattern\": {\n\t\"type\": \"weekly\",\n\t\"weekDays\": \"Sunday, Tuesday, Thursday, Saturday\"\n}\n```\n#### Monthly pattern\nSchedule job to run on a specific day of every month:\n```\n\"pattern\": {\n\t\t\"type\": \"monthly\",\n\t\t\"dayOfMonth\": \"1, 2, 3, 4, 5\"\n}\n```\nSchedule job to run on a specific weekday:\n```\n\"pattern\": {\n\t\t\"type\": \"monthly\",\n\t\t\"weekIndex\": \"Second\",\n\t\t\"dayOfWeek\": \"Sunday\"\n}\n```\n#### Run once\nSchedule a job to run for a single time after completion of the initial occurrence:\n```\n\"pattern\": {\n\t\t\"type\": \"run once\"\n}\n```\n#### Never pattern\nSchedule the job to run to only for a single time and not to reoccur again:\n```\n\"pattern\": {\n\t\t\"type\": \"never\"\n}\n```\n\n### Create job with job type - AD checklist\nSee example for AD checklist\n#### Note\nA job is scheduled on each resource based on the location of the resource’s time zone. For example, a job is defined for two resources. They are located in New York and California with both scheduled to start at 11:00 AM. The job will start at 11:00 AM EST and at 11:00 PM PST.\n\n### Create job with job type - network configuration backup\nSee example for network configuration backup\n\n### Create job with job type - app install\nSee example for app install\n\n### Create job with job type - custom script\nSee example for custom script\n\n"
+      description: This endpoint is used to create a job.
       operationId: automation-jobs-create-post/
       tags:
         - automation
@@ -326,13 +319,7 @@ paths:
   '/api/v2/tenants/{tenantId}/jobs/{id}':
     get:
       summary: Get job
-      description: |-
-        This endpoint is used to retrieve the job details.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/jobs/ce1088d5-81cc-4262-b515-a75230f0d8e4
-        ```
+      description: This endpoint is used to retrieve the job details.
       operationId: automation-jobs-get-job-get/
       tags:
         - automation
@@ -474,13 +461,6 @@ paths:
       description: |
         This endpoint is used to delete a job.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_13/jobs/709824de-8315-4cf9-ad1c-b15aaf7bf2a5/networkconfigbackup
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_11/jobs/ce1088d5-81cc-4262-b515-a75230f0d8e4/custom
-        ```
         Partners and service providers have permission to delete a client job.
       operationId: automation-jobs-job-delete/
       tags:
@@ -492,11 +472,11 @@ paths:
           description: |-
             OK
 
-            ### Note
+            ## Notes
             The response depends on the returned status code.
     post:
       summary: Update job
-      description: "This endpoint is used to update a job.\n\n## Sample URLs\n```\nhttps://{api-url}/api/v2/tenants/client_93/jobs/4902d87c-b5df-4797-9f45-e807cd871ac9\n```\n```\nhttps://{api-url}/api/v2/tenants/msp_12/jobs/ce1088d5-81cc-4262-b515-a75230f0d8e4\n```\n### Schedule patterns\nSchedule the job with a specific pattern of Daily, Weekly, Monthly, Run once and Never.\n\n#### Daily pattern\nSchedule a job to run every day or on every weekday:\n```\n\"pattern\": {\n\t\t\"type\": \"daily\",\n\t\t\"frequency\": \"everyday\"\n}\n```\n#### Weekly pattern\nSchedule a job to run on every weekday:\n```\n\"pattern\": {\n\t\"type\": \"weekly\",\n\t\"weekDays\": \"Sunday, Tuesday, Thursday, Saturday\"\n}\n```\n#### Monthly pattern\nSchedule job to run on a specific day of every month:\n```\n\"pattern\": {\n\t\t\"type\": \"monthly\",\n\t\t\"dayOfMonth\": \"1, 2, 3, 4, 5\"\n}\n```\nSchedule job to run on a specific weekday:\n```\n\"pattern\": {\n\t\t\"type\": \"monthly\",\n\t\t\"weekIndex\": \"Second\",\n\t\t\"dayOfWeek\": \"Sunday\"\n}\n```\n#### Run once\nSchedule a job to run for a single time after completion of the initial occurrence:\n```\n\"pattern\": {\n\t\t\"type\": \"run once\"\n}\n```\n#### Never pattern\nSchedule the job to run to only for a single time and not to reoccur again:\n```\n\"pattern\": {\n\t\t\"type\": \"never\"\n}\n```"
+      description: This endpoint is used to update a job.
       operationId: automation-jobs-update-post/
       tags:
         - automation
@@ -793,13 +773,7 @@ paths:
   '/api/v2/tenants/{tenantId}/jobs/types':
     get:
       summary: Get job types
-      description: |
-        This endpoint is used to retrieve the list of job types.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_13/jobs/types
-        ```
+      description: This endpoint is used to retrieve the list of job types.
       operationId: automation-jobs-job-types-get/
       tags:
         - automation
@@ -863,13 +837,7 @@ paths:
   '/api/v2/tenants/{tenantId}/jobs/{id}/run':
     get:
       summary: Run job
-      description: |
-        This endpoint is used to run a scheduled job.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/jobs/709824de-8315-4cf9-ad1c-b15aaf7bf2a5/run
-        ```
+      description: This endpoint is used to run a scheduled job.
       operationId: automation-jobs-run-job-get/
       tags:
         - automation
@@ -894,7 +862,7 @@ paths:
           description: |-
             OK
 
-            ### Note
+            ## Notes
             The response depends on the returned status code.
     parameters:
       - schema:
@@ -913,14 +881,6 @@ paths:
       description: |-
         This endpoint is used to run a script.
 
-        ## Sample URLs
-        ```
-        https://{api-url}//api/v2/tenants/client_93/jobs/709824de-8315-4cf9-ad1c-b15aaf7bf2a5/script/run
-        ```
-        ```
-        https://{api-url}//api/v2/tenants/msp_94/jobs/999824de-8315-4cf9-ad1c-b15aaf7bf123/script/run
-        ```
-
         Define scripts as code that can run commonly-run tasks.
 
         This API can be used to run an existing job script.
@@ -935,7 +895,7 @@ paths:
             OK
 
 
-            ### Note
+            ## Notes
             The response depends on the returned status code.
     parameters:
       - schema:
@@ -953,14 +913,6 @@ paths:
       summary: Search jobs
       description: |
         This endpoint is used to fetch the list of jobs defined by a tenant.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/jobs/search
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_92/jobs/search
-        ```
 
         This API can be used to fetch the paginated list of the scheduled jobs of a partner or client.
       operationId: automation-jobs-search-jobs-get/
@@ -1118,16 +1070,7 @@ paths:
   '/api/v2/tenants/{tenantId}/rba/categories':
     post:
       summary: Create RBA category
-      description: |-
-        This endpoint is used to create an RBA category.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/rba/categories
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_92/rba/categories
-        ```
+      description: This endpoint is used to create an RBA category.
       operationId: rba-categories-create-post/
       tags:
         - automation
@@ -1177,18 +1120,7 @@ paths:
         url: 'https://docs.opsramp.com/api/automation/rba-categories-create-post/'
     get:
       summary: Get RBA categories
-      description: |
-        This endpoint is used to retrieve list of RBA categories.
-
-        ## Sample URLs
-        For partners:
-        ```
-        https://{api-url}/api/v2/tenants/msp_92/rba/categories
-        ```
-        For clients:
-        ```
-        https://{api-url}/api/v2/tenants/client_93/rba/categories
-        ```
+      description: This endpoint is used to retrieve list of RBA categories.
       operationId: rba-categories-get/
       tags:
         - automation
@@ -1238,16 +1170,7 @@ paths:
         url: 'https://docs.opsramp.com/api/automation/rba-categories-get/'
     put:
       summary: Update an RBA category
-      description: |-
-        This endpoint is used to update an RBA category.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/rba/categories
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_92/rba/categories
-        ```
+      description: This endpoint is used to update an RBA category.
       operationId: rba-categories-update-put/
       tags:
         - automation
@@ -1302,13 +1225,6 @@ paths:
       description: |-
         This endpoint is used to delete an RBA category.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/rba/categories/15
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_92/rba/categories/13
-        ```
         Categories are only deleted when no scripts exist in that category (or related child categories).
       operationId: rba-categories-delete/
       tags:
@@ -1335,11 +1251,7 @@ paths:
       description: |-
         This endpoint is used to create a script.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/rba/categories/15/scripts
-        ```
-        ### Notes
+        ## Notes
         - Attachment files must be converted to byte stream and base64-encoded. Always include a name and file.
         - To retrieve the list of available categories, invoke the Get Categories API.
       operationId: rba-scripts-create-post/
@@ -1504,13 +1416,6 @@ paths:
       description: |
         This endpoint is used to delete a script.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/rba/categories/15/scripts/71
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_92/rba/categories/13/scripts/72
-        ```
         Partners can delete client or partner scripts. A client can only delete client-specific scripts.
       operationId: rba-scripts-delete/
       tags:
@@ -1522,20 +1427,11 @@ paths:
           description: |-
             OK
 
-            ### Note
+            ## Notes
             The response depends on the returned status code.
     get:
       summary: Get scripts
-      description: |-
-        This endpoint is used to retrieve the list of scripts within a category.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/rba/categories/15/scripts/66
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_92/rba/categories/14/scripts/68
-        ```
+      description: This endpoint is used to retrieve the list of scripts within a category.
       operationId: rba-scripts-scripts-get/
       tags:
         - automation
@@ -1604,23 +1500,7 @@ paths:
   '/api/v2/tenants/{tenantId}/rba/scripts/{scriptId}/paginatedOutputs':
     get:
       summary: Get output logs
-      description: |-
-        This endpoint is used to retrieve paginated output logs of a script.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/msp_14/rba/scripts/13/paginatedOutputs
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/client_69828/rba/scripts/13/paginatedOutputs
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/client_69828/rba/scripts/13/paginatedOutputs?pageNo=1&pageSize=1&isDescendingOrder=true&sortName=response_time
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_3/rba/scripts/8/paginatedOutputs?deviceId=2771a95d-496a-4c0b-a4f4-1cf1b7f94045
-        ```
-        Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+      description: This endpoint is used to retrieve paginated output logs of a script.
       operationId: rba-scripts-output-logs-get/
       tags:
         - automation
@@ -1768,16 +1648,7 @@ paths:
   '/api/v2/tenants/{tenantId}/rba/categories/{categoryId}/scripts/{scriptId}':
     get:
       summary: Get script
-      description: |-
-        This endpoint is used to retrieve details of the script.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/rba/categories/15/scripts
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_92/rba/categories/14/scripts
-        ```
+      description: This endpoint is used to retrieve details of the script.
       operationId: rba-scripts-script-get/
       tags:
         - automation
@@ -1938,13 +1809,6 @@ paths:
       description: |-
         This endpoint is used to update a script.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/rba/categories/15/scripts/66
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_92/rba/categories/14/scripts/67
-        ```
         Attachment files must be converted to byte stream and base64-encoded. Always include a name and file.
         To retrieve the list of available categories, invoke the Get Categories API.
       operationId: rba-scripts-update-post/

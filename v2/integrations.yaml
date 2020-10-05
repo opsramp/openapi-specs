@@ -1,55 +1,29 @@
 openapi: 3.0.0
 info:
   title: opsramp-integrations
-  version: 2.0
-  description: none
+  version: 2.0.0
+  description: API Documentation
   contact:
-    name: none
+    name: OpsRamp Support
+    email: support@opsramp.com
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
-  - name: agents-gateways
-  - name: alerts
-  - name: automation
-  - name: exports
   - name: integrations
-  - name: knowledge-base
-  - name: metrics
-  - name: monitoring
-  - name: patching
-  - name: resource-management
-  - name: tenancy-access-controls
-  - name: tickets
 servers:
   - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: 'https://{partner_name}.api.opsramp.com'
-    description: Partner - Custom Brand
-  - url: 'https://{client_name}.api.opsramp.com'
+  - url: 'https://{subdomain}.api.opsramp.com'
+    description: Partner or Client custom branded sub-domain
+    variables:
+      subdomain:
+        default: demo
+        description: Custom sub-domain assigned to the client
     description: Partner and Client both Custom Branded
 paths:
   '/api/v2/tenants/{tenantId}/integrations/activity':
     get:
       summary: Integration activity
-      description: |-
-        This endpoint is used to retrieve the details of an installation activity of installed integration activity.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/{tenantId}/integrations/activity
-        ```
-
-        ## Get Integration Activity within a Date Range
-        Submit `startTime` and `endTime` to retrieve the integration activities within a date range.
-        ### Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_9/integrations/activity?queryString=startTime:2017-03-08T16:00:00 0530%2BendTime:2017-03-08T17:00:00 0530%2BIntgMode:INBOUND%2Bstatus:SUCCESS
-        ```
-
-        ## Get Paginated Results
-        Provide `pageNo` and `pageSize` to view a specific number of integration activities on a page.
-        ### Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_9/integrations/activity?pageNo=1&pageSize=10&queryString=IntgMode:OUTBOUND%2Bstatus:SUCCESS
-        ```
+      description: This endpoint is used to retrieve the details of an installation activity of installed integration activity.
       operationId: integrations-integration-activity-get/
       tags:
         - agents-gateways
@@ -423,10 +397,17 @@ paths:
         name: tenantId
         in: path
         required: true
+        description: This endpoint is used to retrieve the details of an installation activity of installed integration activity.
+    post:
+      summary: ''
+      operationId: post-api-v2-tenants-tenantId-integrations-activity
+      responses:
+        '200':
+          description: OK
   '/api/v2/tenants/{tenantId}/policies/discovery':
     post:
       summary: Create discovery profile
-      description: "This endpoint is used to create a discovery profile for AWS, Azure, and Google.\n\n## Sample URLs\n```\nhttps://{api-url}/api/v2/tenants/client_105261/policies/discovery\n```\n```\nhttps://{api-url}/api/v2/tenants/msp_52/policies/discovery\n```\n\n## Filter Criteria for Discovery profiles\nFilter resources to attach to discovery profiles.\n### All Resources\nTo attach a Discovery profile to all resources, provide the ANY_CLOUD_RESOURCE filter type:\n```\n[\n\t{\n\t\t\"filterType\": \"ANY_CLOUD_RESOURCE\"\n\t}\n]\n```\n### Specific resources\nTo attach AWS discovery profile to specific resources, provide the following type of resource:\n```\n\"rules\": [{\n\t\t\t\"filterType\": \"AUTO_SCALING\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"CLOUDFRONT\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"DYNAMO_DB\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"ANY_DEVICE\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"ELASTICACHE\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"ELASTICMAPREDUCE\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"KINESIS\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"LAMBDA\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"LOAD_BALANCER\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"MACHINE_LEARNING\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"RDS\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"REDSHIFT\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"ROUTE_53\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"SNS\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"SQS\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"STORAGE_GATEWAY\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"EBS\"\n\t\t}\n\t]\n```\nTo attach Azure discovery profile to specific resources, provide the following type of resource:\n```\n\"rules\": [{\n\t\t\t\"filterType\": \"ANY_DEVICE\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"EBS\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"WEBSITE\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"SQL_SERVER\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"SQL_DATABASE\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"RESOURCE_GROUP\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"REDIS_CACHE\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"DOCUMENT_DB\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"TRAFFIC_PROFILE\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"CDN_PROFILE\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"ROUTE_TABLE\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"LOAD_BALANCER\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"AVAILABILITY_SET\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"AUTO_SCALING\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"CDN_ENDPOINT\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"EXPRESS_ROUTE\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"BIZTALK_SERVICE\"\n\t\t}\n\t]\n```\nTo attach Google discovery profile to specific resources, provide the following type of resource:\n```\n  \"rules\": [{\n\t\t\t\"filterType\": \"ANY_DEVICE\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"EBS\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"GCE_CLUSTER\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"SQL_SERVER\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"SQL_DATABASE\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"GCE_TOPIC\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"GCE_SUBSCRIPTION\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"GCE_ROUTER\"\n\t\t},\n\t\t{\n\t\t\t\"filterType\": \"VPN\"\n\t\t}\n\t]\n```\n### Resource Filters\nTo filter resources with unique attributes and attach to the AWS discovery profile, provide the following unique attributes of these resources:\n```\n\"rules\": [{\n\t\t\t\"key\": \"Name\",\n\t\t\t\"operator\": \"Contains\",\n\t\t\t\"value\": \"Windows\",\n\t\t\t\"entityType\": \"DEVICE\"\n\t\t},\n\t\t{\n\t\t\t\"key\": \"Region Name\",\n\t\t\t\"operator\": \"Not Contains\",\n\t\t\t\"value\": \"WEST_1\",\n\t\t\t\"entityType\": \"RDS\"\n\t\t},\n\t\t{\n\t\t\t\"key\": \"Zone Name\",\n\t\t\t\"operator\": \"Equals\",\n\t\t\t\"value\": \"US-EAST\",\n\t\t\t\"entityType\": \"Redshift\"\n\t\t}\n\t]\n```\nTo filter resources with unique attributes and attach to the Azure discovery profile, provide the following unique attributes of these resources:\n```\n\"rules\": [{\n\t\t\t\"key\": \"Name\",\n\t\t\t\"operator\": \"Contains\",\n\t\t\t\"value\": \"Windows\",\n\t\t\t\"resourceType\": \"DEVICE\"\n\t\t},\n\t\t{\n\t\t\t\"key\": \"Name\",\n\t\t\t\"operator\": \"Not Contains\",\n\t\t\t\"value\": \"Storge\",\n\t\t\t\"resourceType\": \"LOAD_BALANCER\"\n\t\t},\n\t\t{\n\t\t\t\"key\": \"Region Name\",\n\t\t\t\"operator\": \"Contains\",\n\t\t\t\"value\": \"US_WEST\",\n\t\t\t\"resourceType\": \"REDIS_CACHE\"\n\t\t},\n\t\t{\n\t\t\t\"key\": \"Zone Name\",\n\t\t\t\"operator\": \"Equals\",\n\t\t\t\"value\": \"US-EAST\",\n\t\t\t\"resourceType\": \"ROUTE_TABLE\"\n\t\t}\n\t]\n```\nTo filter resources with unique attributes and attach to the Google discovery profile, provide the following unique attributes of these resources:\n```\n\"rules\": [{\n\t\t\t\"key\": \"Name\",\n\t\t\t\"operator\": \"Contains\",\n\t\t\t\"value\": \"Linux\",\n\t\t\t\"resourceType\": \"DEVICE\"\n\t\t},\n\t\t{\n\t\t\t\"key\": \"Region Name\",\n\t\t\t\"operator\": \"Not Contains\",\n\t\t\t\"value\": \"ASIA\",\n\t\t\t\"resourceType\": \"GCE_ROUTER\"\n\t\t},\n\t\t{\n\t\t\t\"key\": \"Name\",\n\t\t\t\"operator\": \"Regex\",\n\t\t\t\"value\": \"^Cluster\",\n\t\t\t\"resourceType\": \"GCE_TOPIC\"\n\t\t},\n\t\t{\n\t\t\t\"key\": \"Name\",\n\t\t\t\"operator\": \"Contains\",\n\t\t\t\"value\": \"Network\",\n\t\t\t\"resourceType\": \"GCE_SUBSCRIPTION\"\n\t\t}\n\t]\n```\n### Supported actions in discovery profile\nFor AWS, these actions are supported and performed on the discovered resources:\n\n|Action|Description|\n|-----|-----|\n|Manage Device|Managed resource collects metrics, creates jobs, scripts, Creates anti-virus and launches consoles.|\n|Stream Cloud Trial|Provide SQS URL to consume events. CloudTrail generates events whenever there is a change (example: instance launch, terminate) and OpsRamp would capture them through the CloudTrail SQS URL. This is benefited over periodic discovery as the cloud changes are immediately notified to OpsRamp. Learn how to configure CloudTrail.|\n|Collect Cost Analytics|Projects cost details of the services and resources utilized.|\n|Assign Gateway Management profile|Assign Gateway management profile to the discovered resources. Learn about Gateway Management profile.|\n|Install OpsRamp Agent|Install OpsRamp Agent on Linux resources.|\n|Install OpsRamp Agent through Gateway|Each Agent connects to cloud via HTTP proxy embedded within the OpsRamp Gateway. This is applicable only for Linux resources.|\n|Install Windows Agent|Install Agent on Windows resources.|\n|Stream AWS Alerts|Provide SQS URL to consume alarms. CloudWatch is monitored by cloud and alarms are collected generated by it in OpsRamp through the Stream Alarm in SQS URL. Learn to configure CloudWatch alarms.|\n|Accept Non-Existent Resource|Process alarms generated from unmanaged resource.|\n\n>Stream AWS Alerts are mandatory to perform accept non-existent resource action.\n\nProvide the following action items:\n```\n\"actions\": [{\n\t\t\t\"action\": \"MANAGE DEVICE\"\n\t\t},\n\t\t{\n\t\t\t\"action\": \"STREAM CLOUDTRAIL\",\n\t\t\t\"items\": [{\n\t\t\t\t\"item\": \"https://sqs.us-east-1.amazonaws.com/290642135901/opsramp-cloudtrail-sqs\"\n\t\t\t}]\n\t\t},\n\t\t{\n\t\t\t\"action\": \"COLLECT COST ANALYTICS\",\n\t\t\t\"items\": [{\n\t\t\t\t\"item\": \"testing\"\n\t\t\t}]\n\t\t},\n\t\t{\n\t\t\t\"action\": \"ASSIGN GATEWAY MANAGEMENT PROFILE\",\n\t\t\t\"items\": [{\n\t\t\t\t\"item\": \"1\"\n\t\t\t}]\n\t\t},\n\t\t{\n\t\t\t\"action\": \"INSTALL OPSRAMP AGENT\",\n\t\t\t\"items\": [{\n\t\t\t\t\"item\": \"11\"\n\t\t\t}]\n\t\t},\n\t\t{\n\t\t\t\"action\": \"SELECT GATEWAY\",\n\t\t\t\"items\": [{\n\t\t\t\t\"item\": \"1\"\n\t\t\t}]\n\t\t},\n\t\t{\n\t\t\t\"action\": \"INSTALL WINDOWS AGENT\",\n\t\t\t\"items\": [{\n\t\t\t\t\"item\": \"10\"\n\t\t\t}]\n\t\t},\n\t\t{\n\t\t\t\"action\": \"STREAM AWS ALERTS\",\n\t\t\t\"items\": [{\n\t\t\t\t\"item\": \"https://sqs.us-east-1.amazonaws.com/290642135901/SQS-460\"\n\t\t\t}]\n\t\t},\n\t\t{\n\t\t\t\"action\": \"ACCEPT NON-EXISTENT RESOURCE\"\n\t\t}\n]\n```\nFor Azure, these actions are supported and performed on the discovered resources:\n\n|Action|Description|\n|-----|-----|\n|Manage Device|Managed resource collects metrics, creates jobs, scripts, Creates anti-virus and launches consoles.|\n|Assign Gateway Management profile|Assign Gateway management profile to the discovered resources. Learn about Gateway Management profile.|\n|Install OpsRamp Agent|\tInstall OpsRamp Agent on Linux resources.|\n|Install Windows Agent|Install Agent on Windows resources.|\n|Install OpsRamp Agent through Gateway|Each Agent connects to cloud via HTTP proxy embedded within the OpsRamp Gateway. This is applicable only for Linux resources.|\n\nProvide the following action items:\n```\n\"actions\": [{\n\t\t\"action\": \"MANAGE DEVICE\"\n\t},\n\t{\n\t\t\"action\": \"ASSIGN GATEWAY MANAGEMENT PROFILE\",\n\t\t\"items\": [{\n\t\t\t\"item\": \"24422\"\n\t\t}]\n\t},\n\t{\n\t\t\"action\": \"INSTALL OPSRAMP AGENT\",\n\t\t\"items\": [{\n\t\t\t\"item\": \"169743\"\n\t\t}]\n\t},\n\t{\n\t\t\"action\": \"INSTALL OPSRAMP AGENT\",\n\t\t\"items\": [{\n\t\t\t\"item\": \"234543\"\n\t\t}]\n\t},\n\t{\n\t\t\"action\": \"SELECT GATEWAY\",\n\t\t\"items\": [{\n\t\t\t\"item\": \"24422\"\n\t\t}]\n\t}\n]\n```\nFor Google, these actions are supported and performed on the discovered resources:\n\n|Action|Description|\n|-----|-----|\n|Manage Device|Managed resource collects metrics, creates jobs, scripts, Creates anti-virus and launches consoles.|\n\nProvide the following action items:\n```\n\"actions\": [{\n\t\t\"action\": \"MANAGE DEVICE\"\n\t}]\n```\n### Discovery Schedule\nSchedule the discovery with a specific pattern of hourly, daily, weekly and monthly basis. \n\n|Schedule|Fields|Description|\n|-----|-----|\n|Minutes|patternType: Minutes<br>pattern: 20|patternType: Discover resources on minutes basis.<br>pattern: Time in minutes. Example: 20.|\n|Hourly|patternType: Hourly<br>pattern: 2|patternType: Discover resources on hourly basis.<br>pattern: Time in hours. Example: 2.|\n|Daily|patternType: DAILY<br>pattern: 3<br>startTime: 02|patternType: Discover resources on daily basis.<br>pattern: Number of days. For example, discover resources for every 3 days.<br>startTime: Time at which the discovery will start. Represented in hours.|\n|Weekly|patternType: WEEKLY<br>pattern: SUN,MON,TUE,WED,THU,FRI,SAT<br>startTime : 02|patternType: Discover resources on weekly basis.<br>pattern: Provide the days on which the resources are discovered.<br>startTime: Time at which the discovery will start. Represented in hours.|\n|MonthlyDay of every month|patternType: MONTHLY<br>pattern: 5, 10, 15<br>startTime: 02|patternType: Discover resources on monthly basis.<br>pattern: Date on which the resource is discovered every month. Dates range between 1 to 30. Example: Resource is discovered on 5th or 10th of every month<br>startTime: Time at which the discovery will start. Represented in hours.|\n|MonthlyWeekday of every month|patternType: MONTHLY<br>pattern: FIRST, SUN<br>startTime: 02|patternType: Discover resources on monthly basis.<br>pattern: Day on which the device is discovered every month. Example: Resource is discovered on first Sunday of every month.<br>startTime: Time at which the discovery will start. Represented in hours.|\n\nTo schedule discovery, provide one of these patterns and pattern types:\n\nTo use a minutes pattern:\n```\n\"schedule\": {\n\t\t\"patternType\": \"MINUTES\",\n\t\t\"pattern\": \"20\"\n\t}\n```\nTo use an hourly pattern:\n```\n\"schedule\": {\n\t\t\"patternType\": \"HOURLY\",\n\t\t\"pattern\": \"2\"\n\t}\n```\nTo use a daily pattern:\n```\n\"schedule\": {\n\t\t\"patternType\": \"DAILY\",\n\t\t\"pattern\": \"3\",\n\t\t\"startTime\": \"02\"\n\t}\n```\nTo use a weekly pattern:\n```\n\"schedule\": {\n\t\t\"patternType\": \"WEEKLY\",\n\t\t\"pattern\": \"SUN,MON,TUE,WED,THU,FRI,SAT\",\n\t\t\"startTime\": \"02\"\n\t}\n```\nTo use a monthly pattern on a specific day of every month:\n```\n\"schedule\": {\n\t\t\"patternType\": \"MONTHLY\",\n\t\t\"pattern\": \"5,10,15\",\n\t\t\"startTime\": \"02\"\n\t}\n```\nTo use a monthly pattern on a specific weekday of every month:\n```\n\"schedule\": {\n\t\t\"patternType\": \"MONTHLY\",\n\t\t\"pattern\": \"FIRST,SUN\",\n\t\t\"startTime\": \"02\"\n\t}\n```\n\n"
+      description: This endpoint is used to create a discovery profile for AWS, Azure, and Google.
       operationId: cloud-discovery-create-post/
       tags:
         - integrations
@@ -806,25 +787,7 @@ paths:
         url: 'https://docs.opsramp.com/api/integrations/cloud-discovery-create-post/'
     get:
       summary: Get discovery profile list
-      description: |
-        This endpoint is used to retrieve a list of discovery profiles and their details for AWS and Azure.
-
-        ## Sample URLs
-
-        For AWS:
-        ```
-        https://{api-url}/api/v2/tenants/client_105261/policies/discovery
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_101/policies/discovery
-        ```
-        For Azure:
-        ```
-        https://{api-url}/api/v2/tenants/client_105261/policies/discovery
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_521/policies/discovery
-        ```
+      description: This endpoint is used to retrieve a list of discovery profiles and their details for AWS and Azure.
       operationId: cloud-discovery-profiles-get/
       tags:
         - integrations
@@ -937,19 +900,6 @@ paths:
       summary: Update discovery profile for AWS and Google
       description: |-
         This endpoint is used to update a discovery profile for AWS and Google.
-
-        ## Sample URLs
-        For AWS:
-        ```
-        https://{api-url}/api/v2/tenants/client_105261/policies/discovery
-        ```
-        For Google:
-        ```
-        https://{api-url}/api/v2/tenants/client_105261/policies/discovery
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_261/policies/discovery
-        ```
 
         See Cloud Discovery Create Post for request/response documentation.
       operationId: cloud-discovery-update-put/
@@ -1253,13 +1203,7 @@ paths:
   '/api/v2/tenants/{tenantId}/policies/discovery/{discoveryId}':
     delete:
       summary: Delete discovery profile
-      description: |
-        This endpoint is used to delete an Azure discovery profile for AWS, Azure, and Google.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/policies/discovery/54
-        ```
+      description: This endpoint is used to delete an Azure discovery profile for AWS, Azure, and Google.
       operationId: cloud-discovery-profile-delete/
       tags:
         - integrations
@@ -1291,31 +1235,7 @@ paths:
         url: 'https://docs.opsramp.com/api/integrations/cloud-discovery-profile-delete/'
     get:
       summary: Get discovery profile
-      description: |-
-        This endpoint is used to retrieve discovery profile details for AWS, Azure, and Google.
-
-        ## Sample URLs
-        For AWS:
-        ```
-        https://{api-url}/api/v2/tenants/client_105261/policies/discovery/102183
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_52/policies/discovery/218
-        ```
-        For Azure:
-        ```
-        https://{api-url}/api/v2/tenants/client_105261/policies/discovery/102183
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_52/policies/discovery/218
-        ```
-        For Google:
-        ```
-        https://{api-url}/api/v2/tenants/client_105261/policies/discovery/963
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_526/policies/discovery/2098
-        ```
+      description: This endpoint is used to retrieve discovery profile details for AWS, Azure, and Google.
       operationId: cloud-discovery-profile-get/
       tags:
         - integrations
@@ -1440,31 +1360,7 @@ paths:
   '/api/v2/tenants/{tenantId}/policies/discovery/action/scan/{discoveryProfileId}':
     get:
       summary: Rescan discovery profile
-      description: |-
-        This endpoint is used to rescan a discovery profile for AWS, Azure, and Google.
-
-        ## Sample URLs
-        For AWS:
-        ```
-        https://{api-url}/api/v2/tenants/client_105261/policies/discovery/action/scan/110
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_526/policies/discovery/action/scan/210
-        ```
-        For Azure:
-        ```
-        https://{api-url}/api/v2/tenants/client_105261/policies/discovery/action/scan/110
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_521/policies/discovery/action/scan/90
-        ```
-        For Google:
-        ```
-        https://{api-url}/api/v2/tenants/client_105261/policies/discovery/action/scan/110
-        ```
-        ```
-        https://{api-url}/api/v2/tenants/msp_587/policies/discovery/action/scan/345
-        ```
+      description: This endpoint is used to rescan a discovery profile for AWS, Azure, and Google.
       operationId: cloud-discovery-profile-rescan-get/
       tags:
         - integrations
@@ -1661,13 +1557,7 @@ paths:
   '/api/v2/tenants/{tenantId}/integrations/install/CUSTOM':
     post:
       summary: Install custom integration
-      description: |
-        This endpoint is used to install a custom integration.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_8/integrations/install/CUSTOM
-        ```
+      description: This endpoint is used to install a custom integration.
       operationId: custom-integration-install-post/
       tags:
         - integrations
@@ -2036,38 +1926,7 @@ paths:
                           thirdPartyAttrValue: Low
     get:
       summary: Get integration mappings
-      description: |-
-        This endpoint is used to retrieve the integration mapping details of an installed integration.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/msp_6/integrations/installed/INTG-733a25ef-cf39-4f4a-862f-7dd4f49e8650/mappingAttr?entity=INCIDENT
-        ```
-        >Use Search Installed Integrations to fetch the list of installed integrations.
-
-        ### Query variables
-
-        |Query Variables|Description|
-        |-----|-----|
-        |entity|Name of the entity to be mapped.<br>Tickets integration supports the following entities to be mapped:<br>- INCIDENT<br>- SERVICEREQUEST<br>- CHANGE<br>- PROBLEM<br>- TASK<br>Alerts integration supports the entity ALERT to be mapped.|
-        |name|OpsRamp mapping attribute name. Use Get Integration Mappable Properties  to fetch the list of OpsRamp supported mapping attributes for an entity.<br>Example: Assignee Group name, Priority|
-        |intgMode|Integration mode.Inbound - Entity data is sent from third-party application to OpsRamp.Outbound - Entity data is sent from OpsRamp to third-party application.<br>Example: OUTBOUND, INBOUND|
-
-        ### Get integration mapping of an entity
-        #### Sample URL
-        ```
-        https://{api-url}/api/v2/tenants/msp_6/integrations/installed/INTG-733a25ef-cf39-4f4a-862f-7dd4f49e8650/mappingAttr?entity=INCIDENT
-        ```
-        ### Get integration mapping of an entity with integration mode
-        #### Sample URL
-        ```
-        https://{api-url}/https://<api-url>/api/v2/tenants/client_8/integrations/installed/INTG-733r57ef-cf39-4f4a-862f-7dd4f49e8650/mappingAttr?entity=SERVICEREQUEST&intgMode=OUTBOUND
-        ```
-        ### Get integration mapping of an entity with mapping attribute name and integration mode
-        #### Sample URL
-        ```
-        https://{api-url}/api/v2/tenants/client_9/integrations/installed/INTG-0da1a791-bc74-40af-8924-8932149a5790/mappingAttr?entity=INCIDENT&name=Status&intgMode=INBOUND
-        ```
+      description: This endpoint is used to retrieve the integration mapping details of an installed integration.
       operationId: integration-mappings-get/
       tags:
         - integrations
@@ -2363,7 +2222,7 @@ paths:
           description: |-
             OK
 
-            ### Note
+            ## Notes
             The response depends on the returned status code.
     parameters:
       - schema:
@@ -2394,7 +2253,7 @@ paths:
 
         Events are used for sending certain notifications whenever an action is performed on OpsRamp entities.
 
-        >#### Note
+        >### Notes
         >
         >- Provide API payload in Base64 encoding.
         >- Integration event for Alert entity is created only using API but can be viewed from the OpsRamp Portal.
@@ -2582,7 +2441,7 @@ paths:
           description: |-
             OK
 
-            ### Note
+            ## Notes
             The response depends on the returned status code.
     parameters:
       - schema:
@@ -2603,13 +2462,7 @@ paths:
   '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}':
     delete:
       summary: Delete integration event
-      description: |
-        This endpoint is used to delete an integration event.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_8/integrations/installed/INTG-c8119413-28fa-4b17-b9c2-1ea4d711f70b/event/INTG-EVENT-c6d30f9c-2728-4760-ad97-8f3b6f2b6391
-        ```
+      description: This endpoint is used to delete an integration event.
       operationId: integration-events-event-delete/
       tags:
         - integrations
@@ -4154,7 +4007,7 @@ paths:
         https://{api-url}/api/v2/tenants/client_8/integrations/installed/search?pageNo=1&pageSize=10&queryString=category:ITSM_INTEGRATION
         ```
 
-        >### Notes
+        >## Notes
         >There are special characters that can be used in a query string:
         >- (+) represents the next field and must be URL-encoded.
         >- (:) represents equals. An example is key : value.
@@ -4587,7 +4440,7 @@ paths:
       summary: Install integration
       description: |-
         # Cloud integrations
-        >### Note
+        >## Notes
         >OpsRamp supports the following cloud integrations:
         >- AWS
         >- AZURE
@@ -4676,7 +4529,7 @@ paths:
       summary: Install integration
       description: |-
         # Cloud integrations
-        >### Note
+        >## Notes
         >OpsRamp supports the following cloud integrations:
         >- AWS
         >- AZURE
@@ -4762,7 +4615,7 @@ paths:
       summary: Install integration
       description: |-
         # Cloud integrations
-        >### Note
+        >## Notes
         >OpsRamp supports the following cloud integrations:
         >- AWS
         >- AZURE
@@ -5307,6 +5160,11 @@ components:
         filterType:
           type: string
           description: |2-
+
+
+
+
+
 
 
 

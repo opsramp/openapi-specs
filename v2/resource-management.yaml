@@ -1,30 +1,23 @@
 openapi: 3.0.0
 info:
   title: opsramp-integrations
-  version: 2.0
-  description: none
+  version: 2.0.0
+  description: API Documentation
   contact:
-    name: none
+    name: OpsRamp Support
+    email: support@opsramp.com
+    url: https://www.opsramp.com/about-opsramp/contact-us/
 tags:
-  - name: agents-gateways
-  - name: alerts
-  - name: automation
-  - name: exports
-  - name: integrations
-  - name: knowledge-base
-  - name: metrics
-  - name: monitoring
-  - name: patching
   - name: resource-management
-  - name: tenancy-access-controls
-  - name: tickets
 servers:
   - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: 'https://{partner_name}.api.opsramp.com'
-    description: Partner - Custom Brand
-  - url: 'https://{client_name}.api.opsramp.com'
-    description: Partner and Client both Custom Branded
+  - url: 'https://{subdomain}.api.opsramp.com'
+    description: Partner or Client custom branded sub-domain
+    variables:
+      subdomain:
+        default: demo
+        description: Custom sub-domain assigned to the client
 paths:
   '/ERROR-/api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices-ERROR':
     post:
@@ -1237,7 +1230,7 @@ paths:
         '200':
           description: |-
             OK
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     get:
       summary: Get custom attributes types and values of a tenant
@@ -1395,7 +1388,7 @@ paths:
         '200':
           description: |-
             OK
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     delete:
       summary: Unassign child resources from a device group
@@ -1431,7 +1424,7 @@ paths:
         '200':
           description: |-
             OK
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     parameters:
       - schema:
@@ -1761,7 +1754,7 @@ paths:
         https://{api-url}/api/v2/tenants/client_10/deviceGroups/DGP-1c31a30a-95e9-4b5d-809b-ff3a193c8001
         ```
 
-        >### Notes
+        >## Notes
         >- Deleting a device group indicates removing the device group name and details.
         >- Resources under a deleted device group are retained and available in infrastructure APIs.
         >- Deleting a parent device group deletes child device groups.
@@ -1775,7 +1768,7 @@ paths:
           description: |
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     get:
       summary: Get device group
@@ -2464,7 +2457,7 @@ paths:
         https://{api-url}/api/v2/tenants/client_93/policies/management
         ```
 
-        >### Note
+        >## Notes
         >The attribute `forceAssignOrUnassign` is not applicable to the ASSIGN AVAILABILITY action.
       operationId: device-management-policy-create-post/
       tags:
@@ -2865,7 +2858,7 @@ paths:
         https://{api-url}/api/v2/tenants/client_93/devices/DEV0001520157/deviceWarranty
         ```
 
-        >### Note
+        >## Notes
         > Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
       operationId: device-warranty-create-post/
       tags:
@@ -3289,7 +3282,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     get:
       summary: Get resource note
@@ -3366,7 +3359,7 @@ paths:
         |endUpdationDate|Search for the resource note created within a duration. endUpdationDate indicates the to date.|
         |id|Resource ID|
 
-        >### Notes
+        >## Notes
         >There are special characters that can be used in a query string:
         >- (+) represents the next field and must be URL-encoded.
         >- (:) represents equals. An example is key : value.
@@ -3621,7 +3614,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             > The response depends on the returned status code.
     parameters:
       - schema:
@@ -4276,7 +4269,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     parameters:
       - schema:
@@ -4512,7 +4505,7 @@ paths:
         |----|----|----|
         |status|- OUTOFDATE<br>- UPTODATE|Antivirus definition status on a resource.<br>Example: UPTODATE.|
 
-        >### Notes
+        >## Notes
         >There are special characters that can be used in a query string:
         >- (+) represents the next field and must be URL-encoded.
         >- (:) represents equals. An example is key : value.
@@ -4714,7 +4707,7 @@ paths:
         elasticsearch|mesosmaster|postfix|websphere
         haproxy|mesosslave|postgresql|zookeeper
 
-        >### Notes
+        >## Notes
         >There are special characters that can be used in a query string:
         >- (+) represents the next field and must be URL-encoded.
         >- (:) represents equals. An example is key : value.
@@ -4927,7 +4920,7 @@ paths:
 
         >To view availability of a resource within a given time frame, provide the start time and end time.
 
-        >### Notes
+        >## Notes
         >- State 0 indicates the status of resource is down.
         >- State 4 indicates the status of resource is unknown.
       operationId: resources-resource-availability-get/
@@ -5028,7 +5021,7 @@ paths:
         https://{api-url}/api/v2/tenants/client_8/resources/4e1216a9-fe3f-4f51-ae2d-a3d49688f8b0/availability/rule
         ```
 
-        >### Note
+        >## Notes
         >Refer to Search Resources API to retrieve the list of a client’s resource IDs.
       operationId: resources-resource-availability-rule-get/
       tags:
@@ -5096,7 +5089,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     parameters:
       - schema:
@@ -5156,7 +5149,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     parameters:
       - schema:
@@ -5194,7 +5187,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     get:
       summary: Get resource
@@ -5542,7 +5535,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     parameters:
       - schema:
@@ -5696,7 +5689,7 @@ paths:
         elasticsearch|mesosmaster|postfix|websphere
         haproxy|mesosslave|postgresql|zookeeper
 
-        >### Notes
+        >## Notes
         >There are special characters that can be used in a query string:
         >- (+) represents the next field and must be URL-encoded.
         >- (:) represents equals. An example is key : value.
@@ -5823,7 +5816,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     delete:
       summary: Unassign resources as child from a service group
@@ -5865,7 +5858,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     parameters:
       - schema:
@@ -6238,7 +6231,7 @@ paths:
         https://{api-url}/api/v2/tenants/client_10/serviceGroups/SGP-ae51769c-f461-4bea-b0b3-1ee8725377c8
         ```
 
-        >### Notes
+        >## Notes
         >- Deleting a service group removes the service group name and its details.
         >- Deleting a parent service group also deletes the child entities (resources or service groups).
         >- Resources or Services under the deleted service group are retained and are available in the OpsRamp infrastructure page.
@@ -6252,7 +6245,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     get:
       summary: Get service group
@@ -6589,7 +6582,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             > The response depends on the returned status code.
     parameters:
       - schema:
@@ -6696,7 +6689,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             > The response depends on the returned status code.
     parameters:
       - schema:
@@ -6862,7 +6855,7 @@ paths:
         |name|Site name.|
         |parentId|Parent side ID.|
 
-        >### Notes
+        >## Notes
         > There are special characters that can be used in a query string:
         >- (+) represents the next field and must be URL-encoded.
         >- (:) represents equals. An example is `key : value`.
@@ -7052,7 +7045,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             The response depends on the returned status code.
     get:
       summary: Get site

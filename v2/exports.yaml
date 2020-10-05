@@ -1,41 +1,28 @@
 openapi: 3.0.0
 info:
   title: opsramp-exports
-  version: 2.0
-  description: none
+  version: 2.0.0
+  description: API Documentation
   contact:
-    name: none
+    name: OpsRamp Support
+    email: support@opsramp.com
+    url: https://www.opsramp.com/about-opsramp/contact-us/
 tags:
-  - name: agents-gateways
-  - name: alerts
-  - name: automation
   - name: exports
-  - name: integrations
-  - name: knowledge-base
-  - name: metrics
-  - name: monitoring
-  - name: patching
-  - name: resource-management
-  - name: tenancy-access-controls
-  - name: tickets
 servers:
   - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: 'https://{partner_name}.api.opsramp.com'
-    description: Partner - Custom Brand
-  - url: 'https://{client_name}.api.opsramp.com'
-    description: Partner and Client both Custom Branded
+  - url: 'https://{subdomain}.api.opsramp.com'
+    description: Partner or Client custom branded sub-domain
+    variables:
+      subdomain:
+        default: demo
+        description: Custom sub-domain assigned to the client
 paths:
   '/api/v2/exports/tenants/{tenantId}/create':
     post:
       summary: Create on-demand batch export
-      description: |
-        This endpoint is used to create an on-demand batch export template.
-
-        ## Sample URLs
-        ```
-        https://api.opsramp.com/api/v2/exports/tenants/msp_3/create
-        ```
+      description: This endpoint is used to create an on-demand batch export template.
       operationId: exports-create-post/
       tags:
         - exports

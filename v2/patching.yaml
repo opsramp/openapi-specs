@@ -1,30 +1,23 @@
 openapi: 3.0.0
 info:
   title: opsramp-patching
-  version: 2.0
-  description: none
+  version: 2.0.0
+  description: API Documentation
   contact:
-    name: none
+    name: OpsRamp Support
+    email: support@opsramp.com
+    url: https://www.opsramp.com/about-opsramp/contact-us/
 tags:
-  - name: agents-gateways
-  - name: alerts
-  - name: automation
-  - name: exports
-  - name: integrations
-  - name: knowledge-base
-  - name: metrics
-  - name: monitoring
   - name: patching
-  - name: resource-management
-  - name: tenancy-access-controls
-  - name: tickets
 servers:
   - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: 'https://{partner_name}.api.opsramp.com'
-    description: Partner - Custom Brand
-  - url: 'https://{client_name}.api.opsramp.com'
-    description: Partner and Client both Custom Branded
+  - url: 'https://{subdomain}.api.opsramp.com'
+    description: Partner or Client custom branded sub-domain
+    variables:
+      subdomain:
+        default: demo
+        description: Custom sub-domain assigned to the client
 paths:
   '/api/v2/tenants/{tenantId}/patches/baselines/{baselineId}/{action}':
     post:
@@ -259,7 +252,7 @@ paths:
         ```
 
 
-        >### Notes
+        >## Notes
         >There are special characters that can be used in a query string:
         >- (+) represents the next field and must be URL-encoded.
         >- (:) represents equals. An example is key : value.
@@ -541,7 +534,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     get:
       summary: Get patch list in a patch baseline
@@ -557,7 +550,7 @@ paths:
         ```
         https://{api-url}/api/v2/tenants/client_14/resources/patches/baselines/PBL-24d68b3c-7dc5-4104-915c-6fd212c46c61?pageNo=1&pageSize=10&isDescendingOrder=true&sortName=name
         ```
-        >### Notes
+        >## Notes
         >There are special characters that can be used in a query string:
         >- (+) represents the next field and must be URL-encoded.
         >- (:) represents equals. An example is key : value.
@@ -895,7 +888,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     parameters:
       - schema:
@@ -944,7 +937,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     parameters:
       - schema:
@@ -992,7 +985,7 @@ paths:
           description: |
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     parameters:
       - schema:
@@ -1480,7 +1473,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     post:
       summary: Update patch compliance
@@ -1792,7 +1785,7 @@ paths:
         '200':
           description: |-
             OK
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     parameters:
       - schema:
@@ -1816,7 +1809,7 @@ paths:
         https://{api-url}/api/v2/tenants/client_13/patches/configurations
         ```
 
-        >### Notes
+        >## Notes
         >- Approved Windows patches are installed on the device during the scheduled installation window.
         >- The device is immediately rebooted following any patch that requires a reboot.
         >- Standard checks are performed on rebooted devices to ensure the device is operating properly.
@@ -1939,7 +1932,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     get:
       summary: Get patch configuration
@@ -2013,7 +2006,7 @@ paths:
         ```
         https://{api-url}/api/v2/tenants/client_13/patches/configurations/PATCHCONF-9db1451f-1441-4bd9-90b9-aa371fc11e6d
         ```
-        >### Notes
+        >## Notes
         >- Approved Windows patches will be installed on the device during the scheduled installation window.
         >- The device will be immediately rebooted following any patch that requiring a reboot.
         >- Standard checks are performed on rebooted devices to ensure the device is operating properly.
@@ -2158,7 +2151,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     parameters:
       - schema:
@@ -2313,7 +2306,7 @@ paths:
           description: |
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     parameters:
       - schema:
@@ -2356,7 +2349,7 @@ paths:
         |category|Category in which a patch is created.|
         |type|Type of patch. Example: Windows|
 
-        >### Notes
+        >## Notes
         >There are special characters that can be used in a query string:
         >- (+) represents the next field and must be URL-encoded.
         >- (:) represents equals. An example is key : value.
@@ -3203,7 +3196,7 @@ paths:
           description: |-
             OK
 
-            >### Note
+            >## Notes
             >The response depends on the returned status code.
     parameters:
       - schema:
@@ -3370,7 +3363,7 @@ paths:
         ```
         https://{api-url}/api/v2/tenants/client_14/resources/73e3580a-53f8-4a01-bafe-db74fc5e75e3/baselines/PBL-1bfe0514-f882-4300-8d62-7e67d0ec149c/patches?pageNo=1&pageSize=10&isDescendingOrder=true&sortName=name
         ```
-        >### Notes
+        >## Notes
         >There are special characters that can be used in a query string:
         >- (+) represents the next field and must be URL-encoded.
         >- (:) represents equals. An example is key : value.
@@ -3564,7 +3557,7 @@ paths:
         | 0x80070570       |
         | 0x80070570       |
 
-        >### Notes
+        >## Notes
         >There are special characters that can be used in a query string:
         >- (+) represents the next field and must be URL-encoded.
         >- (:) represents equals. An example is key : value.

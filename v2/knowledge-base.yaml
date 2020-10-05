@@ -1,30 +1,23 @@
 openapi: 3.0.0
 info:
   title: opsramp-knowledgebase
-  version: 2.0
-  description: none
+  version: 2.0.0
+  description: API Documentation
   contact:
-    name: none
+    name: OpsRamp Support
+    email: support@opsramp.com
+    url: https://www.opsramp.com/about-opsramp/contact-us/
 tags:
-  - name: agents-gateways
-  - name: alerts
-  - name: automation
-  - name: exports
-  - name: integrations
   - name: knowledge-base
-  - name: metrics
-  - name: monitoring
-  - name: patching
-  - name: resource-management
-  - name: tenancy-access-controls
-  - name: tickets
 servers:
   - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: 'https://{partner_name}.api.opsramp.com'
-    description: Partner - Custom Brand
-  - url: 'https://{client_name}.api.opsramp.com'
-    description: Partner and Client both Custom Branded
+  - url: 'https://{subdomain}.api.opsramp.com'
+    description: Partner or Client custom branded sub-domain
+    variables:
+      subdomain:
+        default: demo
+        description: Custom sub-domain assigned to the client
 paths:
   '/api/v2/tenants/{tenantId}/kb/{articleId}/activitylog':
     get:
@@ -1014,7 +1007,7 @@ paths:
   '/api/v2/tenants/{tenantId}/kb/articles/search':
     get:
       summary: Search articles
-      description: "This endpoint is used to search for the list of articles in a knowledge base category.\n\n## Sample URLs\n```\nhttps://{api-url}/api/v2/tenants/client_11/kb/articles/search?pageNo=1&pageSize=20&queryString=state:Published+categoryId:KBC0000000002\n```\n\n## Query variables\n\n|Query Variable|Values|Description|\n|-----|-----|----|\n|id||Knowledge base article identification number.|\n|subject|Database|Subject of the knowledge base article.\n|content|Sample|Content\tContent of the knowledge base article.|\n|states|Published, Expired, Trash, Draft|Current status of the article.|\n|categoryId|KBC0000000002|ID of the knowledge base category.|\n|categoryName|Client|Name of the knowledge base category.|\n|startExpiryDate|yyyy-MM-ddTHH:mm:ssZ|Filter the articles based on their expiry date.<br>startExpiryDate denotes the starting range of the article expiry date.<br>Example: 2019-02-24T09:19:47 0000 (GMT)|\n|endExpiryDate|yyyy-MM-ddTHH:mm:ssZ|Filter the articles based on their expiry date. endExpiryDate denotes the ending range of the article expiry date.<br>Example: 2019-02-25T10:20:47 0000 (GMT)|\n\n>### Notes\n>There are special characters that can be used in a query string:\n>- (+) represents the next field and must be URL-encoded.\n>- (:) represents equals. An example is key : value.\n>- (,) indicates multiple values for a key. Example: priority: P0,P1.\n>- Space characters must be URL-encoded.\n>- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT)."
+      description: "This endpoint is used to search for the list of articles in a knowledge base category.\n\n## Sample URLs\n```\nhttps://{api-url}/api/v2/tenants/client_11/kb/articles/search?pageNo=1&pageSize=20&queryString=state:Published+categoryId:KBC0000000002\n```\n\n## Query variables\n\n|Query Variable|Values|Description|\n|-----|-----|----|\n|id||Knowledge base article identification number.|\n|subject|Database|Subject of the knowledge base article.\n|content|Sample|Content\tContent of the knowledge base article.|\n|states|Published, Expired, Trash, Draft|Current status of the article.|\n|categoryId|KBC0000000002|ID of the knowledge base category.|\n|categoryName|Client|Name of the knowledge base category.|\n|startExpiryDate|yyyy-MM-ddTHH:mm:ssZ|Filter the articles based on their expiry date.<br>startExpiryDate denotes the starting range of the article expiry date.<br>Example: 2019-02-24T09:19:47 0000 (GMT)|\n|endExpiryDate|yyyy-MM-ddTHH:mm:ssZ|Filter the articles based on their expiry date. endExpiryDate denotes the ending range of the article expiry date.<br>Example: 2019-02-25T10:20:47 0000 (GMT)|\n\n>## Notes\n>There are special characters that can be used in a query string:\n>- (+) represents the next field and must be URL-encoded.\n>- (:) represents equals. An example is key : value.\n>- (,) indicates multiple values for a key. Example: priority: P0,P1.\n>- Space characters must be URL-encoded.\n>- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT)."
       operationId: knowledge-base-article-articles-search-get/
       tags:
         - knowledge-base

@@ -1,41 +1,28 @@
 openapi: 3.0.0
 info:
   title: opsramp-metrics
-  version: 2.0
-  description: none
+  version: 2.0.0
+  description: API Documentation
   contact:
-    name: none
+    name: OpsRamp Support
+    email: support@opsramp.com
+    url: https://www.opsramp.com/about-opsramp/contact-us/
 tags:
-  - name: agents-gateways
-  - name: alerts
-  - name: automation
-  - name: exports
-  - name: integrations
-  - name: knowledge-base
   - name: metrics
-  - name: monitoring
-  - name: patching
-  - name: resource-management
-  - name: tenancy-access-controls
-  - name: tickets
 servers:
   - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: 'https://{partner_name}.api.opsramp.com'
-    description: Partner - Custom Brand
-  - url: 'https://{client_name}.api.opsramp.com'
-    description: Partner and Client both Custom Branded
+  - url: 'https://{subdomain}.api.opsramp.com'
+    description: Partner or Client custom branded sub-domain
+    variables:
+      subdomain:
+        default: demo
+        description: Custom sub-domain assigned to the client
 paths:
   '/api/v2/metric/tenants/{tenantId}/rtypes/{rtype}/resources/{resource}/metrics':
     get:
       summary: Get metrics on a resource
-      description: |
-        This endpoint is used to retrieve the list of metrics on a resource.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/metric/tenants/client_7/rtypes/DEVICE/resources/725ab798-e9b1-474c-aa03-de9fb6a6e0c4/metrics
-        ```
+      description: This endpoint is used to retrieve the list of metrics on a resource.
       operationId: metrics-resource-get/
       tags:
         - metrics
@@ -84,13 +71,7 @@ paths:
                       availabilityMetric: false
     post:
       summary: Save metrics on a resource
-      description: |
-        This endpoint is used to post multiple metrics on a resource.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/metric/tenants/client_7/rtypes/DEVICE/resources/735ab798-e9b4-474c-aa03-de9fb6a6e0f5/metrics
-        ```
+      description: This endpoint is used to post multiple metrics on a resource.
       operationId: metrics-resource-save-post/
       tags:
         - metrics
@@ -161,26 +142,6 @@ paths:
       description: |
         This endpoint is used to retrieve the details of metric behavior at a certain time period.
 
-        ## Sample URLs
-        To retrieve complete metric data that includes metric values at multiple time series:
-        ```
-        https://{api-url}/api/v2/metric/search?tenant=client_20&rtype=DEVICE&resource=ab342123-5bfb-434c-aae4-03611ca020d9&metric=system.cpu.utilization&startTime=1536643494&endTime=1536661494
-        ```
-        There are three common examples that show how to retrieve metric data based on a specific time series.
-
-        1. Time series type (RealTime):
-        ```
-        https://{api-url}/api/v2/metric/search?tenant=client_20&rtype=DEVICE&resource=ab342123-5bfb-434c-aae4-03611ca020d9&metric=system.cpu.utilization&startTime=1536643494&endTime=1536661494&timeseries_type=RealTime
-        ```
-        2. Time series type (CHANGE_DETECTION):
-        ```
-        https://{api-url}/api/v2/metric/search?tenant=client_20&rtype=DEVICE&resource=ab342123-5bfb-434c-aae4-03611ca020d9&metric=system.cpu.utilization&startTime=1536643494&endTime=1536661494&timeseries_type=CHANGE_DETECTION
-        ```
-        3. Time series type (FORECAST):
-        ```
-        https://{api-url}/api/v2/metric/search?tenant=client_20&rtype=DEVICE&resource=ab342123-5bfb-434c-aae4-03611ca020d9
-        ```
-
         ### Data resolution
         OpsRamp retains the raw metrics data for the most recent seven. Metric roll-ups are computed every half-hour, hourly, and daily. Calculations performed include average, minimum, maximum, and latest. Based on the selected time range, data is dynamically served in raw and rolled-up formats.
 
@@ -192,20 +153,6 @@ paths:
         |Greater than 30 days|1-day rollup|data (AVG), minVals (MIN), maxVals(MAX) and lastVals(LATEST / LAST)|
         |Using "data=raw" query param|Raw (up to 7 days)|data (RAW)|
 
-        ### Sample responses
-        To retrieve metric behavior at multiple time series patterns: example-multiple-time-series
-
-        To retrieve metric behavior at current time stamp in real time: example-current-real-time
-
-        To retrieve significant changes on a metric (using CHANGE_DETECTION): example-change-detection
-
-        To forecast values of a metric (using FORECAST): example-forecast
-
-        Roll-ups enables the viewing of metric behavior in wider time spans.
-
-        >When OpsRamp receives data points for a given time series, this data is accumulated for specific periods of time. This data is stored in four roll-ups for each interval: average, minimum, maximum, and latest.
-
-        To retrieve metric data for a roll-up time series: example-roll-up
       operationId: metrics-resource-time-series-get/
       tags:
         - metrics
@@ -729,13 +676,7 @@ paths:
   /This endpoint is used to create a metric type.:
     post:
       summary: Create metric type
-      description: |
-        The endpoint to assign agent policy for resources.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/metric/tenants/client_7/metrictype
-        ```
+      description: The endpoint to assign agent policy for resources.
       operationId: metrics-type-create-post/
       tags:
         - metrics
@@ -764,14 +705,7 @@ paths:
   '/api/v2/metric/tenants/{tenantId}/metrics/{metric}/metricType':
     get:
       summary: Get metric type
-      description: |-
-        This endpoint is used to fetch the metric type details.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/metric/tenants/client_7/metrics/system.metric.file.send/metricType
-        ```
-        >{metric} denotes the metric name.
+      description: This endpoint is used to fetch the metric type details.
       operationId: metrics-type-get/
       tags:
         - metrics
@@ -815,13 +749,7 @@ paths:
   '/api/v2/metric/tenants/{tenantId}/metrictype':
     post:
       summary: Update metric type
-      description: |
-        This endpoint is used to update the details of a metric type.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/metric/tenants/client_7/metrictype
-        ```
+      description: This endpoint is used to update the details of a metric type.
       operationId: metrics-type-update-post/
       tags:
         - metrics
