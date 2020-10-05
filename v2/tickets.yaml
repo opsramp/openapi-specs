@@ -6,7 +6,7 @@ info:
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: tickets
 servers:
@@ -77,13 +77,7 @@ paths:
         url: 'https://docs.opsramp.com/api/tickets/business-impacts-create-post/'
     get:
       summary: Get business impacts
-      description: |-
-        Business impact defines the severity of an entity in the business.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_93/incidents/businessImpacts
-        ```
+      description: Business impact defines the severity of an entity in the business.
       operationId: business-impacts-get/
       tags:
         - tickets
@@ -131,18 +125,7 @@ paths:
   '/api/v2/tenants/{tenantId}/incidents/businessImpacts/{uniqueId}':
     post:
       summary: Update business impact
-      description: |-
-        This endpoint is used to update a business impact on an incident.
-
-        ## Sample URLs
-        To create partner-level business impact:
-        ```
-        https://{api-url}/api/v2/tenants/msp_3/incidents/businessImpacts/SIMPACT-2e70bb64-3a10-4236-ab01-c2a833df96d8
-        ```
-        To create client-level business impact:
-        ```
-        https://{api-url}/api/v2/tenants/client_4/incidents/businessImpacts/SIMPACT-2e70bb64-3a10-4236-ab01-c2a833df96d8
-        ```
+      description: This endpoint is used to update a business impact on an incident.
       operationId: business-impacts-update-post/
       tags:
         - tickets
@@ -202,14 +185,9 @@ paths:
       description: |-
         This endpoint is used to retrieve user activities on a change request.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_4/changeRequests/CHG0000001801/activitylog?startTs=2018-10-29T12:26:27 0000&endTs=2018-11-02T12:26:27 0000&isDescendingOrder=true
-        ```
-
-        >## Notes
-        >- (+) represents the next field and must be URL-encoded.
-        >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+        ## Notes
+        - (+) represents the next field and must be URL-encoded.
+        - Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
       operationId: change-request-activity-log-get/
       tags:
         - tickets
@@ -361,16 +339,12 @@ paths:
       description: |-
         This endpoint is used to add a response to a change request.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_1000/changeRequests/CHG0000001111/responses
-        ```
         >## Notes
-        >- For attachments, files must be converted to bytes stream with base64-encoding.
-        >- The default creator (OpsRamp API User) can send id and loginName to change the default.
-        >- Based on the setting Make default submission status of a pending request as open, the status of the Pending request will change to Open.
-        >- A file attachment is limited to 50MB.
-        >- Date format is `yyyy-MM-ddTHH:mm:ssZ (GMT)`.
+        - For attachments, files must be converted to bytes stream with base64-encoding.
+        - The default creator (OpsRamp API User) can send id and loginName to change the default.
+        - Based on the setting Make default submission status of a pending request as open, the status of the Pending request will change to Open.
+        - A file attachment is limited to 50MB.
+        - Date format is `yyyy-MM-ddTHH:mm:ssZ (GMT)`.
       operationId: change-request-add-response-post/
       tags:
         - tickets
@@ -442,25 +416,12 @@ paths:
       description: |-
         This endpoint is used to retrieve responses of a change request.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_1000/changeRequests/CHG0000001111/responses/search?pageNo=1&pageSize=10&queryString=startCreationDate:2016-03-29T10:15:55 0000+endCreationDate:2016-03-30T11:15:55 0000
-        ```
-
-        ### Query variables
-
-        |Query Variable|Values|Description|
-        |----|----|----|
-        |startCreationDate|NA|Filter response with request creation date. Provide from date.<br>Example: 2016-03-29T10:15:55 0000 (GMT)|
-        |endCreationDate|NA|Filter response with request creation date. Provide to date.<br>Example: 2016-03-31T11:20:55 0000 (GMT)
-        |internal|true, false|Internal or universal responses:<br>- If internal=true retrieves only the internal responses.<br>- If internal=false retrieves global responses.<br>- By default it retrieves all responses of the ticket.|
-
-        >## Notes
-        >There are special characters that can be used in a query string:
-        >- (+) represents the next field and must be URL-encoded.
-        >- (:) represents equals. An example is `key : value`.
-        >- Space characters must be URL-encoded.
-        >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+        ## Notes
+        There are special characters that can be used in a query string:
+        - (+) represents the next field and must be URL-encoded.
+        - (:) represents equals. An example is `key : value`.
+        - Space characters must be URL-encoded.
+        - Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
       operationId: change-request-change-responses-get/
       tags:
         - tickets
@@ -600,11 +561,6 @@ paths:
       description: |-
         This endpoint is used to close a change request.
 
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_8/changeRequests/CHG0000000222/close
-        ```
-
         Follow the steps before closing a change request:
 
         Step 1: Check the status flow transition for Closed.
@@ -629,10 +585,10 @@ paths:
         4. Select client and then click Customize.
         5. In Incident Request section, select option Enable reasons to change status Close and then click Save.
 
-        >## Notes
-        >- Use the get change request API to check if status Closed and reasons to provide for Close are enabled. If under the field allowedStatus if name: Closed and reasonsEnabled: true, this indicates reasons should be provided for closing an incident.
-        >- Use the get status change reasons API to provide the reasons to Close. The reasons configured in status: Closed are accepted, but a new provided reason would result in an error.
-        >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+        ## Notes
+        - Use the get change request API to check if status Closed and reasons to provide for Close are enabled. If under the field allowedStatus if name: Closed and reasonsEnabled: true, this indicates reasons should be provided for closing an incident.
+        - Use the get status change reasons API to provide the reasons to Close. The reasons configured in status: Closed are accepted, but a new provided reason would result in an error.
+        - Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
       operationId: change-request-close-post/
       tags:
         - tickets
@@ -956,15 +912,6 @@ paths:
       description: |-
         This endpoint is used to create categories for the change request entity type.
 
-        ## Sample URLs
-        To create partner-level categories:
-        ```
-        https://{api-url}/api/v2/tenants/msp_3/changeRequests/categories
-        ```
-        To create client-level categories:
-        ```
-        https://{api-url}/api/v2/tenants/client_4/changeRequests/categories
-        ```
         Creating categories and sub-categories helps organize identical change requests. This provides clarity and access to granularity of data. For example, a network category could help track how many network-related change requests are triggered in a week.
       operationId: change-request-create-categories-post/
       tags:
@@ -1124,13 +1071,7 @@ paths:
   '/api/v2/tenants/{tenantId}/changeRequests':
     post:
       summary: Create change request
-      description: |-
-        This endpoint is used to create a change request.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_7/changeRequests
-        ```
+      description: This endpoint is used to create a change request.
       operationId: change-request-create-post/
       tags:
         - tickets
@@ -1257,15 +1198,7 @@ paths:
   '/api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/responses/{responseId}/resources/{resourceId}':
     get:
       summary: Download change request response attachment
-      description: |-
-        This endpoint is used to download the response attachment attached to a change request.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_7/changeRequests/CHG0000001111/responses/1901/resources/96
-        ```
-
-        >Attachment download URL can be obtained in contentURL field of the get change request responses API.
+      description: This endpoint is used to download the response attachment attached to a change request.
       operationId: change-request-download-change-attachment-get/
       tags:
         - tickets
@@ -1304,12 +1237,6 @@ paths:
       summary: Get change request
       description: |
         This endpoint is used to retrieve the details of a change request.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_1000/changeRequests/CHG0000001111
-        ```
-        > Date format is yyyy-MM-ddTHH:mm:ssZ (GMT).
       operationId: change-request-get/
       tags:
         - tickets
@@ -1972,63 +1899,7 @@ paths:
   '/api/v2/tenants/{tenantId}/changeRequests/search':
     get:
       summary: Search change requests
-      description: |-
-        This endpoint is used to search for change requests.
-
-        ## Sample URLs
-        ```
-        https://{api-url}/api/v2/tenants/client_1000/changeRequests/search?pageNo=1&pageSize=10&isDescendingOrder=true&sortName=ticket.id&include=customFields,statusFlow&queryString=status:New,Open+priority: High+requester:USR0000000129+startCreationDate:2016-07-26T14:49:44 0000+endCreationDate:2016-07-28T07:12:19 0000
-        ```
-        ## Sample cURL
-        ```
-        https://{api-url}/api/v2/tenants/msp_100/changeRequests/search?pageNo=1&pageSize=10&isDescendingOrder=true&sortName=ticket.id&include=customFields,statusFlow&queryString=status:New,Open+priority: High+requester:USR0000000129+startCreationDate:2016-07-26T14:49:44 0000+endCreationDate:2016-07-28T07:12:19 0000
-        ```
-        >## Notes
-        > The request parameter include is required in order to retrieve the following information in the response:
-        >- Custom fields
-        >- Status flow.
-        >
-        > Example: include=customFields, statusFlow
-
-        ### Query variables
-
-        |Field|Default Value|
-        |----|----|
-        |uniqueId|ID of the change request.<br>Example: CHG0000002401|
-        |status|Current status of change request.<br>Supported values: New, Open, Pending, Resolved, Closed, and On Hold.<br>Example: Closed, Resolved|
-        |priority|Current priority of change request.<br>Supported values: Low, Normal, High, Urgent, and Very Low<br>Example: High, Urgent|
-        |subject|A short summary of change request.<br>Example: Change Request from Alert.|
-        |assignedTo|User who has been assigned change request.<br>Example: USR0000000129|
-        |requester|User who requests the change request.<br>Example: USR0000000129|
-        |startCreationDate|Filter change request with the creation date. Provide the from date.<br>Example: 2016-07-26T14:49:44 0000 (GMT)|
-        |endCreationDate|Provide the to date.<br>Example: 2016-07-28T07:12:19 0000 (GMT)|
-        |startUpdationDate|Filter change request with the updation date.<br>Example: 2016-08-12T06:54:59 0000 (GMT)|
-        |endUpdationDate|Provide the to date.<br>Example: 2016-08-15T10:40:20 0000 (GMT)|
-        |oldStatus|Previous status of change request.<br>Supported values: New, Open, Pending, Resolved, and On Hold<br>Example: Resolved|
-        |oldPriority|Previous priority of change request.<br>Supported values: Low, Normal, High, Urgent, and Very Low<br>Example: Urgent|
-        |deviceId|Unique ID of the device.<br>Example: 481af404-33a6-4d61-af77-c483ca6641fa|
-        |source|Source of the change request.<br>Supported values: PORTAL, INTEGRATION, MOBILE, EMAIL|
-        |sourcePolicyType|Source policy type of the change request.<br>Supported values: AUTOINCIDENT, INTEGRATION|
-        |firstContactFix|Problem fixed without assigning to another group.<br>Example: true, false|
-        |assigneeGroupIds|ID of the group to which the problem is assigned.<br>Example: 1, 2, 3|
-        |minResponseTime|Minimum response time of request.<br>Example: 300 (time in seconds)|
-        |maxResponseTime|Maximum response time of request.<br>Example: 600 (time in seconds)|
-        |minResolutionTime|Minimum resolution time of request.<br>Example: 3600 (time in seconds)|
-        |maxResolutionTime|Maximum resolution time of request.<br>Example: 7200 (time in seconds)|
-        |minReOpens|Minimum number of times change request is reopened.<br>Example: 5|
-        |maxReOpens|Maximum number of times change request is reopened.<br>Example: 8|
-        |startClosedDate|Filter change requests with the closed date. Provide the from closed date.<br>Example: 2016-08-12T06:54:59 0000 (GMT)|
-        |endClosedDate|Provide to closed date.<br>Example: 2016-08-15T06:54:59 0000 (GMT)|
-        |startResolvedDate|Filter change requests with the resolved date. Provide from resolved date.<br>Example: 2016-08-12T06:49:59 0000 (GMT)|
-        |endResolvedDate|Provide to resolved date.<br>Example: 2016-08-14T07:49:59 0000 (GMT)|
-        |extTicketId|External ticket ID.|
-
-        >## Notes
-        >There are special characters that can be used in a query string:
-        >- (+) represents the next field and must be URL-encoded.
-        >- (:) represents equals. An example is `key : value`.
-        >- Space characters must be URL-encoded.
-        >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT)
+      description: This endpoint is used to search for change requests.
       operationId: change-request-search-get/
       tags:
         - tickets
@@ -6246,6 +6117,18 @@ paths:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
                            System uptime is critical  : 0day(s);1hour(s);23minute(s);
                           Auto Stopped Services:
 
@@ -6397,6 +6280,18 @@ paths:
                       - id: INC0000000094
                         subject: 'System uptime is critical  : 0day(s);4hour(s);58minute(s);'
                         description: |2-
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13535,7 +13430,6 @@ paths:
         in: path
         name: uniqueId
         required: true
-  
   '/api/v2/tenants/{tenantId}/{ticketType}/slaPolicies/{id}':
     get:
       summary: Get SLA policy
