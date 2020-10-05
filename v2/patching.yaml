@@ -1,12 +1,12 @@
 openapi: 3.0.0
 info:
-  title: opsramp-patching
+  title: Patching
   version: 2.0.0
   description: API Documentation
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: patching
 servers:

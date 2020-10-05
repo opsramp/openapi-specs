@@ -1,12 +1,12 @@
 openapi: 3.0.0
 info:
-  title: opsramp-alerts
+  title: Alerts
   version: 2.0.0
   description: API Documentation
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: alerts
 servers:
@@ -25,7 +25,7 @@ paths:
       operationId: alerts/alert-correlation-policy-enable-disable-post/
       tags:
         - alerts
-      description: This endpoint is used to enable, disable, and create an observed mode on an alert correlation policy.
+      description: 'This endpoint is used to enable, disable, and create an observed mode on an alert correlation policy.'
       responses:
         '200':
           description: OK
@@ -2318,6 +2318,7 @@ paths:
                         type: object
                         description: |2-
 
+
                            Configure how to update an existing incident of an escalated alert.
                            
                           If an Open incident (other than Closed) is available for the alert, the incident gets updated instead of creating a new incident.
@@ -2922,7 +2923,7 @@ paths:
                       rules:
                         - key: 'Alert  : Description'
                           operator: CONTAINS
-                          value: 
+                          value:
                             type: critical
                         - key: 'Alert : Occurrence Frequency'
                           operator: GREATERTHANOREQUALTO
@@ -2932,7 +2933,7 @@ paths:
                             frequencyType: hours
                         - key: 'Resource : Resource Type'
                           operator: MATCH
-                          value: 
+                          value:
                             type: DEVICE
                     escalationType: AUTOMATIC_UNTIL_ACKNOWLEDGED_CLOSED_SUPPRESSED_TICKETED
                     escalations:
@@ -4271,6 +4272,7 @@ paths:
                       updateIncident:
                         type: object
                         description: |2-
+
 
 
 

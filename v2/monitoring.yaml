@@ -1,12 +1,12 @@
 openapi: 3.0.0
 info:
-  title: opsramp-monitoring
+  title: Monitoring
   version: 2.0.0
   description: API Documentation
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: monitoring
 servers:
@@ -367,20 +367,20 @@ paths:
          6. PARTNER AUTHENTICATION
             1. Provide scope: Partner, to get partner templates
             2. Use this API with respective client_id, to get client templates as shown in example URL 1
-        
+
         Note: queryString not required with scope.
-        
+
         7. SERVICE PROVIDER AUTHENTICATION
             1. Use this API with respective msp_id, to get partner templates as shown in example URL 3
-        
+
         Note: queryString not required with scope.
-        
+
             2. Use this API with respective client_id, to get client templates as shown in example URL 1
-        
+
          Note: queryString not required with scope.
-        
+
         8. Provide sourceType = DEVICE, to get available templates at the device level.
-        
+
         Note: This can be useful in assigning templates to a device.
       operationId: monitoring-templates-search-templates-get/
       tags:

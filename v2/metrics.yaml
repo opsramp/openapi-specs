@@ -1,12 +1,12 @@
 openapi: 3.0.0
 info:
-  title: opsramp-metrics
+  title: Metrics
   version: 2.0.0
   description: API Documentation
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: metrics
 servers:
@@ -152,7 +152,6 @@ paths:
         |Greater than 3 days to 30 days|1-hour rollup|data (AVG), minVals (MIN), maxVals(MAX) and lastVals(LATEST / LAST)|
         |Greater than 30 days|1-day rollup|data (AVG), minVals (MIN), maxVals(MAX) and lastVals(LATEST / LAST)|
         |Using "data=raw" query param|Raw (up to 7 days)|data (RAW)|
-
       operationId: metrics-resource-time-series-get/
       tags:
         - metrics
