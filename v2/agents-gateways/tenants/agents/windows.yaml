@@ -1,0 +1,46 @@
+get:
+  summary: Download agent for Windows
+  description: |-
+    This endpoint is used to download the agent for Windows resources.
+
+    This returns the JSON payload containing package name, package size, package checksum, and the package S3 bucket URL to directly download the agent.
+  operationId: agents/agents-gateways-agent-windows-download-get/
+  tags:
+    - agents-gateways
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              downloadUrl:
+                type: string
+              version:
+                type: string
+              size:
+                type: integer
+              checksum:
+                type: string
+              generation:
+                type: string
+          examples:
+            example-1:
+              value:
+                name: <package-name>
+                downloadUrl: <direct-s3-download-url>
+                version: <agent-version>
+                size: 1000
+                checksum: <checksum>
+                generation: G2
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-windows-download-get/'
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true

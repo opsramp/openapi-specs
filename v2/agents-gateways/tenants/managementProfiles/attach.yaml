@@ -1,0 +1,56 @@
+get:
+  summary: Attach gateway to management profile
+  description: This endpoint is used to attach a gateway to a management profile and generates an activation token. The generated activation token is used in gateway registration.
+  operationId: management-profiles/management-profile-attach-get/
+  tags:
+    - agents-gateways
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              description:
+                type: string
+              type:
+                type: string
+              tunnelType:
+                type: string
+              activationToken:
+                type: string
+              registered:
+                type: boolean
+              createdDate:
+                type: string
+                description: 'Date format is yyyy-MM-ddTHH:mm:ssZ (GMT).'
+                format: date-time
+          examples:
+            example-1:
+              value:
+                id: 76
+                name: LB1 Gateway Profile
+                description: Gateway Management Profile
+                type: Gateway
+                tunnelType: SSHD
+                activationToken: d72eb58e-ff20-44e4-887c-341b0760eb00
+                registered: false
+                createdDate: '2016-06-22T07:34:40+0000'
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-attach-get/'
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: id
+    required: true

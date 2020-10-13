@@ -1,0 +1,63 @@
+post:
+  description: |
+    This endpoint is used to configure the external proxy connection on the gateway.
+
+    An access token must be generated to use this API.
+  operationId: gateways/gateway-externalproxy-post/
+  tags:
+    - agents-gateways
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              Success:
+                type: string
+          examples:
+            example-1:
+              value:
+                Success: Successfully updated proxy settings.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            connection:
+              type: string
+              description: 'Type of network connection: direct or proxy'
+              enum:
+                - direct
+                - proxy
+            proxy_ip:
+              type: string
+              description: Proxy IP address for the network.
+            proxy_port:
+              type: string
+              description: Port for the proxy IP address.
+            proxy_usr:
+              type: string
+              description: Proxy user name.
+            proxy_pwd:
+              type: string
+              description: Proxy password.
+          required:
+            - connection
+            - proxy_ip
+            - proxy_port
+        examples:
+          example-1:
+            value:
+              connection: direct
+              proxy_ip: <ip>
+              proxy_port: <port>
+              proxy_usr: <proxyuser>
+              proxy_pwd: <proxypassword>
+    description: ''
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-externalproxy-post/'
+  summary: Set external proxy connection
+  parameters: []

@@ -9,17 +9,21 @@ info:
     url: https://www.opsramp.com/about-opsramp/contact-us/
 tags:
   - name: automation
+  - name: knowledge-base
+  - name: alerts
+  - name: automation
+  - name: automation
 servers:
-  - url: 'https://api.opsramp.com'
+  - url: "https://api.opsramp.com"
     description: Partner - All Others
-  - url: 'https://{subdomain}.api.opsramp.com'
+  - url: "https://{subdomain}.api.opsramp.com"
     description: Partner or Client custom branded sub-domain
     variables:
       subdomain:
         default: demo
         description: Custom sub-domain assigned to the client
 paths:
-  '/api/v2/tenants/{tenantId}/jobs':
+  "/api/v2/tenants/{tenantId}/jobs":
     post:
       summary: Create job
       description: This endpoint is used to create a job.
@@ -27,7 +31,7 @@ paths:
       tags:
         - automation
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -37,13 +41,13 @@ paths:
                   name:
                     type: string
                   entities:
-                    $ref: '#/components/schemas/entities'
+                    $ref: "#/components/schemas/entities"
                   schedule:
-                    $ref: '#/components/schemas/schedule'
+                    $ref: "#/components/schemas/schedule"
                   jobQueued:
                     type: boolean
                   script:
-                    $ref: '#/components/schemas/script'
+                    $ref: "#/components/schemas/script"
                   id:
                     type: string
               examples:
@@ -66,7 +70,7 @@ paths:
                           clientUniqueId: client_13
                           type: DEVICE
                     schedule:
-                      startDate: '2016-04-14T10:10:00+0000'
+                      startDate: "2016-04-14T10:10:00+0000"
                       pattern:
                         type: daily
                         frequency: recurrence
@@ -95,7 +99,7 @@ paths:
                           clientUniqueId: client_13
                           type: DEVICE
                     schedule:
-                      startDate: '2016-04-14T10:10:00+0000'
+                      startDate: "2016-04-14T10:10:00+0000"
                       pattern:
                         type: daily
                         frequency: recurrence
@@ -131,7 +135,7 @@ paths:
                           clientUniqueId: client_13
                           type: DEVICE
                     schedule:
-                      startDate: '2016-04-14T10:10:00+0000'
+                      startDate: "2016-04-14T10:10:00+0000"
                       pattern:
                         type: daily
                         frequency: recurrence
@@ -164,7 +168,7 @@ paths:
                           clientUniqueId: client_13
                           type: DEVICE
                     schedule:
-                      startDate: '2016-04-14T10:10:00+0000'
+                      startDate: "2016-04-14T10:10:00+0000"
                       pattern:
                         type: daily
                         frequency: recurrence
@@ -181,7 +185,7 @@ paths:
                       parameters:
                         - paramId: 2
                           name: String
-                          value: '150'
+                          value: "150"
                       userType: 2
                     id: ce1088d5-81cc-4262-b515-a75230f0d8e4
       requestBody:
@@ -191,9 +195,9 @@ paths:
               type: object
               properties:
                 script:
-                  $ref: '#/components/schemas/script'
+                  $ref: "#/components/schemas/script"
                 entities:
-                  $ref: '#/components/schemas/entities'
+                  $ref: "#/components/schemas/entities"
                 name:
                   type: string
                   description: The job name.
@@ -201,7 +205,7 @@ paths:
                   type: boolean
                   description: (Optional) To run a job constantly after execution of other jobs.
                 schedule:
-                  $ref: '#/components/schemas/schedule'
+                  $ref: "#/components/schemas/schedule"
                 credentialSet:
                   type: object
                   properties:
@@ -215,7 +219,7 @@ paths:
               example-ad-checklist:
                 value:
                   name: Ad Check List
-                  jobQueued: 'true'
+                  jobQueued: "true"
                   entities:
                     - resource:
                         id: 709824de-8315-4cf9-ad1c-b15aaf7bf2a5
@@ -226,16 +230,16 @@ paths:
                   script:
                     jobType: adCheckList
                   schedule:
-                    startDate: '2016-04-14T10:10:10+0000'
+                    startDate: "2016-04-14T10:10:10+0000"
                     pattern:
                       type: daily
                       frequency: recurrence
                       repeatType: Days
-                      repeatFrequency: '2'
+                      repeatFrequency: "2"
               example-network-configuration-backup:
                 value:
                   name: Network Config Backup
-                  jobQueued: 'true'
+                  jobQueued: "true"
                   entities:
                     - resource:
                         id: 709824de-8315-4cf9-ad1c-b15aaf7bf2a5
@@ -247,22 +251,22 @@ paths:
                     jobType: networkconfigbackup
                     configParams:
                       versionsSaved: ALL_VERSIONS
-                      backUpTrigger: 'true'
-                      startupConfigAlert: 'true'
-                      runtimeConfigAlert: 'true'
-                      startUpConfigFilesBackUp: 'true'
-                      runTimeConfigFilesBackUp: 'true'
+                      backUpTrigger: "true"
+                      startupConfigAlert: "true"
+                      runtimeConfigAlert: "true"
+                      startUpConfigFilesBackUp: "true"
+                      runTimeConfigFilesBackUp: "true"
                   schedule:
-                    startDate: '2016-04-14T10:10:10+0000'
+                    startDate: "2016-04-14T10:10:10+0000"
                     pattern:
                       type: daily
                       frequency: recurrence
                       repeatType: Days
-                      repeatFrequency: '2'
+                      repeatFrequency: "2"
               example-app-install:
                 value:
                   name: test
-                  jobQueued: 'true'
+                  jobQueued: "true"
                   entities:
                     - resource:
                         id: 709824de-8315-4cf9-ad1c-b15aaf7bf2a5
@@ -273,27 +277,27 @@ paths:
                   script:
                     jobType: appinstall
                     approvalType:
-                      approvalType: '1'
+                      approvalType: "1"
                       approvalReason: for testing
-                      alertRequired: 'true'
+                      alertRequired: "true"
                   schedule:
-                    startDate: '2016-04-14T10:10:10+0000'
+                    startDate: "2016-04-14T10:10:10+0000"
                     pattern:
                       type: daily
                       frequency: recurrence
                       repeatType: Days
-                      repeatFrequency: '2'
+                      repeatFrequency: "2"
               example-custom-script:
                 value:
-                  jobQueued: 'true'
+                  jobQueued: "true"
                   script:
                     jobType: custom
-                    userType: '2'
+                    userType: "2"
                     customScript:
-                      id: '7'
+                      id: "7"
                     parameters:
-                      - paramId: '2'
-                        value: '150'
+                      - paramId: "2"
+                        value: "150"
                   entities:
                     - resource:
                         id: 709824de-8315-4cf9-ad1c-b15aaf7bf2a5
@@ -302,21 +306,21 @@ paths:
                         id: 4e96d5bc-763c-4c00-beab-928d653a0422
                         type: DEVICE
                   schedule:
-                    startDate: '2016-04-14T10:10:10+0000'
+                    startDate: "2016-04-14T10:10:10+0000"
                     pattern:
                       type: daily
                       frequency: recurrence
                       repeatType: Days
-                      repeatFrequency: '2'
+                      repeatFrequency: "2"
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/automation-jobs-create-post/'
+        url: "https://docs.opsramp.com/api/automation/automation-jobs-create-post/"
     parameters:
       - schema:
           type: string
         in: path
         name: tenantId
         required: true
-  '/api/v2/tenants/{tenantId}/jobs/{id}':
+  "/api/v2/tenants/{tenantId}/jobs/{id}":
     get:
       summary: Get job
       description: This endpoint is used to retrieve the job details.
@@ -324,7 +328,7 @@ paths:
       tags:
         - automation
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -334,13 +338,13 @@ paths:
                   name:
                     type: string
                   entities:
-                    $ref: '#/components/schemas/entities'
+                    $ref: "#/components/schemas/entities"
                   schedule:
-                    $ref: '#/components/schemas/schedule'
+                    $ref: "#/components/schemas/schedule"
                   jobQueued:
                     type: boolean
                   script:
-                    $ref: '#/components/schemas/script'
+                    $ref: "#/components/schemas/script"
                   id:
                     type: string
               examples:
@@ -355,7 +359,7 @@ paths:
                             hostName: 172.30.1.60
                             resourceType: Desktop
                             resourceName: abc
-                            aliasName: ''
+                            aliasName: ""
                           clientUniqueId: client_13
                           type: DEVICE
                       - resource:
@@ -365,11 +369,11 @@ paths:
                             hostName: 10.233.19.130
                             resourceType: Desktop
                             resourceName: abcd
-                            aliasName: ''
+                            aliasName: ""
                           clientUniqueId: client_13
                           type: DEVICE
                     schedule:
-                      startDate: '2016-04-14T10:10:00+0000'
+                      startDate: "2016-04-14T10:10:00+0000"
                       pattern:
                         type: daily
                         frequency: recurrence
@@ -398,7 +402,7 @@ paths:
                           clientUniqueId: client_13
                           type: DEVICE
                     schedule:
-                      startDate: '2016-04-14T10:10:00+0000'
+                      startDate: "2016-04-14T10:10:00+0000"
                       pattern:
                         type: daily
                         frequency: recurrence
@@ -415,7 +419,7 @@ paths:
                       parameters:
                         - paramId: 2
                           name: String
-                          value: '150'
+                          value: "150"
                       userType: 2
                     id: ce1088d5-81cc-4262-b515-a75230f0d8e4
                 example-network-configuration-backup:
@@ -437,7 +441,7 @@ paths:
                           clientUniqueId: client_13
                           type: DEVICE
                     schedule:
-                      startDate: '2016-04-14T10:10:00+0000'
+                      startDate: "2016-04-14T10:10:00+0000"
                       pattern:
                         type: daily
                         frequency: recurrence
@@ -455,7 +459,7 @@ paths:
                         runTimeConfigFilesBackUp: true
                     id: cc242a8d-b0b4-430e-a89f-7081bc5e79b0
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/automation-jobs-get-job-get/'
+        url: "https://docs.opsramp.com/api/automation/automation-jobs-get-job-get/"
     delete:
       summary: Delete job
       description: |
@@ -466,9 +470,9 @@ paths:
       tags:
         - automation
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/automation-jobs-job-delete/'
+        url: "https://docs.opsramp.com/api/automation/automation-jobs-job-delete/"
       responses:
-        '200':
+        "200":
           description: |-
             OK
 
@@ -481,7 +485,7 @@ paths:
       tags:
         - automation
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -491,13 +495,13 @@ paths:
                   name:
                     type: string
                   entities:
-                    $ref: '#/components/schemas/entities'
+                    $ref: "#/components/schemas/entities"
                   schedule:
-                    $ref: '#/components/schemas/schedule'
+                    $ref: "#/components/schemas/schedule"
                   jobQueued:
                     type: boolean
                   script:
-                    $ref: '#/components/schemas/script'
+                    $ref: "#/components/schemas/script"
                   id:
                     type: string
               examples:
@@ -520,7 +524,7 @@ paths:
                           clientUniqueId: client_13
                           type: DEVICE
                     schedule:
-                      startDate: '2016-04-14T10:10:00+0000'
+                      startDate: "2016-04-14T10:10:00+0000"
                       pattern:
                         type: daily
                         frequency: recurrence
@@ -549,7 +553,7 @@ paths:
                           clientUniqueId: client_13
                           type: DEVICE
                     schedule:
-                      startDate: '2016-04-14T10:10:00+0000'
+                      startDate: "2016-04-14T10:10:00+0000"
                       pattern:
                         type: daily
                         frequency: recurrence
@@ -585,7 +589,7 @@ paths:
                           clientUniqueId: client_13
                           type: DEVICE
                     schedule:
-                      startDate: '2016-04-14T10:10:00+0000'
+                      startDate: "2016-04-14T10:10:00+0000"
                       pattern:
                         type: daily
                         frequency: recurrence
@@ -618,7 +622,7 @@ paths:
                           clientUniqueId: client_13
                           type: DEVICE
                     schedule:
-                      startDate: '2016-04-14T10:10:00+0000'
+                      startDate: "2016-04-14T10:10:00+0000"
                       pattern:
                         type: daily
                         frequency: recurrence
@@ -635,7 +639,7 @@ paths:
                       parameters:
                         - paramId: 2
                           name: String
-                          value: '150'
+                          value: "150"
                       userType: 2
                     id: ce1088d5-81cc-4262-b515-a75230f0d8e4
       requestBody:
@@ -651,17 +655,17 @@ paths:
                 jobQueued:
                   type: boolean
                 entities:
-                  $ref: '#/components/schemas/entities'
+                  $ref: "#/components/schemas/entities"
                 script:
-                  $ref: '#/components/schemas/script'
+                  $ref: "#/components/schemas/script"
                 schedule:
-                  $ref: '#/components/schemas/schedule'
+                  $ref: "#/components/schemas/schedule"
             examples:
               example-ad-checklist:
                 value:
                   id: 4902d87c-b5df-4797-9f45-e807cd871ac9
                   name: Ad Check List
-                  jobQueued: 'true'
+                  jobQueued: "true"
                   entities:
                     - resource:
                         id: 709824de-8315-4cf9-ad1c-b15aaf7bf2a5
@@ -672,17 +676,17 @@ paths:
                   script:
                     jobType: adCheckList
                   schedule:
-                    startDate: '2016-04-14T10:10:10+0000'
+                    startDate: "2016-04-14T10:10:10+0000"
                     pattern:
                       type: daily
                       frequency: recurrence
                       repeatType: Days
-                      repeatFrequency: '2'
+                      repeatFrequency: "2"
               example-network-configuration-backup:
                 value:
                   id: cc242a8d-b0b4-430e-a89f-7081bc5e79b0
                   name: Network Config Backup
-                  jobQueued: 'true'
+                  jobQueued: "true"
                   entities:
                     - resource:
                         id: 709824de-8315-4cf9-ad1c-b15aaf7bf2a5
@@ -694,23 +698,23 @@ paths:
                     jobType: networkconfigbackup
                     configParams:
                       versionsSaved: ALL_VERSIONS
-                      backUpTrigger: 'true'
-                      startupConfigAlert: 'true'
-                      runtimeConfigAlert: 'true'
-                      startUpConfigFilesBackUp: 'true'
-                      runTimeConfigFilesBackUp: 'true'
+                      backUpTrigger: "true"
+                      startupConfigAlert: "true"
+                      runtimeConfigAlert: "true"
+                      startUpConfigFilesBackUp: "true"
+                      runTimeConfigFilesBackUp: "true"
                   schedule:
-                    startDate: '2016-04-14T10:10:10+0000'
+                    startDate: "2016-04-14T10:10:10+0000"
                     pattern:
                       type: daily
                       frequency: recurrence
                       repeatType: Days
-                      repeatFrequency: '2'
+                      repeatFrequency: "2"
               example-app-install:
                 value:
                   id: 8a87f644-0bdc-4d5a-9e41-0ca333b71acd
                   name: test
-                  jobQueued: 'true'
+                  jobQueued: "true"
                   entities:
                     - resource:
                         id: 709824de-8315-4cf9-ad1c-b15aaf7bf2a5
@@ -721,28 +725,28 @@ paths:
                   script:
                     jobType: appinstall
                     approvalType:
-                      approvalType: '1'
+                      approvalType: "1"
                       approvalReason: for testing
-                      alertRequired: 'true'
+                      alertRequired: "true"
                   schedule:
-                    startDate: '2016-04-14T10:10:10+0000'
+                    startDate: "2016-04-14T10:10:10+0000"
                     pattern:
                       type: daily
                       frequency: recurrence
                       repeatType: Days
-                      repeatFrequency: '2'
+                      repeatFrequency: "2"
               example-custom-script:
                 value:
                   id: ce1088d5-81cc-4262-b515-a75230f0d8e4
-                  jobQueued: 'true'
+                  jobQueued: "true"
                   script:
                     jobType: custom
-                    userType: '2'
+                    userType: "2"
                     customScript:
-                      id: '7'
+                      id: "7"
                     parameters:
-                      - paramId: '2'
-                        value: '150'
+                      - paramId: "2"
+                        value: "150"
                   entities:
                     - resource:
                         id: 709824de-8315-4cf9-ad1c-b15aaf7bf2a5
@@ -751,14 +755,14 @@ paths:
                         id: 4e96d5bc-763c-4c00-beab-928d653a0422
                         type: DEVICE
                   schedule:
-                    startDate: '2016-04-14T10:10:10+0000'
+                    startDate: "2016-04-14T10:10:10+0000"
                     pattern:
                       type: daily
                       frequency: recurrence
                       repeatType: Days
-                      repeatFrequency: '2'
+                      repeatFrequency: "2"
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/automation-jobs-update-post/'
+        url: "https://docs.opsramp.com/api/automation/automation-jobs-update-post/"
     parameters:
       - schema:
           type: string
@@ -770,7 +774,7 @@ paths:
         in: path
         name: id
         required: true
-  '/api/v2/tenants/{tenantId}/jobs/types':
+  "/api/v2/tenants/{tenantId}/jobs/types":
     get:
       summary: Get job types
       description: This endpoint is used to retrieve the list of job types.
@@ -778,7 +782,7 @@ paths:
       tags:
         - automation
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -827,14 +831,14 @@ paths:
                       - jobName: Application Update
                         jobtype: appupdate
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/automation-jobs-job-types-get/'
+        url: "https://docs.opsramp.com/api/automation/automation-jobs-job-types-get/"
     parameters:
       - schema:
           type: string
         in: path
         name: tenantId
         required: true
-  '/api/v2/tenants/{tenantId}/jobs/{id}/run':
+  "/api/v2/tenants/{tenantId}/jobs/{id}/run":
     get:
       summary: Run job
       description: This endpoint is used to run a scheduled job.
@@ -856,9 +860,9 @@ paths:
                 value:
                   reason: To run job on demand
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/automation-jobs-run-job-get/'
+        url: "https://docs.opsramp.com/api/automation/automation-jobs-run-job-get/"
       responses:
-        '200':
+        "200":
           description: |-
             OK
 
@@ -875,7 +879,7 @@ paths:
         in: path
         name: id
         required: true
-  '/api/v2/tenants/{tenantId}/jobs/{id}/script/run':
+  "/api/v2/tenants/{tenantId}/jobs/{id}/script/run":
     post:
       summary: Run script
       description: |-
@@ -888,9 +892,9 @@ paths:
       tags:
         - automation
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/automation-jobs-run-script-post/'
+        url: "https://docs.opsramp.com/api/automation/automation-jobs-run-script-post/"
       responses:
-        '200':
+        "200":
           description: |-
             OK
 
@@ -908,7 +912,7 @@ paths:
         in: path
         name: id
         required: true
-  '/api/v2/tenants/{tenantId}/jobs/search':
+  "/api/v2/tenants/{tenantId}/jobs/search":
     get:
       summary: Search jobs
       description: |
@@ -919,21 +923,21 @@ paths:
       tags:
         - automation
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/automation-jobs-search-jobs-get/'
+        url: "https://docs.opsramp.com/api/automation/automation-jobs-search-jobs-get/"
       parameters:
         - schema:
             type: integer
-            default: '1'
+            default: "1"
           in: query
           name: pageNo
         - schema:
             type: integer
-            default: '100'
+            default: "100"
           in: query
           name: pageSize
         - schema:
             type: boolean
-            default: 'true'
+            default: "true"
           in: query
           name: isDescendingOrder
         - schema:
@@ -946,7 +950,7 @@ paths:
           in: query
           name: queryString
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -961,11 +965,11 @@ paths:
                         name:
                           type: string
                         schedule:
-                          $ref: '#/components/schemas/schedule'
+                          $ref: "#/components/schemas/schedule"
                         jobQueued:
                           type: boolean
                         script:
-                          $ref: '#/components/schemas/script'
+                          $ref: "#/components/schemas/script"
                         id:
                           type: string
                         totalResults:
@@ -990,7 +994,7 @@ paths:
                     results:
                       - name: test
                         schedule:
-                          startDate: '2016-04-14T10:10:00+0000'
+                          startDate: "2016-04-14T10:10:00+0000"
                           pattern:
                             type: daily
                             frequency: recurrence
@@ -1006,7 +1010,7 @@ paths:
                         id: 8a87f644-0bdc-4d5a-9e41-0ca333b71acd
                       - name: Network Config Backup
                         schedule:
-                          startDate: '2016-04-14T10:10:00+0000'
+                          startDate: "2016-04-14T10:10:00+0000"
                           pattern:
                             type: daily
                             frequency: recurrence
@@ -1025,7 +1029,7 @@ paths:
                         id: cc242a8d-b0b4-430e-a89f-7081bc5e79b0
                       - name: Job - test script
                         schedule:
-                          startDate: '2016-04-14T10:10:00+0000'
+                          startDate: "2016-04-14T10:10:00+0000"
                           pattern:
                             type: daily
                             frequency: recurrence
@@ -1043,7 +1047,7 @@ paths:
                         id: ce1088d5-81cc-4262-b515-a75230f0d8e4
                       - name: Ad Check List
                         schedule:
-                          startDate: '2016-04-14T10:10:00+0000'
+                          startDate: "2016-04-14T10:10:00+0000"
                           pattern:
                             type: daily
                             frequency: recurrence
@@ -1067,7 +1071,7 @@ paths:
         in: path
         name: tenantId
         required: true
-  '/api/v2/tenants/{tenantId}/rba/categories':
+  "/api/v2/tenants/{tenantId}/rba/categories":
     post:
       summary: Create RBA category
       description: This endpoint is used to create an RBA category.
@@ -1075,7 +1079,7 @@ paths:
       tags:
         - automation
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1117,7 +1121,7 @@ paths:
                   parent:
                     id: 27
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/rba-categories-create-post/'
+        url: "https://docs.opsramp.com/api/automation/rba-categories-create-post/"
     get:
       summary: Get RBA categories
       description: This endpoint is used to retrieve list of RBA categories.
@@ -1125,14 +1129,14 @@ paths:
       tags:
         - automation
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/rba'
+                  $ref: "#/components/schemas/rba"
               examples:
                 example-1:
                   value:
@@ -1167,7 +1171,7 @@ paths:
                     - id: 13
                       name: Test Global Category
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/rba-categories-get/'
+        url: "https://docs.opsramp.com/api/automation/rba-categories-get/"
     put:
       summary: Update an RBA category
       description: This endpoint is used to update an RBA category.
@@ -1175,7 +1179,7 @@ paths:
       tags:
         - automation
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1212,14 +1216,14 @@ paths:
                   id: 22
                   name: CLIENT-Category_UpdatedName
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/rba-categories-update-put/'
+        url: "https://docs.opsramp.com/api/automation/rba-categories-update-put/"
     parameters:
       - schema:
           type: string
         in: path
         name: tenantId
         required: true
-  '/api/v2/tenants/{tenantId}/rba/categories/{categoryId}':
+  "/api/v2/tenants/{tenantId}/rba/categories/{categoryId}":
     delete:
       summary: Delete an RBA category
       description: |-
@@ -1230,9 +1234,9 @@ paths:
       tags:
         - automation
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/rba-categories-delete/'
+        url: "https://docs.opsramp.com/api/automation/rba-categories-delete/"
       responses:
-        '200':
+        "200":
           description: OK
     parameters:
       - schema:
@@ -1245,7 +1249,7 @@ paths:
         in: path
         name: categoryId
         required: true
-  '/api/v2/tenants/{tenantId}/rba/categories/{categoryId}/scripts':
+  "/api/v2/tenants/{tenantId}/rba/categories/{categoryId}/scripts":
     post:
       summary: Create script
       description: |-
@@ -1258,12 +1262,12 @@ paths:
       tags:
         - automation
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rbaScript'
+                $ref: "#/components/schemas/rbaScript"
               examples:
                 example-1:
                   value:
@@ -1280,13 +1284,13 @@ paths:
                       - id: 102
                         name: Test Param - 1
                         description: Testing please ignore
-                        defaultValue: '10'
+                        defaultValue: "10"
                         type: REQUIRED
                         dataType: INTEGER
                       - id: 103
                         name: Test Param - 2
                         description: Testing please ignore
-                        defaultValue: '50'
+                        defaultValue: "50"
                         type: OPTIONAL
                         dataType: STRING
                     executionType: SHELL
@@ -1294,10 +1298,10 @@ paths:
                     attachment:
                       id: 0
                       name: apache-restart.sh
-                      contentURL: 'https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=0.00'
-                    scriptVersion: '0.00'
+                      contentURL: "https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=0.00"
+                    scriptVersion: "0.00"
                     registryPath: HKEY_CURRENT_USER/Control Panel/Desktop
-                    registryValue: 'dword:00000001'
+                    registryValue: "dword:00000001"
                     processName: cmd.exe
                     serviceName: OpsRampAgent
       requestBody:
@@ -1322,7 +1326,7 @@ paths:
                     type: string
                 executionType:
                   type: string
-                  description: 'Script execution type.Supported Values: BATCHFILE, COMMAND, DOWNLOAD, EXE, MSI, POWERSHELL, PYTHON, PERL, PHP, SHELL, VBS'
+                  description: "Script execution type.Supported Values: BATCHFILE, COMMAND, DOWNLOAD, EXE, MSI, POWERSHELL, PYTHON, PERL, PHP, SHELL, VBS"
                   enum:
                     - BATCHFILE
                     - COMMAND
@@ -1370,7 +1374,7 @@ paths:
                   description: |
                     (Optional) Parameter data.
                   items:
-                    $ref: '#/components/schemas/rbaScriptParameter'
+                    $ref: "#/components/schemas/rbaScriptParameter"
                 command:
                   type: string
                 outputDirectory:
@@ -1390,9 +1394,9 @@ paths:
                     - WINDOWS
                     - LINUX
                   executionType: SHELL
-                  installTimeout: '50'
+                  installTimeout: "50"
                   registryPath: HKEY_CURRENT_USER/Control Panel/Desktop
-                  registryValue: 'dword:00000001'
+                  registryValue: "dword:00000001"
                   processName: cmd.exe
                   serviceName: OpsRampAgent
                   attachment:
@@ -1401,16 +1405,16 @@ paths:
                   parameters:
                     - name: Test Param - 1
                       description: Testing please ignore
-                      defaultValue: '10'
+                      defaultValue: "10"
                       type: REQUIRED
                       dataType: INTEGER
                     - name: Test Param - 2
                       description: Testing please ignore
-                      defaultValue: '50'
+                      defaultValue: "50"
                       type: OPTIONAL
                       dataType: STRING
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/rba-scripts-create-post/'
+        url: "https://docs.opsramp.com/api/automation/rba-scripts-create-post/"
     delete:
       summary: Delete script
       description: |
@@ -1421,9 +1425,9 @@ paths:
       tags:
         - automation
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/rba-scripts-delete/'
+        url: "https://docs.opsramp.com/api/automation/rba-scripts-delete/"
       responses:
-        '200':
+        "200":
           description: |-
             OK
 
@@ -1436,12 +1440,12 @@ paths:
       tags:
         - automation
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rbaScript'
+                $ref: "#/components/schemas/rbaScript"
               examples:
                 example-1:
                   value:
@@ -1458,19 +1462,19 @@ paths:
                       - id: 94
                         name: Test Param - 1
                         description: Testing please ignore
-                        defaultValue: '10'
+                        defaultValue: "10"
                         type: REQUIRED
                         dataType: INTEGER
                       - id: 95
                         name: Test Param - 2
                         description: Testing please ignore
-                        defaultValue: '50'
+                        defaultValue: "50"
                         type: OPTIONAL
                         dataType: STRING
                       - id: 96
                         name: New param - 3
                         description: Testing please ignore
-                        defaultValue: '50'
+                        defaultValue: "50"
                         type: OPTIONAL
                         dataType: STRING
                     executionType: SHELL
@@ -1478,14 +1482,14 @@ paths:
                     attachment:
                       id: 0
                       name: apache-restart.sh
-                      contentURL: 'https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=5.00'
-                    scriptVersion: '5.00'
+                      contentURL: "https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=5.00"
+                    scriptVersion: "5.00"
                     registryPath: HKEY_CURRENT_USER/Control Panel/Desktop
-                    registryValue: 'dword:00000001'
+                    registryValue: "dword:00000001"
                     processName: cmd.exe
                     serviceName: OpsRampAgent
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/rba-scripts-scripts-get/'
+        url: "https://docs.opsramp.com/api/automation/rba-scripts-scripts-get/"
     parameters:
       - schema:
           type: string
@@ -1497,7 +1501,7 @@ paths:
         in: path
         name: categoryId
         required: true
-  '/api/v2/tenants/{tenantId}/rba/scripts/{scriptId}/paginatedOutputs':
+  "/api/v2/tenants/{tenantId}/rba/scripts/{scriptId}/paginatedOutputs":
     get:
       summary: Get output logs
       description: This endpoint is used to retrieve paginated output logs of a script.
@@ -1505,7 +1509,7 @@ paths:
       tags:
         - automation
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1531,7 +1535,7 @@ paths:
                             name:
                               type: string
                         device:
-                          $ref: '#/components/schemas/resource'
+                          $ref: "#/components/schemas/resource"
                         owner:
                           type: object
                           properties:
@@ -1566,7 +1570,7 @@ paths:
                   value:
                     results:
                       - output: Agent Offline
-                        responseDate: '2017-04-02T05:35:10+0000'
+                        responseDate: "2017-04-02T05:35:10+0000"
                         type: ONDEMAND
                         task:
                           id: 8
@@ -1584,9 +1588,9 @@ paths:
                           lastName: Admin
                           firstName: Super
                           email: john.smith@domain.com
-                          phoneNumber: ''
+                          phoneNumber: ""
                       - output: Agent Offline
-                        responseDate: '2017-04-02T05:35:10+0000'
+                        responseDate: "2017-04-02T05:35:10+0000"
                         type: ONDEMAND
                         task:
                           id: 8
@@ -1594,7 +1598,7 @@ paths:
                         device:
                           id: DEV0000015681
                           generalInfo:
-                            osName: 'Microsoft Windows 7 Professional Service Pack 1, 32-bit'
+                            osName: "Microsoft Windows 7 Professional Service Pack 1, 32-bit"
                             ipAddresses: 172.22.221.37
                             hostName: qa-win2k8ssta.testbed.qa.com
                             osbuildNumber: 0
@@ -1605,9 +1609,9 @@ paths:
                           lastName: Admin
                           firstName: Super
                           email: john.smith@domain.com
-                          phoneNumber: ''
-                      - output: ''
-                        responseDate: '2017-04-02T05:35:10+0000'
+                          phoneNumber: ""
+                      - output: ""
+                        responseDate: "2017-04-02T05:35:10+0000"
                         type: ONDEMAND
                         device:
                           id: DEV0000015679
@@ -1623,7 +1627,7 @@ paths:
                           lastName: Admin
                           firstName: Super
                           email: john.smith@domain.com
-                          phoneNumber: ''
+                          phoneNumber: ""
                     totalResults: 2
                     orderBy: res.response_time
                     pageNo: 1
@@ -1633,7 +1637,7 @@ paths:
                     previousPageNo: 0
                     descendingOrder: true
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/rba-scripts-output-logs-get/'
+        url: "https://docs.opsramp.com/api/automation/rba-scripts-output-logs-get/"
     parameters:
       - schema:
           type: string
@@ -1645,7 +1649,7 @@ paths:
         in: path
         name: scriptId
         required: true
-  '/api/v2/tenants/{tenantId}/rba/categories/{categoryId}/scripts/{scriptId}':
+  "/api/v2/tenants/{tenantId}/rba/categories/{categoryId}/scripts/{scriptId}":
     get:
       summary: Get script
       description: This endpoint is used to retrieve details of the script.
@@ -1653,14 +1657,14 @@ paths:
       tags:
         - automation
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/rbaScript'
+                  $ref: "#/components/schemas/rbaScript"
               examples:
                 example-1:
                   value:
@@ -1677,19 +1681,19 @@ paths:
                         - id: 94
                           name: Test Param - 1
                           description: Testing please ignore
-                          defaultValue: '10'
+                          defaultValue: "10"
                           type: REQUIRED
                           dataType: INTEGER
                         - id: 95
                           name: Test Param - 2
                           description: Testing please ignore
-                          defaultValue: '50'
+                          defaultValue: "50"
                           type: OPTIONAL
                           dataType: STRING
                         - id: 96
                           name: New param - 3
                           description: Testing please ignore
-                          defaultValue: '50'
+                          defaultValue: "50"
                           type: OPTIONAL
                           dataType: STRING
                       executionType: SHELL
@@ -1697,10 +1701,10 @@ paths:
                       attachment:
                         id: 0
                         name: apache-restart.sh
-                        contentURL: 'https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=5.00'
-                      scriptVersion: '5.00'
+                        contentURL: "https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=5.00"
+                      scriptVersion: "5.00"
                       registryPath: HKEY_CURRENT_USER/Control Panel/Desktop
-                      registryValue: 'dword:00000001'
+                      registryValue: "dword:00000001"
                       processName: cmd.exe
                       serviceName: OpsRampAgent
                     - id: 77
@@ -1716,13 +1720,13 @@ paths:
                         - id: 100
                           name: Test Param - 1
                           description: Testing please ignore
-                          defaultValue: '10'
+                          defaultValue: "10"
                           type: REQUIRED
                           dataType: INTEGER
                         - id: 101
                           name: Test Param - 2
                           description: Testing please ignore
-                          defaultValue: '50'
+                          defaultValue: "50"
                           type: OPTIONAL
                           dataType: STRING
                       executionType: SHELL
@@ -1730,10 +1734,10 @@ paths:
                       attachment:
                         id: 0
                         name: apache-restart.sh
-                        contentURL: 'https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=0.00'
-                      scriptVersion: '0.00'
+                        contentURL: "https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=0.00"
+                      scriptVersion: "0.00"
                       registryPath: HKEY_CURRENT_USER/Control Panel/Desktop
-                      registryValue: 'dword:00000001'
+                      registryValue: "dword:00000001"
                       processName: cmd.exe
                       serviceName: OpsRampAgent
                     - id: 78
@@ -1749,13 +1753,13 @@ paths:
                         - id: 102
                           name: Test Param - 1
                           description: Testing please ignore
-                          defaultValue: '10'
+                          defaultValue: "10"
                           type: REQUIRED
                           dataType: INTEGER
                         - id: 103
                           name: Test Param - 2
                           description: Testing please ignore
-                          defaultValue: '50'
+                          defaultValue: "50"
                           type: OPTIONAL
                           dataType: STRING
                       executionType: SHELL
@@ -1763,10 +1767,10 @@ paths:
                       attachment:
                         id: 0
                         name: apache-restart.sh
-                        contentURL: 'https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=0.00'
-                      scriptVersion: '0.00'
+                        contentURL: "https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=0.00"
+                      scriptVersion: "0.00"
                       registryPath: HKEY_CURRENT_USER/Control Panel/Desktop
-                      registryValue: 'dword:00000001'
+                      registryValue: "dword:00000001"
                       processName: cmd.exe
                       serviceName: OpsRampAgent
                     - id: 79
@@ -1782,13 +1786,13 @@ paths:
                         - id: 104
                           name: Test Param - 1
                           description: Testing please ignore
-                          defaultValue: '10'
+                          defaultValue: "10"
                           type: REQUIRED
                           dataType: INTEGER
                         - id: 105
                           name: Test Param - 2
                           description: Testing please ignore
-                          defaultValue: '50'
+                          defaultValue: "50"
                           type: OPTIONAL
                           dataType: STRING
                       executionType: SHELL
@@ -1796,14 +1800,14 @@ paths:
                       attachment:
                         id: 0
                         name: apache-restart.sh
-                        contentURL: 'https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=0.00'
-                      scriptVersion: '0.00'
+                        contentURL: "https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=0.00"
+                      scriptVersion: "0.00"
                       registryPath: HKEY_CURRENT_USER/Control Panel/Desktop
-                      registryValue: 'dword:00000001'
+                      registryValue: "dword:00000001"
                       processName: cmd.exe
                       serviceName: OpsRampAgent
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/rba-scripts-script-get/'
+        url: "https://docs.opsramp.com/api/automation/rba-scripts-script-get/"
     post:
       summary: Update script
       description: |-
@@ -1815,12 +1819,12 @@ paths:
       tags:
         - automation
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rbaScript'
+                $ref: "#/components/schemas/rbaScript"
               examples:
                 example-1:
                   value:
@@ -1837,19 +1841,19 @@ paths:
                       - id: 94
                         name: Test Param - 1
                         description: Testing please ignore
-                        defaultValue: '10'
+                        defaultValue: "10"
                         type: REQUIRED
                         dataType: INTEGER
                       - id: 95
                         name: Test Param - 2
                         description: Testing please ignore
-                        defaultValue: '50'
+                        defaultValue: "50"
                         type: OPTIONAL
                         dataType: STRING
                       - id: 96
                         name: New param - 3
                         description: Testing please ignore
-                        defaultValue: '50'
+                        defaultValue: "50"
                         type: OPTIONAL
                         dataType: STRING
                     executionType: SHELL
@@ -1857,10 +1861,10 @@ paths:
                     attachment:
                       id: 0
                       name: apache-restart.sh
-                      contentURL: 'https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=6.00'
-                    scriptVersion: '6.00'
+                      contentURL: "https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=6.00"
+                    scriptVersion: "6.00"
                     registryPath: HKEY_CURRENT_USER/Control Panel/Desktop
-                    registryValue: 'dword:00000001'
+                    registryValue: "dword:00000001"
                     processName: cmd.exe
                     serviceName: OpsRampAgent
       requestBody:
@@ -1888,7 +1892,7 @@ paths:
                 parameters:
                   type: array
                   items:
-                    $ref: '#/components/schemas/rbaScriptParameter'
+                    $ref: "#/components/schemas/rbaScriptParameter"
                 executionType:
                   type: string
                 installTimeout:
@@ -1909,23 +1913,23 @@ paths:
                     - WINDOWS
                     - LINUX
                   registryPath: HKEY_CURRENT_USER/Control Panel/Desktop
-                  registryValue: 'dword:00000001'
+                  registryValue: "dword:00000001"
                   processName: cmd.exe
                   serviceName: OpsRampAgent
                   parameters:
                     - name: Test Param - 1
                       description: Testing please ignore
-                      defaultValue: '10'
+                      defaultValue: "10"
                       type: REQUIRED
                       dataType: INTEGER
                     - name: Test Param - 2
                       description: Testing please ignore
-                      defaultValue: '50'
+                      defaultValue: "50"
                       type: OPTIONAL
                       dataType: STRING
                     - name: New param - 3
                       description: Testing please ignore
-                      defaultValue: '50'
+                      defaultValue: "50"
                       type: OPTIONAL
                       dataType: STRING
                   executionType: SHELL
@@ -1934,7 +1938,7 @@ paths:
                     name: apache-restart.sh
                     file: UkVTVEFSVD0iL3NiaW4vc2VydmljZSBodHRwZCByZXN0YXJ0Ig0KUEdSRVA9Ii91c3IvYmluL3BncmVwIg0KSFRUUEQ9Imh0dHBkIg0KJFBHUkVQICR7SFRUUER9DQppZiBbICQ/IC1uZSAwIF0NCnRoZW4NCiAkUkVTVEFSVA0KZmk=
       externalDocs:
-        url: 'https://docs.opsramp.com/api/automation/rba-scripts-update-post/'
+        url: "https://docs.opsramp.com/api/automation/rba-scripts-update-post/"
     parameters:
       - schema:
           type: string
@@ -1959,8 +1963,8 @@ components:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: ''
-          refreshUrl: ''
+          tokenUrl: ""
+          refreshUrl: ""
           scopes: {}
   schemas:
     generalInfo:
@@ -1982,7 +1986,7 @@ components:
         id:
           type: string
         generalInfo:
-          $ref: '#/components/schemas/generalInfo'
+          $ref: "#/components/schemas/generalInfo"
         clientUniqueId:
           type: string
         type:
@@ -1994,7 +1998,7 @@ components:
         type: object
         properties:
           resource:
-            $ref: '#/components/schemas/resource'
+            $ref: "#/components/schemas/resource"
     pattern:
       title: pattern
       type: object
@@ -2378,7 +2382,7 @@ components:
           type: string
           format: date-time
         pattern:
-          $ref: '#/components/schemas/pattern'
+          $ref: "#/components/schemas/pattern"
     approvalType:
       title: approvalType
       type: object
@@ -2451,24 +2455,24 @@ components:
       properties:
         jobType:
           type: string
-          description: 'Job type. To view job types that OpsRamp supports, see Get Job Types API.'
+          description: "Job type. To view job types that OpsRamp supports, see Get Job Types API."
           enum:
             - adCheckList
             - networkconfigbackup
             - appinstall
             - custom
         userType:
-          $ref: '#/components/schemas/userType'
+          $ref: "#/components/schemas/userType"
         configParams:
-          $ref: '#/components/schemas/configParams'
+          $ref: "#/components/schemas/configParams"
         approvalType:
-          $ref: '#/components/schemas/approvalType'
+          $ref: "#/components/schemas/approvalType"
         customScript:
-          $ref: '#/components/schemas/customScript'
+          $ref: "#/components/schemas/customScript"
         parameters:
           type: array
           items:
-            $ref: '#/components/schemas/parameter'
+            $ref: "#/components/schemas/parameter"
     parameter:
       title: parameter
       type: object
@@ -2477,7 +2481,7 @@ components:
           type: string
           description: |
             (Optional) The parameter Id.
-        'value ':
+        "value ":
           type: string
         name:
           type: string
@@ -2501,7 +2505,7 @@ components:
         childs:
           type: array
           items:
-            $ref: '#/components/schemas/rba'
+            $ref: "#/components/schemas/rba"
     rbaScriptParameter:
       title: rbaScriptParameter
       type: object
@@ -2552,7 +2556,7 @@ components:
           items:
             type: string
         parameters:
-          $ref: '#/components/schemas/rbaScriptParameter'
+          $ref: "#/components/schemas/rbaScriptParameter"
         executionType:
           type: string
         installTimeout:

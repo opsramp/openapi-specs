@@ -1,0 +1,60 @@
+post:
+  summary: Assign agent policy for resources
+  description: |-
+    The endpoint to assign agent policy for resources.
+  operationId: agents/agents-gateways-agent-policy-post/
+  tags:
+    - agents-gateways
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              failedEntities:
+                type: object
+                properties:
+                  entityID:
+                    type: string
+              failedCount:
+                type: integer
+              successCount:
+                type: integer
+          examples:
+            example-1:
+              value:
+                failedEntities:
+                  023471da-698b-3a2e-1e93-6dbaca8eea23: No device 023471da-698b-3a2e-1e93-6dbaca8eea23 found under client client_5
+                failedCount: 1
+                successCount: 2
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+        examples:
+          example-1:
+            value:
+              - id: 042761ba-542e-4a7a-8e38-3ebbea7eeb16
+              - id: 023471da-698b-3a2e-1e93-6dbaca8eea23
+              - id: 855eb82e-3064-40a1-a26e-77efabe300da
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-policy-post/'
+parameters:
+  - schema:
+      type: string
+    name: tenantId
+    in: path
+    required: true
+  - schema:
+      type: string
+    name: policyId
+    in: path
+    required: true

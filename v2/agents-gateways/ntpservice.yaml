@@ -1,0 +1,40 @@
+post:
+  summary: Start and stop NTP service
+  description: This endpoint is used to start and stop the NTP service on the gateway.
+  operationId: gateways/gateway-ntp-service-post/
+  tags:
+    - agents-gateways
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              Success:
+                type: string
+          examples:
+            example-1:
+              value:
+                Success: Switched ON the NTP Service Successfully
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            service:
+              type: string
+              description: Use the ON and OFF switch to start or stop the NTP service.
+              enum:
+                - 'ON'
+                - 'OFF'
+          required:
+            - service
+        examples:
+          example-1:
+            value:
+              service: 'ON'
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntp-service-post/'
