@@ -1,0 +1,36 @@
+servers:
+  - url: 'http://{gatewayIp}:port'
+post:
+  summary: Turn on and off Squid proxy service
+  description: This endpoint is used to turn on and off the Squid proxy server on the gateway.
+  operationId: gateways/gateway-turn-onoff-proxy-post/
+  tags:
+    - agents-gateways
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              Success:
+                type: string
+          examples:
+            example-on:
+              value:
+                Success: Squid Proxy Successfully Turned ON
+            example-off:
+              value:
+                Success: Squid Proxy Successfully Turned OFF
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-turn-onoff-proxy-post/'
+parameters:
+  - schema:
+      type: string
+      enum:
+        - 'ON'
+        - 'OFF'
+    name: action
+    in: path
+    required: true

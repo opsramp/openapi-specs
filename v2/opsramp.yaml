@@ -1,0 +1,34 @@
+openapi: 3.0.0
+info:
+  title: opsramp-automation
+  version: 2.0.0
+  description: API Documentation
+  contact:
+    name: OpsRamp Support
+    email: support@opsramp.com
+    url: https://www.opsramp.com/about-opsramp/contact-us/
+tags:
+  - name: agents-gateways
+  - name: alerts
+  - name: automation
+  - name: components
+  - name: exports
+  - name: integrations
+  - name: knowledge-base
+  - name: metrics
+  - name: monitoring
+  - name: patching
+  - name: resource-management
+  - name: tenancy-access-controls
+  - name: tickets
+servers:
+  - url: "https://api.opsramp.com"
+    description: Partner - All Others
+  - url: "https://{subdomain}.api.opsramp.com"
+    description: Partner or Client custom branded sub-domain
+    variables:
+      subdomain:
+        default: demo
+        description: Custom sub-domain assigned to the client
+paths:
+  "/api/v2/tenants/{tenantId}/jobs":
