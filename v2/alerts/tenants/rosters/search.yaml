@@ -1,0 +1,206 @@
+get:
+  summary: Search rosters
+  description: |
+    This endpoint is used to fetch the rosters within an organization.
+
+    ## Special Characters
+    There are special characters that can be used in a query string:
+    - (+) represents the next field and must be URL-encoded.
+    - (:) represents equals. An example is `key : value`.
+    - Space characters must be URL-encoded.
+    - Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+
+    ## Differentiate Rosters
+    To differentiate between partner-level and client-level rosters:
+    - Client level roster: If `client` and client details are provided.
+    - Partner-level roster: If `allClients: true` is provided.
+  operationId: rosters-search-get/
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    createdTime:
+                      type: string
+                      format: date-time
+                    updatedTime:
+                      type: string
+                      format: date-time
+                    timeZone:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        label:
+                          type: string
+                        code:
+                          type: string
+                    client:
+                      type: object
+                      properties:
+                        uniqueId:
+                          type: string
+                        name:
+                          type: string
+                        activated:
+                          type: boolean
+                    allClients:
+                      type: boolean
+              totalResults:
+                type: integer
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: ES-1f43a99c-469e-a62a-b452-aacf6ad81e3b
+                    name: Network Issues Support
+                    description: Network Issues Support - Asia Region
+                    createdTime: '2017-02-09T11:59:25+0000'
+                    updatedTime: '2017-03-08T07:25:02+0000'
+                    timeZone:
+                      id: '19'
+                      name: Asia/Calcutta
+                      label: 'GMT +05:30 India'
+                      code: IST
+                    client:
+                      uniqueId: client_7
+                      name: Test  Client
+                      activated: true
+                  - id: ES-d89ca222-1ee8-50ef-e40a-ba89fb23586b
+                    name: Implementation Support
+                    description: Implementation Support - Level 1
+                    createdTime: '2017-03-14T11:42:04+0000'
+                    updatedTime: '2017-06-28T11:33:49+0000'
+                    timeZone:
+                      id: '19'
+                      name: Asia/Calcutta
+                      label: 'GMT +05:30 India'
+                      code: IST
+                    allClients: true
+                  - id: ES-157ce85f-2f91-94e9-dc2d-ec4591ef2ed5
+                    name: Alerts Support
+                    description: Alerts Support - Level 1
+                    createdTime: '2017-05-04T10:12:23+0000'
+                    updatedTime: '2017-06-28T11:33:49+0000'
+                    timeZone:
+                      id: '19'
+                      name: Asia/Calcutta
+                      label: 'GMT +05:30 India'
+                      code: IST
+                    client:
+                      uniqueId: client_7
+                      name: Test  Client
+                      activated: true
+                  - id: ES-9f0e489c-8c00-4dba-8a7e-9c81f710d0d3
+                    name: Maintenance Team
+                    description: Maintenance team to address Jobs and Patches issues
+                    createdTime: '2017-06-16T07:08:35+0000'
+                    updatedTime: '2017-06-27T13:07:19+0000'
+                    timeZone:
+                      id: '19'
+                      name: Asia/Calcutta
+                      label: 'GMT +05:30 India'
+                      code: IST
+                    allClients: true
+                  - id: ES-b519563f-5b9f-4bcf-9a90-ce3cddf5c268
+                    name: Network Management Team - Level 1
+                    description: Network management team to address critical network issues.
+                    createdTime: '2017-06-27T12:38:23+0000'
+                    updatedTime: '2017-06-28T10:59:20+0000'
+                    timeZone:
+                      id: '19'
+                      name: Asia/Calcutta
+                      label: 'GMT +05:30 India'
+                      code: IST
+                    client:
+                      uniqueId: client_7
+                      name: Test  Client
+                      activated: true
+                totalResults: 5
+                pageNo: 1
+                pageSize: 20
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: false
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/alerts/rosters-search-get/'
+  parameters:
+    - schema:
+        type: integer
+        default: 1
+      in: query
+      name: pageNo
+      description: '{pageNo}'
+    - schema:
+        type: integer
+        default: 100
+      in: query
+      name: pageSize
+      description: '{pageSize}'
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+      description: '{true/false}'
+    - schema:
+        type: string
+        default: id
+      in: query
+      name: sortName
+      description: '{field}'
+    - schema:
+        type: string
+      in: query
+      name: queryString
+      description: '{queryString}'
+    - schema:
+        type: string
+      in: query
+      name: name
+      description: |
+        The roster name (must be identical to match)
+    - schema:
+        type: boolean
+        default: 'false'
+      in: query
+      name: allList
+      description: |
+        If true, retrieve both partner and client level rosters and if false (the default), retrieve partner level rosters.
+  tags:
+    - alerts
+parameters:
+  - schema:
+      type: string
+    name: tenantId
+    in: path
+    required: true

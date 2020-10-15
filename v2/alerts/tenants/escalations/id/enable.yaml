@@ -1,0 +1,26 @@
+post:
+  summary: Enable alert escalation policy
+  description: |-
+    This endpoint is used to enable an alert escalation policy.
+
+    ## Notes
+    The response depends on the returned status code.
+  operationId: alert-escalation-policy-enable-post/
+  tags:
+    - alerts
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/alerts/alert-escalation-policy-enable-post/'
+  responses:
+    '200':
+      description: OK
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: id
+    required: true

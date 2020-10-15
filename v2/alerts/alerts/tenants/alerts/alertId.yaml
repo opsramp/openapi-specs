@@ -1,0 +1,140 @@
+get:
+  summary: Get alerts by an alert ID
+  description: This endpoint is used to retrieve the details of an alert by alert ID.
+  operationId: alerts-alerts-by-alert-id-get/
+  tags:
+    - alerts
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                uniqueId:
+                  type: string
+                subject:
+                  type: string
+                currentState:
+                  type: string
+                serviceName:
+                  type: string
+                acknowledged:
+                  type: boolean
+                suppressed:
+                  type: boolean
+                permanentlySuppressed:
+                  type: boolean
+                closed:
+                  type: boolean
+                alertType:
+                  type: string
+                app:
+                  type: string
+                alertTime:
+                  type: string
+                  format: date-time
+                device:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    ipAddress:
+                      type: string
+                    type:
+                      type: string
+                repeatCount:
+                  type: string
+                tenantId:
+                  type: integer
+                createdTime:
+                  type: integer
+                status:
+                  type: string
+                priority:
+                  type: string
+                elapsedTimeString:
+                  type: string
+                healedTimeString:
+                  type: string
+                updatedTime:
+                  type: string
+                  format: date-time
+                tktId:
+                  type: string
+                rba:
+                  type: boolean
+                tenantName:
+                  type: string
+                mspId:
+                  type: string
+                rtype:
+                  type: string
+                mspName:
+                  type: string
+                managedByOpsRamp:
+                  type: boolean
+                actedTs:
+                  type: integer
+                eventType:
+                  type: string
+                metric:
+                  type: string
+                inferenceId:
+                  type: boolean
+          examples:
+            example-1:
+              value:
+                - uniqueId: '40535'
+                  subject: chrome.exe | Not Running
+                  currentState: Ok
+                  serviceName: Windows Process
+                  acknowledged: false
+                  suppressed: false
+                  permanentlySuppressed: false
+                  closed: false
+                  alertType: Monitoring
+                  app: OPSRAMP
+                  alertTime: '2015-11-18T09:44:07+0000'
+                  device:
+                    id: 982b6937-83ae-4262-a023-d6097a711a9e
+                    name: HYDLPT204
+                    ipAddress: 172.28.2.148
+                    type: DEVICE
+                  repeatCount: '2'
+                  tenantId: 107
+                  createdTime: 1447839848946
+                  status: Ticketed
+                  priority: N/A
+                  elapsedTimeString: '110d 22h 5m '
+                  healedTimeString: '2h 47m '
+                  updatedTime: '2015-11-18T12:31:53+0000'
+                  tktId: ticket_1622
+                  rba: false
+                  tenantName: Notification_client5
+                  rtype: DEVICE
+                  mspId: msp_102
+                  mspName: OpsRamp4.1
+                  managedByOpsRamp: true
+                  actedTs: 1448628691167
+                  eventType: ALERT
+                  metric: Disk
+                  inferenceId: 0
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/alerts/alerts-alerts-by-alert-id-get/'
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: alertId
+    required: true

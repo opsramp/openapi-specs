@@ -31,6 +31,93 @@ servers:
         default: demo
         description: Custom sub-domain assigned to the client
 paths:
+  /auth/oauth/token:
+    post:
+      summary: Get OAuth2 access token with client credentials
+      description: This endpoint is used to generate an access token using client credentials.
+      operationId: first-response-policy-oauth2-access-token-client-creds-get/
+      tags:
+        - alerts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                  token_type:
+                    type: string
+                  expires_in:
+                    type: string
+                  scope:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    access_token: 6b4a5f03-7d49-4915-9792-2d964806cbd1
+                    token_type: bearer
+                    expires_in: 5999
+                    scope: read write
+        '400':
+          description: "Bad Request\n\nFor invalid grant_type values.\t"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  error_description:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    error: unsupported_grant_type
+                    error_description: 'Unsupported grant type: user_password'
+        '401':
+          description: |-
+            Unauthorized
+
+            For invalid/key combinations.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  error_description:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    error: unauthorized
+                    error_description: Bad API credentials
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: string
+                  description: |
+                    Client ID (key)
+                client_secret:
+                  type: string
+                  description: |
+                    Secret Key generated along with token (secret).
+                grant_type:
+                  type: string
+                  description: |
+                    Credentials of client.
+        description: ''
+      externalDocs:
+        url: 'https://docs.opsramp.com/api/alerts/first-response-policy-oauth2-access-token-client-creds-get/'
+  # Agents and Gateways
   /api/v2/applicationservice:
     $ref: './agents-gateways/applicationservice.yaml'
   /api/v2/download/gateway/{packageName}:
@@ -91,3 +178,88 @@ paths:
     $ref: './agents-gateways/tenants/managementProfiles/reconnectTunnel.yaml'
   /api/v2/tenants/{tenantId}/managementProfiles/search:
     $ref: './agents-gateways/tenants/managementProfiles/search.yaml'
+  # Alerts
+  /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}/{action}:
+    $ref: './alerts/tenants/policies/alertCorrelation/policyId/action.yaml'
+  /api/v2/tenants/{tenantId}/rosters/search:
+    $ref: './alerts/tenants/rosters/search.yaml'
+  /api/v2/tenants/{tenantId}/policies/alertCorrelation:
+    $ref: './alerts/tenants/policies/alertCorrelation.yaml'
+  /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}:
+    $ref: './alerts/tenants/policies/alertCorrelation/policyId.yaml'
+  /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices:
+    $ref: './alerts/tenants/agentPolicies/policyId/devices.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}/escalations:
+    $ref: './alerts/tenants/alerts/alertId/escalations.yaml'
+  /api/v2/tenants/{tenantId}/escalations:
+    $ref: './alerts/tenants/escalations.yaml'
+  /api/v2/tenants/{tenantId}/escalations/{id}:
+    $ref: './alerts/tenants/escalations/id.yaml'
+  /api/v2/tenants/{tenantId}/escalations/{id}/disable:
+    $ref: './alerts/tenants/escalations/id/disable.yaml'
+  /api/v2/tenants/{tenantId}/escalations/{id}/enable:
+    $ref: './alerts/tenants/escalations/id/enable.yaml'
+  /api/v2/tenants/{tenantId}/escalations/search:
+    $ref: './alerts/tenants/escalations/search.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}/acknowledge:
+    $ref: './alerts/tenants/alerts/alertId/acknowledge.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}/actions/{action}:
+    $ref: './alerts/tenants/alerts/alertId/actions/action.yaml'
+  /api/v2/alerts/tenants/{tenantId}/alerts/event/{eventId}:
+    $ref: './alerts/tenants/alerts/events/eventId.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}/comments:
+    $ref: './alerts/tenants/alerts/alertId/comments.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}:
+    $ref: './alerts/tenants/alerts/alertId.yaml'
+  /api/v2/alertTypes:
+    $ref: './alerts/alertTypes.yaml'
+  /api/v2/tenants/{orgId}/users/{userId}/alertViews:
+    $ref: './alerts/tenants/users/userId/alertViews.yaml'
+  /api/v2/tenants/{orgId}/users/{userId}/alertViews/{viewId}:
+    $ref: './alerts/tenants/users/userId/alertViews/viewId.yaml'
+  /api/v2/alerts/tenants/{tenantId}/alerts/{alertId}:
+    $ref: './alerts/alerts/tenants/alerts/alertId.yaml'
+  /api/v2/alerts/tenants/{tenantId}/tickets/{ticketId}:
+    $ref: './alerts/alerts/tenants/tickets/tickedId.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}/incidents/{IncidentId}/attach:
+    $ref: './alerts/tenants/alerts/alertId/incidents/incidentId/attach.yaml'
+  /api/v2/tenants/{tenantId}/alert:
+    $ref: './alerts/tenants/alert.yaml'
+  /api/v2/tenants/{tenantId}/alerts:
+    $ref: './alerts/tenants/alerts.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}/occurrences:
+    $ref: './alerts/tenants/alerts/alertId/occurrences.yaml'
+  /api/v2/tenants/{tenantId}/alerts/search:
+    $ref: './alerts/tenants/alerts/search.yaml'
+  /api/v2/tenants/{tenantId}/alertStatusHistory/{alertId}:
+    $ref: './alerts/tenants/alertStatusHistory/alertId.yaml'
+  /api/v2/tenants/{tenantId}/subAlertTypes:
+    $ref: './alerts/tenants/subAlertTypes.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}/tickets/{ticketId}/update:
+    $ref: './alerts/tenants/alerts/alertId/tickets/ticketId/update.yaml'
+  /api/v2/tenants/{tenantId}/policies/firstResponse:
+    $ref: './alerts/tenants/policies/firstResponse.yaml'
+  /api/v2/tenants/{tenantId}/policies/firstResponse/{policyId}:
+    $ref: './alerts/tenants/policies/firstResponse/policyId.yaml'
+  /api/v2/tenants/{tenantId}/policies/firstResponse/{policyId}/{status}:
+    $ref: './alerts/tenants/policies/firstResponse/policyId/status.yaml'
+  /api/v2/tenants/{tenantId}/rosters:
+    $ref: './alerts/tenants/rosters.yaml'
+  /api/v2/tenants/{tenantId}/rosters/{id}:
+    $ref: './alerts/tenants/rosters/id.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resources:
+    $ref: './alerts/tenants/scheduleMaintenances/smId/resources.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances:
+    $ref: './alerts/tenants/scheduleMaintenances.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/end:
+    $ref: './alerts/tenants/scheduleMaintenances/smId/end.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resources/{resourcesType}:
+    $ref: './alerts/tenants/scheduleMaintenances/smId/resources/resourcesType.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resume:
+    $ref: './alerts/tenants/scheduleMaintenances/smId/resume.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances/search:
+    $ref: './alerts/tenants/scheduleMaintenances/search.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/suspend:
+    $ref: './alerts/tenants/scheduleMaintenances/smId/suspend.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}:
+    $ref: './alerts/tenants/scheduleMaintenances/smId.yaml'

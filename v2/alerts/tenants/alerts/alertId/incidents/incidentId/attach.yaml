@@ -1,0 +1,108 @@
+post:
+  summary: Attach incident to an alert
+  description: This endpoint is used to attach an incident to an alert.
+  operationId: alerts-attach-incident-post/
+  tags:
+    - alerts
+  responses:
+    '200':
+      description: |-
+        OK
+
+        ## Notes
+        The response depends on the returned status code.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: string
+              description: |
+                The incident status used to check the status of an incident.
+            priority:
+              type: string
+              description: |
+                The incident priority: low, normal, high, urgent, and very low.
+              enum:
+                - low
+                - normal
+                - urgent
+                - very low
+            toEmail:
+              type: string
+              description: |
+                The email address to receive incident notifications.
+            assignedUser:
+              type: object
+              description: |
+                The designated user who is assigned to the incident.
+              properties:
+                id:
+                  type: string
+                loginName:
+                  type: string
+            customFields:
+              type: array
+              description: |
+                User-customized fields that can include additional information about an incident. Use the Get Incident Custom Fields API to retrieve custom fields of an incident.
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  value:
+                    type: string
+            attachments:
+              type: array
+              description: |
+                Information related to the incident in base64 encoded format.
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  file:
+                    type: string
+        examples:
+          example-1:
+            value:
+              status: Resolved
+              priority: Low
+              toEmail: john.smith@domain.com
+              assignedUser:
+                id: USR0000002146
+                loginName: FSSL-API-Lab-User-1
+              customFields:
+                - id: UDF0000003790
+                  name: External Id
+                  value: '2'
+                - id: UDF0000003791
+                  name: Incident History
+                  value: request custom field - text
+              attachments:
+                - name: 1.txt
+                  file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+                - name: 2.txt
+                  file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/alerts/alerts-attach-incident-post/'
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: alertId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: IncidentId
+    required: true

@@ -1,0 +1,28 @@
+get:
+  summary: Get alert types
+  description: This endpoint is used to retrieve the list of supported alert types.
+  operationId: alerts-alert-types-get/
+  tags:
+    - alerts
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/alerts/alerts-alert-types-get/'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: string
+          examples:
+            example-1:
+              value:
+                - AGENT
+                - MAINTENANCE
+                - MONITORING
+                - APPLIANCE
+                - SCHEDULED MAINTENANCE
+                - OBSOLETE
+                - FORECAST
+                - CHANGE DETECTION

@@ -1,0 +1,25 @@
+post:
+  summary: Enable or disable alert correlation policy
+  description: |-
+    This endpoint is used to enable, disable, and create an observed mode on an alert correlation policy.
+
+    The response depends on the returned status code.
+  operationId: alert-correlation-policy-enable-disable-post/
+  tags:
+    - alerts
+  responses:
+    '200':
+      description: OK
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/alerts/alert-correlation-policy-enable-disable-post/'
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: policyId
+    required: true
