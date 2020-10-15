@@ -286,3 +286,6 @@ paths:
     $ref: './automation/tenants/rba/scripts/scriptId/paginatedOutputs.yaml'
   /api/v2/tenants/{tenantId}/rba/categories/{categoryId}/scripts/{scriptId}:
     $ref: './automation/tenants/rba/categories/categoryId/scripts/scriptId.yaml'
+  # Exports
+  /api/v2/exports/tenants/{tenantId}/create:
+    $ref: './exports/tenants/create.yaml'
