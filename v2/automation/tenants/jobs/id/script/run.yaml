@@ -1,0 +1,32 @@
+post:
+  summary: Run script
+  description: |-
+    This endpoint is used to run a script.
+
+    Define scripts as code that can run commonly-run tasks.
+
+    This API can be used to run an existing job script.
+  operationId: automation-jobs-run-script-post/
+  tags:
+    - automation
+  externalDocs:
+    url: "https://docs.opsramp.com/api/automation/automation-jobs-run-script-post/"
+  responses:
+    "200":
+      description: |-
+        OK
+
+
+        ## Notes
+        The response depends on the returned status code.
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: id
+    required: true

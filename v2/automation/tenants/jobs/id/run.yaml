@@ -1,0 +1,40 @@
+get:
+  summary: Run job
+  description: This endpoint is used to run a scheduled job.
+  operationId: automation-jobs-run-job-get/
+  tags:
+    - automation
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            reason:
+              type: string
+              description: |
+                Reason to run the job
+        examples:
+          example-1:
+            value:
+              reason: To run job on demand
+  externalDocs:
+    url: "https://docs.opsramp.com/api/automation/automation-jobs-run-job-get/"
+  responses:
+    "200":
+      description: |-
+        OK
+
+        ## Notes
+        The response depends on the returned status code.
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: id
+    required: true

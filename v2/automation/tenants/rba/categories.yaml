@@ -1,0 +1,151 @@
+post:
+  summary: Create RBA category
+  description: This endpoint is used to create an RBA category.
+  operationId: rba-categories-create-post/
+  tags:
+    - automation
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              id:
+                type: integer
+          examples:
+            example-1:
+              value:
+                id: 28
+                name: CLIENT-Category
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: |
+                Name of the category
+            parent:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: |
+                    (Optional) Specify the parent ID of the category to create a subcategory.
+          required:
+            - name
+        examples:
+          example-1:
+            value:
+              name: CLIENT-Category
+              parent:
+                id: 27
+  externalDocs:
+    url: "https://docs.opsramp.com/api/automation/rba-categories-create-post/"
+get:
+  summary: Get RBA categories
+  description: This endpoint is used to retrieve list of RBA categories.
+  operationId: rba-categories-get/
+  tags:
+    - automation
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/rba"
+          examples:
+            example-1:
+              value:
+                - id: 1
+                  name: Miscellaneous
+                - id: 16
+                  name: API Task Category
+                  childs:
+                    - id: 17
+                      name: Child-1
+                      childs:
+                        - id: 33
+                          name: child-1-child
+                    - id: 18
+                      name: Child-2
+                    - id: 19
+                      name: Child-3-client
+                - id: 7
+                  name: Applications
+                  childs:
+                    - id: 8
+                      name: QuickBooks
+                - id: 31
+                  name: C_Category
+                - id: 24
+                  name: SP_Category
+                  childs:
+                    - id: 25
+                      name: SP_Category_child
+                    - id: 26
+                      name: MSP-Category
+                - id: 13
+                  name: Test Global Category
+  externalDocs:
+    url: "https://docs.opsramp.com/api/automation/rba-categories-get/"
+put:
+  summary: Update an RBA category
+  description: This endpoint is used to update an RBA category.
+  operationId: rba-categories-update-put/
+  tags:
+    - automation
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              id:
+                type: integer
+          examples:
+            example-1:
+              value:
+                id: 22
+                name: CLIENT-Category_UpdatedName
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: |
+                Name of the category
+            id:
+              type: integer
+          required:
+            - name
+            - id
+        examples:
+          example-1:
+            value:
+              id: 22
+              name: CLIENT-Category_UpdatedName
+  externalDocs:
+    url: "https://docs.opsramp.com/api/automation/rba-categories-update-put/"
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true

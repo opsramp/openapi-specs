@@ -263,3 +263,26 @@ paths:
     $ref: './alerts/tenants/scheduleMaintenances/smId/suspend.yaml'
   /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}:
     $ref: './alerts/tenants/scheduleMaintenances/smId.yaml'
+  # Automation
+  /api/v2/tenants/{tenantId}/jobs:
+    $ref: './automation/tenants/jobs.yaml'
+  /api/v2/tenants/{tenantId}/jobs/{id}:
+    $ref: './automation/tenants/jobs/id.yaml'
+  /api/v2/tenants/{tenantId}/jobs/types:
+    $ref: './automation/tenants/jobs/types.yaml'
+  /api/v2/tenants/{tenantId}/jobs/{id}/run:
+    $ref: './automation/tenants/jobs/id/run.yaml'
+  /api/v2/tenants/{tenantId}/jobs/{id}/script/run:
+    $ref: './automation/tenants/jobs/id/script/run.yaml'
+  /api/v2/tenants/{tenantId}/jobs/search:
+    $ref: './automation/tenants/jobs/search.yaml'
+  /api/v2/tenants/{tenantId}/rba/categories:
+    $ref: './automation/tenants/rba/categories.yaml'
+  /api/v2/tenants/{tenantId}/rba/categories/{categoryId}:
+    $ref: './automation/tenants/rba/categories/categoryId.yaml'
+  /api/v2/tenants/{tenantId}/rba/categories/{categoryId}/scripts:
+    $ref: './automation/tenants/rba/categories/categoryId/scripts.yaml'
+  /api/v2/tenants/{tenantId}/rba/scripts/{scriptId}/paginatedOutputs:
+    $ref: './automation/tenants/rba/scripts/scriptId/paginatedOutputs.yaml'
+  /api/v2/tenants/{tenantId}/rba/categories/{categoryId}/scripts/{scriptId}:
+    $ref: './automation/tenants/rba/categories/categoryId/scripts/scriptId.yaml'
