@@ -1,0 +1,89 @@
+post:
+  summary: Install email request integration
+  description: |
+    ## Install Email Request Integration
+    Email request integration creates tickets in OpsRamp via Email.
+
+    > Convert image to Base64 and enter the code in file field as shown in the following sample request.
+  operationId: integration-install-email-request-post/
+  tags:
+    - integrations
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/integrationInstall'
+          examples:
+            example-EMAILINCIDENTS:
+              value:
+                id: INTG-02d467ee-41f2-4d1e-9c55-e8365b421f21
+                displayName: email incidents test
+                integration:
+                  id: EMAILINCIDENTS
+                  name: Email Requests
+                emailAddress: alerts@5JHqWy4h34xXDwN2gYFtmaYx.opsramp.com
+                emailProps:
+                  - properties:
+                      - name: Allow anonymous user
+                        value: 'true'
+                      - name: Subject
+                        value: Email Subject
+                      - name: Description
+                        value: Email Description
+                      - name: Priority
+                        defaultValue: Low
+                        condition:
+                          contentSource: EMAIL_CONTENT
+                          operator: BETWEEN
+                          startValue: value1
+                          endValue: value2
+                        propertyMappings:
+                          name: Priority
+                          attrName: incident.priority.name
+                          entityType: INCIDENT
+                          attrValues:
+                            - attrValue: Low
+                              thirdPartyAttrValue: myval
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/integrationInstall'
+        examples:
+          example-EMAILINCIDENTS:
+            value:
+              displayName: email request test
+              ticketType: INCIDENT
+              logo:
+                name: test.png
+                file: zWc/aG7Ws5nifQL0cHF6fxW8vRwcXp/Ffyky7HaICAgIXNbBkr5hzWwZK+YY9FmJ/FLppwpn45SvJ2S4oBaNgBAQEBAQEBAQEBAQEBAQEBAQf//Z
+              emailProps:
+                - properties:
+                    - name: Priority
+                      defaultValue: Low
+                      condition:
+                        contentSource: EMAIL_CONTENT
+                        operator: BETWEEN
+                        startValue: value1
+                        endValue: value2
+                      propertyMappings:
+                        attrValues:
+                          - attrValue: Low
+                            thirdPartyAttrValue: myval
+                    - name: Subject
+                      value: Email Subject
+                    - name: Description
+                      value: Email Description
+                    - name: Allow anonymous user
+                      value: 'true'
+    description: ''
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/integrations/integration-install-post/'
+parameters:
+  - schema:
+      type: string
+    name: tenantId
+    in: path
+    required: true

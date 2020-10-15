@@ -1,0 +1,95 @@
+post:
+  summary: Install integration
+  description: |-
+    ## Install Email Alert Integration
+    OpsRamp processes all incoming Alert emails. Apply user-defined rules to create, acknowledge, and close alerts incoming emails.
+    
+    > Convert image to Base64 and enter the code in file field as shown in the following sample request.
+  operationId: integration-install-email-alert-post/
+  tags:
+    - integrations
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/integrationInstall'
+          examples:
+            example-EMAILALERTS:
+              value:
+                id: INTG-d9b99937-7906-42c7-955c-68a237144ac7
+                displayName: email alerts test from api try 44
+                integration:
+                  id: Email Alerts
+                  name: Email Alerts
+                emailAddress: alerts@5JHqWy4h34xXDwN2gYFtmaYx.opsramp.com
+                emailProps:
+                  - name: test set 1
+                    identifier: .
+                    identifierSource: EMAIL_CONTENT
+                    properties:
+                      - name: Alert State
+                        defaultValue: OK
+                        condition:
+                          contentSource: EMAIL_CONTENT
+                          operator: BETWEEN
+                          startValue: value1
+                          endValue: value2
+                      - name: Service Name
+                        condition:
+                          contentSource: EMAIL_CONTENT
+                          operator: BETWEEN
+                          startValue: value1
+                          endValue: value2
+                      - name: Device Host Name
+                        condition:
+                          contentSource: EMAIL_CONTENT
+                          operator: BETWEEN
+                          startValue: value1
+                          endValue: value2
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/integrationInstall'
+        examples:
+          example-EMAILALERTS:
+            value:
+              displayName: Email Alerts Integration
+              logo:
+                name: logo.png
+                file: 'zWc/aG7Ws5nifQL0cHF6fxW8vRwcXp/Ffyky7HaICAgIXNbBkr5hzWwZK+YY9FmJ/FLppwpn45SvJ2S4oBaNgBAQEBAQEBAQEBAQEBAQEBAQf//Z '
+              emailProps:
+                - name: test set 1
+                  identifier: identify
+                  identifierSource: EMAIL_CONTENT
+                  properties:
+                    - name: Alert State
+                      defaultValue: OK
+                      condition:
+                        contentSource: EMAIL_CONTENT
+                        operator: BETWEEN
+                        startValue: value1
+                        endValue: value2
+                    - name: Service Name
+                      condition:
+                        contentSource: EMAIL_CONTENT
+                        operator: BETWEEN
+                        startValue: value1
+                        endValue: value2
+                    - name: Device Host Name
+                      condition:
+                        contentSource: EMAIL_CONTENT
+                        operator: BETWEEN
+                        startValue: value1
+                        endValue: value2
+    description: ''
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/integrations/integration-install-post/'
+parameters:
+  - schema:
+      type: string
+    name: tenantId
+    in: path
+    required: true

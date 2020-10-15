@@ -289,3 +289,62 @@ paths:
   # Exports
   /api/v2/exports/tenants/{tenantId}/create:
     $ref: './exports/tenants/create.yaml'
+  # Integrations
+  /api/v2/tenants/{tenantId}/integrations/activity:
+    $ref: './integrations/tenants/integrations/activity.yaml'
+  /api/v2/tenants/{tenantId}/policies/discovery:
+    $ref: './integrations/tenants/policies/discovery.yaml'
+  /api/v2/tenants/{tenantId}/policies/discovery/{discoveryId}:
+    $ref: './integrations/tenants/policies/discovery/discoveryId.yaml'
+  /api/v2/tenants/{tenantId}/policies/discovery/action/scan/{discoveryProfileId}:
+    $ref: './integrations/tenants/policies/discovery/action/scan/discoveryProfileId.yaml'
+  /api/v2/tenants/{tenantId}/policies/discovery/search:
+    $ref: './integrations/tenants/policies/discovery/search.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/CUSTOM:
+    $ref: './integrations/tenants/integrations/install/CUSTOM.yaml'
+  /api/v2/tenants/{tenantId}/integrations/available/{intgId}/emailProps/{entityType}:
+    $ref: './integrations/tenants/integrations/available/intgId/emailProps/entityType.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/inbound/authentication:
+    $ref: './integrations/tenants/integrations/installed/installedIntgId/inbound/authentication.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/mappingAttr:
+    $ref: './integrations/tenants/integrations/installed/installedIntgId/mappingAttr.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/notifier:
+    $ref: './integrations/tenants/integrations/installed/installedIntgId/notifier.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/disable:
+    $ref: './integrations/tenants/integrations/installed/installedIntgId/disable.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/enable:
+    $ref: './integrations/tenants/integrations/installed/installedIntgId/enable.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}/activate:
+    $ref: './integrations/tenants/integrations/installed/installedIntgId/event/eventId/activate.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event:
+    $ref: './integrations/tenants/integrations/installed/installedIntgId/event.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}/deactivate:
+    $ref: './integrations/tenants/integrations/installed/installedIntgId/event/eventId/deactivate.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}:
+    $ref: './integrations/tenants/integrations/installed/installedIntgId/event/eventId.yaml'
+  /api/v2//tenants/{tenantId}/integrations/installed/{installedIntgId}/events:
+    $ref: './integrations/tenants/integrations/installed/installedIntgId/events.yaml'
+  /api/v2//tenants/{tenantId}/integrations/events/placeHolders/{entityType}:
+    $ref: './integrations/tenants/integrations/events/placeHolders/entityType.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}:
+    $ref: './integrations/tenants/integrations/installed/installedIntgId.yaml'
+  /api/v2/tenants/{tenantId}/integrations/available/{intgId}/mappingAttr/{entityType}:
+    $ref: './integrations/tenants/integrations/available/intgId/mappingAttr/entityType.yaml'
+  /api/v2/tenants/{tenantId}/integrations/available/search:
+    $ref: './integrations/tenants/integrations/available/search.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/search:
+    $ref: './integrations/tenants/integrations/installed/search.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/EMAILINCIDENTS:
+    $ref: './integrations/tenants/integrations/install/EMAILINCIDENTS.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/EMAILALERTS:
+    $ref: './integrations/tenants/integrations/install/EMAILALERTS.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/AWS:
+    $ref: './integrations/tenants/integrations/install/AWS.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/AZURE:
+    $ref: './integrations/tenants/integrations/install/AZURE.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/GOOGLE:
+    $ref: './integrations/tenants/integrations/install/GOOGLE.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/{intgId}:
+    $ref: './integrations/tenants/integrations/install/intgId.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/OKTA:
+    $ref: './integrations/tenants/integrations/install/OKTA.yaml'

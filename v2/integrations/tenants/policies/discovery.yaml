@@ -1,0 +1,795 @@
+post:
+  summary: Create discovery profile
+  description: This endpoint is used to create a discovery profile for AWS, Azure, and Google.
+  operationId: cloud-discovery-create-post/
+  tags:
+    - integrations
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/discoveryProfile'
+          examples:
+            example-aws-basic:
+              value:
+                - id: 61
+                  name: AWS Basic Discovery Profile
+                  installedIntegrationId: INTG-5de40426-6edb-4f40-9274-d8827b683e40
+                  credentialSet: AWS AWS Integration
+                  credential:
+                    credentialName: AWS AWS Integration
+                    accountId: '************'
+                  policy:
+                    id: 1622
+                    uid: POLICY-c3702a44-caf0-47cf-b774-09fa806bc093
+                    name: AWS Basic Discovery Profile
+                    matchType: ANY
+                    rules:
+                      - id: 2062
+                        filterType: ANY_CLOUD_RESOURCE
+                    actions: []
+                    entityType: ALL
+            example-aws-schedule:
+              value:
+                - id: 120
+                  name: AWS discovery profile with schedule
+                  credentialSet: AWS_Integration
+                  credential:
+                    credentialName: AWS_Integration
+                    accountId: '*********'
+                  schedule:
+                    patternType: HOURLY
+                    pattern: '2'
+                    startTime: '02:00:00'
+            example-aws-policy:
+              value:
+                - id: 103918
+                  name: AWS Discovery profile
+                  installedIntegrationId: INTG-5de40426-6edb-4f40-9274-d8827b683e40
+                  credentialSet: AWS AWS Integration
+                  credential:
+                    credentialName: AWS AWS Integration
+                    accountId: '*********'
+                  policy:
+                    id: 51288
+                    uid: POLICY-c3702a44-caf0-47cf-b774-09fa806bc093
+                    name: AWS Discovery profile
+                    matchType: ANY
+                    rules:
+                      - filterType: ANY_CLOUD_RESOURCE
+                    actions: []
+                    entityType: All
+            example-aws-credentials-schedule-policy:
+              value:
+                - name: AWS_profile
+                  credential:
+                    credentialType: AWS
+                    AccountNumber: '************'
+                    AccessKey: '*******************'
+                    SecurityKey: '************************'
+                  policy:
+                    name: AWS_profile
+                    entityType: ALL
+                    matchType: ANY
+                    rules:
+                      - filterType: ANY_CLOUD_RESOURCE
+                    actions:
+                      - action: MANAGE DEVICE
+                        items: []
+                    executionOrder: 0
+                  schedule:
+                    patternType: MINUTES
+                    pattern: '30'
+                    startTime: '00:30:00'
+            example-azure-basic:
+              value:
+                - id: 962
+                  name: Azure Basic Discovery profile
+                  credentialSet: Azure Credentials
+                  credential:
+                    credentialName: Azure Credentials
+                    accountId: 9ee6993f-a036-4118-9eab-c66d9fda1ef3
+            example-azure-schedule:
+              value:
+                - id: 963
+                  name: Azure discovery profile with schedule
+                  credentialSet: Azure Credentials
+                  credential:
+                    credentialName: Azure Credentials
+                    accountId: 9ee6993f-a036-4118-9eab-c66d9fda1ef3
+                  schedule:
+                    patternType: HOURLY
+                    pattern: '2'
+                    startTime: '02:00:00'
+            example-azure-schedule-policy:
+              value:
+                - id: 510
+                  name: Azure
+                  credentialSet: Azure_policy
+                  credential:
+                    credentialName: Azure_policy
+                    accountId: 9ee6993f-a036-418-9eab-c66f34fae1gf7
+                  policy:
+                    id: 736
+                    name: Azure
+                    resourceType: ALL
+                    matchType: ANY
+                    rules:
+                      - filterType: ANY_CLOUD_RESOURCE
+                    actions:
+                      - action: MANAGE DEVICE
+                        items: []
+                    executionOrder: 0
+                  schedule:
+                    patternType: MINUTES
+                    pattern: '30'
+                    startTime: '00:30:00'
+            example-azure-credentials-schedule-policy:
+              value:
+                - id: 102183
+                  name: Azure_Profile
+                  credentialSet: Azure
+                  credential:
+                    credentialName: Azure
+                    accountId: 9ee6993f-a036-4118-9eab-c66d9fda1ef2
+                  policy:
+                    id: 39733
+                    name: Azure
+                    resourceType: ALL
+                    matchType: ANY
+                    rules:
+                      - filterType: ANY_DEVICE
+                      - filterType: EBS
+                      - filterType: WEBSITE
+                      - filterType: SQL_SERVER
+                      - filterType: SQL_DATABASE
+                      - filterType: RESOURCE_GROUP
+                      - filterType: REDIS_CACHE
+                      - filterType: DOCUMENT_DB
+                    actions:
+                      - action: MANAGE DEVICE
+                        items: []
+                      - action: ASSIGN GATEWAY MANAGEMENT PROFILE
+                        items:
+                          - item: '24422'
+                            parameters: {}
+                            instances: {}
+                      - action: INSTALL OPSRAMP AGENT
+                        items:
+                          - item: '169743'
+                            parameters: {}
+                            instances: {}
+                      - action: SELECT GATEWAY
+                        items:
+                          - item: '24422'
+                            parameters: {}
+                            instances: {}
+                    executionOrder: 0
+                  schedule:
+                    patternType: MINUTES
+                    pattern: '30'
+                    startTime: '00:30:00'
+            example-google-basic:
+              value:
+                - id: 962
+                  name: Google Basic Discovery profile
+                  credentialSet: Google GOOGLE_Integration
+                  credential:
+                    credentialName: Google GOOGLE_Integration
+                    accountId: GCE-integration
+            example-google-credentials-schedule-policy:
+              value:
+                - id: 28
+                  name: Google
+                  installedIntegrationId: INTG-8abf482f-1423-18b7-4578-be47080aaa72
+                  credentialSet: Google GOOGLEIntegration
+                  credential:
+                    credentialName: Google GOOGLEIntegration
+                    accountId: gce-integration
+                  policy:
+                    id: 822
+                    name: GOOGLE
+                    resourceType: ALL
+                    matchType: ANY
+                    rules:
+                      - id: 18821
+                        filterType: ANY_CLOUD_RESOURCE
+                    actions:
+                      - action: MANAGE DEVICE
+                        items: []
+                  schedule:
+                    patternType: HOURLY
+                    pattern: '2'
+                    startTime: '02:00:00'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/discoveryProfile'
+        examples:
+          example-aws-basic:
+            value:
+              - name: AWS Basic Discovery profile
+                credentialSet: AWS AWS Integration
+          example-aws-schedule:
+            value:
+              - name: AWS discovery profile with schedule
+                credentialSet: AWS_Integration
+                schedule:
+                  patternType: HOURLY
+                  pattern: '2'
+                  startTime: '02:00:00'
+          example-aws-policy:
+            value:
+              - name: AWS Discovery profile
+                credentialSet: AWS AWS Integration
+                policy:
+                  name: AWS Discovery profile
+                  entityType: ALL
+                  matchType: ANY
+                  rules:
+                    - filterType: ANY_CLOUD_RESOURCE
+          example-aws-credentials-schedule-policy:
+            value:
+              - name: AWS_profile
+                credential:
+                  credentialType: AWS
+                  AccountNumber: '************'
+                  AccessKey: '*******************'
+                  SecurityKey: '************************'
+                policy:
+                  name: AWS_profile
+                  entityType: ALL
+                  matchType: ANY
+                  rules:
+                    - filterType: ANY_CLOUD_RESOURCE
+                  actions:
+                    - action: MANAGE DEVICE
+                      items: []
+                  executionOrder: 0
+                schedule:
+                  patternType: MINUTES
+                  pattern: '30'
+                  startTime: '00:30:00'
+          example-azure-basic:
+            value:
+              - name: Azure Basic Discovery profile
+                credentialSet: Azure Credentials
+          example-azure-schedule:
+            value:
+              - name: Azure discovery profile with schedule
+                credentialSet: Azure Credentials
+                schedule:
+                  patternType: HOURLY
+                  pattern: '2'
+                  startTime: '02:00:00'
+          example-azure-schedule-policy:
+            value:
+              - name: Azure
+                credentialSet: Azure_policy
+                policy:
+                  name: Azure
+                  resourceType: ALL
+                  matchType: ANY
+                  rules:
+                    - filterType: ANY_CLOUD_RESOURCE
+                  actions:
+                    - action: MANAGE DEVICE
+                      items: []
+                  executionOrder: 0
+                schedule:
+                  patternType: MINUTES
+                  pattern: '30'
+                  startTime: '00:30:00'
+          example-azure-credentials-schedule-policy:
+            value:
+              - name: Azure_Profile
+                credential:
+                  credentialType: Azure
+                  AzureType: ARM
+                  SubscriptionId: '*******'
+                  TenantId: '********'
+                  ClientID: '*********'
+                  SecretKey: '*******'
+                policy:
+                  name: Azure
+                  resourceType: ALL
+                  matchType: ANY
+                  rules:
+                    - filterType: ANY_DEVICE
+                    - filterType: EBS
+                    - filterType: WEBSITE
+                    - filterType: SQL_SERVER
+                    - filterType: SQL_DATABASE
+                    - filterType: RESOURCE_GROUP
+                    - filterType: REDIS_CACHE
+                    - filterType: DOCUMENT_DB
+                  actions:
+                    - action: MANAGE DEVICE
+                    - action: ASSIGN GATEWAY MANAGEMENT PROFILE
+                      items:
+                        - item: '24422'
+                    - action: INSTALL OPSRAMP AGENT
+                      items:
+                        - item: '169743'
+                    - action: SELECT GATEWAY
+                      items:
+                        - item: '24422'
+                  executionOrder: 0
+                schedule:
+                  patternType: MINUTES
+                  pattern: '30'
+                  startTime: '00:30:00'
+          example-google-basic:
+            value:
+              - name: Google Basic Discovery profile
+                credentialSet: Google GOOGLE_Integration
+          example-google-credentials-schedule-policy:
+            value:
+              - name: Google
+                credential:
+                  credentialType: Google
+                  ServiceAccountEmail: '**********'
+                  ProjectId: '*********'
+                  ServiceAccountManagementCertificate: MIIJqAIBAzCCCWIGCSqGSIb3DQEHAaCCCVMEgglPMIIJSzCCBXAGCSqGSIb3DQEHAaCCBWEEggVdjqWWqTFyUbIAM/EKB3HLK3AgIEAA==
+                  ManagementCertificatePassPhrase: '*******'
+                policy:
+                  name: GOOGLE
+                  resourceType: ALL
+                  matchType: ANY
+                  rules:
+                    - filterType: ANY_CLOUD_RESOURCE
+                  actions:
+                    - action: MANAGE DEVICE
+                      items: []
+                  executionOrder: 0
+                schedule:
+                  patternType: MINUTES
+                  pattern: '30'
+                  startTime: '00:30:00'
+    description: |
+      ### AWS basic discovery profile
+      Create a basic AWS discovery profile with credentials to administer the management of discovered resources:
+      >The returned sample response can be posted again with any modification.
+      ### AWS discovery profile with delivery schedule  
+      Create an AWS discovery profile with a schedule to define the discovery time of resources:
+      ### AWS discovery profile with policy
+      Create an AWS discovery profile with a policy to define specific actions performed on the discovered resources:
+      ### AWS discovery profile with credentials, schedule, and policy  
+      Create an AWS discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources:
+      ### Azure basic discovery profile
+      Create a basic Azure discovery profile with credentials to administer the management of discovered resources:
+      ### Azure discovery profile with discovery schedule
+      Create an Azure discovery profile with a schedule to define the discovery time of resources:
+      ### Azure discovery profile with schedule and policy
+      Create Azure discovery profile with schedule and policy to schedule discovery of resources and define actions performed on the discovered devices:
+      ### Azure discovery profile with credentials, schedule, and policy
+      Create an Azure discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources:
+      ### Google basic discovery profile
+      Create a basic Google discovery profile with credentials to administer the management of discovered resources:
+      ### Google discovery profile with credentials, schedule, and policy
+      Create a Google discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources:
+      >Certificate attachment must be encoded with base64 and can be provided in ServiceAccountManagementCertificate.
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/integrations/cloud-discovery-create-post/'
+get:
+  summary: Get discovery profile list
+  description: This endpoint is used to retrieve a list of discovery profiles and their details for AWS and Azure.
+  operationId: cloud-discovery-profiles-get/
+  tags:
+    - integrations
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/discoveryProfile'
+          examples:
+            example-aws:
+              value:
+                - id: 110
+                  name: AWS discovery profile
+                  credentialSet: AWS_AWSIntegration
+                  credential:
+                    credentialName: AWS_AWSIntegration
+                    accountId: '290642135903'
+                  policy:
+                    id: 136
+                    name: AWS discovery profile
+                    entityType: ALL
+                    matchType: ANY
+                    rules:
+                      - filterType: ANY_CLOUD_RESOURCE
+                    actions:
+                      - action: MANAGE DEVICE
+                        items: []
+                      - action: STREAM AWS ALERTS
+                        items:
+                          - item: 'https://cloudwatch-url'
+                            parameters: {}
+                            instances: {}
+                    executionOrder: 0
+                  schedule:
+                    patternType: HOURLY
+                    pattern: '2'
+                    startTime: '02:00:00'
+                - id: 111
+                  name: AWS discovery profile
+                  credentialSet: AWS_AWSIntegration
+                  credential:
+                    credentialName: AWS_AWSIntegration
+                    accountId: '290642135903'
+                  schedule:
+                    patternType: MINUTES
+                    pattern: '30'
+                    startTime: '00:30:00'
+            example-azure:
+              value:
+                - id: 102183
+                  name: Azure
+                  credentialSet: Azure Credentials
+                  credential:
+                    credentialName: Azure Credentials
+                    accountId: 9ee6993f-a036-4118-9eab-c66d9fda1ef3
+                  policy:
+                    id: 39733
+                    name: Azure
+                    resourceType: ALL
+                    matchType: ANY
+                    rules:
+                      - filterType: ANY_DEVICE
+                      - filterType: EBS
+                      - filterType: WEBSITE
+                      - filterType: SQL_SERVER
+                      - filterType: SQL_DATABASE
+                      - filterType: RESOURCE_GROUP
+                      - filterType: REDIS_CACHE
+                      - filterType: DOCUMENT_DB
+                    actions:
+                      - action: MANAGE DEVICE
+                        items: []
+                      - action: ASSIGN GATEWAY MANAGEMENT PROFILE
+                        items:
+                          - item: '24422'
+                            parameters: {}
+                            instances: {}
+                      - action: INSTALL OPSRAMP AGENT
+                        items:
+                          - item: '169743'
+                            parameters: {}
+                            instances: {}
+                      - action: SELECT GATEWAY
+                        items:
+                          - item: '24422'
+                            parameters: {}
+                            instances: {}
+                    executionOrder: 0
+                  schedule:
+                    patternType: MINUTES
+                    pattern: '30'
+                    startTime: '00:30:00'
+                - id: 8751
+                  name: Azure_profile
+                  credentialSet: Azure Lab discovery profile
+                  credential:
+                    credentialName: Azure Lab discovery profile
+                    accountId: 9ee6993f-a036-4118-9eab-c66d9fda1ef3
+                  schedule:
+                    patternType: MINUTES
+                    pattern: '30'
+                    startTime: '00:30:00'
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/integrations/cloud-discovery-profiles-get/'
+put:
+  summary: Update discovery profile for AWS and Google
+  description: |-
+    This endpoint is used to update a discovery profile for AWS and Google.
+
+    See Cloud Discovery Create Post for request/response documentation.
+  operationId: cloud-discovery-update-put/
+  tags:
+    - integrations
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/discoveryProfile'
+          examples:
+            example-aws-basic:
+              value:
+                - id: 109
+                  name: AWS Basic Discovery profile
+                  credentialSet: AWS_1
+                  credential:
+                    credentialName: AWS_1
+                    accountId: '***********'
+            example-aws-schedule:
+              value:
+                - id: 120
+                  name: AWS discovery profile with schedule
+                  installedIntegrationId: INTG-5de40426-6edb-4f40-9274-d8827b683e40
+                  credentialSet: AWS AWS Integration
+                  credential:
+                    credentialName: AWS AWS Integration
+                    accountId: '*********'
+                  policy:
+                    id: 1621
+                    uid: POLICY-35a98317-cd21-4f81-aad9-331e8e8cca0e
+                    name: AWS discovery profile with schedule
+                    matchType: ANY
+                    rules:
+                      - id: 2061
+                        filterType: ANY_CLOUD_RESOURCE
+                    actions: []
+                    entityType: ALL
+                  schedule:
+                    patternType: MINUTES
+                    pattern: '30'
+                    startTime: '00:30:00'
+            example-aws-policy:
+              value:
+                - id: 110
+                  name: AWS discovery profile with policy
+                  credentialSet: AWS_AWSIntegration
+                  credential:
+                    credentialName: AWS_AWSIntegration
+                    accountId: '***********'
+                  policy:
+                    id: 136
+                    name: AWS discovery profile with policy
+                    entityType: ALL
+                    matchType: ANY
+                    rules:
+                      - filterType: ANY_CLOUD_RESOURCE
+                    actions:
+                      - action: MANAGE DEVICE
+                        items: []
+                      - action: STREAM AWS ALERTS
+                        items:
+                          - item: 'https://cloudwatch-url'
+                            parameters: {}
+                            instances: {}
+                    executionOrder: 0
+            example-aws-schedule-policy:
+              value:
+                - id: 59
+                  name: AWS discovery profile with schedule and policy
+                  installedIntegrationId: INTG-5de40426-6edb-4f40-9274-d8827b683e40
+                  credentialSet: AWS AWS Integration
+                  credential:
+                    credentialName: AWS AWS Integration
+                    accountId: '************'
+                  policy:
+                    id: 1620
+                    uid: POLICY-d6e78267-ccbb-41a8-9766-c8311299da98
+                    name: AWS discovery profile with schedule and policy
+                    matchType: ANY
+                    rules:
+                      - id: 2060
+                        filterType: ANY_CLOUD_RESOURCE
+                    actions: []
+                    entityType: ALL
+                  schedule:
+                    patternType: MINUTES
+                    pattern: '30'
+                    startTime: '00:30:00'
+            example-aws-credentials-schedule-policy:
+              value:
+                - id: 510
+                  name: AWS_profile
+                  credentialSet: AWS_Integration
+                  credential:
+                    credentialName: AWS_Integration
+                    accountId: '************'
+                  policy:
+                    id: 736
+                    name: AWS_profile
+                    entityType: ALL
+                    matchType: ANY
+                    rules:
+                      - filterType: ANY_CLOUD_RESOURCE
+                    actions:
+                      - action: MANAGE DEVICE
+                        items: []
+                    executionOrder: 0
+                  schedule:
+                    patternType: MINUTES
+                    pattern: '30'
+                    startTime: '00:30:00'
+            example-google-basic:
+              value:
+                - id: 963
+                  name: Google Basic Discovery profile
+                  credentialSet: Google GOOGLEIntegration
+                  credential:
+                    credentialName: Google GOOGLEIntegration
+                    accountId: GCE-integration
+            example-google-schedule-policy:
+              value:
+                - id: 963
+                  name: Google
+                  credentialSet: Google GOOGLEIntegration
+                  policy:
+                    id: 822
+                    name: GOOGLE
+                    resourceType: ALL
+                    matchType: ANY
+                    rules:
+                      - filterType: ANY_CLOUD_RESOURCE
+                    actions:
+                      - action: MANAGE DEVICE
+                        items: []
+                    executionOrder: 0
+                  schedule:
+                    patternType: MINUTES
+                    pattern: '30'
+                    startTime: '00:30:00'
+            example-google-credentials-schedule-policy:
+              value:
+                - id: 963
+                  name: Google
+                  installedIntegrationId: INTG-8abf482f-1423-18b7-4578-be47080aaa72
+                  credentialSet: Google GOOGLEIntegration
+                  credential:
+                    credentialName: Google GOOGLEIntegration
+                    accountId: gce-integration
+                  policy:
+                    id: 822
+                    name: GOOGLE
+                    resourceType: ALL
+                    matchType: ANY
+                    rules:
+                      - filterType: ANY_CLOUD_RESOURCE
+                    actions:
+                      - action: MANAGE DEVICE
+                        items: []
+                    executionOrder: 0
+                  schedule:
+                    patternType: MINUTES
+                    pattern: '30'
+                    startTime: '00:30:00'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/discoveryProfile'
+        examples:
+          example-aws-basic:
+            value:
+              - name: AWS Basic Discovery profile
+                credentialSet: AWS_1
+          example-aws-schedule:
+            value:
+              - name: AWS discovery profile with schedule
+                credentialSet: AWS AWS Integration
+                schedule:
+                  patternType: MINUTES
+                  pattern: '30'
+                  startTime: '00:30:00'
+          example-aws-policy:
+            value:
+              - id: 110
+                name: AWS discovery profile with policy
+                credentialSet: AWS_AWSIntegration
+                policy:
+                  entityType: ALL
+                  matchType: ANY
+                  rules:
+                    - filterType: ANY_CLOUD_RESOURCE
+                  actions:
+                    - action: MANAGE DEVICE
+                      items: []
+                    - action: STREAM AWS ALERTS
+                      items:
+                        - item: 'https://cloudwatch-url'
+          example-aws-schedule-policy:
+            value:
+              - name: AWS discovery profile with schedule and policy
+                credentialSet: AWS AWS Integration
+                schedule:
+                  patternType: MINUTES
+                  pattern: '30'
+                  startTime: '00:30:00'
+                policy:
+                  name: AWS discovery profile with schedule and policy
+                  entityType: ALL
+                  matchType: ANY
+                  rules:
+                    - filterType: ANY_CLOUD_RESOURCE
+          example-aws-credential-schedule-policy:
+            value:
+              - id: 510
+                name: AWS_profile
+                credential:
+                  credentialType: AWS
+                  AccountNumber: '*************'
+                  AccessKey: '*****************'
+                  SecurityKey: '***************'
+                policy:
+                  id: 736
+                  name: AWS_profile
+                  entityType: ALL
+                  matchType: ANY
+                  rules:
+                    - filterType: ANY_CLOUD_RESOURCE
+                  actions:
+                    - action: MANAGE DEVICE
+                      items: []
+                  executionOrder: 0
+                schedule:
+                  patternType: MINUTES
+                  pattern: '30'
+                  startTime: '00:30:00'
+          example-google-basic:
+            value:
+              - id: 963
+                name: Google Basic Discovery profile
+                credentialSet: Google GOOGLEIntegration
+          example-google-schedule-policy:
+            value:
+              - id: 963
+                name: Google
+                credentialSet: Google GOOGLEIntegration
+                policy:
+                  id: 822
+                  name: GOOGLE
+                  resourceType: ALL
+                  matchType: ANY
+                  rules:
+                    - filterType: ANY_CLOUD_RESOURCE
+                  actions:
+                    - action: MANAGE DEVICE
+                      items: []
+                  executionOrder: 0
+                schedule:
+                  patternType: MINUTES
+                  pattern: '30'
+                  startTime: '00:30:00'
+          example-google-credentials-schedule-policy:
+            value:
+              - id: 963
+                name: Google
+                credential:
+                  credentialType: Google
+                  ServiceAccountEmail: '************'
+                  ProjectId: '***********'
+                  ServiceAccountManagementCertificate: MIIJqAIBAzCCCWIGCSqGSIb3DQEHAaCCCVMEgglPMIIJSzCCBXAGCSqGSIb3DQEHAaCCBWEEggVdMIIFWTCCBVUGCyqGSIb3DQEMCgECoIIE+jCCBPYwnEjqWWqTFyUbIAM/EKB3HLK3AgIEAA==
+                  ManagementCertificatePassPhrase: '**********'
+                policy:
+                  id: 822
+                  name: GOOGLE
+                  resourceType: ALL
+                  matchType: ANY
+                  rules:
+                    - filterType: ANY_CLOUD_RESOURCE
+                  actions:
+                    - action: MANAGE DEVICE
+                      items: []
+                  executionOrder: 0
+                schedule:
+                  patternType: MINUTES
+                  pattern: '30'
+                  startTime: '00:30:00'
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/integrations/cloud-discovery-update-put/'
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true

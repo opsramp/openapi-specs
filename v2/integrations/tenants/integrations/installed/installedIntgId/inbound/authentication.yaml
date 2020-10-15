@@ -1,0 +1,60 @@
+post:
+  summary: Create or update inbound authentication
+  description: This endpoint is used to create or update inbound authentication of an installed integration.
+  operationId: integration-create-update-inbound-authentication-post/
+  tags:
+    - integrations
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              authType:
+                type: string
+              apiKeyPairs:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    key:
+                      type: string
+              token:
+                type: string
+          examples:
+            example-OAUTH2:
+              value:
+                authType: OAUTH2
+                apiKeyPairs:
+                  - key: EkWCgfV465DhFd7BBeWEhQXrmXYsD5Qj
+            example-WEBHOOK:
+              value:
+                authType: WEBHOOK
+                token: gvKnS9rPErNmYhUrBZE4EnXBWhGN9zb4
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/authentication'
+        examples:
+          example-OAUTH2:
+            value:
+              authType: OAUTH2
+          example-WEBHOOK:
+            value:
+              authType: WEBHOOK
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/integrations/integration-create-update-inbound-authentication-post/'
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: installedIntgId
+    required: true

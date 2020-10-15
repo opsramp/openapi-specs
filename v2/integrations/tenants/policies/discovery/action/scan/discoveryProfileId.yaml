@@ -1,0 +1,45 @@
+get:
+  summary: Rescan discovery profile
+  description: This endpoint is used to rescan a discovery profile for AWS, Azure, and Google.
+  operationId: cloud-discovery-profile-rescan-get/
+  tags:
+    - integrations
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/httpResponse'
+          examples:
+            example-1:
+              value:
+                status: 200
+                entity: Request to scan the discoveryprofile has been initiated
+                metadata: {}
+                cookies: {}
+                allowedMethods: []
+                links: []
+                statusInfo:
+                  reasonPhrase: OK
+                  statusCode: 200
+                  family: SUCCESSFUL
+                actualEntity: Request to scan the discoveryprofile has been initiated
+                stringHeaders: {}
+                headers: {}
+                length: -1
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/integrations/cloud-discovery-profile-rescan-get/'
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: discoveryProfileId
+    required: true
+    description: |
+      The discovery profile Id.
