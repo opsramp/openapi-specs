@@ -1,0 +1,51 @@
+post:
+  summary: Create client notes
+  description: This endpoint is used to create client notes.
+  tags:
+    - tenancy-access-controls
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/clientNote'
+          examples:
+            example-1:
+              value:
+                id: 17
+                subject: Rest Applications Client
+                description: This client is using for Rest applications
+                createdTime: '2016-09-09T05:57:32+0000'
+                updatedTime: '2016-09-09T05:57:32+0000'
+                startTime: ''
+                expiryTime: ''
+                createdBy:
+                  loginName: john.smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@gmail.com
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/clientNote'
+        examples:
+          example-never-expire:
+            value:
+              subject: Rest Applications Client
+              description: This client is using for Rest applications
+              expiryDateType: 1
+          example-validity-period:
+            value:
+              subject: Rest Applications Client
+              description: This client is using for Rest applications
+              expiryDateType: 2
+              startTime: '2016-09-08T05:57:32+0000'
+              expiryTime: '2016-09-30T05:57:32+0000'
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true

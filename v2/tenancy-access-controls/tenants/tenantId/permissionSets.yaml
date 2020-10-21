@@ -1,0 +1,100 @@
+get:
+  summary: Search permission sets
+  description: This endpoint is used to retrieve the list of permission sets assigned to a tenant.
+  tags:
+    - tenancy-access-controls
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    description:
+                      type: string
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: 2
+                    name: Var Administrator
+                    description: Administrator role for all the service operations supported VAR(s)
+                  - id: 3
+                    name: VAR User
+                    description: VAR User
+                  - id: 7
+                    name: Auditor Manage
+                    description: Auditor Manage
+                  - id: 8
+                    name: Auditor View
+                    description: Auditor View
+                  - id: 11
+                    name: Partner Administrator
+                    description: Partner Administrator
+                  - id: 12
+                    name: Technician
+                    description: Technician
+                  - id: 13
+                    name: Dispatcher
+                    description: Dispatcher
+                totalResults: 7
+                orderBy: id
+                pageNo: 1
+                pageSize: 100
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: false
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: string
+        default: id
+      in: query
+      name: sortName
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true

@@ -1,0 +1,133 @@
+post:
+  summary: Create user group
+  description: |-
+    This endpoint is used to create a partner-level or client-level user group.
+
+    >## Notes
+    >- This API allows a user group to be created with minimal details like: user group name and roles.
+    >- To add users to a user group, use the Add Users to User Group API.
+  tags:
+    - tenancy-access-controls
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/userGroup'
+          examples:
+            example-1:
+              value:
+                uniqueId: USRGRP-9a68ce5d-c5cd-40a2-9fa6-e496dfe6e01b
+                name: Network Admins
+                description: Level A Network Administrators
+                createdTime: '2017-10-16T08:17:17+0000'
+                updatedTime: '2017-10-16T08:26:29+0000'
+                email: network.admins@myorganization.com
+                roles:
+                  - uniqueId: ROLE-76a8247c-39f4-8921-f5a4-babad80aa8fc
+                    name: Network Admin Role
+                    description: Level A network administrators to manage all network resources of site SJ
+                    defaultRole: false
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/userGroup'
+        examples:
+          example-1:
+            value:
+              name: Network Admins
+              description: Level A Network Administrators
+              email: network.admins@myorganization.com
+              roles:
+                - uniqueId: ROLE-76a8247c-39f4-8921-f5a4-babad80aa8fc
+get:
+  summary: Search user groups
+  description: |-
+    This endpoint is used to retrieve the list of user groups available within a tenant.
+
+    >## Notes
+    >- This API provides a paginated list with minimal details of user groups.
+    >- Use Get User Group API to retrieve the assigned roles to a user group.
+    >- Use Get Users or a User Group API to retrieve the ausers that are part of a user group.
+  tags:
+    - tenancy-access-controls
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: '#/components/schemas/userGroup'
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - uniqueId: USRGRP-13cfc012-bb01-bbe3-6ed9-c46a192d0567
+                    name: Lab Escalation Users
+                    description: Network Lab Escalation Users
+                    createdTime: '2016-07-23T16:46:41+0000'
+                    updatedTime: '2017-10-06T06:40:51+0000'
+                    email: joe@gmail.com
+                  - uniqueId: USRGRP-ab5afe06-0cca-9b8f-6053-357531f7d9ff
+                    name: Linux Issues Support
+                    description: Linux Issues Support Group
+                    createdTime: '2016-07-23T16:46:02+0000'
+                    updatedTime: '2017-06-06T10:59:17+0000'
+                totalResults: 2
+                orderBy: userGroup.id
+                pageNo: 1
+                pageSize: 100
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: string
+        default: id
+      in: query
+      name: sortName
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true

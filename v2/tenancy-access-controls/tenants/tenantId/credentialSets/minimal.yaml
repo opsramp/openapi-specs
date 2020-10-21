@@ -1,0 +1,56 @@
+get:
+  summary: Get minimal details of client credential sets
+  description: This endpoint is used to retrieve the minimal details of client credential sets.
+  tags:
+    - tenancy-access-controls
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/credentialSet'
+          examples:
+            example-1:
+              value:
+                - uniqueId: QPrN4YQKk5cERqgWd9XsFwQe
+                  name: 11. TESTING CREDENTIAL SET CREATION FROM API 3
+                  secure: false
+                  port: 0
+                  snmpVersion: V2
+                  description: this is testing from api
+                  autoEnableMode: false
+                  universal: true
+                  spSecure: false
+                  spPort: 0
+                  timeoutMs: 15000
+                - uniqueId: ShDxSbEjp3c8cHZKBbrqphjp
+                  name: 11. TESTING CREDENTIAL SET CREATION FROM API 4
+                  secure: false
+                  port: 0
+                  snmpVersion: V2
+                  description: this is testing from api
+                  autoEnableMode: false
+                  universal: true
+                  spSecure: false
+                  spPort: 0
+                  timeoutMs: 15000
+                - uniqueId: 6bupAEC8NhxSHbsEnHJv6w7T
+                  name: 2. testing from UI
+                  secure: false
+                  port: 0
+                  snmpVersion: V2
+                  description: test
+                  autoEnableMode: false
+                  universal: true
+                  spSecure: false
+                  spPort: 0
+                  timeoutMs: 15000
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
