@@ -1,0 +1,823 @@
+get:
+  summary: Search change requests
+  description: This endpoint is used to search for change requests.
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: '#/components/schemas/changeRequest'
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              nextPageNo:
+                type: integer
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: CHG0000000226
+                    subject: 'Change Request from Alert -  151 '
+                    description: 'Change Request from alert       :  151 '
+                    status: Closed
+                    oldStatus: Open
+                    priority: Very Low
+                    oldPriority: Low
+                    requester:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: sample@opsramp.com
+                    assignedUser:
+                      id: USR0000000015
+                      loginName: brocadeCAdmin@opsramp.com
+                      lastName: CAdmin
+                      firstName: Brocade
+                      email: opsLab@opsramp.com
+                    assigneeGroup:
+                      id: 7
+                      name: Brocade Lab Users
+                      description: All Brocade Lab Users group
+                    resources:
+                      - id: 481af404-33a6-4d61-af77-c483ca6641fa
+                        name: VTHLPT1000
+                        type: DEVICE
+                      - id: SGP-7adf3762-f310-4c14-9ecd-443eb7c6c208
+                        name: VTH-SERVICES
+                        type: SERVICE
+                      - id: DGP-8d44a504-fd4b-4a78-ba34-2dfdf3ffb85e
+                        name: VTH-ADMIN-DEVS
+                        type: DEVICE_GROUP
+                    extTicketId: BM023456
+                    cc: 'brocade@opsramp.com, opsLab@opsramp.com'
+                    ticketArisedTime: ''
+                    createdUser:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: sample@opsramp.com
+                    reason: CR Close
+                    alertIds: []
+                    reOpenCount: 1
+                    createdDate: '2016-07-26T14:49:44+0000'
+                    client:
+                      id: 8
+                      uniqueId: client_8
+                      name: Brocade Lab
+                      activated: true
+                    updatedDate: '2016-08-12T06:54:59+0000'
+                    priorityUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: Ops
+                      email: escalationmails@opsramp.com
+                    priorityUpdatedDate: '2016-07-26T14:59:12+0000'
+                    statusUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: Ops
+                      email: escalationmails@opsramp.com
+                    statusUpdatedDate: '2016-08-12T06:54:59+0000'
+                    closedDate: '2016-08-12T06:54:59+0000'
+                    slaDetails:
+                      resolutionTime: 1370327
+                      responseTime: 1370285
+                      responseBreach: false
+                      resolutionBreach: false
+                      responseBreachDate: ''
+                      resolutionBreachDate: ''
+                    source: INTEGRATION
+                    changeType: '2'
+                    changePlan: 'Alert -  151 '
+                    rollbackPlan: Introduce new functions
+                    testPlan: ' $alert.device.hostName '
+                    plannedStart: '2016-08-12T18:53:00+0000'
+                    plannedEnd: '2016-08-29T07:53:59+0000'
+                    workStart: '2016-08-21T18:53:00+0000'
+                    workEnd: '2016-08-27T08:54:59+0000'
+                    approvalState: APPROVED
+                  - id: CHG0000000225
+                    subject: 'Change Request from Alert -  151 '
+                    description: 'Change Request from alert       :  151 '
+                    status: Resolved
+                    oldStatus: Pending
+                    priority: Normal
+                    oldPriority: Low
+                    requester:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: sample@opsramp.com
+                    assignedUser:
+                      id: USR0000000014
+                      loginName: opsLab@opsramp.com
+                      lastName: Lab
+                      firstName: Brocade
+                      email: opsLab@opsramp.com
+                    assigneeGroup:
+                      id: 7
+                      name: Brocade Lab Users
+                      description: All Brocade Lab Users group
+                    resources:
+                      - id: a17d1896-d18a-4d3e-ae6e-e00465770119
+                        name: SVR-DEMO
+                        type: DEVICE
+                    extTicketId: BM023456
+                    cc: 'brocade@opsramp.com, escalationmails@opsramp.com'
+                    ticketArisedTime: ''
+                    createdUser:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: sample@opsramp.com
+                    reason: CR Resolved
+                    category:
+                      id: 6
+                      name: Request Level
+                    alertIds: []
+                    reOpenCount: 0
+                    createdDate: '2016-07-26T14:47:43+0000'
+                    client:
+                      id: 8
+                      uniqueId: client_8
+                      name: Brocade Lab
+                      activated: true
+                    subCategory:
+                      id: 9
+                      name: Medium
+                    updatedDate: '2016-08-12T06:49:59+0000'
+                    priorityUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: Ops
+                      email: escalationmails@opsramp.com
+                    priorityUpdatedDate: '2016-08-12T06:45:31+0000'
+                    statusUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: Ops
+                      email: escalationmails@opsramp.com
+                    statusUpdatedDate: '2016-08-12T06:49:59+0000'
+                    resolvedDate: '2016-08-12T06:49:59+0000'
+                    slaDetails:
+                      resolutionTime: 1440069
+                      responseTime: 1439978
+                      responseBreach: false
+                      resolutionBreach: false
+                      responseBreachDate: ''
+                      resolutionBreachDate: ''
+                    source: INTEGRATION
+                    changeType: '2'
+                    changePlan: 'Alert -  151 '
+                    rollbackPlan: functions
+                    testPlan: ' $alert.device.hostName '
+                    plannedStart: '2016-08-12T18:45:00+0000'
+                    plannedEnd: '2016-08-20T07:45:59+0000'
+                    workStart: '2016-08-15T18:45:00+0000'
+                    workEnd: '2016-08-19T02:51:59+0000'
+                    approvalState: APPROVED
+                  - id: CHG0000000224
+                    subject: 'Change Request from Alert -  97 '
+                    description: 'Change Request from alert       :  97 '
+                    status: New
+                    oldStatus: New
+                    priority: Low
+                    oldPriority: Low
+                    requester:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: sample@opsramp.com
+                    ticketArisedTime: ''
+                    createdUser:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: sample@opsramp.com
+                    alertIds: []
+                    reOpenCount: 0
+                    createdDate: '2016-07-26T14:47:22+0000'
+                    client:
+                      id: 8
+                      uniqueId: client_8
+                      name: Brocade Lab
+                      activated: true
+                    updatedDate: '2016-07-26T14:47:23+0000'
+                    priorityUpdatedBy:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: sample@opsramp.com
+                    priorityUpdatedDate: '2016-07-26T14:47:22+0000'
+                    statusUpdatedBy:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: sample@opsramp.com
+                    statusUpdatedDate: '2016-07-26T14:47:22+0000'
+                    slaDetails:
+                      resolutionTime: 1440946
+                      responseTime: 0
+                      responseBreach: false
+                      resolutionBreach: false
+                      responseBreachDate: ''
+                      resolutionBreachDate: ''
+                    source: INTEGRATION
+                    changeType: '2'
+                    changePlan: 'Alert -  97 '
+                    rollbackPlan: functions
+                    testPlan: ' $alert.device.hostName '
+                  - id: CHG0000000223
+                    subject: 'Change Request from Alert -  97 '
+                    description: 'Change Request from alert       :  97 '
+                    status: New
+                    oldStatus: New
+                    priority: Low
+                    oldPriority: Low
+                    requester:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: sample@opsramp.com
+                    ticketArisedTime: ''
+                    createdUser:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: sample@opsramp.com
+                    alertIds: []
+                    reOpenCount: 0
+                    createdDate: '2016-07-26T14:45:20+0000'
+                    client:
+                      id: 8
+                      uniqueId: client_8
+                      name: Brocade Lab
+                      activated: true
+                    updatedDate: '2016-07-26T14:45:21+0000'
+                    priorityUpdatedBy:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: sample@opsramp.com
+                    priorityUpdatedDate: '2016-07-26T14:45:20+0000'
+                    statusUpdatedBy:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: sample@opsramp.com
+                    statusUpdatedDate: '2016-07-26T14:45:20+0000'
+                    slaDetails:
+                      resolutionTime: 1441068
+                      responseTime: 0
+                      responseBreach: false
+                      resolutionBreach: false
+                      responseBreachDate: ''
+                      resolutionBreachDate: ''
+                    source: INTEGRATION
+                    changeType: '2'
+                    changePlan: 'Alert -  97 '
+                    rollbackPlan: functions
+                    testPlan: ' $alert.device.hostName '
+                  - id: CHG0000000222
+                    subject: 'Change Request from Alert -  150 '
+                    description: 'Change Request from alert      :  150 '
+                    status: On Hold
+                    oldStatus: Resolved
+                    priority: High
+                    oldPriority: Normal
+                    requester:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: sample@opsramp.com
+                    assignedUser:
+                      id: USR0000000013
+                      loginName: brocadePAdmin@opsramp.com
+                      lastName: Inc PAdmin
+                      firstName: Brocade
+                      email: brocadePAdmin@opsramp.com
+                    assigneeGroup:
+                      id: 5
+                      name: Brocade Inc Users
+                      description: Brocade Partner Users
+                    resources:
+                      - id: ad0a218d-7512-435c-9b58-614470ee8658
+                        name: WORK-PC
+                        type: DEVICE
+                      - id: bc66e17d-09e0-4f8d-bf54-5bcf52bd62ac
+                        name: Vit-laptop
+                        type: DEVICE
+                    extTicketId: BM023456
+                    cc: 'brocade@opsramp.com, brocadePAdmin@opsramp.com'
+                    ticketArisedTime: ''
+                    createdUser:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: sample@opsramp.com
+                    reason: CR Onhold
+                    alertIds: []
+                    reOpenCount: 0
+                    createdDate: '2016-07-26T14:43:45+0000'
+                    suspendEndDate: '2016-08-23T03:57:00+0000'
+                    client:
+                      id: 8
+                      uniqueId: client_8
+                      name: Brocade Lab
+                      activated: true
+                    updatedDate: '2016-08-12T06:57:58+0000'
+                    priorityUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: Ops
+                      email: escalationmails@opsramp.com
+                    priorityUpdatedDate: '2016-08-12T06:56:51+0000'
+                    statusUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: Ops
+                      email: escalationmails@opsramp.com
+                    statusUpdatedDate: '2016-08-12T06:57:58+0000'
+                    resolvedDate: '2016-08-12T06:57:46+0000'
+                    slaDetails:
+                      resolutionTime: 1440836
+                      responseTime: 1440840
+                      responseBreach: false
+                      resolutionBreach: false
+                      responseBreachDate: ''
+                      resolutionBreachDate: ''
+                    source: INTEGRATION
+                    changeType: '2'
+                    changePlan: 'Alert -  150 '
+                    rollbackPlan: functions
+                    testPlan: ' $alert.device.hostName '
+                    plannedStart: '2016-08-22T18:56:00+0000'
+                    plannedEnd: '2016-08-31T07:56:59+0000'
+                    workStart: '2016-08-24T18:56:00+0000'
+                    workEnd: '2016-08-27T07:30:59+0000'
+                    approvalState: APPROVED
+                totalResults: 96
+                orderBy: ticket.id
+                pageNo: 1
+                pageSize: 5
+                totalPages: 20
+                nextPage: true
+                nextPageNo: 2
+                previousPageNo: 0
+                descendingOrder: true
+            example-include-custom-fields:
+              value:
+                results:
+                  - id: string
+                    subject: string
+                    description: string
+                    priority: string
+                    extTicketId: string
+                    changePlan: string
+                    rollbackPlan: string
+                    testPlan: string
+                    plannedStart: '2019-08-24T14:15:22Z'
+                    plannedEnd: '2019-08-24T14:15:22Z'
+                    workStart: '2019-08-24T14:15:22Z'
+                    workEnd: '2019-08-24T14:15:22Z'
+                    cc: string
+                    category:
+                      id: 0
+                    subCategory:
+                      id: 0
+                    changeType: string
+                    assigneeGroup:
+                      id: 0
+                      name: string
+                      description: string
+                      userCount: 0
+                    channelId: string
+                    tags: string
+                    location: string
+                    assignedUser:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    requester:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    resources:
+                      - id: string
+                        name: string
+                        type: string
+                    customFields:
+                      - id: UDF0000003808
+                        classCode: CHANGE
+                        displayLabel: text field
+                        name: text_field_3808
+                        fieldType: TYPE_TEXT
+                        mandatory: false
+                        editable: true
+                        description: All partners
+                        value: available
+                        defaultValue: ''
+                      - id: UDF0000003810
+                        classCode: CHANGE
+                        displayLabel: numeric
+                        name: numeric_3810
+                        fieldType: TYPE_NUMBER
+                        mandatory: false
+                        editable: true
+                        description: Testing numeric
+                        value: '120'
+                        defaultValue: ''
+                      - id: UDF0000003790
+                        classCode: CHANGE
+                        displayLabel: drop-down-api-lab
+                        name: drop_down_api_lab_3790
+                        fieldType: TYPE_DROPDOWN
+                        mandatory: false
+                        editable: true
+                        description: Test case
+                        options:
+                          - label: first
+                            value: '1'
+                          - label: second
+                            value: '2'
+                        value: '1'
+                        defaultValue: ''
+                        selectedOption:
+                          label: first
+                          value: '1'
+                      - id: UDF0000003791
+                        classCode: CHANGE
+                        displayLabel: text-api-lab
+                        name: text_api_lab_3791
+                        fieldType: TYPE_TEXT
+                        mandatory: false
+                        editable: true
+                        description: Test case for text field
+                        value: request custom field - text-updated
+                        defaultValue: Test Text
+                      - id: UDF0000003792
+                        classCode: CHANGE
+                        displayLabel: multi line text-api-lab
+                        name: multi_line_text_api_lab_3792
+                        fieldType: TYPE_TEXTAREA
+                        mandatory: false
+                        editable: true
+                        description: Test case for multi line text
+                        value: text
+                        defaultValue: |-
+                          multi 
+                          line 
+                          text
+                      - id: UDF0000003793
+                        classCode: CHANGE
+                        displayLabel: Numeric-api-lab
+                        name: numeric_api_lab_3793
+                        fieldType: TYPE_NUMBER
+                        mandatory: false
+                        editable: true
+                        description: Numeric test case
+                        value: '1'
+                        defaultValue: '1'
+                      - id: UDF0000003794
+                        classCode: CHANGE
+                        displayLabel: checkbox-api-lab
+                        name: checkbox_api_lab_3794
+                        fieldType: TYPE_CHECKBOX
+                        mandatory: false
+                        editable: true
+                        description: Test case for check box
+                        options:
+                          - label: 'yes'
+                            value: '1'
+                        value: '1'
+                        defaultValue: '0'
+                        selectedOption:
+                          label: 'yes'
+                          value: '1'
+                      - id: UDF0000003795
+                        classCode: CHANGE
+                        displayLabel: Date-ap-lab
+                        name: date_ap_lab_3795
+                        fieldType: TYPE_DATE
+                        mandatory: false
+                        editable: true
+                        description: Test case for date field
+                        value: '2016-02-26T00:00:00+0000'
+                        defaultValue: '2016-02-26T00:00:00+0000'
+                      - id: UDF0000003796
+                        classCode: CHANGE
+                        displayLabel: dateTime-api-lab
+                        name: datetime_api_lab_3796
+                        fieldType: TYPE_DATETIME
+                        mandatory: false
+                        editable: true
+                        description: Test case for Date and time
+                        value: '2016-02-26T12:13:00+0000'
+                        defaultValue: '2016-02-26T12:13:00+0000'
+                    attachments:
+                      - name: string
+                        file: string
+                    knowledgeArticleIds:
+                      - 0
+                    oldStatus: string
+                    oldPriority: string
+                    ticketArisedTime: string
+                    createdUser:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    alertIds:
+                      - null
+                    createdDate: '2019-08-24T14:15:22Z'
+                    allowedStatus:
+                      - id: string
+                        name: string
+                        reasonsEnabled: true
+                        reasonsDefined: true
+                    client:
+                      id: 0
+                      uniqueId: string
+                      name: string
+                      activated: true
+                      updatedTime: string
+                      createdTime: '2019-08-24T14:15:22Z'
+                    updatedDate: '2019-08-24T14:15:22Z'
+                    priorityUpdatedBy:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    priorityUpdatedDate: '2019-08-24T14:15:22Z'
+                    statusUpdatedBy:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    statusUpdatedDate: '2019-08-24T14:15:22Z'
+                    slaDetails:
+                      resolutionTime: 0
+                      responseTime: 0
+                      responseBreach: true
+                      resolutionBreach: true
+                      responseBreachDate: string
+                      resolutionBreachDate: string
+                    source: string
+                    statusFlow:
+                      - status: string
+                        timeSpent: 0
+                        createdDate: '2019-08-24T14:15:22Z'
+                        updatedBy:
+                          id: string
+                          loginName: string
+                          lastName: string
+                          firstName: string
+                          email: string
+                          phoneNumber: string
+                        reason: string
+                        notes: string
+                    attachedArticles:
+                      - id: 0
+                        subject: string
+                totalResults: 0
+                orderBy: string
+                pageNo: 0
+                pageSize: 0
+                totalPages: 0
+                nextPage: true
+                nextPageNo: 0
+                previousPageNo: 0
+                descendingOrder: true
+            example-include-statusFlow:
+              value:
+                results:
+                  - id: string
+                    subject: string
+                    description: string
+                    priority: string
+                    extTicketId: string
+                    changePlan: string
+                    rollbackPlan: string
+                    testPlan: string
+                    plannedStart: '2019-08-24T14:15:22Z'
+                    plannedEnd: '2019-08-24T14:15:22Z'
+                    workStart: '2019-08-24T14:15:22Z'
+                    workEnd: '2019-08-24T14:15:22Z'
+                    cc: string
+                    category:
+                      id: 0
+                    subCategory:
+                      id: 0
+                    changeType: string
+                    assigneeGroup:
+                      id: 0
+                      name: string
+                      description: string
+                      userCount: 0
+                    channelId: string
+                    tags: string
+                    location: string
+                    assignedUser:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    requester:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    resources:
+                      - id: string
+                        name: string
+                        type: string
+                    customFields:
+                      - id: string
+                        classCode: string
+                        displayLabel: string
+                        name: string
+                        fieldType: string
+                        mandatory: true
+                        editable: true
+                        description: string
+                        value: string
+                        defaultValue: string
+                        options:
+                          - label: string
+                            value: string
+                        selectedOption:
+                          label: string
+                          value: string
+                    attachments:
+                      - name: string
+                        file: string
+                    knowledgeArticleIds:
+                      - 0
+                    oldStatus: string
+                    oldPriority: string
+                    ticketArisedTime: string
+                    createdUser:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    alertIds:
+                      - null
+                    createdDate: '2019-08-24T14:15:22Z'
+                    allowedStatus:
+                      - id: string
+                        name: string
+                        reasonsEnabled: true
+                        reasonsDefined: true
+                    client:
+                      id: 0
+                      uniqueId: string
+                      name: string
+                      activated: true
+                      updatedTime: string
+                      createdTime: '2019-08-24T14:15:22Z'
+                    updatedDate: '2019-08-24T14:15:22Z'
+                    priorityUpdatedBy:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    priorityUpdatedDate: '2019-08-24T14:15:22Z'
+                    statusUpdatedBy:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    statusUpdatedDate: '2019-08-24T14:15:22Z'
+                    slaDetails:
+                      resolutionTime: 0
+                      responseTime: 0
+                      responseBreach: true
+                      resolutionBreach: true
+                      responseBreachDate: string
+                      resolutionBreachDate: string
+                    source: string
+                    statusFlow:
+                      - status: New
+                        timeSpent: 1492634
+                        createdDate: '2016-07-25T12:42:19+0000'
+                        updatedBy:
+                          loginName: john.smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@gmail.com
+                      - status: Resolved
+                        reason: Resolving as fixed
+                        notes: resolution summary
+                        timeSpent: 18
+                        createdDate: '2016-07-25T19:19:33+0000'
+                        updatedBy:
+                          loginName: john.smith
+                          lastName: smith
+                          firstName: john
+                          email: john@gmail.com
+                      - status: Pending
+                        timeSpent: 13
+                        reason: Waiting for customer inputs
+                        createdDate: '2016-07-27T10:04:31+0000'
+                        updatedBy:
+                          id: USR0000000018
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: SP
+                          email: sample@gmail.com
+                      - status: On Hold
+                        reason: 'Required information is not available, making as on hold'
+                        createdDate: '2016-07-28T11:04:44+0000'
+                        updatedBy:
+                          id: USR0000000018
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: SP
+                          email: sample@gmail.com
+                    attachedArticles:
+                      - id: 0
+                        subject: string
+                totalResults: 0
+                orderBy: string
+                pageNo: 0
+                pageSize: 0
+                totalPages: 0
+                nextPage: true
+                nextPageNo: 0
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: string
+        default: ticket.id
+      in: query
+      name: sortName
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+      in: query
+      name: queryString
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true

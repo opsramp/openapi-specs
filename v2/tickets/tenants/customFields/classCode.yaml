@@ -1,0 +1,133 @@
+get:
+  summary: Get custom fields
+  description: |-
+    This endpoint is used to retrieve details of custom fields attached to an entity.
+
+    Use the supported entities along with their class code:
+
+    |Entity|Class Code|
+    |----|----|
+    |Service request|SERVICEREQUEST|
+    |Time-bound request|ACSTICKET|
+    |Task|TASK|
+    |Incident|INCIDENT|
+    |Problem|PROBLEM|
+    |Change request|CHANGE|
+    |Scheduled tasks|SCHEDULEDTASK|
+    |User|USER|
+    |Knowledge base article|KBARTICLE|
+
+    Create custom fields for the entity and then use this endpoint to retrieve the list of configured custom fields.
+
+    To create an ITSM entity, both Subject and Description are mandatory fields. Requested By, Assignee Group, and the other fields are optional. To include additional information, create custom fields for the respective entity from the following types of custom fields:
+    - Drop-down
+    - Text
+    - Multi-line text
+    - Numeric
+    - Checkbox
+    - Date
+    - Date-time
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/customField'
+          examples:
+            example-1:
+              value:
+                - id: UDF0000003790
+                  classCode: CHANGE
+                  displayLabel: Status
+                  name: drop_down_api_lab_3790
+                  fieldType: TYPE_DROPDOWN
+                  mandatory: false
+                  editable: true
+                  description: 'Status of incident '
+                  defaultValue: '2'
+                  options:
+                    - label: Open
+                      value: '1'
+                    - label: In Progress
+                      value: '2'
+                - id: UDF0000003791
+                  classCode: CHANGE
+                  displayLabel: Component
+                  name: text_api_lab_3791
+                  fieldType: TYPE_TEXT
+                  mandatory: false
+                  editable: true
+                  defaultValue: sample text
+                  description: Test case for text field
+                - id: UDF0000003792
+                  classCode: CHANGE
+                  displayLabel: Summary
+                  name: multi_line_text_api_lab_3792
+                  fieldType: TYPE_TEXTAREA
+                  mandatory: false
+                  editable: true
+                  defaultValue: sample text
+                  description: Test case for multi line text
+                - id: UDF0000003793
+                  classCode: CHANGE
+                  displayLabel: Version
+                  name: numeric_api_lab_3793
+                  fieldType: TYPE_NUMBER
+                  mandatory: false
+                  editable: true
+                  defaultValue: '5'
+                  description: Numeric test case
+                - id: UDF0000003794
+                  classCode: CHANGE
+                  displayLabel: Active
+                  name: checkbox_api_lab_3794
+                  fieldType: TYPE_CHECKBOX
+                  mandatory: false
+                  editable: true
+                  description: Test case for check box
+                  options:
+                    - label: 'yes'
+                      value: '1'
+                - id: UDF0000003795
+                  classCode: CHANGE
+                  displayLabel: Reported on
+                  name: date_ap_lab_3795
+                  fieldType: TYPE_DATE
+                  mandatory: false
+                  editable: true
+                  description: Test case for date field
+                - id: UDF0000003796
+                  classCode: CHANGE
+                  displayLabel: Reported time
+                  name: datetime_api_lab_3796
+                  fieldType: TYPE_DATETIME
+                  mandatory: false
+                  editable: true
+                  defaultValue: '2016-04-24 10:19'
+                  description: Test case for Date and time
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+      enum:
+        - SERVICEREQUEST
+        - ACSTICKET
+        - TASK
+        - INCIDENT
+        - PROBLEM
+        - CHANGE
+        - SCHEDULEDTASK
+        - USER
+        - KBARTICLE
+    in: path
+    name: classCode
+    required: true

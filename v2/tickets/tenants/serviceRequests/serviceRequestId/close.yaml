@@ -1,0 +1,281 @@
+post:
+  summary: Close service request
+  description: |-
+    This endpoint is used to close a service request.
+
+    Follow the steps before closing a service request:
+
+    Step 1: Check the status flow transition for Closed.
+    1. Login to OpsRamp.
+    2. Click Setup.
+    3. On the left-hand side panel, click Service Desk.
+    4. In Configuration, click Status Flows.
+    5. Check the status flow for the entity Service Request.
+    6. Check the transition of the status Closed. If Closed is available this indicates the service request can be closed; otherwise, the service request cannot be closed.
+
+    Step 2: Provide the reason for changing the status.
+    1. Click Setup.
+    2. On the left-hand side panel, click Service Desk.
+    3. In Configuration, click Status Change Reasons and then click Add.
+    4. Select the scope, client, request type and entity status as Closed, provide the reason and then click Submit.
+
+    Step 3: Enable the option to provide reason for closing a service request.
+    >This is normally an optional step. However, this step is required to provide a reason for closing the service request.
+    1. Click Setup.
+    2. On the left-hand side panel, click Service Desk.
+    3. In Configuration, click Settings.
+    4. Select client and then click Customize.
+    5. In Problem Settings section, select option Enable reasons to change status Close and then click Save.
+
+    >## Notes
+    >- Use the get service request API to check if status Closed and reasons to provide for Close are enabled. If under the field allowedStatus if name: Closed and reasonsEnabled: true, this indicates reasons should be provided for closing a service request.
+    >- Use the get status change reasons API to provide the reasons to Close. The reasons configured in status: Closed are accepted, but a new provided reason would result in an error.
+    >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/problem'
+          examples:
+            example-1:
+              value:
+                id: SRQ0000000096
+                subject: Windows Services Required
+                description: Windows services required in North-West location
+                status: Closed
+                oldStatus: Resolved
+                priority: Very Low
+                oldPriority: Urgent
+                notes: Windows 10 devices in North-West are working
+                closedSummary: Windows 10 devices in North-West issue solved
+                requester:
+                  loginName: john.smith
+                  lastName: smith
+                  firstName: john
+                  email: john@gmail.com
+                  phoneNumber: 998-559-1234
+                assignedUser:
+                  id: USR0000000023
+                  loginName: brocadeLabBusiness@organization.com
+                  lastName: Business User
+                  firstName: BLab
+                  email: Blab@gmail.com
+                assigneeGroup:
+                  id: 8
+                  name: Brocade Lab Escalation Users
+                  description: All brocade lab escalation users
+                resources:
+                  - id: 481af404-33a6-4d61-af77-c483ca6641fa
+                    name: VTHLPT1000
+                    type: DEVICE
+                  - id: SGP-7adf3762-f310-4c14-9ecd-443eb7c6c208
+                    name: VTH-SERVICES
+                    type: SERVICE
+                  - id: DGP-8d44a504-fd4b-4a78-ba34-2dfdf3ffb85e
+                    name: VTH-ADMIN-DEVS
+                    type: DEVICE_GROUP
+                extTicketId: VNXC0090344
+                customFields:
+                  - id: UDF0000003811
+                    classCode: SERVICEREQUEST
+                    displayLabel: DROP DOWN
+                    name: drop_down_3811
+                    fieldType: TYPE_DROPDOWN
+                    mandatory: true
+                    editable: true
+                    description: TESTING
+                    options:
+                      - label: one
+                        value: '1'
+                      - label: two
+                        value: '2'
+                    defaultValue: ''
+                  - id: UDF0000003812
+                    classCode: SERVICEREQUEST
+                    displayLabel: text field
+                    name: text_field_3812
+                    fieldType: TYPE_TEXT
+                    mandatory: false
+                    editable: true
+                    description: text field
+                    defaultValue: ''
+                  - id: UDF0000003813
+                    classCode: SERVICEREQUEST
+                    displayLabel: numeric
+                    name: numeric_3813
+                    fieldType: TYPE_NUMBER
+                    mandatory: false
+                    editable: true
+                    description: numeric
+                    defaultValue: ''
+                  - id: UDF0000003814
+                    classCode: SERVICEREQUEST
+                    displayLabel: check box
+                    name: check_box_3814
+                    fieldType: TYPE_CHECKBOX
+                    mandatory: false
+                    editable: true
+                    description: testing
+                    options:
+                      - label: 'yes'
+                        value: '1'
+                    defaultValue: '0'
+                  - id: UDF0000003821
+                    classCode: SERVICEREQUEST
+                    displayLabel: Date
+                    name: date_3821
+                    fieldType: TYPE_DATE
+                    mandatory: false
+                    editable: true
+                    description: ''
+                    defaultValue: '2016-02-26T12:13:00+0000'
+                  - id: UDF0000003822
+                    classCode: SERVICEREQUEST
+                    displayLabel: Date and Time
+                    name: date_and_time_3822
+                    fieldType: TYPE_DATETIME
+                    mandatory: false
+                    editable: true
+                    description: ''
+                    defaultValue: '2016-02-26T12:13:00+0000'
+                cc: sample@gmail.com
+                ticketArisedTime: ''
+                createdUser:
+                  loginName: john.smith
+                  lastName: smith
+                  firstName: john
+                  email: john@gmail.com
+                  phoneNumber: 998-559-2345
+                reason: SR Close
+                category:
+                  id: 14
+                  name: Service Urgency Level
+                alertIds: []
+                reOpenCount: 1
+                createdDate: '2016-07-24T16:28:51+0000'
+                allowedStatus: []
+                client:
+                  id: 8
+                  uniqueId: client_8
+                  name: Brocade Lab
+                  activated: true
+                subCategory:
+                  id: 16
+                  name: Medium
+                sourcePolicyType: MANUAL
+                updatedDate: '2016-11-25T09:33:43+0000'
+                priorityUpdatedBy:
+                  loginName: john.smith
+                  lastName: smith
+                  firstName: john
+                  email: john@gmail.com
+                  phoneNumber: 998-559-2345
+                priorityUpdatedDate: '2016-08-12T07:52:10+0000'
+                statusUpdatedBy:
+                  loginName: john.bolt
+                  lastName: Bolt
+                  firstName: John
+                  email: john.bolt@gmail.com
+                statusUpdatedDate: '2016-11-25T09:33:43+0000'
+                resolvedDate: '2016-11-25T09:32:05+0000'
+                closedDate: '2016-11-25T09:33:43+0000'
+                slaDetails:
+                  resolutionTime: 1630416
+                  responseTime: 1630397
+                  responseBreach: false
+                  resolutionBreach: false
+                  responseBreachDate: ''
+                  resolutionBreachDate: ''
+                source: PORTAL
+                statusFlow:
+                  - status: New
+                    timeSpent: 1630398
+                    createdDate: '2016-07-24T16:28:52+0000'
+                    updatedBy:
+                      loginName: john.smith
+                      lastName: smith
+                      firstName: john
+                      email: john@gmail.com
+                      phoneNumber: 998-559-3456
+                  - status: Resolved
+                    timeSpent: 13
+                    reason: 'Done, Hence moving service request to resolved'
+                    createdDate: '2016-08-12T13:22:10+0000'
+                    updatedBy:
+                      loginName: john.smith
+                      lastName: smith
+                      firstName: john
+                      email: john@gmail.com
+                      phoneNumber: 998-559-3456
+                  - status: Open
+                    timeSpent: 18
+                    createdDate: '2016-08-12T13:22:23+0000'
+                    updatedBy:
+                      loginName: john.smith
+                      lastName: smith
+                      firstName: john
+                      email: john@gmail.com
+                      phoneNumber: 998-559-3456
+                  - status: Pending
+                    timeSpent: 9058164
+                    reason: Revisit service request in future
+                    createdDate: '2016-08-12T13:22:41+0000'
+                    updatedBy:
+                      loginName: john.smith
+                      lastName: smith
+                      firstName: john
+                      email: john@gmail.com
+                      phoneNumber: 998-559-1234
+                  - status: Resolved
+                    timeSpent: 98
+                    reason: 'Done, Hence moving service request to resolved'
+                    notes: Resolving
+                    createdDate: '2016-11-25T09:32:05+0000'
+                    updatedBy:
+                      id: USR0000000018
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SP
+                      email: sample@gmail.com
+                  - status: Closed
+                    reason: Windows Services are up and running
+                    notes: Windows services in North-West are accessible
+                    createdDate: '2016-11-25T09:33:43+0000'
+                    updatedBy:
+                      loginName: john.bolt
+                      lastName: Bolt
+                      firstName: John
+                      email: john.bolt@gmail.com
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            reason:
+              type: string
+              description: Reason for closing the service request. This is mandatory only if the option Enable reasons to change status Close is enabled for service request in service desk settings (example steps below).
+            notes:
+              type: string
+              description: |
+                Additional information to add to a service request.
+        examples:
+          example-1:
+            value:
+              reason: Windows Services are up and running
+              notes: Windows services in North-West are accessible
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: serviceRequestId
+    required: true

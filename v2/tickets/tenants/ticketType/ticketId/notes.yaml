@@ -1,0 +1,183 @@
+post:
+  summary: Create ticket notes
+  description: This endpoint is used to creates for a ticket.
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              subject:
+                type: string
+          examples:
+            example-1:
+              value:
+                id: 15
+                subject: Sample Note
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              type: string
+        examples:
+          example-1:
+            value:
+              description: Sample description of Note
+get:
+  summary: Get multiple ticket notes
+  description: |-
+    This endpoint is used to retrieve multiple notes from a ticket.
+    
+    |Query Variable|Description|
+    |----|-----|
+    |searchWord|Search for a note with a specific word provided in the note.|
+    |id|Note ID|
+    |startCreationDate|Search for note created within a specific date range. startCreationDate denotes the from date.|
+    |endCreationDate|endCreationDate denotes the to date.|
+    |startUpdationDate|Search for the note updated within a specific date range. startUpdationDate denotes the from date.|
+    |endUpdationDate|endUpdationDate denotes the to date.|
+
+    >## Notes
+    >There are special characters that can be used in a query string:
+    >- (+) represents the next field and must be URL-encoded.
+    >- (:) represents equals. An example is `key : value`.
+    >- Space characters must be URL-encoded.
+    >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT)
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: '#/components/schemas/note'
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              nextPageNo:
+                type: integer
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: 12
+                    subject: this notes
+                    description: this notes is created and updated from api 1
+                    createdTime: '2015-11-02T09:17:09+0000'
+                    updatedTime: ''
+                    createdBy:
+                      id: USR0000002095
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@domain.com
+                      changePassword: false
+                  - id: 10
+                    subject: note31
+                    description: note31
+                    createdTime: '2015-10-27T13:39:17+0000'
+                    updatedTime: ''
+                    createdBy:
+                      id: USR0000002113
+                      loginName: james@superadmin
+                      lastName: HUDSON
+                      firstName: JAMES
+                      email: james.hudson@domain.com
+                      changePassword: false
+                  - id: 8
+                    subject: this notes
+                    description: this notes is created and updated from api
+                    createdTime: '2015-10-27T13:19:01+0000'
+                    updatedTime: ''
+                    createdBy:
+                      id: USR0000002095
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@domain.com
+                      changePassword: false
+                totalResults: 6
+                orderBy: note.id
+                pageNo: 1
+                pageSize: 3
+                totalPages: 2
+                nextPage: true
+                nextPageNo: 2
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: string
+        default: note.id
+      in: query
+      name: sortName
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+      in: query
+      name: queryString
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+      enum:
+        - incidents
+        - serviceRequests
+        - changeRequests
+        - timeBoundRequests
+        - problems
+        - tasks
+    in: path
+    name: ticketType
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: ticketId
+    required: true

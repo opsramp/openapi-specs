@@ -1,0 +1,73 @@
+post:
+  summary: Add response to a service request
+  description: |-
+    This endpoint is used to add a response to a service request.
+
+    >## Notes
+    >- For attachments, files must be converted to bytes stream with base64-encoding.
+    >- The default creator (OpsRamp API User) can send id and loginName to change the default.
+    >- Based on the setting Make default submission status of a pending request as open, the status of the Pending request will change to Open.
+    >- A file attachment is limited to 50MB.
+    >- Date format is yyyy-MM-ddTHH:mm:ssZ (GMT).
+  tags:
+    - tickets
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/incidentResponse'
+        examples:
+          example-1:
+            value:
+              description: Service Request Attachment
+              internal: false
+              tags: 'API, Service'
+              creator:
+                id: USR0000002146
+                loginName: FSSL-API-Lab-User-1
+              attachments:
+                - name: file-1.txt
+                  file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+                - name: file-2.txt
+                  file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/incidentResponse'
+          examples:
+            example-1:
+              value:
+                creator:
+                  id: USR0000002146
+                  loginName: FSSL-API-Lab-User-1
+                  lastName: API-Lab
+                  firstName: FSSL
+                  email: fssl.user@gmail.com
+                createdDate: '2016-03-29T11:57:45+0000'
+                attachments:
+                  - id: 104
+                    name: file-1.txt
+                    createdDate: '2016-03-29T11:57:45+0000'
+                    contentURL: 'https://<api-url>/api/v2/tenants/client_7/serviceRequests/SRQ0000001113/responses/1907/resources/104'
+                  - id: 105
+                    name: file-2.txt
+                    createdDate: '2016-03-29T11:57:45+0000'
+                    contentURL: 'https://<api-url>/api/v2/tenants/client_7/serviceRequests/SRQ0000001113/responses/1907/resources/105'
+                hasAttachments: true
+                tags: 'API,Service'
+                internal: false
+                description: Service Request Attachment
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: serviceRequestId
+    required: true

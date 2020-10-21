@@ -1,0 +1,65 @@
+post:
+  summary: Update urgency
+  description: This endpoint is used to update urgency.
+  operationId: urgencies-urgency-update-post/
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/urgency'
+          examples:
+            example-1:
+              value:
+                uniqueId: SURG-3e74aa61-0f7f-4bd0-978a-31c28580fc92
+                name: Network Server Issue-High
+                description: High traffic on network servers in site SJ
+                createdBy:
+                  id: USR0000000009
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                  phoneNumber: ''
+                updatedBy:
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                createdDate: '2017-12-14T09:12:01+0000'
+                updatedDate: '2017-12-14T09:12:50+0000'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: |
+                Urgency name.
+            description:
+              type: string
+              description: |
+                Short summary describing the urgency.
+        examples:
+          example-1:
+            value:
+              name: Network Servers Issue-High
+              description: High amount of traffic on network servers in site SJ
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/tickets/urgencies-urgency-update-post/'
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: uniqueId
+    required: true

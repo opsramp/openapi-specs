@@ -1,0 +1,116 @@
+post:
+  summary: Create service request categories
+  description: |-
+    This endpoint is used to create categories for the service request entity type.
+
+    Creating categories and sub-categories helps organize identical service requests. This provides clarity and access to granularity of data. For example, a network category could help track how many network-related service requests are triggered in a week.
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/category'
+          examples:
+            example-create-parent:
+              value:
+                - uniqueId: SCAT-2b53c303-9374-4df1-848a-664d0d65235d
+                  name: Software
+                  createdBy:
+                    id: USR0001202764
+                    loginName: James_Blake
+                    lastName: Blake
+                    firstName: James
+                    email: james.blake@myorganization.com
+                  updatedBy:
+                    id: USR0001202764
+                    loginName: James_Blake
+                    lastName: Blake
+                    firstName: James
+                    email: james.blake@myorganization.com
+                  createdDate: '2018-02-09T07:03:34+0000'
+                  updatedDate: '2018-02-09T07:03:34+0000'
+            example-create-child:
+              value:
+                - uniqueId: SCAT-279e9528-13b0-4cd7-839b-7d20513b2c32
+                  name: Email
+                  parentCategory:
+                    uniqueId: SCAT-2b53c303-9374-4df1-848a-664d0d65235d
+                    name: Software
+                  createdBy:
+                    id: USR0001202764
+                    loginName: James_Blake
+                    lastName: Blake
+                    firstName: James
+                    email: james.blake@myorganization.com
+                  updatedBy:
+                    id: USR0001202764
+                    loginName: James_Blake
+                    lastName: Blake
+                    firstName: James
+                    email: james.blake@myorganization.com
+                  createdDate: '2018-02-09T07:13:09+0000'
+                  updatedDate: '2018-02-09T07:13:09+0000'
+                - uniqueId: SCAT-d244eacf-5932-4026-876f-88807725cf17
+                  name: License
+                  parentCategory:
+                    uniqueId: SCAT-2b53c303-9374-4df1-848a-664d0d65235d
+                    name: Software
+                  createdBy:
+                    id: USR0001202764
+                    loginName: James_Blake
+                    lastName: Blake
+                    firstName: James
+                    email: james.blake@myorganization.com
+                  updatedBy:
+                    id: USR0001202764
+                    loginName: James_Blake
+                    lastName: Blake
+                    firstName: James
+                    email: james.blake@myorganization.com
+                  createdDate: '2018-02-09T07:13:10+0000'
+                  updatedDate: '2018-02-09T07:13:10+0000'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            names:
+              type: array
+              description: Unique name for category. A category would be identified with this name.
+              items:
+                type: string
+            parentCategory:
+              type: object
+              description: |-
+                (Optional) Create a child category under a parent category.
+                This field is mandatory while creating a subcategory. Use the get categories API to retrieve parent categories of the Problem entity type. (A child category is always specific to a parent category.)
+              properties:
+                uniqueId:
+                  type: string
+                name:
+                  type: string
+        examples:
+          example-create-parent:
+            value:
+              names:
+                - Software
+          example-create-child:
+            value:
+              names:
+                - Email
+                - License
+              parentCategory:
+                uniqueId: SCAT-2b53c303-9374-4df1-848a-664d0d65235d
+                name: Software
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
