@@ -1,0 +1,63 @@
+post:
+  summary: Create template
+  description: This endpoint is used to create a knowledge base template.
+  operationId: knowledge-base-templates-template-create-post/
+  tags:
+    - knowledge-base
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/category'
+          examples:
+            example-1:
+              value:
+                id: KB0000000042
+                subject: New Template Created
+                content: New Template Content Changes
+                createdTime: '2019-05-14T08:45:49+0000'
+                updatedTime: '2019-05-14T08:45:49+0000'
+                createdBy:
+                  id: USR0000000002
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: OpsRamp API User
+                  email: lakshmi.balla@opsramp.com
+                updatedBy:
+                  id: USR0000000002
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: OpsRamp API User
+                  email: lakshmi.balla@opsramp.com
+                shared: false
+                category:
+                  id: KB0000000002
+                  name: Client
+                  description: Client
+                  path: Client
+                  state: ACTIVE
+                state: PUBLISHED
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/category'
+        examples:
+          example-1:
+            value:
+              subject: New Template Created
+              content: New Template Content Changes
+              category:
+                id: KB0000000002
+                name: Client
+              state: PUBLISHED
+  externalDocs:
+    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-template-create-post/'
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
