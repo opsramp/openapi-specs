@@ -1,0 +1,377 @@
+post:
+  summary: Create patch baseline
+  description: |
+    This endpoint is used to create a patch baseline.
+
+    A patch baseline is a collection of patches that are approved for installation on your instances. From a given feed, the user selects a subset of the packages that address the key vulnerabilities. The chosen set of packages form the patch baseline.
+
+    As a prerequisite, create a patch feed before creating a baseline.
+  tags:
+    - patching
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/patchBaseline'
+        examples:
+          example-static-baseline:
+            value:
+              name: Linux_Patch_Feed
+              description: Ubuntu_Vulnerabilities
+              dynamic: false
+              installedIntg:
+                id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+          example-dynamic-baseline:
+            value:
+              name: Security_Patches
+              description: Security_Patches_for_Windows
+              dynamic: true
+              policy:
+                matchType: ALL
+                rules:
+                  - key: Category
+                    operator: Contains
+                    value: updates
+                  - key: Rating
+                    operator: Equals
+                    value: Whitelisted
+              installedIntg:
+                id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/patchBaseline'
+          examples:
+            example-static-baseline:
+              value:
+                id: PBL-bafd3744-9a59-4cd6-9825-00a0a5a54f6e
+                name: Linux_Patch_Feed
+                description: Ubuntu_Vulnerabilities
+                dynamic: false
+                enabled: false
+                createdUser:
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: OpsRamp API User
+                  email: admin@opsramp.com
+                updatedUser:
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: OpsRamp API User
+                  email: admin@opsramp.com
+                createdTime: '2019-02-08T07:40:05+0000'
+                updatedTime: '2019-02-08T07:40:05+0000'
+                installedIntg:
+                  id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                  displayName: Default Linux Feed
+                  integration:
+                    id: LINUXPATCH
+                    name: Linux Patch Feed
+            example-dynamic-baseline:
+              value:
+                id: PBL-198014e3-74c0-4e12-a6e1-c161d9003fd6
+                name: Security_Patches
+                description: Security_Patches_for_Windows
+                dynamic: true
+                enabled: false
+                createdUser:
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: OpsRamp API User
+                  email: admin@opsramp.com
+                updatedUser:
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: OpsRamp API User
+                  email: admin@opsramp.com
+                createdTime: '2019-02-08T07:45:10+0000'
+                updatedTime: '2019-02-08T07:45:10+0000'
+                policy:
+                  id: 662
+                  uid: POLICY-e4780e1f-e707-4858-9c0e-b68b6e8b6bf7
+                  matchType: ALL
+                  rules:
+                    - id: 12512
+                      key: Category
+                      operator: Contains
+                      value: updates
+                      resourceType: DEVICE
+                    - id: 12513
+                      key: Severity
+                      operator: Contains
+                      value: critical
+                      resourceType: DEVICE
+                  actions: []
+                installedIntg:
+                  id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                  displayName: Default Windows Feed
+                  integration:
+                    id: WINDOWSPATCH
+                    name: Windows Patch Feed
+get:
+  summary: Get patch baselines
+  description: |-
+    This endpoint is used to retrieve the list of patch baselines for a client.
+
+    ## Notes
+    There are special characters that can be used in a query string:
+    - (+) represents the next field and must be URL-encoded.
+    - (:) represents equals. An example is key : value.
+    - Space characters must be URL-encoded.
+  tags:
+    - patching
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: '#/components/schemas/patchBaseline'
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: PBL-1bfe0514-f882-4300-8d62-7e67d0ec149c
+                    name: Updates-policytest
+                    description: Updates
+                    dynamic: true
+                    enabled: true
+                    createdUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                      phoneNumber: ''
+                    updatedUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                      phoneNumber: ''
+                    createdTime: '2018-11-27T10:05:53+0000'
+                    updatedTime: '2018-11-29T11:10:30+0000'
+                    policy:
+                      id: 506
+                      uid: POLICY-8f9c5645-f205-4659-9762-5f675ac4da41
+                      name: Updates-policytest
+                      matchType: ALL
+                      rules:
+                        - id: 12376
+                          key: '560'
+                          operator: Equals
+                          value: Updates - Windows 7
+                        - id: 12377
+                          key: '559'
+                          operator: Starts with
+                          value: Important
+                      actions: []
+                    installedIntg:
+                      id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                      displayName: Default Windows Feed
+                      integration:
+                        id: WINDOWSPATCH
+                        name: Windows Patch Feed
+                  - id: PBL-9aecfcab-4ab5-4a79-9e38-81fb06a400a9
+                    name: Updates
+                    description: Patch Updates
+                    dynamic: false
+                    enabled: true
+                    createdUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                      phoneNumber: ''
+                    updatedUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                      phoneNumber: ''
+                    createdTime: '2018-11-20T13:43:44+0000'
+                    updatedTime: '2018-11-21T12:40:30+0000'
+                    installedIntg:
+                      id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                      displayName: Default Windows Feed
+                      integration:
+                        id: WINDOWSPATCH
+                        name: Windows Patch Feed
+                  - id: PBL-56d22620-50b6-4b94-ab5b-b6cd360c7e8c
+                    name: Security Updates
+                    description: Security Updates
+                    dynamic: true
+                    enabled: true
+                    createdUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                      phoneNumber: ''
+                    updatedUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                      phoneNumber: ''
+                    createdTime: '2018-11-20T13:41:30+0000'
+                    updatedTime: '2018-11-20T13:42:13+0000'
+                    policy:
+                      id: 502
+                      uid: POLICY-6c5b7ccf-7f79-447e-be8a-81deaa0b419e
+                      name: Security Updates
+                      matchType: ALL
+                      rules:
+                        - id: 12372
+                          key: '560'
+                          operator: Contains
+                          value: Security Updates
+                      actions: []
+                    installedIntg:
+                      id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                      displayName: Default Windows Feed
+                      integration:
+                        id: WINDOWSPATCH
+                        name: Windows Patch Feed
+                  - id: PBL-8ef7bb6a-1b9e-4ce5-8b63-858b9fe9d6d2
+                    name: Rating WHITELISTED
+                    description: Rating WHITELISTED
+                    dynamic: true
+                    enabled: true
+                    createdUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                      phoneNumber: ''
+                    updatedUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                      phoneNumber: ''
+                    createdTime: '2018-11-27T12:38:48+0000'
+                    updatedTime: '2018-11-29T04:20:10+0000'
+                    policy:
+                      id: 507
+                      uid: POLICY-2f65d515-1758-45c0-9f4d-c5d659de2f3d
+                      name: Rating WHITELISTED
+                      matchType: ALL
+                      rules:
+                        - id: 12378
+                          key: '560'
+                          operator: Equals
+                          value: Definition Updates - Windows Defender
+                        - id: 12379
+                          key: '559'
+                          operator: Ends with
+                          value: Critical
+                        - id: 12380
+                          key: '562'
+                          operator: Equals
+                          value: WHITELISTED
+                      actions: []
+                    installedIntg:
+                      id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                      displayName: Default Windows Feed
+                      integration:
+                        id: WINDOWSPATCH
+                        name: Windows Patch Feed
+                  - id: PBL-52795034-7085-4d0c-adf3-ed58d9ec0d56
+                    name: Feature Packs - Windows 7
+                    description: Feature Packs - Windows 7
+                    dynamic: true
+                    enabled: true
+                    createdUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                      phoneNumber: ''
+                    updatedUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                      phoneNumber: ''
+                    createdTime: '2018-11-20T14:10:14+0000'
+                    updatedTime: '2018-11-22T10:20:32+0000'
+                    policy:
+                      id: 504
+                      uid: POLICY-b802b846-653b-4b69-abcc-0113577f167a
+                      name: Feature Packs - Windows 7
+                      matchType: ALL
+                      rules:
+                        - id: 12374
+                          key: '560'
+                          operator: Contains
+                          value: Feature Packs - Windows 7
+                      actions: []
+                    installedIntg:
+                      id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                      displayName: Default Windows Feed
+                      integration:
+                        id: WINDOWSPATCH
+                        name: Windows Patch Feed
+                totalResults: 5
+                orderBy: name
+                pageNo: 1
+                pageSize: 100
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+        default: name
+      in: query
+      name: sortName
+    - schema:
+        type: string
+      in: query
+      name: queryString
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true

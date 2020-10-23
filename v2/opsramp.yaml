@@ -728,3 +728,58 @@ paths:
     $ref: './resource-management/tenants/tenantId/sites/minimal.yaml'
   /api/v2/tenants/{tenantId}/topology/{resourceUUID}:
     $ref: './resource-management/tenants/tenantId/topology/resourceUUID.yaml'
+  # Patching
+  /api/v2/tenants/{tenantId}/patches/baselines/{baselineId}/{action}:
+    $ref: './patching/tenants/tenantId/patches/baselines/baselineId/action.yaml'
+  /api/v2/tenants/{tenantId}/patches/baselines/{baselineId}/{patchId}/{action}:
+    $ref: './patching/tenants/tenantId/patches/baselines/baselineId/patchId/action.yaml'
+  /api/v2/tenants/{tenantId}/patches/baselines:
+    $ref: './patching/tenants/tenantId/patches/baselines.yaml'
+  /api/v2/tenants/{tenantId}/patches/baselines/{baselineId}:
+    $ref: './patching/tenants/tenantId/patches/baselines/baselineId.yaml'
+  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/baselines/{baselineId}/{action}:
+    $ref: './patching/tenants/tenantId/patches/compliance/complianceId/baselines/baselineId/action.yaml'
+  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/deviceGroups/{deviceGrpId}/{action}:
+    $ref: './patching/tenants/tenantId/patches/compliance/complianceId/deviceGroups/deviceGrpId/action.yaml'
+  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/devices/{deviceId}/{action}:
+    $ref: './patching/tenants/tenantId/patches/compliance/complianceId/devices/deviceId/action.yaml'
+  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/baselines:
+    $ref: './patching/tenants/tenantId/patches/compliance/complianceId/baselines.yaml'
+  /api/v2/tenants/{tenantId}/patches/compliance:
+    $ref: './patching/tenants/tenantId/patches/compliance.yaml'
+  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}:
+    $ref: './patching/tenants/tenantId/patches/compliance/complianceId.yaml'
+  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/devices:
+    $ref: './patching/tenants/tenantId/patches/compliance/complianceId/devices.yaml'
+  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/deviceGroups:
+    $ref: './patching/tenants/tenantId/patches/compliance/complianceId/deviceGroups.yaml'
+  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/run:
+    $ref: './patching/tenants/tenantId/patches/compliance/complianceId/run.yaml'
+  /api/v2/tenants/{tenantId}/patches/configurations:
+    $ref: './patching/tenants/tenantId/patches/configurations.yaml'
+  /api/v2/tenants/{tenantId}/patches/configurations/{id}:
+    $ref: './patching/tenants/tenantId/patches/configurations/id.yaml'
+  /api/v2/tenants/{tenantId}/patches/configurations/{id}/run:
+    $ref: './patching/tenants/tenantId/patches/configurations/id/run.yaml'
+  /api/v2/tenants/{tenantId}/patches/configurations/search:
+    $ref: './patching/tenants/tenantId/patches/configurations/search.yaml'
+  /api/v2/tenants/{tenantId}/patches/rating/{intgId}/feed/{patchId}:
+    $ref: './patching/tenants/tenantId/patches/rating/intgId/feed/patchId.yaml'
+  /api/v2/tenants/{tenantId}/patches:
+    $ref: './patching/tenants/tenantId/patches.yaml'
+  /api/v2/tenants/{tenantId}/patches/rating/{intgId}/feed:
+    $ref: './patching/tenants/tenantId/patches/rating/intgId/feed.yaml'
+  /api/v2/tenants/{tenantId}/patches/{jobId}/scan/status:
+    $ref: './patching/tenants/tenantId/patches/jobId/scan/status.yaml'
+  /api/v2/tenants/{tenantId}/patches/{jobId}/install/status:
+    $ref: './patching/tenants/tenantId/patches/jobId/install/status.yaml'
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/{patchId}/{approvalType}:
+    $ref: './patching/tenants/tenantId/resources/resourceId/patches/patchId/approvalType.yaml'
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/scan/status:
+    $ref: './patching/tenants/tenantId/resources/resourceId/patches/scan/status.yaml'
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/install/status:
+    $ref: './patching/tenants/tenantId/resources/resourceId/patches/install/status.yaml'
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/baselines/{baseLineId}/patches:
+    $ref: './patching/tenants/tenantId/resources/resourceId/baselines/baseLineId/patches.yaml'
+  /api/v2/tenants/{tenantId}/resources/patches:
+    $ref: './patching/tenants/tenantId/resources/patches.yaml'

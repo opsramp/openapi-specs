@@ -4270,3 +4270,550 @@ components:
           type: string
         ResourceName:
           type: string
+    # Patching
+    integration:
+      title: integration
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    installedIntg:
+      title: installedIntg
+      type: object
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        integration:
+          $ref: '#/components/schemas/integration'
+      description: |-
+        ID of an installed patch feed integration.
+        Example: INTG-c1a2d041-062d-4950-8570-f9d5a4dc0c34To fetch ID of an installed patch feed integration:
+        1. Log into OpsRamp.
+        2. Click All Clients and then select the required client.
+        3. On the drop-down menu, click Setup.
+        4. On the left-hand side panel, click Integrations, click Available Integrations and click on an installed patch feed integration.
+        5. Copy the UID.
+        6. Paste the UID in the id field of the request payload.
+        Example: "installedIntg": { "id": "INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6" }
+    patchBaseline:
+      title: patchBaseline
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          description: |
+            Unique name to identify a patch baseline.
+        description:
+          type: string
+          description: |
+            (Optional) Description of a patch baseline.
+        dynamic:
+          type: boolean
+          description: |-
+            - Provide "dynamic": false to create a static baseline.
+            - Provide "dynamic": true to create a dynamic baseline.
+        installedIntg:
+          $ref: '#/components/schemas/installedIntg'
+        enabled:
+          type: boolean
+        createdUser:
+          $ref: '#/components/schemas/user'
+        updatedUser:
+          $ref: '#/components/schemas/user'
+        createdTime:
+          type: string
+          format: date-time
+        updatedTime:
+          type: string
+          format: date-time
+        policy:
+          $ref: '#/components/schemas/policy'
+    user:
+      title: user
+      type: object
+      properties:
+        loginName:
+          type: string
+        lastName:
+          type: string
+        firstName:
+          type: string
+        email:
+          type: string
+    rule:
+      title: rule
+      type: object
+      properties:
+        key:
+          type: string
+        operator:
+          type: string
+        value:
+          type: string
+        id:
+          type: integer
+        resourceType:
+          type: string
+    policy:
+      title: policy
+      type: object
+      properties:
+        matchType:
+          type: string
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/rule'
+        id:
+          type: integer
+        uid:
+          type: string
+        actions:
+          type: array
+          items: {}
+      description: |
+        Filter criteria for dynamic baseline:
+        - Match type for the rules. Supported value: ALLPatches which match all the rules in the filter criteria are added to the baseline.
+        - Filter patches with the following rules:
+        - key: Provide the attributes of a patch.
+        - Supported keys: Category, Cve, Rating, Severity
+
+        Below table provides the list of supported operators and values for the keys.
+
+        |Key|Operator|Value|
+        |-----|-----|-----|
+        |Category|Contains, Not Contains, Equals, Not Equals, Starts with, Ends with|NA|
+        |Cve|Contains, Not Contains, Equals, Not Equals, Starts with, Ends with|NA|
+        |Rating|Equals, Not Equals|Whitelisted, Blacklisted|
+        |Severity|Contains, Not Contains, Equals, Not Equals, Starts with, Ends with|NA|
+
+        For example, to filter patches which are whitelisted and are critical, provide the fields as shown below:
+        ```
+        "policy": { 
+          "matchType": "ALL", 
+          "rules": [ 
+            { "key": "Rating", "operator": "Equals", "value": "Whitelisted" }, 
+            { "key": "Severity", "operator": "Contains", "value": "critical" } 
+          ] 
+        }
+        ```
+    patchCompliance:
+      title: patchCompliance
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          description: |
+            Unique name for patch compliance.
+        description:
+          type: string
+          description: |
+            (Optional) Description for patch compliance.
+        createdUser:
+          $ref: '#/components/schemas/user'
+        updatedUser:
+          $ref: '#/components/schemas/user'
+        createdTime:
+          type: string
+          format: date-time
+        updatedTime:
+          type: string
+          format: date-time
+        osType:
+          type: string
+          description: |-
+            Patches of a certain OS (operating system).
+            Supported values: WINDOWS, LINUX
+          enum:
+            - WINDOWS
+            - LINUX
+    device:
+      title: device
+      type: object
+      properties:
+        id:
+          type: string
+        generalInfo:
+          type: object
+          properties:
+            osName:
+              type: string
+            ipAddresses:
+              type: string
+            hostName:
+              type: string
+            resourceType:
+              type: string
+            resourceName:
+              type: string
+            aliasName:
+              type: string
+            osBuildNumber:
+              type: string
+        clientUniqueId:
+          type: string
+        type:
+          type: string
+    deviceGroup:
+      title: deviceGroup
+      type: object
+      properties:
+        id:
+          type: string
+        uniqueId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        client:
+          $ref: '#/components/schemas/client'
+    baselineResourceCompliance:
+      title: baselineResourceCompliance
+      type: object
+      properties:
+        approvalStatus:
+          type: string
+        patchStatus:
+          type: string
+        installedStatus:
+          type: string
+        scanTime:
+          type: string
+          format: date-time
+        installedTime:
+          type: string
+          format: date-time
+        approvedTime:
+          type: string
+          format: date-time
+        patch:
+          $ref: '#/components/schemas/patch'
+        resource:
+          $ref: '#/components/schemas/resource'
+    patch:
+      title: patch
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        externalId:
+          type: string
+        category:
+          type: string
+        releaseTime:
+          type: string
+        type:
+          type: string
+        rebootRequired:
+          type: boolean
+        rating:
+          type: object
+          properties:
+            rating:
+              type: string
+        severity:
+          type: string
+    resource:
+      title: resource
+      type: object
+      properties:
+        id:
+          type: string
+        hostName:
+          type: string
+        ipAddress:
+          type: string
+        type:
+          type: string
+        aliasName:
+          type: string
+        resourceName:
+          type: string
+        consoles:
+          type: array
+          items: {}
+        resourceType:
+          type: string
+        frequency:
+          type: integer
+        paused:
+          type: boolean
+        deleted:
+          type: boolean
+        validateSSL:
+          type: boolean
+        port:
+          type: integer
+        encrypted:
+          type: boolean
+        timeout:
+          type: integer
+        days:
+          type: integer
+        ts:
+          type: integer
+        clientId:
+          type: integer
+        locationOffset:
+          type: integer
+        totalLocations:
+          type: integer
+        receiverHostPort:
+          type: integer
+    client:
+      title: client
+      type: object
+      properties:
+        id:
+          type: integer
+        uniqueId:
+          type: string
+        name:
+          type: string
+        activated:
+          type: boolean
+    schedule:
+      title: schedule
+      type: object
+      description: |
+        (Optional sub-fields) Schedule settings.
+      properties:
+        startDate:
+          type: string
+          description: |
+            Start date for execution of job.
+          format: date-time
+        pattern:
+          type: object
+          properties:
+            type:
+              type: string
+              description: |-
+                Recurrence pattern type.
+
+                **Note**: The Run On Demand recurrence pattern is not available as an API.
+              enum:
+                - daily
+                - weekly
+                - monthly
+                - never
+                - run once
+            frequency:
+              type: string
+              description: |-
+                Days on which the schedule is applied. Frequency is dependent on recurrence pattern type.
+                Example: Provide type as weekly, then frequency is the day on which the job is run.
+              enum:
+                - everyday
+                - every weekday
+                - recurrence
+            repeatFrequency:
+              type: integer
+            repeatType:
+              type: string
+              description: |
+                Run the job constantly on specific days.
+            weekDays:
+              type: string
+              description: |
+                Days on which the job is run.
+              enum:
+                - Sunday
+                - Monday
+                - Tuesday
+                - Wednesday
+                - Thursday
+                - Friday
+                - Saturday
+            dayOfMonth:
+              type: integer
+              description: |-
+                Day on which the job is scheduled to run every month. Days range between 1 to 31.
+                Example: Provide dayOfMonth as 4, then the job is run on 4th day of every month.
+              minimum: 1
+              maximum: 31
+            weekIndex:
+              type: string
+              description: |-
+                Week on which the job is run.
+                Example: First Monday
+              enum:
+                - First
+                - Second
+                - Third
+                - Fourth
+                - Last
+            dayOfIndex:
+              type: string
+              description: |-
+                Day on which the job is scheduled to run.
+                Example: Provide weekIndex as First and dayOfMonth as Sunday, this indicates that job is run on First Sunday of every month.
+              enum:
+                - Sunday
+                - Monday
+                - Tuesday
+                - Wednesday
+                - Thursday
+                - Friday
+                - Saturday
+    scheduleJob:
+      title: scheduleJob
+      type: object
+      description: ''
+      properties:
+        name:
+          type: string
+        entities:
+          type: array
+          description: |
+            Resources in which the patches are executed.
+          items:
+            type: object
+            properties:
+              resource:
+                $ref: '#/components/schemas/device'
+        schedule:
+          $ref: '#/components/schemas/schedule'
+        client:
+          $ref: '#/components/schemas/client'
+        script:
+          type: object
+          properties:
+            jobType:
+              type: string
+              description: |-
+                Job type.
+                Example: missingPatchesDownloadUpdate
+    patchConfig:
+      title: patchConfig
+      type: object
+      properties:
+        id:
+          type: string
+        patchConfigName:
+          type: string
+          description: |
+            Patch configuration name.
+        description:
+          type: string
+          description: |
+            Description for patch configuration.
+        approvalType:
+          type: object
+          description: ''
+          properties:
+            approvalType:
+              type: integer
+              description: |-
+                Approval type for executing patches.
+                - 0- Manual, 1- Auto
+              minimum: 0
+              maximum: 1
+            approvalReason:
+              type: string
+              description: |
+                (Optional) Approval reason for executing patches.
+        rebootOptions:
+          type: object
+          properties:
+            rebootRequired:
+              type: boolean
+              description: |
+                Reboot required after execution of patches.
+            forceReboot:
+              type: boolean
+              description: |
+                Force reboot after execution of patches.
+        scheduleJob:
+          $ref: '#/components/schemas/scheduleJob'
+        enablePatching:
+          type: boolean
+          description: |
+            (Optional) Enable patching.
+        maintenancePeriod:
+          description: |
+            (Optional) Maintenance period for the patches.
+          type: integer
+        approval:
+          type: string
+        installation:
+          type: string
+        source:
+          type: string
+    patchDetails:
+      title: patchDetails
+      type: object
+      properties:
+        comments:
+          type: string
+          description: |
+            (Optional) Comments for the rating.
+        createdUser:
+          $ref: '#/components/schemas/user'
+        updatedUser:
+          $ref: '#/components/schemas/user'
+        createdTime:
+          type: string
+          format: date-time
+        updatedTime:
+          type: string
+          format: date-time
+        rating:
+          type: string
+          description: |-
+            Patch rating.
+            Supported Values: WHITELISTED, BLACKLISTED
+          enum:
+            - WHITELISTED
+            - BLACKLISTED
+        cve:
+          type: string
+          description: |-
+            (Optional) Common Vulnerabilities and Exposures ID.
+            Example: CVE-1999-0067
+        patch:
+          $ref: '#/components/schemas/patch'
+        id:
+          type: string
+          description: |-
+            ID of patch for which you wish to assign a rating and provide qualifications. To fetch patch IDs of a tenant, use the Search Patches API.
+            Example: PATCH-0be4130a-77bf-460e-b2c7-52906f86da5d
+    scanstatus:
+      title: scanstatus
+      type: object
+      properties:
+        lastPatchScanDate:
+          type: string
+          format: date-time
+        lastPatchScanStatus:
+          type: string
+        missingPatchesBeforeScan:
+          type: integer
+        missingPatchesAfterScan:
+          type: integer
+        noOfMissingPatchesFoundInLastScan:
+          type: integer
+    installStatus:
+      title: installStatus
+      type: object
+      properties:
+        lastPatchTriggeredDate:
+          type: string
+          format: date-time
+        lastPatchInstalledDate:
+          type: string
+          format: date-time
+        lastMachineRebootDate:
+          type: string
+          format: date-time

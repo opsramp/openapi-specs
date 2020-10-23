@@ -1,0 +1,192 @@
+get:
+  summary: Get baseline details of compliance
+  description: This endpoint is used to retrieve the baselines attached to a patch compliance.
+  tags:
+    - patching
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: '#/components/schemas/patchBaseline'
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: PBL-bafd3744-9a59-4cd6-9825-00a0a5a54f6e
+                    name: Windows-DefaultPatchBaseline
+                    description: This baseline includes patches approved for Windows device
+                    dynamic: false
+                    enabled: true
+                    createdUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                    updatedUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                    createdTime: '2019-02-08T07:40:06+0000'
+                    updatedTime: '2019-02-10T09:54:17+0000'
+                    installedIntg:
+                      id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                      displayName: Default Windows Feed
+                      integration:
+                        id: WINDOWSPATCH
+                        name: Windows Patch Feed
+                  - id: PBL-63c75c7b-bee0-41f5-816b-e241f8753472
+                    name: Linux-DefaultPatchBaseline
+                    description: This baseline includes patches approved for Linux device
+                    dynamic: false
+                    enabled: true
+                    createdUser:
+                      loginName: James.Blake
+                      lastName: Blake
+                      firstName: James
+                      email: james.blake@myorganization.com
+                    updatedUser:
+                      loginName: James.Blake
+                      lastName: Blake
+                      firstName: James
+                      email: james.blake@myorganization.com
+                      phoneNumber: ''
+                    createdTime: '2019-01-23T09:41:12+0000'
+                    updatedTime: '2019-01-24T06:08:07+0000'
+                    installedIntg:
+                      id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                      displayName: Default Linux Feed
+                      integration:
+                        id: LINUXPATCH
+                        name: Linux Patch Feed
+                  - id: PBL-c8622232-5dcc-4dba-9426-882e7205b065
+                    name: Critical Windows Patch Baseline
+                    description: This baseline includes all critical Windows patches
+                    dynamic: false
+                    enabled: true
+                    createdUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                    updatedUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                      phoneNumber: ''
+                    createdTime: '2019-01-23T09:39:13+0000'
+                    updatedTime: '2019-01-24T08:48:11+0000'
+                    installedIntg:
+                      id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                      displayName: Default Windows Feed
+                      integration:
+                        id: WINDOWSPATCH
+                        name: Windows Patch Feed
+                  - id: PBL-198014e3-74c0-4e12-a6e1-c161d9003fd6
+                    name: Critical Linux Patch Baseline
+                    description: This baseline includes Linux operating system security patches
+                    dynamic: true
+                    enabled: true
+                    createdUser:
+                      loginName: James.Blake
+                      lastName: Blake
+                      firstName: James
+                      email: james.blake@myorganization.com
+                    updatedUser:
+                      loginName: James.Blake
+                      lastName: Blake
+                      firstName: James
+                      email: james.blake@myorganization.com
+                    createdTime: '2019-02-08T07:45:10+0000'
+                    updatedTime: '2019-02-08T09:18:22+0000'
+                    policy:
+                      id: 663
+                      uid: POLICY-1308aebb-94a8-4bde-aed9-1dd4aafe78a8
+                      matchType: ALL
+                      rules:
+                        - id: 12514
+                          key: Category
+                          operator: Contains
+                          value: Security Updates
+                          resourceType: DEVICE
+                        - id: 12515
+                          key: Rating
+                          operator: Equals
+                          value: BLACKLISTED
+                          resourceType: DEVICE
+                        - id: 12516
+                          key: Severity
+                          operator: Not Equals
+                          value: Critical
+                          resourceType: DEVICE
+                      actions: []
+                    installedIntg:
+                      id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                      displayName: Default Windows Feed
+                      integration:
+                        id: WINDOWSPATCH
+                        name: Windows Patch Feed
+                totalResults: 4
+                orderBy: name
+                pageNo: 1
+                pageSize: 10
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+        default: name
+      in: query
+      name: sortName
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: complianceId
+    required: true

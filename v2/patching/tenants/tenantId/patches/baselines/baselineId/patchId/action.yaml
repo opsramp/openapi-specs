@@ -1,0 +1,29 @@
+post:
+  summary: Assign or unassign a patch baseline
+  description: This endpoint is used to add or remove patches from a baseline.
+  tags:
+    - patching
+  responses:
+    '200':
+      description: OK
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: baselineId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: patchId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: action
+    required: true
