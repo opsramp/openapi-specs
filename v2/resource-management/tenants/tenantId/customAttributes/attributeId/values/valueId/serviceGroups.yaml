@@ -1,0 +1,96 @@
+post:
+  summary: Assign custom attributes to service groups
+  description: This endpoint is used to assign custom attributes to service groups.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/response'
+          examples:
+            example-success:
+              value:
+                failedEntities: {}
+                failedCount: 0
+                successCount: 2
+            example-failure:
+              value:
+                failedEntities:
+                  SGP-d7657432-3698-4894-a07f-c2ef9aa0789q: 'Invalid Service group id for client  : 93'
+                  SGP-a4659431-2699-8895-c07f-b2ef9aa078ce: 'Invalid Service group id for client  : 93'
+                failedCount: 2
+                successCount: 0
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+        examples:
+          example-1:
+            value:
+              - id: SGP-d7657432-3698-4894-a07f-c2ef9aa0789e
+              - id: SGP-a4659431-2699-8895-c07f-b2ef9aa078ce
+delete:
+  summary: Unassign custom attribute from service groups
+  description: This endpoint is used to unassign custom attribute from service groups.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/response'
+          examples:
+            example-success:
+              value:
+                FailedEntities: {}
+                FailedCount: 0
+                SuccessCount: 2
+            example-failed:
+              value:
+                failedEntities:
+                  SGP-d7657432-3698-4894-a07f-c2ef9aa0789q: 'Invalid Service group id for client  : 93'
+                  SGP-a4659431-2699-8895-c07f-b2ef9aa078ce: 'Invalid Service group id for client  : 93'
+                FailedCount: 2
+                SuccessCount: 0
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+        examples:
+          example-1:
+            value:
+              - id: SGP-d7657432-3698-4894-a07f-c2ef9aa0789e
+              - id: SGP-a4659431-2699-8895-c07f-b2ef9aa078ce
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: attributeId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: valueId
+    required: true

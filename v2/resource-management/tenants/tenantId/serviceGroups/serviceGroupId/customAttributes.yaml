@@ -1,0 +1,66 @@
+get:
+  summary: Get custom attributes of a service group
+  description: This endpoint is used to fetch the custom attributes of a service group.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/customAttribute'
+          examples:
+            example-1:
+              value:
+                - id: 1290
+                  customAttributeValue:
+                    id: 397
+                    customAttribute:
+                      id: 64
+                      name: custom_attr_from_API_test_1
+                      description: Custom_Attribute_from_API_test_1_Update
+                      organization:
+                        id: 92
+                        uniqueId: msp_92
+                        name: Brocade Inc
+                        activated: true
+                    value: custom_attr_from_API_test__msp_1
+                    description: Desc_Custom_Attribute_from_API_test_1_Update_msp_1
+                  taggable:
+                    id: SGP-d7657432-3698-4894-a07f-c2ef9aa0789q
+                    name: BB
+                    entityType: ServiceGroup
+                  tagSource: OPSRAMP
+                - id: 1275
+                  customAttributeValue:
+                    id: 409
+                    customAttribute:
+                      id: 71
+                      name: custom_attr_type_for_service_provider
+                      description: Creating Custom_type for Provider-Update
+                      organization:
+                        id: 1
+                        uniqueId: org_1
+                        name: OpsRamp SaaS Platform
+                        activated: true
+                    value: test_val_2_for_custom_attr_type_for_sp
+                    description: Creating second value for S Provider 2
+                  taggable:
+                    id: SGP-d7657432-3698-4894-a07f-c2ef9aa0789q
+                    name: BB
+                    entityType: ServiceGroup
+                  tagSource: OPSRAMP
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: serviceGroupId
+    required: true

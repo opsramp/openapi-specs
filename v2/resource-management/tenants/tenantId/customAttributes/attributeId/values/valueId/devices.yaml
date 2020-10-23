@@ -1,0 +1,130 @@
+post:
+  summary: Assign custom attributes to devices
+  description: This endpoint is used to assign custom attributes to devices.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/response'
+          examples:
+            example-1:
+              value:
+                failedEntities: {}
+                failedCount: 0
+                successCount: 2
+            example-2:
+              value:
+                failedEntities: {}
+                failedCount: 0
+                successCount: 2
+            example-3-failed:
+              value:
+                failedEntities:
+                  NRC-99de8eed-184b-4687-bbbb-6d06771f33ee: 'Invalid resource id for client : 4'
+                  d69b7c66-f827-4c1a-8399-f059cfb9cfc7: 'Invalid resource id for client : 4'
+                failedCount: 2
+                successCount: 0
+            example-4:
+              value:
+                failedEntities: {}
+                failedCount: 0
+                successCount: 1
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              entitytype:
+                type: string
+        examples:
+          example-1:
+            value:
+              - id: 99de8eed-184b-4687-bbbb-6d06771f33ee
+              - id: d69b7c66-f827-4c1a-8399-f059cfb9cfc7
+          example-2:
+            value:
+              - id: NRC-99de8eed-184b-4687-bbbb-6d06771f33ee
+                entitytype: NON_MON_RESOURCES
+              - id: d69b7c66-f827-4c1a-8399-f059cfb9cfc7
+                entitytype: RESOURCE
+          example-3:
+            value:
+              - id: NRC-274728748d-184b-4687-iuei-6d06771f33ee
+                entitytype: NON_MON_RESOURCES
+              - id: u1i3iui1u-f827-4c1a-9808-f059cfb9cfc7
+                entitytype: RESOURCE
+          example-4:
+            value:
+              - id: 671fc5fb-8a75-401d-9367-4f1bfe5e8d42
+delete:
+  summary: Unassign custom attribute from devices
+  description: This endpoint is used to unassign custom attribute from devices.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/response'
+          examples:
+            example-success:
+              value:
+                FailedEntities: {}
+                FailedCount: 0
+                SuccessCount: 2
+            example-failed:
+              value:
+                FailedEntities:
+                  NRC-99de8eed-184b-4687-bbbb-6d06771f33ee: 'Invalid resource id for client : 4'
+                  d69b7c66-f827-4c1a-8399-f059cfb9cfc7: 'Invalid resource id for client : 4'
+                FailedCount: 2
+                SuccessCount: 0
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              entityType:
+                type: string
+        examples:
+          example-1:
+            value:
+              - id: d69b7c66-f827-4c1a-8399-f059cfb9cfc7
+          example-with-entity:
+            value:
+              - id: NRC-99de8eed-184b-4687-bbbb-6d06771f33ee
+                entityType: NON_MON_RESOURCES
+              - id: d69b7c66-f827-4c1a-8399-f059cfb9cfc7
+                entityType: RESOURCE
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: attributeId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: valueId
+    required: true

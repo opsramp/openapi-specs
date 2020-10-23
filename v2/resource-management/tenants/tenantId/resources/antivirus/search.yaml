@@ -1,0 +1,142 @@
+get:
+  summary: Get latest antivirus definitions on resources
+  description: |-
+    This endpoint is used to retrieve the latest antivirus definitions installed on resources.
+
+    ### Query variables
+
+    |Query Variables|Values|Description|
+    |----|----|----|
+    |status|- OUTOFDATE<br>- UPTODATE|Antivirus definition status on a resource.<br>Example: UPTODATE.|
+
+    >## Notes
+    >There are special characters that can be used in a query string:
+    >- (+) represents the next field and must be URL-encoded.
+    >- (:) represents equals. An example is key : value.
+    >- Space characters must be URL-encoded.
+    >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+  tags:
+    - resource-management
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+        default: scanDate
+      in: query
+      name: sortName
+    - schema:
+        type: string
+      in: query
+      name: queryString
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    version:
+                      type: string
+                    currentDefinition:
+                      type: string
+                    currentDefinitionDate:
+                      type: string
+                      format: date-time
+                    scanDate:
+                      type: string
+                      format: date-time
+                    supported:
+                      type: boolean
+                    status:
+                      type: string
+                    resource:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        hostName:
+                          type: string
+                        ipAddress:
+                          type: string
+                        osName:
+                          type: string
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - name: McAfee VirusScan Enterprise
+                    version: 8.8.0.1804
+                    currentDefinition: '8637'
+                    currentDefinitionDate: '2017-08-28T00:00:00+0000'
+                    scanDate: '2017-08-29T07:59:10+0000'
+                    supported: true
+                    status: UPTODATE
+                    resource:
+                      id: d9dba1ce-dec0-46b6-8ad6-51975cd9991e
+                      hostName: HYDLPT082
+                      ipAddress: 192.123.23.1
+                      osName: 'Microsoft Windows 8.1 Pro '
+                  - name: VIPRE Enterprise
+                    version: 8.8.0.1804
+                    currentDefinition: '8575'
+                    currentDefinitionDate: '2017-01-28T05:17:13+0000'
+                    scanDate: '2017-02-01T00:00:00+0000'
+                    supported: false
+                    status: OUTOFDATE
+                    resource:
+                      id: 2912ca9f-5c62-451f-82a8-8c08ca9c9447
+                      hostName: HYDLPT159
+                      ipAddress: 162.12.2.233
+                      osName: 'Microsoft Windows 8.1 Enterprise Edition, 64-bit'
+                totalResults: 2
+                orderBy: scanDate
+                pageNo: 1
+                pageSize: 100
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: true
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true

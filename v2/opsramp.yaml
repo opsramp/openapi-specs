@@ -611,3 +611,120 @@ paths:
     $ref: './tenancy-access-control/tenants/tenantId/users/search.yaml'
   /api/v2/tenants/{orgId}/users/{userId}:
     $ref: './tenancy-access-control/tenants/orgId/users/userId.yaml'
+  # Resource Management
+  /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices:
+    $ref: './resource-management/tenants/tenantId/agentPolicies/policyId/devices.yaml'
+  /api/v2/tenants/{tenantId}/customAttributes/{attributeId}/values/{valueId}:
+    $ref: './resource-management/tenants/tenantId/customAttributes/attributeId/values/valueId.yaml'
+  /api/v2/tenants/{varId}/customAttributes/{attributeId}/values/{valueId}/clients:
+    $ref: './resource-management/tenants/varId/customAttributes/attributeId/values/valueId/clients.yaml'
+  /api/v2/tenants/{tenantId}/customAttributes/{attributeId}/values/{valueId}/devices:
+    $ref: './resource-management/tenants/tenantId/customAttributes/attributeId/values/valueId/devices.yaml'
+  /api/v2/tenants/{tenantId}/customAttributes/{attributeId}/values/{valueId}/serviceGroups:
+    $ref: './resource-management/tenants/tenantId/customAttributes/attributeId/values/valueId/serviceGroups.yaml'
+  /api/v2/tenants/{varId}/clients/{clientId}/customAttributes:
+    $ref: './resource-management/tenants/varId/clients/clientId/customAttributes.yaml'
+  /api/v2/tenants/{tenantId}/customAttributes:
+    $ref: './resource-management/tenants/tenantId/customAttributes.yaml'
+  /api/v2/tenants/{tenantId}/devices/{deviceId}/customAttributes:
+    $ref: './resource-management/tenants/tenantId/devices/deviceId/customAttributes.yaml'
+  /api/v2/tenants/{tenantId}/customAttributes/{attributeId}/assignedEntities/search:
+    $ref: './resource-management/tenants/tenantId/customAttributes/attributeId/assignedEntities/search.yaml'
+  /api/v2/tenants/{tenantId}/customAttributes/search:
+    $ref: './resource-management/tenants/tenantId/customAttributes/search.yaml'
+  /api/v2/tenants/{tenantId}/serviceGroups/{serviceGroupId}/customAttributes:
+    $ref: './resource-management/tenants/tenantId/serviceGroups/serviceGroupId/customAttributes.yaml'
+  /api/v2/tenants/{tenantId}/customAttributes/{attributeId}:
+    $ref: './resource-management/tenants/tenantId/customAttributes/attributeId.yaml'
+  /api/v2/tenants/{tenantId}/deviceGroups/{deviceGroupId}/childs:
+    $ref: './resource-management/tenants/tenantId/deviceGroups/childs.yaml'
+  /api/v2/tenants/{tenantId}/deviceGroups/{deviceGroupId}/childs/search:
+    $ref: './resource-management/tenants/tenantId/deviceGroups/childs/search.yaml'
+  /api/v2/tenants/{tenantId}/deviceGroups:
+    $ref: './resource-management/tenants/tenantId/deviceGroups.yaml'
+  /api/v2/tenants/{tenantId}/deviceGroups/{deviceGroupId}:
+    $ref: './resource-management/tenants/tenantId/deviceGroups/deviceGroupId.yaml'
+  /api/v2/tenants/{tenantId}/deviceGroups/minimal:
+    $ref: './resource-management/tenants/tenantId/deviceGroups/minimal.yaml'
+  /api/v2/tenants/{tenantId}/deviceGroups/search:
+    $ref: './resource-management/tenants/tenantId/deviceGroups/search.yaml'
+  /api/v2/tenants/{tenantId}/policies/management/{id}:
+    $ref: './resource-management/tenants/tenantId/policies/management/id.yaml'
+  /api/v2/tenants/{tenantId}/policies/management:
+    $ref: './resource-management/tenants/tenantId/policies/management.yaml'
+  /api/v2/tenants/{tenantId}/policies/management/{id}/action/run:
+    $ref: './resource-management/tenants/tenantId/policies/management/id/action/run.yaml'
+  /api/v2/tenants/{tenantId}/policies/management/search:
+    $ref: './resource-management/tenants/tenantId/policies/management/search.yaml'
+  /api/v2/tenants/{tenantId}/devices/{deviceId}/deviceWarranty:
+    $ref: './resource-management/tenants/tenantId/devices/deviceId/deviceWarranty.yaml'
+  /api/v2/tenants/{tenantId}/deviceWarranties:
+    $ref: './resource-management/tenants/tenantId/deviceWarranties.yaml'
+  /api/v2/tenants/{tenantId}/dependencies/{resourceuuid}:
+    $ref: './resource-management/tenants/tenantId/dependencies/resourceuuid.yaml'
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/notes:
+    $ref: './resource-management/tenants/tenantId/resources/resourceId/notes.yaml'
+  /api/v2/tenants/{tenantId}/notes/{noteId}:
+    $ref: './resource-management/tenants/tenantId/notes/noteId.yaml'
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/notes/search:
+    $ref: './resource-management/tenants/tenantId/resources/resourceId/notes/search.yaml'
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/notes/{noteId}:
+    $ref: './resource-management/tenants/tenantId/resources/resourceId/notes/noteId.yaml'
+  /api/v2/tenants/{tenantId}/devices/wsussettings/{action}:
+    $ref: './resource-management/tenants/tenantId/devices/wsussettings/action.yaml'
+  /api/v2/tenants/{tenantId}/resources:
+    $ref: './resource-management/tenants/tenantId/resources.yaml'
+  /api/v2/tenants/{mspId}/decommission/{action}:
+    $ref: './resource-management/tenants/mspId/decommission/action.yaml'
+  /api/v2/tenants/{tenantId}/history/resources/{resourceId}:
+    $ref: './resource-management/tenants/tenantId/history/resources/resourceId.yaml'
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/decommission:
+    $ref: './resource-management/tenants/tenantId/resources/resourceId/decommission.yaml'
+  /api/v2/tenants/{tenantId}/history/resources:
+    $ref: './resource-management/tenants/tenantId/history/resources.yaml'
+  /api/v2/tenants/{tenantId}/resources/antivirus/search:
+    $ref: './resource-management/tenants/tenantId/resources/antivirus/search.yaml'
+  /api/v2/tenants/{tenantId}/resources/minimal:
+    $ref: './resource-management/tenants/tenantId/resources/minimal.yaml'
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/applications:
+    $ref: './resource-management/tenants/tenantId/resources/resourceId/applications.yaml'
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/availability:
+    $ref: './resource-management/tenants/tenantId/resources/resourceId/availability.yaml'
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/availability/rule:
+    $ref: './resource-management/tenants/tenantId/resources/resourceId/availability/rule.yaml'
+  /api/v2/tenants/{tenantId}/resources/Resourcetype/{resourceType}/{identity}:
+    $ref: './resource-management/tenants/tenantId/resources/Resourcetype/resourceType/identity.yaml'
+  /api/v2/tenants/{tenantId}/resources/{resourceId}:
+    $ref: './resource-management/tenants/tenantId/resources/resourceId.yaml'
+  /api/v2/tenants/{tenantId}/resourceType/minimal:
+    $ref: './resource-management/tenants/tenantId/resourceType/minimal.yaml'
+  /api/v2/tenants/{tenantId}/resources/search:
+    $ref: './resource-management/tenants/tenantId/resources/search.yaml'
+  /api/v2/tenants/{tenantId}/serviceGroups/{sgId}/childs:
+    $ref: './resource-management/tenants/tenantId/serviceGroups/sgId/childs.yaml'
+  /api/v2/tenants/{tenantId}/serviceGroups/{sgId}/childs/search:
+    $ref: './resource-management/tenants/tenantId/serviceGroups/sgId/childs/search.yaml'
+  /api/v2/tenants/{tenantId}/serviceGroups:
+    $ref: './resource-management/tenants/tenantId/serviceGroups.yaml'
+  /api/v2/tenants/{tenantId}/serviceGroups/{sgId}:
+    $ref: './resource-management/tenants/tenantId/serviceGroups/sgId.yaml'
+  /api/v2/tenants/{tenantId}/serviceGroups/minimal:
+    $ref: './resource-management/tenants/tenantId/serviceGroups/minimal.yaml'
+  /api/v2/tenants/{tenantId}/serviceGroups/search:
+    $ref: './resource-management/tenants/tenantId/serviceGroups/search.yaml'
+  /api/v2/tenants/{tenantId}/serviceGroups/link:
+    $ref: './resource-management/tenants/tenantId/serviceGroups/link.yaml'
+  /api/v2/tenants/{tenantId}/services/{serviceId}/availability:
+    $ref: './resource-management/tenants/tenantId/services/serviceId/availability.yaml'
+  /api/v2/tenants/{tenantId}/serviceGroups/unLink/{parentSgId}/{childSgId}:
+    $ref: './resource-management/tenants/tenantId/serviceGroups/unLink/parentSgId/childSgId.yaml'
+  /api/v2/tenants/{tenantId}/sites:
+    $ref: './resource-management/tenants/tenantId/sites.yaml'
+  /api/v2/tenants/{tenantId}/sites/search:
+    $ref: './resource-management/tenants/tenantId/sites/search.yaml'
+  /api/v2/tenants/{tenantId}/sites/{siteId}:
+    $ref: './resource-management/tenants/tenantId/sites/siteId.yaml'
+  /api/v2/tenants/{tenantId}/sites/minimal:
+    $ref: './resource-management/tenants/tenantId/sites/minimal.yaml'
+  /api/v2/tenants/{tenantId}/topology/{resourceUUID}:
+    $ref: './resource-management/tenants/tenantId/topology/resourceUUID.yaml'

@@ -1,0 +1,89 @@
+delete:
+  summary: Delete custom attribute of a tenant
+  description: |-
+    This endpoint is used to delete the custom attribute of a tenant.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+get:
+  summary: Get custom attributes types and values of a tenant
+  description: This endpoint is used to fetch custom attribute type and their respective values.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/customAttributeTypes'
+          examples:
+            example-1:
+              value:
+                id: 63
+                name: custom_attr_from_API_test_1
+                description: custom_attr_from_API_test_1_update
+                customAttributeValues:
+                  - id: 396
+                    value: custom_attr_from_API_test_1_value
+                    description: desc_custom_attr_from_API_test_1_update_1
+                  - id: 399
+                    value: custom_attr_from_API_test_2_value
+                    description: custom_attr_from_API_test_2_value_description
+                organization:
+                  id: 93
+                  uniqueId: client_93
+                  name: Brocade Lab
+                  activated: true
+post:
+  summary: Update custom attribute type and add new values
+  description: This endpoint is used to update the description and add new values to a custom attribute.
+  tags:
+    - resource-management
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/customAttributeTypes'
+        examples:
+          example-1:
+            value:
+              description: creating custom_type for tenant update
+              customAttributeValues:
+                - value: test_val_1_for_custom_attr_type_for_tenant_1
+                  description: creating first value for tenant update
+                - value: test_val_2_for_custom_attr_type_for_tenant_2
+                  description: creating second value for tenant update
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              description:
+                type: string
+          examples:
+            example-1:
+              value:
+                id: 1
+                name: custom_attr_type_for_tenant
+                description: creating custom_type for tenant update
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: attributeId
+    required: true

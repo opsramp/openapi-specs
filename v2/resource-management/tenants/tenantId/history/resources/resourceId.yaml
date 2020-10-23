@@ -1,0 +1,200 @@
+get:
+  summary: Get decommissioned resource
+  description: This endpoint is used to fetch the data of a decommissioned resource.
+  tags:
+    - resource-management
+  parameters:
+    - schema:
+        type: string
+      in: query
+      name: additionalInfo
+      description: |-
+        Fetch additional resource data, such as:
+        - BIOS
+        - Network cards
+        - Physical disks
+        - Logical disks
+        - CPUs
+        - Video cards
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/resourceFull'
+          examples:
+            example-data:
+              value:
+                id: 740e2b6d-77ae-46d0-85ca-414e41607b15
+                hostName: SJJCD110022
+                ipAddress: 142.11.32.12
+                dns: opsrampdev
+                updatedDate: '2018-08-02T10:24:16+0000'
+                deviceType: Linux
+                devicePath: Server >> Linux
+                type: DEVICE
+                state: Decommissioned
+                macAddress: '0A:00:12:00:00:02'
+                make: innotek GmbH
+                model: VirtualBox
+                osName: Ubuntu 16.04.4 LTS
+                osArchitecture: '64'
+                serialNumber: 8FL9NH2
+                systemUID: 5D6C3423-2123-5F21-6836-H5D75G6G1232
+                description: 'BIOS Date : 09/12/17 00:52:26 Ver : 1.6.4.00 '
+                agentInstalled: true
+                aliasName: HYDLPE132@OpsRamp
+                name: SJJCD110022
+                resourceName: SJJCD110022
+                attributes:
+                  provider: AWS
+                  instanceId: i-453dccd2
+                  instanceState: running
+                  instanceType: t1.micro
+                  publicIp: 52.321.54.2
+                  ami: ami-84562dec
+                  launchDate: '2015-11-03T21:14:28+0000'
+                  owner: '321432654123'
+                  privateDns: ip-11-12-142-221.ec2.internal
+                  privateIp: 11.12.142.221
+                  zone: us-east-1e
+                  monitoringState: disabled
+                managementProfile:
+                  id: 7
+                  name: vg-ubuntu16
+                  type: Gateway
+                tags:
+                  - name: Device location
+                    value: SJ
+                history:
+                  decommissionReason: Replacement of resource
+            example-additional-data:
+              value:
+                id: 740e2b6d-77ae-46d0-85ca-414e41607b15
+                hostName: SJJCD110022
+                ipAddress: 142.11.32.12
+                dns: opsrampdev
+                updatedDate: '2018-08-02T10:24:16+0000'
+                deviceType: Linux
+                devicePath: Server >> Linux
+                type: DEVICE
+                state: Decommissioned
+                macAddress: '0A:00:12:00:00:02'
+                make: innotek GmbH
+                model: VirtualBox
+                osName: Ubuntu 16.04.4 LTS
+                osArchitecture: '64'
+                serialNumber: 8FL9NH2
+                systemUID: 5D6C3423-2123-5F21-6836-H5D75G6G1232
+                description: 'BIOS Date  : 09/12/17 00:52:26 Ver  : 1.6.4.00 '
+                agentInstalled: true
+                aliasName: HYDLPE132@OpsRamp
+                name: SJJCD110022
+                resourceName: SJJCD110022
+                resourceType: Linux
+                attributes:
+                  provider: AWS
+                  instanceId: i-373dcec7
+                  instanceState: running
+                  instanceType: t1.micro
+                  publicIp: 52.321.54.2
+                  ami: ami-84562dec
+                  launchDate: '2015-11-03T21:14:28+0000'
+                  owner: '321432654123'
+                  privateDns: ip-11-12-142-221.ec2.internal
+                  privateIp: 11.12.142.221
+                  zone: us-east-1e
+                  monitoringState: disabled
+                managementProfile:
+                  id: 7
+                  name: vg-ubuntu16
+                  type: Gateway
+                tags:
+                  - name: Device location
+                    value: SJ
+                history:
+                  decommissionReason: Replacement of resource
+                bios:
+                  biosName: 'BIOS Date : 09/12/17 00:52:26 Ver : 1.6.4.00 '
+                  biosVersion: 1.6.4
+                  smBiosVersion: 1.6.4
+                  smBiosMajorVersion: '3'
+                  smBiosMinorVersion: '0'
+                  smBiosPresent: 'True'
+                  systemSerial: 8FL9NH2
+                  systemModel: Latitude 5580
+                  systemManufacturer: Microsoft Corporation
+                networkCards:
+                  - id: 44373
+                    networkName: Intel(R) Dual Band Wireless-AC 8265
+                    ipAddress: '162.12.321.414;de12::21dd:3f:f412:321v;'
+                    macAddress: '5C:SD:4D:45:5D:56'
+                    dhcpEnabled: true
+                    linkMode: MGNT_MODE_LINK
+                physicalDisks:
+                  - name: \\.\PHYSICALDRIVE0
+                    model: ST500LM021-1KJ152
+                    manufacturer: (Standard disk drives)
+                    interfaceType: IDE
+                    partitions: 4
+                    mediaType: Fixed hard disk media
+                logicalDisks:
+                  - total: 107
+                    free: 73
+                    fileSystem: NTFS
+                    name: 'C:'
+                    description: Local Fixed Disk
+                    monitor: true
+                    utilizationWarningThreshold: 0
+                    utilizationCriticalThreshold: 0
+                    freeDiskWarningThreshold: 0
+                    freeDiskCriticalThreshold: 0
+                  - total: 182
+                    free: 146
+                    fileSystem: NTFS
+                    name: 'D:'
+                    description: Local Fixed Disk
+                    monitor: true
+                    utilizationWarningThreshold: 0
+                    utilizationCriticalThreshold: 0
+                    freeDiskWarningThreshold: 0
+                    freeDiskCriticalThreshold: 0
+                  - total: 175
+                    free: 175
+                    fileSystem: NTFS
+                    name: 'E:'
+                    description: Local Fixed Disk
+                    monitor: true
+                    utilizationWarningThreshold: 0
+                    utilizationCriticalThreshold: 0
+                    freeDiskWarningThreshold: 0
+                    freeDiskCriticalThreshold: 0
+                cpus:
+                  - processor: CPU0
+                    processorName: Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz
+                    processorVersion: ''
+                    manufacturer: GenuineIntel
+                    family: '205'
+                    powerManagementSupported: false
+                    l2CacheSize: 512
+                    maxClockSpeed: 2701
+                    dataWidth: 64
+                    numberOfCores: 2
+                videoCards:
+                  - name: Intel(R) HD Graphics 620
+                    ram: 1024MB
+                    version: 21.20.16.4627
+                    resolution: 1366 x 768 x 4294967296 colors
+                    bitsPerPixel: '32'
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: resourceId
+    required: true

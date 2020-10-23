@@ -3246,3 +3246,1027 @@ components:
             (Optional) Assign roles to user group. Users part of a group automatically inherit the permissions associated with that group. To retrieve roles within a tenant, use Search Roles API.
           items:
             $ref: '#/components/schemas/role'
+    # Resource Management
+    taggable:
+      title: taggable
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        entityType:
+          type: string
+        resourceName:
+          type: string
+        hostName:
+          type: string
+        resourceType:
+          type: string
+    customAttributeValue:
+      title: customAttributeValue
+      type: object
+      properties:
+        id:
+          type: integer
+        customAttribute:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            description:
+              type: string
+            organization:
+              $ref: '#/components/schemas/organization'
+        value:
+          type: string
+          description: |
+            Values of the custom attributes values.
+        description:
+          type: string
+    customAttribute:
+      title: customAttribute
+      type: object
+      properties:
+        id:
+          type: integer
+        customAttributeValue:
+          $ref: '#/components/schemas/customAttributeValue'
+        taggable:
+          $ref: '#/components/schemas/taggable'
+        tagSource:
+          type: string
+    response:
+      title: response
+      type: object
+      properties:
+        failedEntities:
+          type: object
+        failedCount:
+          type: integer
+        successCount:
+          type: integer
+    organization:
+      title: organization
+      type: object
+      properties:
+        id:
+          type: integer
+        uniqueId:
+          type: string
+        name:
+          type: string
+        activated:
+          type: boolean
+    customAttributeTypes:
+      title: customAttributeTypes
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        customAttributeValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/customAttributeValue'
+        organization:
+          $ref: '#/components/schemas/organization'
+    resource:
+      title: resource
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdDate:
+          type: string
+        updatedDate:
+          type: string
+        entityType:
+          type: string
+        resourceType:
+          type: string
+        resourceName:
+          type: string
+        hostName:
+          type: string
+        aliasName:
+          type: string
+    deviceGroup:
+      title: deviceGroup
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          description: |
+            Unique name for the device group. The device group is identified with this name.
+        entityType:
+          type: string
+          description: |
+            Type of resources in a group. Example: DEVICE_GROUP, SNS
+        kbArticlesIds:
+          type: array
+          description: |-
+            (Optional) Assign knowledge base articles to a device group. To fetch a knowledge base article ID:
+            1. Log into OpsRamp.
+            2. Click Knowledge Base.
+            3. Select the required article and then copy the article ID without #.
+            4. Provide the article ID in kbArticleIds field.Example: "kbArticleIds": [22089]
+          items:
+            type: integer
+        filterCriteria:
+          $ref: '#/components/schemas/policy'
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type: string
+          format: date-time
+        parent:
+          type: object
+          description: |
+            Add a device group as child under an existing device group (parent). This field is mandatory while adding a child device group to parent device group.
+          properties:
+            id:
+              type: string
+    policy:
+      title: deviceManagementPolicy
+      type: object
+      properties:
+        matchType:
+          type: string
+          description: |-
+            (Optional) The type of match:
+            -To match all the filter conditions, provide matchType: ALL.
+            - To match any one of the filter conditions, provide matchType: ANY.
+          enum:
+            - ALL
+            - ANY
+        rules:
+          type: array
+          description: |-
+            (Optional) Filter devices with specific attributes:
+            - Attribute name of device. Example: Name, Operating System. Attribute names change with device types.
+            - Matching parameter. Supported operators are: Equals, Contains, Not Contains, Starts with, Ends with, Regex. Learn more about Regex.
+            - Type of resource
+          items:
+            $ref: '#/components/schemas/rule'
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/action'
+        id:
+          type: integer
+        name:
+          type: string
+          description: |
+            Name of the policy.
+        resourceType:
+          type: string
+          description: |-
+            Type of resource.
+            Example: DEVICE, VOLUME, VPN, XENSERVER
+        executionOrder:
+          type: integer
+    rule:
+      title: rule
+      type: object
+      properties:
+        key:
+          type: string
+        operator:
+          type: string
+        value:
+          type: string
+        id:
+          type: integer
+        resourceType:
+          type: string
+        filterType:
+          type: string
+        isNativeAttribute:
+          type: boolean
+    action:
+      title: action
+      type: object
+      properties:
+        action:
+          type: string
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              item:
+                type: string
+              parameters:
+                type: object
+              instances:
+                type: object
+        forceAssignOrUnassign:
+          type: boolean
+      description: |-
+        Refers to the actions performed on the filtered resources. Select at least one of the following actions:
+        - Assign Monitoring Templates
+        - Assign Knowledge Base Articles
+        - Assign Availability Rule
+        - Assign Custom Attributes
+        - Assign Jobs
+        - Assign Credentials
+
+        Examples: "ASSIGN MONITORINGTEMPLATE" and "ASSIGN KNOWLEDGEARTICLE"
+    httpResponse:
+      title: httpResponse
+      type: object
+      properties:
+        status:
+          type: integer
+        entity:
+          type: string
+        metadata:
+          type: object
+        length:
+          type: integer
+        headers:
+          type: object
+        cookies:
+          type: object
+        links:
+          type: array
+          items: {}
+        stringHeaders:
+          type: object
+        allowedMethods:
+          type: array
+          items: {}
+        statusInfo:
+          type: object
+          properties:
+            family:
+              type: string
+            statusCode:
+              type: integer
+            reasonPhrase:
+              type: string
+        actualEntity:
+          type: string
+    warranty:
+      title: warranty
+      type: object
+      properties:
+        id:
+          type: integer
+        warrantyExpireDate:
+          type: string
+          description: |
+            Warranty expire date
+        deviceId:
+          type: string
+        purchaseDate:
+          type: string
+          description: |
+            Warranty purchase date
+      required:
+        - warrantyExpireDate
+        - purchaseDate
+    resourceNote:
+      title: resourceNote
+      type: object
+      properties:
+        subject:
+          type: string
+          description: |
+            Subject of the resource note.
+        description:
+          type: string
+          description: |
+            Description of the resource note.
+        expiryDateType:
+          type: integer
+          description: |-
+            Type of expiry. Supported Values: Never Expire, Validity Period:
+            - expiryDateType=1 to create resource note that would never expire.
+            - expiryDateType=2 to create resource note with a validity period.
+
+            Both startTime and endTime are mandatory to create a note with a validity period.
+          minimum: 1
+          maximum: 3
+        startTime:
+          type: string
+          description: |
+            Start time of resource note.
+        expiryTime:
+          type: string
+          description: |
+            Expiry time of resource note.
+        id:
+          type: integer
+        createdTime:
+          type: string
+        updatedTime:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/user'
+    user:
+      title: user
+      type: object
+      properties:
+        id:
+          type: string
+        loginName:
+          type: string
+        lastName:
+          type: string
+        firstName:
+          type: string
+        email:
+          type: string
+        changePassword:
+          type: boolean
+        phoneNumber:
+          type: string
+    resourceFull:
+      title: resourceFull
+      type: object
+      properties:
+        agentInstalled:
+          type: boolean
+        aliasName:
+          type: string
+        appRoles:
+          items:
+            properties:
+              name:
+                type: string
+            type: object
+          type: array
+        assetManagedTime:
+          format: date-time
+          type: string
+        attributes:
+          properties:
+            ami:
+              type: string
+            instanceId:
+              type: string
+            instanceState:
+              type: string
+            instanceType:
+              type: string
+            launchDate:
+              type: string
+            monitoringState:
+              type: string
+            network:
+              items:
+                properties:
+                  aliasIp:
+                    type: string
+                  ip:
+                    type: string
+                  mac:
+                    type: string
+                type: object
+              type: array
+            owner:
+              type: string
+            privateDns:
+              type: string
+            privateIp:
+              type: string
+            provider:
+              type: string
+            publicIp:
+              type: string
+            zone:
+              type: string
+          type: object
+        bios:
+          properties:
+            biosName:
+              type: string
+            biosVersion:
+              type: string
+            smBiosMajorVersion:
+              type: string
+            smBiosMinorVersion:
+              type: string
+            smBiosPresent:
+              type: string
+            smBiosVersion:
+              type: string
+            systemManufacturer:
+              type: string
+            systemModel:
+              type: string
+            systemSerial:
+              type: string
+          type: object
+        classCode:
+          type: string
+        client:
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            uniqueId:
+              type: string
+          type: object
+        clientId:
+          type: integer
+        clientUniqueId:
+          type: string
+        components:
+          items:
+            type: string
+          type: array
+        consoles:
+          items: {}
+          type: array
+        cpus:
+          items:
+            properties:
+              dataWidth:
+                type: integer
+              family:
+                type: string
+              l2CacheSize:
+                type: integer
+              manufacturer:
+                type: string
+              maxClockSpeed:
+                type: integer
+              numberOfCores:
+                type: integer
+              powerManagementSupported:
+                type: boolean
+              processor:
+                type: string
+              processorName:
+                type: string
+              processorVersion:
+                type: string
+            type: object
+          type: array
+        createdDate:
+          format: date-time
+          type: string
+        deleted:
+          type: boolean
+        description:
+          type: string
+        devicePath:
+          type: string
+        deviceType:
+          type: string
+        dns:
+          type: string
+        extResourceId:
+          type: string
+        firstAssetManagedTime:
+          format: date-time
+          type: string
+        gatewayProfileId:
+          type: string
+        generalInfo:
+          properties:
+            agentDeploytime:
+              format: date-time
+              type: string
+            aliasName:
+              type: string
+            assetManagedTime:
+              type: string
+            createdTime:
+              format: date-time
+              type: string
+            description:
+              type: string
+            dns:
+              type: string
+            encodingType:
+              type: string
+            firstAssetManagedTime:
+              type: string
+            hostName:
+              type: string
+            keyboardType:
+              type: string
+            make:
+              type: string
+            name:
+              type: string
+            osName:
+              type: string
+            physicalMemory:
+              type: string
+            resourceName:
+              type: string
+            resourceType:
+              type: string
+            updatedTime:
+              format: date-time
+              type: string
+          type: object
+        history:
+          properties:
+            decommissionReason:
+              type: string
+          type: object
+        hostName:
+          type: string
+        id:
+          type: string
+        installedApp:
+          properties:
+            displayName:
+              type: string
+            id:
+              type: string
+            integration:
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+              type: object
+          type: object
+        ipAddress:
+          type: string
+        location:
+          properties:
+            city:
+              type: string
+            clientId:
+              type: integer
+            id:
+              type: integer
+            mspId:
+              type: integer
+            name:
+              type: string
+          type: object
+        locationOffset:
+          type: integer
+        logicalDisks:
+          items:
+            properties:
+              description:
+                type: string
+              fileSystem:
+                type: string
+              free:
+                type: integer
+              freeDiskCriticalThreshold:
+                type: integer
+              freeDiskWarningThreshold:
+                type: integer
+              monitor:
+                type: boolean
+              name:
+                type: string
+              total:
+                type: integer
+              utilizationCriticalThreshold:
+                type: integer
+              utilizationWarningThreshold:
+                type: integer
+            type: object
+          type: array
+        macAddress:
+          type: string
+        make:
+          type: string
+        managementProfile:
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            type:
+              type: string
+          type: object
+        metricTypes:
+          items:
+            properties:
+              availabilityMetric:
+                type: boolean
+              displayName:
+                type: string
+              metricName:
+                type: string
+              thresholdType:
+                type: string
+              unit:
+                type: string
+            type: object
+          type: array
+        model:
+          type: string
+        name:
+          type: string
+        networkCards:
+          items:
+            properties:
+              dhcpEnabled:
+                type: boolean
+              id:
+                type: integer
+              ipAddress:
+                type: string
+              linkMode:
+                type: string
+              macAddress:
+                type: string
+              networkName:
+                type: string
+            type: object
+          type: array
+        osArchitecture:
+          type: string
+        osName:
+          type: string
+        physicalDisks:
+          items:
+            properties:
+              interfaceType:
+                type: string
+              manufacturer:
+                type: string
+              mediaType:
+                type: string
+              model:
+                type: string
+              name:
+                type: string
+              partitions:
+                type: integer
+            type: object
+          type: array
+        properties:
+          properties:
+            ami:
+              type: string
+            instanceId:
+              type: string
+            instanceState:
+              type: string
+            instanceType:
+              type: string
+            launchDate:
+              type: string
+            monitoringState:
+              type: string
+            owner:
+              type: string
+            privateDns:
+              type: string
+            privateIp:
+              type: string
+            provider:
+              type: string
+            publicIp:
+              type: string
+            zone:
+              type: string
+          type: object
+        resourceName:
+          type: string
+        resourceType:
+          type: string
+        serialNumber:
+          type: string
+        source:
+          type: string
+        state:
+          type: string
+        status:
+          type: string
+        systemUID:
+          type: string
+        tags:
+          items:
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+            type: object
+          type: array
+        totalLocations:
+          type: integer
+        ts:
+          type: integer
+        type:
+          type: string
+        updatedDate:
+          format: date-time
+          type: string
+        videoCards:
+          items:
+            properties:
+              bitsPerPixel:
+                type: string
+              name:
+                type: string
+              ram:
+                type: string
+              resolution:
+                type: string
+              version:
+                type: string
+            type: object
+          type: array
+        wsusSettings:
+          type: string
+    serviceGroup:
+      title: serviceGroup
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          description: |
+            Unique name for the service group. The service group is identified with this name.
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type: string
+          format: date-time
+        childType:
+          type: string
+          description: |-
+            Child service group type.
+
+            Example: DEVICE, SERVICEGROUP, SNS, SQS
+        frequency:
+          type: integer
+          description: |
+            (Optional)
+        thresholdType:
+          type: string
+          description: |-
+            (Optional) Define the availability status for a service group with below threshold types:
+            - count: Define availability of a service group based on the number of resources in the group.
+            For example, if 10 resources are down.
+            - percentage: Percentage of resources or services that should be considered to determine the availability.
+
+            Below are the supported availability statuses:
+            - Down: If resources or services down are greater than or equal to a specific value(count/percentage), then service is considered as Down.
+            - Degraded: If resource or services down are less than a specific value(count/percentage), then service is considered as Degraded.
+            - OK: If all resources or services are Up, then service is considered as OK.
+
+            For example, a user wants to define availability status as Down if 5 resources are down, then the values are provided as:
+            `"thresholdType": "count","thresholdLimit": 5`.
+        thresholdLimit:
+          type: integer
+          description: |
+            (Optional) Provide a specific threshold value to determine count or percentage.
+        monitorNames:
+          type: array
+          items:
+            type: string
+        include:
+          type: string
+        type:
+          type: string
+          description: |-
+            (Optional)
+            - To generate an alert when the threshold limits are breached, provide type: alert.
+            - To display the availability status without generating an alert, provide type: default.
+        alertType:
+          type: integer
+          description: |-
+            (Optional) Provide specific alertType value to set service availability monitor:
+            - Service Availability Monitor will be set to Available, If alertType = 2.
+            - Service Availability Monitor will be set to Any critical alert, If alertType = 0.
+            - Service Availability Monitor will be set to Critical alert, If alertType = 1.
+        alert:
+          type: boolean
+          description: |
+            (Optional) Generate an alert when the threshold limits are breached.
+        metrics:
+          type: array
+          items: {}
+        filterCriteria:
+          $ref: ./patching.v1.yaml#/components/schemas/policy
+        parent:
+          type: object
+          properties:
+            id:
+              type: string
+              description: |
+                Add a service group as a child under an existing service group (parent). This field is required for adding a service group to a parent service group.
+        kbArticlesIds:
+          type: array
+          description: |-
+            Assign knowledge base articles to a device group.Note: To fetch a knowledge base article ID:
+            1. Log into OpsRamp.
+            2. Click Knowledge Base.
+            3. Select the required article and then copy the article ID.
+            4. Provide the article ID in "kbArticleIds" field.
+            Example: "kbArticleIds": [22089].
+          items:
+            type: integer
+    availablility:
+      title: availablility
+      type: object
+      properties:
+        totalAvailability:
+          type: number
+        totalDowntime:
+          type: integer
+        totalLogList:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              startTs:
+                type: integer
+              endTs:
+                type: integer
+              actStartTs:
+                type: integer
+              state:
+                type: integer
+              rca:
+                type: boolean
+              schStartTs:
+                type: integer
+              schEndTs:
+                type: integer
+        downTimeList:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              startTs:
+                type: integer
+              endTs:
+                type: integer
+              actStartTs:
+                type: integer
+              state:
+                type: integer
+              rca:
+                type: boolean
+              schStartTs:
+                type: integer
+              schEndTs:
+                type: integer
+        noOfOccurences:
+          type: integer
+        noOfPauseOccurences:
+          type: integer
+        degradedTimeList:
+          type: array
+          items: {}
+        noOfDegradedOccurences:
+          type: integer
+        totalDegradedTime:
+          type: integer
+        currentState:
+          type: string
+        totalPauseTime:
+          type: integer
+        pauseTimeList:
+          type: array
+          items: {}
+    site:
+      title: site
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          description: |
+            Site name.
+        clientId:
+          type: integer
+        mspId:
+          type: integer
+        parent:
+          type: object
+          description: |
+            (Optional) Parent site. Required if creating a sub-site under a parent site:
+          properties:
+            id:
+              description: |
+                Parent site id
+              type: integer
+            name:
+              type: string
+              description: |
+                Parent site name
+            description:
+              type: string
+            address:
+              type: string
+        description:
+          type: string
+          description: |
+            (Optional) Summary of the site.
+        address:
+          type: string
+          description: |
+            (Optional) Site address.
+        state:
+          type: string
+          description: |
+            (Optional) Site state.
+        city:
+          type: string
+          description: |
+            (Optional) Site city.
+        country:
+          type: string
+        zip:
+          type: string
+          description: |
+            (Optional) Zip code.
+        primaryContact:
+          $ref: '#/components/schemas/user'
+        phoneNumber:
+          type: string
+          description: |
+            (Optional) Site phone number for communication.
+        phoneExtension:
+          type: string
+          description: |
+            (Optional) Site phone extension number.
+        filterCriteria:
+          $ref: '#/components/schemas/policy'
+        devices:
+          type: array
+          items:
+            type: object
+            properties:
+              uniqueId:
+                type: string
+              hostName:
+                type: string
+              ipAddress:
+                type: string
+              type:
+                type: string
+              aliasName:
+                type: string
+              resourceName:
+                type: string
+              resourceType:
+                type: string
+        resources:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              ipAddress:
+                type: string
+              type:
+                type: string
+              metaData:
+                type: object
+              resourceType:
+                type: string
+              hostName:
+                type: string
+              resourceName:
+                type: string
+              aliasName:
+                type: string
+    device:
+      title: device
+      type: object
+      properties:
+        name:
+          type: string
+        ipAddress:
+          type: string
+        uuid:
+          type: string
+        AliasName:
+          type: string
+        HostName:
+          type: string
+        ResourceName:
+          type: string

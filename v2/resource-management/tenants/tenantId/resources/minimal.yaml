@@ -1,0 +1,156 @@
+get:
+  summary: Get minimal details of resources
+  description: |-
+    This endpoint is used to fetch minimal details of resources.
+
+    |Query Variables|Description|
+    |-----|-----|
+    |hostName|Name of the host.|
+    |dnsName|Domain service name.|
+    |resourceName|Name of the resource.|
+    |aliasName|Other name of resource.|
+    |id|Resource unique ID.<br>Example: d5bce6fe-d19f-4ad7-8c50-5f639f2dd321|
+    |serialNumber|Resource serial number.<br>Example: d7bce6fe-d19f-4ad7-8c50-2f639f2dd778|
+    |ipAddress|Resource IP address.|
+    |systemUID|System Unique ID.<br>Example: 10.10.10.10|
+    |state|Resource state supported values: active, inactive, discovered, all. Filter devices based on the device state.<br>Example: discovered|
+    |type|Values accepted as Resource Type:DEVICE, AUTO_SCALING, EBS, LOAD_BALANCER, SQL_DATABASE, SQL_SERVER, SYNTHETIC<br>Example: DEVICE|
+    |deviceType|Filter resources based on device type. This parameter is required if the resource type is a device. Use Get Device Types API to retrieve the names of supported device types. Enumerate multiple device type names with comma-separated strings.<br>Example: Windows, Linux|
+    |resourceType|Filter resources based on a resource type. Use Get Device Types API to retrieve a list of supported resource types supported by OpsRamp. Enumerate multiple resource types with comma-separated strings.<br>Example: DEVICE, DOCUMENT_DB|
+    |startCreationDate|Indicates the date to search the creation date of a resource. Start indicates from date.<br>Example: 2017-01-01T00:00:00 0000|
+    |endCreationDate|Indicates the date to search for the last date of resource creation. End indicates to date.<br>Example: 2017-01-31T00:00:00 0000|
+    |startUpdationDate|Search for a resource updated within a specific duration. Start indicates from date.<br>Example: 2017-01-01T00:00:00 0000|
+    |endUpdationDate|Search for a resource updated within a specific duration. End  indicates to date.<br>Example: 2017-01-31T00:00:00 0000|
+    |tags|Custom attribute tag names. Enumerate multiple tags, by separating each tag with a comma.<br>Example: Admin|
+    |template|Monitoring template ID used to retrieve the list of devices assigned on a particular template.|
+    |agentProfile|Agent profile ID.|
+    |gatewayProfile|Gateway profile ID.|
+    |instanceId|Cloud instance ID.|
+    |accountNumber|Cloud provider's account number.<br>Example: 290642135901|
+    |installedIntgId|Installed integration ID.<br>Example: INTG-6dcbc22c-5436-5eb8-5e7c-8db0319938a4|
+    |agentInstalled|Filter for agent-installed resources:<br>- agentInstalled: true retrieves agent-installed resources.<br>- agentInstalled: false retrieves non-agent resources.<br>Example: true|
+    |deviceGroup|Fetch resources that are part of a specific device/child group. Provide a device group name.<br>Example: Windows Servers|
+    |serviceGroup|Fetch resources that are part of a specific service group. Provide service group name.<br>Example: Admin Group|
+    |deviceLocation|Fetch resources that are at a specific location. Provide a location name.<br>Example: West-SJ|
+    |isEquals|To search for the exact match of a variable.<br>- isEquals: true , to search for the exact match of a variable.<br>- isEquals: false to search for a similar match of a variable.<br>For example, to fetch list of resources in location West Valley and resource group, provide the query variable respectively as:<br>- deviceLocation: West Valley%2BisEquals: true<br>- deviceGroup: Windows Servers%2BisEquals:true<br>Note: This is an optional parameter for deviceGroup/deviceLocation/serviceGroup|
+    |assetManagedTime|The most recent time a resource is managed. The asset managed time gets updated whenever a resource is managed or unmanaged.<br>Example: 2017-01-01T00:00:00 0000|
+    |firstAssetManagedTime|The first time a resource is managed.<br>Example: 2017-01-31T00:00:00 0000|
+    |appRoles|Filter for resources based on applications running on the resources.List of supported applications:|
+
+    |appRoles|appRoles|appRoles|appRoles|
+    |-----|-----|-----|-----|
+    activemq|hbase|mongodb|rabbitmq
+    apache|hdfs-datanode|monitdMemoryStats|redis
+    cassandra|hdfs-namenode|moxi-server|riak
+    ceph|iptable|mysql|solr
+    couchbase|jboss|nfsiostat|spark
+    couchdb|kafka|nginx|squid
+    DNS-Server|kubernetes|ntp|tomcat
+    docker|kvm|openvpn|varnish
+    docker-container|lighttpd|oracle|weblogic
+    elasticsearch|mesosmaster|postfix|websphere
+    haproxy|mesosslave|postgresql|zookeeper
+
+    >## Notes
+    >There are special characters that can be used in a query string:
+    >- (+) represents the next field and must be URL-encoded.
+    >- (:) represents equals. An example is key : value.
+    >- Space characters must be URL-encoded.
+    >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+  tags:
+    - resource-management
+  parameters:
+    - schema:
+        type: string
+        default: '0'
+      in: query
+      name: 'locationId '
+      description: Use the `Get Time zones` API to fetch location IDs.
+    - schema:
+        type: string
+        default: '0'
+      in: query
+      name: deviceGroupId
+      description: Use the `Get Minimal Details of Device Group` API to fetch device group IDs.
+    - schema:
+        type: string
+        default: '0'
+      in: query
+      name: deviceTypeId
+      description: Use the `Get Device Types` API to fetch device type IDs.
+    - schema:
+        type: string
+        default: active
+      in: query
+      name: state
+      description: |-
+        Supported resource states:
+        - active: Indicates managed devices
+        - inactive: Indicates unmanaged devices
+        - discovered: indicates all discovered devices
+        - all: indicates the total device states including active, inactive and discovered
+    - schema:
+        type: string
+      in: query
+      name: queryString
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                hostName:
+                  type: string
+                ipAddress:
+                  type: string
+                aliasName:
+                  type: string
+                resourceName:
+                  type: string
+                resourceType:
+                  type: string
+          examples:
+            example-1:
+              value:
+                - id: ec9bbd29-b89f-4e6d-ac23-59b81c405cac
+                  name: Linux Server
+                  hostName: SJ-Linux
+                  ipAddress: 45.34.23.12
+                  aliasName: ''
+                  resourceName: ''
+                  resourceType: Linux
+                - id: 867a8316-8ec2-4e32-b3ec-ce8154856798
+                  name: 3e3cc106-aad5-4b32-9b3d-5079b8fbb2f5
+                  hostName: ''
+                  ipAddress: 54.179.70.212
+                  aliasName: ''
+                  resourceName: 3e3cc106-aad5-4b32-9b3d-5079b8fbb2f5
+                  resourceType: ROUTE_53
+                - id: 5df106d1-bebd-4c14-befc-5ac07f5088f8
+                  name: dc6446ee-9451-44ee-ae8f-8d1e4a0bb0ea
+                  hostName: ''
+                  ipAddress: 54.123.234.12
+                  aliasName: ''
+                  resourceName: dc6446ee-9451-44ee-ae8f-8d1e4a0bb0ea
+                  resourceType: ROUTE_53
+                - id: 0473052b-fed7-4f49-954f-fb22d82f9b52
+                  name: vcenter
+                  hostName: ''
+                  ipAddress: 172.26.105.126
+                  aliasName: ''
+                  resourceName: ''
+                  resourceType: CLOUD_PROVIDER
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
