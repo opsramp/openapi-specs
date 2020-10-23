@@ -783,3 +783,12 @@ paths:
     $ref: './patching/tenants/tenantId/resources/resourceId/baselines/baseLineId/patches.yaml'
   /api/v2/tenants/{tenantId}/resources/patches:
     $ref: './patching/tenants/tenantId/resources/patches.yaml'
+  # Monitoring
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/templates:
+    $ref: './monitoring/tenants/tenantId/resources/resourceId/templates.yaml'
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/templates/search:
+    $ref: './monitoring/tenants/tenantId/resources/resourceId/templates/search.yaml'
+  /api/v2/tenants/{tenantId}/monitoring/templates/search:
+    $ref: './monitoring/tenants/tenantId/monitoring/templates/search.yaml'
+  /api/v2/tenants/{tenantId}/resourceMonitors:
+    $ref: './monitoring/tenants/tenantId/resourceMonitors.yaml'

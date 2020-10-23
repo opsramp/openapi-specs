@@ -1,0 +1,299 @@
+get:
+  summary: Search templates
+  description: |-
+    This endpoint is used to activate a user.
+
+    ### Query variables
+    |Query Variables|Description|
+    |-----|-----|
+    |id|Template ID.|
+    |name|Template name.|
+    |scope|Template scope. Example: Global [note 3]|
+    |collectorType|Collector type.<br>Supported values are: Agent, Gateway, OpsRamp Cloud, AWS, GOOGLE, AZURE|
+    |status|Template status.<br>Example: ACTIVE, EOL
+    |generation|The generation.<br>Example: 1, 2|
+    |startCreationDate|Search for templates created within a certain duration.<br>startCreationDate denotes the from date.|
+    |endCreationDate|Search for templates created within a certain duration.<br>endCreationDate denotes the to date.|
+    |startUpdationDate|Search for templates updated within a certain duration.<br>startUpdationDate denotes the from update date.|
+    |endUpdationDate|Search for templates updated within a certain duration.<br>endUpdationDate denotes the to update date.|
+    |sourceType|Template source.<br>Supported values are: DEVICE, DATA_CENTER, VI_CLUSTER, VI_DATASTORE, JMX_APP_CLUSTER, JMX_APP_INSTANCE, DISTRIBUTED_VIRTUAL_SWITCH, CONTRAIL_ANALYTICS_NODE, CONTRAIL_CONFIG_NODE, CONTRAIL_CONTROL_NODE, VIRTUVAL_ROUTER, STORAGE_ARRAY_VOLUME|
+
+    ## Notes
+    1. There are special characters that can be used in a query string:
+    - (+) represents the next field and must be URL-encoded.
+    - (:) represents equals. An example is key : value.
+    - Space characters must be URL-encoded.
+    2. Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+    3. Provide scope: Global, to get gGlobal templates
+    4. Provide scope: OpsRamp, to get OpsRamp templates
+    5. CLIENT AUTHENTICATION
+        1. Provide scope: Partner, to get partner templates
+        2. Provide scope: Client, to get client templates
+      6. PARTNER AUTHENTICATION
+        1. Provide scope: Partner, to get partner templates
+        2. Use this API with respective client_id, to get client templates as shown in example URL 1
+
+    Note: queryString not required with scope.
+
+    7. SERVICE PROVIDER AUTHENTICATION
+        1. Use this API with respective msp_id, to get partner templates as shown in example URL 3
+
+    Note: queryString not required with scope.
+
+        2. Use this API with respective client_id, to get client templates as shown in example URL 1
+
+      Note: queryString not required with scope.
+
+    8. Provide sourceType = DEVICE, to get available templates at the device level.
+
+    Note: This can be useful in assigning templates to a device.
+  tags:
+    - monitoring
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: '#/components/schemas/monitoringTemplate'
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              nextPageNo:
+                type: integer
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: 6738
+                    uniqueId: 1463daa4-9c75-4911-8994-09cac072374a
+                    name: Second generation Gateway Template
+                    description: Template testing
+                    collectorType: Gateway
+                    status: ACTIVE
+                    generation: 2
+                    resourceType: DEVICE
+                    tags: testing
+                    notes: test cases
+                    createdDate: '2016-06-06T08:25:06+0000'
+                    updatedDate: '2016-06-06T08:25:06+0000'
+                    monitors:
+                      - name: testing form ui latest
+                        metricName: testing.dynamic.metric
+                        frequency: 15
+                        warningThreshHold: '70'
+                        warningOperator: GREATER_THAN_EQUAL
+                        warningRepeatCount: 2
+                        criticalThreshHold: '90'
+                        criticalOperator: EQUAL
+                        criticalRepeatCount: 1
+                        raiseAlert: true
+                        availability: true
+                        state: Active
+                      - name: Cisco Memory-2
+                        metricName: cisco.memory.pool.util.percent
+                        frequency: 15
+                        warningThreshHold: '80'
+                        warningOperator: GREATER_THAN_EQUAL
+                        warningRepeatCount: 1
+                        criticalThreshHold: '90'
+                        criticalOperator: GREATER_THAN_EQUAL
+                        criticalRepeatCount: 1
+                        raiseAlert: true
+                        availability: true
+                        state: Active
+                      - name: Cisco Memory-2
+                        metricName: cisco.memory.pool.largest.free
+                        frequency: 15
+                        warningThreshHold: '600'
+                        warningOperator: LESS_THAN_EQUAL
+                        warningRepeatCount: 1
+                        criticalThreshHold: '500'
+                        criticalOperator: LESS_THAN_EQUAL
+                        criticalRepeatCount: 1
+                        raiseAlert: true
+                        availability: true
+                        state: Active
+                    configParameters:
+                      - parameter:
+                          id: 592
+                          name: Port
+                          description: Port number that you want to monitor
+                          type: String
+                  - id: 6736
+                    uniqueId: 6f5efafc-c00e-4406-ba80-de89aaf931b7
+                    name: Testing with gateway Monitors
+                    description: ''
+                    collectorType: Gateway
+                    status: ACTIVE
+                    generation: 2
+                    resourceType: DEVICE
+                    createdDate: '2016-05-24T13:34:34+0000'
+                    updatedDate: '2016-05-24T13:34:34+0000'
+                    monitors:
+                      - name: testing from API
+                        metricName: metric for vmware
+                        frequency: 15
+                        warningOperator: NONE
+                        warningRepeatCount: 1
+                        criticalOperator: NONE
+                        criticalRepeatCount: 0
+                        raiseAlert: false
+                        availability: true
+                        state: Active
+                  - id: 6735
+                    uniqueId: c2996225-0cee-47bc-b347-9f1e98ad4fbc
+                    name: Testing Template with Gateway
+                    description: testing
+                    collectorType: Gateway
+                    status: ACTIVE
+                    generation: 1
+                    resourceType: DEVICE
+                    createdDate: '2016-05-24T13:32:32+0000'
+                    updatedDate: '2016-05-24T13:32:32+0000'
+                    monitors:
+                      - name: EVENTLOGS
+                        frequency: 15
+                        raiseAlert: false
+                        availability: false
+                      - name: PING
+                        frequency: 15
+                        repeatFrequency: 1
+                        repeatCount: 1
+                        warningThreshHold: '900,90%'
+                        criticalThreshHold: '1000,100%!3'
+                        raiseAlert: false
+                        availability: false
+                      - name: PING
+                        frequency: 15
+                        repeatFrequency: 1
+                        repeatCount: 1
+                        warningThreshHold: '900,90%'
+                        criticalThreshHold: '1000,100%!3'
+                        raiseAlert: false
+                        availability: false
+                      - name: WINDOWSCPU
+                        frequency: 15
+                        repeatFrequency: 1
+                        repeatCount: 1
+                        warningThreshHold: '90'
+                        criticalThreshHold: '95'
+                        raiseAlert: false
+                        availability: false
+                      - name: WINDOWSDISK
+                        frequency: 15
+                        repeatFrequency: 1
+                        repeatCount: 1
+                        warningThreshHold: '90'
+                        criticalThreshHold: '95'
+                        raiseAlert: false
+                        availability: false
+                      - name: WINDOWSDISK
+                        frequency: 15
+                        repeatFrequency: 1
+                        repeatCount: 1
+                        warningThreshHold: '90'
+                        criticalThreshHold: '96'
+                        raiseAlert: false
+                        availability: false
+                      - name: WINDOWSDISK
+                        frequency: 15
+                        repeatFrequency: 1
+                        repeatCount: 1
+                        warningThreshHold: '90'
+                        criticalThreshHold: '94'
+                        raiseAlert: false
+                        availability: false
+                      - name: WINDOWSMEMORY
+                        frequency: 15
+                        repeatFrequency: 1
+                        repeatCount: 1
+                        warningThreshHold: '90'
+                        criticalThreshHold: '95'
+                        raiseAlert: false
+                        availability: false
+                      - name: WINDOWSUPTIME
+                        frequency: 15
+                        repeatFrequency: 1
+                        repeatCount: 1
+                        warningThreshHold: '5'
+                        criticalThreshHold: '1'
+                        raiseAlert: false
+                        availability: false
+                  - id: 6706
+                    uniqueId: ELRZM98FIAWNKWQ2XK4QFW9G
+                    name: GATEWAY DEVICE MONITOR TEMPLATE
+                    description: ''
+                    collectorType: OpsRamp Cloud
+                    status: ACTIVE
+                    generation: 1
+                    resourceType: DEVICE
+                    createdDate: '2014-11-18T07:51:14+0000'
+                    updatedDate: '2014-12-01T14:26:09+0000'
+                    monitors:
+                      - name: Agent Status
+                        frequency: 15
+                        repeatFrequency: 1
+                        repeatCount: 1
+                        warningThreshHold: ''
+                        criticalThreshHold: ''
+                        raiseAlert: false
+                        availability: false
+                totalResults: 4
+                orderBy: id
+                pageNo: 1
+                pageSize: 10
+                totalPages: 1
+                nextPage: false
+                nextPageNo: 0
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+        default: id
+      in: query
+      name: sortName
+    - schema:
+        type: string
+      in: query
+      name: queryString
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: tenantId
+    required: true
