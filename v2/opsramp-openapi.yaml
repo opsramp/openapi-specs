@@ -7,6 +7,7 @@ info:
     name: OpsRamp Support
     email: support@opsramp.com
     url: https://www.opsramp.com/about-opsramp/contact-us/
+
 tags:
   - name: agents-gateways
     description: Example description.
@@ -24,15 +25,17 @@ tags:
   - name: resource-management
   - name: tenancy-access-controls
   - name: tickets
+
 servers:
-  - url: "https://api.opsramp.com"
+  - url: https://api.opsramp.com
     description: Partner - All Others
-  - url: "https://{subdomain}.api.opsramp.com"
+  - url: https://{subdomain}.api.opsramp.com
     description: Partner or Client custom branded sub-domain
     variables:
       subdomain:
         default: demo
         description: Custom sub-domain assigned to the client
+
 paths:
   /auth/oauth/token:
     post:

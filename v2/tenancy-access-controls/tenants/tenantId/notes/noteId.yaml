@@ -5,11 +5,7 @@ delete:
     - tenancy-access-controls
   responses:
     '200':
-      description: |-
-        OK
-
-        >## Notes
-        > The response depends on the returned status code.
+      description: OK
 get:
   summary: Get client note
   description: This endpoint is used to retrieve the details of a client note.
