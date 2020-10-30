@@ -38,9 +38,24 @@ paths:
     post:
       summary: Get OAuth2 access token with client credentials
       description: This endpoint is used to generate an access token using client credentials.
-      operationId: first-response-policy-oauth2-access-token-client-creds-get/
       tags:
         - alerts
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: string
+                  description: Client ID (key)
+                client_secret:
+                  type: string
+                  description: Secret Key generated along with token (secret).
+                grant_type:
+                  type: string
+                  description: Credentials of client.
+
       responses:
         '200':
           description: OK
@@ -65,7 +80,7 @@ paths:
                     expires_in: 5999
                     scope: read write
         '400':
-          description: "Bad Request\n\nFor invalid grant_type values.\t"
+          description: Bad Request
           content:
             application/json:
               schema:
@@ -99,27 +114,6 @@ paths:
                   value:
                     error: unauthorized
                     error_description: Bad API credentials
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                client_id:
-                  type: string
-                  description: |
-                    Client ID (key)
-                client_secret:
-                  type: string
-                  description: |
-                    Secret Key generated along with token (secret).
-                grant_type:
-                  type: string
-                  description: |
-                    Credentials of client.
-        description: ''
-      externalDocs:
-        url: 'https://docs.opsramp.com/api/alerts/first-response-policy-oauth2-access-token-client-creds-get/'
   # Agents and Gateways
   /api/v2/applicationservice:
     $ref: './agents-gateways/applicationservice.yaml'
