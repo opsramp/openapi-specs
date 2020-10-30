@@ -789,3 +789,12 @@ paths:
     $ref: './monitoring/tenants/tenantId/monitoring/templates/search.yaml'
   /api/v2/tenants/{tenantId}/resourceMonitors:
     $ref: './monitoring/tenants/tenantId/resourceMonitors.yaml'
+  # Metrics
+  /api/v2/metric/tenants/{tenantId}/rtypes/{rtype}/resources/{resource}/metrics:
+    $ref: './metrics/tenants-tenantId-rtypes-rtype-resources-resource-metrics.yaml'
+  /api/v2/metric/search:
+    $ref: './metrics/search.yaml'
+  /api/v2/metric/tenants/{tenantId}/metrictype:
+    $ref: './metrics/tenants-tenantId-metrictype.yaml'
+  /api/v2/metric/tenants/{tenantId}/metrics/{metric}/metricType:
+    $ref: './metrics/tenants-tenantId-metrics-metric-metricType.yaml'
