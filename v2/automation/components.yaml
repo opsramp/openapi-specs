@@ -1,0 +1,304 @@
+components:
+  schemas:
+    generalInfo:
+      title: generalInfo
+      type: object
+      properties:
+        ipAddresses:
+          type: string
+        hostName:
+          type: string
+        osName:
+          type: string
+        osBuildNumber:
+          type: string
+    resource:
+      title: resource
+      type: object
+      properties:
+        id:
+          type: string
+        generalInfo:
+          $ref: '#/components/schemas/generalInfo'
+        clientUniqueId:
+          type: string
+        type:
+          type: string
+    entities:
+      title: entities
+      type: array
+      items:
+        type: object
+        properties:
+          resource:
+            $ref: '#/components/schemas/resource'
+    pattern:
+      title: pattern
+      type: object
+      properties:
+        type:
+          type: string
+          description: |
+            Recurrence pattern type.
+          enum:
+            - daily
+            - weekly
+            - monthly
+            - never
+            - run once
+        frequency:
+          type: string
+          description: |
+            Days on which the schedule is applied. Frequency is dependent on recurrence pattern type. Example: Provide type as weekly, then frequency is the day on which the job is run.
+          enum:
+            - everyday
+            - every weekday
+            - recurrence
+        repeatType:
+          type: string
+          description: Run the job constantly on specific days.
+          enum:
+            - days
+        weekDays:
+          type: string
+          description: Days on which the job is run.
+          enum:
+            - Sunday
+            - Monday
+            - Tuesday
+            - Wednesday
+            - Thursday
+            - Saturday
+        dayOfMonth:
+          type: string
+          description: Day on which the job is scheduled to run every month. Days range between 1 to 31. Example: Provide dayOfMonth as 4, then the job is run on the 4th day of every month.
+          minLength: 1
+          maxLength: 31
+        weekIndex:
+          type: string
+          description: Week on which the job is run. Example: First Monday.
+          enum:
+            - First
+            - Second
+            - Third
+            - Fourth
+            - Last
+        dayOfIndex:
+          type: string
+          description: Day on which the job is scheduled to run. Example: Provide weekIndex as First and dayOfMonth as Sunday, this indicates that job is run on every month First Sunday.
+          enum:
+            - Sunday
+            - Monday
+            - Tuesday
+            - Wednesday
+            - Thursday
+            - Friday
+            - Saturday
+        repeatFrequency:
+          type: integer
+    schedule:
+      title: schedule
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: date-time
+        pattern:
+          $ref: '#/components/schemas/pattern'
+    approvalType:
+      title: approvalType
+      type: object
+      description: Approval for the job type App Install
+      properties:
+        approvalType:
+          type: integer
+          description: |
+            Approval type required to install the app. Example: Provide 0 as approvalType which indicates app is manually installed.
+          minimum: 0
+          maximum: 1
+        approvalReason:
+          type: string
+          description: |
+            Reason for approval of installing app.
+        alertRequired:
+          type: boolean
+    customScript:
+      title: customScript
+      type: object
+      description: Script ID for the job type Custom Script
+      properties:
+        id:
+          type: string
+          description: |
+            Custom script ID.
+        name:
+          type: string
+        description:
+          type: string
+        platforms:
+          type: array
+          items:
+            type: string
+    configParams:
+      title: configParams
+      type: object
+      description: Parameters to configure for the job type Network Backup Configuration
+      properties:
+        versionsSaved:
+          type: string
+          enum:
+            - ALL_VERSIONS
+            - VERSION_WITH_CHANGES
+          description: |
+            Take Backup of versions saved.
+        backUpTrigger:
+          type: boolean
+          description: |
+            Perform a backup on the receipt of a configuration change SNMP Trap.
+        startupConfigAlert:
+          type: boolean
+          description: |
+            Generate alerts on changes to startup configuration.
+        runConfigAlert:
+          type: boolean
+          description: |
+            Generate alerts on changes to runtime configuration.
+        startUpConfigFilesBackUp:
+          type: boolean
+          description: |
+            Startup configuration file to be backed up.
+        runTimeConfigFilesBackUp:
+          type: boolean
+          description: |
+            Runtime configuration file to be backed up.
+    script:
+      title: script
+      type: object
+      properties:
+        jobType:
+          type: string
+          description: 'Job type. To view job types that OpsRamp supports, see Get Job Types API.'
+          enum:
+            - adCheckList
+            - networkconfigbackup
+            - appinstall
+            - custom
+        userType:
+          $ref: '#/components/schemas/userType'
+        configParams:
+          $ref: '#/components/schemas/configParams'
+        approvalType:
+          $ref: '#/components/schemas/approvalType'
+        customScript:
+          $ref: '#/components/schemas/customScript'
+        parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/parameter'
+    parameter:
+      title: parameter
+      type: object
+      properties:
+        paramId:
+          type: string
+          description: |
+            (Optional) The parameter Id.
+        'value ':
+          type: string
+        name:
+          type: string
+    userType:
+      title: userType
+      type: integer
+      minimum: 1
+      maximum: 2
+      description: |-
+        (Optional) The user type.
+        1- system user,
+        2- Other user
+    rba:
+      title: rba
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        childs:
+          type: array
+          items:
+            $ref: '#/components/schemas/rba'
+    rbaScriptParameter:
+      title: rbaScriptParameter
+      type: object
+      properties:
+        name:
+          type: string
+          description: |
+            Name of parameter.
+        description:
+          type: string
+          description: |
+            Description for parameter.
+        defaultValue:
+          type: string
+          description: |
+            Default Value for the parameter.
+        type:
+          type: string
+          description: |
+            Parameter is mandatory or optional.
+        dataType:
+          type: string
+          description: |
+            Data Type of the parameter.
+          enum:
+            - STRING
+            - INTEGER
+            - PASSWORD
+    rbaScript:
+      title: rbaScript
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        category:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+        platforms:
+          type: array
+          items:
+            type: string
+        parameters:
+          $ref: '#/components/schemas/rbaScriptParameter'
+        executionType:
+          type: string
+        installTimeout:
+          type: integer
+        attachment:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            contentURL:
+              type: string
+        scriptVersion:
+          type: string
+        registryPath:
+          type: string
+        registryValue:
+          type: string
+        processName:
+          type: string
+        serviceName:
+          type: string
