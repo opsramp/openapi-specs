@@ -1,7 +1,6 @@
 get:
   summary: Get schedule maintenance window
   description: This endpoint is used to retrieve the details of a scheduled maintenance window.
-  operationId: schedule-maintenance-schedule-window-get/
   tags:
     - alerts
   requestBody:
@@ -124,8 +123,6 @@ get:
                 pattern:
                   type: monthly
                   dayOfMonth: '02,03'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/schedule-maintenance-schedule-window-get/'
   responses:
     '200':
       description: OK
@@ -358,7 +355,6 @@ post:
     |Asia/Calcutta|Asia/Dacca|Asia/Saigon|
     |Asia/Shanghai|Asia/Tokyo|Australia/Darwin|
     |Australia/Sydney|Pacific/Guadalcanal|Pacific/Auckland|
-  operationId: schedule-maintenance-update-pending-post/
   tags:
     - alerts
   responses:
@@ -519,23 +515,14 @@ post:
                   - key: serviceName
                     operator: CONTAINS
                     value: newTest
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/schedule-maintenance-update-pending-post/'
 delete:
   summary: Delete scheduled maintenance window
   description: This endpoint is used to delete a scheduled maintenance window.
-  operationId: schedule-maintenance-window-delete/
   tags:
     - alerts
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/schedule-maintenance-window-delete/'
   responses:
     '200':
-      description: |-
-        OK
-
-        ## Notes
-        The response depends on the returned status code.
+      description: OK
 parameters:
   - schema:
       type: string

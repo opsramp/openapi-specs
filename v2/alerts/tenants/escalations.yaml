@@ -14,7 +14,6 @@ post:
     - occurrences – Any integer.
     - frequency – Any integer.
     - frequencyType – hours or days or weeks
-  operationId: alert-escalation-policy-create-post/
   tags:
     - alerts
   requestBody:
@@ -567,8 +566,6 @@ post:
                       name: Cloud group
                       type: USERGROUP
     description: ''
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alert-escalation-policy-create-post/'
   responses:
     '200':
       description: OK

@@ -1,7 +1,6 @@
 get:
   summary: Get alert escalation policy
   description: This endpoint is used to retrieve the alert escalation policy attached to an alert.
-  operationId: alert-escalation-policy-by-alertid-get/
   tags:
     - alerts
   responses:
@@ -375,8 +374,6 @@ get:
                     updateIncident:
                       none: true
                     notifyIncident: forEveryUpdate
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alert-escalation-policy-by-alertid-get/'
 parameters:
   - schema:
       type: string

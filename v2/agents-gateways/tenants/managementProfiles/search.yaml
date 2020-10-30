@@ -18,7 +18,6 @@ get:
         2. Color (:) indicates Equals. An example is: key: value.
         3. Space characters must be URL encoded.
     2. Date format must use this format: yyyy-MM-ddTHH: mm: ssZ (GMT).
-  operationId: management-profiles/management-profile-search-get/
   tags:
     - agents-gateways
   responses:
@@ -158,8 +157,6 @@ get:
                 nextPageNo: 0
                 previousPageNo: 0
                 descendingOrder: true
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-search-get/'
   parameters:
     - schema:
         type: string

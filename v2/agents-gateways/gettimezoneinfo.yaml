@@ -1,7 +1,6 @@
 get:
   summary: Get timezone details
   description: This endpoint is used to get timezone information from the gateway.
-  operationId: gateways/gateway-timezone-info-get/
   tags:
     - agents-gateways
   responses:
@@ -12,7 +11,7 @@ get:
           schema:
             type: object
             properties:
-              '"Regions and Corresponding Timezone Information"':
+              'Regions and Corresponding Timezone Information':
                 type: array
                 items:
                   type: string
@@ -24,5 +23,3 @@ get:
                   '(GMT) UK ': London
                   '(GMT+4:00) Armenia, Azerbaijan': Muscat
                   '(GMT+5:00) Pakistan': Karachi
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-timezone-info-get/'

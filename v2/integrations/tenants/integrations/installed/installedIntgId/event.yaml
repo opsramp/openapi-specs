@@ -5,13 +5,12 @@ post:
 
     Events are used for sending certain notifications whenever an action is performed on OpsRamp entities.
 
-    >### Notes
-    >
-    >- Provide API payload in Base64 encoding.
-    >- Integration event for Alert entity is created only using API but can be viewed from the OpsRamp Portal.
+    ### Notes
+    
+    - Provide API payload in Base64 encoding.
+    - Integration event for Alert entity is created only using API but can be viewed from the OpsRamp Portal.
 
-    > Create Event with Alert Entity Type to create an event with alert entity type for work flow events only
-  operationId: integration-events-create-event-post/
+    Create Event with Alert Entity Type to create an event with alert entity type for work flow events only
   tags:
     - integrations
   requestBody:
@@ -89,8 +88,6 @@ post:
               thirdPartyEventType: POST
               payload: ewoJInNlcnZpY2VOYW1lIjoiJGFsZXJ0LnNlcnZpY2VOYW1lIiwKCSJyZXNvdXJjZSI6ewoJCSJpZCI6IiRhbGVydC5yZXNvdXJjZUlkIgoJfSwKCSJzdWJqZWN0IjoiJGFsZXJ0LnN1YmplY3QiLAogICAgICAgICJjdXJyZW50U3RhdGUiOiIkYWxlcnQuY3VycmVudFN0YXRlIiwKCSJhcHAiOiJPUFNSQU1QIgp9
     description: ''
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-events-create-event-post/'
   responses:
     '200':
       description: OK

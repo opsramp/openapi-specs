@@ -1,13 +1,6 @@
 get:
   summary: Get article activity log
-  description: |
-    This endpoint is used to get activity log with provided details of an article.
-
-    ## Sample URLs
-    ```
-    https://{api-url}/api/v2/tenants/client_11/kb/article/KB0000000036/activityLog?pageNo=1&pageSize=20
-    ```
-  operationId: knowledge-base-article-activity-log-get/
+  description: This endpoint is used to get activity log with provided details of an article.
   tags:
     - knowledge-base
   responses:
@@ -213,8 +206,6 @@ get:
                 nextPage: false
                 previousPageNo: 0
                 descendingOrder: true
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-activity-log-get/'
 parameters:
   - schema:
       type: string

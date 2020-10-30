@@ -1,7 +1,6 @@
 post:
   summary: Install integration
-  description: "# Install integrations\nOpsRamp supports the following integrations: cloud, monitoring, collaboration. To install the integration, provide the integration ID in {intgld}.\n### Sample URL\n```\nhttps://{api-url}/api/v2/tenants/client_8/integrations/install/PINGDOM\n```\n## Install integrations with a display name and integration logo\nInstall integrations and customize the display name and logo of the integrations. This applies only for custom and email alert integrations.\n## Install integration with parent inheritance\nInstall an integration by inheriting a parent integration. Configuration details such as notification type, basic URI, and authentication type are inherited by the integration.\n>Only custom integrations support parent integration inheritance.\n\n# Install Collaboration Integrations\nThe following collaboration Integrations are supported:\n\n|Collaboration|ID|\n|-----|-----|\n|Autotask|AUTOTASK|\n|AWS Support\t|AWSSUPPORT|\n|BMC Remedy\t|BMCREMEDY|\n|CA Service Desk\t|CASERVICEDESK|\n|Cherwell\t|CHERWELL|\n|ConnectWise\t|CONNECTWISE|\n|Email Request\t|EMAILREQUEST|\n|Freshservice\t|FRESHSERVICE|\n|JIRA|JIRA|\n|NetEnrich Ticketing System|NETENRICHTICKETINGSYSTEM|\n|PMG|PMG|\n|ServiceNow|SERVICENOW|\n|Slack|SLACK|\n|Solutions Desk|SOLUTIONSDESK|\n|Zendesk|ZENDESK|\n\n## Install Integration with Authentication Details\n### Sample URL\n```\nhttps://{api-url}/api/v2/tenants/client_8/integrations/install/CASERVICEDESK\n```\n## Install Integration with Inbound Configuration Details\n### Sample URL\n```\nhttps://{api-url}/api/v2/tenants/client_8/integrations/install/CASERVICEDESK\n```\n## Install Integration with Outbound Configuration Details\n### Sample URL\n```\nhttps://{api-url}/api/v2/tenants/client_8/integrations/install/CASERVICEDESK\n```\n## Install Integration with Inbound and Outbound Configuration Details\n### Sample URL\n```\nhttps://{api-url}/api/v2/tenants/client_8/integrations/install/CASERVICEDESK\n```"
-  operationId: integration-install-post/
+  description: 'OpsRamp supports the following integrations: cloud, monitoring, collaboration. To install the integration, provide the integration ID in {intgld}.'
   tags:
     - integrations
   responses:
@@ -355,8 +354,6 @@ post:
                   apiKey: 6h67PAAFscVPMwhQZFcshpcqN5b6pyU9
                   apiSecret: asdfgnasinfpaiwerpfawpeojporwjaeprfwpejprwje
     description: ''
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-install-post/'
 parameters:
   - schema:
       type: string

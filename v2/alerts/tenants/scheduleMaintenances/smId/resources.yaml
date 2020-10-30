@@ -8,7 +8,6 @@ post:
     - To search for scheduled maintenance windows on the basis of status, use the search schedule maintenance API.
     - Entities can be added such as resource, device group, location to a schedule maintenance window. For example, all resource types such as Server, Storage, Volumes, RedShift, RDS or Lambda services are now supported.
     - User can add up to 100 resources (device, device group, location) to a schedule maintenance window.
-  operationId: schedule-maintenance-add-resources-post/
   tags:
     - alerts
   requestBody:
@@ -56,15 +55,9 @@ post:
               locations:
                 - name: West Virginia
                 - id: '12'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/schedule-maintenance-add-resources-post/'
   responses:
     '200':
-      description: |-
-        OK
-
-        ## Notes
-        The response depends on the returned status code.
+      description: OK
 delete:
   summary: Remove resources from a schedule maintenance window
   description: |-
@@ -72,16 +65,11 @@ delete:
 
     ## Notes
     - Resources can only be removed from Active, Pending, or Suspended scheduled maintenance windows.
-  operationId: schedule-maintenance-remove-resources-delete/
   tags:
     - alerts
   responses:
     '200':
-      description: |-
-        OK
-
-        ## Notes
-        The response depends on the returned status code.
+      description: OK
   requestBody:
     content:
       application/json:
@@ -127,8 +115,6 @@ delete:
               locations:
                 - name: West Virginia
                 - id: '12'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/schedule-maintenance-remove-resources-delete/'
 parameters:
   - schema:
       type: string

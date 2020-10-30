@@ -1,7 +1,6 @@
 get:
   summary: Get list of KB categories
   description: This endpoint is used to retrieve list of knowledge base categories.
-  operationId: knowledge-base-category-list-get/
   tags:
     - knowledge-base
   responses:
@@ -105,8 +104,6 @@ get:
                 nextPageNo: 2
                 previousPageNo: 0
                 descendingOrder: true
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-category-list-get/'
   parameters:
     - schema:
         type: string

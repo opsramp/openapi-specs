@@ -1,7 +1,6 @@
 post:
   summary: Create on-demand batch export
   description: This endpoint is used to create an on-demand batch export template.
-  operationId: exports-create-post/
   tags:
     - exports
   responses:
@@ -55,8 +54,6 @@ post:
               startDay: TUE
               integrationId: INTG-b0975fb4-e54e-4a80-a65f-883bf1109aa1
               type: Inventory
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/exports/exports-create-post/'
 parameters:
   - schema:
       type: string

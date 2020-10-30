@@ -1,11 +1,8 @@
 post:
   summary: Enable integration
   description: This endpoint is used to enable an installed integration.
-  operationId: integration-enable-post/
   tags:
     - integrations
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-enable-post/'
   responses:
     '200':
       description: OK

@@ -1,7 +1,6 @@
 post:
   summary: Install custom integration
   description: This endpoint is used to install a custom integration.
-  operationId: custom-integration-install-post/
   tags:
     - integrations
   responses:
@@ -76,8 +75,6 @@ post:
                   role:
                     uniqueId: ROLE-4718b729-50cc-6634-42c4-ecd09558389d
     description: ''
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/custom-integration-install-post/'
 parameters:
   - schema:
       type: string

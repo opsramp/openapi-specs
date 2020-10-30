@@ -5,11 +5,8 @@ get:
 
     ## Notes
     For an inference alert, resource name and client ID are provided in the response. For an RCA alert, device ID, Name, and IP address are provided in the response.
-  operationId: alerts-alert-get/
   tags:
     - alerts
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alerts-alert-get/'
   responses:
     '200':
       description: OK

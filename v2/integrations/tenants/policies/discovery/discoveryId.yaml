@@ -1,7 +1,6 @@
 delete:
   summary: Delete discovery profile
   description: This endpoint is used to delete an Azure discovery profile for AWS, Azure, and Google.
-  operationId: cloud-discovery-profile-delete/
   tags:
     - integrations
   responses:
@@ -28,12 +27,9 @@ delete:
                   statusCode: 200
                   reasonPhrase: OK
                 allowedMethods: []
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/cloud-discovery-profile-delete/'
 get:
   summary: Get discovery profile
   description: This endpoint is used to retrieve discovery profile details for AWS, Azure, and Google.
-  operationId: cloud-discovery-profile-get/
   tags:
     - integrations
   responses:
@@ -141,8 +137,6 @@ get:
                   patternType: HOURLY
                   pattern: '2'
                   startTime: '02:00:00'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/cloud-discovery-profile-get/'
 parameters:
   - schema:
       type: string

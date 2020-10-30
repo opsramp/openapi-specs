@@ -6,7 +6,6 @@ get:
     ## Notes
     - A list of event IDs is generated when alerts are created. This list is valid for 30 days.
     - Use the event IDs to search and retrieve alert details.
-  operationId: alerts-alert-by-event-id-get/
   tags:
     - alerts
   responses:
@@ -230,8 +229,6 @@ get:
                   createdTime: '2016-07-24T10:40:47+0000'
                   ticketedBy: 'opsramp_system_user '
                   ticketedTime: '2016-07-24T10:41:47+0000'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alerts-alert-by-event-id-get/'
 parameters:
   - schema:
       type: string

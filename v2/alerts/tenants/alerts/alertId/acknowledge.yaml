@@ -1,17 +1,11 @@
 post:
   summary: Acknowledge alert
   description: The endpoint is used to acknowledge an alert.
-  operationId: alerts-acknowledge-alert-post/
   tags:
     - alerts
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alerts-acknowledge-alert-post/'
   responses:
     '200':
-      description: |-
-        OK
-        ## Notes
-        The response depends on the returned status code.
+      description: OK
 parameters:
   - schema:
       type: string

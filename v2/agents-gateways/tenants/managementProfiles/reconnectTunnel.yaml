@@ -1,7 +1,6 @@
 get:
   summary: Reconnect management profile tunnel
   description: This endpoint is used to reconnect the tunnel.
-  operationId: management-profiles/management-profile-reconnect-tunnel-get/
   tags:
     - agents-gateways
   responses:
@@ -18,8 +17,6 @@ get:
             example-1:
               value:
                 message: Tunnel disconnected successfully on VG G01_Gateway. Please wait for few minutes(up to 5 minutes) to re-establish tunnel connection.
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-reconnect-tunnel-get/'
 parameters:
   - schema:
       type: string

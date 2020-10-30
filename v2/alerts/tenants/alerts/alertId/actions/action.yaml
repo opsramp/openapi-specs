@@ -5,7 +5,6 @@ post:
 
     ## Notes
     When unacknowledge or unsuppress is specified, the alert status becomes either open or ticketed (if there is an incident ID associated with the alert).
-  operationId: alerts-alert-action-post/
   tags:
     - alerts
   requestBody:
@@ -20,14 +19,9 @@ post:
           example-1:
             value:
               description: close a ticket
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alerts-alert-action-post/'
   responses:
     '200':
-      description: |-
-        OK
-        ## Notes
-        The response depends on the returned status code.
+      description: OK
 parameters:
   - schema:
       type: string

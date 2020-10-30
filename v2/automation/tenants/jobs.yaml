@@ -1,7 +1,6 @@
 post:
   summary: Create job
   description: This endpoint is used to create a job.
-  operationId: automation-jobs-create-post/
   tags:
     - automation
   responses:
@@ -286,8 +285,6 @@ post:
                   frequency: recurrence
                   repeatType: Days
                   repeatFrequency: "2"
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/automation-jobs-create-post/"
 parameters:
   - schema:
       type: string

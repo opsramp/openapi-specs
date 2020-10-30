@@ -48,7 +48,6 @@ get:
         - (:) indicates Equals. An example is key: value.
         - (,) indicates multiple values for a key. An example is priority: P0,P1
     - Space characters must be URL-encoded.
-  operationId: alerts-search-alerts-get/
   tags:
     - alerts
   responses:
@@ -403,8 +402,6 @@ get:
                 nextPage: false
                 previousPageNo: 0
                 descendingOrder: true
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alerts-search-alerts-get/'
   parameters:
     - schema:
         type: integer

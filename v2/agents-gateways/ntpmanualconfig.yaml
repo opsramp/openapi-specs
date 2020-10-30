@@ -1,7 +1,6 @@
 post:
   summary: Manually set NTP date and time
   description: This endpoint is used to manually set the NTP date and time on the gateway.
-  operationId: gateways/gateway-ntp-manualconfig-post/
   tags:
     - agents-gateways
   responses:
@@ -48,5 +47,3 @@ post:
               hour: '8'
               min: '15'
               sec: '00'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntp-manualconfig-post/'

@@ -4,18 +4,14 @@ delete:
     This endpoint is used to delete an alert correlation policy.
 
     The response depends on the returned status code.
-  operationId: alert-correlation-policy-delete/
   tags:
     - alerts
   responses:
     '200':
       description: OK
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alert-correlation-policy-delete/'
 get:
   summary: Get alert correlation policy
   description: This endpoint is used to retrieve the details of an alert correlation policy.
-  operationId: alert-correlation-policy-get/
   tags:
     - alerts
   responses:
@@ -308,12 +304,9 @@ get:
                   email: admin@opsramp.com
                 createdTime: '2017-11-27T13:14:07+0000'
                 updatedTime: ''
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alert-correlation-policy-get/'
 post:
   summary: Update alert correlation policy
   description: This endpoint is used to update an alert correlation policy.
-  operationId: alert-correlation-policy-update-post/
   tags:
     - alerts
   responses:
@@ -679,8 +672,6 @@ post:
                 downstreamMetrics:
                   - system.ping.rta
                   - system.memory.utilization
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alert-correlation-policy-update-post/'
 parameters:
   - schema:
       type: string

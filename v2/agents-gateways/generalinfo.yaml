@@ -1,7 +1,6 @@
 get:
   summary: Get gateway information
   description: This endpoint is used to get general information from the gateway. This includes appliance details and network information.
-  operationId: gateways/gateway-generalinfo-get/
   tags:
     - agents-gateways
   responses:
@@ -62,5 +61,3 @@ get:
                   DNS Entries: XXXX
                   Domain Name: XXXX
                   'Host Name ': XXXX
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-generalinfo-get/'

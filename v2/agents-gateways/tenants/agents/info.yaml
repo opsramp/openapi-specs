@@ -4,7 +4,6 @@ get:
     This endpoint is used to download the agent for Linux resources. This is usually followed by an API call to Download Linux Agent.
 
     Returns the JSON payload containing package name, package size, package checksum. The response also contains package S3 bucket URL for downloading the agent directly.
-  operationId: agents/agents-gateways-agent-package-linux-get/
   tags:
     - agents-gateways
   responses:
@@ -36,8 +35,6 @@ get:
                 size: 1000
                 checksum: <checksum>
                 generation: G2
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-package-linux-get/'
   parameters:
     - schema:
         type: string

@@ -1,18 +1,14 @@
 delete:
   summary: Delete roster
   description: This endpoint is used to delete a roster.
-  operationId: rosters-delete/
   tags:
     - alerts
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/rosters-delete/'
   responses:
     '200':
       description: OK
 get:
   summary: Get roster
   description: This endpoint is used to retrieve the details of a roster.
-  operationId: rosters-get/
   tags:
     - alerts
   responses:
@@ -174,12 +170,9 @@ get:
                         description: Team working on network issues.
                         createdTime: '2017-12-17T16:26:55+0000'
                         updatedTime: '2017-12-18T10:48:51+0000'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/rosters-get/'
 post:
   summary: Update roster
   description: This endpoint is used to update the details of a roster.
-  operationId: rosters-update-post/
   tags:
     - alerts
   responses:
@@ -505,8 +498,6 @@ post:
                     - id: USR0000000018
                   userGroups:
                     - uniqueId: USRGRP-37644ff5-7ea5-a3aa-e288-9c2666dc02e4
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/rosters-update-post/'
 parameters:
   - schema:
       type: string

@@ -1,7 +1,6 @@
 get:
   summary: Get job
   description: This endpoint is used to retrieve the job details.
-  operationId: automation-jobs-get-job-get/
   tags:
     - automation
   responses:
@@ -135,30 +134,20 @@ get:
                     startUpConfigFilesBackUp: true
                     runTimeConfigFilesBackUp: true
                 id: cc242a8d-b0b4-430e-a89f-7081bc5e79b0
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/automation-jobs-get-job-get/"
 delete:
   summary: Delete job
   description: |
     This endpoint is used to delete a job.
 
     Partners and service providers have permission to delete a client job.
-  operationId: automation-jobs-job-delete/
   tags:
     - automation
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/automation-jobs-job-delete/"
   responses:
     "200":
-      description: |-
-        OK
-
-        ## Notes
-        The response depends on the returned status code.
+      description: OK
 post:
   summary: Update job
   description: This endpoint is used to update a job.
-  operationId: automation-jobs-update-post/
   tags:
     - automation
   responses:
@@ -438,8 +427,6 @@ post:
                   frequency: recurrence
                   repeatType: Days
                   repeatFrequency: "2"
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/automation-jobs-update-post/"
 parameters:
   - schema:
       type: string

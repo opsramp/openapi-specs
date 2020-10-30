@@ -1,7 +1,6 @@
 post:
   summary: Update urgency
   description: This endpoint is used to update urgency.
-  operationId: urgencies-urgency-update-post/
   tags:
     - tickets
   responses:
@@ -50,8 +49,6 @@ post:
             value:
               name: Network Servers Issue-High
               description: High amount of traffic on network servers in site SJ
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/tickets/urgencies-urgency-update-post/'
 parameters:
   - schema:
       type: string

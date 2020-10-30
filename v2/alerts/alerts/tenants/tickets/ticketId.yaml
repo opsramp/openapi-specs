@@ -1,7 +1,6 @@
 get:
   summary: Get alerts by incident ID
   description: This endpoint is used to retrieve the details of an alert attached to an incident.
-  operationId: alerts-alerts-by-incidents-get/
   tags:
     - alerts
   responses:
@@ -125,8 +124,6 @@ get:
                   eventType: ALERT
                   metric: Windows Process
                   inferenceId: 0
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alerts-alerts-by-incidents-get/'
 parameters:
   - schema:
       type: string

@@ -1,7 +1,6 @@
 get:
   summary: Get NTP details
   description: This endpoint is used to get the NTP details from the gateway.
-  operationId: gateways/gateway-ntp-details-get/
   tags:
     - agents-gateways
   responses:
@@ -27,5 +26,3 @@ get:
                 servers: 'xxx,xxx'
                 NTP Status: 'OFF'
                 time: 'Tue May 19 21:40:08 UTC 2020'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntp-details-get/'

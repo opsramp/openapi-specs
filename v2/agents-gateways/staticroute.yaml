@@ -1,7 +1,6 @@
 post:
   summary: Set static route configuration
   description: This endpoint is used to set the static route configuration on the gateway.
-  operationId: gateways/gateway-staticroute-post/
   tags:
     - agents-gateways
   responses:
@@ -57,5 +56,3 @@ post:
               srouteSubnet: <static route subnet>
               srouteMetric: <static route Metric>
               srouteInterface: <static route Interface>
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-staticroute-post/'

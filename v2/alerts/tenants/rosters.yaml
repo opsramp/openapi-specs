@@ -1,7 +1,6 @@
 post:
   summary: Create rosters
   description: This endpoint is used to create partner-level or client-level rosters.
-  operationId: rosters-create-post/
   tags:
     - alerts
   requestBody:
@@ -199,8 +198,6 @@ post:
                     - id: USR0000000020
                   userGroups:
                     - uniqueId: USRGRP-48965gg5-8fg6-a3aa-e288-0d3667e36f5
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/rosters-create-post/'
   responses:
     '200':
       description: OK

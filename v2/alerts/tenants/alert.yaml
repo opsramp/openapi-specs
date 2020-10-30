@@ -1,6 +1,6 @@
     post:
       summary: Create alert on a resource
-      description: |
+      description: |-
         Create a single alert on a resource.
 
         ## Notes
@@ -16,7 +16,6 @@
         The response depends on the returned status code.
 
         Sample 4 shows how to create a resource and its attributes with an alert:
-      operationId: alerts-create-alert-post/
       tags:
         - alerts
       responses:
@@ -232,8 +231,6 @@
                   alertTime: '2019-07-12T00:00:00+0000'
                   currentState: CRITICAL
         description: Provide either `device` or `resource` object.
-      externalDocs:
-        url: 'https://docs.opsramp.com/api/alerts/alerts-create-alert-post/'
     parameters:
       - schema:
           type: string

@@ -1,7 +1,6 @@
 get:
   summary: Get list of templates
   description: This endpoint is used to get the list of knowledge base templates.
-  operationId: knowledge-base-templates-list-get/
   tags:
     - knowledge-base
   responses:
@@ -255,8 +254,6 @@ get:
                 nextPage: false
                 previousPageNo: 0
                 descendingOrder: true
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-list-get/'
   parameters:
     - schema:
         type: string

@@ -1,7 +1,6 @@
 get:
   summary: Get alert correlation policies of a client
   description: This endpoint is used to fetch alert correlation policies of a client.
-  operationId: alert-correlation-policy-client-get/
   tags:
     - alerts
   responses:
@@ -131,8 +130,6 @@ get:
                 nextPage: false
                 previousPageNo: 0
                 descendingOrder: false
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alert-correlation-policy-client-get/'
   parameters:
     - schema:
         type: integer
@@ -147,7 +144,6 @@ get:
 post:
   summary: Create alert correlation policy
   description: This endpoint is used to create an alert correlation policy.
-  operationId: alert-correlation-policy-create-post/
   tags:
     - alerts
   responses:
@@ -723,8 +719,6 @@ post:
                   - property: alert_metric
                     matchType: Identical
                 primaryAlertSubject: subject-alertMetric policy
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alert-correlation-policy-create-post/'
 parameters:
   - schema:
       type: string

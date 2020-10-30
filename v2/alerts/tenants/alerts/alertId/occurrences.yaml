@@ -41,11 +41,8 @@ get:
     |descendingOrder|Alerts appear in a descending order. The latest triggered alert appears on the top.|
     |startDate|Indicates the alert-triggered time of the first result on the page.|
     |endDate|Indicates the alert-triggered time of the last result on the page. To traverse through the other pages, provide endDate from previous page and provide it as endTime in queryString.|
-  operationId: alerts-search-alert-occurrences-get/
   tags:
     - alerts
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alerts-search-alert-occurrences-get/'
   parameters:
     - schema:
         type: integer

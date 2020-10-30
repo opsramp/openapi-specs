@@ -1,17 +1,14 @@
 get:
   summary: Download agent for Linux
-  description: |
+  description: |-
     This endpoint is used to download the agent for Linux resources.
 
     This usually follows calling the Get Agent Package for Linux API.
 
     1. To capture the agent file: Use the package name from the response headers with the specific header package-name. The content of the file is available in the response body.
     2. Create a file with the same name as provided in the header and then write the contents of the response body into the file.
-  operationId: agents/agents-gateways-agent-linux-download-get/
   tags:
     - agents-gateways
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-linux-download-get/'
   responses:
     '200':
       description: OK

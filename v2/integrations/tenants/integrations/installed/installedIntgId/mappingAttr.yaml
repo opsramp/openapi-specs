@@ -2,8 +2,7 @@ post:
   summary: Create or update installed integration mapping
   description: |
     This endpoint is used to create or update the mapping attributes of an installed integration.
-    >This attribute mapping is not applicable for email integrations.
-  operationId: integration-create-update-installed-mapping-post/
+    This attribute mapping is not applicable for email integrations.
   tags:
     - integrations
   requestBody:
@@ -89,8 +88,6 @@ post:
                         thirdPartyAttrValue: V. Important
                       - attrValue: Very Low
                         thirdPartyAttrValue: Low
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-create-update-installed-mapping-post/'
   responses:
     '200':
       description: OK
@@ -176,7 +173,6 @@ post:
 get:
   summary: Get integration mappings
   description: This endpoint is used to retrieve the integration mapping details of an installed integration.
-  operationId: integration-mappings-get/
   tags:
     - integrations
   responses:
@@ -258,8 +254,6 @@ get:
                   attrValues:
                     - attrValue: Closed
                       thirdPartyAttrValue: Completed
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-mappings-get/'
 parameters:
   - schema:
       type: string

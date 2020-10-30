@@ -1,7 +1,6 @@
 get:
   summary: Get alerts by an alert ID
   description: This endpoint is used to retrieve the details of an alert by alert ID.
-  operationId: alerts-alerts-by-alert-id-get/
   tags:
     - alerts
   responses:
@@ -125,8 +124,6 @@ get:
                   eventType: ALERT
                   metric: Disk
                   inferenceId: 0
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alerts-alerts-by-alert-id-get/'
 parameters:
   - schema:
       type: string

@@ -4,11 +4,8 @@ get:
     This endpoint is used to fetch the list of jobs defined by a tenant.
 
     This API can be used to fetch the paginated list of the scheduled jobs of a partner or client.
-  operationId: automation-jobs-search-jobs-get/
   tags:
     - automation
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/automation-jobs-search-jobs-get/"
   parameters:
     - schema:
         type: integer

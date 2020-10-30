@@ -1,11 +1,8 @@
 get:
   summary: Download article attachment (comments)
   description: This endpoint is used to download any attachment (comments) of an article.
-  operationId: knowledge-base-article-attachment-comments-get/
   tags:
     - knowledge-base
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-attachment-comments-get/'
   responses:
     '200':
       description: OK

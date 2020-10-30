@@ -9,11 +9,8 @@ get:
     - Service Request
     - Problem
     - Task
-  operationId: integration-events-placeholders-event-get/
   tags:
     - integrations
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-events-placeholders-event-get/'
   responses:
     '200':
       description: OK

@@ -1,11 +1,8 @@
 get:
   summary: Get resources of a schedule maintenance window
   description: This endpoint is used to retrieve the list of devices (or device groups or sites) of a scheduled maintenance window.
-  operationId: schedule-maintenance-resources-get/
   tags:
     - alerts
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/schedule-maintenance-resources-get/'
   parameters:
     - schema:
         type: string

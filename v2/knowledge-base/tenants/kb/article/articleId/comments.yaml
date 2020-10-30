@@ -1,7 +1,6 @@
 get:
   summary: Get list of comments
   description: This endpoint is used to get list of comments of an article.
-  operationId: knowledge-base-article-list-comments-get/
   tags:
     - knowledge-base
   responses:
@@ -86,8 +85,6 @@ get:
                     lastName: ' '
                     firstName: OpsRamp API User
                     email: john@opsramp.com
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-list-comments-get/'
 parameters:
   - schema:
       type: string

@@ -1,7 +1,6 @@
 post:
   summary: Status and restart NGINX service
   description: This endpoint is used to get the NGINX service status and to restart the NGINX service on the gateway.
-  operationId: gateways/gateway-nginx-service-post/
   tags:
     - agents-gateways
   responses:
@@ -36,5 +35,3 @@ post:
           example-1:
             value:
               action: status
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-nginx-service-post/'

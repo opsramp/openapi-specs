@@ -1,7 +1,6 @@
 post:
   summary: Restart network service
   description: This endpoint is used to restart the network service on the gateway.
-  operationId: gateways/gateway-restart-network-post/
   tags:
     - agents-gateways
   responses:
@@ -18,5 +17,3 @@ post:
             example-1:
               value:
                 Success: Network service restarted successfully.
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-restart-network-post/'

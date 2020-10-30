@@ -4,7 +4,6 @@ get:
     This endpoint is used to download the agent for Windows resources.
 
     This returns the JSON payload containing package name, package size, package checksum, and the package S3 bucket URL to directly download the agent.
-  operationId: agents/agents-gateways-agent-windows-download-get/
   tags:
     - agents-gateways
   responses:
@@ -36,8 +35,6 @@ get:
                 size: 1000
                 checksum: <checksum>
                 generation: G2
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/agents/agents-gateways-agent-windows-download-get/'
 parameters:
   - schema:
       type: string

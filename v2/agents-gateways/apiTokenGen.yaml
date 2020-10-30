@@ -7,7 +7,6 @@ post:
 
     - Register the gateway.
     - Use all gateway-related activities.
-  operationId: gateways/gateway-generate-access-token-post/
   tags:
     - agents-gateways
   responses:
@@ -27,5 +26,3 @@ post:
               value:
                 token: 4879423b58e637d140b77af3aeb09b53f1a4ed60
                 expires_in: '3599.965947'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-generate-access-token-post/'

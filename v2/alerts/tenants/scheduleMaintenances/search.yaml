@@ -28,11 +28,8 @@ get:
     |startUpdationDate|Filter schedule maintenance windows updated within a date range. Provide from update date.<br>Example: 2016-07-24T06:48:40 0000|
     |endUpdationDate|Filter schedule maintenance windows updated within a date range. Provide to update date.<br>Example: 2016-07-26T06:48:40 0000|
     |status|Filter with scheduled maintenance window status. For example, to retrieve all scheduled maintenance windows that are completed, provide status: Completed in the query string.<br>Supported statuses: Active, Pending, Suspended, and Completed.|
-  operationId: schedule-maintenance-search-window-get/
   tags:
     - alerts
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/schedule-maintenance-search-window-get/'
   parameters:
     - schema:
         type: integer

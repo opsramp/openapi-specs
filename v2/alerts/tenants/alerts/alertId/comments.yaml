@@ -1,11 +1,8 @@
 get:
   summary: Get alert comments
   description: This endpoint is used to retrieve the comments on an alert.
-  operationId: alerts-alert-comments-get/
   tags:
     - alerts
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alerts-alert-comments-get/'
   responses:
     '200':
       description: OK

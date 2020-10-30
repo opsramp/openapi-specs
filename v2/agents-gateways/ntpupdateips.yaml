@@ -1,7 +1,6 @@
 post:
   summary: Set NTP servers
   description: This endpoint is used to update the NTP server IP addresses on the gateway.
-  operationId: gateways/gateway-ntp-servicer-ips-post/
   tags:
     - agents-gateways
   responses:
@@ -34,5 +33,3 @@ post:
           example-1:
             value:
               ntpArray: '192.168.xx.xx,172.26.xx.xx'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-ntp-servicer-ips-post/'

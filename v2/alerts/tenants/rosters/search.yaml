@@ -14,7 +14,6 @@ get:
     To differentiate between partner-level and client-level rosters:
     - Client level roster: If `client` and client details are provided.
     - Partner-level roster: If `allClients: true` is provided.
-  operationId: rosters-search-get/
   responses:
     '200':
       description: OK
@@ -151,8 +150,6 @@ get:
                 nextPage: false
                 previousPageNo: 0
                 descendingOrder: false
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/rosters-search-get/'
   parameters:
     - schema:
         type: integer

@@ -4,11 +4,8 @@ delete:
     This endpoint is used to delete an RBA category.
 
     Categories are only deleted when no scripts exist in that category (or related child categories).
-  operationId: rba-categories-delete/
   tags:
     - automation
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/rba-categories-delete/"
   responses:
     "200":
       description: OK

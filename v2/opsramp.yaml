@@ -55,7 +55,6 @@ paths:
                 grant_type:
                   type: string
                   description: Credentials of client.
-
       responses:
         '200':
           description: OK
@@ -96,10 +95,7 @@ paths:
                     error: unsupported_grant_type
                     error_description: 'Unsupported grant type: user_password'
         '401':
-          description: |-
-            Unauthorized
-
-            For invalid/key combinations.
+          description: Unauthorized.
           content:
             application/json:
               schema:

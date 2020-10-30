@@ -5,7 +5,6 @@ post:
     An access token must be generated to use this API.
 
     Supported services are network, squid, postgresql, vprobe, and ntp.
-  operationId: gateways/gateway-application-service-post/
   tags:
     - agents-gateways
   responses:
@@ -53,5 +52,3 @@ post:
               service: squid
               action: start
     description: ''
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-application-service-post/'

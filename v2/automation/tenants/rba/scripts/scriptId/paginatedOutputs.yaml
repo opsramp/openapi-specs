@@ -1,7 +1,6 @@
 get:
   summary: Get output logs
   description: This endpoint is used to retrieve paginated output logs of a script.
-  operationId: rba-scripts-output-logs-get/
   tags:
     - automation
   responses:
@@ -132,8 +131,6 @@ get:
                 nextPage: false
                 previousPageNo: 0
                 descendingOrder: true
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/rba-scripts-output-logs-get/"
 parameters:
   - schema:
       type: string

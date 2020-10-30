@@ -1,13 +1,6 @@
 post:
   summary: Update template
-  description: |
-    This endpoint is used to update a knowledge base template.
-
-    ## Sample URLs
-    ```
-    https://api.opsramp.com//api/v2//tenants/client_11/kb/article
-    ```
-  operationId: knowledge-base-templates-template-update-post/
+  description: This endpoint is used to update a knowledge base template.
   tags:
     - knowledge-base
   responses:
@@ -64,8 +57,6 @@ post:
             value:
               subject: Updated the Template
               content: Updated the Template Content Changes
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-template-update-post/'
 parameters:
   - schema:
       type: string

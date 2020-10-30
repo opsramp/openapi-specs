@@ -1,7 +1,6 @@
 post:
   summary: Create RBA category
   description: This endpoint is used to create an RBA category.
-  operationId: rba-categories-create-post/
   tags:
     - automation
   responses:
@@ -29,15 +28,13 @@ post:
           properties:
             name:
               type: string
-              description: |
-                Name of the category
+              description: Name of the category
             parent:
               type: object
               properties:
                 id:
                   type: integer
-                  description: |
-                    (Optional) Specify the parent ID of the category to create a subcategory.
+                  description: (Optional) Specify the parent ID of the category to create a subcategory.
           required:
             - name
         examples:
@@ -46,12 +43,9 @@ post:
               name: CLIENT-Category
               parent:
                 id: 27
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/rba-categories-create-post/"
 get:
   summary: Get RBA categories
   description: This endpoint is used to retrieve list of RBA categories.
-  operationId: rba-categories-get/
   tags:
     - automation
   responses:
@@ -96,12 +90,9 @@ get:
                       name: MSP-Category
                 - id: 13
                   name: Test Global Category
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/rba-categories-get/"
 put:
   summary: Update an RBA category
   description: This endpoint is used to update an RBA category.
-  operationId: rba-categories-update-put/
   tags:
     - automation
   responses:
@@ -141,8 +132,6 @@ put:
             value:
               id: 22
               name: CLIENT-Category_UpdatedName
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/rba-categories-update-put/"
 parameters:
   - schema:
       type: string

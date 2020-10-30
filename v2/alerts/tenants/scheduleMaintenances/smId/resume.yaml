@@ -4,18 +4,11 @@ post:
     This endpoint is used to activate a user.
 
     Only suspended schedule maintenance windows can be resumed.
-  operationId: schedule-maintenance-resume-window-post/
   tags:
     - alerts
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/schedule-maintenance-resume-window-post/'
   responses:
     '200':
-      description: |-
-        OK
-
-        ## Notes
-        The response depends on the returned status code.
+      description: OK
 parameters:
   - schema:
       type: string

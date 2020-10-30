@@ -1,7 +1,6 @@
 post:
   summary: Create or update installed integration base notifier
   description: This endpoint is used to create or update an installed integration base notifier.
-  operationId: integration-create-update-installed-notifier-post/
   tags:
     - integrations
   responses:
@@ -90,8 +89,6 @@ post:
               resourceAuthHeaders:
                 - key: accept
                   value: $jwtToken
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-create-update-installed-notifier-post/'
 parameters:
   - schema:
       type: string

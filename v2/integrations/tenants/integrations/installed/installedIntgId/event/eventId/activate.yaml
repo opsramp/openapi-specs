@@ -1,18 +1,11 @@
 post:
   summary: Activate integration event
   description: This endpoint is used to activate an integration event.
-  operationId: integration-events-activate-event-post/
   tags:
     - integrations
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-events-activate-event-post/'
   responses:
     '200':
-      description: |-
-        OK
-
-        ## Notes
-        The response depends on the returned status code.
+      description: OK
 parameters:
   - schema:
       type: string

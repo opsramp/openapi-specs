@@ -1,9 +1,8 @@
 post:
-  description: |
+  description: |-
     This endpoint is used to configure the external proxy connection on the gateway.
 
     An access token must be generated to use this API.
-  operationId: gateways/gateway-externalproxy-post/
   tags:
     - agents-gateways
   responses:
@@ -57,7 +56,5 @@ post:
               proxy_usr: <proxyuser>
               proxy_pwd: <proxypassword>
     description: ''
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-externalproxy-post/'
   summary: Set external proxy connection
   parameters: []

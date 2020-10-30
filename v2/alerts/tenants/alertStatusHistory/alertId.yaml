@@ -1,11 +1,8 @@
 get:
   summary: Alert status history
   description: This endpoint retrieves an alert’s status history.
-  operationId: alerts-status-history-get/
   tags:
     - alerts
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alerts-status-history-get/'
   responses:
     '200':
       description: OK

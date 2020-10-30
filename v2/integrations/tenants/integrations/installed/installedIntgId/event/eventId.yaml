@@ -1,18 +1,14 @@
 delete:
   summary: Delete integration event
   description: This endpoint is used to delete an integration event.
-  operationId: integration-events-event-delete/
   tags:
     - integrations
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-events-event-delete/'
   responses:
     '200':
       description: OK
 post:
   summary: Update integration event
   description: This endpoint is used to update an integration event.
-  operationId: integration-events-update-event-post/
   tags:
     - integrations
   requestBody:
@@ -53,8 +49,6 @@ post:
                   value: application/json
               thirdPartyEventType: POST
               payload: ew0KInN1YmplY3QiOiIkaW5jaWRlbnQuc3ViamVjdCIsDQoiZGVzY3JpcHRpb24iOiIkaW5jaWRlbnQuaW1wYWN0IiwNCiJwcmlvcml0eSI6IiRpbmNpZGVudC5wcmlvcml0eS5uYW1lIg0KInN0YXV0cyI6ImhpZ2giDQp9
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-events-update-event-post/'
   responses:
     '200':
       description: OK
@@ -97,11 +91,8 @@ post:
 get:
   summary: Get integration event
   description: This endpoint is used to retrieve the details of an integrated event.
-  operationId: integration-events-integration-event-get/
   tags:
     - integrations
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-events-integration-event-get/'
   responses:
     '200':
       description: OK

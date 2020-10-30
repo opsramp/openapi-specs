@@ -1,7 +1,6 @@
 get:
   summary: Get script
   description: This endpoint is used to retrieve details of the script.
-  operationId: rba-scripts-script-get/
   tags:
     - automation
   responses:
@@ -154,8 +153,6 @@ get:
                   registryValue: "dword:00000001"
                   processName: cmd.exe
                   serviceName: OpsRampAgent
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/rba-scripts-script-get/"
 post:
   summary: Update script
   description: |-
@@ -163,7 +160,6 @@ post:
 
     Attachment files must be converted to byte stream and base64-encoded. Always include a name and file.
     To retrieve the list of available categories, invoke the Get Categories API.
-  operationId: rba-scripts-update-post/
   tags:
     - automation
   responses:
@@ -285,8 +281,6 @@ post:
               attachment:
                 name: apache-restart.sh
                 file: UkVTVEFSVD0iL3NiaW4vc2VydmljZSBodHRwZCByZXN0YXJ0Ig0KUEdSRVA9Ii91c3IvYmluL3BncmVwIg0KSFRUUEQ9Imh0dHBkIg0KJFBHUkVQICR7SFRUUER9DQppZiBbICQ/IC1uZSAwIF0NCnRoZW4NCiAkUkVTVEFSVA0KZmk=
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/rba-scripts-update-post/"
 parameters:
   - schema:
       type: string

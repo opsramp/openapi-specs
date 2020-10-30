@@ -1,7 +1,6 @@
 post:
   summary: Create template
   description: This endpoint is used to create a knowledge base template.
-  operationId: knowledge-base-templates-template-create-post/
   tags:
     - knowledge-base
   responses:
@@ -53,8 +52,6 @@ post:
                 id: KB0000000002
                 name: Client
               state: PUBLISHED
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-template-create-post/'
 parameters:
   - schema:
       type: string

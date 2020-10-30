@@ -1,11 +1,8 @@
 post:
   summary: Disable integration
   description: This endpoint is used to disable an installed integration and will temporarily disable its services.
-  operationId: integration-disable-post/
   tags:
     - integrations
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-disable-post/'
   responses:
     '200':
       description: OK

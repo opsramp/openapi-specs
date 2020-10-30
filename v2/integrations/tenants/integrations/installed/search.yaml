@@ -8,7 +8,6 @@ get:
     >- (+) represents the next field and must be URL-encoded.
     >- (:) represents equals. An example is key : value.
     >- Space characters must be URL-encoded.
-  operationId: integration-search-installed-get/
   tags:
     - integrations
   responses:
@@ -195,8 +194,6 @@ get:
                 nextPage: false
                 previousPageNo: 0
                 descendingOrder: false
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-search-installed-get/'
   parameters:
     - schema:
         type: integer

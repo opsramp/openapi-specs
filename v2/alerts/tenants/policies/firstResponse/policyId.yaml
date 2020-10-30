@@ -1,18 +1,14 @@
 delete:
   summary: Delete first response policy
   description: Delete first response policy
-  operationId: first-response-policy-delete/
   tags:
     - alerts
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/first-response-policy-delete/'
   responses:
     '200':
       description: OK
 get:
   summary: Get first response policy
   description: This endpoint is used to view details of the First Response Policy.
-  operationId: first-response-policy-get/
   tags:
     - alerts
   responses:
@@ -112,12 +108,9 @@ get:
                   email: opsAdmin@opsramp.com
                 createdTime: '2019-02-28T09:25:56+0000'
                 updatedTime: ''
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/first-response-policy-get/'
 post:
   summary: Update first response policy
   description: This endpoint is used to update the First Response Policy.
-  operationId: first-response-policy-update-post/
   tags:
     - alerts
   responses:
@@ -349,8 +342,6 @@ post:
                 autoSnooze: true
                 continuousLearning: false
                 trainingFileId: ml_alert_suppression_training
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/first-response-policy-update-post/'
 parameters:
   - schema:
       type: string

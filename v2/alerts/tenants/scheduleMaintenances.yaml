@@ -1,7 +1,6 @@
 post:
   summary: Create schedule
   description: This endpoint is used to create a daily recurring schedule.
-  operationId: schedule-maintenance-create-daily-post/
   tags:
     - alerts
   requestBody:
@@ -287,8 +286,6 @@ post:
                 pattern:
                   type: daily
                   dayFrequency: every weekday
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/schedule-maintenance-create-daily-post/'
   responses:
     '200':
       description: OK

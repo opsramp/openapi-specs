@@ -1,11 +1,8 @@
 delete:
   summary: Delete template
   description: This endpoint is used to delete a knowledge base template.
-  operationId: knowledge-base-templates-delete/
   tags:
     - knowledge-base
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-delete/'
   responses:
     '200':
       description: OK

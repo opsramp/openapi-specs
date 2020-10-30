@@ -1,18 +1,14 @@
 delete:
   summary: Delete alert escalation policy
   description: This endpoint is used to delete an alert escalation policy.
-  operationId: alert-escalation-policy-delete/
   tags:
     - alerts
   responses:
     '200':
       description: OK
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alert-escalation-policy-delete/'
 get:
   summary: Get alert escalation details by ID
   description: This endpoint is used to retrieve the alert escalation details.
-  operationId: alert-escalation-policy-get/
   tags:
     - alerts
   responses:
@@ -347,8 +343,6 @@ get:
                             description: ''
                           priority: High
                     notifyIncident: forEveryUpdate
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alert-escalation-policy-get/'
   parameters:
     - schema:
         type: string
@@ -446,7 +440,6 @@ post:
     - Update Incident
 
     No further level of escalation can be added as the escalation will end when an incident is created from the alert.
-  operationId: alert-escalation-policy-update-post/
   tags:
     - alerts
   responses:
@@ -1324,8 +1317,6 @@ post:
                     - id: ES-d16473ee-29de-1cf2-4983-86307733e34c
                       name: Test roster
                       type: ROSTER
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alert-escalation-policy-update-post/'
 parameters:
   - schema:
       type: string

@@ -1,18 +1,14 @@
 delete:
   summary: Delete management profile
   description: This endpoint is used to delete a management profile.
-  operationId: management-profiles/management-profile-delete/
   tags:
     - agents-gateways
   responses:
     '200':
       description: OK
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-delete/'
 get:
   summary: Get management profile
   description: This endpoint is used to retrieve the details of a management profile.
-  operationId: management-profiles/management-profile-get/
   tags:
     - agents-gateways
   responses:
@@ -97,12 +93,9 @@ get:
                 tunnelType: SSHD
                 registered: true
                 uuId: d004de59-3e72-4c9a-82d7-df3f27f5a7aa
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-get/'
 post:
   summary: Update management profile
   description: This endpoint is used to update a management profile.
-  operationId: management-profiles/management-profile-update-post/
   tags:
     - agents-gateways
   responses:
@@ -209,8 +202,6 @@ post:
               name: LB01 Gateway Profile
               description: Gateway Management Profile
               type: Gateway
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-update-post/'
 parameters:
   - schema:
       type: string

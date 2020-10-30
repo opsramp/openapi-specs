@@ -23,7 +23,7 @@ get:
                   purchaseDate: '2015-01-15T00:00:00+0000'
                   warrantyExpireDate: '2015-01-20T00:00:00+0000'
                   deviceId: f4a82c4a-8b65-4e7d-a57c-2e8a1aef14ff
-  externalDocs:    parameters:
+parameters:
   - schema:
       type: string
     in: path

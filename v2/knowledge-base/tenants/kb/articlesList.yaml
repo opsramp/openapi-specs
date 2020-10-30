@@ -1,7 +1,6 @@
 get:
   summary: Get list of articles
   description: This endpoint is used to get list of articles.
-  operationId: knowledge-base-article-article-lists-get/
   tags:
     - knowledge-base
   responses:
@@ -634,8 +633,6 @@ get:
                 type: integer
               descendingOrder:
                 type: boolean
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-article-lists-get/'
   parameters:
     - schema:
         type: integer

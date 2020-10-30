@@ -1,7 +1,6 @@
     get:
       summary: Get alert view by view ID
       description: This endpoint is used to retrieve an alert view of a user.
-      operationId: alerts-alert-views-single-get/
       tags:
         - alerts
       responses:
@@ -117,8 +116,6 @@
                     states:
                       - Critical
                     availability: all
-      externalDocs:
-        url: 'https://docs.opsramp.com/api/alerts/alerts-alert-views-single-get/'
     parameters:
       - schema:
           type: string

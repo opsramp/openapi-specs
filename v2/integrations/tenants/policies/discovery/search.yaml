@@ -1,7 +1,6 @@
 get:
   summary: Search discovery profile
   description: This endpoint is used to use a discovery profile name to search for a discovery profile in AWS, Azure, and Google.
-  operationId: cloud-discovery-profile-search-get/
   tags:
     - integrations
   responses:
@@ -112,8 +111,6 @@ get:
                     patternType: MINUTES
                     pattern: '30'
                     startTime: '00:30:00'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/cloud-discovery-profile-search-get/'
   parameters:
     - schema:
         type: string

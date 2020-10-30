@@ -28,11 +28,8 @@ get:
 
     Client-level policy:
     - `"uniqueId"` in scope is specified as `"client_id"`.
-  operationId: alert-escalation-policy-search-get/
   tags:
     - alerts
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alert-escalation-policy-search-get/'
   parameters:
     - schema:
         type: integer

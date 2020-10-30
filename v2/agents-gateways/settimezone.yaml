@@ -1,7 +1,6 @@
 post:
   summary: Set timezone
   description: This endpoint is used to set the timezone on the gateway.
-  operationId: gateways/gateway-timezone-post/
   tags:
     - agents-gateways
   responses:
@@ -23,5 +22,3 @@ post:
           example-1:
             value:
               timezone: UTC
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-timezone-post/'

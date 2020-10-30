@@ -4,8 +4,7 @@ post:
     ## Install Email Alert Integration
     OpsRamp processes all incoming Alert emails. Apply user-defined rules to create, acknowledge, and close alerts incoming emails.
     
-    > Convert image to Base64 and enter the code in file field as shown in the following sample request.
-  operationId: integration-install-email-alert-post/
+    Convert image to Base64 and enter the code in file field as shown in the following sample request.
   tags:
     - integrations
   responses:
@@ -85,8 +84,6 @@ post:
                         startValue: value1
                         endValue: value2
     description: ''
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-install-post/'
 parameters:
   - schema:
       type: string

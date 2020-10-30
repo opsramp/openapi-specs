@@ -1,7 +1,6 @@
 get:
   summary: Rescan discovery profile
   description: This endpoint is used to rescan a discovery profile for AWS, Azure, and Google.
-  operationId: cloud-discovery-profile-rescan-get/
   tags:
     - integrations
   responses:
@@ -28,8 +27,6 @@ get:
                 stringHeaders: {}
                 headers: {}
                 length: -1
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/cloud-discovery-profile-rescan-get/'
 parameters:
   - schema:
       type: string

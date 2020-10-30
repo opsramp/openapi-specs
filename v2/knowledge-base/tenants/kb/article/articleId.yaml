@@ -1,7 +1,6 @@
 get:
   summary: Get article
   description: This endpoint is used to get the knowledge base article.
-  operationId: knowledge-base-article-get/
   tags:
     - knowledge-base
   responses:
@@ -98,12 +97,9 @@ get:
                   - id: KB0000000035
                     subject: All Data
                     sharedArticle: false
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-get/'
 post:
   summary: Update article
   description: This endpoint is used to update a knowledge base article.
-  operationId: knowledge-base-article-update-post/
   tags:
     - knowledge-base
   responses:
@@ -213,8 +209,6 @@ post:
               attachments:
                 - name: queries.txt
                   file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-update-post/'
 parameters:
   - schema:
       type: string

@@ -1,7 +1,6 @@
 get:
   summary: Get integration mappable properties
   description: This endpoint is used to retrieve the integration mappable properties for an entity.
-  operationId: integration-mappable-properties-get/
   tags:
     - integrations
   responses:
@@ -111,8 +110,6 @@ get:
                 nextPage: true
                 nextPageNo: 2
                 descendingOrder: false
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-mappable-properties-get/'
 parameters:
   - schema:
       type: string

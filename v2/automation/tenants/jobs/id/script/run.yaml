@@ -6,19 +6,11 @@ post:
     Define scripts as code that can run commonly-run tasks.
 
     This API can be used to run an existing job script.
-  operationId: automation-jobs-run-script-post/
   tags:
     - automation
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/automation-jobs-run-script-post/"
   responses:
     "200":
-      description: |-
-        OK
-
-
-        ## Notes
-        The response depends on the returned status code.
+      description: OK
 parameters:
   - schema:
       type: string

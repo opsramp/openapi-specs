@@ -1,7 +1,6 @@
 get:
   summary: Get sub-category
   description: This endpoint is used to retrieve the list of sub-categories of a knowledge base category.
-  operationId: knowledge-base-category-subcategory-get/
   tags:
     - knowledge-base
   responses:
@@ -33,8 +32,6 @@ get:
                   name: 'test '
                   path: test >>category 1 >> category 2
                   state: ACTIVE
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-category-subcategory-get/'
 parameters:
   - schema:
       type: string

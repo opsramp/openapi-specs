@@ -2,7 +2,6 @@ get:
   summary: Get template
   description: |-
     This endpoint is used to get the template details of a knowledge base article.
-  operationId: knowledge-base-templates-template-get/
   tags:
     - knowledge-base
   responses:
@@ -41,8 +40,6 @@ get:
                   path: Client
                   state: ACTIVE
                 state: PUBLISHED
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-templates-template-get-post/'
 parameters:
   - schema:
       type: string

@@ -7,16 +7,11 @@ post:
     - Only active schedule maintenance windows can be suspended.
     - Dates in date range consider date as yyyy-MM-dd and ignore the time HH: mm: ss.
     - Send dates (start date & end date) in GMT format.
-  operationId: schedule-maintenance-suspend-window-post/
   tags:
     - alerts
   responses:
     '200':
-      description: |-
-        OK
-
-        ## Notes
-        The response depends on the returned status code.
+      description: OK
   requestBody:
     content:
       application/json:
@@ -43,8 +38,6 @@ post:
               pattern: range
               startDate: '2016-06-18T00:00:00+0000'
               endDate: '2016-06-19T00:00:00+0000'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/schedule-maintenance-suspend-window-post/'
 parameters:
   - schema:
       type: string

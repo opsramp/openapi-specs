@@ -5,14 +5,11 @@ post:
 
     ## Notes
     The response depends on the returned status code.
-  operationId: alert-escalation-policy-disable-post/
   tags:
     - alerts
   responses:
     '200':
       description: OK
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alert-escalation-policy-disable-post/'
 parameters:
   - schema:
       type: string

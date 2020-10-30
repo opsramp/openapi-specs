@@ -2,16 +2,15 @@ post:
   summary: Install integration
   description: |-
     # Cloud integrations
-    >## Notes
-    >OpsRamp supports the following cloud integrations:
-    >- AWS
-    >- AZURE
-    >- GOOGLE
+    ## Notes
+    OpsRamp supports the following cloud integrations:
+    - AWS
+    - AZURE
+    - GOOGLE
 
     These endpoint IDs are used to install third-party integrations.
 
-    > These are not supported for deployment, email requests, and other category integrations.
-  operationId: integration-install-google-post/
+    These are not supported for deployment, email requests, and other category integrations.
   tags:
     - integrations
   responses:
@@ -48,8 +47,6 @@ post:
                 ServiceAccountManagementCertificate: '*********'
                 ManagementCertificatePassPhrase: '*********'
     description: ''
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-install-post/'
 parameters:
   - schema:
       type: string

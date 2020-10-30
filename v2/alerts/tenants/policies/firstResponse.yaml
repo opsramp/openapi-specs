@@ -1,7 +1,6 @@
 get:
   summary: Get first response policies of client
   description: This endpoint is used to view details of the first response policy.
-  operationId: first-response-policy-client-get/
   tags:
     - alerts
   responses:
@@ -65,8 +64,6 @@ get:
                 nextPage: false
                 previousPageNo: 0
                 descendingOrder: false
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/first-response-policy-client-get/'
   parameters:
     - schema:
         type: integer
@@ -79,7 +76,6 @@ get:
 post:
   summary: Create the first response policy
   description: This endpoint is used to create First Response Policy.
-  operationId: first-response-policy-create-post/
   tags:
     - alerts
   responses:
@@ -306,8 +302,6 @@ post:
                 continuousLearning: true
                 trainingFileId: ml_alert_suppression_training
     description: ''
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/first-response-policy-create-post/'
 parameters:
   - schema:
       type: string

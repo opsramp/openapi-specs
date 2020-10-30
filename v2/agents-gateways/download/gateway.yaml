@@ -1,6 +1,5 @@
 get:
   description: This API is used to download gateway files from the OpsRamp download server.
-  operationId: gateways/gateway-download/
   tags:
     - agents-gateways
   responses:
@@ -20,8 +19,6 @@ get:
               value:
                 expires_in: 900
                 url: 'https://dl01.opsramp.com/itop/download/gateway/d3873201-c303-4846-8ce4-b9fd4cf1306b'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/gateways/gateway-download/'
   summary: Download gateway
 parameters:
   - schema:

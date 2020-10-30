@@ -6,7 +6,6 @@ post:
     ## Notes
     - Attachment files must be converted to byte stream and base64-encoded. Always include a name and file.
     - To retrieve the list of available categories, invoke the Get Categories API.
-  operationId: rba-scripts-create-post/
   tags:
     - automation
   responses:
@@ -161,19 +160,14 @@ post:
                   defaultValue: "50"
                   type: OPTIONAL
                   dataType: STRING
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/rba-scripts-create-post/"
 delete:
   summary: Delete script
   description: |
     This endpoint is used to delete a script.
 
     Partners can delete client or partner scripts. A client can only delete client-specific scripts.
-  operationId: rba-scripts-delete/
   tags:
     - automation
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/rba-scripts-delete/"
   responses:
     "200":
       description: |-
@@ -184,7 +178,6 @@ delete:
 get:
   summary: Get scripts
   description: This endpoint is used to retrieve the list of scripts within a category.
-  operationId: rba-scripts-scripts-get/
   tags:
     - automation
   responses:
@@ -236,8 +229,6 @@ get:
                 registryValue: "dword:00000001"
                 processName: cmd.exe
                 serviceName: OpsRampAgent
-  externalDocs:
-    url: "https://docs.opsramp.com/api/automation/rba-scripts-scripts-get/"
 parameters:
   - schema:
       type: string

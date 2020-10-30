@@ -1,11 +1,8 @@
 post:
   summary: Get sub alert types
   description: This endpoint is used to retrieve the sub-alert types.
-  operationId: alerts-sub-alert-types-get/
   tags:
     - alerts
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alerts-sub-alert-types-get/'
   responses:
     '200':
       description: OK

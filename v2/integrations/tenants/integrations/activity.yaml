@@ -1,7 +1,6 @@
 get:
   summary: Integration activity
   description: This endpoint is used to retrieve the details of an installation activity of installed integration activity.
-  operationId: integrations-integration-activity-get/
   tags:
     - agents-gateways
   responses:
@@ -291,8 +290,6 @@ get:
                 nextPage: true
                 nextPageNo: 2
                 descendingOrder: false
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integrations-integration-activity-get/'
   parameters:
     - schema:
         type: integer
@@ -368,6 +365,11 @@ get:
       name: status
       description: |
         (Optional) Status of integration
+post:
+  summary: ''
+  responses:
+    '200':
+      description: OK
 parameters:
   - schema:
       type: string
@@ -375,9 +377,3 @@ parameters:
     in: path
     required: true
     description: This endpoint is used to retrieve the details of an installation activity of installed integration activity.
-post:
-  summary: ''
-  operationId: post-api-v2-tenants-tenantId-integrations-activity
-  responses:
-    '200':
-      description: OK

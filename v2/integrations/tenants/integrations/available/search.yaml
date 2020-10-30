@@ -1,7 +1,6 @@
 get:
   summary: Search available integrations
   description: This endpoint is used to search available integrations.
-  operationId: integration-search-available-get/
   tags:
     - integrations
   responses:
@@ -65,8 +64,6 @@ get:
                 nextPageNo: 2
                 previousPageNo: 0
                 descendingOrder: false
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-search-available-get/'
   parameters:
     - schema:
         type: integer

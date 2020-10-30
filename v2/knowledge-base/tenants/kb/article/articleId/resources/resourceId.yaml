@@ -1,7 +1,6 @@
 get:
   summary: Download article attachment
   description: This endpoint is used to download any attachment of an article.
-  operationId: knowledge-base-article-attachment-get/
   tags:
     - knowledge-base
   responses:
@@ -11,8 +10,6 @@ get:
         text/plain:
           schema:
             type: string
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-attachment-get/'
 parameters:
   - schema:
       type: string

@@ -1,11 +1,8 @@
   get:
     summary: Get Events of an installed integration
     description: This endpoint retrieves the events of an installed integration.
-    operationId: integration-events-installed-events-get/
     tags:
       - integrations
-    externalDocs:
-      url: 'https://docs.opsramp.com/api/integrations/integration-events-installed-events-get/'
     responses:
       '200':
         description: OK

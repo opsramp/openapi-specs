@@ -1,7 +1,6 @@
 post:
   summary: Create discovery profile
   description: This endpoint is used to create a discovery profile for AWS, Azure, and Google.
-  operationId: cloud-discovery-create-post/
   tags:
     - integrations
   responses:
@@ -376,12 +375,9 @@ post:
       ### Google discovery profile with credentials, schedule, and policy
       Create a Google discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources:
       >Certificate attachment must be encoded with base64 and can be provided in ServiceAccountManagementCertificate.
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/cloud-discovery-create-post/'
 get:
   summary: Get discovery profile list
   description: This endpoint is used to retrieve a list of discovery profiles and their details for AWS and Azure.
-  operationId: cloud-discovery-profiles-get/
   tags:
     - integrations
   responses:
@@ -487,15 +483,12 @@ get:
                     patternType: MINUTES
                     pattern: '30'
                     startTime: '00:30:00'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/cloud-discovery-profiles-get/'
 put:
   summary: Update discovery profile for AWS and Google
   description: |-
     This endpoint is used to update a discovery profile for AWS and Google.
 
     See Cloud Discovery Create Post for request/response documentation.
-  operationId: cloud-discovery-update-put/
   tags:
     - integrations
   responses:
@@ -785,8 +778,6 @@ put:
                   patternType: MINUTES
                   pattern: '30'
                   startTime: '00:30:00'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/cloud-discovery-update-put/'
 parameters:
   - schema:
       type: string

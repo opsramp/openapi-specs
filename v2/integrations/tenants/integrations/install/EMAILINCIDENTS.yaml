@@ -4,8 +4,7 @@ post:
     ## Install Email Request Integration
     Email request integration creates tickets in OpsRamp via Email.
 
-    > Convert image to Base64 and enter the code in file field as shown in the following sample request.
-  operationId: integration-install-email-request-post/
+    Convert image to Base64 and enter the code in file field as shown in the following sample request.
   tags:
     - integrations
   responses:
@@ -79,8 +78,6 @@ post:
                     - name: Allow anonymous user
                       value: 'true'
     description: ''
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-install-post/'
 parameters:
   - schema:
       type: string

@@ -6,16 +6,11 @@ post:
     ## Notes
     - A list of event IDs is generated when alerts are created. This list is valid for 30 days.
     - Use the event IDs to search and retrieve alert details.
-  operationId: alerts-create-alerts-post/
   tags:
     - alerts
   responses:
     '200':
-      description: |-
-        OK
-
-        ## Notes
-        The response depends on the returned status code.
+      description: OK
       content:
         application/json:
           schema:
@@ -200,8 +195,6 @@ post:
                 description: 'Api calls '
                 masterAgentUUID: 5b850347-8798-45aa-9332-c7ff3dd1c60e
     description: Provide either `device` or `resource` object.
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alerts-create-alerts-post/'
 parameters:
   - schema:
       type: string

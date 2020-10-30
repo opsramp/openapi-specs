@@ -1,7 +1,6 @@
 get:
   summary: Get alert views
   description: This endpoint is used to retrieve a list of alert views.
-  operationId: alerts-alert-views-get/
   tags:
     - alerts
   responses:
@@ -49,23 +48,19 @@ get:
                   description: Testing 3
                   viewType: Shared
                   defaultView: true
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alerts-alert-views-get/'
   parameters:
     - schema:
         type: boolean
         default: 'true'
       in: query
       name: isDescendingOrder
-      description: |
-        List preference indicating whether descending order is required.
+      description: List preference indicating whether descending order is required.
     - schema:
         type: string
         default: id
       in: query
       name: sortName
-      description: |
-        Unique ID allotted to a view when an alert view is created.
+      description: Unique ID allotted to a view when an alert view is created.
     - schema:
         type: string
         default: all
@@ -81,8 +76,7 @@ get:
         default: 'true'
       in: query
       name: defaultView
-      description: |
-        Displays the default alert view.
+      description: Displays the default alert view.
 parameters:
   - schema:
       type: string

@@ -1,7 +1,6 @@
 post:
   summary: Create management profile
   description: This endpoint is used to create a management profile.
-  operationId: management-profiles/management-profile-create-post/
   tags:
     - agents-gateways
   responses:
@@ -109,8 +108,6 @@ post:
               name: Gateway Profile
               description: Management Profile for Gateway
               type: Gateway
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-create-post/'
 parameters:
   - schema:
       type: string

@@ -1,17 +1,11 @@
 put:
   summary: Update incident by an alert ID
   description: This endpoint is used to attach and update an incident to an alert.
-  operationId: alerts-update-incident-by-alertid-put/
   tags:
     - alerts
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/alerts/alerts-update-incident-by-alertid-put/'
   responses:
     '200':
-      description: |-
-        OK
-        ## Notes
-        The response depends on the returned status code.
+      description: OK
 parameters:
   - schema:
       type: string

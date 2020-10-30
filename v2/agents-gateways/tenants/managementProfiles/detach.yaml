@@ -1,7 +1,6 @@
 get:
   summary: Detach gateway from management profile
   description: This API is used to unmap/detach the gateway from the management profile and invalidate the activation token.
-  operationId: management-profiles/management-profile-detach-get/
   tags:
     - agents-gateways
   responses:
@@ -37,8 +36,6 @@ get:
                 tunnelType: SSHD
                 registered: false
                 createdDate: '2016-06-22T07:34:40+0000'
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/agents-gateways/management-profiles/management-profile-detach-get/'
 parameters:
   - schema:
       type: string

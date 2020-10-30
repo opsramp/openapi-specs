@@ -1,7 +1,6 @@
 post:
   summary: Add comment
   description: This endpoint is used to update comments to the article.
-  operationId: knowledge-base-article-add-comment-post/
   tags:
     - knowledge-base
   responses:
@@ -70,8 +69,6 @@ post:
               attachments:
                 - name: queries.txt
                   file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/knowledge-base/knowledge-base-article-add-comment-post/'
 parameters:
   - schema:
       type: string

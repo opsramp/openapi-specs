@@ -1,7 +1,6 @@
 post:
   summary: Create or update inbound authentication
   description: This endpoint is used to create or update inbound authentication of an installed integration.
-  operationId: integration-create-update-inbound-authentication-post/
   tags:
     - integrations
   responses:
@@ -45,8 +44,6 @@ post:
           example-WEBHOOK:
             value:
               authType: WEBHOOK
-  externalDocs:
-    url: 'https://docs.opsramp.com/api/integrations/integration-create-update-inbound-authentication-post/'
 parameters:
   - schema:
       type: string
