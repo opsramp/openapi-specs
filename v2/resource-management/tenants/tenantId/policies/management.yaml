@@ -517,8 +517,4 @@ put:
                     forceAssignOrUnassign: true
                 executionOrder: 0
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

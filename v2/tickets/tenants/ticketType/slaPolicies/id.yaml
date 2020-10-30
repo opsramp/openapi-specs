@@ -70,11 +70,7 @@ get:
                   friday: true
                   saturday: false
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

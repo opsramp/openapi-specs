@@ -178,8 +178,4 @@ get:
                     name: 1 hour
                     description: Email servers down
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

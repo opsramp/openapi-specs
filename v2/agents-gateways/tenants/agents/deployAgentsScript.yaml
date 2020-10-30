@@ -43,8 +43,4 @@ get:
       name: profileId
       description: '(Optional) Used by the agent to connect to OpsRamp. If a profile ID is not provided, the agent connects directly to OpsRamp.'
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

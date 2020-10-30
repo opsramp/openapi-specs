@@ -230,11 +230,7 @@ get:
                   ticketedBy: 'opsramp_system_user '
                   ticketedTime: '2016-07-24T10:41:47+0000'
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

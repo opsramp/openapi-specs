@@ -45,11 +45,7 @@ post:
               - id: 023471da-698b-3a2e-1e93-6dbaca8eea23
               - id: 855eb82e-3064-40a1-a26e-77efabe300da
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

@@ -58,8 +58,4 @@ post:
               subject: Updated the Template
               content: Updated the Template Content Changes
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

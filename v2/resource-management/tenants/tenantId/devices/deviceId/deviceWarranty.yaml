@@ -49,11 +49,7 @@ get:
                 warrantyExpireDate: '2020-12-09T18:00:00+0000'
                 deviceId: fb3d81e9-cb01-4178-a7c7-7336ddd3c756
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

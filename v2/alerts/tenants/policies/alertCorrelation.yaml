@@ -720,8 +720,4 @@ post:
                     matchType: Identical
                 primaryAlertSubject: subject-alertMetric policy
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

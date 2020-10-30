@@ -37,11 +37,7 @@ get:
                 registered: false
                 createdDate: '2016-06-22T07:34:40+0000'
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

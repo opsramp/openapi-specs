@@ -328,8 +328,4 @@ post:
                 resourceUUID: 612acfb0-6890-4d52-950b-1c4ec17a7248
                 tenantID: client_12
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

@@ -24,7 +24,7 @@ get:
                       type: string
                       format: date-time
                     updatedBy:
-                      $ref: '../components.yaml#/components/schemas/user'
+                      $ref: '../components-global.yaml#/components/schemas/user'
               totalResults:
                 type: integer
               orderBy:
@@ -207,11 +207,7 @@ get:
                 previousPageNo: 0
                 descendingOrder: true
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

@@ -335,11 +335,7 @@ post:
               reason: Request is implemented
               notes: Demo note on change request
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

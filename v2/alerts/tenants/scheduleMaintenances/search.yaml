@@ -195,8 +195,4 @@ get:
                 previousPageNo: 0
                 descendingOrder: true
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

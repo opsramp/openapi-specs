@@ -38,11 +38,7 @@ get:
                 suppressedBy: superadmin
                 suppressedTime: '2019-04-02T14:33:59+0000'
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

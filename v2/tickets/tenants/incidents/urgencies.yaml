@@ -76,8 +76,4 @@ post:
               name: SJ Server Down-Critical
               description: Servers in site SJ are down. Need to resolve the issue immediately.
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

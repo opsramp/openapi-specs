@@ -467,11 +467,7 @@ post:
                 estimatedMinutes: 45
                 timeSpent: 120
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

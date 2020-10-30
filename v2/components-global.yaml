@@ -7,4 +7,11 @@ components:
           tokenUrl: ''
           refreshUrl: ''
           scopes: {}
+  parameters:
+    tenantId:
+      in: path
+      name: tenantId
+      schema:
+        type: string
+      required: true
   schemas:

@@ -207,11 +207,7 @@ post:
               reason: Issue fixed
               notes: Able to receive device monitoring statistics
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

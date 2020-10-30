@@ -76,8 +76,4 @@ post:
                     uniqueId: ROLE-4718b729-50cc-6634-42c4-ecd09558389d
     description: ''
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

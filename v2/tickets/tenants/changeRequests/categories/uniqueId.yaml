@@ -100,11 +100,7 @@ post:
                 uniqueId: SCAT-7c602980-b15d-4b50-8088-23d49307fb02
                 name: Internal Support
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

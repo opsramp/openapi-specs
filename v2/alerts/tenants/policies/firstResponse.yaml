@@ -303,8 +303,4 @@ post:
                 trainingFileId: ml_alert_suppression_training
     description: ''
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

@@ -42,11 +42,7 @@ get:
                   lastPatchInstalledDate: '2019-06-21T13:56:10+0000'
                   lastMachineRebootDate: '2019-06-24T19:42:18+0000'
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

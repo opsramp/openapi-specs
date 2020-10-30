@@ -65,11 +65,7 @@ get:
 
         For all other distributions, use x86_64 (64-bit) or i386 (32-bit)
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
     description: ''
   - schema:
       type: string

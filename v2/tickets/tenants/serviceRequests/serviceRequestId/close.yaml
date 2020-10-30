@@ -269,11 +269,7 @@ post:
               reason: Windows Services are up and running
               notes: Windows services in North-West are accessible
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

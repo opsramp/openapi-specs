@@ -187,8 +187,4 @@ get:
                   defaultValue: '0'
                   customField: true
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

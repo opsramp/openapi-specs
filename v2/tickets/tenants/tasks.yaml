@@ -254,8 +254,4 @@ post:
                   - id: 17
                     subject: Frequently Asked Questions on Python
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

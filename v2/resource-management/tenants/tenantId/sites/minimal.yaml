@@ -48,8 +48,4 @@ get:
                   description: Resources in San Jose
                   address: 'Street#4, Parkway, San Jose'
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

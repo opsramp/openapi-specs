@@ -79,11 +79,7 @@ delete:
               - id: SGP-d7657432-3698-4894-a07f-c2ef9aa0789e
               - id: SGP-a4659431-2699-8895-c07f-b2ef9aa078ce
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

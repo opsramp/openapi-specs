@@ -52,8 +52,4 @@ post:
                 name: custom_attr_type_for_tenant
                 description: creating custom_type for tenant-create
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

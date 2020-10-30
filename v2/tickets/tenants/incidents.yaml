@@ -331,8 +331,4 @@ post:
                   - id: 16
                     subject: LAN Settings
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

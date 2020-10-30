@@ -31,8 +31,4 @@ get:
                 - id: SGP-63d0163a-d4ac-ec30-fac1-cb2ddaa36b84
                   name: Cloud Instances
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

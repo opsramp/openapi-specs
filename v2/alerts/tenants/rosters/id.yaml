@@ -499,11 +499,7 @@ post:
                   userGroups:
                     - uniqueId: USRGRP-37644ff5-7ea5-a3aa-e288-9c2666dc02e4
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

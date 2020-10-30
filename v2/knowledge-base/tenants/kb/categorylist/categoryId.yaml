@@ -33,11 +33,7 @@ get:
                   path: test >>category 1 >> category 2
                   state: ACTIVE
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

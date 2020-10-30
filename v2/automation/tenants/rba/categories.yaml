@@ -133,8 +133,4 @@ put:
               id: 22
               name: CLIENT-Category_UpdatedName
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

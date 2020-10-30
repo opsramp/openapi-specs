@@ -53,11 +53,7 @@ post:
                   rebootRequired: false
                 id: PR-1bb8f7f5-b4d1-445f-a089-582724ac0407
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

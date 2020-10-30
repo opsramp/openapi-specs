@@ -39,11 +39,7 @@ post:
               startDate: '2016-06-18T00:00:00+0000'
               endDate: '2016-06-19T00:00:00+0000'
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

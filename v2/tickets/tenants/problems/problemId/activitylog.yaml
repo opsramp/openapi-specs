@@ -144,11 +144,7 @@ get:
 
         Example: To arrange data from 30th Oct to 1st Oct, provide isDescendingOrder: true
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

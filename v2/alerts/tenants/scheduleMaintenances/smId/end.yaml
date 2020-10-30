@@ -26,11 +26,7 @@ post:
                 uniqueId: SM-a7aa1874-ee4f-4a12-add1-2313bd717d4e
                 status: Pending
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

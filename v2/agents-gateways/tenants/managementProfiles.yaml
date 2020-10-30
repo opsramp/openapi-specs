@@ -109,8 +109,4 @@ post:
               description: Management Profile for Gateway
               type: Gateway
 parameters:
-  - schema:
-      type: string
-    in: path
-    name: tenantId
-    required: true
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
