@@ -12,7 +12,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/customAttribute'
+              $ref: './components.yaml#/components/schemas/customAttribute'
           examples:
             example-1:
               value:

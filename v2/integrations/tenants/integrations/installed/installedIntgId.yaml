@@ -10,7 +10,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/integrationInstall'
+            $ref: './components.yaml#/components/schemas/integrationInstall'
           examples:
             example-authentication-oauth2:
               value:
@@ -314,7 +314,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/integrationInstall'
+          $ref: './components.yaml#/components/schemas/integrationInstall'
         examples:
           example-authentication-oauth2:
             value:
@@ -582,7 +582,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/integrationInstall'
+            $ref: './components.yaml#/components/schemas/integrationInstall'
           examples:
             example-1:
               value:

@@ -20,7 +20,7 @@ post:
             customAttributeValues:
               type: array
               items:
-                $ref: '#/components/schemas/customAttributeValue'
+                $ref: './components.yaml#/components/schemas/customAttributeValue'
         examples:
           example-1:
             value:

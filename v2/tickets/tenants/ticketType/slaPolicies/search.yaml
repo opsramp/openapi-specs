@@ -30,7 +30,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: '#/components/schemas/slaPolicy'
+                  $ref: './components.yaml#/components/schemas/slaPolicy'
               totalResults:
                 type: integer
               orderBy:

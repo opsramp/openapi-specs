@@ -22,7 +22,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/resourceFull'
+            $ref: './components.yaml#/components/schemas/resourceFull'
           examples:
             example-data:
               value:

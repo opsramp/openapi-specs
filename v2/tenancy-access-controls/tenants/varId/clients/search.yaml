@@ -33,7 +33,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: '#/components/schemas/client'
+                  $ref: './components.yaml#/components/schemas/client'
               totalResults:
                 type: integer
               orderBy:

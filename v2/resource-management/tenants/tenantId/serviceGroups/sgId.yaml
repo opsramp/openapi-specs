@@ -23,7 +23,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/serviceGroup'
+            $ref: './components.yaml#/components/schemas/serviceGroup'
           examples:
             example-minimal:
               value:

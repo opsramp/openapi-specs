@@ -19,7 +19,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/integrationEvent'
+          $ref: './components.yaml#/components/schemas/integrationEvent'
         examples:
           example-1:
             value:
@@ -61,7 +61,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/integrationEvent'
+            $ref: './components.yaml#/components/schemas/integrationEvent'
           examples:
             example-1:
               value:
@@ -108,7 +108,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/integrationEvent'
+            $ref: './components.yaml#/components/schemas/integrationEvent'
           examples:
             example-1:
               value:

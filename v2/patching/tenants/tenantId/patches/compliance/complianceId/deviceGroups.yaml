@@ -14,7 +14,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: '#/components/schemas/deviceGroup'
+                  $ref: './components.yaml#/components/schemas/deviceGroup'
               totalResults:
                 type: integer
               orderBy:

@@ -17,7 +17,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/customField'
+              $ref: './components.yaml#/components/schemas/customField'
           examples:
             example-1:
               value:

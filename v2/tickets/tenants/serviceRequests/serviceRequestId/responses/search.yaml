@@ -30,7 +30,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: '#/components/schemas/incidentResponse'
+                  $ref: './components.yaml#/components/schemas/incidentResponse'
               totalResults:
                 type: integer
               orderBy:

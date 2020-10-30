@@ -14,7 +14,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/slaPolicy'
+            $ref: './components.yaml#/components/schemas/slaPolicy'
           examples:
             example-1:
               value:

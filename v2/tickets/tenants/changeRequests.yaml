@@ -7,7 +7,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/changeRequest'
+          $ref: './components.yaml#/components/schemas/changeRequest'
         examples:
           example-1:
             value:
@@ -64,7 +64,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/changeRequest'
+            $ref: './components.yaml#/components/schemas/changeRequest'
           examples:
             example-1:
               value:

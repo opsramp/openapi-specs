@@ -9,7 +9,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/patchDetails'
+            $ref: './components.yaml#/components/schemas/patchDetails'
           examples:
             example-1:
               value:

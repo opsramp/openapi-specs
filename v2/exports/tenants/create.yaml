@@ -19,7 +19,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/export'
+          $ref: './components.yaml#/components/schemas/export'
         examples:
           example-1:
             value:

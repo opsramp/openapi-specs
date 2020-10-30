@@ -9,7 +9,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/businessImpact'
+            $ref: './components.yaml#/components/schemas/businessImpact'
           examples:
             example-1:
               value:
@@ -34,7 +34,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/businessImpact'
+          $ref: './components.yaml#/components/schemas/businessImpact'
         examples:
           example-1:
             value:

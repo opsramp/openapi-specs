@@ -17,7 +17,7 @@
                 results:
                   type: array
                   items:
-                    $ref: '#/components/schemas/integrationEvent'
+                    $ref: './components.yaml#/components/schemas/integrationEvent'
                 totalResults:
                   type: integer
                 pageNo:

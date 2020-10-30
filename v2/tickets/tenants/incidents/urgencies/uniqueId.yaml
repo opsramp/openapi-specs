@@ -10,7 +10,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/urgency'
+            $ref: './components.yaml#/components/schemas/urgency'
           examples:
             example-1:
               value:

@@ -21,7 +21,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/clientNote'
+            $ref: './components.yaml#/components/schemas/clientNote'
           examples:
             example-1:
               value:
@@ -50,7 +50,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/clientNote'
+            $ref: './components.yaml#/components/schemas/clientNote'
           examples:
             example-1:
               value:
@@ -70,7 +70,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/clientNote'
+          $ref: './components.yaml#/components/schemas/clientNote'
         examples:
           example-never-expire:
             value:

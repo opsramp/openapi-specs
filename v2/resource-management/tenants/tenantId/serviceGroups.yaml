@@ -20,7 +20,7 @@ post:
         schema:
           type: array
           items:
-            $ref: '#/components/schemas/serviceGroup'
+            $ref: './components.yaml#/components/schemas/serviceGroup'
         examples:
           example-create:
             value:
@@ -86,7 +86,7 @@ post:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/serviceGroup'
+              $ref: './components.yaml#/components/schemas/serviceGroup'
           examples:
             example-create:
               value:

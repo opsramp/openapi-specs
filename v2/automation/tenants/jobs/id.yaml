@@ -15,13 +15,13 @@ get:
               name:
                 type: string
               entities:
-                $ref: "#/components/schemas/entities"
+                $ref: './components.yaml#/components/schemas/entities'
               schedule:
-                $ref: "#/components/schemas/schedule"
+                $ref: './components.yaml#/components/schemas/schedule'
               jobQueued:
                 type: boolean
               script:
-                $ref: "#/components/schemas/script"
+                $ref: './components.yaml#/components/schemas/script'
               id:
                 type: string
           examples:
@@ -172,13 +172,13 @@ post:
               name:
                 type: string
               entities:
-                $ref: "#/components/schemas/entities"
+                $ref: './components.yaml#/components/schemas/entities'
               schedule:
-                $ref: "#/components/schemas/schedule"
+                $ref: './components.yaml#/components/schemas/schedule'
               jobQueued:
                 type: boolean
               script:
-                $ref: "#/components/schemas/script"
+                $ref: './components.yaml#/components/schemas/script'
               id:
                 type: string
           examples:
@@ -332,11 +332,11 @@ post:
             jobQueued:
               type: boolean
             entities:
-              $ref: "#/components/schemas/entities"
+              $ref: './components.yaml#/components/schemas/entities'
             script:
-              $ref: "#/components/schemas/script"
+              $ref: './components.yaml#/components/schemas/script'
             schedule:
-              $ref: "#/components/schemas/schedule"
+              $ref: './components.yaml#/components/schemas/schedule'
         examples:
           example-ad-checklist:
             value:

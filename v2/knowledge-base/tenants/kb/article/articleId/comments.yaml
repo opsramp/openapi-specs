@@ -12,7 +12,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/comment'
+              $ref: './components.yaml#/components/schemas/comment'
           examples:
             example-1:
               value:

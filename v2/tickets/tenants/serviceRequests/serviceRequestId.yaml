@@ -9,7 +9,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/problem'
+            $ref: './components.yaml#/components/schemas/problem'
           examples:
             example-1:
               value:
@@ -280,7 +280,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/problem'
+          $ref: './components.yaml#/components/schemas/problem'
         examples:
           example-1:
             value:
@@ -345,7 +345,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/problem'
+            $ref: './components.yaml#/components/schemas/problem'
           examples:
             example-1:
               value:

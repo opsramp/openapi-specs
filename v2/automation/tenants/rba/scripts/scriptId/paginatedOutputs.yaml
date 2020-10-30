@@ -31,7 +31,7 @@ get:
                         name:
                           type: string
                     device:
-                      $ref: "#/components/schemas/resource"
+                      $ref: './components.yaml#/components/schemas/resource'
                     owner:
                       type: object
                       properties:

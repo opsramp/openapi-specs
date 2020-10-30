@@ -7,7 +7,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/user'
+          $ref: './components.yaml#/components/schemas/user'
         examples:
           example-1:
             value:
@@ -53,7 +53,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/user'
+            $ref: './components.yaml#/components/schemas/user'
           examples:
             example-1:
               value:

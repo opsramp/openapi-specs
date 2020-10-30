@@ -21,9 +21,9 @@ get:
             type: object
             properties:
               device:
-                $ref: '#/components/schemas/device'
+                $ref: './components.yaml#/components/schemas/device'
               scanStatus:
-                $ref: '#/components/schemas/scanstatus'
+                $ref: './components.yaml#/components/schemas/scanstatus'
           examples:
             example-1:
               value:

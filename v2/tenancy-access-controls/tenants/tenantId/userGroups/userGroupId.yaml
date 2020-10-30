@@ -9,7 +9,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/userGroup'
+            $ref: './components.yaml#/components/schemas/userGroup'
           examples:
             example-1:
               value:
@@ -32,7 +32,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/userGroup'
+          $ref: './components.yaml#/components/schemas/userGroup'
         examples:
           example-1:
             value:
@@ -65,7 +65,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/userGroup'
+            $ref: './components.yaml#/components/schemas/userGroup'
           examples:
             example-1:
               value:

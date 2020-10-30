@@ -10,7 +10,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/httpResponse'
+            $ref: './components.yaml#/components/schemas/httpResponse'
           examples:
             example-1:
               value:

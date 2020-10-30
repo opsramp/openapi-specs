@@ -15,7 +15,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/rbaScript"
+            $ref: './components.yaml#/components/schemas/rbaScript'
           examples:
             example-1:
               value:
@@ -122,7 +122,7 @@ post:
               description: |
                 (Optional) Parameter data.
               items:
-                $ref: "#/components/schemas/rbaScriptParameter"
+                $ref: './components.yaml#/components/schemas/rbaScriptParameter'
             command:
               type: string
             outputDirectory:
@@ -193,7 +193,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/rbaScript"
+            $ref: './components.yaml#/components/schemas/rbaScript'
           examples:
             example-1:
               value:

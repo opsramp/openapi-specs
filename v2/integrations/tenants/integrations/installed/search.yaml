@@ -22,7 +22,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: '#/components/schemas/integrationInstall'
+                  $ref: './components.yaml#/components/schemas/integrationInstall'
               totalResults:
                 type: integer
               pageSize:

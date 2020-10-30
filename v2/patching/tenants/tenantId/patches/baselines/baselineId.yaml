@@ -189,7 +189,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/patchBaseline'
+          $ref: './components.yaml#/components/schemas/patchBaseline'
         examples:
           example-static:
             value:
@@ -223,7 +223,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/patchBaseline'
+            $ref: './components.yaml#/components/schemas/patchBaseline'
           examples:
             example-static:
               value:

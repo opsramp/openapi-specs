@@ -107,7 +107,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: '#/components/schemas/resourceFull'
+                  $ref: './components.yaml#/components/schemas/resourceFull'
               totalResults:
                 type: integer
               orderBy:

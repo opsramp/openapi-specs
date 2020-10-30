@@ -15,7 +15,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/patchConfig'
+            $ref: './components.yaml#/components/schemas/patchConfig'
           examples:
             example-1:
               value:
@@ -65,7 +65,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/patchConfig'
+          $ref: './components.yaml#/components/schemas/patchConfig'
         examples:
           example-1:
             value:

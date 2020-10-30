@@ -27,19 +27,19 @@ get:
               'Connects: ':
                 type: array
                 items:
-                  $ref: '#/components/schemas/device'
+                  $ref: './components.yaml#/components/schemas/device'
               'Runs On: ':
                 type: array
                 items:
-                  $ref: '#/components/schemas/device'
+                  $ref: './components.yaml#/components/schemas/device'
               'Uses: ':
                 type: array
                 items:
-                  $ref: '#/components/schemas/device'
+                  $ref: './components.yaml#/components/schemas/device'
               'Network Topology: ':
                 type: array
                 items:
-                  $ref: '#/components/schemas/device'
+                  $ref: './components.yaml#/components/schemas/device'
           examples:
             example-1:
               value:

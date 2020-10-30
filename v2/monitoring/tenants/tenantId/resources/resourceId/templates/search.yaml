@@ -22,7 +22,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: '#/components/schemas/monitoringTemplate'
+                  $ref: './components.yaml#/components/schemas/monitoringTemplate'
               totalResults:
                 type: integer
               orderBy:

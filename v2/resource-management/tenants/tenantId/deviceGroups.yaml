@@ -23,7 +23,7 @@ post:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/deviceGroup'
+              $ref: './components.yaml#/components/schemas/deviceGroup'
           examples:
             example-create:
               value:
@@ -93,7 +93,7 @@ post:
         schema:
           type: array
           items:
-            $ref: '#/components/schemas/deviceGroup'
+            $ref: './components.yaml#/components/schemas/deviceGroup'
         examples:
           example-create:
             value:

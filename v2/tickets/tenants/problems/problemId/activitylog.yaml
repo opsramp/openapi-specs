@@ -20,7 +20,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: '#/components/schemas/activity'
+                  $ref: './components.yaml#/components/schemas/activity'
               totalResults:
                 type: integer
               pageSize:

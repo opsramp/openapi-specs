@@ -29,9 +29,9 @@ get:
                   type: object
                   properties:
                     device:
-                      $ref: '#/components/schemas/device'
+                      $ref: './components.yaml#/components/schemas/device'
                     installStatus:
-                      $ref: '#/components/schemas/installStatus'
+                      $ref: './components.yaml#/components/schemas/installStatus'
               totalResults:
                 type: integer
               orderBy:

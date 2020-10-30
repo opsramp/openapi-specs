@@ -65,7 +65,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: '#/components/schemas/note'
+                  $ref: './components.yaml#/components/schemas/note'
               totalResults:
                 type: integer
               orderBy:

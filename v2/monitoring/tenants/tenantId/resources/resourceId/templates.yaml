@@ -16,11 +16,11 @@ post:
               configParameters:
                 type: array
                 items:
-                  $ref: '#/components/schemas/configParameter'
+                  $ref: './components.yaml#/components/schemas/configParameter'
               assignedInterfaces:
                 type: array
                 items:
-                  $ref: '#/components/schemas/interface'
+                  $ref: './components.yaml#/components/schemas/interface'
         examples:
           example-1:
             value:

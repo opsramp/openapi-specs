@@ -23,7 +23,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/availablility'
+            $ref: './components.yaml#/components/schemas/availablility'
           examples:
             example-1:
               value:

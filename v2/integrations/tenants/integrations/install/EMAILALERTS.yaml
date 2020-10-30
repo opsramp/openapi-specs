@@ -14,7 +14,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/integrationInstall'
+            $ref: './components.yaml#/components/schemas/integrationInstall'
           examples:
             example-EMAILALERTS:
               value:
@@ -52,7 +52,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/integrationInstall'
+          $ref: './components.yaml#/components/schemas/integrationInstall'
         examples:
           example-EMAILALERTS:
             value:

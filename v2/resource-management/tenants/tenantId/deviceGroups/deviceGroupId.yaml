@@ -23,7 +23,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/deviceGroup'
+            $ref: './components.yaml#/components/schemas/deviceGroup'
           examples:
             example-group-without-policy:
               value:

@@ -62,7 +62,7 @@ get:
           schema:
             type: array
             items:
-              $ref: "#/components/schemas/rba"
+              $ref: './components.yaml#/components/schemas/rba'
           examples:
             example-1:
               value:

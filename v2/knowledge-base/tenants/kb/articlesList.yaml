@@ -617,7 +617,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: '#/components/schemas/article'
+                  $ref: './components.yaml#/components/schemas/article'
               totalResults:
                 type: integer
               orderBy:

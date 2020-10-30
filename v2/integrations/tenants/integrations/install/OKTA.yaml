@@ -22,7 +22,7 @@ post:
                   name:
                     type: string
               singleSignOnAuthentication:
-                $ref: '#/components/schemas/ssoAuth'
+                $ref: './components.yaml#/components/schemas/ssoAuth'
           examples:
             example-okta:
               value:
@@ -56,7 +56,7 @@ post:
             displayName:
               type: string
             singleSignOnAuthentication:
-              $ref: '#/components/schemas/ssoAuth'
+              $ref: './components.yaml#/components/schemas/ssoAuth'
             uninstallReason:
               type: string
         examples:

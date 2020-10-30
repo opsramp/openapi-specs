@@ -7,7 +7,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/resourceNote'
+          $ref: './components.yaml#/components/schemas/resourceNote'
         examples:
           example-expiryDateType-1:
             value:
@@ -33,7 +33,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/resourceNote'
+            $ref: './components.yaml#/components/schemas/resourceNote'
           examples:
             example-1:
               value:

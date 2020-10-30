@@ -33,7 +33,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/incident'
+            $ref: './components.yaml#/components/schemas/incident'
           examples:
             example-1:
               value:

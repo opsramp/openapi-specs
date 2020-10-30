@@ -13,7 +13,7 @@ get:
             type: object
             properties:
               result:
-                $ref: '#/components/schemas/category'
+                $ref: './components.yaml#/components/schemas/category'
               totalResults:
                 type: integer
               orderBy:

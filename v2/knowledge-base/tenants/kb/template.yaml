@@ -10,7 +10,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/category'
+            $ref: './components.yaml#/components/schemas/category'
           examples:
             example-1:
               value:
@@ -43,7 +43,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/category'
+          $ref: './components.yaml#/components/schemas/category'
         examples:
           example-1:
             value:

@@ -62,7 +62,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: '#/components/schemas/problem'
+                  $ref: './components.yaml#/components/schemas/problem'
               totalResults:
                 type: integer
               orderBy:

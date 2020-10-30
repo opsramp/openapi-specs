@@ -33,7 +33,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/role'
+            $ref: './components.yaml#/components/schemas/role'
           examples:
             example-msp-specific-client-visibilty:
               value:
@@ -286,7 +286,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/role'
+          $ref: './components.yaml#/components/schemas/role'
         examples:
           example-msp-specific-client-visibilty:
             value:

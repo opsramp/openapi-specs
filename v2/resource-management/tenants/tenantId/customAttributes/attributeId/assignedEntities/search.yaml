@@ -23,7 +23,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: '#/components/schemas/customAttribute'
+                  $ref: './components.yaml#/components/schemas/customAttribute'
               totalResults:
                 type: integer
               orderBy:

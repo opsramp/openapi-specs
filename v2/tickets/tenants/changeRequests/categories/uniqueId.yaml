@@ -42,9 +42,9 @@ post:
                   uniqueId:
                     type: string
               createdBy:
-                $ref: '#/components/schemas/user'
+                $ref: './components.yaml#/components/schemas/user'
               updatedBy:
-                $ref: '#/components/schemas/user'
+                $ref: './components.yaml#/components/schemas/user'
               createdDate:
                 type: string
                 format: date-time

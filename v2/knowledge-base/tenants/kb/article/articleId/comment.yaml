@@ -18,11 +18,11 @@ post:
                 type: string
                 format: date-time
               createdUser:
-                $ref: '#/components/schemas/user'
+                $ref: './components.yaml#/components/schemas/user'
               attachments:
                 type: array
                 items:
-                  $ref: '#/components/schemas/attachment'
+                  $ref: './components.yaml#/components/schemas/attachment'
           examples:
             example-1:
               value:
@@ -60,7 +60,7 @@ post:
               description: |
                 (Optional) Defines the attachment of an article.
               items:
-                $ref: '#/components/schemas/attachment'
+                $ref: './components.yaml#/components/schemas/attachment'
           required:
             - comment
         examples:

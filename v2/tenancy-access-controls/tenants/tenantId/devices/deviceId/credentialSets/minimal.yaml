@@ -11,7 +11,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/credentialSet'
+              $ref: './components.yaml#/components/schemas/credentialSet'
           examples:
             example-1:
               value:

@@ -9,7 +9,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/response'
+            $ref: './components.yaml#/components/schemas/response'
           examples:
             example-1:
               value:
@@ -42,7 +42,7 @@ delete:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/response'
+            $ref: './components.yaml#/components/schemas/response'
           examples:
             example-1:
               value:

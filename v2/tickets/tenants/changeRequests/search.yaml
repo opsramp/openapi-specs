@@ -14,7 +14,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: '#/components/schemas/changeRequest'
+                  $ref: './components.yaml#/components/schemas/changeRequest'
               totalResults:
                 type: integer
               orderBy:

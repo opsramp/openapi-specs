@@ -50,11 +50,11 @@ get:
                     name:
                       type: string
                     schedule:
-                      $ref: "#/components/schemas/schedule"
+                      $ref: './components.yaml#/components/schemas/schedule'
                     jobQueued:
                       type: boolean
                     script:
-                      $ref: "#/components/schemas/script"
+                      $ref: './components.yaml#/components/schemas/script'
                     id:
                       type: string
                     totalResults:

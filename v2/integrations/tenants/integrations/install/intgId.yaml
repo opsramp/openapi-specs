@@ -10,7 +10,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/integrationInstall'
+            $ref: './components.yaml#/components/schemas/integrationInstall'
           examples:
             example-pingdom:
               value:
@@ -208,7 +208,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/integrationInstall'
+          $ref: './components.yaml#/components/schemas/integrationInstall'
         examples:
           example-display-name-and-logo:
             value:

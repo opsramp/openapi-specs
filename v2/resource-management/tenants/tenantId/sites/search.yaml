@@ -28,7 +28,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: '#/components/schemas/site'
+                  $ref: './components.yaml#/components/schemas/site'
               totalResults:
                 type: integer
               orderBy:
