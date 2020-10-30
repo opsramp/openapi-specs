@@ -9,6 +9,9 @@ info:
     url: https://www.opsramp.com/about-opsramp/contact-us/
 tags:
   - name: agents-gateways
+    description: Example description.
+    externalDocs:
+      url: https://docs.opsramp.com/api/agents-gateways/
   - name: alerts
   - name: automation
   - name: components
