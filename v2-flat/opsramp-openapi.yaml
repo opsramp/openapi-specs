@@ -176,89 +176,89 @@ paths:
     $ref: './agents-gateways/tenants-tenantId-managementProfiles-search.yaml'
   # Alerts
   /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}/{action}:
-    $ref: './alerts/tenants-policies-alertCorrelation-policyId-action.yaml'
+    $ref: './alerts/tenants-tenantId-policies-alertCorrelation-policyId-action.yaml'
   /api/v2/tenants/{tenantId}/rosters/search:
-    $ref: './alerts/tenants-rosters-search.yaml'
+    $ref: './alerts/tenants-tenantId-rosters-search.yaml'
   /api/v2/tenants/{tenantId}/policies/alertCorrelation:
-    $ref: './alerts/tenants-policies-alertCorrelation.yaml'
+    $ref: './alerts/tenants-tenantId-policies-alertCorrelation.yaml'
   /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}:
-    $ref: './alerts/tenants-policies-alertCorrelation-policyId.yaml'
+    $ref: './alerts/tenants-tenantId-policies-alertCorrelation-policyId.yaml'
   /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices:
-    $ref: './alerts/tenants-agentPolicies-policyId-devices.yaml'
+    $ref: './alerts/tenants-tenantId-agentPolicies-policyId-devices.yaml'
   /api/v2/tenants/{tenantId}/alerts/{alertId}/escalations:
-    $ref: './alerts/tenants-alerts-alertId-escalations.yaml'
+    $ref: './alerts/tenants-tenantId-alerts-alertId-escalations.yaml'
   /api/v2/tenants/{tenantId}/escalations:
-    $ref: './alerts/tenants-escalations.yaml'
+    $ref: './alerts/tenants-tenantId-escalations.yaml'
   /api/v2/tenants/{tenantId}/escalations/{id}:
-    $ref: './alerts/tenants-escalations-id.yaml'
+    $ref: './alerts/tenants-tenantId-escalations-id.yaml'
   /api/v2/tenants/{tenantId}/escalations/{id}/disable:
-    $ref: './alerts/tenants-escalations-id-disable.yaml'
+    $ref: './alerts/tenants-tenantId-escalations-id-disable.yaml'
   /api/v2/tenants/{tenantId}/escalations/{id}/enable:
-    $ref: './alerts/tenants-escalations-id-enable.yaml'
+    $ref: './alerts/tenants-tenantId-escalations-id-enable.yaml'
   /api/v2/tenants/{tenantId}/escalations/search:
-    $ref: './alerts/tenants-escalations-search.yaml'
+    $ref: './alerts/tenants-tenantId-escalations-search.yaml'
   /api/v2/tenants/{tenantId}/alerts/{alertId}/acknowledge:
-    $ref: './alerts/tenants-alerts-alertId-acknowledge.yaml'
+    $ref: './alerts/tenants-tenantId-alerts-alertId-acknowledge.yaml'
   /api/v2/tenants/{tenantId}/alerts/{alertId}/actions/{action}:
-    $ref: './alerts/tenants-alerts-alertId-actions-action.yaml'
+    $ref: './alerts/tenants-tenantId-alerts-alertId-actions-action.yaml'
   /api/v2/alerts/tenants/{tenantId}/alerts/event/{eventId}:
-    $ref: './alerts/tenants-alerts-event-eventId.yaml'
+    $ref: './alerts/tenants-tenantId-alerts-event-eventId.yaml'
   /api/v2/tenants/{tenantId}/alerts/{alertId}/comments:
-    $ref: './alerts/tenants-alerts-alertId-comments.yaml'
+    $ref: './alerts/tenants-tenantId-alerts-alertId-comments.yaml'
   /api/v2/tenants/{tenantId}/alerts/{alertId}:
-    $ref: './alerts/tenants-alerts-alertId.yaml'
+    $ref: './alerts/tenants-tenantId-alerts-alertId.yaml'
   /api/v2/alertTypes:
     $ref: './alerts/alertTypes.yaml'
   /api/v2/tenants/{orgId}/users/{userId}/alertViews:
-    $ref: './alerts/tenants-users-userId-alertViews.yaml'
+    $ref: './alerts/tenants-orgID-users-userId-alertViews.yaml'
   /api/v2/tenants/{orgId}/users/{userId}/alertViews/{viewId}:
-    $ref: './alerts/tenants-users-userId-alertViews-viewId.yaml'
+    $ref: './alerts/tenants-orgId-users-userId-alertViews-viewId.yaml'
   /api/v2/alerts/tenants/{tenantId}/alerts/{alertId}:
-    $ref: './alerts/alerts-tenants-alerts-alertId.yaml'
+    $ref: './alerts/alerts-tenants-tenantId-alerts-alertId.yaml'
   /api/v2/alerts/tenants/{tenantId}/tickets/{ticketId}:
-    $ref: './alerts/alerts/tenants/tickets/tickedId.yaml'
+    $ref: './alerts/alerts-tenants-tenantId-tickets-ticketId.yaml'
   /api/v2/tenants/{tenantId}/alerts/{alertId}/incidents/{IncidentId}/attach:
-    $ref: './alerts/tenants-alerts-alertId-incidents-incidentId-attach.yaml'
+    $ref: './alerts/tenants-tenantId-alerts-alertId-incidents-incidentId-attach.yaml'
   /api/v2/tenants/{tenantId}/alert:
-    $ref: './alerts/tenants-alert.yaml'
+    $ref: './alerts/tenants-tenantId-alert.yaml'
   /api/v2/tenants/{tenantId}/alerts:
-    $ref: './alerts/tenants-alerts.yaml'
+    $ref: './alerts/tenants-tenantId-alerts.yaml'
   /api/v2/tenants/{tenantId}/alerts/{alertId}/occurrences:
-    $ref: './alerts/tenants-alerts-alertId-occurrences.yaml'
+    $ref: './alerts/tenants-tenantId-alerts-alertId-occurrences.yaml'
   /api/v2/tenants/{tenantId}/alerts/search:
-    $ref: './alerts/tenants-alerts-search.yaml'
+    $ref: './alerts/tenants-tenantId-alerts-search.yaml'
   /api/v2/tenants/{tenantId}/alertStatusHistory/{alertId}:
-    $ref: './alerts/tenants-alertStatusHistory-alertId.yaml'
+    $ref: './alerts/tenants-tenantId-alertStatusHistory-alertId.yaml'
   /api/v2/tenants/{tenantId}/subAlertTypes:
-    $ref: './alerts/tenants-subAlertTypes.yaml'
+    $ref: './alerts/tenants-tenantId-subAlertTypes.yaml'
   /api/v2/tenants/{tenantId}/alerts/{alertId}/tickets/{ticketId}/update:
-    $ref: './alerts/tenants-alerts-alertId-tickets-ticketId-update.yaml'
+    $ref: './alerts/tenants-tenantId-alerts-alertId-tickets-ticketId-update.yaml'
   /api/v2/tenants/{tenantId}/policies/firstResponse:
-    $ref: './alerts/tenants-policies-firstResponse.yaml'
+    $ref: './alerts/tenants-tenantId-policies-firstResponse.yaml'
   /api/v2/tenants/{tenantId}/policies/firstResponse/{policyId}:
-    $ref: './alerts/tenants-policies-firstResponse-policyId.yaml'
+    $ref: './alerts/tenants-tenantId-policies-firstResponse-policyId.yaml'
   /api/v2/tenants/{tenantId}/policies/firstResponse/{policyId}/{status}:
-    $ref: './alerts/tenants-policies-firstResponse-policyId-status.yaml'
+    $ref: './alerts/tenants-tenantId-policies-firstResponse-policyId-status.yaml'
   /api/v2/tenants/{tenantId}/rosters:
-    $ref: './alerts/tenants-rosters.yaml'
+    $ref: './alerts/tenants-tenantId-rosters.yaml'
   /api/v2/tenants/{tenantId}/rosters/{id}:
-    $ref: './alerts/tenants-rosters-id.yaml'
+    $ref: './alerts/tenants-tenantId-rosters-id.yaml'
   /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resources:
-    $ref: './alerts/tenants-scheduleMaintenances-smId-resources.yaml'
+    $ref: './alerts/tenants-tenantId-scheduleMaintenances-smId-resources.yaml'
   /api/v2/tenants/{tenantId}/scheduleMaintenances:
-    $ref: './alerts/tenants-scheduleMaintenances.yaml'
+    $ref: './alerts/tenants-tenantId-scheduleMaintenances.yaml'
   /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/end:
-    $ref: './alerts/tenants-scheduleMaintenances-smId-end.yaml'
+    $ref: './alerts/tenants-tenantId-scheduleMaintenances-smId-end.yaml'
   /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resources/{resourcesType}:
-    $ref: './alerts/tenants-scheduleMaintenances-smId-resources-resourcesType.yaml'
+    $ref: './alerts/tenants-tenantId-scheduleMaintenances-smId-resources-resourcesType.yaml'
   /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resume:
-    $ref: './alerts/tenants-scheduleMaintenances-smId-resume.yaml'
+    $ref: './alerts/tenants-tenantId-scheduleMaintenances-smId-resume.yaml'
   /api/v2/tenants/{tenantId}/scheduleMaintenances/search:
-    $ref: './alerts/tenants-scheduleMaintenances-search.yaml'
+    $ref: './alerts/tenants-tenantId-scheduleMaintenances-search.yaml'
   /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/suspend:
-    $ref: './alerts/tenants-scheduleMaintenances-smId-suspend.yaml'
+    $ref: './alerts/tenants-tenantId-scheduleMaintenances-smId-suspend.yaml'
   /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}:
-    $ref: './alerts/tenants-scheduleMaintenances-smId.yaml'
+    $ref: './alerts/tenants-tenantId-scheduleMaintenances-smId.yaml'
   # Automation
   /api/v2/tenants/{tenantId}/jobs:
     $ref: './automation/tenants-jobs.yaml'
