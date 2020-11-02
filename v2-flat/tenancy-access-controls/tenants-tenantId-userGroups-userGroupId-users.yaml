@@ -1,0 +1,140 @@
+post:
+  summary: Add users to a user group
+  description: This endpoint is used to add users to an existing user group.
+  tags:
+    - tenancy-access-controls
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: |-
+                  (Optional) Provide user ID to add user into the group.
+                  To fetch the users within a tenant, use the Search Users API.
+        examples:
+          example-1:
+            value:
+              - id: USR0000000029
+              - id: USR0000000030
+  responses:
+    '200':
+      description: OK
+delete:
+  summary: Remove users from a user group
+  description: This endpoint is used to remove users from an existing user group.
+  tags:
+    - tenancy-access-controls
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: |-
+                  (Optional) Provide user ID to add user into the group.
+                  To fetch the users within a tenant, use the Search Users API
+        examples:
+          example-1:
+            value:
+              - id: USR0000000029
+              - id: USR0000000030
+  responses:
+    '200':
+      description: |-
+        OK
+
+        >## Notes
+        > The response depends on the returned status code.
+get:
+  summary: Get users of a user group
+  description: This endpoint is used to fetch users belonging to a user group.
+  tags:
+    - tenancy-access-controls
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: ./resource-management.v1.yaml#/components/schemas/user
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: USR0000000029
+                    loginName: john.smith
+                    lastName: Smith
+                    firstName: John
+                    email: john.smith@myorganization.com
+                  - id: USR0000000014
+                    loginName: james.hudson
+                    lastName: Hudson
+                    firstName: James
+                    email: james.hudson@myorganization.com
+                    phoneNumber: +805 123 1234
+                totalResults: 2
+                orderBy: id
+                pageNo: 1
+                pageSize: 100
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: string
+        default: id
+      in: query
+      name: sortName
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: userGroupId
+    required: true

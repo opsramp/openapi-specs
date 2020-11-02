@@ -1,0 +1,147 @@
+get:
+  summary: Get task responses
+  description: |-
+    This endpoint is used to retrieve responses of a task.
+
+    ### Query variables
+
+    |Query Variable|Values|Description|
+    |-----|----|-----|
+    |startCreationDate|NA|Filter response with request creation date. Provide from date.<br>Example: 2016-03-29T10:15:55 0000 (GMT)|
+    |endCreationDate|NA|Filter response with request creation date. Provide to date.<br>Example: 2016-03-31T11:20:55 0000 (GMT)|
+    |internal|true, false|Internal or universal responses:<br>- If internal=true retrieves only the internal responses.<br>- If internal=false retrieves global responses.<br>- By default it retrieves all responses of the ticket.|
+
+    >## Notes
+    >There are special characters that can be used in a query string:
+    >- (+) represents the next field and must be URL-encoded.
+    >- (:) represents equals. An example is `key : value`.
+    >- Space characters must be URL-encoded.
+    >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT)
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: './components.yaml#/components/schemas/incidentResponse'
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              nextPageNo:
+                type: integer
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - creator:
+                      id: USR0000002095
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@domain.com
+                    createdDate: '2016-03-29T08:53:48+0000'
+                    attachments:
+                      - id: 90
+                        name: file-1.txt
+                        createdDate: '2016-03-29T08:53:48+0000'
+                        contentURL: 'https://<api-url>/api/v2/tenants/client_1000/tasks/TASK0000001109/responses/1896/resources/90'
+                      - id: 91
+                        name: file-2.txt
+                        createdDate: '2016-03-29T08:53:48+0000'
+                        contentURL: 'https://<api-url>/api/v2/tenants/client_1000/tasks/TASK0000001109/responses/1896/resources/91'
+                    hasAttachments: true
+                    tags: 'API,Task'
+                    timeSpent: 120
+                    internal: false
+                    description: Task Attachment
+                  - creator:
+                      id: USR0000002095
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@domain.com
+                    createdDate: '2016-03-29T14:13:20+0000'
+                    hasAttachments: false
+                    timeSpent: 200
+                    internal: false
+                    description: Response Testing-1
+                  - creator:
+                      id: USR0000002146
+                      loginName: FSSL-API-Lab-User-1
+                      lastName: API-Lab
+                      firstName: FSSL
+                      email: fssl.user@gmail.com
+                    createdDate: '2016-03-29T13:54:31+0000'
+                    attachments:
+                      - id: 88
+                        name: 2.txt
+                        createdDate: '2016-03-29T08:24:31+0000'
+                        contentURL: 'https://<api-url>/api/v2/tenants/client_1000/tasks/TASK0000001109/responses/1893/resources/88'
+                      - id: 89
+                        name: 1.txt
+                        createdDate: '2016-03-29T08:24:31+0000'
+                        contentURL: 'https://<api-url>/api/v2/tenants/client_1000/tasks/TASK0000001109/responses/1893/resources/89'
+                    hasAttachments: true
+                    internal: false
+                    description: Implement API for Tasks
+                totalResults: 3
+                orderBy: response.id
+                pageNo: 1
+                pageSize: 10
+                totalPages: 1
+                nextPage: false
+                nextPageNo: 0
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: string
+        default: response.id
+      in: query
+      name: sortName
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+      in: query
+      name: queryString
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: taskId
+    required: true

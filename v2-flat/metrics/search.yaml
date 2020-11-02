@@ -1,0 +1,558 @@
+get:
+  summary: Get metric (time series) on a resource
+  description: |-
+    This endpoint is used to retrieve the details of metric behavior at a certain time period.
+    There are three common examples that show how to retrieve metric data based on a specific time series.
+
+    1. Time series type (RealTime):
+    ```
+    https://{api-url}/api/v2/metric/search?tenant=client_20&rtype=DEVICE&resource=ab342123-5bfb-434c-aae4-03611ca020d9&metric=system.cpu.utilization&startTime=1536643494&endTime=1536661494&timeseries_type=RealTime
+    ```
+    2. Time series type (CHANGE_DETECTION):
+    ```
+    https://{api-url}/api/v2/metric/search?tenant=client_20&rtype=DEVICE&resource=ab342123-5bfb-434c-aae4-03611ca020d9&metric=system.cpu.utilization&startTime=1536643494&endTime=1536661494&timeseries_type=CHANGE_DETECTION
+    ```
+    3. Time series type (FORECAST):
+    ```
+    https://{api-url}/api/v2/metric/search?tenant=client_20&rtype=DEVICE&resource=ab342123-5bfb-434c-aae4-03611ca020d9
+    ```
+
+    ### Data resolution
+    OpsRamp retains the raw metrics data for the most recent seven. Metric roll-ups are computed every half-hour, hourly, and daily. Calculations performed include average, minimum, maximum, and latest. Based on the selected time range, data is dynamically served in raw and rolled-up formats.
+
+    |Time Range|Resolution|Time Series Sections|
+    |----|----|----|
+    |Up to 24 hours|Raw|data (RAW)|
+    |Greater than 24 hours to 3 days|30-minute rollup|data (AVG), minVals (MIN), maxVals(MAX) and lastVals(LATEST / LAST)|
+    |Greater than 3 days to 30 days|1-hour rollup|data (AVG), minVals (MIN), maxVals(MAX) and lastVals(LATEST / LAST)|
+    |Greater than 30 days|1-day rollup|data (AVG), minVals (MIN), maxVals(MAX) and lastVals(LATEST / LAST)|
+    |Using "data=raw" query param|Raw (up to 7 days)|data (RAW)|
+
+    ### Sample responses
+    To retrieve metric behavior at multiple time series patterns: example-multiple-time-series
+
+    To retrieve metric behavior at current time stamp in real time: example-current-real-time
+
+    To retrieve significant changes on a metric (using CHANGE_DETECTION): example-change-detection
+
+    To forecast values of a metric (using FORECAST): example-forecast
+
+    Roll-ups enables the viewing of metric behavior in wider time spans.
+
+    >When OpsRamp receives data points for a given time series, this data is accumulated for specific periods of time. This data is stored in four roll-ups for each interval: average, minimum, maximum, and latest.
+
+    To retrieve metric data for a roll-up time series: example-roll-up
+  tags:
+    - metrics
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                resource:
+                  type: integer
+                metric:
+                  type: string
+                metricType:
+                  type: string
+                unit:
+                  type: string
+                unitLabel:
+                  type: string
+                component:
+                  type: string
+                description:
+                  type: string
+                consolFunc:
+                  type: string
+                factor:
+                  type: integer
+                data:
+                  type: object
+                timeSeriesType:
+                  type: string
+                minVals:
+                  type: object
+                maxVals:
+                  type: object
+                lastVals:
+                  type: object
+          examples:
+            example-multiple-time-series:
+              value:
+                - resource: 12327
+                  metric: system.cpu.utilization
+                  metricType: Guage
+                  unit: '%'
+                  unitLabel: Percentage (%)
+                  component: system.cpu.utilization
+                  description: The percentage of elapsed time that the processor spends to execute a non-Idle thread
+                  consolFunc: AVERAGE
+                  factor: 1
+                  data:
+                    '1536643511': 25
+                    '1536643571': 65
+                    '1536643631': 63
+                    '1536643691': 72
+                    '1536643751': 91
+                    '1536643811': 21
+                    '1536643871': 77
+                    '1536643931': 54
+                    '1536643991': 50
+                    '1536644051': 42
+                  timeSeriesType: RealTime
+                - resource: 12327
+                  metric: system.cpu.utilization
+                  metricType: Guage
+                  unit: '%'
+                  unitLabel: Percentage (%)
+                  component: system.cpu.utilization
+                  description: The percentage of elapsed time that the processor spends to execute a non-Idle thread
+                  consolFunc: AVERAGE
+                  factor: 1
+                  data:
+                    '1536643511': -88
+                    '1536643571': -84
+                    '1536643631': -63
+                    '1536643691': -14
+                    '1536643751': -88
+                    '1536643811': -59
+                    '1536643871': -90
+                    '1536643931': -97
+                    '1536643991': -6
+                    '1536644051': -90
+                  timeSeriesType: CHANGE_DETECTION
+                - resource: 12327
+                  metric: system.cpu.utilization
+                  metricType: Guage
+                  unit: '%'
+                  unitLabel: Percentage (%)
+                  component: resource.availability
+                  description: The percentage of elapsed time that the processor spends to execute a non-Idle thread
+                  consolFunc: AVERAGE
+                  factor: 1
+                  timeSeriesType: CHANGE_DETECTION
+                - resource: 12327
+                  metric: system.cpu.utilization
+                  metricType: Guage
+                  unit: '%'
+                  unitLabel: Percentage (%)
+                  component: system.cpu.utilization
+                  description: The percentage of elapsed time that the processor spends to execute a non-Idle thread
+                  consolFunc: AVERAGE
+                  factor: 1
+                  data:
+                    '1536643511': 174
+                    '1536643571': 251
+                    '1536643631': 268
+                    '1536643691': 261
+                    '1536643751': 265
+                    '1536643811': 172
+                    '1536643871': 187
+                    '1536643931': 159
+                    '1536643991': 286
+                    '1536644051': 139
+                  timeSeriesType: FORECAST
+                - resource: 12327
+                  metric: system.cpu.utilization
+                  metricType: Guage
+                  unit: '%'
+                  unitLabel: Percentage (%)
+                  component: resource.availability
+                  description: The percentage of elapsed time that the processor spends to execute a non-Idle thread
+                  consolFunc: AVERAGE
+                  factor: 1
+                  timeSeriesType: FORECAST
+            example-current-real-time:
+              value:
+                - resource: 12327
+                  metric: system.cpu.utilization
+                  metricType: Guage
+                  unit: '%'
+                  unitLabel: Percentage (%)
+                  component: system.cpu.utilization
+                  description: The percentage of elapsed time that the processor spends to execute a non-Idle thread
+                  consolFunc: AVERAGE
+                  factor: 1
+                  data:
+                    '1536643511': 25
+                    '1536643571': 65
+                    '1536643631': 63
+                    '1536643691': 72
+                    '1536643751': 91
+                    '1536643811': 21
+                    '1536643871': 77
+                    '1536643931': 54
+                    '1536643991': 50
+                    '1536644051': 42
+                    '1536644111': 77
+                    '1536644171': 53
+                    '1536644231': 47
+                    '1536644291': 26
+                    '1536644351': 58
+                    '1536644411': 84
+                    '1536644471': 26
+                    '1536644531': 97
+                    '1536644591': 66
+                    '1536644651': 88
+                    '1536644711': 68
+                    '1536644771': 67
+                  timeSeriesType: RealTime
+            example-change-detection:
+              value:
+                - resource: 12327
+                  metric: system.cpu.utilization
+                  metricType: Guage
+                  unit: '%'
+                  unitLabel: Percentage (%)
+                  component: system.cpu.utilization
+                  description: The percentage of elapsed time that the processor spends to execute a non-Idle thread
+                  consolFunc: AVERAGE
+                  factor: 1
+                  data:
+                    '1536643511': -88
+                    '1536643571': -84
+                    '1536643631': -63
+                    '1536643691': -14
+                    '1536643751': -88
+                    '1536643811': -59
+                    '1536643871': -90
+                    '1536643931': -97
+                    '1536643991': -6
+                    '1536644051': -90
+                    '1536644111': -15
+                    '1536644171': -11
+                    '1536644231': -94
+                    '1536644291': -66
+                    '1536644351': -96
+                    '1536644411': -15
+                    '1536644471': -12
+                    '1536644531': -63
+                    '1536644591': -41
+                    '1536644651': -23
+                    '1536644711': -66
+                    '1536644771': -24
+                    '1536644831': -31
+                    '1536644891': -71
+                    '1536644951': -17
+                    '1536645011': -36
+                    '1536645071': -28
+                    '1536645131': -33
+                    '1536645191': -72
+                    '1536645251': -35
+                  timeSeriesType: CHANGE_DETECTION
+                - resource: 12327
+                  metric: system.cpu.utilization
+                  metricType: Guage
+                  unit: '%'
+                  unitLabel: Percentage (%)
+                  component: resource.availability
+                  description: The percentage of elapsed time that the processor spends to execute a non-Idle thread
+                  consolFunc: AVERAGE
+                  factor: 1
+                  timeSeriesType: CHANGE_DETECTION
+            example-forecast:
+              value:
+                - resource: 12327
+                  metric: system.cpu.utilization
+                  metricType: Guage
+                  unit: '%'
+                  unitLabel: Percentage (%)
+                  component: system.cpu.utilization
+                  description: The percentage of elapsed time that the processor spends to execute a non-Idle thread
+                  consolFunc: AVERAGE
+                  factor: 1
+                  data:
+                    '1536643511': 174
+                    '1536643571': 251
+                    '1536643631': 268
+                    '1536643691': 261
+                    '1536643751': 265
+                    '1536643811': 172
+                    '1536643871': 187
+                    '1536643931': 159
+                    '1536643991': 286
+                    '1536644051': 139
+                    '1536644111': 177
+                    '1536644171': 174
+                    '1536644231': 245
+                    '1536644291': 274
+                    '1536644351': 181
+                    '1536644411': 196
+                    '1536644471': 233
+                    '1536644531': 251
+                    '1536644591': 295
+                    '1536644651': 171
+                    '1536644711': 124
+                    '1536644771': 172
+                    '1536644831': 184
+                    '1536644891': 282
+                    '1536644951': 153
+                    '1536645011': 261
+                    '1536645071': 221
+                  timeSeriesType: FORECAST
+                - resource: 12327
+                  metric: system.cpu.utilization
+                  metricType: Guage
+                  unit: '%'
+                  unitLabel: Percentage (%)
+                  component: resource.availability
+                  description: The percentage of elapsed time that the processor spends to execute a non-Idle thread
+                  consolFunc: AVERAGE
+                  factor: 1
+                  timeSeriesType: FORECAST
+            example-roll-up:
+              value:
+                - resource: 4455803
+                  metric: system.disk.used
+                  metricType: Guage
+                  unit: GB
+                  unitLabel: Utilization
+                  component: c
+                  description: Used space on the selected logical disk drive
+                  consolFunc: AVERAGE
+                  factor: 1073741824
+                  data:
+                    '1464332400': 93299147000
+                    '1464336000': 93299496333.33333
+                    '1464339600': 93296001000
+                    '1464343200': 93291894333.33333
+                    '1464346800': 93301768000
+                    '1464350400': 93296875083.33333
+                    '1464354000': 93301855333.33333
+                    '1464357600': 93307797583.33333
+                    '1464361200': 93306749000
+                    '1464364800': 93177424750
+                    '1464368400': 93089518833.33333
+                    '1464372000': 93087771500
+                  minVals:
+                    '1464332400': 93299147000
+                    '1464336000': 93299147000
+                    '1464339600': 93291807000
+                    '1464343200': 93291807000
+                    '1464346800': 93296001000
+                    '1464350400': 93296001000
+                    '1464354000': 93298098000
+                    '1464357600': 93303341000
+                    '1464361200': 93304390000
+                    '1464364800': 93078946000
+                    '1464368400': 93081043000
+                    '1464372000': 93084189000
+                  maxVals:
+                    '1464332400': 93299147000
+                    '1464336000': 93300195000
+                    '1464339600': 93300195000
+                    '1464343200': 93292855000
+                    '1464346800': 93303341000
+                    '1464350400': 93298098000
+                    '1464354000': 93305438000
+                    '1464357600': 93311730000
+                    '1464361200': 93308584000
+                    '1464364800': 93314875000
+                    '1464368400': 93113549000
+                    '1464372000': 93091529000
+                  lastVals:
+                    '1464332400': 93299147000
+                    '1464336000': 93300195000
+                    '1464339600': 93291807000
+                    '1464343200': 93292855000
+                    '1464346800': 93296001000
+                    '1464350400': 93298098000
+                    '1464354000': 93305438000
+                    '1464357600': 93303341000
+                    '1464361200': 93308584000
+                    '1464364800': 93079994000
+                    '1464368400': 93112500000
+                    '1464372000': 93086286000
+                  timeSeriesType: CHANGE_DETECTION
+                - resource: 4455803
+                  metric: system.disk.used
+                  metricType: Guage
+                  unit: GB
+                  unitLabel: Utilization
+                  component: e
+                  description: Used space on the selected logical disk drive
+                  consolFunc: AVERAGE
+                  factor: 1073741824
+                  data:
+                    '1464332400': 145243679333.33334
+                    '1464336000': 145233543000
+                    '1464339600': 145239922083.33334
+                    '1464343200': 145253204166.66666
+                    '1464346800': 145243067750
+                    '1464350400': 145254427083.33334
+                    '1464354000': 145250145750
+                    '1464357600': 145259932416.66666
+                    '1464361200': 145264475916.66666
+                    '1464364800': 145274699750
+                    '1464368400': 145357449916.66666
+                    '1464372000': 145342245666.66666
+                  minVals:
+                    '1464332400': 145242456000
+                    '1464336000': 145229873000
+                    '1464339600': 145236165000
+                    '1464343200': 145229873000
+                    '1464346800': 145234067000
+                    '1464350400': 145253990000
+                    '1464354000': 145241407000
+                    '1464357600': 145237213000
+                    '1464361200': 145257136000
+                    '1464364800': 145244553000
+                    '1464368400': 145346265000
+                    '1464372000': 145336828000
+                  maxVals:
+                    '1464332400': 145245602000
+                    '1464336000': 145257136000
+                    '1464339600': 145240359000
+                    '1464343200': 145257136000
+                    '1464346800': 145251893000
+                    '1464350400': 145256088000
+                    '1464354000': 145257136000
+                    '1464357600': 145270768000
+                    '1464361200': 145269719000
+                    '1464364800': 145344168000
+                    '1464368400': 145363042000
+                    '1464372000': 145359897000
+                  lastVals:
+                    '1464332400': 145244553000
+                    '1464336000': 145231970000
+                    '1464339600': 145240359000
+                    '1464343200': 145256088000
+                    '1464346800': 145250845000
+                    '1464350400': 145256088000
+                    '1464354000': 145256088000
+                    '1464357600': 145239310000
+                    '1464361200': 145268670000
+                    '1464364800': 145344168000
+                    '1464368400': 145356751000
+                    '1464372000': 145341022000
+                  timeSeriesType: FORECAST
+                - resource: 4455803
+                  metric: system.disk.used
+                  metricType: Guage
+                  unit: GB
+                  unitLabel: Utilization
+                  component: c
+                  description: Used space on the selected logical disk drive
+                  consolFunc: AVERAGE
+                  factor: 1073741824
+                  data:
+                    '1464332400': 93299147000
+                    '1464336000': 93299496333.33333
+                    '1464339600': 93296001000
+                    '1464343200': 93291894333.33333
+                    '1464346800': 93301768000
+                    '1464350400': 93296875083.33333
+                    '1464354000': 93301855333.33333
+                    '1464357600': 93307797583.33333
+                    '1464361200': 93306749000
+                    '1464364800': 93177424750
+                    '1464368400': 93089518833.33333
+                    '1464372000': 93087771500
+                  minVals:
+                    '1464332400': 93299147000
+                    '1464336000': 93299147000
+                    '1464339600': 93291807000
+                    '1464343200': 93291807000
+                    '1464346800': 93296001000
+                    '1464350400': 93296001000
+                    '1464354000': 93298098000
+                    '1464357600': 93303341000
+                    '1464361200': 93304390000
+                    '1464364800': 93078946000
+                    '1464368400': 93081043000
+                    '1464372000': 93084189000
+                  maxVals:
+                    '1464332400': 93299147000
+                    '1464336000': 93300195000
+                    '1464339600': 93300195000
+                    '1464343200': 93292855000
+                    '1464346800': 93303341000
+                    '1464350400': 93298098000
+                    '1464354000': 93305438000
+                    '1464357600': 93311730000
+                    '1464361200': 93308584000
+                    '1464364800': 93314875000
+                    '1464368400': 93113549000
+                    '1464372000': 93091529000
+                  lastVals:
+                    '1464332400': 93299147000
+                    '1464336000': 93300195000
+                    '1464339600': 93291807000
+                    '1464343200': 93292855000
+                    '1464346800': 93296001000
+                    '1464350400': 93298098000
+                    '1464354000': 93305438000
+                    '1464357600': 93303341000
+                    '1464361200': 93308584000
+                    '1464364800': 93079994000
+                    '1464368400': 93112500000
+                    '1464372000': 93086286000
+                  timeSeriesType: RealTime
+  parameters:
+    - schema:
+        type: string
+      in: query
+      name: tenant
+      description: ID of the client with which a metric is associated with.
+    - schema:
+        type: string
+      in: query
+      name: rtype
+    - schema:
+        type: string
+      in: query
+      name: resource
+      description: ID of the resource on which a metric is assigned.
+    - schema:
+        type: string
+      in: query
+      name: metricName
+      description: (Optional) Name of the metric to report the metric details.
+    - schema:
+        type: string
+      in: query
+      name: startTime
+      description: |-
+        Search for the metric behavior within a specific time stamp with the start time (use the Unix Epoch Time Stamp format).
+        Example: 1536643494
+    - schema:
+        type: string
+      in: query
+      name: endTime
+      description: |-
+        The end time used for the search (use the Unix Epoch Time Stamp format).
+        Example: 1536643564
+    - schema:
+        type: string
+      in: query
+      name: timeseries_type
+      description: |-
+        (Optional) Metric behavior at a specific time series pattern. Supported values are:
+        - "RealTime": Provides details of metric behavior at current time stamp.
+        - "CHANGE_DETECTION": Provides details of significant changes on a metric.
+        - "FORECAST": Provides forecast details of a metric
+    - schema:
+        type: string
+      in: query
+      description: |
+        (Optional) ID of a metric group to which a metric belongs.
+      name: metricGroup
+    - schema:
+        type: string
+      in: query
+      name: resourceGroup
+      description: |
+        (Optional) ID of resource group the metric is applied. Use Get Minimal Details of Device Groups API to retrieve list of resource groups.
+    - schema:
+        type: string
+      in: query
+      name: component
+      description: |
+        (Optional) Device component name that the metric is assigned.
+parameters: []

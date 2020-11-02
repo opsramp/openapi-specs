@@ -1,0 +1,129 @@
+get:
+  summary: Get custom field
+  description: |-
+    This endpoint is used to retrieve the details of a custom field.
+
+    Use the supported entities along with their class code:
+
+    |Entity|Class Code|
+    |----|----|
+    |Service request|SERVICEREQUEST|
+    |Time-bound request|ACSTICKET|
+    |Task|TASK|
+    |Incident|INCIDENT|
+    |Problem|PROBLEM|
+    |Change request|CHANGE|
+    |Scheduled tasks|SCHEDULEDTASK|
+    |User|USER|
+    |Knowledge base article|KBARTICLE|
+    >Custom fields are user defined fields to include additional information of the entity.
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/customField'
+          examples:
+            example-dropdown:
+              value:
+                id: UDF0000003790
+                classCode: INCIDENT
+                displayLabel: drop-down-api-lab
+                name: drop_down_api_lab_3790
+                fieldType: TYPE_DROPDOWN
+                mandatory: false
+                editable: true
+                description: Test case
+                options:
+                  - label: first
+                    value: '1'
+                  - label: second
+                    value: '2'
+            example-text:
+              value:
+                id: UDF0000003791
+                classCode: INCIDENT
+                displayLabel: text-api-lab
+                name: text_api_lab_3791
+                fieldType: TYPE_TEXT
+                mandatory: false
+                editable: true
+                description: test case for text field
+            example-textarea:
+              value:
+                id: UDF0000003792
+                classCode: INCIDENT
+                displayLabel: multi line text-api-lab
+                name: multi_line_text_api_lab_3792
+                fieldType: TYPE_TEXTAREA
+                mandatory: false
+                editable: true
+                description: test case for multi line text
+            example-numeric:
+              value:
+                id: UDF0000003793
+                classCode: INCIDENT
+                displayLabel: Numeric-api-lab
+                name: numeric_api_lab_3793
+                fieldType: TYPE_NUMBER
+                mandatory: false
+                editable: true
+                description: numeric test case
+            example-checkbox:
+              value:
+                id: UDF0000003794
+                classCode: INCIDENT
+                displayLabel: checkbox-api-lab
+                name: checkbox_api_lab_3794
+                fieldType: TYPE_CHECKBOX
+                mandatory: false
+                editable: true
+                description: test case for check box
+                options:
+                  - label: 'yes'
+                    value: '1'
+            example-date:
+              value:
+                id: UDF0000003795
+                classCode: INCIDENT
+                displayLabel: Date-ap-lab
+                name: date_ap_lab_3795
+                fieldType: TYPE_DATE
+                mandatory: false
+                editable: true
+                description: test case for date field
+            example-datetime:
+              value:
+                id: UDF0000003796
+                classCode: INCIDENT
+                displayLabel: dateTime-api-lab
+                name: datetime_api_lab_3796
+                fieldType: TYPE_DATETIME
+                mandatory: false
+                editable: true
+                description: test case for Date and time
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+      enum:
+        - SERVICEREQUEST
+        - ACSTICKET
+        - TASK
+        - INCIDENT
+        - PROBLEM
+        - CHANGE
+        - SCHEDULEDTASK
+        - USER
+        - KBARTICLE
+    in: path
+    name: classCode
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: customFieldId
+    required: true

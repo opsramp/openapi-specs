@@ -1,0 +1,20 @@
+put:
+  summary: Update incident by an alert ID
+  description: This endpoint is used to attach and update an incident to an alert.
+  tags:
+    - alerts
+  responses:
+    '200':
+      description: OK
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: alertId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: ticketId
+    required: true

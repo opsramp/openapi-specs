@@ -1,0 +1,67 @@
+components:
+  schemas:
+    export:
+      title: export
+      type: object
+      properties:
+        name:
+          type: string
+          description: |
+            Name of the batch export template.
+        scheduleType:
+          type: string
+          description: |
+            Defines the schedule type. Example: ON-DEMAND.
+          enum:
+            - ON-DEMAND
+            - RECURRING
+        recurringType:
+          type: string
+          description: 'Defines the recurring type of batch export. Supported values: Daily, Weekly, Monthly.'
+          enum:
+            - Daily
+            - Weekly
+            - Monthly
+        integrationId:
+          type: string
+          description: |
+            Integration ID.
+        type:
+          type: string
+          description: |
+            Defines the batch type to export. Supported values: Inventory, Alerts, Tickets, Metrics.
+          enum:
+            - Inventory
+            - Alerts
+            - Tickets
+            - Metrics
+        startHours:
+          type: string
+          description: |
+            Defines the starting time of daily recurring in hours. Supported values: 00 to 23.
+        startMins:
+          type: string
+          description: |
+            Defines the starting time of daily recurrence in minutes. Supported values: 00 to 59.
+        startDate:
+          type: string
+          description: |
+            Defines the starting date of monthly recurrence of batch export. Supported values: 01st to 27th or last day of the month.
+        startDay:
+          type: string
+          description: |
+            Defines the starting day of the weekly recurrence of batch export. Supported values: SUN, MON, TUE, WED, THU, FRI, SAT.
+          enum:
+            - SUN
+            - MON
+            - TUE
+            - WED
+            - THU
+            - FRI
+            - SAT
+      required:
+        - name
+        - scheduleType
+        - recurringType
+        - integrationId
+        - type

@@ -1,0 +1,100 @@
+post:
+  summary: Create patch configuration
+  description: |-
+    This endpoint is used to create a patch configuration and execute patches on the resources.
+
+    >## Notes
+    >- Approved Windows patches are installed on the device during the scheduled installation window.
+    >- The device is immediately rebooted following any patch that requires a reboot.
+    >- Standard checks are performed on rebooted devices to ensure the device is operating properly.
+  tags:
+    - patching
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/patchConfig'
+          examples:
+            example-1:
+              value:
+                scheduleJob:
+                  name: test
+                  entities:
+                    - resource:
+                        id: 04e26c5a-2173-4857-98b5-31190bb9985d
+                        generalInfo:
+                          ipAddresses: 10.21.0.212
+                          hostName: opsramp-demo-ubuntu-2
+                        clientUniqueId: client_13
+                        type: DEVICE
+                    - resource:
+                        id: 338382d8-d4e3-4573-85fc-27580b68ac5c
+                        generalInfo:
+                          ipAddresses: 10.21.0.213
+                          hostName: opsramp-demo-ubuntu-3
+                        clientUniqueId: client_13
+                        type: DEVICE
+                  schedule:
+                    startDate: '2016-04-14T10:10:00+0000'
+                    pattern:
+                      type: daily
+                      frequency: recurrence
+                      repeatFrequency: 2
+                      repeatType: days
+                  client:
+                    id: 13
+                    uniqueId: client_13
+                    name: patch client
+                    activated: true
+                  script:
+                    jobType: missingPatchesDownloadUpdate
+                id: PATCHCONF-9db1451f-1441-4bd9-90b9-aa371fc11e6d
+                patchConfigName: test
+                description: testing
+                approvalType:
+                  approvalType: 1
+                  approvalReason: testing data
+                rebootOptions:
+                  rebootRequired: true
+                  forceReboot: true
+                enablePatching: true
+                maintenancePeriod: 60
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/patchConfig'
+        examples:
+          example-1:
+            value:
+              patchConfigName: Test_Patch_Config
+              description: testing
+              approvalType:
+                approvalType: 1
+                approvalReason: testing data
+              rebootOptions:
+                rebootRequired: true
+                forceReboot: true
+              scheduleJob:
+                entities:
+                  - resource:
+                      id: 04e26c5a-2173-4857-98b5-31190bb9985d
+                      type: DEVICE
+                  - resource:
+                      id: 338382d8-d4e3-4573-85fc-27580b68ac5c
+                      type: DEVICE
+                script:
+                  jobType: missingPatchesDownloadUpdate
+                schedule:
+                  startDate: '2016-04-14T10:10:10+0000'
+                  pattern:
+                    type: daily
+                    frequency: recurrence
+                    repeatType: Days
+                    repeatFrequency: 2
+              enablePatching: true
+              maintenancePeriod: 60
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

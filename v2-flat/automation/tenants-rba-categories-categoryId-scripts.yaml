@@ -1,0 +1,238 @@
+post:
+  summary: Create script
+  description: |-
+    This endpoint is used to create a script.
+
+    ## Notes
+    - Attachment files must be converted to byte stream and base64-encoded. Always include a name and file.
+    - To retrieve the list of available categories, invoke the Get Categories API.
+  tags:
+    - automation
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/rbaScript'
+          examples:
+            example-1:
+              value:
+                id: 78
+                name: Restart Service
+                description: Restart Service
+                category:
+                  id: 28
+                  name: CLIENT-Category
+                platforms:
+                  - WINDOWS
+                  - LINUX
+                parameters:
+                  - id: 102
+                    name: Test Param - 1
+                    description: Testing please ignore
+                    defaultValue: "10"
+                    type: REQUIRED
+                    dataType: INTEGER
+                  - id: 103
+                    name: Test Param - 2
+                    description: Testing please ignore
+                    defaultValue: "50"
+                    type: OPTIONAL
+                    dataType: STRING
+                executionType: SHELL
+                installTimeout: 50
+                attachment:
+                  id: 0
+                  name: apache-restart.sh
+                  contentURL: "https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=0.00"
+                scriptVersion: "0.00"
+                registryPath: HKEY_CURRENT_USER/Control Panel/Desktop
+                registryValue: "dword:00000001"
+                processName: cmd.exe
+                serviceName: OpsRampAgent
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: |
+                Script name.
+            description:
+              type: string
+              description: |
+                Description for the script.
+            platforms:
+              type: array
+              description: |
+                (Optional) OS platforms.Example: WINDOWS, LINUX
+              items:
+                type: string
+            executionType:
+              type: string
+              description: "Script execution type.Supported Values: BATCHFILE, COMMAND, DOWNLOAD, EXE, MSI, POWERSHELL, PYTHON, PERL, PHP, SHELL, VBS"
+              enum:
+                - BATCHFILE
+                - COMMAND
+                - DOWNLOAD
+                - DOWNLOAD
+                - EXE
+                - MSI
+                - POWERSHELL
+                - PYTHON
+                - PERL
+                - PHP
+                - SHELL
+                - VBS
+            installTimeout:
+              type: integer
+              description: |
+                (Optional) Maximum time for installation.
+            registryPath:
+              type: string
+              description: |
+                (Optional) Registry path for sanity check after execution.
+            registryValue:
+              type: string
+              description: |
+                (Optional) Registry Value for sanity check after execution.
+            processName:
+              type: string
+              description: |
+                (Optional) Process name for sanity check.
+            serviceName:
+              type: string
+              description: |
+                (Optional) Service name for sanity check.
+            attachment:
+              type: object
+              description: |
+                If executionType is COMMAND, then command is needed else attachment file is needed.
+              properties:
+                name:
+                  type: string
+                file:
+                  type: string
+            parameters:
+              type: array
+              description: |
+                (Optional) Parameter data.
+              items:
+                $ref: './components.yaml#/components/schemas/rbaScriptParameter'
+            command:
+              type: string
+            outputDirectory:
+              type: string
+              description: |
+                (Optional) Output directory supported required only when executionType is DOWNLOAD, EXE, MSI.
+            outputFile:
+              type: string
+              description: |
+                (Optional) Output file supported required only when executionType is DOWNLOAD, EXE, MSI.
+        examples:
+          example-1:
+            value:
+              name: Restart Apache
+              description: Restart Apache using Shell
+              platforms:
+                - WINDOWS
+                - LINUX
+              executionType: SHELL
+              installTimeout: "50"
+              registryPath: HKEY_CURRENT_USER/Control Panel/Desktop
+              registryValue: "dword:00000001"
+              processName: cmd.exe
+              serviceName: OpsRampAgent
+              attachment:
+                name: apache-restart.sh
+                file: UkVTVEFSVD0iL3NiaW4vc2VydmljZSBodHRwZCByZXN0YXJ0Ig0KUEdSRVA9Ii91c3IvYmluL3BncmVwIg0KSFRUUEQ9Imh0dHBkIg0KJFBHUkVQICR7SFRUUER9DQppZiBbICQ/IC1uZSAwIF0NCnRoZW4NCiAkUkVTVEFSVA0KZmk=
+              parameters:
+                - name: Test Param - 1
+                  description: Testing please ignore
+                  defaultValue: "10"
+                  type: REQUIRED
+                  dataType: INTEGER
+                - name: Test Param - 2
+                  description: Testing please ignore
+                  defaultValue: "50"
+                  type: OPTIONAL
+                  dataType: STRING
+delete:
+  summary: Delete script
+  description: |
+    This endpoint is used to delete a script.
+
+    Partners can delete client or partner scripts. A client can only delete client-specific scripts.
+  tags:
+    - automation
+  responses:
+    "200":
+      description: |-
+        OK
+
+        ## Notes
+        The response depends on the returned status code.
+get:
+  summary: Get scripts
+  description: This endpoint is used to retrieve the list of scripts within a category.
+  tags:
+    - automation
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/rbaScript'
+          examples:
+            example-1:
+              value:
+                id: 73
+                name: Restart Apache Service
+                description: Restart Apache Service
+                category:
+                  id: 28
+                  name: CLIENT-Category
+                platforms:
+                  - WINDOWS
+                  - LINUX
+                parameters:
+                  - id: 94
+                    name: Test Param - 1
+                    description: Testing please ignore
+                    defaultValue: "10"
+                    type: REQUIRED
+                    dataType: INTEGER
+                  - id: 95
+                    name: Test Param - 2
+                    description: Testing please ignore
+                    defaultValue: "50"
+                    type: OPTIONAL
+                    dataType: STRING
+                  - id: 96
+                    name: New param - 3
+                    description: Testing please ignore
+                    defaultValue: "50"
+                    type: OPTIONAL
+                    dataType: STRING
+                executionType: SHELL
+                installTimeout: 50
+                attachment:
+                  id: 0
+                  name: apache-restart.sh
+                  contentURL: "https://localhost:8443/downloadScript.do?action=downloadAgent&fileName=apache-restart.sh&version=5.00"
+                scriptVersion: "5.00"
+                registryPath: HKEY_CURRENT_USER/Control Panel/Desktop
+                registryValue: "dword:00000001"
+                processName: cmd.exe
+                serviceName: OpsRampAgent
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: categoryId
+    required: true

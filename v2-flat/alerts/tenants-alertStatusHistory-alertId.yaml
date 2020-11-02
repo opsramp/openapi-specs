@@ -1,0 +1,46 @@
+get:
+  summary: Alert status history
+  description: This endpoint retrieves an alert’s status history.
+  tags:
+    - alerts
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              alertId:
+                type: integer
+              createdBy:
+                type: string
+              createdTime:
+                type: string
+                format: date-time
+              acknowledgedBy:
+                type: string
+              acknowledgedTime:
+                type: string
+              suppressedBy:
+                type: string
+              suppressedTime:
+                type: string
+                format: date-time
+          examples:
+            example-1:
+              value:
+                alertId: 2156
+                createdBy: system
+                createdTime: '2019-04-02T14:27:55+0000'
+                acknowledgedBy: superadmin
+                acknowledgedTime: '2019-04-02T14:33:18+0000'
+                suppressedBy: superadmin
+                suppressedTime: '2019-04-02T14:33:59+0000'
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: alertId
+    required: true

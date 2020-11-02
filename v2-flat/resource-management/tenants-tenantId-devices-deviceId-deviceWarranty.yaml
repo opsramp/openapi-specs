@@ -1,0 +1,57 @@
+post:
+  summary: Create warranty
+  description: This endpoint is used to create a warranty for a device.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: './components.yaml#/components/schemas/warranty'
+          examples:
+            example-1:
+              value:
+                - id: 7
+                  purchaseDate: '2015-11-09 12:30:00 UTC'
+                  warrantyExpireDate: '2016-12-09 12:30:00 UTC'
+                  deviceId: DEV0000011576
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/warranty'
+        examples:
+          example-1:
+            value:
+              purchaseDate: '2015-11-09 12:30:00 UTC'
+              warrantyExpireDate: '2020-12-09 12:30:00 UTC'
+get:
+  summary: Get warranty
+  description: This endpoint is used to retrieve device warranty details.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/warranty'
+          examples:
+            example-1:
+              value:
+                id: 1
+                purchaseDate: '2015-11-09T18:00:00+0000'
+                warrantyExpireDate: '2020-12-09T18:00:00+0000'
+                deviceId: fb3d81e9-cb01-4178-a7c7-7336ddd3c756
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: deviceId
+    required: true

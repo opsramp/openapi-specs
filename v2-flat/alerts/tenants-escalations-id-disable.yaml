@@ -1,0 +1,19 @@
+post:
+  summary: Disable alert escalation policy
+  description: |-
+    This endpoint is used to disable an alert escalation policy.
+
+    ## Notes
+    The response depends on the returned status code.
+  tags:
+    - alerts
+  responses:
+    '200':
+      description: OK
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: id
+    required: true

@@ -1,0 +1,202 @@
+get:
+  summary: Get login audit report
+  description: |-
+    This endpoint is used to retrieve the login history details of users.
+
+    >## Notes
+    >There are special characters that can be used in a query string:
+    >- (+) represents the next field and must be URL-encoded.
+    >- (:) represents equals. An example is `key : value`.
+    >- Space characters must be URL-encoded.
+    >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+
+    ### Query variables
+
+    |Query Variables|Description|
+    |----|-----|
+    |id|User ID.|
+    |loginName|User login name.|
+    |startLoginDate|Search for the users who logged in within a specific duration. startLoginDate denotes the from date.|
+    |endLoginDate|Search for the users who logged in within a specific duration. endLoginDate denotes the to date.|
+    |startLogoutDate|Search for the users who logged out within a specific duration. startLogoutDate denotes the from date.|
+    |endLogoutDate|Search for the users who logged out within a specific duration. endLogoutDate denotes the to date.|
+  tags:
+    - tenancy-access-controls
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: string
+        default: id
+      in: query
+      name: sortName
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+      in: query
+      name: queryString
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    partner:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        uniqueId:
+                          type: string
+                        name:
+                          type: string
+                        activated:
+                          type: boolean
+                    client:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        uniqueId:
+                          type: string
+                        name:
+                          type: string
+                        activated:
+                          type: boolean
+                    user:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        loginName:
+                          type: string
+                        lastName:
+                          type: string
+                        firstName:
+                          type: string
+                        email:
+                          type: string
+                        changePassword:
+                          type: boolean
+                    sourceIp:
+                      type: string
+                    sourceHost:
+                      type: string
+                    sessionId:
+                      type: string
+                    status:
+                      type: string
+                    loginType:
+                      type: string
+                    logoutType:
+                      type: string
+                    loginTime:
+                      type: string
+                    logoutTime:
+                      type: string
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              nextPageNo:
+                type: integer
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: 12716
+                    partner:
+                      id: 92
+                      uniqueId: msp_92
+                      name: Brocade Inc
+                      activated: true
+                    client:
+                      id: 93
+                      uniqueId: client_93
+                      name: Brocade Lab
+                      activated: true
+                    user:
+                      id: USR0000002114
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: John.Smith@organization.com
+                      changePassword: false
+                    sourceIp: 127.0.0.1
+                    sourceHost: 127.0.0.1
+                    sessionId: DD8288A5906A694C67C982ADF0E54750
+                    status: Logged Out
+                    loginType: Success
+                    logoutType: Normal
+                    loginTime: '2016-01-28T07:58:54+0000'
+                    logoutTime: '2016-01-28T09:59:57+0000'
+                  - id: 12709
+                    partner:
+                      id: 92
+                      uniqueId: msp_92
+                      name: Brocade Inc
+                      activated: true
+                    client:
+                      id: 93
+                      uniqueId: client_93
+                      name: Brocade Lab
+                      activated: true
+                    user:
+                      id: USR0000002114
+                      loginName: James.Scott
+                      lastName: Scott
+                      firstName: James
+                      email: james.scott@organization.com
+                      changePassword: false
+                    sourceIp: 127.0.0.1
+                    sourceHost: 127.0.0.1
+                    sessionId: 1BC85D994F8B2919A24BCE82D61D8AEB
+                    status: Logged Out
+                    loginType: Success
+                    logoutType: Normal
+                    loginTime: '2016-01-25T07:01:11+0000'
+                    logoutTime: '2016-01-25T07:01:31+0000'
+                totalResults: 94
+                orderBy: id
+                pageNo: 1
+                pageSize: 2
+                totalPages: 47
+                nextPage: true
+                nextPageNo: 2
+                previousPageNo: 0
+                descendingOrder: true
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

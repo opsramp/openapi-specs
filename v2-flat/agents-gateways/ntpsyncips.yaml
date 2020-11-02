@@ -1,0 +1,34 @@
+post:
+  summary: Synchronize NTP servers
+  description: This endpoint is used to synchronize the time from the NTP servers on the gateway.
+  tags:
+    - agents-gateways
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              Server IPs:
+                type: string
+          examples:
+            example-1:
+              value:
+                Server IPs: Successfully synchronized date using NTP.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            ntpArray:
+              type: string
+              description: NTP server IP addresses.
+          required:
+            - ntpArray
+        examples:
+          example-1:
+            value:
+              ntpArray: '192.168.xx.xx,172.26.xx.xx'

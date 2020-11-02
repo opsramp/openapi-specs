@@ -1,0 +1,72 @@
+post:
+  summary: Assign resources as child to a device group
+  description: This endpoint is used to manually add specific devices/resources to a device group without any defined set of rules.
+  tags:
+    - resource-management
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: |
+                  Device unique ID.
+              name:
+                type: string
+              type:
+                type: string
+                description: |
+                  Device/Resource type.
+            required:
+              - id
+              - type
+        examples:
+          example-1:
+            value:
+              - id: fcc492e9-64df-4ef0-b1b7-82167d87d4b4
+                name: 'arn:aws:sns:us-east-1:290642135901:cloudtrail-sns'
+                type: SNS
+              - id: 57778bb1-a294-450a-93e4-4371a74ac39f
+                name: 'arn:aws:sns:us-east-1:290642135901:onboa-demo-sns'
+                type: SNS
+              - id: f7f247e2-3461-4ff1-bfdb-65ee2124c6c3
+                name: 'arn:aws:sns:us-east-1:290642135901:alarm-notifications-topic'
+                type: SNS
+  responses:
+    '200':
+      description: OK
+delete:
+  summary: Unassign child resources from a device group
+  description: This endpoint is used to manually remove specific devices/resources from a device group.
+  tags:
+    - resource-management
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+        examples:
+          example-1:
+            value:
+              - id: 042761ba-542e-4a7a-8e38-3ebbea7eeb16
+              - id: 023471da-698b-3a2e-1e93-6dbaca8eea23
+              - id: 855eb82e-3064-40a1-a26e-77efabe300da
+  responses:
+    '200':
+      description: OK
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: deviceGroupId
+    required: true

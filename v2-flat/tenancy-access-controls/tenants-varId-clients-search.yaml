@@ -1,0 +1,145 @@
+get:
+  summary: Search clients
+  description: |-
+    This endpoint is used to search for the clients.
+
+    >## Notes
+    >There are special characters that can be used in a query string:
+    >- (+) represents the next field and must be URL-encoded.
+    >- (:) represents equals. An example is `key : value`.
+    >- Space characters must be URL-encoded.
+    >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+
+    ### Query variables
+    |Query Variables|Values|Description|
+    |----|----|----|
+    |uniqueId|NA|Client ID.|
+    |name|NA|Client name.|
+    |activeStatus|true, false|Active status of client.|
+    |startCreationDate|NA|Client created within a period of time. Provide the from date.<br>Example: 2016-08-18T06:52:24 0000|
+    |endCreationDate|NA|Client created within a period of time. Provide the to date.<br>Example: 2016-08-20T06:52:24 0000|
+    |startUpdationDate|NA|Client updated within a period of time. Provide the from update date.<br>Example: 2016-08-25T18:56:04 0000|
+    |endUpdationDate|NA|Client updated within a period of time. Provide to update date.<br>Example: 2016-08-25T18:56:04 0000|
+  tags:
+    - tenancy-access-controls
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: './components.yaml#/components/schemas/client'
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              nextPageNo:
+                type: integer
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: 14
+                    uniqueId: client_14
+                    name: Brocade Services
+                    activated: true
+                    updatedTime: '2016-08-25T18:56:04+0000'
+                    createdTime: '2016-08-18T06:52:24+0000'
+                    createdBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: OpsRamp
+                      email: escalationmails@opsramp.com
+                    lastUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: OpsRamp
+                      email: escalationmails@opsramp.com
+                  - id: 9
+                    uniqueId: client_9
+                    name: Brocade Corp.
+                    activated: true
+                    updatedTime: '2016-07-23T16:18:42+0000'
+                    createdTime: '2016-07-23T16:18:42+0000'
+                    createdBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: OpsRamp
+                      email: escalationmails@opsramp.com
+                    lastUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: OpsRamp
+                      email: escalationmails@opsramp.com
+                  - id: 8
+                    uniqueId: client_8
+                    name: Brocade Lab
+                    activated: true
+                    updatedTime: '2016-08-29T12:05:08+0000'
+                    createdTime: '2016-07-23T16:17:12+0000'
+                    createdBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: OpsRamp
+                      email: escalationmails@opsramp.com
+                    lastUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: OpsRamp
+                      email: escalationmails@opsramp.com
+                totalResults: 3
+                orderBy: client.id
+                pageNo: 1
+                pageSize: 10
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: string
+        default: note.id
+      in: query
+      name: sortName
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+      in: query
+      name: queryString
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: varId
+    required: true

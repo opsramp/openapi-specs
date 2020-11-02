@@ -1,0 +1,367 @@
+post:
+  summary: Install integration
+  description: 'OpsRamp supports the following integrations: cloud, monitoring, collaboration. To install the integration, provide the integration ID in {intgld}.'
+  tags:
+    - integrations
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/integrationInstall'
+          examples:
+            example-pingdom:
+              value:
+                id: INTG-74640545-0895-4924-9261-250ce5ce7ad5
+                integration:
+                  id: PINGDOM
+                  name: Pingdom
+            example-display-name-and-logo:
+              value:
+                id: INTG-b95d0d73-e904-4059-915c-7380396af61c
+                displayName: Test Integration
+                integration:
+                  id: CUSTOM
+                  name: Custom
+            example-parent-inheritance:
+              value:
+                id: INTG-d4c2a1b3-0520-4e24-809f-b1a2857b88ac
+                displayName: Logix Integration
+                integration:
+                  id: CUSTOM
+                  name: Custom
+            example-CASERVICEDESK-authentication:
+              value:
+                id: INTG-9c584c86-4ba9-4006-9ee2-c41a07b7c761
+                integration:
+                  id: CASERVICEDESK
+                  name: Service Desk
+                inboundConfig:
+                  authentication:
+                    authType: WEBHOOK
+                    token: YTxSGJdfkkfE3m7WaE8jYkwmsYjNU3VU
+            example-CASERVICEDESK-inbound:
+              value:
+                id: INTG-9c584c86-4ba9-4006-9ee2-c41a07b7c761
+                integration:
+                  id: CASERVICEDESK
+                  name: Service Desk
+                inboundConfig:
+                  authentication:
+                    authType: WEBHOOK
+                    token: YTxSGJdfkkfE3m7WaE8jYkwmsYjNU3VU
+                  mapAttributes:
+                    - name: Status
+                      attrName: serviceRequest.status.name
+                      thirdPartyAttrName: Status
+                      entityType: SERVICEREQUEST
+                      thirdPartyEntityType: SRQ
+                      attrValues:
+                        - attrValue: Open
+                          thirdPartyAttrValue: In Progress
+                        - attrValue: Closed
+                          thirdPartyAttrValue: Completed
+                    - name: Status
+                      attrName: incident.status.name
+                      thirdPartyAttrName: stats
+                      entityType: INCIDENT
+                      thirdPartyEntityType: Ticket
+                      attrValues:
+                        - attrValue: Ok
+                          thirdPartyAttrValue: good
+                        - attrValue: Critical
+                          thirdPartyAttrValue: bad
+                        - attrValue: Open
+                          thirdPartyAttrValue: In Progress
+                        - attrValue: Closed
+                          thirdPartyAttrValue: Completed
+                    - name: Priority
+                      attrName: incident.priority.name
+                      thirdPartyAttrName: severity
+                      entityType: INCIDENT
+                      thirdPartyEntityType: TICKET
+                      attrValues:
+                        - attrValue: High
+                          thirdPartyAttrValue: Max
+                        - attrValue: Low
+                          thirdPartyAttrValue: min
+                    - name: Priority
+                      attrName: serviceRequest.priority.name
+                      thirdPartyAttrName: severity
+                      entityType: SERVICEREQUEST
+                      thirdPartyEntityType: SRQ
+                      attrValues:
+                        - attrValue: High
+                          thirdPartyAttrValue: Max
+                        - attrValue: Low
+                          thirdPartyAttrValue: min
+            example-CASERVICEDESK-outbound:
+              value:
+                id: INTG-9c584c86-4ba9-4006-9ee2-c41a07b7c761
+                integration:
+                  id: CASERVICEDESK
+                  name: Service Desk
+                outboundConfig:
+                  baseNotifier:
+                    baseURI: www.google.com
+                    authType: OAUTH2
+                    grantType: PASSWORD
+                    userName: testUser
+                    apiKey: 6h67PAAFscVPMwhQZFcshpcqN5b6pyU9
+                    accessTokenURL: www.token.com/cred
+                  mapAttributes:
+                    - name: Status
+                      attrName: incident.status.name
+                      thirdPartyAttrName: stats
+                      entityType: INCIDENT
+                      thirdPartyEntityType: Ticket
+                      attrValues:
+                        - attrValue: Ok
+                          thirdPartyAttrValue: good
+                        - attrValue: Critical
+                          thirdPartyAttrValue: bad
+                        - attrValue: Ok
+                          thirdPartyAttrValue: good
+                        - attrValue: Critical
+                          thirdPartyAttrValue: bad
+            example-CASERVICEDESK-inbound-outbound:
+              value:
+                id: INTG-9c584c86-4ba9-4006-9ee2-c41a07b7c761
+                integration:
+                  id: CASERVICEDESK
+                  name: Service Desk
+                inboundConfig:
+                  authentication:
+                    authType: WEBHOOK
+                    token: YTxSGJdfkkfE3m7WaE8jYkwmsYjNU3VU
+                  mapAttributes:
+                    - name: Status
+                      attrName: serviceRequest.status.name
+                      thirdPartyAttrName: Status
+                      entityType: SERVICEREQUEST
+                      thirdPartyEntityType: SRQ
+                      attrValues:
+                        - attrValue: Open
+                          thirdPartyAttrValue: In Progress
+                        - attrValue: Closed
+                          thirdPartyAttrValue: Completed
+                    - name: Status
+                      attrName: incident.status.name
+                      thirdPartyAttrName: stats
+                      entityType: INCIDENT
+                      thirdPartyEntityType: Ticket
+                      attrValues:
+                        - attrValue: Ok
+                          thirdPartyAttrValue: good
+                        - attrValue: Critical
+                          thirdPartyAttrValue: bad
+                        - attrValue: Open
+                          thirdPartyAttrValue: In Progress
+                        - attrValue: Closed
+                          thirdPartyAttrValue: Completed
+                    - name: Priority
+                      attrName: incident.priority.name
+                      thirdPartyAttrName: severity
+                      entityType: INCIDENT
+                      thirdPartyEntityType: TICKET
+                      attrValues:
+                        - attrValue: High
+                          thirdPartyAttrValue: Max
+                        - attrValue: Low
+                          thirdPartyAttrValue: min
+                    - name: Priority
+                      attrName: serviceRequest.priority.name
+                      thirdPartyAttrName: severity
+                      entityType: SERVICEREQUEST
+                      thirdPartyEntityType: SRQ
+                      attrValues:
+                        - attrValue: High
+                          thirdPartyAttrValue: Max
+                        - attrValue: Low
+                          thirdPartyAttrValue: min
+                outboundConfig:
+                  baseNotifier:
+                    baseURI: www.google.com
+                    authType: OAUTH2
+                    grantType: PASSWORD
+                    userName: testUser
+                    apiKey: 6h67PAAFscVPMwhQZFcshpcqN5b6pyU9
+                    accessTokenURL: www.token.com/cred
+                  mapAttributes:
+                    - name: Status
+                      attrName: incident.status.name
+                      thirdPartyAttrName: stats
+                      entityType: INCIDENT
+                      thirdPartyEntityType: Ticket
+                      attrValues:
+                        - attrValue: Ok
+                          thirdPartyAttrValue: good
+                        - attrValue: Critical
+                          thirdPartyAttrValue: bad
+                        - attrValue: Ok
+                          thirdPartyAttrValue: good
+                        - attrValue: Critical
+                          thirdPartyAttrValue: bad
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/integrationInstall'
+        examples:
+          example-display-name-and-logo:
+            value:
+              displayName: Test Integration
+              logo:
+                name: test.png
+                file: /9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUSExMVFhUVGBcXFhcYGBgaFxgVFRUYFxcYFRcYHSggHh8lGxsXIjEiJSkrLi4wFx8zODMtOCgtLisBCgoKDg0OGxAQGy0lICYtLS0tLy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAHABwwMBEQACEQEDEQH/xAAcAAEAAgIDAQAAAAAp8j1D+zC/vI1R5usr1w5LeIXrhyW8RLd0GZTzYzPDR9FmJ/EcB5FdNOFM/FLppwpn45SvJ2S4oBaNgF9p2uPeSu3HirSPww7seKuOPwwzFo0EBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQf//Z
+          example-parent-inheritance:
+            value:
+              displayName: Logix Integration
+              parentIntg:
+                id: INTG-f3e44188-83d9-4efc-82d1-68b07b740f0b
+          example-CASERVICEDESK-authentication:
+            value:
+              inboundConfig:
+                authentication:
+                  authType: WEBHOOK
+          example-CASERVICEDESK-inbound:
+            value:
+              inboundConfig:
+                authentication:
+                  authType: WEBHOOK
+                mapAttributes:
+                  - name: Status
+                    thirdPartyAttrName: Status
+                    entityType: SERVICEREQUEST
+                    thirdPartyEntityType: SRQ
+                    attrValues:
+                      - attrValue: Open
+                        thirdPartyAttrValue: In Progress
+                      - attrValue: Closed
+                        thirdPartyAttrValue: Completed
+                  - name: Status
+                    thirdPartyAttrName: Status
+                    entityType: INCIDENT
+                    thirdPartyEntityType: TICKET
+                    attrValues:
+                      - attrValue: Open
+                        thirdPartyAttrValue: In Progress
+                      - attrValue: Closed
+                        thirdPartyAttrValue: Completed
+                  - name: Priority
+                    thirdPartyAttrName: severity
+                    entityType: INCIDENT
+                    thirdPartyEntityType: TICKET
+                    attrValues:
+                      - attrValue: High
+                        thirdPartyAttrValue: Max
+                      - attrValue: Low
+                        thirdPartyAttrValue: min
+                  - name: Priority
+                    thirdPartyAttrName: severity
+                    entityType: SERVICEREQUEST
+                    thirdPartyEntityType: SRQ
+                    attrValues:
+                      - attrValue: High
+                        thirdPartyAttrValue: Max
+                      - attrValue: Low
+                        thirdPartyAttrValue: min
+          example-CASERVICEDESK-outbound:
+            value:
+              outboundConfig:
+                mapAttributes:
+                  - name: Status
+                    thirdPartyAttrName: stats
+                    entityType: INCIDENT
+                    thirdPartyEntityType: Ticket
+                    attrValues:
+                      - attrValue: Ok
+                        thirdPartyAttrValue: good
+                      - attrValue: Critical
+                        thirdPartyAttrValue: bad
+                baseNotifier:
+                  type: REST_API
+                  baseURI: www.google.com
+                  authType: OAUTH2
+                  grantType: PASSWORD
+                  userName: testUser
+                  password: pk
+                  accessTokenURI: www.token.com/cred
+                  apiKey: 6h67PAAFscVPMwhQZFcshpcqN5b6pyU9
+                  apiSecret: asdfgnasinfpaiwerpfawpeojporwjaeprfwpejprwje
+          example-CASERVICEDESK-inbound-outbound:
+            value:
+              inboundConfig:
+                authentication:
+                  authType: WEBHOOK
+                mapAttributes:
+                  - name: Status
+                    thirdPartyAttrName: Status
+                    entityType: SERVICEREQUEST
+                    thirdPartyEntityType: SRQ
+                    attrValues:
+                      - attrValue: Open
+                        thirdPartyAttrValue: In Progress
+                      - attrValue: Closed
+                        thirdPartyAttrValue: Completed
+                  - name: Status
+                    thirdPartyAttrName: Status
+                    entityType: INCIDENT
+                    thirdPartyEntityType: TICKET
+                    attrValues:
+                      - attrValue: Open
+                        thirdPartyAttrValue: In Progress
+                      - attrValue: Closed
+                        thirdPartyAttrValue: Completed
+                  - name: Priority
+                    thirdPartyAttrName: severity
+                    entityType: INCIDENT
+                    thirdPartyEntityType: TICKET
+                    attrValues:
+                      - attrValue: High
+                        thirdPartyAttrValue: Max
+                      - attrValue: Low
+                        thirdPartyAttrValue: min
+                  - name: Priority
+                    thirdPartyAttrName: severity
+                    entityType: SERVICEREQUEST
+                    thirdPartyEntityType: SRQ
+                    attrValues:
+                      - attrValue: High
+                        thirdPartyAttrValue: Max
+                      - attrValue: Low
+                        thirdPartyAttrValue: min
+              outboundConfig:
+                mapAttributes:
+                  - name: Status
+                    thirdPartyAttrName: stats
+                    entityType: INCIDENT
+                    thirdPartyEntityType: Ticket
+                    attrValues:
+                      - attrValue: Ok
+                        thirdPartyAttrValue: good
+                      - attrValue: Critical
+                        thirdPartyAttrValue: bad
+                baseNotifier:
+                  type: REST_API
+                  baseURI: www.google.com
+                  authType: OAUTH2
+                  grantType: PASSWORD
+                  userName: testUser
+                  password: pk
+                  accessTokenURL: www.token.com/cred
+                  apiKey: 6h67PAAFscVPMwhQZFcshpcqN5b6pyU9
+                  apiSecret: asdfgnasinfpaiwerpfawpeojporwjaeprfwpejprwje
+    description: ''
+parameters:
+  - schema:
+      type: string
+    name: tenantId
+    in: path
+    required: true
+  - schema:
+      type: string
+    name: intgId
+    in: path
+    required: true

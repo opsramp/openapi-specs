@@ -1,0 +1,46 @@
+get:
+  summary: Get custom attributes of a device
+  description: This endpoint is used to fetch the custom attributes of a device.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: './components.yaml#/components/schemas/customAttribute'
+          examples:
+            example-1:
+              value:
+                - id: 1218
+                  customAttributeValue:
+                    id: 382
+                    customAttribute:
+                      id: 57
+                      name: custom_attr_from_API_test_1
+                      description: custom_attr_from_API_test_1_update
+                      organization:
+                        uniqueId: client_93
+                        name: Brocade Lab
+                        activated: true
+                    value: custom_attr_from_API_test_1_value
+                    description: desc_custom_attr_from_API_test_1_update_1
+                  taggable:
+                    id: DEV0000015747
+                    name: hydlptCampusGolden
+                    entityType: Device
+                    resourceName: testDev
+                    hostName: testDev
+                    resourceType: Desktop
+                  tagSource: AWS
+  parameters: []
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: deviceId
+    required: true

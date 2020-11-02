@@ -1,0 +1,15 @@
+delete:
+  summary: Delete article
+  description: This endpoint is used to delete a knowledge base category.
+  tags:
+    - knowledge-base
+  responses:
+    '200':
+      description: OK
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: articleId
+    required: true

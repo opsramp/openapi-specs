@@ -1,0 +1,87 @@
+post:
+  summary: Assign templates to resource
+  description: This endpoint is used to assign or update templates on a resource.
+  tags:
+    - monitoring
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              configParameters:
+                type: array
+                items:
+                  $ref: './components.yaml#/components/schemas/configParameter'
+              assignedInterfaces:
+                type: array
+                items:
+                  $ref: './components.yaml#/components/schemas/interface'
+        examples:
+          example-1:
+            value:
+              - id: 992
+              - id: 1024
+                configParameters:
+                  - parameter:
+                      id: 980
+                      name: Port
+                    value: '8086'
+                  - parameter:
+                      id: 981
+                      name: Additional Port
+                    value: '8998'
+              - id: 6741
+                assignedInterfaces:
+                  - id: 244345
+                  - id: 244346
+              - id: 6742
+                assignedInterfaces:
+                  - id: 244170
+                  - id: 244078
+                configParameters:
+                  - parameter:
+                      id: 1395
+                      name: ad_port_1
+                    value: '8443'
+                  - parameter:
+                      id: 1396
+                      name: ad_port_2
+                    value: '9443'
+  responses:
+    '200':
+      description: OK
+delete:
+  summary: Unassign templates from resource
+  description: This endpoint is used to unassign templates from resources.
+  tags:
+    - monitoring
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+        examples:
+          example-1:
+            value:
+              - id: '6632'
+              - id: '6634'
+  responses:
+    '200':
+      description: OK
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: resourceId
+    required: true

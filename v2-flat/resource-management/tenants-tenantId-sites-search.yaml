@@ -1,0 +1,175 @@
+get:
+  summary: Search sites
+  description: |-
+    This endpoint is used to search sites.
+
+    ### Query variables
+
+    |Query Variables|Description|
+    |----|----|
+    |id|Site unique id.|
+    |name|Site name.|
+    |parentId|Parent side ID.|
+
+    >## Notes
+    > There are special characters that can be used in a query string:
+    >- (+) represents the next field and must be URL-encoded.
+    >- (:) represents equals. An example is `key : value`.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: './components.yaml#/components/schemas/site'
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: 31
+                    name: SJ-EAST
+                    description: Resources in east zone
+                    address: '5th Avenue, Parkway'
+                    zip: '94088'
+                    phoneNumber: 406-232-1234
+                    phoneExtension: '1'
+                    primaryContact:
+                      id: USR0000000014
+                      loginName: InsLab@organization.com
+                      lastName: Lab
+                      firstName: Ins
+                      email: john.smith@gmail.com
+                      phoneNumber: 406-625-1234
+                  - id: 11
+                    name: SJ-North East
+                    description: Resources in North East zone
+                    address: ''
+                    primaryContact:
+                      id: USR0000000014
+                      loginName: InsLab@organization.com
+                      lastName: Lab
+                      firstName: Ins
+                      email: john.smith@gmail.com
+                      phoneNumber: 408-625-1234
+                  - id: 8
+                    name: SJ-WEST
+                    description: Resources in West zone
+                    address: Vizag
+                    primaryContact:
+                      id: USR0000000014
+                      loginName: InsLab@agency.com
+                      lastName: Lab
+                      firstName: Ins
+                      email: john.smith@gmail.com
+                      phoneNumber: 523-625-2345
+                  - id: 6
+                    name: SJ-South West
+                    description: Resources in south west zone
+                    address: WEST-ZONE
+                  - id: 5
+                    name: SJ-NORTH
+                    description: Resources in North zone
+                    address: Blossom Valley
+                    phoneNumber: 406-746-2344
+                    primaryContact:
+                      id: USR0000000014
+                      loginName: InsLab@organization.com
+                      lastName: Lab
+                      firstName: Ins
+                      email: david.henry@gmail.com
+                      phoneNumber: 406-625-4567
+                  - id: 4
+                    name: SJ-SOUTH
+                    description: Resources in South zone
+                    address: Pink Valley
+                    primaryContact:
+                      id: USR0000000014
+                      loginName: InsLab@company.com
+                      lastName: Lab
+                      firstName: Ins
+                      email: henry.williams@gmail.com
+                      phoneNumber: 809-625-2345
+                  - id: 3
+                    name: SJ-CENTRAL
+                    description: Primary site for the east zone
+                    address: Central Valley
+                    primaryContact:
+                      id: USR0000000014
+                      loginName: sj.central@institution.com
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@gmail.com
+                      phoneNumber: 809-625-2233
+                  - id: 2
+                    name: SJ-MAIN
+                    description: High priority site
+                    address: Parkway
+                    primaryContact:
+                      id: USR0000000014
+                      loginName: InsLab@institution.com
+                      lastName: Lab
+                      firstName: Main
+                      email: john.smith@gmail.com
+                      phoneNumber: 809-625-1234
+                totalResults: 9
+                orderBy: id
+                pageNo: 1
+                pageSize: 10
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+      description: ''
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+      description: ''
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+      description: ''
+    - schema:
+        type: string
+        default: id
+      in: query
+      name: sortName
+      description: ''
+    - schema:
+        type: string
+      in: query
+      name: queryString
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

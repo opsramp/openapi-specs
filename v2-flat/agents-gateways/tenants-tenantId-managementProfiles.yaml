@@ -1,0 +1,112 @@
+post:
+  summary: Create management profile
+  description: This endpoint is used to create a management profile.
+  tags:
+    - agents-gateways
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              description:
+                type: string
+              type:
+                type: string
+              status:
+                type: string
+              createdDate:
+                type: string
+              device:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  generalInfo:
+                    type: object
+                    properties:
+                      ipAddresses:
+                        type: string
+                      hostName:
+                        type: string
+                  clientUniqueId:
+                    type: string
+                  type:
+                    type: string
+              tunnelType:
+                type: string
+              registered:
+                type: boolean
+              activationToken:
+                type: string
+          examples:
+            example-agent-profile:
+              value:
+                id: 78
+                name: Agent Profile
+                description: Management Profile for Agent
+                type: Agent
+                status: DOWN
+                createdDate: '2016-06-22T09:57:09+0000'
+                device:
+                  id: 014ec656-8dfa-404c-8269-015a96faa9b8
+                  generalInfo:
+                    ipAddresses: 172.28.2.138
+                    hostName: SJLPT177
+                  clientUniqueId: client_69900
+                  type: DEVICE
+            example-gateway-profile:
+              value:
+                id: 77
+                name: Gateway Profile
+                description: Management profile for Gateway
+                type: Gateway
+                createdDate: '2016-06-22T09:31:38+0000'
+                tunnelType: SSHD
+                registered: false
+                activationToken: 6d8e4cc4-0be4-4706-bc1f-7e7e37a10b54
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: The management profile name.
+            description:
+              type: string
+              description: (Optional) Summary describing the management profile.
+            type:
+              type: string
+              description: 'The management profile type. An example is: Agent.'
+            device:
+              type: object
+              description: 'The device details, applicable only for the agent management profile.'
+              properties:
+                id:
+                  type: string
+          required:
+            - name
+            - type
+        examples:
+          example-agent-profile:
+            value:
+              name: Agent Profile
+              description: Management Profile for Agent
+              type: Agent
+              device:
+                id: 014ec656-8dfa-404c-8269-015a96faa9b8
+          example-gateway-profile:
+            value:
+              name: Gateway Profile
+              description: Management Profile for Gateway
+              type: Gateway
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

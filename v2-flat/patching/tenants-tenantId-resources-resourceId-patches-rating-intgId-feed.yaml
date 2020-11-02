@@ -1,0 +1,61 @@
+post:
+  summary: Update patch feed
+  description: This endpoint is used to rate and qualify patches in a patch feed.
+  tags:
+    - patching
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+        examples:
+          example-1:
+            value:
+              - id: 042761ba-542e-4a7a-8e38-3ebbea7eeb16
+              - id: 023471da-698b-3a2e-1e93-6dbaca8eea23
+              - id: 855eb82e-3064-40a1-a26e-77efabe300da
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/patchDetails'
+          examples:
+            example-1:
+              value:
+                comments: Test feed api
+                createdUser:
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: API User
+                  email: helpdesk@opsramp.com
+                updatedUser:
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: API User
+                  email: helpdesk@opsramp.com
+                createdTime: '2020-05-04T06:15:13+0000'
+                updatedTime: '2020-05-04T14:52:00+0000'
+                rating: BLACKLISTED
+                patch:
+                  id: PATCH-8da8bb37-9e77-3a26-e0f2-23251b19ff1a
+                  name: Dummy Patch Name4
+                  externalId: '10004'
+                  category: Critical Updates - Windows 7
+                  releaseTime: '2020-01-21T10:23:37+0000'
+                  type: WINDOWS
+                  rebootRequired: false
+                id: PR-1bb8f7f5-b4d1-445f-a089-582724ac0407
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: intgId
+    required: true

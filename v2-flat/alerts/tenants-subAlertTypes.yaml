@@ -1,0 +1,40 @@
+post:
+  summary: Get sub alert types
+  description: This endpoint is used to retrieve the sub-alert types.
+  tags:
+    - alerts
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: string
+          examples:
+            example-1:
+              value:
+                - AVUD
+                - AVUS
+                - DEFRAG
+                - Device Down
+                - DISK
+                - EVENTLOGS
+                - Hung Server
+                - Memory
+                - Paging File
+                - PATCH DLD
+                - PATCH DLS
+                - PATCH INLD
+                - PATCH INLS
+                - Processor Usage
+                - TEMP
+  parameters:
+    - schema:
+        type: string
+      in: query
+      name: alertTypes
+      description: '{alertType}'
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

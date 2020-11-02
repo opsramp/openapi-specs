@@ -1,0 +1,18 @@
+delete:
+  summary: Delete an RBA category
+  description: |-
+    This endpoint is used to delete an RBA category.
+
+    Categories are only deleted when no scripts exist in that category (or related child categories).
+  tags:
+    - automation
+  responses:
+    "200":
+      description: OK
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: categoryId
+    required: true

@@ -1,0 +1,538 @@
+get:
+  summary: Get task
+  description: This endpoint is used to retrieve details of a task.
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/incident'
+          examples:
+            example-1:
+              value:
+                id: TASK0000000244
+                subject: Set SLA Reminders
+                description: SLA Reminders for Client A
+                status: Resolved
+                oldStatus: Open
+                priority: Normal
+                oldPriority: Low
+                requester:
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                assignedUser:
+                  id: USR0000000014
+                  loginName: James.Rivers
+                  lastName: Rivers
+                  firstName: James
+                  email: james.rivers@myorganization.com
+                assigneeGroup:
+                  id: 7
+                  name: Brocade Lab Users
+                  description: All Brocade Lab Users group
+                resources:
+                  - id: 481af404-33a6-4d61-af77-c483ca6641fa
+                    name: VTHLPT1000
+                    type: EBS
+                    metaData: {}
+                    resourceType: EBS
+                    hostName: ''
+                    resourceName: vol-07f80c5e8ffc69b40
+                    aliasName: EBS alias
+                  - id: e3ef168f-dbb7-43f6-ad6a-c052a85be34f
+                    name: abc
+                    type: Desktop
+                    metaData: {}
+                    resourceType: Desktop
+                    hostName: ''
+                    resourceName: abc
+                    aliasName: Desktop alias
+                customFields:
+                  - id: UDF0000003808
+                    classCode: TASK
+                    displayLabel: text field
+                    name: text_field_3808
+                    fieldType: TYPE_TEXT
+                    mandatory: false
+                    editable: true
+                    description: all partners
+                    value: available
+                    defaultValue: ''
+                  - id: UDF0000003810
+                    classCode: TASK
+                    displayLabel: numeric
+                    name: numeric_3810
+                    fieldType: TYPE_NUMBER
+                    mandatory: false
+                    editable: true
+                    description: testing numeric
+                    value: '120'
+                    defaultValue: ''
+                  - id: UDF0000003790
+                    classCode: TASK
+                    displayLabel: drop-down-api-lab
+                    name: drop_down_api_lab_3790
+                    fieldType: TYPE_DROPDOWN
+                    mandatory: false
+                    editable: true
+                    description: Test case
+                    options:
+                      - label: first
+                        value: '1'
+                      - label: second
+                        value: '2'
+                    value: '1'
+                    defaultValue: ''
+                    selectedOption:
+                      label: first
+                      value: '1'
+                  - id: UDF0000003791
+                    classCode: TASK
+                    displayLabel: text-api-lab
+                    name: text_api_lab_3791
+                    fieldType: TYPE_TEXT
+                    mandatory: false
+                    editable: true
+                    description: test case for text field
+                    value: request custom field - text-updated
+                    defaultValue: Test Text
+                  - id: UDF0000003792
+                    classCode: TASK
+                    displayLabel: multi line text-api-lab
+                    name: multi_line_text_api_lab_3792
+                    fieldType: TYPE_TEXTAREA
+                    mandatory: false
+                    editable: true
+                    description: test case for multi line text
+                    value: text
+                    defaultValue: |-
+                      multi 
+                      line 
+                      text
+                  - id: UDF0000003793
+                    classCode: TASK
+                    displayLabel: Numeric-api-lab
+                    name: numeric_api_lab_3793
+                    fieldType: TYPE_NUMBER
+                    mandatory: false
+                    editable: true
+                    description: numeric test case
+                    value: '1'
+                    defaultValue: '1'
+                  - id: UDF0000003794
+                    classCode: TASK
+                    displayLabel: checkbox-api-lab
+                    name: checkbox_api_lab_3794
+                    fieldType: TYPE_CHECKBOX
+                    mandatory: false
+                    editable: true
+                    description: test case for check box
+                    options:
+                      - label: 'yes'
+                        value: '1'
+                    value: '1'
+                    defaultValue: '0'
+                    selectedOption:
+                      label: 'yes'
+                      value: '1'
+                  - id: UDF0000003795
+                    classCode: TASK
+                    displayLabel: Date-ap-lab
+                    name: date_ap_lab_3795
+                    fieldType: TYPE_DATE
+                    mandatory: false
+                    editable: true
+                    description: test case for date field
+                    value: '2016-02-26T00:00:00+0000'
+                    defaultValue: '2016-02-26T00:00:00+0000'
+                  - id: UDF0000003796
+                    classCode: TASK
+                    displayLabel: dateTime-api-lab
+                    name: datetime_api_lab_3796
+                    fieldType: TYPE_DATETIME
+                    mandatory: false
+                    editable: true
+                    description: test case for Date and time
+                    value: '2016-02-26T12:13:00+0000'
+                    defaultValue: '2016-02-26T12:13:00+0000'
+                cc: 'service.admin@myorganization.com, support@myorganization.com'
+                ticketArisedTime: ''
+                createdUser:
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                reason: Resolve Task
+                alertIds: []
+                reOpenCount: 1
+                createdDate: '2016-07-29T11:22:28+0000'
+                allowedStatus:
+                  - id: '1'
+                    name: New
+                    reasonsEnabled: false
+                    reasonsDefined: false
+                  - id: '2'
+                    name: Open
+                    reasonsEnabled: true
+                    reasonsDefined: true
+                  - id: '3'
+                    name: Pending
+                    reasonsEnabled: true
+                    reasonsDefined: false
+                  - id: '5'
+                    name: Closed
+                    reasonsEnabled: true
+                    reasonsDefined: true
+                  - id: '6'
+                    name: On Hold
+                    reasonsEnabled: true
+                    reasonsDefined: false
+                client:
+                  id: 8
+                  uniqueId: client_8
+                  name: Brocade Lab
+                  activated: true
+                updatedDate: '2016-08-12T08:10:17+0000'
+                priorityUpdatedBy:
+                  loginName: James.Rivers
+                  lastName: Rivers
+                  firstName: James
+                  email: james.rivers@myorganization.com
+                priorityUpdatedDate: '2016-08-12T08:06:18+0000'
+                statusUpdatedBy:
+                  loginName: James.Rivers
+                  lastName: Rivers
+                  firstName: James
+                  email: james.rivers@myorganization.com
+                statusUpdatedDate: '2016-08-12T08:08:38+0000'
+                resolvedDate: '2016-08-12T08:08:38+0000'
+                slaDetails:
+                  resolutionTime: 1197960
+                  responseTime: 1197943
+                  responseBreach: false
+                  resolutionBreach: false
+                  responseBreachDate: ''
+                  resolutionBreachDate: ''
+                source: PORTAL
+                startDate: '2016-07-13T04:43:00+0000'
+                endDate: '2016-08-31T04:04:00+0000'
+                estimatedHours: 10
+                timeSpent: 40
+                statusFlow:
+                  - status: New
+                    timeSpent: 1492634
+                    createdDate: '2016-07-25T12:42:19+0000'
+                    updatedBy:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@domain.com
+                  - status: Resolved
+                    reason: Resolving as fixed
+                    notes: resolution summary
+                    timeSpent: 18
+                    createdDate: '2016-08-11T19:19:33+0000'
+                    updatedBy:
+                      loginName: James.Rivers
+                      lastName: Rivers
+                      firstName: James
+                      email: james.rivers@myorganization.com
+                      phoneNumber: '085597783'
+                  - status: Open
+                    reason: Re-Opening as not fixed
+                    timeSpent: 27
+                    createdDate: '2016-08-11T19:19:51+0000'
+                    updatedBy:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                      phoneNumber: '085597783'
+                  - status: Resolved
+                    reason: Validated with changes and Resolving as fixed
+                    notes: resolution summary
+                    createdDate: '2016-11-22T10:04:50+0000'
+                    updatedBy:
+                      id: USR0000000018
+                      loginName: James.Rivers
+                      lastName: Rivers
+                      firstName: James
+                      email: james.rivers@myorganization.com
+                knowledgeArticleIds:
+                  - 30
+                  - 10
+                attachedArticles:
+                  - id: 30
+                    subject: Service Level Agreement Template
+                  - id: 10
+                    subject: Service Level Agreement Metrics
+post:
+  summary: Update task
+  description: This endpoint is used to update a task.
+  tags:
+    - tickets
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/incident'
+        examples:
+          example-1:
+            value:
+              status: On Hold
+              reason: Reason to on hold Task
+              notes: Ticket status update
+              suspendEndDate: '2016-04-10T06:43:00+0000'
+              priority: High
+              startDate: '2016-04-01T06:43:00+0000'
+              endDate: '2016-04-25T07:43:00+0000'
+              cc: john.smith@opsramp.com
+              requester:
+                id: USR0000002147
+                loginName: FSSL-API-Lab-User-2
+              assignedUser:
+                id: USR0000002147
+                loginName: FSSL-API-Lab-User-2
+              resources:
+                - id: 481af404-33a6-4d61-af77-c483ca6641fa
+                - id: SGP-7adf3762-f310-4c14-9ecd-443eb7c6c208
+                - id: DGP-8d44a504-fd4b-4a78-ba34-2dfdf3ffb85e
+              customFields:
+                - id: UDF0000003797
+                  name: api_lab_drop_down_3797
+                  value: '2'
+                - id: UDF0000003798
+                  name: api_lab_text_3798
+                  value: testing text field-update
+                - id: UDF0000003801
+                  name: api_lab_checkbox_3801
+                  value: '0'
+                - id: UDF0000003802
+                  name: api_lab_date_3802
+                  value: '2016-03-30T10:10:00+0000'
+              response:
+                description: Add Response to Task with attachments
+                internal: 'false'
+                creator:
+                  id: USR0000002146
+                  loginName: John.Smith
+                tags: 'API, TASK'
+                attachments:
+                  - name: 2.txt
+                    file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+                  - name: 1.txt
+                    file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+              knowledgeArticleIds:
+                - 28
+                - 17
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/incident'
+          examples:
+            example-1:
+              value:
+                id: TASK0000001109
+                subject: Upgrade Python Version
+                description: Need to upgrade applications and infrastructure
+                status: On Hold
+                oldStatus: New
+                priority: High
+                oldPriority: Normal
+                requester:
+                  id: USR0000002147
+                  loginName: FSSL-API-Lab-User-2
+                  lastName: API-Lab-2
+                  firstName: FSSL
+                  email: amy.hudson@myorganization.com
+                assignedUser:
+                  id: USR0000001257
+                  loginName: James.Rivers
+                  lastName: Rivers
+                  firstName: James
+                  email: james.rivers@myorganization.com
+                resources:
+                  - id: 481af404-33a6-4d61-af77-c483ca6641fa
+                    name: VTHLPT1000
+                    type: DEVICE
+                  - id: SGP-7adf3762-f310-4c14-9ecd-443eb7c6c208
+                    name: VTH-SERVICES
+                    type: SERVICE
+                  - id: DGP-8d44a504-fd4b-4a78-ba34-2dfdf3ffb85e
+                    name: VTH-ADMIN-DEVS
+                    type: DEVICE_GROUP
+                extTicketId: '000042526342'
+                customFields:
+                  - id: UDF0000003797
+                    classCode: TASK
+                    displayLabel: API-Lab-Drop-Down
+                    name: api_lab_drop_down_3797
+                    fieldType: TYPE_DROPDOWN
+                    mandatory: false
+                    editable: true
+                    description: Test field
+                    options:
+                      - label: first
+                        value: '1'
+                      - label: second
+                        value: '2'
+                    value: '2'
+                    selectedOption:
+                      label: second
+                      value: '2'
+                  - id: UDF0000003798
+                    classCode: TASK
+                    displayLabel: API-Lab-Text
+                    name: api_lab_text_3798
+                    fieldType: TYPE_TEXT
+                    mandatory: false
+                    editable: true
+                    description: Text Field
+                    value: testing text field-update
+                  - id: UDF0000003799
+                    classCode: TASK
+                    displayLabel: API-Lab-Multi-Line-Text
+                    name: api_lab_multi_line_text_3799
+                    fieldType: TYPE_TEXTAREA
+                    mandatory: false
+                    editable: true
+                    description: Multi line text field
+                  - id: UDF0000003800
+                    classCode: TASK
+                    displayLabel: API-Lab-Numeric
+                    name: api_lab_numeric_3800
+                    fieldType: TYPE_NUMBER
+                    mandatory: false
+                    editable: true
+                    description: Testing numeric case
+                  - id: UDF0000003801
+                    classCode: TASK
+                    displayLabel: API-Lab-Checkbox
+                    name: api_lab_checkbox_3801
+                    fieldType: TYPE_CHECKBOX
+                    mandatory: false
+                    editable: true
+                    description: testing check box
+                    options:
+                      - label: 'yes'
+                        value: '1'
+                  - id: UDF0000003802
+                    classCode: TASK
+                    displayLabel: API-Lab-Date
+                    name: api_lab_date_3802
+                    fieldType: TYPE_DATE
+                    mandatory: false
+                    editable: true
+                    description: Date Field test
+                    value: '2016-03-30T15:40:00+0000'
+                  - id: UDF0000003803
+                    classCode: TASK
+                    displayLabel: API-Lab-Date-Time
+                    name: api_lab_date_time_3803
+                    fieldType: TYPE_DATETIME
+                    mandatory: false
+                    editable: true
+                    description: Date and time test case
+                cc: james@myorganization.com
+                ticketArisedTime: ''
+                createdUser:
+                  id: USR0000002095
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                reason: Reason to On Hold Task
+                alertIds: []
+                createdDate: '2016-03-29T08:24:30+0000'
+                suspendEndDate: '2016-04-10T12:13:00+0000'
+                allowedStatus:
+                  - id: '1'
+                    name: New
+                    reasonsEnabled: false
+                    reasonsDefined: false
+                  - id: '3'
+                    name: Pending
+                    reasonsEnabled: true
+                    reasonsDefined: true
+                  - id: '5'
+                    name: Closed
+                    reasonsEnabled: true
+                    reasonsDefined: true
+                client:
+                  id: 7
+                  uniqueId: client_7
+                  name: API Lab
+                  activated: true
+                  updatedTime: ''
+                  createdTime: '2012-10-09T11:49:34+0000'
+                updatedDate: '2016-03-29T08:43:20+0000'
+                priorityUpdatedBy:
+                  id: USR0000002095
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                priorityUpdatedDate: '2016-03-29T08:43:20+0000'
+                statusUpdatedBy:
+                  id: USR0000002095
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                statusUpdatedDate: '2016-03-29T08:43:20+0000'
+                slaDetails:
+                  resolutionTime: 0
+                  responseTime: 1130
+                  responseBreach: false
+                  resolutionBreach: false
+                  responseBreachDate: ''
+                  resolutionBreachDate: ''
+                source: INTEGRATION
+                startDate: '2016-04-01T12:13:00+0000'
+                endDate: '2016-04-25T13:13:00+0000'
+                estimatedHours: 4
+                timeSpent: 200
+                project:
+                  id: 3
+                  name: Sample Integration
+                statusFlow:
+                  - status: New
+                    timeSpent: 1492634
+                    createdDate: '2016-07-25T12:42:19+0000'
+                    updatedBy:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                  - status: On Hold
+                    reason: 'Required information is not available, making as on hold'
+                    createdDate: '2016-11-22T10:04:44+0000'
+                    updatedBy:
+                      id: USR0000000018
+                      loginName: Annie
+                      lastName: ''
+                      firstName: Annie
+                      email: annie.halls@myorganization.com
+                knowledgeArticleIds:
+                  - 28
+                  - 17
+                attachedArticles:
+                  - id: 28
+                    subject: Update Python on Ubuntu
+                  - id: 17
+                    subject: Frequently Asked Questions on Python
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: taskId
+    required: true

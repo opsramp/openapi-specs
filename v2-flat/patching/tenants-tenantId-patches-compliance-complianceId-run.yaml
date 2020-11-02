@@ -1,0 +1,15 @@
+post:
+  summary: Run patch compliance
+  description: This endpoint is used to run a patch compliance and all devices and device groups are checked for compliance.
+  tags:
+    - patching
+  responses:
+    '200':
+      description: OK
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: complianceId
+    required: true

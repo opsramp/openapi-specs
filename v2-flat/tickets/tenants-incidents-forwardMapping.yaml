@@ -1,0 +1,297 @@
+  post:
+    summary: Create or update forward mapping
+    description: This endpoint is used to create or update a forward mapping based on priority.
+    tags:
+      - tickets
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: './components.yaml#/components/schemas/mappingDetails'
+          examples:
+            example-1:
+              value:
+                - priority: Normal
+                  businessImpact:
+                    uniqueId: SIMPACT-e994c246-7e8c-49b4-ad3d-c7d1028e2f4f
+                    name: Server Restart
+                    description: Servers in West Zone are restarted
+                  urgency:
+                    uniqueId: SURG-67154b42-0437-47a7-8fa0-0a63144c7bdd
+                    name: Very Low
+                    description: |
+                      description
+                - priority: Normal
+                  businessImpact:
+                    uniqueId: SIMPACT-e11ed2b9-8196-4ee5-93e2-3a78a1d31fb9
+                    name: Software Updates
+                    description: Software updates on Windows devices
+                  urgency:
+                    uniqueId: SURG-67154b42-0437-47a7-8fa0-0a63144c7bdd
+                    name: 1 week
+                    description: Time limit for software updates on Windows devices
+                - priority: High
+                  businessImpact:
+                    uniqueId: SIMPACT-0f8a87fb-e187-423a-9ff0-743dbcf1ca2b
+                    name: Servers down
+                    description: Network servers are down
+                  urgency:
+                    uniqueId: SURG-67154b42-0437-47a7-8fa0-0a63144c7bdd
+                    name: 2 hours
+                    description: Network servers should be up within 2 hours
+                - priority: High
+                  businessImpact:
+                    uniqueId: SIMPACT-e994c246-7e8c-49b4-ad3d-c7d1028e2f4f
+                    name: Database slowdown
+                    description: Issue with database in East Zone
+                  urgency:
+                    uniqueId: SURG-77a42eb4-52d5-47c1-ab7f-2e084eaac23d
+                    name: 2 hours
+                    description: High load of transactional data
+                - priority: Low
+                  businessImpact:
+                    uniqueId: SIMPACT-e11ed2b9-8196-4ee5-93e2-3a78a1d31fb9
+                    name: Unable to generate Incident logs
+                    description: Require Incident logs for ABC client
+                  urgency:
+                    uniqueId: SURG-77a42eb4-52d5-47c1-ab7f-2e084eaac23d
+                    name: Medium
+                    description: Require Incident logs of ABC client
+                - priority: Low
+                  businessImpact:
+                    uniqueId: SIMPACT-0f8a87fb-e187-423a-9ff0-743dbcf1ca2b
+                    name: Antivirus updates on Windows devices
+                    description: Monthly Antivirus updates on Windows devices
+                  urgency:
+                    uniqueId: SURG-77a42eb4-52d5-47c1-ab7f-2e084eaac23d
+                    name: Medium
+                    description: 'Windows should be up by 12 noon PST '
+                - priority: Very Low
+                  businessImpact:
+                    uniqueId: SIMPACT-e994c246-7e8c-49b4-ad3d-c7d1028e2f4f
+                    name: Test servers not accessible
+                    description: Servers for demo purpose are not accessible
+                  urgency:
+                    uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
+                    name: 5 days
+                    description: Test servers of the Trial project are down
+                - priority: Very Low
+                  businessImpact:
+                    uniqueId: SIMPACT-e11ed2b9-8196-4ee5-93e2-3a78a1d31fb9
+                    name: Incident Report
+                    description: Unable to generate incident report for XYZ client
+                  urgency:
+                    uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
+                    name: 1 week
+                    description: Incident report for XYZ client
+                - priority: Urgent
+                  businessImpact:
+                    uniqueId: SIMPACT-0f8a87fb-e187-423a-9ff0-743dbcf1ca2b
+                    name: Email server down
+                    description: Email server down from 30 minutes
+                  urgency:
+                    uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
+                    name: 1 hour
+                    description: Email servers down
+      description: ''
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: './components.yaml#/components/schemas/mappingDetails'
+            examples:
+              example-1:
+                value:
+                  - priority: Normal
+                    businessImpact:
+                      uniqueId: SIMPACT-e994c246-7e8c-49b4-ad3d-c7d1028e2f4f
+                      name: Server Restart
+                      description: Servers in West Zone are restarted
+                    urgency:
+                      uniqueId: SURG-67154b42-0437-47a7-8fa0-0a63144c7bdd
+                      name: Very Low
+                      description: |
+                        description
+                  - priority: Normal
+                    businessImpact:
+                      uniqueId: SIMPACT-e11ed2b9-8196-4ee5-93e2-3a78a1d31fb9
+                      name: Software Updates
+                      description: Software updates on Windows devices
+                    urgency:
+                      uniqueId: SURG-67154b42-0437-47a7-8fa0-0a63144c7bdd
+                      name: 1 week
+                      description: Time limit for software updates on Windows devices
+                  - priority: High
+                    businessImpact:
+                      uniqueId: SIMPACT-0f8a87fb-e187-423a-9ff0-743dbcf1ca2b
+                      name: Servers down
+                      description: Network servers are down
+                    urgency:
+                      uniqueId: SURG-67154b42-0437-47a7-8fa0-0a63144c7bdd
+                      name: 2 hours
+                      description: Network servers should be up within 2 hours
+                  - priority: High
+                    businessImpact:
+                      uniqueId: SIMPACT-e994c246-7e8c-49b4-ad3d-c7d1028e2f4f
+                      name: Database slowdown
+                      description: Issue with database in East Zone
+                    urgency:
+                      uniqueId: SURG-77a42eb4-52d5-47c1-ab7f-2e084eaac23d
+                      name: 2 hours
+                      description: High load of transactional data
+                  - priority: Low
+                    businessImpact:
+                      uniqueId: SIMPACT-e11ed2b9-8196-4ee5-93e2-3a78a1d31fb9
+                      name: Unable to generate Incident logs
+                      description: Require Incident logs for ABC client
+                    urgency:
+                      uniqueId: SURG-77a42eb4-52d5-47c1-ab7f-2e084eaac23d
+                      name: Medium
+                      description: Require Incident logs of ABC client
+                  - priority: Low
+                    businessImpact:
+                      uniqueId: SIMPACT-0f8a87fb-e187-423a-9ff0-743dbcf1ca2b
+                      name: Antivirus updates on Windows devices
+                      description: Monthly Antivirus updates on Windows devices
+                    urgency:
+                      uniqueId: SURG-77a42eb4-52d5-47c1-ab7f-2e084eaac23d
+                      name: Medium
+                      description: 'Windows should be up by 12 noon PST '
+                  - priority: Very Low
+                    businessImpact:
+                      uniqueId: SIMPACT-e994c246-7e8c-49b4-ad3d-c7d1028e2f4f
+                      name: Test servers not accessible
+                      description: Servers for demo purpose are not accessible
+                    urgency:
+                      uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
+                      name: 5 days
+                      description: Test servers of the Trial project are down
+                  - priority: Very Low
+                    businessImpact:
+                      uniqueId: SIMPACT-e11ed2b9-8196-4ee5-93e2-3a78a1d31fb9
+                      name: Incident Report
+                      description: Unable to generate incident report for XYZ client
+                    urgency:
+                      uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
+                      name: 1 week
+                      description: Incident report for XYZ client
+                  - priority: Urgent
+                    businessImpact:
+                      uniqueId: SIMPACT-0f8a87fb-e187-423a-9ff0-743dbcf1ca2b
+                      name: Email server down
+                      description: Email server down from 30 minutes
+                    urgency:
+                      uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
+                      name: 1 hour
+                      description: Email servers down
+  get:
+    summary: Get forward mapping details
+    description: This endpoint is used to retrieve details of forward mapping priorities.
+    tags:
+      - tickets
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: './components.yaml#/components/schemas/mappingDetails'
+            examples:
+              example-1:
+                value:
+                  - priority: Normal
+                    businessImpact:
+                      uniqueId: SIMPACT-e994c246-7e8c-49b4-ad3d-c7d1028e2f4f
+                      name: Server Restart
+                      description: Servers in West Zone are restarted
+                    urgency:
+                      uniqueId: SURG-67154b42-0437-47a7-8fa0-0a63144c7bdd
+                      name: Very Low
+                      description: |
+                        description
+                  - priority: Normal
+                    businessImpact:
+                      uniqueId: SIMPACT-e11ed2b9-8196-4ee5-93e2-3a78a1d31fb9
+                      name: Software Updates
+                      description: Software updates on Windows devices
+                    urgency:
+                      uniqueId: SURG-67154b42-0437-47a7-8fa0-0a63144c7bdd
+                      name: 1 week
+                      description: Time limit for software updates on Windows devices
+                  - priority: High
+                    businessImpact:
+                      uniqueId: SIMPACT-0f8a87fb-e187-423a-9ff0-743dbcf1ca2b
+                      name: Servers down
+                      description: Network servers are down
+                    urgency:
+                      uniqueId: SURG-67154b42-0437-47a7-8fa0-0a63144c7bdd
+                      name: 2 hours
+                      description: Network servers should be up within 2 hours
+                  - priority: High
+                    businessImpact:
+                      uniqueId: SIMPACT-e994c246-7e8c-49b4-ad3d-c7d1028e2f4f
+                      name: Database slowdown
+                      description: Issue with database in East Zone
+                    urgency:
+                      uniqueId: SURG-77a42eb4-52d5-47c1-ab7f-2e084eaac23d
+                      name: 2 hours
+                      description: High load of transactional data
+                  - priority: Low
+                    businessImpact:
+                      uniqueId: SIMPACT-e11ed2b9-8196-4ee5-93e2-3a78a1d31fb9
+                      name: Unable to generate Incident logs
+                      description: Require Incident logs for ABC client
+                    urgency:
+                      uniqueId: SURG-77a42eb4-52d5-47c1-ab7f-2e084eaac23d
+                      name: Medium
+                      description: Require Incident logs of ABC client
+                  - priority: Low
+                    businessImpact:
+                      uniqueId: SIMPACT-0f8a87fb-e187-423a-9ff0-743dbcf1ca2b
+                      name: Antivirus updates on Windows devices
+                      description: Monthly Antivirus updates on Windows devices
+                    urgency:
+                      uniqueId: SURG-77a42eb4-52d5-47c1-ab7f-2e084eaac23d
+                      name: Medium
+                      description: 'Windows should be up by 12 noon PST '
+                  - priority: Very Low
+                    businessImpact:
+                      uniqueId: SIMPACT-e994c246-7e8c-49b4-ad3d-c7d1028e2f4f
+                      name: Test servers not accessible
+                      description: Servers for demo purpose are not accessible
+                    urgency:
+                      uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
+                      name: 5 days
+                      description: Test servers of the Trial project are down
+                  - priority: Very Low
+                    businessImpact:
+                      uniqueId: SIMPACT-e11ed2b9-8196-4ee5-93e2-3a78a1d31fb9
+                      name: Incident Report
+                      description: Unable to generate incident report for XYZ client
+                    urgency:
+                      uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
+                      name: 1 week
+                      description: Incident report for XYZ client
+                  - priority: Urgent
+                    businessImpact:
+                      uniqueId: SIMPACT-0f8a87fb-e187-423a-9ff0-743dbcf1ca2b
+                      name: Email server down
+                      description: Email server down from 30 minutes
+                    urgency:
+                      uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
+                      name: 1 hour
+                      description: Email servers down
+  parameters:
+    - schema:
+        type: string
+      in: path
+      name: tenantId
+      required: true

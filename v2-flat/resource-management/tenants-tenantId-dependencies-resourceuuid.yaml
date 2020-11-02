@@ -1,0 +1,188 @@
+post:
+  summary: Create impact dependency
+  description: This endpoint is used to group the resources which are dependent on a resource.
+  tags:
+    - resource-management
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            dependent-resources:
+              type: array
+              description: |
+                Resources dependent on a resource dependency.
+              items:
+                type: string
+          required:
+            - dependent-resources
+        examples:
+          example-1:
+            value:
+              dependent-resources:
+                - 57ff9192-2671-4955-a129-99c0a9561630
+                - 421fae20-665a-e93c-3304-1b362ae0cd94
+                - 421f2a13-4338-a357-4c4b-c3fa7ee0a1ca
+                - 3CE66868-8813-4EA2-AFCD-F52927DCE28D
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+          examples:
+            example-1:
+              value:
+                status: success
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+          examples:
+            example-1:
+              value:
+                code: '0003'
+                message: 'No resource found with UUID : 8e821346-d93f-464e-84b8-d17f02ae4a6c'
+delete:
+  summary: Delete impact dependency
+  description: This endpoint is used to delete a single or multiple dependent resources from a resource.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+          examples:
+            example-1:
+              value:
+                status: success
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+          examples:
+            example-1:
+              value:
+                code: '0003'
+                message: 'No resource found with UUID : 8e821346-d93f-464e-84b8-d17f02ae4a6c'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            dependent-resources:
+              type: array
+              description: |
+                Resources dependent on a resource dependency.
+              items:
+                type: string
+        examples:
+          example-1:
+            value:
+              dependent-resources:
+                - 57ff9192-2671-4955-a129-99c0a9561630
+                - 421fae20-665a-e93c-3304-1b362ae0cd94
+                - 421f2a13-4338-a357-4c4b-c3fa7ee0a1ca
+                - 3CE66868-8813-4EA2-AFCD-F52927DCE28D
+get:
+  summary: Get impact dependency
+  description: This endpoint is used to group the resources which are dependent on a resource.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                sourceType:
+                  type: string
+                name:
+                  type: string
+                uuid:
+                  type: string
+                state:
+                  type: string
+          examples:
+            example-1:
+              value:
+                - id: 769
+                  sourceType: DEVICE
+                  name: 172.30.22.71
+                  uuid: 0c5489ce-2f10-40b4-8ecf-dd1a402fa16d
+                  state: active
+                - id: 771
+                  sourceType: DEVICE
+                  name: 172.30.22.62
+                  uuid: e490305f-c70c-48dd-b810-71f9d9a09f8e
+                  state: active
+                - id: 768
+                  sourceType: DEVICE
+                  name: 172.30.22.52
+                  uuid: 30fb8807-68ea-4582-b976-95ea36c54884
+                  state: active
+                - id: 770
+                  sourceType: DEVICE
+                  name: 172.30.22.51
+                  uuid: d1ca3816-8a06-4caf-8255-3cfb57192ce9
+                  state: active
+                - id: 773
+                  sourceType: DEVICE
+                  name: 172.30.22.72
+                  uuid: 4da0f311-7c0a-4f17-896e-1e4daf96dbcc
+                  state: active
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+          examples:
+            example-1:
+              value:
+                code: '0003'
+                message: 'No resouce found with UUID : 8e821346-d93f-464-84b8-d17f02ae4a6c'
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: resourceuuid
+    required: true

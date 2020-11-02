@@ -1,0 +1,105 @@
+post:
+  summary: Create incident categories
+  description: This endpoint is used to create categories for the incident entity type.
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: './components.yaml#/components/schemas/category'
+          examples:
+            example-create-parent:
+              value:
+                - uniqueId: SCAT-b610567d-2966-496f-8ff2-2e67fef5378b
+                  name: Hardware
+                  createdBy:
+                    id: USR0001202764
+                    loginName: John_Smith
+                    lastName: Smith
+                    firstName: John
+                    email: john.smith@myorganization.com
+                  updatedBy:
+                    id: USR0001202764
+                    loginName: John_Smith
+                    lastName: Smith
+                    firstName: John
+                    email: john.smith@myorganization.com
+                  createdDate: '2018-02-08T10:19:46+0000'
+                  updatedDate: '2018-02-08T10:19:46+0000'
+            example-create-child:
+              value:
+                - uniqueId: SCAT-b089ae21-e86d-43d4-98d3-b204d03d20e5
+                  name: CPU
+                  parentCategory:
+                    uniqueId: SCAT-b610567d-2966-496f-8ff2-2e67fef5378b
+                    name: Hardware
+                  createdBy:
+                    id: USR0001202764
+                    loginName: John_Smith
+                    lastName: Smith
+                    firstName: John
+                    email: john.smith@myorganization.com
+                  updatedBy:
+                    id: USR0001202764
+                    loginName: John_Smith
+                    lastName: Smith
+                    firstName: John
+                    email: john.smith@myorganization.com
+                  createdDate: '2018-02-08T10:27:40+0000'
+                  updatedDate: '2018-02-08T10:27:40+0000'
+                - uniqueId: SCAT-f5e48aa0-e9a4-4990-9a6e-1c37d4cdb6ac
+                  name: Monitors
+                  parentCategory:
+                    uniqueId: SCAT-b610567d-2966-496f-8ff2-2e67fef5378b
+                    name: Hardware
+                  createdBy:
+                    id: USR0001202764
+                    loginName: John_Smith
+                    lastName: Smith
+                    firstName: John
+                    email: john.smith@myorganization.com
+                  updatedBy:
+                    id: USR0001202764
+                    loginName: John_Smith
+                    lastName: Smith
+                    firstName: John
+                    email: john.smith@myorganization.com
+                  createdDate: '2018-02-08T10:27:41+0000'
+                  updatedDate: '2018-02-08T10:27:41+0000'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            names:
+              type: array
+              items:
+                type: string
+            parentCategory:
+              type: object
+              properties:
+                uniqueId:
+                  type: string
+                name:
+                  type: string
+        examples:
+          example-create-parent:
+            value:
+              names:
+                - Hardware
+          example-create-child:
+            value:
+              names:
+                - CPU
+                - Monitors
+              parentCategory:
+                uniqueId: SCAT-b610567d-2966-496f-8ff2-2e67fef5378b
+                name: Hardware
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

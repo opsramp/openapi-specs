@@ -1,0 +1,126 @@
+get:
+  summary: Get child resources and device groups
+  description: This endpoint is used to retrieve the child resources or child device groups within a parent device group.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: './components.yaml#/components/schemas/resource'
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              nextPageNo:
+                type: integer
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: DGP-bc92ea8e-f3cd-476e-a736-a8e606d43207
+                    name: Network Devices
+                    createdDate: '2017-08-09T09:52:26+0000'
+                    updatedDate: '2017-08-09T09:52:26+0000'
+                    type: DEVICE_GROUP
+                    entityType: DEVICE_GROUP
+                  - id: e6d7e7a5-a410-47fe-a99d-33323b700d04
+                    name: dot-exp-bos-045.massdot.trans.internal
+                    type: DEVICE
+                    resourceType: VMWAREHOST
+                    hostName: ''
+                    resourceName: dot-exp-bos-045.massdot.trans.internal
+                    aliasName: ''
+                  - id: e14dae78-b68a-4179-98db-02eab5feeea7
+                    name: dot-exp-bos-039.massdot.trans.internal
+                    type: DEVICE
+                    resourceType: VMWAREHOST
+                    hostName: ''
+                    resourceName: dot-exp-bos-039.massdot.trans.internal
+                    aliasName: ''
+                  - id: 4b53d84c-760a-49cb-a904-47271aed9091
+                    name: dot-exp-bos-022.massdot.trans.internal
+                    type: DEVICE
+                    resourceType: VMWAREHOST
+                    hostName: ''
+                    resourceName: dot-exp-bos-022.massdot.trans.internal
+                    aliasName: ''
+                totalResults: 4
+                orderBy: id
+                pageNo: 1
+                pageSize: 100
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: true
+            example-2:
+              value:
+                results:
+                  - id: fcc492e9-64df-4ef0-b1b7-82167d87d4b4
+                    name: 'arn:aws:sns:us-east-1:290642135901:cloudtrail-sns'
+                    type: SNS
+                  - id: 57778bb1-a294-450a-93e4-4371a74ac39f
+                    name: 'arn:aws:sns:us-east-1:290642135901:onboa-demo-sns'
+                    type: SNS
+                  - id: f7f247e2-3461-4ff1-bfdb-65ee2124c6c3
+                    name: 'arn:aws:sns:us-east-1:290642135901:alarm-notifications-topic'
+                    type: SNS
+                totalResults: 3
+                orderBy: id
+                pageNo: 1
+                pageSize: 100
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+        default: id
+      in: query
+      name: sortName
+    - schema:
+        type: string
+      in: query
+      name: queryString
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: deviceGroupId
+    required: true

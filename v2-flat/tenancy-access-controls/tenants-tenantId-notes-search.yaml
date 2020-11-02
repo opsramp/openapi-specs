@@ -1,0 +1,131 @@
+get:
+  summary: Search client note
+  description: |-
+    This endpoint is used to search for the clients.
+
+    |Query Variables|Description|
+    |------|-----|
+    |searchWord|Search for a note with a specific word provided in the note.|
+    |id|Note ID.|
+    |startCreationDate|Search for note created within a specific date range. startCreationDate denotes the from date.<br>Example: 2016-03-25T09:54:52+0000|
+    |endCreationDate|endCreationDate denotes the to date.<br>Example: 2016-03-27T10:54:52+0000|
+    |startUpdationDate|Search for the note updated within a specific date range. startUpdationDate denotes the from date.<br>Example: 2016-03-25T09:54:52+0000|
+    |endUpdationDate|endUpdationDate denotes the to date.<br>Example: 2016-03-27T10:54:52+0000|
+
+    >## Notes
+    >There are special characters that can be used in a query string:
+    >- (+) represents the next field and must be URL-encoded.
+    >- (:) represents equals. An example is `key : value`.
+    >- Space characters must be URL-encoded.
+    >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+  tags:
+    - tenancy-access-controls
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: './components.yaml#/components/schemas/clientNote'
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              nextPageNo:
+                type: integer
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: 26
+                    subject: Demo Client Note
+                    description: Client note for Logix
+                    createdTime: '2016-03-25T09:54:52+0000'
+                    updatedTime: '2016-03-25T09:54:52+0000'
+                    expiryTime: ''
+                    createdBy:
+                      id: USR0000000001
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: Super
+                      email: james.hudson@gmail.com
+                      changePassword: false
+                  - id: 25
+                    subject: AXC Client Note
+                    description: Client Note for AXC
+                    createdTime: '2016-03-25T09:54:08+0000'
+                    updatedTime: '2016-03-25T09:54:08+0000'
+                    expiryTime: ''
+                    createdBy:
+                      id: USR0000000001
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@gmail.com
+                      changePassword: false
+                  - id: 24
+                    subject: Client Notes
+                    description: Notes for Client in location SJ
+                    createdTime: '2016-03-25T09:43:21+0000'
+                    updatedTime: '2016-03-25T09:43:21+0000'
+                    expiryTime: ''
+                    createdBy:
+                      id: USR0000000001
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@gmail.com
+                      changePassword: false
+                totalResults: 3
+                orderBy: note.id
+                pageNo: 1
+                pageSize: 3
+                totalPages: 3
+                nextPage: true
+                nextPageNo: 2
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: string
+        default: note.id
+      in: query
+      name: sortName
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+      in: query
+      name: queryString
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

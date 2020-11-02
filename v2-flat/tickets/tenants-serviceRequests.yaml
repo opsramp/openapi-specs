@@ -1,0 +1,189 @@
+post:
+  summary: Create service request
+  description: This endpoint is used to create a service request.
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/problem'
+          examples:
+            example-1:
+              value:
+                id: SRQ0000001113
+                subject: Renewal of Windows License
+                description: 'Windows license is expiring soon, need to renew the license.'
+                status: New
+                oldStatus: New
+                priority: Low
+                oldPriority: Low
+                requester:
+                  id: USR0000002146
+                  loginName: FSSL-API-Lab-User-1
+                  lastName: API-Lab
+                  firstName: FSSL
+                  email: tester@gmail.com
+                assignedUser:
+                  id: USR0000002146
+                  loginName: FSSL-API-Lab-User-1
+                  lastName: API-Lab
+                  firstName: FSSL
+                  email: tester@gmail.com
+                assigneeGroup:
+                  id: 18
+                  name: API-Lab-Group-2
+                  userCount: 3
+                resources:
+                  - id: 481af404-33a6-4d61-af77-c483ca6641fa
+                    name: VTHLPT1000
+                    type: DEVICE
+                  - id: SGP-7adf3762-f310-4c14-9ecd-443eb7c6c208
+                    name: VTH-SERVICES
+                    type: SERVICE
+                  - id: DGP-8d44a504-fd4b-4a78-ba34-2dfdf3ffb85e
+                    name: VTH-ADMIN-DEVS
+                    type: DEVICE_GROUP
+                extTicketId: VNXC0090344
+                cc: 'testUser@gmail.com, test@gmail.com'
+                ticketArisedTime: ''
+                createdUser:
+                  id: USR0000002095
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@gmail.com
+                alertIds: []
+                createdDate: '2016-03-29T11:32:08+0000'
+                allowedStatus:
+                  - id: '2'
+                    name: Open
+                    reasonsEnabled: true
+                    reasonsDefined: true
+                  - id: '3'
+                    name: Pending
+                    reasonsEnabled: true
+                    reasonsDefined: false
+                  - id: '4'
+                    name: Resolved
+                    reasonsEnabled: true
+                    reasonsDefined: false
+                  - id: '5'
+                    name: Closed
+                    reasonsEnabled: true
+                    reasonsDefined: true
+                  - id: '6'
+                    name: On Hold
+                    reasonsEnabled: true
+                    reasonsDefined: true
+                client:
+                  id: 7
+                  uniqueId: client_7
+                  name: API Lab
+                  activated: true
+                  updatedTime: ''
+                  createdTime: '2012-10-09T11:49:34+0000'
+                updatedDate: '2016-03-29T11:32:10+0000'
+                priorityUpdatedBy:
+                  id: USR0000002146
+                  loginName: FSSL-API-Lab-User-1
+                  lastName: API-Lab
+                  firstName: FSSL
+                  email: tester@gmail.com
+                priorityUpdatedDate: '2016-03-29T11:32:08+0000'
+                statusUpdatedBy:
+                  id: USR0000002146
+                  loginName: FSSL-API-Lab-User-1
+                  lastName: API-Lab
+                  firstName: FSSL
+                  email: tester@gmail.com
+                statusUpdatedDate: '2016-03-29T11:32:08+0000'
+                slaDetails:
+                  resolutionTime: 0
+                  responseTime: 0
+                  responseBreach: false
+                  resolutionBreach: false
+                  responseBreachDate: ''
+                  resolutionBreachDate: ''
+                source: INTEGRATION
+                serviceCatalogItemId: '0'
+                statusFlow:
+                  - status: New
+                    createdDate: '2016-07-25T12:42:19+0000'
+                    updatedBy:
+                      loginName: System.User
+                      lastName: system
+                      firstName: user
+                      email: sample@gmail.com
+                attachedRequests:
+                  - id: INC0000001370
+                  - id: INC0000001371
+                  - id: INC0000001368
+                knowledgeArticleIds:
+                  - 25
+                  - 16
+                referenceArticles:
+                  - id: 25
+                    subject: Frequently Asked Questions on Windows License
+                  - id: 16
+                    subject: Updated Windows Version
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/problem'
+        examples:
+          example-1:
+            value:
+              subject: Renewal of Windows License
+              description: 'Windows license is expiring soon, need to renew the license.'
+              priority: Low
+              location: Test@location
+              cc: 'testUser@gmail.com, test@gmail.com'
+              extTicketId: VNXC0090344
+              tags: 'API, Service'
+              category:
+                id: 22
+              subCategory:
+                id: 23
+              requester:
+                id: USR0000002146
+                loginName: FSSL-API-Lab-User-1
+              assignedUser:
+                id: USR0000002146
+                loginName: FSSL-API-Lab-User-1
+              assigneeGroup:
+                name: API-Lab-Group-2
+              resources:
+                - id: 481af404-33a6-4d61-af77-c483ca6641fa
+                - id: SGP-7adf3762-f310-4c14-9ecd-443eb7c6c208
+                - id: DGP-8d44a504-fd4b-4a78-ba34-2dfdf3ffb85e
+              customFields:
+                - id: UDF0000003797
+                  name: api_lab_drop_down_3797
+                  value: '1'
+                - id: UDF0000003798
+                  name: api_lab_text_3798
+                  value: testing text field
+                - id: UDF0000003801
+                  name: api_lab_checkbox_3801
+                  value: '1'
+                - id: UDF0000003802
+                  name: api_lab_date_3802
+                  value: '2016-03-28T10:10:00+0000'
+              attachments:
+                - name: 2.txt
+                  file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+                - name: 1.txt
+                  file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+              attachedRequests:
+                - id: INC0000001370
+                - id: INC0000001371
+                - id: INC0000001368
+              knowledgeArticleIds:
+                - 25
+                - 16
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

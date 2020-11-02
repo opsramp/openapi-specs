@@ -1,0 +1,39 @@
+get:
+  summary: Get channels
+  description: This endpoint is used to retrieve the list of channels.
+  tags:
+    - tenancy-access-controls
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                timeZone:
+                  type: string
+          examples:
+            example-1:
+              value:
+                - id: 1
+                  name: Ingram Micro
+                  timeZone: America/Los_Angeles
+                - id: 2
+                  name: Arrow ECS
+                  timeZone: America/Los_Angeles
+                - id: 3
+                  name: NetEnrich
+                  timeZone: America/Los_Angeles
+                - id: 4
+                  name: N-able
+                  timeZone: America/Los_Angeles
+                - id: 6
+                  name: Multi Channel
+                  timeZone: America/Los_Angeles

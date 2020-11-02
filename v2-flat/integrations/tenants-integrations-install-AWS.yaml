@@ -1,0 +1,80 @@
+post:
+  summary: Install integration
+  description: |-
+    # Cloud integrations
+    ## Notes
+    OpsRamp supports the following cloud integrations:
+    - AWS
+    - AZURE
+    - GOOGLE
+
+    These endpoint IDs are used to install third-party integrations.
+
+    These are not supported for deployment, email requests, and other category integrations.
+  tags:
+    - integrations
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/integrationInstall'
+          examples:
+            example-aws-type-iam:
+              value:
+                id: INTG-b898d6b4-cbf6-4863-a050-3ce5f3658a85
+                integration:
+                  id: AWS
+                  name: AWS
+                credential:
+                  Name: AWS AWS Integration
+                  AccountNumber: '326542154381'
+                  AWSType: IAM
+                  Regions: All
+            example-aws-type-iam-assume-role:
+              value:
+                id: INTG-c128dcb9-a9b2-40de-af8e-2a07c3b81d57
+                integration:
+                  id: AWS
+                  name: AWS
+                credential:
+                  Name: AWS AWS Integration
+                  AccountNumber: '326542154381'
+                  AWSType: IAM
+                  Regions: us-east-1
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/integrationInstall'
+        examples:
+          example-aws-type-iam:
+            value:
+              displayName: AWS
+              credential:
+                credentialType: AWS
+                AWSType: IAM
+                Regions: All
+                AccountNumber: '**********'
+                AccessKey: '*************'
+                SecurityKey: '*************'
+          example-aws-type-iam-assume-role:
+            value:
+              displayName: AWS
+              credential:
+                credentialType: AWS
+                AWSType: IAM with AssumeRole
+                Regions: us-east-1
+                AccountNumber: '*********'
+                AccessKey: '************'
+                SecurityKey: '***********'
+                AssumeRoleARN: '*********************'
+                ExternalId: '**********************'
+    description: ''
+parameters:
+  - schema:
+      type: string
+    name: tenantId
+    in: path
+    required: true

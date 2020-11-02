@@ -1,0 +1,145 @@
+get:
+  summary: Get time-bound request custom form
+  description: |-
+    This endpoint is used to retrieve the custom form for a time-bound request.
+
+    >## Notes
+    > Identify if the field is either a custom default field: customField: false/true.
+    >- customField: True indicates the field is a custom field
+    >- customField: False indicates the field is a default field
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: './components.yaml#/components/schemas/customField'
+          examples:
+            example-1:
+              value:
+                - id: '125'
+                  classCode: ACSTicket
+                  displayLabel: Subject
+                  name: subject
+                  fieldType: TYPE_TEXT
+                  mandatory: true
+                  editable: true
+                  description: ''
+                  defaultValue: ''
+                  customField: false
+                - id: '126'
+                  classCode: ACSTicket
+                  displayLabel: Description
+                  name: impact
+                  fieldType: TYPE_TEXTAREA
+                  mandatory: true
+                  editable: true
+                  description: ''
+                  defaultValue: ''
+                  customField: false
+                - id: '127'
+                  classCode: ACSTicket
+                  displayLabel: Requested by
+                  name: requester
+                  fieldType: TYPE_PICKLIST
+                  mandatory: false
+                  editable: true
+                  description: ''
+                  defaultValue: ''
+                  customField: false
+                - id: '128'
+                  classCode: ACSTicket
+                  displayLabel: Assignee Group
+                  name: assigneeGroup
+                  fieldType: TYPE_PICKLIST
+                  mandatory: false
+                  editable: true
+                  description: ''
+                  defaultValue: ''
+                  customField: false
+                - id: '129'
+                  classCode: ACSTicket
+                  displayLabel: Assign To
+                  name: assignedTo
+                  fieldType: TYPE_PICKLIST
+                  mandatory: true
+                  editable: true
+                  description: ''
+                  defaultValue: ''
+                  customField: false
+                - id: '130'
+                  classCode: ACSTicket
+                  displayLabel: Resources
+                  name: devices
+                  fieldType: TYPE_PICKLIST
+                  mandatory: true
+                  editable: true
+                  description: ''
+                  defaultValue: ''
+                  customField: false
+                - id: '131'
+                  classCode: ACSTicket
+                  displayLabel: Participants
+                  name: participantUsers
+                  fieldType: TYPE_PICKLIST
+                  mandatory: false
+                  editable: true
+                  description: ''
+                  defaultValue: ''
+                  customField: false
+                - id: '132'
+                  classCode: ACSTicket
+                  displayLabel: Priority
+                  name: priority
+                  fieldType: TYPE_DROPDOWN
+                  mandatory: false
+                  editable: true
+                  description: ''
+                  defaultValue: ''
+                  customField: false
+                - id: '133'
+                  classCode: ACSTicket
+                  displayLabel: Cc
+                  name: cc
+                  fieldType: TYPE_TEXT
+                  mandatory: false
+                  editable: true
+                  description: ''
+                  defaultValue: ''
+                  customField: false
+                - id: '134'
+                  classCode: ACSTicket
+                  displayLabel: Schedule
+                  name: schedule
+                  fieldType: TYPE_DATES
+                  mandatory: false
+                  editable: true
+                  description: ''
+                  defaultValue: ''
+                  customField: false
+                - id: '135'
+                  classCode: ACSTicket
+                  displayLabel: Permissions
+                  name: consoles
+                  fieldType: TYPE_MULTI_CHECK
+                  mandatory: true
+                  editable: true
+                  description: ''
+                  defaultValue: ''
+                  customField: false
+                - id: UDF0000000008
+                  classCode: ACSTICKET
+                  displayLabel: Request Summary
+                  name: Time Bound Request Summary
+                  fieldType: TYPE_TEXTAREA
+                  mandatory: false
+                  editable: true
+                  description: ''
+                  defaultValue: ''
+                  customField: true
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

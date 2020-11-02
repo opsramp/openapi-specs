@@ -1,0 +1,54 @@
+post:
+  summary: Create resource notes
+  description: This endpoint is used to create a resource note.
+  tags:
+    - resource-management
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/resourceNote'
+        examples:
+          example-expiryDateType-1:
+            value:
+              subject: Device created for maintain logs-updated
+              description: The Device is for auditing purpose only-updated
+              expiryDateType: 1
+          example-expiryDateType -2:
+            value:
+              subject: Device created for maintain logs-updated
+              description: The Device is for auditing purpose only-updated
+              expiryDateType: 2
+              startTime: '2016-03-26T10:10:10+0000'
+              expiryTime: '2016-04-26T10:10:10+0000'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/resourceNote'
+          examples:
+            example-1:
+              value:
+                id: 50
+                subject: Device created for maintain logs
+                description: The Device is for auditing purpose only
+                createdTime: '2016-03-21T12:02:11+0000'
+                updatedTime: '2016-03-21T12:02:11+0000'
+                startTime: '2016-03-25T15:40:10+0000'
+                expiryTime: '2016-04-25T15:40:10+0000'
+                createdBy:
+                  id: USR0000002095
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@opsramp.com
+                  changePassword: false
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: resourceId
+    required: true

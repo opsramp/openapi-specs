@@ -1,0 +1,381 @@
+post:
+  summary: Create resource monitors
+  description: This endpoint is used to create resource monitors.
+  tags:
+    - monitoring
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              monitorScope:
+                type: integer
+              clientId: {}
+              mspId: {}
+              serviceProviderId: {}
+              resourceMonAdditionalParams:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    oidType:
+                      type: string
+                    oid:
+                      type: string
+                    propertyMode:
+                      type: string
+                    lookupOID: {}
+                    useExpression:
+                      type: boolean
+                    expression: {}
+                    operator:
+                      type: string
+                    operand: {}
+                    format:
+                      type: string
+                    enumMap: {}
+                    unit: {}
+              instanceType:
+                type: string
+              instanceIds: {}
+              uuid:
+                type: string
+              desc:
+                type: string
+              mulInst:
+                type: boolean
+              disc_freq_min:
+                type: string
+              disc_metric: {}
+              disc_type:
+                type: string
+              disc_lookup_Oid: {}
+              create_ts: {}
+              update_ts: {}
+              discoveryFilters: {}
+              staticMetrics: {}
+              dynamicMetrics:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type: {}
+                    resourceType: {}
+                    unit:
+                      type: string
+                    displayUnit: {}
+                    unitLabel:
+                      type: string
+                    consolFunc:
+                      type: string
+                    metricCollectorType: {}
+                    metric:
+                      type: string
+                    alertSub:
+                      type: string
+                    alertBody:
+                      type: string
+                    enumMap:
+                      type: string
+                    recommended:
+                      type: integer
+                    useExpression:
+                      type: boolean
+                    warnOperatorChecked:
+                      type: boolean
+                    criticalOperatorChecked:
+                      type: boolean
+                    kbArticleUrl: {}
+                    intermediateMetric:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id: {}
+                          name:
+                            type: string
+                          oid:
+                            type: string
+                          oidType:
+                            type: string
+                          dataTypes:
+                            type: string
+                          formula:
+                            type: string
+                          pollFrequency:
+                            type: string
+                    customParams: {}
+                    name:
+                      type: string
+                    operator:
+                      type: string
+                    operand: {}
+                    frmt:
+                      type: string
+                    metricDefType:
+                      type: string
+                    dn:
+                      type: string
+                    fac:
+                      type: integer
+                    desc:
+                      type: string
+                    uuid:
+                      type: string
+                    wrc:
+                      type: integer
+                    crc:
+                      type: integer
+                    warn_oper:
+                      type: string
+                    critical_oper:
+                      type: string
+                    wth:
+                      type: string
+                    cth:
+                      type: string
+                    mt:
+                      type: string
+                    ct: {}
+                    st: {}
+                    re: {}
+                    dpe:
+                      type: string
+                    state:
+                      type: string
+                    alertState:
+                      type: string
+                    gp:
+                      type: string
+                    dpt:
+                      type: string
+                    metric_oper:
+                      type: string
+                    ms: {}
+                    gn: {}
+                    formattedDataUsage:
+                      type: string
+                    oidExp: {}
+                    dpunit: {}
+                    dprange: {}
+                    ma: {}
+                    mc: {}
+                    mtn: {}
+        examples:
+          example-1:
+            value:
+              - name: CiscoMemory
+                monitorScope: 0
+                clientId: null
+                mspId: null
+                serviceProviderId: null
+                resourceMonAdditionalParams:
+                  - name: Name
+                    oidType: SCALAROID
+                    oid: 1.3.6.1.4.1.9.9.48.1.1.1.2
+                    propertyMode: VALUE
+                    lookupOID: null
+                    useExpression: false
+                    expression: null
+                    operator: NONE
+                    operand: null
+                    format: OCTETSTRING
+                    enumMap: null
+                    unit: null
+                instanceType: ALL
+                instanceIds: null
+                uuid: bc6649b9-6f6e-4256-9bca-66669b177cde
+                desc: 'Monitorsthememorypoolutilizationbyapplicationsonthemanageddeviceandalsomonitorsthelargestcontiguousfreememory.[OID:1.3.6.1.4.1.9.9.48.1.1.1.2,1.3.6.1.4.1.9.9.48.1.1.1.4,1.3.6.1.4.1.9.9.48.1.1.1.5,1.3.6.1.4.1.9.9.48.1.1.1.6,1.3.6.1.4.1.9.9.48.1.1.1.7]'
+                mulInst: true
+                disc_freq_min: '480'
+                disc_metric: null
+                disc_type: VALUE
+                disc_lookup_Oid: null
+                create_ts: null
+                update_ts: null
+                discoveryFilters: null
+                staticMetrics: null
+                dynamicMetrics:
+                  - type: null
+                    resourceType: null
+                    unit: '%'
+                    displayUnit: null
+                    unitLabel: Percentage(%)
+                    consolFunc: AVERAGE
+                    metricCollectorType: null
+                    metric: 1.3.6.1.4.1.9.9.48.1.1.1.4
+                    alertSub: '${severity}-Ciscomemoryutilizationof${component.name}poolis${metric.value}(${threshold})'
+                    alertBody: |-
+                      Hostname:${resource.name}
+                      IP:${resource.ip}
+                      MetricName:${metric.name}
+                      MemoryPoolName:${component.name}
+                      Severity:${severity}
+                      MemoryUsed:${ciscoMemoryPoolUsed}bytes
+                      MemoryFree:${ciscoMemoryPoolFree}bytes
+                      MemoryUtilization:${metric.value}
+                      Reason:Ciscomemoryutilizationof${component.name}poolis${metric.value}(${threshold})
+                    enumMap: '[{''0'':''AdminDown''},{''1'':''up''},{''2'':''down''},{''3'':''testing''},{''4'':''unknown''},{''5'':''dormant''},{''6'':''notPresent''},{''7'':''lowerLinkDown''}]'
+                    recommended: 0
+                    useExpression: false
+                    warnOperatorChecked: false
+                    criticalOperatorChecked: false
+                    kbArticleUrl: null
+                    intermediateMetric:
+                      - id: null
+                        name: ciscoMemoryPoolValid
+                        oid: 1.3.6.1.4.1.9.9.48.1.1.1.4
+                        oidType: TABULAROID
+                        dataTypes: UINTEGER32
+                        formula: None
+                        pollFrequency: NORMAL
+                      - id: null
+                        name: ciscoMemoryPoolUsed
+                        oid: 1.3.6.1.4.1.9.9.48.1.1.1.5
+                        oidType: TABULAROID
+                        dataTypes: GUAGE32
+                        formula: None
+                        pollFrequency: NORMAL
+                      - id: null
+                        name: ciscoMemoryPoolFree
+                        oid: 1.3.6.1.4.1.9.9.48.1.1.1.6
+                        oidType: TABULAROID
+                        dataTypes: GUAGE32
+                        formula: None
+                        pollFrequency: NORMAL
+                    customParams: null
+                    name: cisco.memory.pool.util.percent
+                    operator: NONE
+                    operand: null
+                    frmt: NONE
+                    metricDefType: DYNAMIC
+                    dn: MemoryUtilization
+                    fac: 1
+                    desc: 'Monitorsthememoryutilizationofallmemorypoolslikeprocessorpool,I/Opool,Fastpooletc.[OID:1.3.6.1.4.1.9.9.48.1.1.1.2,1.3.6.1.4.1.9.9.48.1.1.1.4,1.3.6.1.4.1.9.9.48.1.1.1.5,1.3.6.1.4.1.9.9.48.1.1.1.6]'
+                    uuid: d03832e7-003c-4aae-b490-32f337691b49
+                    wrc: 1
+                    crc: 1
+                    warn_oper: GREATER_THAN_EQUAL
+                    critical_oper: GREATER_THAN_EQUAL
+                    wth: '80'
+                    cth: '90'
+                    mt: RESOURCE
+                    ct: null
+                    st: null
+                    re: null
+                    dpe: 'if(ciscoMemoryPoolValid==1,(ciscoMemoryPoolUsed/(ciscoMemoryPoolUsed+ciscoMemoryPoolFree))*100,0)'
+                    state: Active
+                    alertState: CRITICALANDWARNING
+                    gp: HISTORICAL
+                    dpt: Gauge
+                    metric_oper: VALUE
+                    ms: null
+                    gn: null
+                    formattedDataUsage: NONE
+                    oidExp: null
+                    dpunit: null
+                    dprange: null
+                    ma: null
+                    mc: null
+                    mtn: null
+                  - type: null
+                    resourceType: null
+                    unit: Kb
+                    displayUnit: null
+                    unitLabel: KiloBits(Kb)
+                    consolFunc: AVERAGE
+                    metricCollectorType: null
+                    metric: 1.3.6.1.4.1.9.9.48.1.1.1.7
+                    alertSub: '${severity}-Largestmemoryfreeof${component.name}poolis${metric.value}(${threshold})'
+                    alertBody: |-
+                      Hostname:${resource.name}
+                      IP:${resource.ip}
+                      MetricName:${metric.name}
+                      MemoryPoolName:${component.name}
+                      Severity:${severity}
+                      LargestMemoryFree:${metric.value}
+                      Reason:Largestmemoryfreeof${component.name}poolis${metric.value}(${threshold})
+                    enumMap: '[{''0'':''AdminDown''},{''1'':''up''},{''2'':''down''},{''3'':''testing''},{''4'':''unknown''},{''5'':''dormant''},{''6'':''notPresent''},{''7'':''lowerLinkDown''}]'
+                    recommended: 0
+                    useExpression: false
+                    warnOperatorChecked: false
+                    criticalOperatorChecked: false
+                    kbArticleUrl: null
+                    intermediateMetric:
+                      - id: null
+                        name: ciscoMemoryPoolLargestFree
+                        oid: 1.3.6.1.4.1.9.9.48.1.1.1.7
+                        oidType: TABULAROID
+                        dataTypes: GUAGE32
+                        formula: None
+                        pollFrequency: NORMAL
+                    customParams: null
+                    name: cisco.memory.pool.largest.free
+                    operator: NONE
+                    operand: null
+                    frmt: NONE
+                    metricDefType: DYNAMIC
+                    dn: LargestMemoryFree
+                    fac: 1
+                    desc: 'Monitorsthelargestcontiguousblockofmemoryfree.[OID:1.3.6.1.4.1.9.9.48.1.1.1.2,1.3.6.1.4.1.9.9.48.1.1.1.7]'
+                    uuid: 5cdccfa8-6767-40b9-aa50-e82f566862c6
+                    wrc: 1
+                    crc: 1
+                    warn_oper: LESS_THAN_EQUAL
+                    critical_oper: LESS_THAN_EQUAL
+                    wth: '600'
+                    cth: '500'
+                    mt: RESOURCE
+                    ct: null
+                    st: null
+                    re: null
+                    dpe: (ciscoMemoryPoolLargestFree)/1024
+                    state: Active
+                    alertState: CRITICALANDWARNING
+                    gp: HISTORICAL
+                    dpt: Gauge
+                    metric_oper: VALUE
+                    ms: null
+                    gn: null
+                    formattedDataUsage: NONE
+                    oidExp: null
+                    dpunit: null
+                    dprange: null
+                    ma: null
+                    mc: null
+                    mtn: null
+                customParams: null
+                collectorType: SNMP
+                cred_type: null
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              failedCount:
+                type: integer
+              failedList:
+                type: object
+              updatedCount:
+                type: integer
+              createdCount:
+                type: integer
+          examples:
+            example-1:
+              value:
+                failedCount: 0
+                failedList: {}
+                updatedCount: 0
+                createdCount: 1
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

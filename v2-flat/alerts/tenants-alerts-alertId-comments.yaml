@@ -1,0 +1,116 @@
+get:
+  summary: Get alert comments
+  description: This endpoint is used to retrieve the comments on an alert.
+  tags:
+    - alerts
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    cumulativeAlertId:
+                      type: integer
+                    commentType:
+                      type: integer
+                    description:
+                      type: string
+                    createdBy:
+                      type: object
+                      properties:
+                        loginName:
+                          type: string
+                        lastName:
+                          type: string
+                        firstName:
+                          type: string
+                        email:
+                          type: string
+                        phoneNumber:
+                          type: string
+                        profileImage:
+                          type: object
+                          properties:
+                            logoPath:
+                              type: string
+                            thumbPath:
+                              type: string
+                            tinyThumbPath:
+                              type: string
+                            imageType:
+                              type: string
+                    createdDate:
+                      type: string
+                      format: date-time
+              totalResults:
+                type: integer
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+              orderBy:
+                type: string
+          examples:
+            example-1:
+              value:
+                results:
+                  - cumulativeAlertId: 289
+                    commentType: 5
+                    description: 'Partition  : / Total  : 17133.81MB Used  : 11390.87MB Free  : 4872.59MB'
+                    createdBy:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@gmail.com
+                      phoneNumber: 406-625-2345
+                      profileImage:
+                        logoPath: 'https://yourdomain.com/images/users/1/profileImages/1.jpg?1469269179000'
+                        thumbPath: 'https://yourdomain.com/images/users/1/profileImages/thumb-1.jpg?1469269180000'
+                        tinyThumbPath: 'https://yourdomain.com/images/users/1/profileImages/tiny-thumb-1.jpg?1469269180000'
+                        imageType: image/jpeg
+                    createdDate: '2016-10-25T08:15:45+0000'
+                  - cumulativeAlertId: 289
+                    commentType: 5
+                    description: 'Partition  : / Total  : 17133.81MB'
+                    createdBy:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@gmail.com
+                      phoneNumber: 406-625-1234
+                      profileImage:
+                        logoPath: 'https://yourdomain.com/images/users/1/profileImages/1.jpg?1469269179000'
+                        thumbPath: 'https://yourdomain.com/images/users/1/profileImages/thumb-1.jpg?1469269180000'
+                        tinyThumbPath: 'https://yourdomain.com/images/users/1/profileImages/tiny-thumb-1.jpg?1469269180000'
+                        imageType: image/jpeg
+                    createdDate: '2016-10-25T10:48:42+0000'
+                totalResults: 2
+                orderBy: created_date
+                pageNo: 1
+                pageSize: 2
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: true
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: alertId
+    required: true

@@ -1,0 +1,55 @@
+post:
+  summary: Install integration
+  description: |-
+    # Cloud integrations
+    ## Notes
+    OpsRamp supports the following cloud integrations:
+    - AWS
+    - AZURE
+    - GOOGLE
+
+    These endpoint IDs are used to install third-party integrations.
+
+    These are not supported for deployment, email requests, and other category integrations.
+  tags:
+    - integrations
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/integrationInstall'
+          examples:
+            example-google:
+              value:
+                id: INTG-948776fe-7f27-4ba0-86d3-28dcc2a30297
+                integration:
+                  id: GOOGLE
+                  name: Google
+                credential:
+                  Name: Google GOOGLE Integration
+                  ProjectId: '********************'
+                  ServiceAccountEmail: '********************************'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/integrationInstall'
+        examples:
+          example-google:
+            value:
+              displayName: Google
+              credential:
+                credentialType: GOOGLE
+                ServiceAccountEmail: '*****************'
+                ProjectId: '**********'
+                ServiceAccountManagementCertificate: '*********'
+                ManagementCertificatePassPhrase: '*********'
+    description: ''
+parameters:
+  - schema:
+      type: string
+    name: tenantId
+    in: path
+    required: true
