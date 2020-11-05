@@ -141,6 +141,14 @@ paths:
   /api/v2/proxy={action}:
     $ref: './agents-gateways/proxy.yaml'
   /api/v2/apiTokenGen:
+    summary: Generate access token for gateway
+    description: |-
+      This endpoint is used to generate an access token on the gateway.
+
+      An access token is needed to:
+
+      - Register the gateway.
+      - Use all gateway-related activities.
     $ref: './agents-gateways/apiTokenGen.yaml'
   /api/v2/networksettings:
     $ref: './agents-gateways/networksettings.yaml'
