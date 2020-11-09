@@ -290,8 +290,13 @@ paths:
     $ref: './alerts/tenants-tenantId-policies-alertCorrelation.yaml'
   /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}:
     $ref: './alerts/tenants-tenantId-policies-alertCorrelation-policyId.yaml'
-# dup  /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices:
-# dup    $ref: './alerts/tenants-tenantId-agentPolicies-policyId-devices.yaml'
+  /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}/{status}:
+    summary: Enable or disable alert correlation policy
+    description: |-
+      This endpoint is used to enable, disable, and create an observed mode on an alert correlation policy. Status values: enable, disable, observed.
+
+      The response depends on the returned status code.
+    $ref: './alerts/tenants-tenantId-policies-alertCorrelation-policyId-status.yaml'
   /api/v2/tenants/{tenantId}/alerts/{alertId}/escalations:
     $ref: './alerts/tenants-tenantId-alerts-alertId-escalations.yaml'
   /api/v2/tenants/{tenantId}/escalations:
