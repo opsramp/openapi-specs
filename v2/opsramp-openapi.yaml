@@ -115,30 +115,80 @@ paths:
                     error_description: Bad API credentials
   # Agents and Gateways
   /api/v2/applicationservice:
+    summary: Status, start, and stop service
+    description: |-
+      This endpoint is used to get the service status and to start and stop application services.
+
+      An access token must be generated to use this API.
+
+      Supported services are network, squid, postgresql, vprobe, and ntp.
     $ref: './agents-gateways/applicationservice.yaml'
   /api/v2/download/gateway/{packageName}:
+    summary: Download gateway
+    description: This API is used to download gateway files from the OpsRamp download server.
     $ref: './agents-gateways/download-gateway-packagename.yaml'
   /api/v2/externalproxy:
+    summary: Set external proxy connection
+    description: |-
+      This endpoint is used to configure the external proxy connection on the gateway.
+
+      An access token must be generated to use this API.
     $ref: './agents-gateways/externalproxy.yaml'
   /api/v2/generalinfo:
+    summary: Get gateway information
+    description: This endpoint is used to get general information from the gateway. This includes appliance details and network information.
     $ref: './agents-gateways/generalinfo.yaml'
   /api/v2/getntpdetails:
+    summary: Get NTP details
+    description: This endpoint is used to get the NTP details from the gateway.
     $ref: './agents-gateways/getntpdetails.yaml'
   /api/v2/tenants/{tenantId}/agents/{platform}/download/{package-name}:
+    summary: Download agent for Linux
+    description: |-
+      This endpoint is used to download the agent for Linux resources.
+
+      This usually follows calling the Get Agent Package for Linux API.
+
+      1. To capture the agent file: Use the package name from the response headers with the specific header package-name. The content of the file is available in the response body.
+      2. Create a file with the same name as provided in the header and then write the contents of the response body into the file.
     $ref: './agents-gateways/tenants-tenantId-agents-platform-download-package-name.yaml'
   /api/v2/tenants/{tenantId}/agents/deployAgentsScript:
+    summary: Download agent installation script for Linux
+    description: |-
+      This endpoint is used to download the agent installation script for Linux resources.
+
+      This returns the JSON payload containing package name, package size, package checksum, and the package S3 bucket URL to directly download the agent.
     $ref: './agents-gateways/tenants-tenantId-agents-deployAgentScript.yaml'
   /api/v2/tenants/{tenantId}/agents/{platform}/info:
+    summary: Get agent package for Linux
+    description: |-
+      This endpoint is used to download the agent for Linux resources. This is usually followed by an API call to Download Linux Agent.
+
+      Returns the JSON payload containing package name, package size, package checksum. The response also contains package S3 bucket URL for downloading the agent directly.
     $ref: './agents-gateways/tenants-tenantId-agents-platform-info.yaml'
   /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices:
+    summary: Assign agent policy for resources
+    description: The endpoint to assign agent policy for resources.
     $ref: './agents-gateways/tenants-tenantId-agentPolicies-policyId-devices.yaml'
   /api/v2/tenants/{tenantId}/agentProfiles/{profileId}/devices:
+    summary: Assign agent profile for resources
+    description: |-
+      This endpoint is used to assign an agent profile for resources.
     $ref: './agents-gateways/tenants-tenantId-agentProfiles-profileId-devices.yaml'
   /api/v2/tenants/{tenantId}/agents/windows:
+    summary: Download agent for Windows
+    description: |-
+      This endpoint is used to download the agent for Windows resources.
+
+      This returns the JSON payload containing package name, package size, package checksum, and the package S3 bucket URL to directly download the agent.
     $ref: './agents-gateways/tenants-tenantId-agents-windows.yaml'
   /api/v2/registration:
+    summary: Register gateway
+    description: This endpoint is used to register the gateway.
     $ref: './agents-gateways/registration.yaml'
   /api/v2/proxy={action}:
+    summary: Turn on and off Squid proxy service
+    description: This endpoint is used to turn on and off the Squid proxy server on the gateway.
     $ref: './agents-gateways/proxy.yaml'
   /api/v2/apiTokenGen:
     summary: Generate access token for gateway
@@ -151,36 +201,85 @@ paths:
       - Use all gateway-related activities.
     $ref: './agents-gateways/apiTokenGen.yaml'
   /api/v2/networksettings:
+    summary: Set network settings
+    description: This endpoint is used to specify the network settings on the gateway.
     $ref: './agents-gateways/networksettings.yaml'
   /api/v2/nginx:
+    summary: Status and restart NGINX service
+    description: This endpoint is used to get the NGINX service status and to restart the NGINX service on the gateway.
     $ref: './agents-gateways/nginx.yaml'
   /api/v2/ntpmanualconfig:
+    summary: Manually set NTP date and time
+    description: This endpoint is used to manually set the NTP date and time on the gateway.
     $ref: './agents-gateways/ntpmanualconfig.yaml'
   /api/v2/ntpservice:
+    summary: Start and stop NTP service
+    description: This endpoint is used to start and stop the NTP service on the gateway.
     $ref: './agents-gateways/ntpservice.yaml'
   /api/v2/ntpupdateips:
+    summary: Set NTP servers
+    description: This endpoint is used to update the NTP server IP addresses on the gateway.
     $ref: './agents-gateways/ntpupdateips.yaml'
   /api/v2/ntpsyncips:
+    summary: Synchronize NTP servers
+    description: This endpoint is used to synchronize the time from the NTP servers on the gateway.
     $ref: './agents-gateways/ntpsyncips.yaml'
   /api/v2/restartnetwork:
+    summary: Restart network service
+    description: This endpoint is used to restart the network service on the gateway.
     $ref: './agents-gateways/restartnetwork.yaml'
   /api/v2/staticroute:
+    summary: Set static route configuration
+    description: This endpoint is used to set the static route configuration on the gateway.
     $ref: './agents-gateways/staticroute.yaml'
   /api/v2/gettimezoneinfo:
+    summary: Get timezone details
+    description: This endpoint is used to get timezone information from the gateway.
     $ref: './agents-gateways/gettimezoneinfo.yaml'
   /api/v2/settimezone:
+    summary: Set timezone
+    description: This endpoint is used to set the timezone on the gateway.
     $ref: './agents-gateways/settimezone.yaml'
   /api/v2/tenants/{tenantId}/managementProfiles/{id}/attach:
+    summary: Attach gateway to management profile
+    description: This endpoint is used to attach a gateway to a management profile and generates an activation token. The generated activation token is used in gateway registration.
     $ref: './agents-gateways/tenants-tenantId-managementProfiles-id-attach.yaml'
   /api/v2/tenants/{tenantId}/managementProfiles:
+    summary: Create management profile
+    description: This endpoint is used to create a management profile.
     $ref: './agents-gateways/tenants-tenantId-managementProfiles.yaml'
   /api/v2/tenants/{tenantId}/managementProfiles/{profileId}:
+    summary: Manage management profile
+    description: This endpoint is used to retrieve, update, and delete a management profile.
     $ref: './agents-gateways/tenants-tenantId-managementProfiles-profileId.yaml'
   /api/v2/tenants/{tenantId}/managementProfiles/{profileId}/detach:
+    summary: Detach gateway from management profile
+    description: This API is used to unmap/detach the gateway from the management profile and invalidate the activation token.
     $ref: './agents-gateways/tenants-tenantId-managementProfiles-profileId-detach.yaml'
   /api/v2/tenants/{tenantId}/managementProfiles/{profileId}/reconnectTunnel:
+    summary: Reconnect management profile tunnel
+    description: This endpoint is used to reconnect the tunnel.
     $ref: './agents-gateways/tenants-tenantId-managementProfiles-profileId-reconnectTunnel.yaml'
   /api/v2/tenants/{tenantId}/managementProfiles/search:
+    summary: Search management profile
+    description: |-
+      This endpoint is used to search for management profiles.
+
+      ## Query Variables
+      |Variable|Value|Description|
+      |---|---|---|
+      |id|{id}|The management profile ID.|
+      |name|{name}|The management profile name.|
+      |type|Agent, Gateway|The anagement profile type. An example is: Agent.|
+      |startCreationDate|{startCreationDate}|Search for the management profile created within a certain duration. Start indicates the from date. An example is: 2016-06-10T10:40:20 0000 (GMT).|
+      |endCreationDate|{endCreationDate}|Search for the management profile created within a certain duration. End indicates the to date. An Example is: 2016-06-20T10:40:20 0000 (GMT).|
+
+      ## Notes
+      1. Special characters in the query string
+          1. Plus (+) indicates next field and must be URL encoded.
+          2. Color (:) indicates Equals. An example is: key: value.
+          3. Space characters must be URL encoded.
+      2. Date format must use this format: yyyy-MM-ddTHH: mm: ssZ (GMT).
     $ref: './agents-gateways/tenants-tenantId-managementProfiles-search.yaml'
   # Alerts
   /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}/{action}:
@@ -191,8 +290,8 @@ paths:
     $ref: './alerts/tenants-tenantId-policies-alertCorrelation.yaml'
   /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}:
     $ref: './alerts/tenants-tenantId-policies-alertCorrelation-policyId.yaml'
-  /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices:
-    $ref: './alerts/tenants-tenantId-agentPolicies-policyId-devices.yaml'
+# dup  /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices:
+# dup    $ref: './alerts/tenants-tenantId-agentPolicies-policyId-devices.yaml'
   /api/v2/tenants/{tenantId}/alerts/{alertId}/escalations:
     $ref: './alerts/tenants-tenantId-alerts-alertId-escalations.yaml'
   /api/v2/tenants/{tenantId}/escalations:

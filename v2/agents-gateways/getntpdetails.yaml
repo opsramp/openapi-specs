@@ -1,6 +1,4 @@
 get:
-  summary: Get NTP details
-  description: This endpoint is used to get the NTP details from the gateway.
   tags:
     - agents-gateways
   responses:

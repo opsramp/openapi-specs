@@ -1,8 +1,6 @@
 servers:
   - url: 'http://{gatewayIp}:port'
 post:
-  summary: Register gateway
-  description: This endpoint is used to register the gateway.
   tags:
     - agents-gateways
   responses:

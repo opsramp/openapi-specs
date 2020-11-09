@@ -1,6 +1,4 @@
 get:
-  summary: Get timezone details
-  description: This endpoint is used to get timezone information from the gateway.
   tags:
     - agents-gateways
   responses:

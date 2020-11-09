@@ -1,6 +1,4 @@
 post:
-  summary: Start and stop NTP service
-  description: This endpoint is used to start and stop the NTP service on the gateway.
   tags:
     - agents-gateways
   responses:

@@ -1,6 +1,4 @@
 get:
-  summary: Get gateway information
-  description: This endpoint is used to get general information from the gateway. This includes appliance details and network information.
   tags:
     - agents-gateways
   responses:

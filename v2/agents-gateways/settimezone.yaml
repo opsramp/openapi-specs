@@ -1,6 +1,4 @@
 post:
-  summary: Set timezone
-  description: This endpoint is used to set the timezone on the gateway.
   tags:
     - agents-gateways
   responses:

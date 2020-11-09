@@ -1,6 +1,4 @@
 post:
-  summary: Manually set NTP date and time
-  description: This endpoint is used to manually set the NTP date and time on the gateway.
   tags:
     - agents-gateways
   responses:

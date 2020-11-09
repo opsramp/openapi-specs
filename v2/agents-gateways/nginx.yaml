@@ -1,6 +1,4 @@
 post:
-  summary: Status and restart NGINX service
-  description: This endpoint is used to get the NGINX service status and to restart the NGINX service on the gateway.
   tags:
     - agents-gateways
   responses:

@@ -1,10 +1,4 @@
 post:
-  description: |-
-    This endpoint is used to get the service status and to start and stop application services.
-
-    An access token must be generated to use this API.
-
-    Supported services are network, squid, postgresql, vprobe, and ntp.
   tags:
     - agents-gateways
   responses:

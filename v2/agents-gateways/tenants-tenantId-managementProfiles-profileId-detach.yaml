@@ -1,6 +1,4 @@
 get:
-  summary: Detach gateway from management profile
-  description: This API is used to unmap/detach the gateway from the management profile and invalidate the activation token.
   tags:
     - agents-gateways
   responses:

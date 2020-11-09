@@ -1,6 +1,4 @@
 get:
-  summary: Reconnect management profile tunnel
-  description: This endpoint is used to reconnect the tunnel.
   tags:
     - agents-gateways
   responses:

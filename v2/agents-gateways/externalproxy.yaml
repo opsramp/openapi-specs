@@ -1,8 +1,4 @@
 post:
-  description: |-
-    This endpoint is used to configure the external proxy connection on the gateway.
-
-    An access token must be generated to use this API.
   tags:
     - agents-gateways
   responses:
@@ -56,5 +52,4 @@ post:
               proxy_usr: <proxyuser>
               proxy_pwd: <proxypassword>
     description: ''
-  summary: Set external proxy connection
   parameters: []
