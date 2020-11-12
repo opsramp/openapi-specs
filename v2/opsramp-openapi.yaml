@@ -152,6 +152,10 @@ paths:
       1. To capture the agent file: Use the package name from the response headers with the specific header package-name. The content of the file is available in the response body.
       2. Create a file with the same name as provided in the header and then write the contents of the response body into the file.
     $ref: './agents-gateways/tenants-tenantId-agents-platform-download-package-name.yaml'
+  /api/v2/tenants/{tenantId}/agents/{agentversion}/resourcesCountByAgentVersion:
+    summary: Get agent count by agent version
+    description: This endpoint is used to retrieve the number of installed agent resources by agent version.
+    $ref: './agents-gateways/tenants-tenantId-agents-agentversion-resourcesCountByAgentVersion.yaml'
   /api/v2/tenants/{tenantId}/agents/deployAgentsScript:
     summary: Download agent installation script for Linux
     description: |-
