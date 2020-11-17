@@ -24,7 +24,7 @@ get:
                       type: string
                       format: date-time
                     updatedBy:
-                      $ref: '../components-global.yaml#/components/schemas/user'
+                      $ref: './components.yaml#/components/schemas/user'
               totalResults:
                 type: integer
               orderBy:
