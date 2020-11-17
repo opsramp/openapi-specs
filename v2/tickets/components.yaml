@@ -170,7 +170,7 @@ components:
         attachments:
           type: array
           items:
-            $ref: ./knowledge-base.v1.yaml#/components/schemas/attachment
+            $ref: '#/components/schemas/attachment'
         channelId:
           type: integer
     user:
