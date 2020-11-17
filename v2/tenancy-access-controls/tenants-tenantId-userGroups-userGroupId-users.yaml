@@ -70,7 +70,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: ./resource-management.v1.yaml#/components/schemas/user
+                  $ref: '#/components/schemas/user'
               totalResults:
                 type: integer
               orderBy:
