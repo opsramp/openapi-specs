@@ -1,3 +1,5 @@
+summary: Set network settings
+description: This endpoint is used to specify the network settings on the gateway.
 post:
   tags:
     - agents-gateways

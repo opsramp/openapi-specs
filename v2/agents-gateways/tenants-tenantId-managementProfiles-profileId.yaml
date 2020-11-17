@@ -1,3 +1,5 @@
+summary: Manage management profile
+description: This endpoint is used to retrieve, update, and delete a management profile.
 delete:
   tags:
     - agents-gateways

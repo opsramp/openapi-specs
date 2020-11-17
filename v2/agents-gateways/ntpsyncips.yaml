@@ -1,3 +1,5 @@
+summary: Synchronize NTP servers
+description: This endpoint is used to synchronize the time from the NTP servers on the gateway.
 post:
   tags:
     - agents-gateways

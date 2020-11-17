@@ -1,3 +1,8 @@
+summary: Download agent for Windows
+description: |-
+  This endpoint is used to download the agent for Windows resources.
+
+  This returns the JSON payload containing package name, package size, package checksum, and the package S3 bucket URL to directly download the agent.
 get:
   tags:
     - agents-gateways

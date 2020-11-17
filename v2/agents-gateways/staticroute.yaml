@@ -1,3 +1,5 @@
+summary: Set static route configuration
+description: This endpoint is used to set the static route configuration on the gateway.
 post:
   tags:
     - agents-gateways

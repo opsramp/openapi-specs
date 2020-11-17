@@ -1,3 +1,11 @@
+summary: Generate access token for gateway
+description: |-
+  This endpoint is used to generate an access token on the gateway.
+
+  An access token is needed to:
+
+  - Register the gateway.
+  - Use all gateway-related activities.
 post:
   tags:
     - agents-gateways

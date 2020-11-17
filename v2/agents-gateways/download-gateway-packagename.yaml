@@ -1,3 +1,5 @@
+summary: Download gateway
+description: This API is used to download gateway files from the OpsRamp download server.
 get:
   tags:
     - agents-gateways
