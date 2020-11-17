@@ -70,7 +70,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: '#/components/schemas/user'
+                  $ref: './components.yaml#/components/schemas/user'
               totalResults:
                 type: integer
               orderBy:
