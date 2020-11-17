@@ -460,8 +460,8 @@ paths:
     $ref: './patching/tenants-tenantId-resources-resourceId-patches-scan-status.yaml'
   /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/install/status:
     $ref: './patching/tenants-tenantId-resources-resourceId-patches-install-status.yaml'
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/baselines/{baseLineId}/patches:
-    $ref: './patching/tenants-tenantId-resources-resourceId-baselines-baseLineId-patches.yaml'
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/baselines/{baselineId}/patches:
+    $ref: './patching/tenants-tenantId-resources-resourceId-baselines-baselineId-patches.yaml'
   /api/v2/tenants/{tenantId}/resources/patches:
     $ref: './patching/tenants-tenantId-resources-patches.yaml'
   # Resource Management
