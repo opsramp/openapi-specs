@@ -79,7 +79,7 @@ paths:
                   value:
                     access_token: 6b4a5f03-7d49-4915-9792-2d964806cbd1
                     token_type: bearer
-                    expires_in: 5999
+                    expires_in: '5999'
                     scope: read write
         '400':
           description: Bad Request
@@ -325,10 +325,10 @@ paths:
     $ref: './alerts/tenants-tenantId-alerts-alertId.yaml'
   /api/v2/alertTypes:
     $ref: './alerts/alertTypes.yaml'
-  /api/v2/tenants/{orgId}/users/{userId}/alertViews:
-    $ref: './alerts/tenants-orgID-users-userId-alertViews.yaml'
-  /api/v2/tenants/{orgId}/users/{userId}/alertViews/{viewId}:
-    $ref: './alerts/tenants-orgId-users-userId-alertViews-viewId.yaml'
+  /api/v2/tenants/{tenantId}/users/{userId}/alertViews:
+    $ref: './alerts/tenants-tenantId-users-userId-alertViews.yaml'
+  /api/v2/tenants/{tenantId}/users/{userId}/alertViews/{viewId}:
+    $ref: './alerts/tenants-tenantId-users-userId-alertViews-viewId.yaml'
   /api/v2/alerts/tenants/{tenantId}/alerts/{alertId}:
     $ref: './alerts/alerts-tenants-tenantId-alerts-alertId.yaml'
   /api/v2/alerts/tenants/{tenantId}/tickets/{ticketId}:
@@ -462,15 +462,15 @@ paths:
     $ref: './integrations/tenants-tenantId-integrations-install-OKTA.yaml'
   # Knowledge Base
   /api/v2/tenants/{tenantId}/kb/{articleId}/activitylog:
-    $ref: './knowledge-base/tenants/kb/articleId/activitylog.yaml'
+    $ref: './knowledge-base/tenants-kb-articleId-activitylog.yaml'
   /api/v2/tenants/{tenantId}/kb/article/{articleId}/comment:
     $ref: './knowledge-base/tenants-kb-article-articleId-comment.yaml'
   /api/v2/tenants/{tenantId}/kb/articlesList:
     $ref: './knowledge-base/tenants-kb-articlesList.yaml'
   /api/v2/tenants/{tenantId}/kb/articles/search:
-    $ref: './knowledge-base/tenants/kb/article/search.yaml'
+    $ref: './knowledge-base/tenants-kb-articles-search.yaml'
   /api/v2/tenants/{tenantId}/kb/article/{articleId}/comments/{commentId}/resources/{resourceId}:
-    $ref: './knowledge-base/tenants/kb/article/articleId/comments/commmentId/resources/resourceId.yaml'
+    $ref: './knowledge-base/tenants-kb-article-articleId-comments-commentId-resources-resourceId.yaml'
   /api/v2/tenants/{tenantId}/kb/article/{articleId}/resources/{resourceId}:
     $ref: './knowledge-base/tenants-kb-article-articleId-resources-resourceId.yaml'
   /api/v2/tenants/{tenantId}/kb/article:
@@ -490,7 +490,7 @@ paths:
   /api/v2/tenants/{tenantId}/kb/category/delete/{categoryId}:
     $ref: './knowledge-base/tenants-kb-category-delete-categoryId.yaml'
   /api/v2/tenants/{tenantId}/kb/categorylist:
-    $ref: './knowledge-base/tenants/kb/categorylist.yaml'
+    $ref: './knowledge-base/tenants-kb-categorylist.yaml'
   /api/v2/tenants/{tenantId}/kb/category/restore/{categoryId}:
     $ref: './knowledge-base/tenants-kb-category-restore-categoryId.yaml'
   /api/v2/tenants/{tenantId}/kb/categorylist/{categoryId}:
@@ -500,12 +500,12 @@ paths:
   /api/v2/tenants/{tenantId}/kb/template/{templateId}/delete:
     $ref: './knowledge-base/tenants-kb-template-templateId-delete.yaml'
   /api/v2/tenants/{tenantId}/kb/templatesList:
-    $ref: './knowledge-base/tenants/kb/templateList.yaml'
+    $ref: './knowledge-base/tenants-kb-templatesList.yaml'
   /api/v2/tenants/{tenantId}/kb/template:
     $ref: './knowledge-base/tenants-kb-template.yaml'
   /api/v2/tenants/{tenantId}/kb/template/{templatedId}:
     $ref: './knowledge-base/tenants-kb-template-templateId.yaml'
-  /api/v2/tenants/{tenantId}/kb/article:
+  /api/v2/tenants/{tenantId}/kb/article-DUP:
     $ref: './knowledge-base/tenants-kb-article-update.yaml'
   # Metrics
   /api/v2/metric/tenants/{tenantId}/rtypes/{rtype}/resources/{resource}/metrics:
@@ -564,12 +564,10 @@ paths:
     $ref: './patching/tenants-tenantId-patches-rating-intgId-feed-patchId.yaml'
   /api/v2/tenants/{tenantId}/patches:
     $ref: './patching/tenants-tenantId-patches.yaml'
-  /api/v2/tenants/{tenantId}/patches/rating/{intgId}/feed:
-    $ref: './patching/tenants/tenantId/patches/rating/intgId/feed.yaml'
-  /api/v2/tenants/{tenantId}/patches/{jobId}/scan/status:
-    $ref: './patching/tenants/tenantId/patches/jobId/scan/status.yaml'
-  /api/v2/tenants/{tenantId}/patches/{jobId}/install/status:
-    $ref: './patching/tenants/tenantId/patches/jobId/install/status.yaml'
+  /api/v2/tenants/{tenantId}/patches/{resourceId}/scan/status:
+    $ref: './patching/tenants-tenantId-patches-resourceId-scan-status.yaml'
+  /api/v2/tenants/{tenantId}/patches/{resourceId}/install/status:
+    $ref: './patching/tenants-tenantId-patches-resourceId-install-status.yaml'
   /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/{patchId}/{approvalType}:
     $ref: './patching/tenants-tenantId-resources-resourceId-patches-patchId-approvalType.yaml'
   /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/scan/status:
@@ -581,7 +579,7 @@ paths:
   /api/v2/tenants/{tenantId}/resources/patches:
     $ref: './patching/tenants-tenantId-resources-patches.yaml'
   # Resource Management
-  /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices:
+  /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices-DUP1:
     $ref: './resource-management/tenants-tenantId-agentPolicies-policyId-devices.yaml'
   /api/v2/tenants/{tenantId}/customAttributes/{attributeId}/values/{valueId}:
     $ref: './resource-management/tenants-tenantId-customAttributes-attributeId-values-valueId.yaml'
@@ -700,7 +698,7 @@ paths:
   # Tenancy Access Controls
   /api/v2/tenants/{tenantId}/notes:
     $ref: './tenancy-access-control/tenants-tenantId-notes.yaml'
-  /api/v2/tenants/{tenantId}/notes/{noteId}:
+  /api/v2/tenants/{tenantId}/notes/{noteId}/:
     $ref: './tenancy-access-control/tenants-tenantId-notes-noteId.yaml'
   /api/v2/tenants/{tenantId}/notes/search:
     $ref: './tenancy-access-control/tenants-tenantId-notes-search.yaml'
