@@ -575,7 +575,7 @@ paths:
   /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/install/status:
     $ref: './patching/tenants-tenantId-resources-resourceId-patches-install-status.yaml'
   /api/v2/tenants/{tenantId}/resources/{resourceId}/baselines/{baseLineId}/patches:
-    $ref: './patching/tenants/tenantId/resources/resourceId/baselines/baseLineId/patches.yaml'
+    $ref: './patching/tenants-tenantId-resources-resourceId-baselines-baseLineId-patches.yaml'
   /api/v2/tenants/{tenantId}/resources/patches:
     $ref: './patching/tenants-tenantId-resources-patches.yaml'
   # Resource Management
@@ -604,9 +604,9 @@ paths:
   /api/v2/tenants/{tenantId}/customAttributes/{attributeId}:
     $ref: './resource-management/tenants-tenantId-customAttributes-attributeId.yaml'
   /api/v2/tenants/{tenantId}/deviceGroups/{deviceGroupId}/childs:
-    $ref: './resource-management/tenants/tenantId/deviceGroups/childs.yaml'
+    $ref: './resource-management/tenants-tenantId-deviceGroups-childs.yaml'
   /api/v2/tenants/{tenantId}/deviceGroups/{deviceGroupId}/childs/search:
-    $ref: './resource-management/tenants/tenantId/deviceGroups/childs/search.yaml'
+    $ref: './resource-management/tenants-tenantId-deviceGroups-childs-search.yaml'
   /api/v2/tenants/{tenantId}/deviceGroups:
     $ref: './resource-management/tenants-tenantId-deviceGroups.yaml'
   /api/v2/tenants/{tenantId}/deviceGroups/{deviceGroupId}:
@@ -697,69 +697,69 @@ paths:
     $ref: './resource-management/tenants-tenantId-topology-resourceUUID.yaml'
   # Tenancy Access Controls
   /api/v2/tenants/{tenantId}/notes:
-    $ref: './tenancy-access-control/tenants-tenantId-notes.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-notes.yaml'
   /api/v2/tenants/{tenantId}/notes/{noteId}/:
-    $ref: './tenancy-access-control/tenants-tenantId-notes-noteId.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-notes-noteId.yaml'
   /api/v2/tenants/{tenantId}/notes/search:
-    $ref: './tenancy-access-control/tenants-tenantId-notes-search.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-notes-search.yaml'
   /api/v2/tenants/{varId}/clients/{clientId}/{action}:
-    $ref: './tenancy-access-control/tenants-varId-clients-clientId-action.yaml'
+    $ref: './tenancy-access-controls/tenants-varId-clients-clientId-action.yaml'
   /api/v2/tenants/{varId}/clients/{clientId}:
-    $ref: './tenancy-access-control/tenants-varId-clients-clientId.yaml'
+    $ref: './tenancy-access-controls/tenants-varId-clients-clientId.yaml'
   /api/v2/tenants/{varId}/clients:
-    $ref: './tenancy-access-control/tenants-varId-clients.yaml'
+    $ref: './tenancy-access-controls/tenants-varId-clients.yaml'
   /api/v2/tenants/{varId}/clients/minimal:
-    $ref: './tenancy-access-control/tenants-varId-clients-minimal.yaml'
+    $ref: './tenancy-access-controls/tenants-varId-clients-minimal.yaml'
   /api/v2/tenants/{varId}/clients/search:
-    $ref: './tenancy-access-control/tenants-varId-clients-search.yaml'
+    $ref: './tenancy-access-controls/tenants-varId-clients-search.yaml'
   /api/v2/cfg/alertSource/available/custIntg/{intgId}:
-    $ref: './tenancy-access-control/cfg-alertSource-available-custIntg-intgId.yaml'
+    $ref: './tenancy-access-controls/cfg-alertSource-available-custIntg-intgId.yaml'
   /api/v2/cfg/tenants/channels:
-    $ref: './tenancy-access-control/cfg-tenants-channels.yaml'
+    $ref: './tenancy-access-controls/cfg-tenants-channels.yaml'
   /api/v2/cfg/countries:
-    $ref: './tenancy-access-control/cfg-countries.yaml'
+    $ref: './tenancy-access-controls/cfg-countries.yaml'
   /api/v2/cfg/tenants/nocs:
-    $ref: './tenancy-access-control/cfg-tenants-nocs.yaml'
+    $ref: './tenancy-access-controls/cfg-tenants-nocs.yaml'
   /api/v2/cfg/timezones:
-    $ref: './tenancy-access-control/cfg-timezones.yaml'
+    $ref: './tenancy-access-controls/cfg-timezones.yaml'
   /api/v2/tenants/{tenantId}/credentialSets:
-    $ref: './tenancy-access-control/tenants-tenantId-credentialSets.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-credentialSets.yaml'
   /api/v2/tenants/{tenantId}/credentialSets/{credentialSetId}:
-    $ref: './tenancy-access-control/tenants-tenantId-credentialSets-credentialSetId.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-credentialSets-credentialSetId.yaml'
   /api/v2/tenants/{tenantId}/credentialSets/minimal:
-    $ref: './tenancy-access-control/tenants/tenantId/credentialSets/minimal.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-credentialSets-minimal.yaml'
   /api/v2/tenants/{tenantId}/devices/{deviceId}/credentialSets/minimal:
-    $ref: './tenancy-access-control/tenants/tenantId/devices/deviceId/credentialSet/minimal.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-devices-deviceId-credentialSets-minimal.yaml'
   /api/v2/tenants/{varId}:
-    $ref: './tenancy-access-control/tenants/varId.yaml'
+    $ref: './tenancy-access-controls/tenants-varId.yaml'
   /api/v2/tenants/{tenantId}/roles:
-    $ref: './tenancy-access-control/tenants/tenantId/roles.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-roles.yaml'
   /api/v2/tenants/{tenantId}/roles/{roleId}:
-    $ref: './tenancy-access-control/tenants/tenantId/roles/roleId.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-roles-roleId.yaml'
   /api/v2/tenants/{tenantId}/roles/search:
-    $ref: './tenancy-access-control/tenants/tenantId/roles/search.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-roles-search.yaml'
   /api/v2/tenants/{tenantId}/permissionSets:
-    $ref: './tenancy-access-control/tenants/tenantId/permissionSets.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-permissionSets.yaml'
   /api/v2/tenants/{tenantId}/userGroups/{userGroupId}/users:
-    $ref: './tenancy-access-control/tenants/tenantId/userGroups/userGroupId/users.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-userGroups-userGroupId-users.yaml'
   /api/v2/tenants/{tenantId}/userGroups:
-    $ref: './tenancy-access-control/tenants/tenantId/userGroups.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-userGroups.yaml'
   /api/v2/tenants/{tenantId}/userGroups/{userGroupId}:
-    $ref: './tenancy-access-control/tenants/tenantId/userGroups/userGroupId.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-userGroups-userGroupId.yaml'
   /api/v2/tenants/{tenantId}/users/{userId}/{action}:
-    $ref: './tenancy-access-control/tenants/tenantId/users/userId/action.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-users-userId-action.yaml'
   /api/v2/tenants/{orgId}/users/{userId}/changePassword:
-    $ref: './tenancy-access-control/tenants/orgId/users/userId/changePassword.yaml'
+    $ref: './tenancy-access-controls/tenants-orgId-users-userId-changePassword.yaml'
   /api/v2/tenants/{orgId}/users:
-    $ref: './tenancy-access-control/tenants/orgId/users.yaml'
+    $ref: './tenancy-access-controls/tenants-orgId-users.yaml'
   /api/v2/tenants/{tenantId}/users/loginHistory/search:
-    $ref: './tenancy-access-control/tenants/tenantId/users/loginHistory/search.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-users-loginHistory-search.yaml'
   /api/v2/tenants/{orgId}/users/minimal:
-    $ref: './tenancy-access-control/tenants/orgId/users/minimal.yaml'
+    $ref: './tenancy-access-controls/tenants-orgId-users-minimal.yaml'
   /api/v2/tenants/{tenantId}/users/search:
-    $ref: './tenancy-access-control/tenants/tenantId/users/search.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantId-users-search.yaml'
   /api/v2/tenants/{orgId}/users/{userId}:
-    $ref: './tenancy-access-control/tenants/orgId/users/userId.yaml'
+    $ref: './tenancy-access-controls/tenants-orgId-users-userId.yaml'
   # Tickets
   /api/v2/tenants/{tenantId}/incidents/businessImpacts:
     $ref: './tickets/tenants-incidents-businessImpacts.yaml'
@@ -848,25 +848,25 @@ paths:
   /api/v2/tenants/{tenantId}/{ticketType}/statusReasons:
     $ref: './tickets/tenants-ticketType-statusReasons.yaml'
   /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/activitylog:
-    $ref: './tickets/tenants/servicesRequests/serviceRequestId/activitylog.yaml'
+    $ref: './tickets/tenants-serviceRequests-serviceRequestId-activitylog.yaml'
   /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/responses:
-    $ref: './tickets/tenants/servicesRequests/serviceRequestId/responses.yaml'
+    $ref: './tickets/tenants-serviceRequests-serviceRequestId-responses.yaml'
   /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/close:
-    $ref: './tickets/tenants/servicesRequests/serviceRequestId/close.yaml'
+    $ref: './tickets/tenants-serviceRequests-serviceRequestId-close.yaml'
   /api/v2/tenants/{tenantId}/serviceRequests/categories:
-    $ref: './tickets/tenants/servicesRequests/categories.yaml'
+    $ref: './tickets/tenants-serviceRequests-categories.yaml'
   /api/v2/tenants/{tenantId}/serviceRequests:
-    $ref: './tickets/tenants/servicesRequests.yaml'
+    $ref: './tickets/tenants-serviceRequests.yaml'
   /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/responses/{responseId}/resources/{resourceId}:
-    $ref: './tickets/tenants/servicesRequests/serviceRequestId/responses/responseId/resources/resourceId.yaml'
+    $ref: './tickets/tenants-serviceRequests-serviceRequestId-responses-responseId-resources-resourceId.yaml'
   /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}:
-    $ref: './tickets/tenants/servicesRequests/serviceRequestId.yaml'
+    $ref: './tickets/tenants-serviceRequests-serviceRequestId.yaml'
   /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/responses/search:
-    $ref: './tickets/tenants/servicesRequests/serviceRequestId/responses/search.yaml'
+    $ref: './tickets/tenants-serviceRequests-serviceRequestId-responses-search.yaml'
   /api/v2/tenants/{tenantId}/serviceRequests/search:
-    $ref: './tickets/tenants/servicesRequests/search.yaml'
+    $ref: './tickets/tenants-serviceRequests-search.yaml'
   /api/v2/tenants/{tenantId}/serviceRequests/categories/{uniqueId}:
-    $ref: './tickets/tenants/servicesRequests/categories/uniqueId.yaml'
+    $ref: './tickets/tenants-serviceRequests-categories-uniqueId.yaml'
   /api/v2/tenants/{tenantId}/{ticketType}/slaPolicies/{id}:
     $ref: './tickets/tenants-ticketType-slaPolicies-id.yaml'
   /api/v2/tenants/{tenantId}/{ticketType}/slaPolicies/search:
@@ -884,7 +884,7 @@ paths:
   /api/v2/tenants/{tenantId}/tasks/search:
     $ref: './tickets/tenants-tasks-search.yaml'
   /api/v2/tenants/{tenantId}/tasks/{taskId}/activitylog:
-    $ref: './tickets/tenants/tasks/taskId/acitivytlog.yaml'
+    $ref: './tickets/tenants-tasks-taskId-activitylog.yaml'
   /api/v2/tenants/{tenantId}/tasks/{taskId}:
     $ref: './tickets/tenants-tasks-taskId.yaml'
   /api/v2/tenants/{tenantId}/{ticketType}/{ticketId}/notes:
@@ -900,7 +900,7 @@ paths:
   /api/v2/tenants/{tenantId}/timeBoundRequests:
     $ref: './tickets/tenants-timeBoundRequests.yaml'
   /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/responses/{responseId}/resources/{resourceId}:
-    $ref: './tickets/tenants/timeBoundRequests/timeBoundRequestId/responses/responseId/resources/resourceId.yaml'
+    $ref: './tickets/tenants-timeBoundRequests-timeBoundRequestId-responses-responseId-resources-resourceId.yaml'
   /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}:
     $ref: './tickets/tenants-timeBoundRequests-timeBoundRequestId.yaml'
   /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/responses/search:
