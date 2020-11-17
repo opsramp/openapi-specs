@@ -172,6 +172,9 @@ post:
               type: string
               description: |
                 Attach third-party integration ID.
+            description:
+              type: string
+              description: Description for the resource.
             managementProfile:
               type: string
               description: |
@@ -264,7 +267,7 @@ post:
               description: |-
                 Type of resource.
 
-                Example: server
+                Example: server, SYNTHETICS
             systemUID:
               type: string
               description: |
@@ -281,6 +284,48 @@ post:
               type: string
               description: |
                 Unique ID of provider.
+            checkType:
+              type: string
+              description: |-
+                Category type for Synthetics.
+                Example: http, https, ftp, and so on.
+            credential:
+              type: object
+              description: |-
+                (Optional) Credentials for Synthetics.
+              properties:
+                securityLevel:
+                  type: string
+                  description: Security level. For example, oauth2.
+                oauthClientKey:
+                  type: string
+                  description: Generated client key.
+                oauthClientSecret:
+                  type: string
+                  description: Generated secret key.
+                oauthAccessTokenUrl:
+                  type: string
+                  description: auth or oauth token.
+                oauthGrantType:
+                  type: string
+                  description: Credentials of the client.
+            sslCertPath:
+              type: string
+              description: |
+                (Optional) Path of the SSL Certificate
+            SslCertKeyPath:
+              type: string
+              description: |
+                (Optional) Path of the SSL certificate key.
+            downloadFilePath:
+              type: string
+              description: |
+                (Optional) Path where you want to download the file.
+            script:
+              type: string
+          required:
+            - resourceType
+            - checkType
         examples:
           example-1:
             value:
@@ -324,6 +369,20 @@ post:
                   port: 443
                   make: Cisco Routers
                   model: Cisco 890 Series
+          example-2:
+            value:
+              resourceType: SYNTHETIC
+              checkType: HTTP
+              resourceName: Indians
+              url: www.oriental.com
+              credential:
+                securityLevel: oauth2
+                oauthClientKey: kHSageRP9CTeCFP7Wfrzzc45pFJZ99N4
+                oauthClientSecret: 5w6rKEAgYpsYDdd8vm5PnUMsQWqTnh423FArQYxGW6V3zqDcTG2z7UvjV3YBMq9Y
+                oauthAccessTokenUrl: auth/oauth/token
+                oauthGrantType: client_credentials
+              locationUuids:
+                - 7b77f37f-5eb0-4ec2-bd19-15cc6853e3ca
   responses:
     '200':
       description: OK

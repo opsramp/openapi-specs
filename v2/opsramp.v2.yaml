@@ -132,8 +132,6 @@ paths:
     $ref: './agents-gateways/tenants-tenantId-agents-deployAgentScript.yaml'
   /api/v2/tenants/{tenantId}/agents/{platform}/info:
     $ref: './agents-gateways/tenants-tenantId-agents-platform-info.yaml'
-  /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices:
-    $ref: './agents-gateways/tenants-tenantId-agentPolicies-policyId-devices.yaml'
   /api/v2/tenants/{tenantId}/agentProfiles/{profileId}/devices:
     $ref: './agents-gateways/tenants-tenantId-agentProfiles-profileId-devices.yaml'
   /api/v2/tenants/{tenantId}/agents/windows:
