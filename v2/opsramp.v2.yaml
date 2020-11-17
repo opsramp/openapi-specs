@@ -517,8 +517,6 @@ paths:
     $ref: './resource-management/tenants-tenantId-dependencies-resourceuuid.yaml'
   /api/v2/tenants/{tenantId}/resources/{resourceId}/notes:
     $ref: './resource-management/tenants-tenantId-resources-resourceId-notes.yaml'
-  /api/v2/tenants/{tenantId}/notes/{noteId}:
-    $ref: './resource-management/tenants-tenantId-notes-noteId.yaml'
   /api/v2/tenants/{tenantId}/resources/{resourceId}/notes/search:
     $ref: './resource-management/tenants-tenantId-resources-resourceId-notes-search.yaml'
   /api/v2/tenants/{tenantId}/resources/{resourceId}/notes/{noteId}:
