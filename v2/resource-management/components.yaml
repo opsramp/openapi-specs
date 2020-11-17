@@ -145,8 +145,7 @@ components:
           format: date-time
         parent:
           type: object
-          description: |
-            Add a device group as child under an existing device group (parent). This field is mandatory while adding a child device group to parent device group.
+          description: Add a device group as child under an existing device group (parent). This field is mandatory while adding a child device group to parent device group.
           properties:
             id:
               type: string
@@ -813,7 +812,7 @@ components:
           type: array
           items: {}
         filterCriteria:
-          $ref: ./patching.v1.yaml#/components/schemas/policy
+          $ref: '#/components/schemas/policy'
         parent:
           type: object
           properties:
