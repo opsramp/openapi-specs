@@ -10,7 +10,7 @@ components:
         filterType:
           type: string
           description: |-
-             Filtered resource type.
+            Filtered resource type.
             - AWS example: AUTO_SCALING, CLOUDFRONT, DYNAMO_DB, ANY_DEVICE, ELASTICACHE, ELASTICMAPREDUCE, KINESIS, LAMBDA, LOAD_BALANCER, MACHINE_LEARNING, RDS, REDSHIFT.
             - Azure example: EBS, WEBSITE, SQL_SERVER, SQL_DATABASE, RESOURCE_GROUP, REDIS_CACHE, DOCUMENT_DB.
             - Google example: ANY_CLOUD_RESOURCE, ANY_DEVICE, EBS, GCE_CLUSTER, SQL_SERVER, SQL_DATABASE, GCE_TOPIC, GCE_SUBSCRIPTION, GCE_ROUTER, VPN.
