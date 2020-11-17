@@ -71,12 +71,12 @@ components:
             - Saturday
         dayOfMonth:
           type: string
-          description: Day on which the job is scheduled to run every month. Days range between 1 to 31. Example: Provide dayOfMonth as 4, then the job is run on the 4th day of every month.
+          description: Day on which the job is scheduled to run every month. Days range between 1 to 31.
           minLength: 1
           maxLength: 31
         weekIndex:
           type: string
-          description: Week on which the job is run. Example: First Monday.
+          description: Week on which the job is run.
           enum:
             - First
             - Second
@@ -85,7 +85,7 @@ components:
             - Last
         dayOfIndex:
           type: string
-          description: Day on which the job is scheduled to run. Example: Provide weekIndex as First and dayOfMonth as Sunday, this indicates that job is run on every month First Sunday.
+          description: Day on which the job is scheduled to run.
           enum:
             - Sunday
             - Monday
@@ -118,8 +118,7 @@ components:
           maximum: 1
         approvalReason:
           type: string
-          description: |
-            Reason for approval of installing app.
+          description: Reason for approval of installing app.
         alertRequired:
           type: boolean
     customScript:
