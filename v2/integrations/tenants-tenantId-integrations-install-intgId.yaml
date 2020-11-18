@@ -1,6 +1,13 @@
+summary: Install integrations
+description: |-
+  This endpoint is used to install the following integrations:
+
+  - cloud
+  - monitoring
+  - collaboration
+
+  To install the integration, provide the integration ID in {intgld}.'
 post:
-  summary: Install integration
-  description: 'OpsRamp supports the following integrations: cloud, monitoring, collaboration. To install the integration, provide the integration ID in {intgld}.'
   tags:
     - integrations
   responses:

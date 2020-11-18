@@ -1,13 +1,13 @@
-get:
-  summary: Search installed integrations
-  description: |
-    This endpoint is used to search for installed integrations.
+summary: Search installed integrations
+description: |
+  This endpoint is used to search for installed integrations.
 
-    >## Notes
-    >There are special characters that can be used in a query string:
-    >- (+) represents the next field and must be URL-encoded.
-    >- (:) represents equals. An example is key : value.
-    >- Space characters must be URL-encoded.
+  >## Notes
+  >There are special characters that can be used in a query string:
+  >- (+) represents the next field and must be URL-encoded.
+  >- (:) represents equals. An example is key : value.
+  >- Space characters must be URL-encoded.
+get:
   tags:
     - integrations
   responses:

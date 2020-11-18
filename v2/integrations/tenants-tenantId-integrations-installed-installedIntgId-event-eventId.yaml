@@ -1,14 +1,12 @@
+summary: Manage integration events
+description: This endpoint is used to update, retrieve, and delete an integration event.
 delete:
-  summary: Delete integration event
-  description: This endpoint is used to delete an integration event.
   tags:
     - integrations
   responses:
     '200':
       description: OK
 post:
-  summary: Update integration event
-  description: This endpoint is used to update an integration event.
   tags:
     - integrations
   requestBody:
@@ -89,8 +87,6 @@ post:
                     value: application/json
                 eventPayload: "{\r\n'subject':'$incident.subject',\r\n'description':'$incident.impact',\r\n'priority':'$incident.priority.name'\r\n'stauts':'high'\r\n}"
 get:
-  summary: Get integration event
-  description: This endpoint is used to retrieve the details of an integrated event.
   tags:
     - integrations
   responses:

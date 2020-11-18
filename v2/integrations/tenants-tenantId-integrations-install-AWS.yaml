@@ -1,16 +1,14 @@
+summary: Install AWS integrations
+description: |-
+  These endpoint IDs are used to install third-party integrations.
+
+  The following cloud integrations are supported:
+  - AWS
+  - AZURE
+  - GOOGLE
+
+  These are not supported for deployment, email requests, and other category integrations.
 post:
-  summary: Install integration
-  description: |-
-    # Cloud integrations
-    ## Notes
-    OpsRamp supports the following cloud integrations:
-    - AWS
-    - AZURE
-    - GOOGLE
-
-    These endpoint IDs are used to install third-party integrations.
-
-    These are not supported for deployment, email requests, and other category integrations.
   tags:
     - integrations
   responses:

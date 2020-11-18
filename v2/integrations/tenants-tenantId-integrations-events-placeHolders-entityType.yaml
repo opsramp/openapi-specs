@@ -1,14 +1,14 @@
-get:
-  summary: Get integration event placeholders
-  description: |-
-    This endpoint is used to retrieve the integration event placeholders of an entity.
+summary: Get integration event placeholders
+description: |-
+  This endpoint is used to retrieve the integration event placeholders of an entity.
 
-    Supported entities are:
-    - Incident
-    - Change Request
-    - Service Request
-    - Problem
-    - Task
+  Supported entities are:
+  - Incident
+  - Change Request
+  - Service Request
+  - Problem
+  - Task
+get:
   tags:
     - integrations
   responses:

@@ -1,6 +1,6 @@
+summary: Rescan discovery profiles
+description: This endpoint is used to rescan a discovery profile for AWS, Azure, and Google.
 get:
-  summary: Rescan discovery profile
-  description: This endpoint is used to rescan a discovery profile for AWS, Azure, and Google.
   tags:
     - integrations
   responses:

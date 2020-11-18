@@ -1,6 +1,6 @@
+summary: Manage installed integration base notifiers
+description: This endpoint is used to create or update an installed integration base notifier.
 post:
-  summary: Create or update installed integration base notifier
-  description: This endpoint is used to create or update an installed integration base notifier.
   tags:
     - integrations
   responses:

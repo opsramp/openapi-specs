@@ -1,6 +1,6 @@
+summary: Activate integration events
+description: This endpoint is used to activate an integration event.
 post:
-  summary: Activate integration event
-  description: This endpoint is used to activate an integration event.
   tags:
     - integrations
   responses:

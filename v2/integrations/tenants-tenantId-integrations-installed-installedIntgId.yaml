@@ -1,6 +1,6 @@
+summary: Update installed integrations
+description: This endpoint is used to update the details of an installed integration.
 post:
-  summary: Update installed integration
-  description: This endpoint is used to update the details of an installed integration.
   tags:
     - integrations
   responses:

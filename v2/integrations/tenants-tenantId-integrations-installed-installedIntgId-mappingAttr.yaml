@@ -1,8 +1,9 @@
+summary: Manage installed integration mappings
+description: |
+  This endpoint is used to create, update, and retrieve the mapping attributes of an installed integration.
+
+  This attribute mapping is not applicable for email integrations.
 post:
-  summary: Create or update installed integration mapping
-  description: |
-    This endpoint is used to create or update the mapping attributes of an installed integration.
-    This attribute mapping is not applicable for email integrations.
   tags:
     - integrations
   requestBody:
@@ -171,8 +172,6 @@ post:
                     - attrValue: Very Low
                       thirdPartyAttrValue: Low
 get:
-  summary: Get integration mappings
-  description: This endpoint is used to retrieve the integration mapping details of an installed integration.
   tags:
     - integrations
   responses:

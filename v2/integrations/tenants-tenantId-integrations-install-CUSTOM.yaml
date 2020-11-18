@@ -1,6 +1,6 @@
+summary: Install custom integration
+description: This endpoint is used to install a custom integration.
 post:
-  summary: Install custom integration
-  description: This endpoint is used to install a custom integration.
   tags:
     - integrations
   responses:

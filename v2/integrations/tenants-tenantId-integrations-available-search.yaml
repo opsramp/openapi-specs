@@ -1,6 +1,6 @@
+summary: Search available integrations
+description: This endpoint is used to search available integrations.
 get:
-  summary: Search available integrations
-  description: This endpoint is used to search available integrations.
   tags:
     - integrations
   responses:

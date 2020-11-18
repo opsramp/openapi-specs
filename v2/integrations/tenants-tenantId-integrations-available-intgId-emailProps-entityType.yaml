@@ -1,6 +1,6 @@
+summary: Get configurable email properties
+description: This endpoint is used to retrieve the email properties of an entity.
 get:
-  summary: Get configurable email properties
-  description: This endpoint is used to retrieve the email properties of an entity.
   tags:
     - integrations
   responses:

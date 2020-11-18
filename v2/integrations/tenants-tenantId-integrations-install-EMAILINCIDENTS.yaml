@@ -1,10 +1,11 @@
-post:
-  summary: Install email request integration
-  description: |
-    ## Install Email Request Integration
-    Email request integration creates tickets in OpsRamp via Email.
+summary: Install email request integrations
+description: |
+  This endpoint is used to install an email request integration.
 
-    Convert image to Base64 and enter the code in file field as shown in the following sample request.
+  Email request integration creates tickets in OpsRamp via email.
+
+  Convert image to Base64 and enter the code in file field as shown in the following sample request.
+post:
   tags:
     - integrations
   responses:

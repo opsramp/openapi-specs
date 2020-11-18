@@ -1,16 +1,16 @@
+summary: Create integration event
+description: |-
+  This endpoint is used to create an integration event.
+
+  Events are used for sending certain notifications whenever an action is performed on OpsRamp entities.
+
+  ### Notes
+
+  - Provide API payload in Base64 encoding.
+  - Integration event for Alert entity is created only using API but can be viewed from the OpsRamp Portal.
+
+  Create Event with Alert Entity Type to create an event with alert entity type for work flow events only.
 post:
-  summary: Create integration event
-  description: |-
-    This endpoint is used to create an integration event.
-
-    Events are used for sending certain notifications whenever an action is performed on OpsRamp entities.
-
-    ### Notes
-    
-    - Provide API payload in Base64 encoding.
-    - Integration event for Alert entity is created only using API but can be viewed from the OpsRamp Portal.
-
-    Create Event with Alert Entity Type to create an event with alert entity type for work flow events only
   tags:
     - integrations
   requestBody:

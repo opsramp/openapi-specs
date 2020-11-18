@@ -1,6 +1,6 @@
+summary: Get integration activity
+description: This endpoint is used to retrieve the installation activity details of an installed integration activity.
 get:
-  summary: Integration activity
-  description: This endpoint is used to retrieve the details of an installation activity of installed integration activity.
   tags:
     - agents-gateways
   responses:
@@ -366,7 +366,6 @@ get:
       description: |
         (Optional) Status of integration
 post:
-  summary: ''
   responses:
     '200':
       description: OK
@@ -376,4 +375,3 @@ parameters:
     name: tenantId
     in: path
     required: true
-    description: This endpoint is used to retrieve the details of an installation activity of installed integration activity.
