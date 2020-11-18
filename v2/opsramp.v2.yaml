@@ -463,8 +463,6 @@ paths:
   /api/v2/tenants/{tenantId}/resources/patches:
     $ref: './patching/tenants-tenantId-resources-patches.yaml'
   # Resource Management
-  /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices-DUP1:
-    $ref: './resource-management/tenants-tenantId-agentPolicies-policyId-devices.yaml'
   /api/v2/tenants/{tenantId}/customAttributes/{attributeId}/values/{valueId}:
     $ref: './resource-management/tenants-tenantId-customAttributes-attributeId-values-valueId.yaml'
   /api/v2/tenants/{varId}/customAttributes/{attributeId}/values/{valueId}/clients:
