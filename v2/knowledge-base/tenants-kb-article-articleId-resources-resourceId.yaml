@@ -1,6 +1,6 @@
+summary: Download KB article attachments
+description: This endpoint is used to download any attachment of an article.
 get:
-  summary: Download article attachment
-  description: This endpoint is used to download any attachment of an article.
   tags:
     - knowledge-base
   responses:

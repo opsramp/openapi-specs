@@ -1,6 +1,6 @@
+summary: Get KB article lists
+description: This endpoint is used to get list of articles.
 get:
-  summary: Get list of articles
-  description: This endpoint is used to get list of articles.
   tags:
     - knowledge-base
   responses:

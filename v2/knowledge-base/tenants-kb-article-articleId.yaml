@@ -1,6 +1,6 @@
+summary: Manage KB articles
+description: This endpoint is used to get and update knowledge base article.
 get:
-  summary: Get article
-  description: This endpoint is used to get the knowledge base article.
   tags:
     - knowledge-base
   responses:
@@ -98,8 +98,6 @@ get:
                     subject: All Data
                     sharedArticle: false
 post:
-  summary: Update article
-  description: This endpoint is used to update a knowledge base article.
   tags:
     - knowledge-base
   responses:

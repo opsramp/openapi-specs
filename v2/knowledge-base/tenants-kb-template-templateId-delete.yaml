@@ -1,6 +1,6 @@
+summary: Delete KB templates
+description: This endpoint is used to delete a knowledge base template.
 delete:
-  summary: Delete template
-  description: This endpoint is used to delete a knowledge base template.
   tags:
     - knowledge-base
   responses:

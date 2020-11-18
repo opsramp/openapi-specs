@@ -1,6 +1,6 @@
+summary: Update KB categories
+description: This endpoint is used to update a knowledge base category.
 post:
-  summary: Update a KB category
-  description: This endpoint is used to update a knowledge base category.
   tags:
     - knowledge-base
   responses:

@@ -1,6 +1,6 @@
+summary: Get KB category lists
+description: This endpoint is used to retrieve list of knowledge base categories.
 get:
-  summary: Get list of KB categories
-  description: This endpoint is used to retrieve list of knowledge base categories.
   tags:
     - knowledge-base
   responses:

@@ -1,6 +1,6 @@
+summary: Restore KB categories
+description: This endpoint is used to retrieve a knowledge base category from TRASH.
 post:
-  summary: Restore category
-  description: This endpoint is used to retrieve a knowledge base category from TRASH.
   tags:
     - knowledge-base
   responses:

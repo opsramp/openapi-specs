@@ -1,6 +1,6 @@
+summary: Add comments to KB articles
+description: This endpoint is used to update comments to the article.
 post:
-  summary: Add comment
-  description: This endpoint is used to update comments to the article.
   tags:
     - knowledge-base
   responses:

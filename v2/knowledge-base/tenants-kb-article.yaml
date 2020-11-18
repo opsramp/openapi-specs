@@ -1,6 +1,6 @@
+summary: Create KB articles
+description: This endpoint is used to create a knowledge base article.
 post:
-  summary: Create article
-  description: This endpoint is used to create a knowledge base article.
   tags:
     - knowledge-base
   responses:
