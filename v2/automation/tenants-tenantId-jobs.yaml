@@ -1,6 +1,6 @@
+summary: Create jobs
+description: This endpoint is used to create a job.
 post:
-  summary: Create job
-  description: This endpoint is used to create a job.
   tags:
     - automation
   responses:

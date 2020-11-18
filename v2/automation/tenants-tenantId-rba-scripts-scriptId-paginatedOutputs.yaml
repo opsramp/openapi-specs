@@ -1,6 +1,6 @@
+summary: Get output logs
+description: This endpoint is used to retrieve paginated output logs of a script.
 get:
-  summary: Get output logs
-  description: This endpoint is used to retrieve paginated output logs of a script.
   tags:
     - automation
   responses:

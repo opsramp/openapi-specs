@@ -1,6 +1,6 @@
+summary: Manage RBA categories
+description: This endpoint is used to create and update an RBA category and to retrieve a list of RBA categories.
 post:
-  summary: Create RBA category
-  description: This endpoint is used to create an RBA category.
   tags:
     - automation
   responses:
@@ -44,8 +44,6 @@ post:
               parent:
                 id: 27
 get:
-  summary: Get RBA categories
-  description: This endpoint is used to retrieve list of RBA categories.
   tags:
     - automation
   responses:
@@ -91,8 +89,6 @@ get:
                 - id: 13
                   name: Test Global Category
 put:
-  summary: Update an RBA category
-  description: This endpoint is used to update an RBA category.
   tags:
     - automation
   responses:

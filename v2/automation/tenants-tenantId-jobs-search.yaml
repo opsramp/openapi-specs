@@ -1,9 +1,9 @@
-get:
-  summary: Search jobs
-  description: |
-    This endpoint is used to fetch the list of jobs defined by a tenant.
+summary: Search jobs
+description: |
+  This endpoint is used to fetch the list of jobs defined by a tenant.
 
-    This API can be used to fetch the paginated list of the scheduled jobs of a partner or client.
+  This endpoint can be used to fetch the paginated list of the scheduled jobs of a partner or client.
+get:
   tags:
     - automation
   parameters:

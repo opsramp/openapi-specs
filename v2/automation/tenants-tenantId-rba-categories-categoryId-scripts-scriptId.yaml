@@ -1,6 +1,6 @@
+summary: Manage scripts by Id
+description: This endpoint is used to retrieve and update the details of a script.
 get:
-  summary: Get script
-  description: This endpoint is used to retrieve details of the script.
   tags:
     - automation
   responses:
@@ -154,12 +154,11 @@ get:
                   processName: cmd.exe
                   serviceName: OpsRampAgent
 post:
-  summary: Update script
   description: |-
-    This endpoint is used to update a script.
+    To update a script:
 
-    Attachment files must be converted to byte stream and base64-encoded. Always include a name and file.
-    To retrieve the list of available categories, invoke the Get Categories API.
+    - Attachment files must be converted to byte stream and base64-encoded. Always include a name and file.
+    - To retrieve the list of available categories, invoke the Get Categories endpoint.
   tags:
     - automation
   responses:

@@ -1,11 +1,9 @@
+summary: Run scripts
+description: |-
+  This endpoint is used to run a script.
+
+  Define scripts as code that can run commonly-run tasks. This endpoint can be used to run an existing job script.
 post:
-  summary: Run script
-  description: |-
-    This endpoint is used to run a script.
-
-    Define scripts as code that can run commonly-run tasks.
-
-    This API can be used to run an existing job script.
   tags:
     - automation
   responses:

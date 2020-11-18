@@ -1,6 +1,6 @@
+summary: Get job types list
+description: This endpoint is used to retrieve the list of job types.
 get:
-  summary: Get job types
-  description: This endpoint is used to retrieve the list of job types.
   tags:
     - automation
   responses:

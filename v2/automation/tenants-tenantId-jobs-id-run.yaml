@@ -1,6 +1,6 @@
+summary: Run jobs
+description: This endpoint is used to run a scheduled job.
 get:
-  summary: Run job
-  description: This endpoint is used to run a scheduled job.
   tags:
     - automation
   requestBody:
