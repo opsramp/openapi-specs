@@ -1,6 +1,6 @@
+summary: Manage metric types
+description: This endpoint is used to update and get the metric type details.
 post:
-  summary: Update metric type
-  description: This endpoint is used to update the details of a metric type.
   tags:
     - metrics
   requestBody:
@@ -22,8 +22,6 @@ post:
     '200':
       description: OK
 get:
-  summary: Get metric type
-  description: This endpoint is used to fetch the metric type details.
   tags:
     - metrics
   responses:

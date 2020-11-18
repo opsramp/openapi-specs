@@ -1,6 +1,6 @@
+summary: Create metric types
+description: The endpoint to assign agent policy for resources.
 post:
-  summary: Create metric type
-  description: The endpoint to assign agent policy for resources.
   tags:
     - metrics
   requestBody:

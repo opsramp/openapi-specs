@@ -1,5 +1,6 @@
+summary: Manage resource metrics
+description: This endpoint is used update and retrieve metrics on a resource.
 get:
-  summary: Get metrics on a resource
   description: This endpoint is used to retrieve the list of metrics on a resource.
   tags:
     - metrics
@@ -45,7 +46,6 @@ get:
                   unitLabel: Utilization
                   availabilityMetric: false
 post:
-  summary: Save metrics on a resource
   description: This endpoint is used to post multiple metrics on a resource.
   tags:
     - metrics
