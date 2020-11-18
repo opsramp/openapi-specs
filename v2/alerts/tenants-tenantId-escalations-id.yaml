@@ -1,14 +1,13 @@
+summary: Manage alert escalation policy
+description: |-
+    This endpoint is used to retrieve, update, and delete alert escalation policy information.
 delete:
-  summary: Delete alert escalation policy
-  description: This endpoint is used to delete an alert escalation policy.
   tags:
     - alerts
   responses:
     '200':
       description: OK
 get:
-  summary: Get alert escalation details by ID
-  description: This endpoint is used to retrieve the alert escalation details.
   tags:
     - alerts
   responses:
@@ -431,15 +430,12 @@ get:
         The time interval when a user receives repeated notifications.
         This example indicates that a user receives repeated notifications every 15 minutes: repeatFrequency: 15.
 post:
-  summary: Update alert escalation policy
   description: |-
-    This endpoint is used to update an alert escalation policy.
-
-    When the escalation action is set to INCIDENT, an Incident is automatically created from the alert and assigned to the desired user/team.
+    When the escalation action is set to INCIDENT, an incident is automatically created from the alert and assigned to the desired user/team.
     - Create New Incident
     - Update Incident
 
-    No further level of escalation can be added as the escalation will end when an incident is created from the alert.
+    No further level of escalation can be added as the escalation ends when an incident is created from the alert.
   tags:
     - alerts
   responses:

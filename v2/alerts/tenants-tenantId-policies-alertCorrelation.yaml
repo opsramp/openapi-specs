@@ -1,6 +1,6 @@
+summary: Manage alert correlation policy
+description: This endpoint is used to create and fetch alert correlation policies.
 get:
-  summary: Get alert correlation policies of a client
-  description: This endpoint is used to fetch alert correlation policies of a client.
   tags:
     - alerts
   responses:
@@ -142,8 +142,6 @@ get:
       in: query
       name: pageSize
 post:
-  summary: Create alert correlation policy
-  description: This endpoint is used to create an alert correlation policy.
   tags:
     - alerts
   responses:

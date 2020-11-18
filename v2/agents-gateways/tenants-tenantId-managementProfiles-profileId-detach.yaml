@@ -1,5 +1,5 @@
 summary: Detach gateway from management profile
-description: This API is used to unmap/detach the gateway from the management profile and invalidate the activation token.
+description: This endpoint is used to unmap (detach) the gateway from the management profile and invalidate the activation token.
 get:
   tags:
     - agents-gateways

@@ -1,11 +1,11 @@
-post:
-  summary: End scheduled maintenance window
-  description: |-
-    This endpoint is used to end a scheduled maintenance window.
+summary: End scheduled maintenance windows
+description: |-
+  This endpoint is used to end a scheduled maintenance window.
 
-    ## Notes
-    - User can end only active schedule maintenance windows.
-    - Active schedule maintenance windows that are one-time maintenance windows move to a completed state. Recurring maintenance windows move to pending state.
+  ## Notes
+  - User can end only active schedule maintenance windows.
+  - Active schedule maintenance windows that are one-time maintenance windows move to a completed state. Recurring maintenance windows move to pending state.
+post:
   tags:
     - alerts
   responses:

@@ -1,6 +1,6 @@
+summary: Get resources of schedule maintenance windows
+description: This endpoint is used to retrieve the list of devices (or device groups or sites) of a scheduled maintenance window.
 get:
-  summary: Get resources of a schedule maintenance window
-  description: This endpoint is used to retrieve the list of devices (or device groups or sites) of a scheduled maintenance window.
   tags:
     - alerts
   parameters:

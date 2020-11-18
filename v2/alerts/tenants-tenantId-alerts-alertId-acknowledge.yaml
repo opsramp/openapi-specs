@@ -1,6 +1,6 @@
+summary: Acknowledge alert
+description: This endpoint is used to acknowledge an alert.
 post:
-  summary: Acknowledge alert
-  description: The endpoint is used to acknowledge an alert.
   tags:
     - alerts
   responses:

@@ -1,6 +1,6 @@
+summary: Get alert escalation policy
+description: This endpoint is used to retrieve the alert escalation policy attached to an alert.
 get:
-  summary: Get alert escalation policy
-  description: This endpoint is used to retrieve the alert escalation policy attached to an alert.
   tags:
     - alerts
   responses:

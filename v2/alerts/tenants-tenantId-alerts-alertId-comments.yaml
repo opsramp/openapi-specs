@@ -1,6 +1,6 @@
+summary: Get alert comments
+description: This endpoint is used to retrieve the comments on an alert.
 get:
-  summary: Get alert comments
-  description: This endpoint is used to retrieve the comments on an alert.
   tags:
     - alerts
   responses:

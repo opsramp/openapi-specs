@@ -1,14 +1,12 @@
+summary: Manage first response policy by Id
+description: This endpoint is used to update, retrieve, and delete a first response policy by Id.
 delete:
-  summary: Delete first response policy
-  description: Delete first response policy
   tags:
     - alerts
   responses:
     '200':
       description: OK
 get:
-  summary: Get first response policy
-  description: This endpoint is used to view details of the First Response Policy.
   tags:
     - alerts
   responses:
@@ -109,8 +107,6 @@ get:
                 createdTime: '2019-02-28T09:25:56+0000'
                 updatedTime: ''
 post:
-  summary: Update first response policy
-  description: This endpoint is used to update the First Response Policy.
   tags:
     - alerts
   responses:

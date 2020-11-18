@@ -1,6 +1,6 @@
+summary: Update incident by an alert ID
+description: This endpoint is used to attach and update an incident to an alert.
 put:
-  summary: Update incident by an alert ID
-  description: This endpoint is used to attach and update an incident to an alert.
   tags:
     - alerts
   responses:

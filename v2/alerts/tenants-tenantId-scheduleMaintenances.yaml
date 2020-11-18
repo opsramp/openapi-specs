@@ -1,6 +1,6 @@
+summary: Create schedule
+description: This endpoint is used to create a daily recurring schedule.
 post:
-  summary: Create schedule
-  description: This endpoint is used to create a daily recurring schedule.
   tags:
     - alerts
   requestBody:

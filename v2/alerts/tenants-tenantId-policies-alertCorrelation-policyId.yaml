@@ -1,17 +1,15 @@
-delete:
-  summary: Delete alert correlation policy
-  description: |-
-    This endpoint is used to delete an alert correlation policy.
+summary: Manage alert correlation policy by Id
+description: |-
+  This endpoint is used to update, retrieve, and delete an alert correlation policy by Id.
 
-    The response depends on the returned status code.
+  The response depends on the returned status code.
+delete:
   tags:
     - alerts
   responses:
     '200':
       description: OK
 get:
-  summary: Get alert correlation policy
-  description: This endpoint is used to retrieve the details of an alert correlation policy.
   tags:
     - alerts
   responses:
@@ -305,8 +303,6 @@ get:
                 createdTime: '2017-11-27T13:14:07+0000'
                 updatedTime: ''
 post:
-  summary: Update alert correlation policy
-  description: This endpoint is used to update an alert correlation policy.
   tags:
     - alerts
   responses:

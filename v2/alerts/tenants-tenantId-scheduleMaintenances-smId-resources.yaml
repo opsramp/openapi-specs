@@ -1,5 +1,6 @@
+summary: Manage resources of schedule maintenance windows
+description: This endpoint is used to add and delete resources to and from a schedule maintenance window.
 post:
-  summary: Add resources to a schedule maintenance window
   description: |-
     This endpoint is used to add resources to a scheduled maintenance window.
 
@@ -59,7 +60,6 @@ post:
     '200':
       description: OK
 delete:
-  summary: Remove resources from a schedule maintenance window
   description: |-
     This endpoint is used to remove resources from a scheduled maintenance window.
 

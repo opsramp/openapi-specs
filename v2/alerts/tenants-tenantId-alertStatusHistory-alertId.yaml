@@ -1,6 +1,6 @@
+summary: Alert status history
+description: This endpoint retrieves an alert’s status history.
 get:
-  summary: Alert status history
-  description: This endpoint retrieves an alert’s status history.
   tags:
     - alerts
   responses:

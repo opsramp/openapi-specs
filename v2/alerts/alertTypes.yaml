@@ -1,6 +1,6 @@
+summary: Get alert types
+description: This endpoint is used to retrieve the list of supported alert types.
 get:
-  summary: Get alert types
-  description: This endpoint is used to retrieve the list of supported alert types.
   tags:
     - alerts
   responses:

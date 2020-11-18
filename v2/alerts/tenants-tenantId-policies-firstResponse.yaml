@@ -1,6 +1,6 @@
+summary: Manage first response policy
+description: This endpoint is used to create and view details of a first response policy.
 get:
-  summary: Get first response policies of client
-  description: This endpoint is used to view details of the first response policy.
   tags:
     - alerts
   responses:
@@ -74,8 +74,6 @@ get:
       in: query
       name: pageSize
 post:
-  summary: Create the first response policy
-  description: This endpoint is used to create First Response Policy.
   tags:
     - alerts
   responses:

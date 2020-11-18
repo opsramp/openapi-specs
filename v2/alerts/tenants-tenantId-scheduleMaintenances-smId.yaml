@@ -1,5 +1,6 @@
+summary: Manage schedule maintenance windows
+description: This endpoint is used to update, retrieve, and delete scheduled maintenence windows.
 get:
-  summary: Get schedule maintenance window
   description: This endpoint is used to retrieve the details of a scheduled maintenance window.
   tags:
     - alerts
@@ -334,13 +335,12 @@ get:
                       phoneNumber: 408-555-1234
                 status: Completed
 post:
-  summary: Update a pending schedule maintenance window
   description: |-
     This endpoint is used to update a pending schedule maintenance window.
 
     ## Notes
-    - In this API, user can update schedule details such as name, schedule type, and alert conditions. Resource details cannot be updated.
-    - To retrieve the list of pending schedule maintenance windows, use Search Schedule Maintenance Windows API.
+    - Schedule details can be updated. For example: name, schedule type, and alert conditions. Resource details cannot be updated.
+    - To retrieve the list of pending schedule maintenance windows, use the Search Schedule Maintenance Windows endpoint.
     - For a  recurring schedule maintenance to end at a specific time period, provide the end date and time in the field endTime. Example: "2016-05-29T18:55:27+0000"
 
     ### Timezones
@@ -516,7 +516,6 @@ post:
                     operator: CONTAINS
                     value: newTest
 delete:
-  summary: Delete scheduled maintenance window
   description: This endpoint is used to delete a scheduled maintenance window.
   tags:
     - alerts

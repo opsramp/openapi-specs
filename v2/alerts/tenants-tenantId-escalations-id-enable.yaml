@@ -1,10 +1,10 @@
-post:
-  summary: Enable alert escalation policy
-  description: |-
-    This endpoint is used to enable an alert escalation policy.
+summary: Enable alert escalation policy
+description: |-
+  This endpoint is used to enable an alert escalation policy.
 
-    ## Notes
-    The response depends on the returned status code.
+  ## Notes
+  The response depends on the returned status code.
+post:
   tags:
     - alerts
   responses:

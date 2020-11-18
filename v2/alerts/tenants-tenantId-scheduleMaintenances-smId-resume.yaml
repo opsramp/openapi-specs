@@ -1,9 +1,9 @@
-post:
-  summary: Resume scheduled maintenance window
-  description: |
-    This endpoint is used to activate a user.
+summary: Resume scheduled maintenance windows
+description: |
+  This endpoint is used to activate a user.
 
-    Only suspended schedule maintenance windows can be resumed.
+  Only suspended schedule maintenance windows can be resumed.
+post:
   tags:
     - alerts
   responses:

@@ -1,6 +1,6 @@
+summary: Get sub-alert types
+description: This endpoint is used to retrieve the sub-alert types.
 post:
-  summary: Get sub alert types
-  description: This endpoint is used to retrieve the sub-alert types.
   tags:
     - alerts
   responses:

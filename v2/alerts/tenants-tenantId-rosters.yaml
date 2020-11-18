@@ -1,6 +1,6 @@
+summary: Create rosters
+description: This endpoint is used to create partner-level or client-level rosters.
 post:
-  summary: Create rosters
-  description: This endpoint is used to create partner-level or client-level rosters.
   tags:
     - alerts
   requestBody:
