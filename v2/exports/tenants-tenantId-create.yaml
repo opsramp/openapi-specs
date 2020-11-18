@@ -1,6 +1,6 @@
+summary: Create on-demand batch export
+description: This endpoint is used to create an on-demand batch export template.
 post:
-  summary: Create on-demand batch export
-  description: This endpoint is used to create an on-demand batch export template.
   tags:
     - exports
   responses:
