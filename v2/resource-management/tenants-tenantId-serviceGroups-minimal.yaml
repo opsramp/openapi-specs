@@ -1,6 +1,6 @@
+summary: Get minimal details of service groups
+description: This endpoint is used to retrieve minimal details (including service group ID and name) of service groups.
 get:
-  summary: Get minimal details of service groups
-  description: This endpoint is used to retrieve minimal details (including service group ID and name) of service groups.
   tags:
     - resource-management
   responses:

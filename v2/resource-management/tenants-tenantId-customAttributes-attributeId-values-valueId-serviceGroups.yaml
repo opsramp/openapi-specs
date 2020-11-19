@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 post:
   summary: Assign custom attributes to service groups
   description: This endpoint is used to assign custom attributes to service groups.

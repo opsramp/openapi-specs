@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 post:
   summary: Assign resources as child to a device group
   description: This endpoint is used to manually add specific devices/resources to a device group without any defined set of rules.

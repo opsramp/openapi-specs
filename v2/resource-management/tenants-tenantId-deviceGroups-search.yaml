@@ -1,6 +1,6 @@
+summary: Get root level device groups
+description: This endpoint is used to retrieve the root level device groups.
 get:
-  summary: Get root level device groups
-  description: This endpoint is used to retrieve the root level device groups.
   tags:
     - resource-management
   responses:

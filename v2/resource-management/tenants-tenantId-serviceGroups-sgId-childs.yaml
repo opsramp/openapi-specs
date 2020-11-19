@@ -1,7 +1,8 @@
+summary: NEEDS summary
+description:
 post:
   summary: Assign resources as child to a service group
-  description: |-
-    This endpoint is used to add resources/devices of the same resource type as a child to a service group.
+  description: This endpoint is used to add resources/devices of the same resource type as a child to a service group.
   tags:
     - resource-management
   requestBody:

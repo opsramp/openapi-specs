@@ -1,6 +1,6 @@
+summary: Create resource notes
+description: This endpoint is used to create a resource note.
 post:
-  summary: Create resource notes
-  description: This endpoint is used to create a resource note.
   tags:
     - resource-management
   requestBody:

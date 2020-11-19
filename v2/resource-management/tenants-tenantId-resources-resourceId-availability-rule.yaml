@@ -1,10 +1,12 @@
+summary: NEEDS summary
+description:
 get:
   summary: Get availability rule on a resource
   description: |-
     This endpoint is used to fetch the availability rule defined on a resource.
 
-    >## Notes
-    >Refer to Search Resources API to retrieve the list of a client’s resource IDs.
+    ## Notes
+    Refer to Search Resources API to retrieve the list of a client’s resource IDs.
   tags:
     - resource-management
   responses:

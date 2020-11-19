@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 post:
   summary: Create warranty
   description: This endpoint is used to create a warranty for a device.

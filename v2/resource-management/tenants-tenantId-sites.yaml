@@ -1,6 +1,6 @@
+summary: Create site
+description: This endpoint is used to create a site to organize the devices based on location.
 post:
-  summary: Create site
-  description: This endpoint is used to create a site to organize the devices based on location.
   tags:
     - resource-management
   requestBody:

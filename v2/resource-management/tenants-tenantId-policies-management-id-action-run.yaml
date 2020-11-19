@@ -1,6 +1,6 @@
+summary: Run device management policy
+description: This endpoint is used to run a device management policy.
 get:
-  summary: Run device management policy
-  description: This endpoint is used to run a device management policy.
   tags:
     - resource-management
   responses:

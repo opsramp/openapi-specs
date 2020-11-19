@@ -1,6 +1,6 @@
+summary: Get resource applications
+description: This endpoint is used to retrieve the list of applications running on a resource.
 get:
-  summary: Get resource applications
-  description: This endpoint is used to retrieve the list of applications running on a resource.
   tags:
     - resource-management
   responses:

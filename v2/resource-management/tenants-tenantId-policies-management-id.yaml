@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 delete:
   summary: Delete device management policy
   description: The endpoint to assign agent policy for resources.

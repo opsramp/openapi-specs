@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 get:
   summary: Get device management policies
   description: This endpoint is used to retrieve device management policies of a tenant without pagination.

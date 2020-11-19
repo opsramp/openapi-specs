@@ -1,15 +1,15 @@
+summary: Custom attributes (assigned entities)
+description: |-
+  This endpoint is used to search for the assigned entities by attribute.
+
+  ### Query variables
+
+  |Query Variables|Description|
+  |-----|-----|
+  |id|The attribute ID.|
+  |value|Custom attribute value.|
+  |source|Filter with tagSource|
 get:
-  summary: Custom attributes (assigned entities)
-  description: |-
-    This endpoint is used to search for the assigned entities by attribute.
-
-    ### Query variables
-
-    |Query Variables|Description|
-    |-----|-----|
-    |id|The attribute ID.|
-    |value|Custom attribute value.|
-    |source|Filter with tagSource|
   tags:
     - resource-management
   responses:

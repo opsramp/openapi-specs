@@ -1,6 +1,6 @@
+summary: Change WSUS settings
+description: The endpoint to assign agent policy for resources.
 post:
-  summary: Change WSUS settings
-  description: The endpoint to assign agent policy for resources.
   tags:
     - resource-management
   requestBody:
@@ -26,11 +26,7 @@ post:
                 entityType: DEVICE
   responses:
     '200':
-      description: |-
-        OK
-
-        >## Notes
-        > The response depends on the returned status code.
+      description: OK
 parameters:
   - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:

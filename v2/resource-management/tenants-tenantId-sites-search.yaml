@@ -1,20 +1,20 @@
+summary: Search sites
+description: |-
+  This endpoint is used to search sites.
+
+  ## Query variables
+
+  |Query Variables|Description|
+  |----|----|
+  |id|Site unique id.|
+  |name|Site name.|
+  |parentId|Parent side ID.|
+
+  ## Notes
+  There are special characters that can be used in a query string:
+  - (+) represents the next field and must be URL-encoded.
+  - (:) represents equals. An example is `key : value`.
 get:
-  summary: Search sites
-  description: |-
-    This endpoint is used to search sites.
-
-    ### Query variables
-
-    |Query Variables|Description|
-    |----|----|
-    |id|Site unique id.|
-    |name|Site name.|
-    |parentId|Parent side ID.|
-
-    >## Notes
-    > There are special characters that can be used in a query string:
-    >- (+) represents the next field and must be URL-encoded.
-    >- (:) represents equals. An example is `key : value`.
   tags:
     - resource-management
   responses:

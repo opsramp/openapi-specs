@@ -1,7 +1,8 @@
+summary: NEEDS summary
+description:
 delete:
   summary: Delete custom attribute of a tenant
-  description: |-
-    This endpoint is used to delete the custom attribute of a tenant.
+  description: This endpoint is used to delete the custom attribute of a tenant.
   tags:
     - resource-management
   responses:

@@ -1,18 +1,18 @@
+summary: Create and update device groups
+description: |-
+  This endpoint is used to create and update device groups.
+
+  ### Update Group
+  This endpoint updates the details of a device group performing one of these actions:
+
+  - Rename a device group
+  - Change the set of devices residing in a device group
+  - Change knowledge base articles assigned to a device group
+  - Add a device group as a child under an existing device group (the parent)
+
+  ### Add a device group as a child in an existing device group
+  The existing device group becomes the parent of the child device group.
 post:
-  summary: Create and update device groups
-  description: |-
-    This endpoint is used to create and update device groups.
-
-    ### Update Group
-    This endpoint updates the details of a device group performing one of these actions:
-
-    - Rename a device group
-    - Change the set of devices residing in a device group
-    - Change knowledge base articles assigned to a device group
-    - Add a device group as a child under an existing device group (the parent)
-
-    ### Add a device group as a child in an existing device group
-    The existing device group becomes the parent of the child device group.
   tags:
     - resource-management
   responses:

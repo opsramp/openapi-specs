@@ -1,28 +1,28 @@
+summary: Create resources
+description: |-
+  This endpoint is used to create a generic resource.
+
+  ### Resource Types Supported
+  - Generic
+  - DNS
+  - FTP
+  - HTTP Basic
+  - HTTP NTLM
+  - HTTP OAuth2
+  - HTTPS Basic
+  - HTTPS NTLM
+  - HTTPS OAuth2
+  - IMAP
+  - PING
+  - POP3
+  - SCRIPT
+  - SMTP
+  - SSL
+  - TCP
+  - UDP
+
+  Different fields are mandatory for different resource types. Refer to the examples.
 post:
-  summary: Create resources
-  description: |-
-    This endpoint is used to create a generic resource.
-
-    ### Resource Types Supported
-    - Generic
-    - DNS
-    - FTP
-    - HTTP Basic
-    - HTTP NTLM
-    - HTTP OAuth2
-    - HTTPS Basic
-    - HTTPS NTLM
-    - HTTPS OAuth2
-    - IMAP
-    - PING
-    - POP3
-    - SCRIPT
-    - SMTP
-    - SSL
-    - TCP
-    - UDP
-
-    > Different fields are mandatory for different resource types. Refer to the examples.
   tags:
     - resource-management
   requestBody:

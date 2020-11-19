@@ -1,6 +1,6 @@
+summary: Decommission a resource
+description: This endpoint is used to decommission a resource.
 post:
-  summary: Decommission a resource
-  description: This endpoint is used to decommission a resource.
   tags:
     - resource-management
   requestBody:
@@ -11,8 +11,7 @@ post:
           properties:
             reason:
               type: string
-              description: |
-                (Optional) Reason to decommission a resource.
+              description: (Optional) Reason to decommission a resource.
         examples:
           example-1:
             value:

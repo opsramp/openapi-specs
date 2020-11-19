@@ -1,6 +1,6 @@
+summary: Delete resource by resource type
+description: This endpoint is used to delete a resource based on the resource type.
 delete:
-  summary: Delete resource by resource type
-  description: This endpoint is used to delete a resource based on the resource type.
   tags:
     - resource-management
   responses:

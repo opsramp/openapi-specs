@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 post:
   summary: Create impact dependency
   description: This endpoint is used to group the resources which are dependent on a resource.

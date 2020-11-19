@@ -1,6 +1,6 @@
+summary: Get minimal site details
+description: This endpoint is used to retrieve minimal details of sites.
 get:
-  summary: Get minimal site details
-  description: This endpoint is used to retrieve minimal details of sites.
   tags:
     - resource-management
   responses:

@@ -1,6 +1,6 @@
+summary: Link service group
+description: This endpoint is used to link or share an existing service group with other service groups.
 post:
-  summary: Link service group
-  description: This endpoint is used to link or share an existing service group with other service groups.
   tags:
     - resource-management
   requestBody:

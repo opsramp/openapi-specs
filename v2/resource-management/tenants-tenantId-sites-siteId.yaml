@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 delete:
   summary: Delete a site
   description: This endpoint is used to delete a site.

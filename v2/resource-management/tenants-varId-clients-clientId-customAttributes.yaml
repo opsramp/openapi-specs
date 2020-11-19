@@ -1,7 +1,6 @@
+summary: Get custom attributes of a client
+description: This endpoint is used to fetch the custom attributes of a client.
 get:
-  summary: Get custom attributes of a client
-  description: |-
-    This endpoint is used to fetch the custom attributes of a client.
   tags:
     - resource-management
   responses:

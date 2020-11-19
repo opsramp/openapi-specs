@@ -1,6 +1,6 @@
+summary: Get root level service groups
+description: This endpoint is used to fetch root level, parent service groups.
 get:
-  summary: Get root level service groups
-  description: This endpoint is used to fetch root level, parent service groups.
   tags:
     - resource-management
   parameters:

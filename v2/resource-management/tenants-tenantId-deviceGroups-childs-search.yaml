@@ -1,6 +1,6 @@
+summary: Get child resources and device groups
+description: This endpoint is used to retrieve the child resources or child device groups within a parent device group.
 get:
-  summary: Get child resources and device groups
-  description: This endpoint is used to retrieve the child resources or child device groups within a parent device group.
   tags:
     - resource-management
   responses:
