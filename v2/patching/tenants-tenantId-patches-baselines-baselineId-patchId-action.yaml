@@ -1,6 +1,6 @@
+summary: Assign or unassign a patch baseline
+description: This endpoint is used to add or remove patches from a baseline.
 post:
-  summary: Assign or unassign a patch baseline
-  description: This endpoint is used to add or remove patches from a baseline.
   tags:
     - patching
   responses:

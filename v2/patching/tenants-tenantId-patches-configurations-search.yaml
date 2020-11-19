@@ -1,6 +1,6 @@
+summary: Search patch configuration
+description: This endpoint is used to search for patch configurations by a client.
 get:
-  summary: Search patch configuration
-  description: This endpoint is used to search for patch configurations by a client.
   tags:
     - patching
   responses:

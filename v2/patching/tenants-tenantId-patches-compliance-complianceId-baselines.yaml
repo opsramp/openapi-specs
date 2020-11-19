@@ -1,6 +1,6 @@
+summary: Get baseline details of compliance
+description: This endpoint is used to retrieve the baselines attached to a patch compliance.
 get:
-  summary: Get baseline details of compliance
-  description: This endpoint is used to retrieve the baselines attached to a patch compliance.
   tags:
     - patching
   responses:

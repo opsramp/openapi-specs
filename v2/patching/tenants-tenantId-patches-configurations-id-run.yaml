@@ -1,6 +1,6 @@
+summary: Run patch configuration
+description: This endpoint is used to run a patch configuration.
 post:
-  summary: Run patch configuration
-  description: This endpoint is used to run a patch configuration.
   tags:
     - patching
   requestBody:

@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 post:
   summary: Create patch compliance
   description: This endpoint is used to create patch compliance.

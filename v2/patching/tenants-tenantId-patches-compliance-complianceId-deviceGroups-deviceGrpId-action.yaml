@@ -1,6 +1,6 @@
+summary: Assign or unassign device group from patch compliance
+description: This endpoint is used to assign or unassign a device group from a patch compliance.
 post:
-  summary: Assign or unassign device group from patch compliance
-  description: This endpoint is used to assign or unassign a device group from a patch compliance.
   tags:
     - patching
   responses:

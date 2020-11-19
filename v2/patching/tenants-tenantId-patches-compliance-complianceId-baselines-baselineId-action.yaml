@@ -1,6 +1,6 @@
+summary: Assign or unassign a baseline from patch compliance
+description: This endpoint is used to assign or unassign a patch baseline attached to a patch compliance check.
 post:
-  summary: Assign or unassign a baseline from patch compliance
-  description: This endpoint is used to assign or unassign a patch baseline attached to a patch compliance check.
   tags:
     - patching
   responses:

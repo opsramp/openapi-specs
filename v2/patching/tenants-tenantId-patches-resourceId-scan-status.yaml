@@ -1,18 +1,18 @@
+summary: Get patch scan status of all devices of a missing job
+description: |-
+  This endpoint is used to retrieve the patch scan status of all devices assigned to a missing patch job and display paginated output.
+
+  ### Query variables
+
+  |Query Variables|Description|
+  |-----|-----|
+  |id|Unique ID of the device.|
+  |ipAddress|IP address of the device.|
+  |resourceName|Name of the device.|
+  |hostName|Host name of the device.|
+  |aliasName|Alias name of the device.|
+  |resourceType|Type of the device.|
 get:
-  summary: Get patch scan status of all devices of a missing job
-  description: |-
-    This endpoint is used to retrieve the patch scan status of all devices assigned to a missing patch job and display paginated output.
-
-    ### Query variables
-
-    |Query Variables|Description|
-    |-----|-----|
-    |id|Unique ID of the device.|
-    |ipAddress|IP address of the device.|
-    |resourceName|Name of the device.|
-    |hostName|Host name of the device.|
-    |aliasName|Alias name of the device.|
-    |resourceType|Type of the device.|
   tags:
     - patching
   parameters:

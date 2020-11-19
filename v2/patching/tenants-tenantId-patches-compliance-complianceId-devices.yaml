@@ -1,6 +1,6 @@
+summary: Get devices of a compliance
+description: This endpoint is used to retrieve the list of devices attached to a patch compliance.
 get:
-  summary: Get devices of a compliance
-  description: This endpoint is used to retrieve the list of devices attached to a patch compliance.
   tags:
     - patching
   responses:

@@ -1,15 +1,15 @@
+summary: Get patch scan status of a device
+description: |-
+  This endpoint is used to retrieve the details of patch scan status of a device.
+
+  Patch scan of a device provides the details of latest patch scan performed on a device. This API is used to retrieve the following patch scan details of a device:
+
+  - Date of the last scan
+  - Result of the last scan
+  - Patches missing before the scan
+  - Patches found missing after the scan
+  - List of new patches found in the last scan
 get:
-  summary: Get patch scan status of a device
-  description: |-
-    This endpoint is used to retrieve the details of patch scan status of a device.
-
-    Patch scan of a device provides the details of latest patch scan performed on a device. This API is used to retrieve the following patch scan details of a device:
-
-    - Date of the last scan
-    - Result of the last scan
-    - Patches missing before the scan
-    - Patches found missing after the scan
-    - List of new patches found in the last scan
   tags:
     - patching
   responses:
