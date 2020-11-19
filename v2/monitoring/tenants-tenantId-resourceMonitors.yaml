@@ -1,6 +1,6 @@
+summary: Create resource monitors
+description: This endpoint is used to create resource monitors.
 post:
-  summary: Create resource monitors
-  description: This endpoint is used to create resource monitors.
   tags:
     - monitoring
   requestBody:

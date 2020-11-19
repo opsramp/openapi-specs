@@ -1,14 +1,14 @@
-get:
-  summary: Get assigned templates of resource
-  description: |-
-    This endpoint is used to retrieve templates assigned to a resource.
+summary: Get assigned templates of resource
+description: |-
+  This endpoint is used to retrieve templates assigned to a resource.
 
-    >## Notes
-    >There are special characters that can be used in a query string:
-    >- (+) represents the next field and must be URL-encoded.
-    >- (:) represents equals. An example is key : value.
-    >- Space characters must be URL-encoded.
-    >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+  >## Notes
+  >There are special characters that can be used in a query string:
+  >- (+) represents the next field and must be URL-encoded.
+  >- (:) represents equals. An example is key : value.
+  >- Space characters must be URL-encoded.
+  >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+get:
   tags:
     - monitoring
   responses:
