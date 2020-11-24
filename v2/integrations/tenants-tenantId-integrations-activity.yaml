@@ -365,10 +365,6 @@ get:
       name: status
       description: |
         (Optional) Status of integration
-post:
-  responses:
-    '200':
-      description: OK
 parameters:
   - schema:
       type: string
