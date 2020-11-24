@@ -1,1 +1,20 @@
-/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}:
+summary: Deactivate integration event
+description: This endpoint is used to deactivate an integration event.
+post:
+  tags:
+    - integrations
+  responses:
+    '200':
+      description: OK
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: installedIntgId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: eventId
+    required: true
