@@ -1,6 +1,6 @@
+summary: Get alert technologies
+description: This endpoint is used to retrieve the list of available custom (and email alert integration) alert sources.
 get:
-  summary: Get alert technologies
-  description: This endpoint is used to retrieve the list of available custom (and email alert integration) alert sources.
   tags:
     - tenancy-access-controls
   responses:

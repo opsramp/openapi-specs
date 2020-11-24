@@ -1,7 +1,6 @@
+summary: Get timezones
+description: This endpoint is used to retrieve the list of timezones.
 get:
-  summary: Get timezones
-  description: |-
-    This endpoint is used to retrieve the list of timezones.
   tags:
     - tenancy-access-controls
   responses:

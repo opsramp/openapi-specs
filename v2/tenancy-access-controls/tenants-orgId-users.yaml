@@ -1,6 +1,6 @@
+summary: Create user
+description: This endpoint is used to create a user.
 post:
-  summary: Create user
-  description: This endpoint is used to create a user.
   tags:
     - tenancy-access-controls
   requestBody:

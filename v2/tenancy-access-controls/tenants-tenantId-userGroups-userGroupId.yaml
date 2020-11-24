@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 post:
   summary: Update user group
   description: This endpoint is used to update a user group’s properties.
@@ -49,11 +51,7 @@ delete:
     - tenancy-access-controls
   responses:
     '200':
-      description: |-
-        OK
-
-        >## Notes
-        >The response depends on the returned status code.
+      description: OK
 get:
   summary: Get user group
   description: This endpoint is used to retrieve the details of a user group.

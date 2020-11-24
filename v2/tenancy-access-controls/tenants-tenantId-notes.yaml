@@ -1,6 +1,6 @@
+summary: Create client notes
+description: This endpoint is used to create client notes.
 post:
-  summary: Create client notes
-  description: This endpoint is used to create client notes.
   tags:
     - tenancy-access-controls
   responses:

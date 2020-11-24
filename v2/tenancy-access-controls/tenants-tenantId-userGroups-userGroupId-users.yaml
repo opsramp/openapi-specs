@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 post:
   summary: Add users to a user group
   description: This endpoint is used to add users to an existing user group.

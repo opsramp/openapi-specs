@@ -1,6 +1,6 @@
+summary: Search permission sets
+description: This endpoint is used to retrieve the list of permission sets assigned to a tenant.
 get:
-  summary: Search permission sets
-  description: This endpoint is used to retrieve the list of permission sets assigned to a tenant.
   tags:
     - tenancy-access-controls
   responses:

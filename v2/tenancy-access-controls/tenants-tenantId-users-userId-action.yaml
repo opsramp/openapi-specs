@@ -1,6 +1,6 @@
+summary: Activate user
+description: The endpoint to assign agent policy for resources.
 post:
-  summary: Activate user
-  description: The endpoint to assign agent policy for resources.
   tags:
     - tenancy-access-controls
   requestBody:
@@ -18,11 +18,7 @@ post:
               deactivateReason: Reason for deactivation
   responses:
     '200':
-      description: |-
-        OK
-
-        >## Notes
-        > The response depends on the returned status code.
+      description: OK
   parameters:
     - schema:
         type: string

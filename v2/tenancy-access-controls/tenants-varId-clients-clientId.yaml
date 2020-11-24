@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 get:
   summary: Get client
   description: This endpoint is used to retrieve the details of a client.

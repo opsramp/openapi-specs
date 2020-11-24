@@ -1,11 +1,13 @@
+summary: NEEDS summary
+description:
 post:
   summary: Create user group
   description: |-
     This endpoint is used to create a partner-level or client-level user group.
 
-    >## Notes
-    >- This API allows a user group to be created with minimal details like: user group name and roles.
-    >- To add users to a user group, use the Add Users to User Group API.
+    ## Notes
+    - This API allows a user group to be created with minimal details like: user group name and roles.
+    - To add users to a user group, use the Add Users to User Group API.
   tags:
     - tenancy-access-controls
   responses:
@@ -47,10 +49,10 @@ get:
   description: |-
     This endpoint is used to retrieve the list of user groups available within a tenant.
 
-    >## Notes
-    >- This API provides a paginated list with minimal details of user groups.
-    >- Use Get User Group API to retrieve the assigned roles to a user group.
-    >- Use Get Users or a User Group API to retrieve the ausers that are part of a user group.
+    ## Notes
+    - This API provides a paginated list with minimal details of user groups.
+    - Use Get User Group API to retrieve the assigned roles to a user group.
+    - Use Get Users or a User Group API to retrieve the ausers that are part of a user group.
   tags:
     - tenancy-access-controls
   responses:

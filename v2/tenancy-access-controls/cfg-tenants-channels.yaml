@@ -1,6 +1,6 @@
+summary: Get channels
+description: This endpoint is used to retrieve the list of channels.
 get:
-  summary: Get channels
-  description: This endpoint is used to retrieve the list of channels.
   tags:
     - tenancy-access-controls
   responses:

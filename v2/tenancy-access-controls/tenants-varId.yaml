@@ -1,6 +1,6 @@
+summary: Get partner details
+description: This API is used to get details of a partner.
 get:
-  summary: Get partner details
-  description: This API is used to get details of a partner.
   tags:
     - tenancy-access-controls
   responses:

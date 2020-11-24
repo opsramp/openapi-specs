@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 delete:
   summary: Delete client note
   description: This endpoint is used to delete a client note. This endpoint is also used to delete notes from the resource-level.

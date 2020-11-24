@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 post:
   summary: Update user
   description: This endpoint is used to update the details of a user.

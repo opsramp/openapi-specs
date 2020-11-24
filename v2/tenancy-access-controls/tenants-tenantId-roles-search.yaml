@@ -1,6 +1,6 @@
+summary: Search roles
+description: This endpoint is used to retrieve roles under a partner or client.
 get:
-  summary: Search roles
-  description: This endpoint is used to retrieve roles under a partner or client.
   tags:
     - tenancy-access-controls
   responses:

@@ -1,18 +1,12 @@
+summary: Get minimal details of users
+description: |-
+  This endpoint is used to retrieve the minimal details of the users.
+
+  ## Notes
+  There are special characters that can be used in a query string:
+  - (:) represents equals. An example is key : value.
+  - Space characters must be URL-encoded.
 get:
-  summary: Get minimal details of users
-  description: |-
-    This endpoint is used to retrieve the minimal details of the users.
-
-    >## Notes
-    There are special characters that can be used in a query string:
-    >- (:) represents equals. An example is key : value.
-    >- Space characters must be URL-encoded.
-
-    ### Query variables
-
-    |Query Variables|Description|
-    |----|----|
-    |status|- To fetch list of active users, provide status: active.<br>- To fetch list of inactive users, provide status: inactive.|
   tags:
     - tenancy-access-controls
   responses:

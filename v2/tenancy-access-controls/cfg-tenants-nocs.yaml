@@ -1,6 +1,6 @@
+summary: Get tenant NOCs
+description: This endpoint is used to retrieve the list of NOCs of a tenant.
 get:
-  summary: Get tenant NOCs
-  description: This endpoint is used to retrieve the list of NOCs of a tenant.
   tags:
     - tenancy-access-controls
   responses:

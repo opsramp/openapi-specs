@@ -1,6 +1,6 @@
+summary: Get minimal details of clients
+description: This endpoint is used to retrieve the minimal details of clients.
 get:
-  summary: Get minimal details of clients
-  description: This endpoint is used to retrieve the minimal details of clients.
   tags:
     - tenancy-access-controls
   responses:
