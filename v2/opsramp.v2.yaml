@@ -183,8 +183,6 @@ paths:
     $ref: './alerts/tenants-tenantId-policies-alertCorrelation.yaml'
   /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}:
     $ref: './alerts/tenants-tenantId-policies-alertCorrelation-policyId.yaml'
-  /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}/{status}:
-    $ref: './alerts/tenants-tenantId-policies-alertCorrelation-policyId-status.yaml'
   /api/v2/tenants/{tenantId}/alerts/{alertId}/escalations:
     $ref: './alerts/tenants-tenantId-alerts-alertId-escalations.yaml'
   /api/v2/tenants/{tenantId}/escalations:
