@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 get:
   summary: Get urgencies
   description: This endpoint is used to retrieve the list of urgencies of an incident.

@@ -1,6 +1,6 @@
+summary: Search change requests
+description: This endpoint is used to search for change requests.
 get:
-  summary: Search change requests
-  description: This endpoint is used to search for change requests.
   tags:
     - tickets
   responses:

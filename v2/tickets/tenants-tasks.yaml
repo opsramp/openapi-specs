@@ -1,6 +1,6 @@
+summary: Create task
+description: This endpoint is used to create a task.
 post:
-  summary: Create task
-  description: This endpoint is used to create a task.
   tags:
     - tickets
   requestBody:

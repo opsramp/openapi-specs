@@ -1,9 +1,9 @@
-post:
-  summary: Create problem categories
-  description: |-
-    This endpoint is used to create categories for the problem entity type.
+summary: Create problem categories
+description: |-
+  This endpoint is used to create categories for the problem entity type.
 
-    Creating categories and sub-categories helps organize identical problems. This provides clarity and access to granularity of data. For example, a network category could help track how many network-related problems are triggered in a week.
+  Creating categories and sub-categories helps organize identical problems. This provides clarity and access to granularity of data. For example, a network category could help track how many network-related problems are triggered in a week.
+post:
   tags:
     - tickets
   responses:

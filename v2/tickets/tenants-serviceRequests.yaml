@@ -1,6 +1,6 @@
+summary: Create service request
+description: This endpoint is used to create a service request.
 post:
-  summary: Create service request
-  description: This endpoint is used to create a service request.
   tags:
     - tickets
   responses:

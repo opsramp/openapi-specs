@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 get:
   summary: Get time bound request
   description: This endpoint is used to retrieve the details of a time bound request.

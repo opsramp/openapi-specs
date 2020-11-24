@@ -1,6 +1,6 @@
+summary: Update business impact
+description: This endpoint is used to update a business impact on an incident.
 post:
-  summary: Update business impact
-  description: This endpoint is used to update a business impact on an incident.
   tags:
     - tickets
   responses:

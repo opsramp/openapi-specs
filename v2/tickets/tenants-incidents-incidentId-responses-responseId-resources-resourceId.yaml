@@ -1,6 +1,6 @@
+summary: Download incident response attachment
+description: This endpoint is used to download the response attachment attached to an incident.
 get:
-  summary: Download incident response attachment
-  description: This endpoint is used to download the response attachment attached to an incident.
   tags:
     - tickets
   responses:

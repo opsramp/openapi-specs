@@ -1,9 +1,9 @@
-post:
-  summary: Create service request categories
-  description: |-
-    This endpoint is used to create categories for the service request entity type.
+summary: Create service request categories
+description: |-
+  This endpoint is used to create categories for the service request entity type.
 
-    Creating categories and sub-categories helps organize identical service requests. This provides clarity and access to granularity of data. For example, a network category could help track how many network-related service requests are triggered in a week.
+  Creating categories and sub-categories helps organize identical service requests. This provides clarity and access to granularity of data. For example, a network category could help track how many network-related service requests are triggered in a week.
+post:
   tags:
     - tickets
   responses:

@@ -1,6 +1,6 @@
+summary: Update urgency
+description: This endpoint is used to update urgency.
 post:
-  summary: Update urgency
-  description: This endpoint is used to update urgency.
   tags:
     - tickets
   responses:

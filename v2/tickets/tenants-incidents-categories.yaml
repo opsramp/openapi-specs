@@ -1,6 +1,6 @@
+summary: Create incident categories
+description: This endpoint is used to create categories for the incident entity type.
 post:
-  summary: Create incident categories
-  description: This endpoint is used to create categories for the incident entity type.
   tags:
     - tickets
   responses:

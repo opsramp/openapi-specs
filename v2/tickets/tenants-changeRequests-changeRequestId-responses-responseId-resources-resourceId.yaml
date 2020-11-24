@@ -1,6 +1,6 @@
+summary: Download change request response attachment
+description: This endpoint is used to download the response attachment attached to a change request.
 get:
-  summary: Download change request response attachment
-  description: This endpoint is used to download the response attachment attached to a change request.
   tags:
     - tickets
   responses:

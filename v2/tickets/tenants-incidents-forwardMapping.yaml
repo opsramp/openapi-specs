@@ -1,4 +1,6 @@
-  post:
+summary: NEEDS summary
+description:
+post:
     summary: Create or update forward mapping
     description: This endpoint is used to create or update a forward mapping based on priority.
     tags:

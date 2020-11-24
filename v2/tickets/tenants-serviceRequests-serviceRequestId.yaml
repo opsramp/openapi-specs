@@ -1,3 +1,5 @@
+summary: NEEDS summary
+description:
 get:
   summary: Get service request
   description: This endpoint is used to retrieve the details of a service request.

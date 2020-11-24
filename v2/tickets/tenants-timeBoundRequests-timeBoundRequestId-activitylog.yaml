@@ -1,6 +1,6 @@
+summary: Get activity log of a time bound request
+description: This endpoint is used to retrieve user activities on a time bound request.
 get:
-  summary: Get activity log of a time bound request
-  description: This endpoint is used to retrieve user activities on a time bound request.
   tags:
     - tickets
   responses:

@@ -1,6 +1,6 @@
+summary: Create problem
+description: This endpoint is used to create a problem.
 post:
-  summary: Create problem
-  description: This endpoint is used to create a problem.
   tags:
     - tickets
   requestBody:

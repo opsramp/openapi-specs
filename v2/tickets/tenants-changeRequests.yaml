@@ -1,6 +1,6 @@
+summary: Create change request
+description: This endpoint is used to create a change request.
 post:
-  summary: Create change request
-  description: This endpoint is used to create a change request.
   tags:
     - tickets
   requestBody:

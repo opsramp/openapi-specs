@@ -1,6 +1,6 @@
+summary: Download service request response attachment
+description: This endpoint is used to download the response attachment attached to a service request.
 get:
-  summary: Download service request response attachment
-  description: This endpoint is used to download the response attachment attached to a service request.
   tags:
     - tickets
   responses:

@@ -1,6 +1,6 @@
+summary: Download task response attachment
+description: This endpoint is used to download the response attachment attached to a task.
 get:
-  summary: Download task response attachment
-  description: This endpoint is used to download the response attachment attached to a task.
   tags:
     - tickets
   responses:

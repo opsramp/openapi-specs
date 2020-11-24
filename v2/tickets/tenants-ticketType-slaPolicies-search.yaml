@@ -1,22 +1,22 @@
+summary: Search SLA policies
+description: |-
+  This endpoint is used to retrieve a list of all service level agreement policies along with their details.
+
+  ### Query variables
+
+  |Query Variable|Values|Description|
+  |----|----|----|
+  |queryString={queryString}|true, false|Status of the SLA policy. If active=true retrieves all the active SLA policiesIf active=false retrieves all the inactive SLA policies.|
+
+  >## Notes
+  >SLA policies are valid only for incident and service request. Sample responses for response time, resolution breach time, resolution remainders, and response remainders use seconds format. 
+  >
+  >There are special characters that can be used in a query string:
+  >- (+) represents the next field and must be URL-encoded.
+  >- (:) represents equals. An example is `key : value`.
+  >- Space characters must be URL-encoded.
+  >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT)
 get:
-  summary: Search SLA policies
-  description: |-
-    This endpoint is used to retrieve a list of all service level agreement policies along with their details.
-
-    ### Query variables
-
-    |Query Variable|Values|Description|
-    |----|----|----|
-    |queryString={queryString}|true, false|Status of the SLA policy. If active=true retrieves all the active SLA policiesIf active=false retrieves all the inactive SLA policies.|
-
-    >## Notes
-    >SLA policies are valid only for incident and service request. Sample responses for response time, resolution breach time, resolution remainders, and response remainders use seconds format. 
-    >
-    >There are special characters that can be used in a query string:
-    >- (+) represents the next field and must be URL-encoded.
-    >- (:) represents equals. An example is `key : value`.
-    >- Space characters must be URL-encoded.
-    >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT)
   tags:
     - tickets
   responses:
