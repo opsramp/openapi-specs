@@ -39,7 +39,7 @@ get:
                     headers:
                       - key: accept
                         value: application/json
-                       - key: Content-Type
+                      - key: Content-Type
                         value: application/json
                     payload: '{channel=#channelName, attachments=[{fallback=Incident create notification to slack, color=danger, pretext=New incident <$esc.java($utils.ticketAccessURL($incident.id,$incident.client.id,$incident.msp.id,$incident.serviceProviderId))| # $esc.java($incident.uniqueId)> created , author_name=By $esc.java($incident.createdBy.getFullName()), title=$incident.subject, title_link=$utils.ticketAccessURL($incident.id,$incident.client.id,$incident.msp.id,$incident.serviceProviderId), text=$incident.impact, fields=[{title=Priority, value=$incident.priority.name, short=false}], mrkdwn_in=[pretext], footer=OpsRamp, footer_icon=https://www.opsramp.com/wp-content/themes/twentythirteen/images/OpsRamp-Logo-300x300.png}]}'
                   - id: INTG-EVENT-717000e9-bc95-4339-adf7-db7a43db2580

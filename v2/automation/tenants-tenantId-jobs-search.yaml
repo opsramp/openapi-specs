@@ -46,8 +46,9 @@ get:
                   properties:
                     name:
                       type: string
-                    schedule:
-                      $ref: './components.yaml#/components/schemas/schedule'
+##@TODO
+#                    schedule:
+#                      $ref: './components.yaml#/components/schemas/schedule'
                     jobQueued:
                       type: boolean
                     script:

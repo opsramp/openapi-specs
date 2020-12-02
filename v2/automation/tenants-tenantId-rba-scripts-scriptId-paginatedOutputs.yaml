@@ -29,8 +29,9 @@ get:
                           type: string
                         name:
                           type: string
-                    device:
-                      $ref: './components.yaml#/components/schemas/resource'
+##@TODO
+#                    device:
+#                      $ref: './components.yaml#/components/schemas/resource'
                     owner:
                       type: object
                       properties:

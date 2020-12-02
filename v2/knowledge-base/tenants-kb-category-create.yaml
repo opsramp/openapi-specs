@@ -1,0 +1,82 @@
+summary: Create KB category
+description: This endpoint is used to create a knowledge base category.
+post:
+  tags:
+    - knowledge-base
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/category'
+          examples:
+            example-client:
+              value:
+                id: KBC0000000077
+                name: Hello there
+                description: test
+                scope: CLIENT
+                clientIds:
+                  - client_9
+                parentCategory:
+                  id: KBC0000000076
+                  name: Test API category
+                createdBy:
+                  id: USR0000000002
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: OpsRamp API User
+                  email: helpdesk@opsramp.com
+                updatedBy:
+                  id: USR0000000002
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: OpsRamp API User
+                  email: helpdesk@opsramp.com
+                path: Hello there
+                state: ACTIVE
+                createdDate: '2019-05-20T07:00:01+0000'
+                updatedDate: '2019-05-20T07:00:01+0000'
+            example-partner:
+              value:
+                id: KBC0000000076
+                name: Test API category
+                description: Category
+                createdBy:
+                  id: USR0000000002
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: OpsRamp API User
+                  email: helpdesk@opsramp.com
+                updatedBy:
+                  id: USR0000000002
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: OpsRamp API User
+                  email: helpdesk@opsramp.com
+                path: Test API category
+                state: ACTIVE
+                createdDate: '2019-05-20T06:44:44+0000'
+                updatedDate: '2019-05-20T06:44:44+0000'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/category'
+        examples:
+          example-client:
+            value:
+              name: Hello there
+              description: test
+              scope: CLIENT
+              clientIds:
+                - client_9
+              parentCategory:
+                id: KBC0000000076
+          example-partner:
+            value:
+              name: Test API category
+              description: Category
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
