@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Update, get, and delete user group
+description: This endpoint is used to update, retrieve, and delete user groups.
 post:
   summary: Update user group
   description: This endpoint is used to update a user group’s properties.

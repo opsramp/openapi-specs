@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage business impact
+description: This endpoint is used to create and retrieve a business impact.
 post:
   summary: Create business impact
   description: This endpoint is used to create a business impact on an incident.

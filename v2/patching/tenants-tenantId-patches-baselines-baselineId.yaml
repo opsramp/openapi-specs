@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Get, update, and delete patch baselines
+description: This endpoint is used to get, update, and delete patch baselines.
 delete:
   summary: Delete patch baseline
   description: This endpoint is used to delete a patch baseline.

@@ -1,8 +1,8 @@
-summary: NEEDS summary
-description:
+summary: Create and get ticket notes
+description: This endpoint is used to create and retrieve ticket notes.
 post:
   summary: Create ticket notes
-  description: This endpoint is used to creates for a ticket.
+  description: This endpoint is used to create notes for a ticket.
   tags:
     - tickets
   responses:

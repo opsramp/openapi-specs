@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage resource availability rule
+description: This endpoint is used to update and retrieve the availability rule defined on a resource.
 get:
   summary: Get availability rule on a resource
   description: |-

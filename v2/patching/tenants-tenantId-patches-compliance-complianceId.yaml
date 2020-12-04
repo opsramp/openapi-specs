@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Update and delete patch compliance
+description: This endpoint is used to update and delete a patch compliance
 delete:
   summary: Delete patch compliance
   description: This endpoint is used to delete a patch compliance.

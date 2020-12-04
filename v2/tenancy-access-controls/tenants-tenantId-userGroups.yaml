@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Create and search user group
+description: This endpoint is used to create a partner-level or client-level user group, and search user groups.
 post:
   summary: Create user group
   description: |-

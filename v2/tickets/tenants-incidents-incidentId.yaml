@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage incident
+description: This endpoint is used to update and retrieve incidents.
 get:
   summary: Get incident
   description: This endpoint is used to retrieve the details of an incident.

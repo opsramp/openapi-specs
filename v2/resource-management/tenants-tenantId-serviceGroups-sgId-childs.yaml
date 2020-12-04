@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage child resource for service group
+description: This endpoint is used to assign and unassign child resources for a service group.
 post:
   summary: Assign resources as child to a service group
   description: This endpoint is used to add resources/devices of the same resource type as a child to a service group.

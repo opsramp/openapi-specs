@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage service request
+description: This endpoint is used to update and retrieve a service request.
 get:
   summary: Get service request
   description: This endpoint is used to retrieve the details of a service request.

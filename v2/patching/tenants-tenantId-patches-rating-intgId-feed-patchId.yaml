@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Get and delete patch details
+description: This endpoint is used to retrieve patch details and delete a patch qualification.
 get:
   summary: Get patch details
   description: This endpoint is used to retrieve details of a patch.

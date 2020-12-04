@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage patch configuration
+description: This endpoint is used to update, get, and delete a patch configuration.
 delete:
   summary: Delete patch configuration
   description: This endpoint is used to delete a patch configuration.

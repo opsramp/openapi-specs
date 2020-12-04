@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage device warranty
+description: This endpoint is used to create a device warranty and retrieve device warranty details.
 post:
   summary: Create warranty
   description: This endpoint is used to create a warranty for a device.

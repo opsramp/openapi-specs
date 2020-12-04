@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage role
+description: This endpoint is used to update, retrieve, and delete roles.
 delete:
   summary: Delete role
   description: This endpoint is used to delete a role.

@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Update and get time bound request
+description: This endpoint is used to update and retrieve time bound requests.
 get:
   summary: Get time bound request
   description: This endpoint is used to retrieve the details of a time bound request.

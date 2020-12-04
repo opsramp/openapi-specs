@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage users for user group
+description: This endpoint is used to add, retrieve, and delete users for a user group.
 post:
   summary: Add users to a user group
   description: This endpoint is used to add users to an existing user group.

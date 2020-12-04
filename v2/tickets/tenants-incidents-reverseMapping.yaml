@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage reverse mapping
+description: his endpoint is used to create, update, and retrieve reverse mappings.
 post:
   summary: Create or update reverse mapping
   description: This endpoint is used to create or update a reverse mapping of priorities for incidents.

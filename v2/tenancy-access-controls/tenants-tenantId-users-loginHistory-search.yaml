@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Get login audit report
+description: This endpoint is used to get the login history for users.
 get:
   summary: Get login audit report
   description: |-

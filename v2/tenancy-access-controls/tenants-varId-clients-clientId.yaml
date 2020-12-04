@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Update and get client
+description: This endpoint is used to update and retrieve client details.
 get:
   summary: Get client
   description: This endpoint is used to retrieve the details of a client.

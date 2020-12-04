@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage ticket notes by Id
+description: This endpoint is used to update, retrieve, and delete ticket notes by Id.
 delete:
   summary: Delete ticket note
   description: This endpoint is used to delete note of a ticket.

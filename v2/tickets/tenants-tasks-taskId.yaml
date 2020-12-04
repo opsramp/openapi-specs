@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Update and get task
+description: This endpoint is used to update and retrieve tasks.
 get:
   summary: Get task
   description: This endpoint is used to retrieve details of a task.

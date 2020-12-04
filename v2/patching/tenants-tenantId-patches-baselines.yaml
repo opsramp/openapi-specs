@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Create and get patch baselines
+description: This endpoint is used to create and get patch baselines.
 post:
   summary: Create patch baseline
   description: |

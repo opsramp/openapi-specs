@@ -1,8 +1,8 @@
-summary: NEEDS summary
-description:
+summary: Create and get patch compliance
+description: This endpoint is used to create a patch compliance and retrieve the list of patch compliance checks.
 post:
   summary: Create patch compliance
-  description: This endpoint is used to create patch compliance.
+  description: This endpoint is used to create a patch compliance.
   tags:
     - patching
   requestBody:

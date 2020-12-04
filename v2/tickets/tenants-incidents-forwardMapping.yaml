@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage forward mapping
+description: This endpoint is used to create, update, and retrieve forward mapping.
 post:
     summary: Create or update forward mapping
     description: This endpoint is used to create or update a forward mapping based on priority.

@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage custom attribute of a tenant
+description: This endpoint is used to update, get, and delete custom attributes of a tenant.
 delete:
   summary: Delete custom attribute of a tenant
   description: This endpoint is used to delete the custom attribute of a tenant.

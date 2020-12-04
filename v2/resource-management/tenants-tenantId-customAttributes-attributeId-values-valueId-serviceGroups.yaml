@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage custom attributes for service groups
+description: This endpoint is used to assign and unassign custom attributes for service groups
 post:
   summary: Assign custom attributes to service groups
   description: This endpoint is used to assign custom attributes to service groups.

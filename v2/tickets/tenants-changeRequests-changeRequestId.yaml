@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage change request
+description: This endpoint is used to retrieve and update change requests.
 get:
   summary: Get change request
   description: This endpoint is used to retrieve the details of a change request.

@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage custom attributes for devices
+description: This endpoint is used to assign and unassign custom attributes for devices
 post:
   summary: Assign custom attributes to devices
   description: This endpoint is used to assign custom attributes to devices.

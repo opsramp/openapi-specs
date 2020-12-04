@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage problem
+description: This endpoint is used to update and retrieve a problem
 get:
   summary: Get problem
   description: This endpoint is used to retrieve the details of a problem.

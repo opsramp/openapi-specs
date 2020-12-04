@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage custom attributes for client
+description: This endpoint is used to assign and unassign custom attributes for clients.
 post:
   summary: Assign custom attributes to clients
   description: This endpoint is used to assign custom attributes to clients.

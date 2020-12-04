@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage resource dependency
+description: This endpoint is used to create, retrieve, and delete resource dependency.
 post:
   summary: Create impact dependency
   description: This endpoint is used to group the resources which are dependent on a resource.

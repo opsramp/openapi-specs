@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage service group
+description: This endpoint is used to retrieve and delete service groups.
 delete:
   summary: Delete service group
   description: |-

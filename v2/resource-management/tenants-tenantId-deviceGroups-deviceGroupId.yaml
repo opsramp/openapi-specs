@@ -1,5 +1,5 @@
-summary: NEEDS summary
-description:
+summary: Manage device group
+description: This endpoint is used to get device group details and delete device groups.
 delete:
   summary: Delete device group
   description: |-
