@@ -215,7 +215,7 @@ paths:
     $ref: './alerts/alerts-tenants-tenantId-alerts-alertId.yaml'
   /api/v2/alerts/tenants/{tenantId}/tickets/{ticketId}:
     $ref: './alerts/alerts-tenants-tenantId-tickets-ticketId.yaml'
-  /api/v2/tenants/{tenantId}/alerts/{alertId}/incidents/{IncidentId}/attach:
+  /api/v2/tenants/{tenantId}/alerts/{alertId}/incidents/{incidentId}/attach:
     $ref: './alerts/tenants-tenantId-alerts-alertId-incidents-incidentId-attach.yaml'
   /api/v2/tenants/{tenantId}/alert:
     $ref: './alerts/tenants-tenantId-alert.yaml'
