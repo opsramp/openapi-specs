@@ -129,7 +129,7 @@ paths:
   /api/v2/tenants/{tenantId}/agents/{agentversion}/resourcesCountByAgentVersion:
     $ref: './agents-gateways/tenants-tenantId-agents-agentversion-resourcesCountByAgentVersion.yaml'
   /api/v2/tenants/{tenantId}/agents/deployAgentsScript:
-    $ref: './agents-gateways/tenants-tenantId-agents-deployAgentScript.yaml'
+    $ref: './agents-gateways/tenants-tenantId-agents-deployAgentsScript.yaml'
   /api/v2/tenants/{tenantId}/agents/{platform}/info:
     $ref: './agents-gateways/tenants-tenantId-agents-platform-info.yaml'
   /api/v2/tenants/{tenantId}/agentProfiles/{profileId}/devices:
