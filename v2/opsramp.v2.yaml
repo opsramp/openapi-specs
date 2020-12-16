@@ -116,7 +116,7 @@ paths:
   # Agents and Gateways
   /api/v2/applicationservice:
     $ref: './agents-gateways/applicationservice.yaml'
-  /api/v2/download/gateway/{packageName}:
+  /api/v2/download/gateway/{packagename}:
     $ref: './agents-gateways/download-gateway-packagename.yaml'
   /api/v2/externalproxy:
     $ref: './agents-gateways/externalproxy.yaml'
