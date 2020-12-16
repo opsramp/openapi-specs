@@ -282,7 +282,7 @@ paths:
     $ref: './automation/tenants-tenantId-rba-categories-categoryId-scripts-scriptId.yaml'
   # Exports
   /api/v2/exports/tenants/{tenantId}/create:
-    $ref: './exports/tenants-tenantId-create.yaml'
+    $ref: './exports/exports-tenants-tenantId-create.yaml'
   # Integrations
   /api/v2/tenants/{tenantId}/integrations/activity:
     $ref: './integrations/tenants-tenantId-integrations-activity.yaml'
@@ -771,7 +771,7 @@ paths:
     $ref: './tickets/tenants-tenantid-ticketType-ticketId-notes-noteId.yaml'
   /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/activitylog:
     $ref: './tickets/tenants-tenantid-timeBoundRequests-timeBoundRequestId-activitylog.yaml'
-  /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBountRequestId}/responses:
+  /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/responses:
     $ref: './tickets/tenants-tenantid-timeBoundRequests-timeBoundRequestId-responses.yaml'
   /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/close:
     $ref: './tickets/tenants-tenantid-timeBoundRequests-timeBoundRequestId-close.yaml'
