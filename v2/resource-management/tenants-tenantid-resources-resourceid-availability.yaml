@@ -1,0 +1,90 @@
+summary: Get resource availability
+description: |-
+  This endpoint is used to retrieve the availability details of a resource within a specific time frame.
+
+  To view availability of a resource within a given time frame, provide the start time and end time.
+
+  ## Notes
+  - State 0 indicates the status of resource is down.
+  - State 4 indicates the status of resource is unknown.
+get:
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/availablility'
+          examples:
+            example-1:
+              value:
+                totalAvailability: 2.2682053322721845
+                totalDowntime: 2456
+                totalLogList:
+                  - key: 0443e878-92fb-4401-82b3-97bd961d50e5
+                    startTs: 1493622507
+                    endTs: 1493622540
+                    actStartTs: 1493622507
+                    state: 0
+                    rca: false
+                    schStartTs: 0
+                    schEndTs: 0
+                  - key: 0443e878-92fb-4401-82b3-97bd961d50e5
+                    startTs: 1493620027
+                    endTs: 1493622450
+                    actStartTs: 1493620027
+                    state: 0
+                    rca: false
+                    schStartTs: 0
+                    schEndTs: 0
+                downTimeList:
+                  - key: 0443e878-92fb-4401-82b3-97bd961d50e5
+                    startTs: 1493622507
+                    endTs: 1493622540
+                    actStartTs: 1493622507
+                    state: 0
+                    rca: false
+                    schStartTs: 0
+                    schEndTs: 0
+                  - key: 0443e878-92fb-4401-82b3-97bd961d50e5
+                    startTs: 1493620027
+                    endTs: 1493622450
+                    actStartTs: 1493620027
+                    state: 0
+                    rca: false
+                    schStartTs: 0
+                    schEndTs: 0
+                noOfOccurences: 2
+                noOfPauseOccurences: 0
+                degradedTimeList: []
+                noOfDegradedOccurences: 0
+                totalDegradedTime: 0
+                pauseTimeList: []
+                currentState: down
+                totalPauseTime: 0
+  parameters:
+    - schema:
+        type: string
+      in: query
+      name: startTime
+      description: |-
+        startTime indicates the from date. (Convert the time frame to Epoch timestamp.)
+
+        For example, if 12 Dec 2018 10:00 AM is the start time, then epoch timestamp is 1544608800
+    - schema:
+        type: string
+      in: query
+      name: endTime
+      description: |
+        endTime indicates the to date.
+
+        For example, if 17 Dec 2018 12:00 PM is the end time, then epoch timestamp is 1545048000
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: resourceId
+    required: true

@@ -1,0 +1,36 @@
+summary: Download gateway
+description: This endpoint is used to download gateway files from the OpsRamp download server.
+get:
+  tags:
+    - agents-gateways
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              expires_in:
+                type: integer
+              url:
+                type: string
+          examples:
+            example-1:
+              value:
+                expires_in: 900
+                url: 'https://dl01.opsramp.com/itop/download/gateway/d3873201-c303-4846-8ce4-b9fd4cf1306b'
+parameters:
+  - schema:
+      type: string
+      enum:
+        - 'NULL'
+        - ova
+        - iso
+        - windows
+        - google
+      default: 'NULL'
+    in: path
+    name: packageName
+    required: true
+    description: Refers to the gateway package.

@@ -1,0 +1,20 @@
+summary: Unlink a service group
+description: This endpoint is used to unlink a child service group from a parent service group.
+delete:
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: parentSgId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: childSgId
+    required: true

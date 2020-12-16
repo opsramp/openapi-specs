@@ -1,0 +1,25 @@
+summary: Get agent count by agent version
+description: This endpoint is used to retrieve the number of installed agent resources by agent version.
+get:
+  tags:
+    - agents-gateways
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              version:
+                type: integer
+          examples:
+              value:
+                version: 2
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - in: path
+    name: agentversion
+    schema:
+      type: string
+      default: 'NULL'

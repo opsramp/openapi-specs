@@ -1,0 +1,15 @@
+summary: Enable integrations
+description: This endpoint is used to enable an installed integration.
+post:
+  tags:
+    - integrations
+  responses:
+    '200':
+      description: OK
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: installedIntgId
+    required: true

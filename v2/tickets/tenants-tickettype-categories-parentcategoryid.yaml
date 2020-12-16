@@ -1,0 +1,45 @@
+summary: Get service desk list of categories
+description: This endpoint is used to retrieve the list of categories for an entity type.
+get:
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+          examples:
+            example-1:
+              value:
+                - id: 1
+                  name: Esc Level 1
+                - id: 4
+                  name: Esc Level 2
+                - id: 6
+                  name: Esc Level 3
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+      enum:
+        - changeRequests
+        - incidents
+        - problems
+        - serviceRequests
+    in: path
+    name: ticketType
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: parentCategoryId
+    required: true

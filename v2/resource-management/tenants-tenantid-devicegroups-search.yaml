@@ -1,0 +1,117 @@
+summary: Get root level device groups
+description: This endpoint is used to retrieve the root level device groups.
+get:
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    createdDate:
+                      type: string
+                    updatedDate:
+                      type: string
+                    type:
+                      type: string
+                    entityType:
+                      type: string
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: DGP-46f180ed-5ab8-45e2-a06b-e902f53a2b3c
+                    name: Storage Device Group
+                    createdDate: '2017-08-08T12:16:26+0000'
+                    updatedDate: '2017-08-08T12:16:26+0000'
+                    type: DEVICE_GROUP
+                    entityType: DEVICE_GROUP
+                  - id: DGP-dd1ac3ae-549b-4b41-a4f9-3a3af592334d
+                    name: Windows Device Group
+                    createdDate: '2017-08-08T07:44:21+0000'
+                    updatedDate: '2017-08-08T07:45:28+0000'
+                    type: DEVICE_GROUP
+                    entityType: DEVICE_GROUP
+                  - id: DGP-9d3d15f3-8ce4-4027-88a3-e36f9033dad3
+                    name: IT Support Devices
+                    description: ''
+                    createdDate: '2017-05-11T12:32:12+0000'
+                    updatedDate: '2017-07-13T11:14:25+0000'
+                    type: DEVICE_GROUP
+                    entityType: DEVICE_GROUP
+                  - id: DGP-0f3c5bbd-3a0c-4d57-a4db-64c1e7a895a0
+                    name: Communication Servers
+                    description: ''
+                    createdDate: '2017-05-11T12:20:09+0000'
+                    updatedDate: '2017-05-11T12:20:10+0000'
+                    type: DEVICE_GROUP
+                    entityType: DEVICE_GROUP
+                  - id: DGP-63a8881c-a537-40d9-bc89-100b5fe98933
+                    name: SJ Network Device Group
+                    createdDate: '2017-04-27T07:31:30+0000'
+                    updatedDate: '2017-04-27T07:31:30+0000'
+                    type: DEVICE_GROUP
+                    entityType: DEVICE_GROUP
+                totalResults: 5
+                orderBy: id
+                pageNo: 1
+                pageSize: 100
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+        default: id
+      in: query
+      name: sortName
+    - schema:
+        type: string
+      in: query
+      name: queryString
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

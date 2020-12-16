@@ -1,0 +1,721 @@
+summary: Manage alert correlation policy
+description: This endpoint is used to create and fetch alert correlation policies.
+get:
+  tags:
+    - alerts
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    enabled:
+                      type: boolean
+                    precedence:
+                      type: integer
+                    type:
+                      type: string
+                    machineLearning:
+                      type: object
+                      properties:
+                        accuracy:
+                          type: integer
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-with-machine-learning:
+              value:
+                results:
+                  - id: POLICY-AC-165c4ee5-8b31-4cba-b88e-f20e57ae8358
+                    name: test_dependency_correlation_ap
+                    enabled: false
+                    precedence: 25
+                    type: DEPENDENCY
+                  - id: POLICY-AC-7556bcf6-4cc2-44ba-ba1f-3ca5a211bcb3
+                    name: test_algorithm_correlation_ap
+                    enabled: true
+                    precedence: 29
+                    type: ALGORITHM
+                  - id: POLICY-AC-1556bcf6-7cc2-44ba-ba1f-8ca5a211bcb3
+                    name: test_co-occurrence_correlation_ap
+                    enabled: true
+                    precedence: 30
+                    type: CO_OCCURRENCE
+                    machineLearning:
+                      accuracy: 98
+                totalResults: 3
+                orderBy: precedence
+                pageNo: 1
+                pageSize: 100
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: false
+            example-without-machine-learning:
+              value:
+                results:
+                  - id: POLICY-AC-165c4ee5-8b31-4cba-b88e-f20e57ae8358
+                    name: test_dependency_correlation_ap
+                    enabled: false
+                    precedence: 25
+                    type: DEPENDENCY
+                  - id: POLICY-AC-7556bcf6-4cc2-44ba-ba1f-3ca5a211bcb3
+                    name: test_algorithm_correlation_ap
+                    enabled: true
+                    precedence: 29
+                    type: ALGORITHM
+                  - id: POLICY-AC-1556bcf6-7cc2-44ba-ba1f-8ca5a211bcb3
+                    name: test_co-occurrence_correlation_ap
+                    enabled: true
+                    precedence: 30
+                    type: CO_OCCURRENCE
+                totalResults: 3
+                orderBy: precedence
+                pageNo: 1
+                pageSize: 10
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: false
+            example-partner:
+              value:
+                results:
+                  - id: POLICY-AC-165c4ee5-8b31-4cba-b88e-f20e57ae8358
+                    name: test_dependency_correlation_ap
+                    enabled: false
+                    precedence: 25
+                    type: DEPENDENCY
+                  - id: POLICY-AC-7556bcf6-4cc2-44ba-ba1f-3ca5a211bcb3
+                    name: test_algorithm_correlation_ap
+                    enabled: true
+                    precedence: 29
+                    type: ALGORITHM
+                  - id: POLICY-AC-1556bcf6-7cc2-44ba-ba1f-8ca5a211bcb3
+                    name: test_co-occurrence_correlation_ap
+                    enabled: true
+                    precedence: 30
+                    type: CO_OCCURRENCE
+                    machineLearning:
+                      accuracy: 98
+                totalResults: 3
+                orderBy: precedence
+                pageNo: 1
+                pageSize: 100
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: false
+  parameters:
+    - schema:
+        type: integer
+        default: 1
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: 100
+      in: query
+      name: pageSize
+post:
+  tags:
+    - alerts
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              enabled:
+                type: boolean
+              precedence:
+                type: integer
+              filterCriteria:
+                type: object
+                properties:
+                  filterBased:
+                    type: boolean
+                  matchingType:
+                    type: string
+                  rules:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        filterType:
+                          type: string
+                        entityName:
+                          type: string
+                        operator:
+                          type: string
+                        entityValue:
+                          type: string
+              type:
+                type: string
+              algorithmCorrelation:
+                type: object
+                properties:
+                  alertsTimeWindow:
+                    type: integer
+                  matchingConditions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        property:
+                          type: string
+                        matchType:
+                          type: string
+                  primaryAlertSubject:
+                    type: string
+              createdBy:
+                type: object
+                properties:
+                  loginName:
+                    type: string
+                  lastName:
+                    type: string
+                  firstName:
+                    type: string
+                  email:
+                    type: string
+              createdTime:
+                type: string
+              updatedTime:
+                type: string
+          examples:
+            create-w-algo-corr:
+              value:
+                id: POLICY-AC-7556bcf6-4cc2-44ba-ba1f-3ca5a211bcb3
+                name: Correlate alerts on parked VMwares
+                enabled: true
+                precedence: 29
+                filterCriteria:
+                  filterBased: true
+                  matchingType: ALL
+                  rules:
+                    - filterType: nativeAttributes
+                      entityName: host_name
+                      operator: Contains
+                      entityValue: vm
+                    - filterType: customAttributes
+                      entityName: Agent Status
+                      operator: Equals
+                      entityValue: Down
+                type: ALGORITHM
+                algorithmCorrelation:
+                  alertsTimeWindow: 20
+                  matchingConditions:
+                    - property: subject
+                      matchType: Identical
+                    - property: alert_metric
+                      matchType: Nearly Identical
+                  primaryAlertSubject: Agent down on parked VMwares
+                createdBy:
+                  loginName: John_Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                createdTime: '2018-04-27T13:14:07+0000'
+                updatedTime: ''
+            create-w-co_occ-corr:
+              value:
+                id: POLICY-AC-1556bcf6-7cc2-44ba-ba1f-8ca5a211bcb3
+                name: Server-SJ Alerts
+                enabled: true
+                precedence: 30
+                filterCriteria:
+                  filterBased: true
+                  matchingType: ALL
+                  rules:
+                    - filterType: nativeAttributes
+                      entityName: host_name
+                      operator: Contains
+                      entityValue: Logix
+                    - filterType: customAttributes
+                      entityName: agent-status
+                      operator: Equals
+                      entityValue: up
+                type: CO_OCCURRENCE
+                createdBy:
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: OpsRamp API User
+                  email: john.smith@myorganization.com
+                createdTime: '2018-08-27T13:14:07+0000'
+                updatedTime: ''
+            create-w-ip-filter:
+              value:
+                id: POLICY-AC-e275116e-c457-47be-bd25-9eef3c1d7976
+                name: IP policy api demo
+                enabled: true
+                precedence: 88
+                filterCriteria:
+                  filterBased: true
+                  matchingType: ALL
+                  rules:
+                    - filterType: nativeAttributes
+                      entityName: ip_address
+                      ipMatchingConditions:
+                        ipAddressMatchType: Within Range
+                        ipAddress: 192.168.5.130
+                        netmask: 255.255.255.192
+                type: ALGORITHM
+                algorithmCorrelation:
+                  alertsTimeWindow: 20
+                  matchingConditions:
+                    - property: host_name
+                      matchType: Identical
+                  primaryAlertSubject: IP policy api demo
+                createdBy:
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: OpsRamp API User
+                  email: admin@opsramp.com
+                createdTime: '2018-12-28T10:42:42+0000'
+                updatedTime: ''
+            create-client-scope-w-algo-all-org-match:
+              value:
+                id: POLICY-AC-7556bcf6-4cc2-44ba-ba1f-3ca5a211bcb3
+                name: test_algorithm_correlation_ap
+                clientsIncluded: ALL
+                enabled: true
+                precedence: 29
+                filterCriteria:
+                  filterBased: true
+                  matchingType: ALL
+                  rules:
+                    - filterType: nativeAttributes
+                      entityName: host_name
+                      operator: Contains
+                      entityValue: vm
+                    - filterType: customAttributes
+                      entityName: test_custom_attribute
+                      operator: Not Contains
+                      entityValue: a
+                type: ALGORITHM
+                algorithmCorrelation:
+                  alertsTimeWindow: 20
+                  matchingConditions:
+                    - property: subject
+                      matchType: Identical
+                    - property: alert_metric
+                      matchType: Identical
+                  primaryAlertSubject: subject-alertMetric policy
+                createdBy:
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: OpsRamp API User
+                  email: admin@opsramp.com
+                createdTime: '2017-11-27T13:14:07+0000'
+                updatedTime: ''
+            create-client-scope-w-algo-incl-org-match:
+              value:
+                id: POLICY-AC-7556bcf6-4cc2-44ba-ba1f-3ca5a211bcb3
+                name: test_algorithm_correlation_ap
+                includedClients:
+                  - client_8
+                  - client_9
+                enabled: true
+                precedence: 29
+                filterCriteria:
+                  filterBased: true
+                  matchingType: ALL
+                  rules:
+                    - filterType: nativeAttributes
+                      entityName: host_name
+                      operator: Contains
+                      entityValue: vm
+                    - filterType: customAttributes
+                      entityName: test_custom_attribute
+                      operator: Not Contains
+                      entityValue: a
+                type: ALGORITHM
+                algorithmCorrelation:
+                  alertsTimeWindow: 20
+                  matchingConditions:
+                    - property: subject
+                      matchType: Identical
+                    - property: alert_metric
+                      matchType: Identical
+                  primaryAlertSubject: subject-alertMetric policy
+                createdBy:
+                  loginName: opsramp_api_user
+                  lastName: ' '
+                  firstName: OpsRamp API User
+                  email: admin@opsramp.com
+                createdTime: '2017-11-27T13:14:07+0000'
+                updatedTime: ''
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: The name of the alert correlation policy.
+            filterCriteria:
+              type: object
+              description: (Optional) Filter for resources whose alerts will match this policy.
+              properties:
+                filterBased:
+                  description: Determine if the alert correlation policy should consider the below filter rules.
+                  type: boolean
+                matchingType:
+                  description: Match ALL or ANY of the rules to filter for resources whose alerts will match this policy.
+                  enum:
+                    - ALL
+                    - ANY
+                  type: string
+                rules:
+                  type: array
+                  description: '(Mandatory if "filterBase": "true") Filter resources with the rules that follow.'
+                  items:
+                    type: object
+                    properties:
+                      filterType:
+                        type: string
+                        description: |-
+                          "nativeAttributes": Filter for resources on the basis of predefined attributes.
+
+                          "customAttributes": Filter for resources using custom attributes of device and client.
+                        enum:
+                          - nativeAttributes
+                          - customAttributes
+                      entityName:
+                        type: string
+                        description: |-
+                          Native or custom attribute name. For example, to filter for resources with host_name "VG-Host", use the following:
+
+                          "filterType":"nativeAttributes",
+                          "entityName":"host_name",
+                          "operator":"CONTAINS",
+                          "entityValue":"VG-Host"
+
+                          To filter for resources with a custom attribute"Agent Status", use the following:
+
+                          "filterType":"customAttributes",
+                          "entityName":"Agent Status",
+                          "operator":"CONTAINS",
+                          "entityValue":"Up"
+
+                          Entity names of native attributes:
+                          - "dns_name"
+                          - "host_name"
+                          - "alias_name"
+                          - "ip_address"
+                          - "resource_type"
+                          - "agent_installed"
+                          - "operating_system"
+                          - "make"
+                          - "model"
+                          - "alert_source"
+                          - "alert_metric"
+                          - "device_group"
+                          - "service_group"
+                          - "site"
+                          - "application"
+
+                          For more options, view Get Custom Attributes of a Client API.
+                      operator:
+                        type: string
+                        description: |
+                          The logical operators to filter for resources. To filter Windows resources, use "Contains Windows". To filter resources with the agent is installed, use the following:
+
+                          "entityName": "agent_installed",
+
+                          "operator": "Is",
+
+                          "entityValue": "Yes"
+                        enum:
+                          - Contains
+                          - Not Contains
+                          - Equals
+                          - Not Equals
+                          - Starts with
+                          - Ends with
+                          - Regex
+                          - Is
+                      entityValue:
+                        type: string
+                        description: The unique value of the alert. An example would be "VG-Host".
+                      ipMatchingConditions:
+                        type: object
+                        description: |-
+                          Mandatory
+
+                          Mandatory only when "CIDR Match" is selected. (An example is "192.168.1.1/24".)
+
+                          Mandatory only when "Within Range" or "Equals" is selected.
+
+                          Mandatory when "Within Range" is selected (An example is "255.255.255.192".)
+                        properties:
+                          ipAddressMatchType:
+                            type: string
+                            description: ''
+                            enum:
+                              - CIDR Match
+                              - Within Range
+                              - Equals
+                          ipAddress:
+                            type: string
+                          netmask:
+                            type: string
+            type:
+              type: string
+              enum:
+                - DEPENDENCY
+                - ALGORITHM
+                - CO_OCCURRENCE
+              description: The alert correlation policy type.
+            dependencyCorrelation:
+              type: object
+              description: Correlate alerts on upstream and downstream resources.
+              properties:
+                alertsTimeWindow:
+                  type: integer
+                  description: '(Optional) Correlate alerts that are generated within a time span specified in minutes. An example is when a user wants to correlate alerts on upstream and downstream resources within a span of 15 minutes. If a value isn''t specified, the default time window is 5 minutes.'
+                  enum:
+                    - 5
+                    - 10
+                    - 15
+                    - 20
+                    - 25
+                    - 30
+                    - 45
+                    - 60
+                    - 90
+                    - 120
+                  default: 5
+                upstreamMetrics:
+                  type: array
+                  description: Metrics on the upstream resource that may generate alerts. Use the Get Metrics API to retrieve metrics assigned to a resource.
+                  items:
+                    type: string
+                downstreamMetrics:
+                  type: array
+                  description: Metrics on the downstream resource that may generate alerts. Use the Get Metrics API to retrieve metrics assigned to a resource.
+                  items:
+                    type: string
+            algorithmCorrelation:
+              type: object
+              description: Correlate alerts that share similar alert properties.
+              properties:
+                alertsTimeWindow:
+                  type: integer
+                  description: '(Optional) Correlate alerts that are generated within a time span specified in minutes. If a value isn''t specified, the default time window is 5 minutes.'
+                  enum:
+                    - 5
+                    - 10
+                    - 15
+                    - 20
+                    - 25
+                    - 30
+                    - 45
+                    - 60
+                    - 90
+                    - 120
+                  default: 5
+                matchingConditions:
+                  type: array
+                  description: |-
+                    Correlate alerts based all of the on the following:
+                    1. Select the alert property with which the alerts should be grouped (example is "Host Name").
+                    2. Match the type of alert property.
+
+                    If a user wants to correlate alerts which exactly share same IP address 172.34.213, provide the "property": "ip_address" and "matchType": "Identical" fields. See Matching conditions table for detailed information on match types.
+                  items:
+                    type: object
+                    properties:
+                      property:
+                        type: string
+                        enum:
+                          - resource_type
+                          - subject
+                          - host_name
+                          - alert_source
+                          - alert_metric
+                          - device_group
+                          - service_group
+                          - site
+                          - alert_description
+                      matchType:
+                        type: string
+                        enum:
+                          - Identical
+                          - Nearly Identical
+                          - Similar
+                          - Somewhat
+                primaryAlertSubject:
+                  type: string
+                  description: '(Optional) Provide a subject for the primary alert generated. This helps to identify the Inference. If no subject is provided, the primary alert is treated as the subject for alert correlation.'
+                machineLearning:
+                  type: string
+                  enum:
+                    - trainingFileId
+                    - continuousLearning
+            organizationMatchingType:
+              type: string
+            includedClients:
+              type: array
+              items:
+                type: string
+            enabledMode:
+              type: string
+              enum:
+                - 'ON'
+                - 'OFF'
+                - OBSERVED
+              description: '(Optional) To enable an alert correlation policy, set "enabledMode": "ON". To disable an alert correlation policy, set "enabledMode: "OFF". To enable an alert correlation policy to observe, set "enabledMode": "OBSERVED".'
+            precedence:
+              description: '(Optional) Determine the execution order of a policy. For example, if VMware is specified as part of the agent status policy and network outage policy, the user can determine which policy should execute first to correlate VMware alerts.'
+              type: integer
+          required:
+            - name
+        examples:
+          create-w-algo-corr:
+            value:
+              name: Correlate alerts on parked VMwares
+              filterCriteria:
+                filterBased: true
+                matchingType: ALL
+                rules:
+                  - filterType: nativeAttributes
+                    entityName: host_name
+                    operator: Contains
+                    entityValue: vm
+                  - filterType: customAttributes
+                    entityName: Agent Status
+                    operator: Equals
+                    entityValue: Down
+              type: ALGORITHM
+              algorithmCorrelation:
+                alertsTimeWindow: 20
+                matchingConditions:
+                  - property: subject
+                    matchType: Identical
+                  - property: alert_metric
+                    matchType: Nearly Identical
+                primaryAlertSubject: Agent down on parked VMwares
+          create-w-co_occ-corr:
+            value:
+              name: Server-SJ Alerts
+              filterCriteria:
+                filterBased: true
+                matchingType: ALL
+                rules:
+                  - filterType: nativeAttributes
+                    entityName: host_name
+                    operator: Contains
+                    entityValue: Logix
+                  - filterType: customAttributes
+                    entityName: agent_status
+                    operator: Equals
+                    entityValue: up
+              type: CO_OCCURRENCE
+          create-w-ip-filter:
+            value:
+              name: Server-SJ Alerts
+              type: ALGORITHM
+              filterCriteria:
+                filterBased: true
+                matchingType: ALL
+                rules:
+                  - filterType: nativeAttributes
+                    entityName: ip_address
+                    ipMatchingConditions:
+                      ipAddressMatchType: Within Range
+                      ipAddress: 192.168.5.130
+                      netmask: 255.255.255.192
+              algorithmCorrelation:
+                alertsTimeWindow: 20
+                matchingConditions:
+                  - property: host_name
+                    matchType: Identical
+                primaryAlertSubject: IP policy api demo
+          create-client-scope-w-algo-all-org-match:
+            value:
+              name: test_algorithm_correlation_ap
+              organizationMatchingType: ALL
+              filterCriteria:
+                filterBased: true
+                matchingType: ALL
+                rules:
+                  - filterType: nativeAttributes
+                    entityName: host_name
+                    operator: Contains
+                    entityValue: vm
+                  - filterType: customAttributes
+                    entityName: test_custom_attribute
+                    operator: Not Contains
+                    entityValue: a
+              type: ALGORITHM
+              algorithmCorrelation:
+                alertsTimeWindow: 20
+                matchingConditions:
+                  - property: subject
+                    matchType: Identical
+                  - property: alert_metric
+                    matchType: Identical
+                primaryAlertSubject: subject-alertMetric policy
+          create-client-scope-w-algo-incl-org-match:
+            value:
+              name: test_algorithm_correlation_ap
+              organizationMatchingType: INCLUDE
+              includedClients:
+                - client_8
+                - client_9
+              filterCriteria:
+                filterBased: true
+                matchingType: ALL
+                rules:
+                  - filterType: nativeAttributes
+                    entityName: host_name
+                    operator: Contains
+                    entityValue: vm
+                  - filterType: customAttributes
+                    entityName: test_custom_attribute
+                    operator: Not Contains
+                    entityValue: a
+              type: ALGORITHM
+              algorithmCorrelation:
+                alertsTimeWindow: 20
+                matchingConditions:
+                  - property: subject
+                    matchType: Identical
+                  - property: alert_metric
+                    matchType: Identical
+                primaryAlertSubject: subject-alertMetric policy
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

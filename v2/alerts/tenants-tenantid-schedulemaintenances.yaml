@@ -1,0 +1,304 @@
+summary: Create schedule
+description: This endpoint is used to create a daily recurring schedule.
+post:
+  tags:
+    - alerts
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: |
+                Schedule name.
+            description:
+              type: string
+              description: |
+                Schedule description.
+            runRBA:
+              description: |
+                (Optional) Set runRBA=true to run RBA scripts; otherwise, set to false.
+              type: boolean
+            installPatch:
+              description: |
+                (Optional) Set installPatch=true to install patch; otherwise, set to false.
+              type: boolean
+            devices:
+              type: array
+              description: Details of resources which should be added to schedule maintenance window. No more than 100 resources can be added to a schedule maintenance window.
+              items:
+                type: object
+                properties:
+                  hostName:
+                    type: string
+                  uniqueId:
+                    type: string
+            locations:
+              type: array
+              description: |
+                Details of resources which should be added to schedule maintenance window. No more than 100 resources can be added to a schedule maintenance window.
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+            deviceGroups:
+              type: array
+              description: |
+                Details of resources which should be added to schedule maintenance window. No more than 100 resources can be added to a schedule maintenance window.
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  id:
+                    type: string
+            schedule:
+              type: object
+              description: |
+                Schedule details:
+              properties:
+                type:
+                  type: string
+                  description: |
+                    Schedule type.
+                startTime:
+                  type: string
+                  description: |
+                    Time at which the schedule activity should begin.
+                endTime:
+                  type: string
+                  description: |
+                    Time at which the schedule activity should end.
+                timezone:
+                  type: string
+                  description: |-
+                    Timezone in which the schedule should operate. (The list of timezones are shown below.)
+                    Example: "timezone": "America/Puerto_Rico"
+                pattern:
+                  type: object
+                  description: |
+                    Schedule pattern:
+                  properties:
+                    type:
+                      type: string
+                      description: |
+                        Pattern type.
+                    weekDays:
+                      type: string
+                      description: 'Weekday pattern with these values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday.'
+                      enum:
+                        - Sunday
+                        - Monday
+                        - Tuesday
+                        - Wednesday
+                        - Thursday
+                        - Friday
+                        - Saturday
+                    dayOfMonth:
+                      type: integer
+                      minimum: 1
+                      maximum: 31
+                    weekIndex:
+                      type: string
+                      enum:
+                        - First
+                        - Second
+                        - Third
+                        - Fourth
+                        - Fifth
+                        - Last
+                    dayOfWeek:
+                      type: string
+                      enum:
+                        - Sunday
+                        - Monday
+                        - Tuesday
+                        - Wednesday
+                        - Thursday
+                        - Friday
+                        - Saturday
+                    dayFrequency:
+                      type: string
+            endBy:
+              type: string
+              description: |-
+                (Optional) Maintenance ending schedule.
+                1. For a recurring schedule maintenance to be perpetual, provide endBy: NEVER. In this case, time specified in the field endTime is the scheduled end time. (The date is *not* considered by the API.) To assign a schedule maintenance to run on alternate days, it starts at 8 AM and ends at 5:30 PM. Maintenance is to be set as a repetitive process that never ends. The values provided are:
+                ```
+                "schedule": {
+                    "type": "Recurring",
+                    "startTime": "2018-05-28T08:00:00+0000",
+                    "endTime": "2018-10-29T17:30:00+0000",
+                    "timezone": "America/Puerto_Rico",
+                    "pattern":
+                        "type": "daily",
+                        "dayFrequency": "everyday"
+                        "repeatFrequency": 1
+                        "endBy": "Never"
+                    }
+                }
+                ```
+                2. For a  recurring schedule maintenance to end at a specific time period, provide the end date and time in the field endTime. Example: "2016-05-29T18:55:27+0000"
+            runEscalationAction:
+              type: boolean
+              description: |
+                (Optional) Provide runEscalationAction: true to escalate maintenance alerts after schedule maintenance is completed. If no value is provided, the default value is true.
+            alertConditions:
+              type: object
+              description: |-
+                (Optional) For specific alerts to be triggered as maintenance alerts, configure the below alert conditions. Alerts that do match with the below conditions are triggered as monitoring alerts:
+                1. Alert conditions should match ALL or ANY of the rules.
+                2. Conditions for filter alerts:
+                    1. Unique attribute of alert.
+                    2. Logical operators to filter alertsSupported values: Equals, NotEquals, Equals, NotEquals, Startswith, Endswith, Regex. See Regular Expressions to filter alerts with operator Regex.
+                    3. Unique data of alert.
+                Example: Cloud Controller Discovery
+              properties:
+                matchingType:
+                  type: string
+                rules:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      operator:
+                        type: string
+                      value:
+                        type: string
+        examples:
+          example-weekly-recurring:
+            value:
+              name: Recurring-weeklyschedule
+              description: Recurring-weeklyschedule
+              runRBA: 'false'
+              installPatch: 'false'
+              devices:
+                - hostName: Device_1
+                - uniqueId: 90491678-096c-4223-9867-f31c37ff09da
+              deviceGroups:
+                - name: DG-1
+                - id: '11'
+              locations:
+                - name: LOC-1
+                - id: '12'
+              schedule:
+                type: Recurring
+                startTime: '2015-05-28T10:55:27+0000'
+                endTime: '2015-05-29T18:55:27+0000'
+                timezone: America/Puerto_Rico
+                pattern:
+                  type: weekly
+                  weekDays: 'Wednesday,Thursday'
+          example-one-time:
+            value:
+              name: Onetimeschedule
+              description: Onetimeschedule
+              runRBA: 'false'
+              installPatch: 'false'
+              devices:
+                - hostName: device-1
+                - uniqueId: 90491678-096c-4223-9867-f31c37ff09da
+              deviceGroups:
+                - name: DG-1
+                - id: '11'
+              locations:
+                - name: LOC-1
+                - id: '12'
+              schedule:
+                type: One-Time
+                startTime: '2015-05-28T10:55:27+0000'
+                endTime: '2016-05-29T18:55:27+0000'
+                timezone: America/New_York
+          example-monthly-recurring-dayOfMonth:
+            value:
+              name: Recurring-monthly-1schedule
+              description: Recurring-monthly-1schedule
+              runRBA: 'false'
+              installPatch: 'false'
+              devices:
+                - hostName: Device_4
+                - uniqueId: 90491678-096c-4223-9867-f31c37ff09da
+              deviceGroups:
+                - name: DG-1
+                - id: '11'
+              locations:
+                - name: LOC-1
+                - id: '12'
+              schedule:
+                type: Recurring
+                startTime: '2015-05-28T10:55:27+0000'
+                endTime: '2015-05-29T18:55:27+0000'
+                timezone: America/Puerto_Rico
+                pattern:
+                  type: monthly
+                  dayOfMonth: '14'
+          example-monthly-recurring-dayOfWeek:
+            value:
+              name: Recurring-monthly-2schedule
+              description: Recurring-monthly-2schedule
+              runRBA: 'false'
+              installPatch: 'false'
+              devices:
+                - hostName: Device_2
+                - id: '10'
+              deviceGroups:
+                - name: DG-1
+                - id: '11'
+              locations:
+                - name: LOC-1
+                - id: '12'
+              schedule:
+                type: Recurring
+                startTime: '2015-05-28T10:55:27+0000'
+                endTime: '2015-05-29T18:55:27+0000'
+                timezone: America/Los_Angeles
+                pattern:
+                  type: monthly
+                  weekIndex: Third
+                  dayOfWeek: Thursday
+          example-daily-recurring:
+            value:
+              name: Recurring-dailyeverydayschedule
+              description: Recurring-dailyeverydayschedule
+              runRBA: 'false'
+              installPatch: 'false'
+              devices:
+                - hostName: Device_1
+                - uniqueId: 90491678-096c-4223-9867-f31c37ff09da
+              deviceGroups:
+                - name: DG-1
+                - id: '11'
+              locations:
+                - name: LOC-1
+                - id: '12'
+              schedule:
+                type: Recurring
+                startTime: '2015-05-28T10:55:27+0000'
+                endTime: '2015-05-29T18:55:27+0000'
+                timezone: America/Puerto_Rico
+                pattern:
+                  type: daily
+                  dayFrequency: every weekday
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              uniqueId:
+                type: string
+          examples:
+            example-1:
+              value:
+                uniqueId: SM-d21b6b44-c85a-426c-9963-0e977070ce98
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

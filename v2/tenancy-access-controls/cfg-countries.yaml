@@ -1,0 +1,50 @@
+summary: Get countries
+description: This endpoint is used to retrieve the list of countries based on country code.
+get:
+  tags:
+    - tenancy-access-controls
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                code:
+                  type: string
+                name:
+                  type: string
+          examples:
+            example-1:
+              value:
+                - code: AFG
+                  name: Afghanistan
+                - code: ALB
+                  name: Albania
+                - code: IND
+                  name: India
+                - code: TGO
+                  name: Togo
+                - code: TUR
+                  name: Turkey
+                - code: ARE
+                  name: United Arab Emirates
+                - code: GBR
+                  name: United Kingdom
+                - code: USA
+                  name: United States
+                - code: UMI
+                  name: United States Minor Outlying Islands
+                - code: VNM
+                  name: Vietnam
+                - code: VGB
+                  name: 'Virgin Islands, British'
+                - code: VIR
+                  name: 'Virgin Islands, U.S.'
+                - code: ZMB
+                  name: Zambia
+                - code: ZWE
+                  name: Zimbabwe

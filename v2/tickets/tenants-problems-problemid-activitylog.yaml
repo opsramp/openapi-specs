@@ -1,0 +1,152 @@
+summary: Get activity log of a problem
+description: |-
+  This endpoint is used to retrieve user activities on a problem.
+
+  ## Notes
+  - (+) represents the next field and must be URL-encoded.
+  - Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+get:
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: './components.yaml#/components/schemas/activity'
+              totalResults:
+                type: integer
+              pageSize:
+                type: integer
+              nextPage:
+                type: boolean
+              startDate:
+                type: string
+                format: date-time
+              endDate:
+                type: string
+                format: date-time
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - activity: Problem '#PRB0000001112 Issue with Device Status' updated by James
+                    htmlLog:
+                      - <div class='ActivityLogDetails'><p class='AttributeName' >isKnownIssue changed from No to Yes</p><p class='AttributeName' >workaround changed to work around</p></div>
+                    createdTime: '2018-11-01T06:19:01+0000'
+                    logType: TICKET
+                    createdBy:
+                      loginName: James.Blake
+                      lastName: Blake
+                      firstName: James
+                      email: james.blake@myorganization.com
+                      phoneNumber: 800 123-1234
+                    changeLog:
+                      - attribute: isKnownIssue
+                        oldValue: 'No'
+                        newValue: 'Yes'
+                      - attribute: workaround
+                        oldValue: ''
+                        newValue: work around
+                  - activity: Problem '#PRB0000001112 Issue with Device Status' updated by James
+                    htmlLog:
+                      - <div class='ActivityLogDetails'><p class='AttributeName' >Priority changed from Low to Normal</p><p class='AttributeName' >rootCause changed to root cause</p></div>
+                    createdTime: '2018-11-01T06:18:50+0000'
+                    logType: TICKET
+                    createdBy:
+                      loginName: James.Blake
+                      lastName: Blake
+                      firstName: James
+                      email: james.blake@myorganization.com
+                      phoneNumber: 800 123-1234
+                    changeLog:
+                      - attribute: Priority
+                        oldValue: Low
+                        newValue: Normal
+                      - attribute: rootCause
+                        oldValue: ''
+                        newValue: root cause
+                  - activity: Problem '#PRB0000001112 Issue with Device Status'updated by James
+                    htmlLog:
+                      - <div class='ActivityLogDetails'><p class='AttributeName' >Assignee changed to John.Smith</p><p class='AttributeName' >Assignee Group changed to Windows Support Team</p></div>
+                    createdTime: '2018-11-01T06:18:38+0000'
+                    logType: TICKET
+                    createdBy:
+                      loginName: James.Blake
+                      lastName: Blake
+                      firstName: James
+                      email: james.blake@myorganization.com
+                      phoneNumber: 800 123-1234
+                    changeLog:
+                      - attribute: Assignee
+                        oldValue: ''
+                        newValue: John.Smith
+                      - attribute: Assignee Group
+                        oldValue: ''
+                        newValue: Windows Support Team
+                  - activity: Problem '#PRB0000001112 Issue with Device Status' updated by James
+                    htmlLog:
+                      - <div class='ActivityLogDetails'><p class='AttributeName' > New response 'Device status shows Unavailable' added.</p></div>
+                    createdTime: '2018-11-01T06:18:22+0000'
+                    logType: TICKET
+                    createdBy:
+                      loginName: James.Blake
+                      lastName: Blake
+                      firstName: James
+                      email: james.blake@myorganization.com
+                      phoneNumber: 800 123-1234
+                  - activity: New Problem '#PRB0000001112 Issue with Device Status' created by James
+                    createdTime: '2018-11-01T06:17:28+0000'
+                    logType: TICKET
+                    createdBy:
+                      loginName: James.Blake
+                      lastName: Blake
+                      firstName: James
+                      email: james.blake@myorganization.com
+                      phoneNumber: 800 123-12344444
+                totalResults: 5
+                pageSize: 5
+                nextPage: false
+                startDate: '2018-10-29T12:26:27+0000'
+                endDate: '2018-11-02T12:26:27+0000'
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: string
+        default: "Ticket created time\t"
+      in: query
+      name: startTs
+      description: "To fetch activities performed on a problem within a certain duration, provide the start time and end time. startTs indicates the from date and time.\n\t\nExample: 2018-08-10T05:39:51 0000"
+    - schema:
+        type: string
+        default: Current time
+      in: query
+      name: endTs
+      description: |-
+        endTs indicates the to date and time.
+
+        Example: 2018-08-25T10:20:15 0000
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+      description: |
+        To list the data in a descending order (high to low), provide isDescendingOrder: true, otherwise provide false. By default, data is listed in descending order.
+
+        Example: To arrange data from 30th Oct to 1st Oct, provide isDescendingOrder: true
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: problemId
+    required: true

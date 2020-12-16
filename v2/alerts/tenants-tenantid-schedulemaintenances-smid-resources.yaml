@@ -1,0 +1,124 @@
+summary: Manage resources of schedule maintenance windows
+description: This endpoint is used to add and delete resources to and from a schedule maintenance window.
+post:
+  description: |-
+    This endpoint is used to add resources to a scheduled maintenance window.
+
+    ## Notes
+    - Resources can only be added to Active, Pending, or Suspended scheduled maintenance windows.
+    - To search for scheduled maintenance windows on the basis of status, use the search schedule maintenance API.
+    - Entities can be added such as resource, device group, location to a schedule maintenance window. For example, all resource types such as Server, Storage, Volumes, RedShift, RDS or Lambda services are now supported.
+    - User can add up to 100 resources (device, device group, location) to a schedule maintenance window.
+  tags:
+    - alerts
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            devices:
+              type: array
+              items:
+                type: object
+                properties:
+                  hostName:
+                    type: string
+                  uniqueId:
+                    type: string
+            locations:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+            deviceGroups:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  id:
+                    type: string
+        examples:
+          example-1:
+            value:
+              devices:
+                - hostName: device-1
+                - uniqueId: 90491678-096c-4223-9867-f31c37ff09da
+              deviceGroups:
+                - name: Network Group
+                - id: DGP-a20e13ad-e98f-416e-a9dd-40158ffdb2af
+              locations:
+                - name: West Virginia
+                - id: '12'
+  responses:
+    '200':
+      description: OK
+delete:
+  description: |-
+    This endpoint is used to remove resources from a scheduled maintenance window.
+
+    ## Notes
+    - Resources can only be removed from Active, Pending, or Suspended scheduled maintenance windows.
+  tags:
+    - alerts
+  responses:
+    '200':
+      description: OK
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            devices:
+              type: array
+              items:
+                type: object
+                properties:
+                  hostName:
+                    type: string
+                  uniqueId:
+                    type: string
+            locations:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+            deviceGroups:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  id:
+                    type: string
+        examples:
+          example-1:
+            value:
+              devices:
+                - hostName: device-1
+                - uniqueId: 90491678-096c-4223-9867-f31c37ff09da
+              deviceGroups:
+                - name: Network Group
+                - id: DGP-a20e13ad-e98f-416e-a9dd-40158ffdb2af
+              locations:
+                - name: West Virginia
+                - id: '12'
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: smId
+    required: true

@@ -1,0 +1,262 @@
+summary: Manage installed integration mappings
+description: |
+  This endpoint is used to create, update, and retrieve the mapping attributes of an installed integration.
+
+  This attribute mapping is not applicable for email integrations.
+post:
+  tags:
+    - integrations
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            inboundConfig:
+              $ref: './components.yaml#/components/schemas/mapAttributes'
+            outboundConfig:
+              $ref: './components.yaml#/components/schemas/mapAttributes'
+        examples:
+          example-inbound:
+            value:
+              inboundConfig:
+                mapAttributes:
+                  - name: Status
+                    thirdPartyAttrName: Status
+                    entityType: SERVICEREQUEST
+                    thirdPartyEntityType: SRQ
+                    attrValues:
+                      - attrValue: Open
+                        thirdPartyAttrValue: In Progress
+                      - attrValue: Closed
+                        thirdPartyAttrValue: Completed
+                      - attrValue: New
+                        thirdPartyAttrValue: New
+                      - attrValue: On Hold
+                        thirdPartyAttrValue: Delay
+                      - attrValue: Pending
+                        thirdPartyAttrValue: In Line
+                      - attrValue: Resolved
+                        thirdPartyAttrValue: Fixed
+                  - name: Priority
+                    thirdPartyAttrName: severity
+                    entityType: SERVICEREQUEST
+                    thirdPartyEntityType: SRQ
+                    attrValues:
+                      - attrValue: High
+                        thirdPartyAttrValue: Important
+                      - attrValue: Low
+                        thirdPartyAttrValue: Minor
+                      - attrValue: Normal
+                        thirdPartyAttrValue: Major
+                      - attrValue: Urgent
+                        thirdPartyAttrValue: V. Important
+                      - attrValue: Very Low
+                        thirdPartyAttrValue: Low
+          example-outbound:
+            value:
+              outboundConfig:
+                mapAttributes:
+                  - name: Status
+                    thirdPartyAttrName: Status
+                    entityType: SERVICEREQUEST
+                    thirdPartyEntityType: SRQ
+                    attrValues:
+                      - attrValue: Open
+                        thirdPartyAttrValue: In Progress
+                      - attrValue: Closed
+                        thirdPartyAttrValue: Completed
+                      - attrValue: New
+                        thirdPartyAttrValue: New
+                      - attrValue: On Hold
+                        thirdPartyAttrValue: Delay
+                      - attrValue: Pending
+                        thirdPartyAttrValue: In Line
+                      - attrValue: Resolved
+                        thirdPartyAttrValue: Fixed
+                  - name: Priority
+                    thirdPartyAttrName: severity
+                    entityType: SERVICEREQUEST
+                    thirdPartyEntityType: SRQ
+                    attrValues:
+                      - attrValue: High
+                        thirdPartyAttrValue: Important
+                      - attrValue: Low
+                        thirdPartyAttrValue: Minor
+                      - attrValue: Normal
+                        thirdPartyAttrValue: Major
+                      - attrValue: Urgent
+                        thirdPartyAttrValue: V. Important
+                      - attrValue: Very Low
+                        thirdPartyAttrValue: Low
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: './components.yaml#/components/schemas/mapAttributes'
+          examples:
+            example-inbound:
+              value:
+                - name: Status
+                  attrName: serviceRequest.status.name
+                  thirdPartyAttrName: Status
+                  entityType: SERVICEREQUEST
+                  thirdPartyEntityType: SRQ
+                  attrValues:
+                    - attrValue: Open
+                      thirdPartyAttrValue: In Progress
+                    - attrValue: Closed
+                      thirdPartyAttrValue: Completed
+                    - attrValue: New
+                      thirdPartyAttrValue: New
+                    - attrValue: On Hold
+                      thirdPartyAttrValue: Delay
+                    - attrValue: Pending
+                      thirdPartyAttrValue: In Line
+                    - attrValue: Resolved
+                      thirdPartyAttrValue: Fixed
+                - name: Priority
+                  attrName: serviceRequest.priority.name
+                  thirdPartyAttrName: severity
+                  entityType: SERVICEREQUEST
+                  thirdPartyEntityType: SRQ
+                  attrValues:
+                    - attrValue: High
+                      thirdPartyAttrValue: Important
+                    - attrValue: Low
+                      thirdPartyAttrValue: Minor
+                    - attrValue: Normal
+                      thirdPartyAttrValue: Major
+                    - attrValue: Urgent
+                      thirdPartyAttrValue: V. Important
+                    - attrValue: Very Low
+                      thirdPartyAttrValue: Low
+            example-outbound:
+              value:
+                - name: Status
+                  attrName: serviceRequest.status.name
+                  thirdPartyAttrName: Status
+                  entityType: SERVICEREQUEST
+                  thirdPartyEntityType: SRQ
+                  attrValues:
+                    - attrValue: Open
+                      thirdPartyAttrValue: In Progress
+                    - attrValue: Closed
+                      thirdPartyAttrValue: Completed
+                    - attrValue: New
+                      thirdPartyAttrValue: New
+                    - attrValue: On Hold
+                      thirdPartyAttrValue: Delay
+                    - attrValue: Pending
+                      thirdPartyAttrValue: In Line
+                    - attrValue: Resolved
+                      thirdPartyAttrValue: Fixed
+                - name: Priority
+                  attrName: serviceRequest.priority.name
+                  thirdPartyAttrName: severity
+                  entityType: SERVICEREQUEST
+                  thirdPartyEntityType: SRQ
+                  attrValues:
+                    - attrValue: High
+                      thirdPartyAttrValue: Important
+                    - attrValue: Low
+                      thirdPartyAttrValue: Minor
+                    - attrValue: Normal
+                      thirdPartyAttrValue: Major
+                    - attrValue: Urgent
+                      thirdPartyAttrValue: V. Important
+                    - attrValue: Very Low
+                      thirdPartyAttrValue: Low
+get:
+  tags:
+    - integrations
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: './components.yaml#/components/schemas/mapAttributes'
+          examples:
+            example-entity:
+              value:
+                - name: Assignee group name
+                  attrName: incident.assigneeGroup.name
+                  thirdPartyAttrName: group.name
+                  entityType: INCIDENT
+                  thirdPartyEntityType: INCIDENTS
+                  mode: OUTBOUND
+                  attrValues:
+                    - attrValue: Brocade Inc Users
+                      thirdPartyAttrValue: brcIncOB
+                - name: Status
+                  attrName: incident.status.name
+                  thirdPartyAttrName: State
+                  entityType: INCIDENT
+                  thirdPartyEntityType: INCIDENTS
+                  mode: OUTBOUND
+                  attrValues:
+                    - attrValue: Closed
+                      thirdPartyAttrValue: Completed
+                - name: Priority
+                  attrName: incident.priority.name
+                  thirdPartyAttrName: Level of Importance
+                  entityType: INCIDENT
+                  thirdPartyEntityType: INCIDENTS
+                  mode: OUTBOUND
+                  attrValues:
+                    - attrValue: Very Low
+                      thirdPartyAttrValue: Low
+                - name: Priority
+                  attrName: incident.priority.name
+                  thirdPartyAttrName: priority
+                  entityType: INCIDENT
+                  thirdPartyEntityType: INCIDENTS
+                  mode: INBOUND
+                  attrValues:
+                    - attrValue: Very Low
+                      thirdPartyAttrValue: Low
+            example-entity-with-mode:
+              value:
+                - name: Status
+                  attrName: serviceRequest.status.name
+                  thirdPartyAttrName: state
+                  entityType: SERVICEREQUEST
+                  thirdPartyEntityType: SERVICEREQUESTS
+                  mode: OUTBOUND
+                  attrValues:
+                    - attrValue: Closed
+                      thirdPartyAttrValue: Completed
+                - name: Priority
+                  attrName: serviceRequest.priority.name
+                  thirdPartyAttrName: Preference
+                  entityType: SERVICEREQUEST
+                  thirdPartyEntityType: SERVICEREQUESTS
+                  mode: OUTBOUND
+                  attrValues:
+                    - attrValue: Very Low
+                      thirdPartyAttrValue: Low
+            example-entity-with-attribute-and mode:
+              value:
+                - name: Status
+                  attrName: incident.status.name
+                  thirdPartyAttrName: state
+                  entityType: INCIDENT
+                  thirdPartyEntityType: INCIDENTS
+                  mode: INBOUND
+                  attrValues:
+                    - attrValue: Closed
+                      thirdPartyAttrValue: Completed
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: installedIntgId
+    required: true

@@ -1,0 +1,70 @@
+summary: Add response to task
+description: |-
+  This endpoint is used to add a response to a task.
+
+  >## Notes
+  >- For attachments, files must be converted to bytes stream with base64-encoding.
+  >- The default creator (OpsRamp API User) uses id and loginName to change default settings.
+  >- Make default submission status of a pending request as open, the status of the incident which is in Pending status will change to Open status.
+  >- The maximum file attachment size is 50MB.
+post:
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/incidentResponse'
+          examples:
+            example-1:
+              value:
+                creator:
+                  id: USR0000002146
+                  loginName: FSSL-API-Lab-User-1
+                  lastName: API-Lab
+                  firstName: FSSL
+                  email: fssl.user@gmail.com
+                createdDate: '2016-03-29T08:53:48+0000'
+                attachments:
+                  - id: 90
+                    name: file-1.txt
+                    createdDate: '2016-03-29T08:53:48+0000'
+                    contentURL: 'https://<api-url>/api/v2/tenants/client_7/tasks/TASK0000001109/responses/1896/resources/90'
+                  - id: 91
+                    name: file-2.txt
+                    createdDate: '2016-03-29T08:53:48+0000'
+                    contentURL: 'https://<api-url>/api/v2/tenants/client_7/tasks/TASK0000001109/responses/1896/resources/91'
+                hasAttachments: true
+                tags: 'API,Task'
+                timeSpent: 120
+                internal: false
+                description: Task Attachment
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/incidentResponse'
+        examples:
+          example-1:
+            value:
+              description: Task Attachment
+              tags: 'API, Task'
+              timeSpent: 120
+              internal: false
+              creator:
+                id: USR0000002146
+                loginName: FSSL-API-Lab-User-1
+              attachments:
+                - name: file-1.txt
+                  file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+                - name: file-2.txt
+                  file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: taskId
+    required: true

@@ -1,0 +1,590 @@
+summary: Manage role
+description: This endpoint is used to update, retrieve, and delete roles.
+delete:
+  summary: Delete role
+  description: This endpoint is used to delete a role.
+  tags:
+    - tenancy-access-controls
+  responses:
+    '200':
+      description: OK
+get:
+  summary: Get role
+  description: This endpoint is used to retrieve the details of a role.
+  tags:
+    - tenancy-access-controls
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/role'
+          examples:
+            example-1:
+              value:
+                uniqueId: ROLE-0074b24b-5c0b-2332-dd99-fea506f6cebd
+                name: Primary Admin
+                description: Parnter Primary Admin
+                clients:
+                  - uniqueId: client_9
+                    name: LeoArt Corp.
+                    activated: true
+                  - uniqueId: client_8
+                    name: LeoArt Lab
+                    activated: true
+                users:
+                  - id: USR0000000011
+                    loginName: LeoArtInc@opsramp.com
+                    lastName: Inc Admin
+                    firstName: LeoArt
+                    email: john.smith@gamil.com
+                    phoneNumber: '8096250653'
+                  - id: USR0000000013
+                    loginName: LeoArtPAdmin@opsramp.com
+                    lastName: Inc PAdmin
+                    firstName: LeoArt
+                    email: john.smith@gamil.com
+                    phoneNumber: '8096250653'
+                userGroups:
+                  - id: 5
+                    name: LeoArt Inc Users
+                    description: LeoArt Partner Users
+                    uniqueId: USRGRP-5dd6cb59-b4cf-083a-29f6-7f6fc2688fd3
+                  - id: 6
+                    name: LeoArt Inc Escalation Users
+                    description: LeoArt Inc Escalation Users
+                    uniqueId: USRGRP-98c1733f-0429-001d-8196-54a85e15d49d
+                devices:
+                  - id: 2912ca9f-5c62-451f-82a8-8c08ca9c9447
+                    generalInfo:
+                      ipAddresses: 172.28.2.233
+                      hostName: HYDLPT159
+                      resourceType: Desktop
+                      resourceName: 172.28.2.233
+                      aliasName: res 1
+                    clientUniqueId: client_8
+                    type: DEVICE
+                  - id: d628b4f1-37ad-49de-8487-43125ec3178a
+                    generalInfo:
+                      ipAddresses: 172.28.16.15
+                      hostName: HYDLPT204
+                      resourceType: Desktop
+                      resourceName: 172.28.16.15
+                      aliasName: res 2
+                deviceGroups:
+                  - id: DGP-3bc09935-6510-4205-bb6f-6d2b9561fc43
+                    name: Dev-Group
+                    description: Device group
+                    createdDate: '2016-10-20T07:45:06+0000'
+                    updatedDate: '2016-10-20T07:45:06+0000'
+                  - id: DGP-876f73a7-c0e4-409c-a757-5c64205ff97a
+                    name: HYD-WINDOWS
+                    description: Windows Systems at HYD
+                    createdDate: '2016-07-24T07:27:44+0000'
+                    updatedDate: '2016-07-24T07:33:15+0000'
+                  - id: DGP-fbbabccc-578b-4658-9475-178ab034c20b
+                    name: Testing-dev-group
+                    description: testing device group
+                    createdDate: '2016-10-20T07:43:48+0000'
+                    updatedDate: '2016-10-20T07:43:49+0000'
+                credentialSets:
+                  - uniqueId: mmtKsSTyXYqtEtrRMRSmWjAh
+                    name: Agent-WMI-Discovery
+                    secure: false
+                    port: 0
+                    snmpVersion: V2
+                    description: Discovery credentials
+                    autoEnableMode: false
+                    universal: true
+                    spSecure: false
+                    spPort: 0
+                    timeoutMs: 10000
+                  - uniqueId: EAmBeuHhCY5hrCvHVejrccJj
+                    name: AWS AWS Integration
+                    secure: false
+                    port: 0
+                    snmpVersion: V2
+                    autoEnableMode: false
+                    universal: true
+                    spSecure: false
+                    spPort: 0
+                    timeoutMs: 0
+                permissions:
+                  - id: 13
+                    name: Dispatcher
+                    description: Dispatcher
+                  - id: 7
+                    name: Auditor Manage
+                    description: Auditor Manage
+                  - id: 8
+                    name: Auditor View
+                    description: Auditor View
+post:
+  summary: Update roles
+  description: This endpoint is used to update the details of a role.
+  tags:
+    - tenancy-access-controls
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/role'
+          examples:
+            example-msp-all-client-visibility:
+              value:
+                uniqueId: ROLE-0074b24b-5c0b-2332-dd99-fea506f6cebd
+                name: Network Admin
+                description: Client Network Administrator
+                defaultRole: false
+                allClients: true
+                users:
+                  - id: USR0000000011
+                    loginName: NECEInc@opsramp.com
+                    lastName: Inc Admin
+                    firstName: NECE
+                    email: john.smith@gamil.com
+                    phoneNumber: '8096250653'
+                  - id: USR0000000013
+                    loginName: NECEPAdmin@opsramp.com
+                    lastName: Inc PAdmin
+                    firstName: NECE
+                    email: john.smith@gamil.com
+                    phoneNumber: '8096250653'
+                userGroups:
+                  - name: NECE Inc Users
+                    description: NECE Partner Users
+                    uniqueId: USRGRP-5dd6cb59-b4cf-083a-29f6-7f6fc2688fd3
+                  - name: NECE Inc Escalation Users
+                    description: NECE Inc Escalation Users
+                    uniqueId: USRGRP-98c1733f-0429-001d-8196-54a85e15d49d
+                devices:
+                  - id: 43d49023-4c47-4dbf-a59b-9c40610e1ab8
+                    generalInfo:
+                      ipAddresses: 172.24.102.169
+                      hostName: HYDLPT044
+                    clientUniqueId: client_8
+                    type: DEVICE
+                  - id: ec9ac14c-c566-41da-8b61-1452357b6506
+                    generalInfo:
+                      ipAddresses: 172.30.143.112
+                      hostName: 172.30.143.112
+                    clientUniqueId: client_9
+                    type: DEVICE
+                deviceGroups:
+                  - id: DGP-fbbabccc-578b-4658-9475-178ab034c20b
+                    name: Testing-dev-group
+                    description: testing device group
+                    createdDate: '2016-10-20T07:43:48+0000'
+                    updatedDate: '2016-10-20T07:43:49+0000'
+                  - id: DGP-3cac84fa-1613-4035-ac23-e44c0a450a9c
+                    name: Up Agent Devices
+                    description: These are the main devices those always needs to be in up state.
+                    createdDate: '2016-12-03T17:43:05+0000'
+                    updatedDate: '2016-12-05T16:00:46+0000'
+                credentialSets:
+                  - uniqueId: GxGJJk65Vr6mGUTx8uGBgMNx
+                    name: SSH
+                    secure: false
+                    port: 222
+                    snmpVersion: V2
+                    description: SSH Credentials
+                    autoEnableMode: false
+                    universal: true
+                    spSecure: false
+                    spPort: 0
+                    timeoutMs: 10000
+                  - uniqueId: y9rxRm4sMP6u5sWRKMqUu6cz
+                    name: SSH Credential for Device Loggings
+                    secure: false
+                    port: 22
+                    snmpVersion: V2
+                    description: SSH Credential for Device Loggings
+                    autoEnableMode: false
+                    universal: true
+                    spSecure: false
+                    spPort: 0
+                    timeoutMs: 10000
+                permissions:
+                  - id: 11
+                    name: Partner Administrator
+                    description: Partner Administrator
+                  - id: 13
+                    name: Dispatcher
+                    description: Dispatcher
+            example-msp-specific-client-visibility:
+              value:
+                uniqueId: ROLE-0074b24b-5c0b-2332-dd99-fea506f6cebd
+                name: Primary Admin
+                description: Parnter Primary Admin
+                clients:
+                  - uniqueId: client_9
+                    name: LeoArt Corp.
+                    activated: true
+                  - uniqueId: client_8
+                    name: LeoArt Lab
+                    activated: true
+                users:
+                  - id: USR0000000011
+                    loginName: LeoArtInc@opsramp.com
+                    lastName: Inc Admin
+                    firstName: LeoArt
+                    email: john.smith@gamil.com
+                    phoneNumber: '8096250653'
+                  - id: USR0000000013
+                    loginName: LeoArtPAdmin@opsramp.com
+                    lastName: Inc PAdmin
+                    firstName: LeoArt
+                    email: john.smith@gamil.com
+                    phoneNumber: '8096250653'
+                userGroups:
+                  - id: 5
+                    name: LeoArt Inc Users
+                    description: LeoArt Partner Users
+                    uniqueId: USRGRP-5dd6cb59-b4cf-083a-29f6-7f6fc2688fd3
+                  - id: 6
+                    name: LeoArt Inc Escalation Users
+                    description: LeoArt Inc Escalation Users
+                    uniqueId: USRGRP-98c1733f-0429-001d-8196-54a85e15d49d
+                devices:
+                  - id: 2912ca9f-5c62-451f-82a8-8c08ca9c9447
+                    generalInfo:
+                      ipAddresses: 172.28.2.233
+                      hostName: HYDLPT159
+                    clientUniqueId: client_8
+                    type: DEVICE
+                  - id: d628b4f1-37ad-49de-8487-43125ec3178a
+                    generalInfo:
+                      ipAddresses: 172.28.16.15
+                      hostName: HYDLPT204
+                    clientUniqueId: client_8
+                    type: DEVICE
+                  - id: cef92862-2f57-4065-8756-5cb8001d7282
+                    generalInfo:
+                      ipAddresses: 172.24.221.214
+                      hostName: HYDLPT223
+                    clientUniqueId: client_9
+                    type: DEVICE
+                  - id: f5e00639-7fd7-482f-a3e1-8a05edf28abb
+                    generalInfo:
+                      ipAddresses: 169.254.174.112
+                      hostName: HYDLPT420
+                    clientUniqueId: client_9
+                    type: DEVICE
+                deviceGroups:
+                  - id: DGP-3bc09935-6510-4205-bb6f-6d2b9561fc43
+                    name: Dev-Group
+                    description: Device group
+                    createdDate: '2016-10-20T07:45:06+0000'
+                    updatedDate: '2016-10-20T07:45:06+0000'
+                  - id: DGP-876f73a7-c0e4-409c-a757-5c64205ff97a
+                    name: HYD-WINDOWS
+                    description: Windows Systems at HYD
+                    createdDate: '2016-07-24T07:27:44+0000'
+                    updatedDate: '2016-07-24T07:33:15+0000'
+                  - id: DGP-fbbabccc-578b-4658-9475-178ab034c20b
+                    name: Testing-dev-group
+                    description: testing device group
+                    createdDate: '2016-10-20T07:43:48+0000'
+                    updatedDate: '2016-10-20T07:43:49+0000'
+                credentialSets:
+                  - uniqueId: mmtKsSTyXYqtEtrRMRSmWjAh
+                    name: Agent-WMI-Discovery
+                    secure: false
+                    port: 0
+                    snmpVersion: V2
+                    description: Discovery credentials
+                    autoEnableMode: false
+                    universal: true
+                    spSecure: false
+                    spPort: 0
+                    timeoutMs: 10000
+                  - uniqueId: EAmBeuHhCY5hrCvHVejrccJj
+                    name: AWS AWS Integration
+                    secure: false
+                    port: 0
+                    snmpVersion: V2
+                    autoEnableMode: false
+                    universal: true
+                    spSecure: false
+                    spPort: 0
+                    timeoutMs: 0
+                permissions:
+                  - id: 13
+                    name: Dispatcher
+                    description: Dispatcher
+                  - id: 7
+                    name: Auditor Manage
+                    description: Auditor Manage
+                  - id: 8
+                    name: Auditor View
+                    description: Auditor View
+            example-msp-clients-users-userGroups-device-deviceGroups-credentials-permissions:
+              value:
+                uniqueId: ROLE-0074b24b-5c0b-2332-dd99-fea506f6cebd
+                name: Primary Admin
+                description: Parnter Primary Admin
+                clients:
+                  - uniqueId: client_9
+                    name: LeoArt Corp.
+                    activated: true
+                  - uniqueId: client_8
+                    name: LeoArt Lab
+                    activated: true
+                users:
+                  - id: USR0000000011
+                    loginName: LeoArtInc@opsramp.com
+                    lastName: Inc Admin
+                    firstName: LeoArt
+                    email: john.smith@gamil.com
+                    phoneNumber: '8096250653'
+                  - id: USR0000000013
+                    loginName: LeoArtPAdmin@opsramp.com
+                    lastName: Inc PAdmin
+                    firstName: LeoArt
+                    email: john.smith@gamil.com
+                    phoneNumber: '8096250653'
+                userGroups:
+                  - name: LeoArt Inc Users
+                    description: LeoArt Partner Users
+                    uniqueId: USRGRP-5dd6cb59-b4cf-083a-29f6-7f6fc2688fd3
+                  - name: LeoArt Inc Escalation Users
+                    description: LeoArt Inc Escalation Users
+                    uniqueId: USRGRP-98c1733f-0429-001d-8196-54a85e15d49d
+                devices:
+                  - id: 2912ca9f-5c62-451f-82a8-8c08ca9c9447
+                    generalInfo:
+                      ipAddresses: 172.28.2.233
+                      hostName: HYDLPT159
+                    clientUniqueId: client_8
+                    type: DEVICE
+                  - id: d628b4f1-37ad-49de-8487-43125ec3178a
+                    generalInfo:
+                      ipAddresses: 172.28.16.15
+                      hostName: HYDLPT204
+                    clientUniqueId: client_8
+                    type: DEVICE
+                  - id: cef92862-2f57-4065-8756-5cb8001d7282
+                    generalInfo:
+                      ipAddresses: 172.24.221.214
+                      hostName: HYDLPT223
+                    clientUniqueId: client_9
+                    type: DEVICE
+                  - id: f5e00639-7fd7-482f-a3e1-8a05edf28abb
+                    generalInfo:
+                      ipAddresses: 169.254.174.112
+                      hostName: HYDLPT420
+                    clientUniqueId: client_9
+                    type: DEVICE
+                deviceGroups:
+                  - id: DGP-3bc09935-6510-4205-bb6f-6d2b9561fc43
+                    name: Dev-Group
+                    description: Device group
+                    createdDate: '2016-10-20T07:45:06+0000'
+                    updatedDate: '2016-10-20T07:45:06+0000'
+                  - id: DGP-876f73a7-c0e4-409c-a757-5c64205ff97a
+                    name: HYD-WINDOWS
+                    description: Windows Systems at HYD
+                    createdDate: '2016-07-24T07:27:44+0000'
+                    updatedDate: '2016-07-24T07:33:15+0000'
+                  - id: DGP-fbbabccc-578b-4658-9475-178ab034c20b
+                    name: Testing-dev-group
+                    description: testing device group
+                    createdDate: '2016-10-20T07:43:48+0000'
+                    updatedDate: '2016-10-20T07:43:49+0000'
+                credentialSets:
+                  - uniqueId: mmtKsSTyXYqtEtrRMRSmWjAh
+                    name: Agent-WMI-Discovery
+                    secure: false
+                    port: 0
+                    snmpVersion: V2
+                    description: Discovery credentials
+                    autoEnableMode: false
+                    universal: true
+                    spSecure: false
+                    spPort: 0
+                    timeoutMs: 10000
+                  - uniqueId: EAmBeuHhCY5hrCvHVejrccJj
+                    name: AWS AWS Integration
+                    secure: false
+                    port: 0
+                    snmpVersion: V2
+                    autoEnableMode: false
+                    universal: true
+                    spSecure: false
+                    spPort: 0
+                    timeoutMs: 0
+                permissions:
+                  - id: 13
+                    name: Dispatcher
+                    description: Dispatcher
+                  - id: 7
+                    name: Auditor Manage
+                    description: Auditor Manage
+                  - id: 8
+                    name: Auditor View
+                    description: Auditor View
+            example-client-specific-users-userGroups-devices-deviceGroups-credentials-permissions:
+              value:
+                uniqueId: ROLE-0074b24b-5c0b-2332-dd99-fea506f6cebd
+                name: Client Admin
+                description: Client Primary Admin
+                users:
+                  - id: USR0000000011
+                    loginName: LeoArtInc@opsramp.com
+                    lastName: Inc Admin
+                    firstName: LeoArt
+                    email: john.smith@gamil.com
+                    phoneNumber: '8096250653'
+                  - id: USR0000000013
+                    loginName: LeoArtPAdmin@opsramp.com
+                    lastName: Inc PAdmin
+                    firstName: LeoArt
+                    email: john.smith@gamil.com
+                    phoneNumber: '8096250653'
+                userGroups:
+                  - name: LeoArt Client Users
+                    description: LeoArt Client Users
+                    uniqueId: USRGRP-5dd6cb59-b4cf-083a-29f6-7f6fc2688fd3
+                  - name: LeoArt Inc Escalation Users
+                    description: LeoArt Inc Escalation Users
+                    uniqueId: USRGRP-98c1733f-0429-001d-8196-54a85e15d49d
+                devices:
+                  - id: 2912ca9f-5c62-451f-82a8-8c08ca9c9447
+                    generalInfo:
+                      ipAddresses: 172.28.2.233
+                      hostName: HYDLPT159
+                    type: DEVICE
+                  - id: d628b4f1-37ad-49de-8487-43125ec3178a
+                    generalInfo:
+                      ipAddresses: 172.28.16.15
+                      hostName: HYDLPT204
+                    type: DEVICE
+                  - id: cef92862-2f57-4065-8756-5cb8001d7282
+                    generalInfo:
+                      ipAddresses: 172.24.221.214
+                      hostName: HYDLPT223
+                    type: DEVICE
+                  - id: f5e00639-7fd7-482f-a3e1-8a05edf28abb
+                    generalInfo:
+                      ipAddresses: 169.254.174.112
+                      hostName: HYDLPT420
+                    type: DEVICE
+                deviceGroups:
+                  - id: DGP-3bc09935-6510-4205-bb6f-6d2b9561fc43
+                    name: Dev-Group
+                    description: Device group
+                    createdDate: '2016-10-20T07:45:06+0000'
+                    updatedDate: '2016-10-20T07:45:06+0000'
+                  - id: DGP-876f73a7-c0e4-409c-a757-5c64205ff97a
+                    name: HYD-WINDOWS
+                    description: Windows Systems at HYD
+                    createdDate: '2016-07-24T07:27:44+0000'
+                    updatedDate: '2016-07-24T07:33:15+0000'
+                  - id: DGP-fbbabccc-578b-4658-9475-178ab034c20b
+                    name: Testing-dev-group
+                    description: testing device group
+                    createdDate: '2016-10-20T07:43:48+0000'
+                    updatedDate: '2016-10-20T07:43:49+0000'
+                credentialSets:
+                  - uniqueId: mmtKsSTyXYqtEtrRMRSmWjAh
+                    name: Agent-WMI-Discovery
+                    secure: false
+                    port: 0
+                    snmpVersion: V2
+                    description: Discovery credentials
+                    autoEnableMode: false
+                    universal: true
+                    spSecure: false
+                    spPort: 0
+                    timeoutMs: 10000
+                  - uniqueId: EAmBeuHhCY5hrCvHVejrccJj
+                    name: AWS AWS Integration
+                    secure: false
+                    port: 0
+                    snmpVersion: V2
+                    autoEnableMode: false
+                    universal: true
+                    spSecure: false
+                    spPort: 0
+                    timeoutMs: 0
+                permissions:
+                  - id: 13
+                    name: Dispatcher
+                    description: Dispatcher
+                  - id: 7
+                    name: Auditor Manage
+                    description: Auditor Manage
+                  - id: 8
+                    name: Auditor View
+                    description: Auditor View
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/role'
+        examples:
+          example-msp-all-client-visibility:
+            value:
+              allClients: true
+          example-msp-specific-client-visibility:
+            value:
+              clients:
+                - uniqueId: client_9
+                - uniqueId: client_8
+          example-msp-clients-users-userGroups-device-deviceGroups-credentials-permissions:
+            value:
+              clients:
+                - uniqueId: client_9
+                - uniqueId: client_8
+              users:
+                - id: USR0000000011
+                - id: USR0000000013
+              userGroups:
+                - uniqueId: USRGRP-98c1733f-0429-001d-8196-54a85e15d49d
+                - uniqueId: USRGRP-5dd6cb59-b4cf-083a-29f6-7f6fc2688fd3
+              devices:
+                - id: 2912ca9f-5c62-451f-82a8-8c08ca9c9447
+                - id: d628b4f1-37ad-49de-8487-43125ec3178a
+              deviceGroups:
+                - id: DGP-3bc09935-6510-4205-bb6f-6d2b9561fc43
+                - id: DGP-876f73a7-c0e4-409c-a757-5c64205ff97a
+                - id: DGP-fbbabccc-578b-4658-9475-178ab034c20b
+              credentialSets:
+                - uniqueId: mmtKsSTyXYqtEtrRMRSmWjAh
+                - uniqueId: EAmBeuHhCY5hrCvHVejrccJj
+              permissions:
+                - id: 13
+                - id: 7
+                - id: 8
+          example-client-specific-users-userGroups-devices-deviceGroups-credentials-permissions:
+            value:
+              users:
+                - id: USR0000000011
+                - id: USR0000000013
+              userGroups:
+                - uniqueId: USRGRP-98c1733f-0429-001d-8196-54a85e15d49d
+                - uniqueId: USRGRP-5dd6cb59-b4cf-083a-29f6-7f6fc2688fd3
+              devices:
+                - id: 2912ca9f-5c62-451f-82a8-8c08ca9c9447
+                - id: d628b4f1-37ad-49de-8487-43125ec3178a
+              deviceGroups:
+                - id: DGP-3bc09935-6510-4205-bb6f-6d2b9561fc43
+                - id: DGP-876f73a7-c0e4-409c-a757-5c64205ff97a
+                - id: DGP-fbbabccc-578b-4658-9475-178ab034c20b
+              credentialSets:
+                - uniqueId: mmtKsSTyXYqtEtrRMRSmWjAh
+                - uniqueId: EAmBeuHhCY5hrCvHVejrccJj
+              permissions:
+                - id: 13
+                - id: 7
+                - id: 8
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: roleId
+    required: true

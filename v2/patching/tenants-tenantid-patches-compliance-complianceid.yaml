@@ -1,0 +1,59 @@
+summary: Update and delete patch compliance
+description: This endpoint is used to update and delete a patch compliance
+delete:
+  summary: Delete patch compliance
+  description: This endpoint is used to delete a patch compliance.
+  tags:
+    - patching
+  responses:
+    '200':
+      description: OK
+post:
+  summary: Update patch compliance
+  description: This endpoint is used to update a patch compliance.
+  tags:
+    - patching
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/patchCompliance'
+        examples:
+          example-1:
+            value:
+              name: Linux Compliance
+              description: Compliance check on Linux Devices
+              osType: LINUX
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/patchCompliance'
+          examples:
+            example-1:
+              value:
+                id: PCMP-5c70ea87-2350-4781-9762-df47194d06d3
+                name: Linux Compliance
+                description: Compliance check for Linux Devices
+                createdUser:
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                updatedUser:
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                createdTime: '2019-02-08T12:37:02+0000'
+                updatedTime: '2019-02-10T10:38:24+0000'
+                osType: LINUX
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: complianceId
+    required: true

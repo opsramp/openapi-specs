@@ -1,0 +1,660 @@
+summary: Manage incident
+description: This endpoint is used to update and retrieve incidents.
+get:
+  summary: Get incident
+  description: This endpoint is used to retrieve the details of an incident.
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/incident'
+          examples:
+            example-1:
+              value:
+                id: INC0000001114
+                subject: Issue with LAN in West-CA office
+                description: Network appears to be down. Unable to access internet and key applications.
+                status: Resolved
+                oldStatus: Open
+                priority: High
+                oldPriority: Low
+                requester:
+                  loginName: john.smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@gmail.com
+                assignedUser:
+                  id: USR0000000014
+                  loginName: brocadeLab@organization.com
+                  lastName: Lab
+                  firstName: Brocade
+                  email: brocadeLab@gmail.com
+                assigneeGroup:
+                  id: 5
+                  name: Brocade Inc Users
+                  description: Brocade Partner Users
+                resources:
+                  - id: 481af404-33a6-4d61-af77-c483ca6641fa
+                    name: VMtest
+                    type: VMWAREHOST
+                    metaData: {}
+                    resourceType: VMWAREHOST
+                    hostName: VMtest
+                    resourceName: ''
+                    aliasName: ''
+                  - id: 402c0d1a-bb31-4f02-b214-39433d23b922
+                    name: CREDtest
+                    type: Android
+                    metaData: {}
+                    resourceType: Android
+                    hostName: CREDtest
+                    resourceName: ''
+                    aliasName: ''
+                  - id: 61fec02a-4370-4dfb-be4d-1bb9fe3e05aa
+                    name: TestHost
+                    type: Desktop
+                    metaData: {}
+                    resourceType: Desktop
+                    hostName: TestHost
+                    resourceName: TestResource
+                    aliasName: TestAlias
+                extTicketId: '000042526342'
+                customFields:
+                  - id: UDF0000003808
+                    classCode: INCIDENT
+                    displayLabel: text field
+                    name: text_field_3808
+                    fieldType: TYPE_TEXT
+                    mandatory: false
+                    editable: true
+                    description: All partners
+                    value: available
+                    defaultValue: ''
+                  - id: UDF0000003810
+                    classCode: INCIDENT
+                    displayLabel: numeric
+                    name: numeric_3810
+                    fieldType: TYPE_NUMBER
+                    mandatory: false
+                    editable: true
+                    description: Testing numeric
+                    value: '120'
+                    defaultValue: ''
+                  - id: UDF0000003790
+                    classCode: INCIDENT
+                    displayLabel: drop-down-api-lab
+                    name: drop_down_api_lab_3790
+                    fieldType: TYPE_DROPDOWN
+                    mandatory: false
+                    editable: true
+                    description: Test case
+                    options:
+                      - label: first
+                        value: '1'
+                      - label: second
+                        value: '2'
+                    value: '1'
+                    defaultValue: ''
+                    selectedOption:
+                      label: first
+                      value: '1'
+                  - id: UDF0000003791
+                    classCode: INCIDENT
+                    displayLabel: text-api-lab
+                    name: text_api_lab_3791
+                    fieldType: TYPE_TEXT
+                    mandatory: false
+                    editable: true
+                    description: Test case for text field
+                    value: request custom field - text-updated
+                    defaultValue: Test Text
+                  - id: UDF0000003792
+                    classCode: INCIDENT
+                    displayLabel: multi line text-api-lab
+                    name: multi_line_text_api_lab_3792
+                    fieldType: TYPE_TEXTAREA
+                    mandatory: false
+                    editable: true
+                    description: Test case for multi line text
+                    value: text
+                    defaultValue: |-
+                      multi 
+                      line 
+                      text
+                  - id: UDF0000003793
+                    classCode: INCIDENT
+                    displayLabel: Numeric-api-lab
+                    name: numeric_api_lab_3793
+                    fieldType: TYPE_NUMBER
+                    mandatory: false
+                    editable: true
+                    description: numeric test case
+                    value: '1'
+                    defaultValue: '1'
+                  - id: UDF0000003794
+                    classCode: INCIDENT
+                    displayLabel: checkbox-api-lab
+                    name: checkbox_api_lab_3794
+                    fieldType: TYPE_CHECKBOX
+                    mandatory: false
+                    editable: true
+                    description: test case for check box
+                    options:
+                      - label: 'yes'
+                        value: '1'
+                    value: '1'
+                    defaultValue: '0'
+                    selectedOption:
+                      label: 'yes'
+                      value: '1'
+                  - id: UDF0000003795
+                    classCode: INCIDENT
+                    displayLabel: Date-ap-lab
+                    name: date_ap_lab_3795
+                    fieldType: TYPE_DATE
+                    mandatory: false
+                    editable: true
+                    description: test case for date field
+                    value: '2016-02-26T00:00:00+0000'
+                    defaultValue: '2016-02-26T00:00:00+0000'
+                  - id: UDF0000003796
+                    classCode: INCIDENT
+                    displayLabel: dateTime-api-lab
+                    name: datetime_api_lab_3796
+                    fieldType: TYPE_DATETIME
+                    mandatory: false
+                    editable: true
+                    description: test case for Date and time
+                    value: '2016-02-26T12:13:00+0000'
+                    defaultValue: '2016-02-26T12:13:00+0000'
+                dueDate: '2016-08-17T13:51:00+0000'
+                cc: 'brocade@gmail.com, escalationmails@gmail.com'
+                ticketArisedTime: ''
+                createdUser:
+                  loginName: john.smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@gmail.com
+                category:
+                  id: 1
+                  name: Urgency
+                alertIds:
+                  - 100
+                reason: 'Issue got fixed, hence moving to resolved'
+                toEmail: escalationmails@gmail.com
+                reOpenCount: 1
+                createdDate: '2016-07-25T07:12:19+0000'
+                notes: ''
+                serviceRestoreDate: '2016-08-17T13:51:00+0000'
+                resolutionSummary: ''
+                allowedStatus:
+                  - id: '1'
+                    name: New
+                    reasonsEnabled: false
+                    reasonsDefined: false
+                  - id: '2'
+                    name: Open
+                    reasonsEnabled: true
+                    reasonsDefined: true
+                  - id: '3'
+                    name: Pending
+                    reasonsEnabled: true
+                    reasonsDefined: true
+                  - id: '5'
+                    name: Closed
+                    reasonsEnabled: true
+                    reasonsDefined: true
+                  - id: '6'
+                    name: On Hold
+                    reasonsEnabled: true
+                    reasonsDefined: true
+                client:
+                  id: 8
+                  uniqueId: client_8
+                  name: Brocade Lab
+                  activated: true
+                subCategory:
+                  id: 4
+                  name: P1
+                sourcePolicyType: AUTOINCIDENT
+                sourcePolicyTypeId: '21'
+                updatedDate: '2016-08-11T13:50:18+0000'
+                priorityUpdatedBy:
+                  loginName: john.smith
+                  lastName: Smith
+                  firstName: John
+                  email: johns.smith@gmail.com
+                priorityUpdatedDate: '2016-07-25T07:12:19+0000'
+                statusUpdatedBy:
+                  loginName: superadmin
+                  lastName: Admin
+                  firstName: SA
+                  email: escalationmails@gmail.com
+                statusUpdatedDate: '2016-08-11T13:50:18+0000'
+                resolvedDate: '2016-08-11T13:50:18+0000'
+                slaDetails:
+                  slaPolicy:
+                    id: 6
+                    name: P4_INCIDENT_SLA
+                    timezone:
+                      id: '19'
+                      name: GMT
+                      label: 'GMT +05:30 India'
+                      code: IST
+                    businessSchedule:
+                      id: 0
+                      shiftType: 0
+                      startTime: '10:00:00'
+                      endTime: '20:00:00'
+                      sunday: false
+                      monday: true
+                      tuesday: true
+                      wednesday: true
+                      thursday: true
+                      friday: true
+                      saturday: false
+                  resolutionTime: 491861
+                  responseTime: 491834
+                  responseBreach: false
+                  resolutionBreach: false
+                  responseBreachDate: '2016-07-25T08:12:19+0000'
+                  resolutionBreachDate: '2016-07-25T09:12:19+0000'
+                policy:
+                  id: 21
+                  name: All Alert Auto Incidents
+                  policyType: AUTO_INCIDENT_TO_ALERT
+                  createdDate: '2016-07-24T09:02:38+0000'
+                  updatedDate: '2016-07-25T16:50:49+0000'
+                  executionOrder: 2
+                  active: true
+                source: PORTAL
+                sourceEntityType: ALERT
+                sourceEntityTypeId: '100'
+                statusFlow:
+                  - status: New
+                    timeSpent: 1492634
+                    createdDate: '2016-07-25T12:42:19+0000'
+                    updatedBy:
+                      loginName: john.smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@gmail.com
+                  - status: Resolved
+                    reason: Resolving as fixed
+                    notes: resolution summary
+                    timeSpent: 18
+                    createdDate: '2016-08-11T19:19:33+0000'
+                    updatedBy:
+                      loginName: john.smith
+                      lastName: smith
+                      firstName: john
+                      email: john@gmail.com
+                  - status: Open
+                    timeSpent: 27
+                    reason: Re-opening as per comments
+                    createdDate: '2016-08-11T19:19:51+0000'
+                    updatedBy:
+                      loginName: john.smith
+                      lastName: smith
+                      firstName: john
+                      email: john@gmail.com
+                  - status: Resolved
+                    reason: Problem identified and fixed
+                    notes: resolution summary
+                    createdDate: '2016-08-11T13:50:18+0000'
+                    updatedBy:
+                      id: USR0000000018
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SP
+                      email: sample@gmail.com
+                businessImpact:
+                  id: 10
+                  name: Impact 2
+                  description: Impact level 2
+                urgency:
+                  id: 25
+                  name: Urgency 1
+                  description: Urgency level 1
+                attachedRequests:
+                  - id: SRQ0000001388
+                  - id: SRQ0000001391
+                  - id: SRQ0000001394
+                  - id: SRQ0000001397
+                knowledgeArticleIds:
+                  - 25
+                  - 16
+                attachedArticles:
+                  - id: 25
+                    subject: Network Troubleshooting
+                  - id: 16
+                    subject: LAN Settings
+post:
+  summary: Update incident
+  description: This endpoint is used to update an incident.
+  tags:
+    - tickets
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/incident'
+        examples:
+          example-1:
+            value:
+              subject: Window servers down in West-SJ
+              status: On Hold
+              reason: On hold Reason
+              priority: Low
+              parentId: INC0000001145
+              dueDate: '2016-03-28T06:43:00+0000'
+              cc: 'network.admins@myorganization.com, tech.admins@myorganization.com'
+              toEmail: 'sam.rivers@myorganization.com,john.blake@myorganization.com'
+              ticketArisedTime: '2016-02-26T06:43:00+0000'
+              changeRequest:
+                id: CHG0000001028
+              problem:
+                id: PRB0000001105
+              category:
+                id: 12
+              subCategory:
+                id: 13
+              requester:
+                id: USR0000002146
+                loginName: FSSL-API-Lab-User-1
+              assignedUser:
+                id: USR0000002146
+                loginName: FSSL-API-Lab-User-1
+              assigneeGroup:
+                name: API-Lab-Group-1
+              businessImpact:
+                id: 10
+              urgency:
+                id: 25
+              resources:
+                - id: 481af404-33a6-4d61-af77-c483ca6641fa
+                - id: SGP-7adf3762-f310-4c14-9ecd-443eb7c6c208
+                - id: DGP-8d44a504-fd4b-4a78-ba34-2dfdf3ffb85e
+              customFields:
+                - id: UDF0000003790
+                  name: drop_down_api_lab_3790
+                  value: '2'
+                - id: UDF0000003791
+                  name: text_api_lab_3791
+                  value: request custom field - text
+                - id: UDF0000003810
+                  name: numeric_3810
+                  value: '10'
+                - id: UDF0000003792
+                  name: multi_line_text_api_lab_3792
+                  value: Third party ticket
+                - id: UDF0000003794
+                  name: checkbox_api_lab_3794
+                  value: '1'
+                - id: UDF0000003795
+                  name: date_ap_lab_3795
+                  value: '2016-02-26T00:00:00+0000'
+                - id: UDF0000003796
+                  name: datetime_api_lab_3796
+                  value: '2016-02-26T12:13:00+0000'
+              response:
+                description: Adding Attachments to Incident
+                internal: 'false'
+                creator:
+                  id: USR0000002146
+                  loginName: John.Smith
+                tags: 'Server, Incident'
+                attachments:
+                  - name: server incidents.txt
+                    file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+                  - name: windows incidents.txt
+                    file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+                extTicketResponseId: '12345'
+              attachedRequests:
+                - id: SRQ0000001388
+                - id: SRQ0000001391
+                - id: SRQ0000001394
+                - id: SRQ0000001397
+              knowledgeArticleIds:
+                - 14
+                - 22
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/incident'
+          examples:
+            example-1:
+              value:
+                id: INC0000001114
+                subject: Window servers down in West-SJ
+                description: Unable to upgrade to latest Windows version
+                status: On Hold
+                oldStatus: New
+                priority: Low
+                oldPriority: Low
+                requester:
+                  id: USR0000002146
+                  loginName: James.Hudson
+                  lastName: Hudson
+                  firstName: James
+                  email: james.hudson@myorganization.com
+                assignedUser:
+                  id: USR0000002146
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                assigneeGroup:
+                  id: 17
+                  name: Network Administrators
+                  userCount: 2
+                resources:
+                  - id: 481af404-33a6-4d61-af77-c483ca6641fa
+                    name: VTHLPT1000
+                    type: DEVICE
+                  - id: SGP-7adf3762-f310-4c14-9ecd-443eb7c6c208
+                    name: VTH-SERVICES
+                    type: SERVICE
+                  - id: DGP-8d44a504-fd4b-4a78-ba34-2dfdf3ffb85e
+                    name: VTH-ADMIN-DEVS
+                    type: DEVICE_GROUP
+                extTicketId: '000042526342'
+                customFields:
+                  - id: UDF0000003808
+                    classCode: INCIDENT
+                    displayLabel: text field
+                    name: text_field_3808
+                    fieldType: TYPE_TEXT
+                    mandatory: false
+                    editable: true
+                    description: all partners
+                    value: available
+                    defaultValue: ''
+                  - id: UDF0000003810
+                    classCode: INCIDENT
+                    displayLabel: numeric
+                    name: numeric_3810
+                    fieldType: TYPE_NUMBER
+                    mandatory: false
+                    editable: true
+                    description: testing numeric
+                    value: '120'
+                    defaultValue: ''
+                  - id: UDF0000003790
+                    classCode: INCIDENT
+                    displayLabel: drop-down-api-lab
+                    name: drop_down_api_lab_3790
+                    fieldType: TYPE_DROPDOWN
+                    mandatory: false
+                    editable: true
+                    description: Test case
+                    options:
+                      - label: first
+                        value: '1'
+                      - label: second
+                        value: '2'
+                    value: '1'
+                    defaultValue: ''
+                    selectedOption:
+                      label: first
+                      value: '1'
+                  - id: UDF0000003792
+                    classCode: INCIDENT
+                    displayLabel: multi line text-api-lab
+                    name: multi_line_text_api_lab_3792
+                    fieldType: TYPE_TEXTAREA
+                    mandatory: false
+                    editable: true
+                    description: test case for multi line text
+                    value: text
+                    defaultValue: |-
+                      multi 
+                      line 
+                      text
+                  - id: UDF0000003794
+                    classCode: INCIDENT
+                    displayLabel: checkbox-api-lab
+                    name: checkbox_api_lab_3794
+                    fieldType: TYPE_CHECKBOX
+                    mandatory: false
+                    editable: true
+                    description: test case for check box
+                    options:
+                      - label: 'yes'
+                        value: '1'
+                    value: '1'
+                    defaultValue: '0'
+                    selectedOption:
+                      label: 'yes'
+                      value: '1'
+                  - id: UDF0000003795
+                    classCode: INCIDENT
+                    displayLabel: Date-ap-lab
+                    name: date_ap_lab_3795
+                    fieldType: TYPE_DATE
+                    mandatory: false
+                    editable: true
+                    description: test case for date field
+                    value: '2016-02-26T00:00:00+0000'
+                    defaultValue: '2016-02-26T00:00:00+0000'
+                  - id: UDF0000003796
+                    classCode: INCIDENT
+                    displayLabel: dateTime-api-lab
+                    name: datetime_api_lab_3796
+                    fieldType: TYPE_DATETIME
+                    mandatory: false
+                    editable: true
+                    description: test case for Date and time
+                    value: '2016-02-26T12:13:00+0000'
+                    defaultValue: '2016-02-26T12:13:00+0000'
+                dueDate: '2016-03-28T12:13:00+0000'
+                cc: 'network.admins@myorganization.com, tech.admins@myorganization.com'
+                ticketArisedTime: '2016-02-26T12:13:00+0000'
+                createdUser:
+                  id: USR0000002095
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                reason: On Hold Reason
+                alertIds: []
+                toEmail: 'sam.rivers@myorganzation.com,john.blake@myorganization.com'
+                createdDate: '2016-03-29T12:20:15+0000'
+                serviceRestoreDate: '2016-03-28T12:13:00+0000'
+                allowedStatus:
+                  - id: '1'
+                    name: New
+                    reasonsEnabled: false
+                    reasonsDefined: false
+                  - id: '3'
+                    name: Pending
+                    reasonsEnabled: true
+                    reasonsDefined: false
+                  - id: '5'
+                    name: Closed
+                    reasonsEnabled: true
+                    reasonsDefined: false
+                client:
+                  id: 7
+                  uniqueId: client_7
+                  name: API Lab
+                  activated: true
+                  updatedTime: ''
+                  createdTime: '2012-10-09T11:49:34+0000'
+                updatedDate: '2016-03-29T12:42:50+0000'
+                priorityUpdatedBy:
+                  id: USR0000002146
+                  loginName: FSSL-API-Lab-User-1
+                  lastName: API-Lab
+                  firstName: FSSL
+                  email: fssl.lab@myorganization.com
+                priorityUpdatedDate: '2016-03-29T12:20:15+0000'
+                statusUpdatedBy:
+                  id: USR0000002095
+                  loginName: admin.dev
+                  lastName: development
+                  firstName: admins
+                  email: admin.dev@myorganization.com
+                statusUpdatedDate: '2016-03-29T12:31:38+0000'
+                slaDetails:
+                  resolutionTime: 0
+                  responseTime: 683
+                  responseBreach: false
+                  resolutionBreach: false
+                  responseBreachDate: ''
+                  resolutionBreachDate: ''
+                source: INTEGRATION
+                sourceEntityType: INCIDENT
+                sourceEntityTypeId: '000042526342'
+                statusFlow:
+                  - status: New
+                    timeSpent: 1492634
+                    createdDate: '2016-07-25T12:42:19+0000'
+                    updatedBy:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: ops.admin@myorganization.com
+                  - status: On Hold
+                    reason: On Hold Reason
+                    createdDate: '2016-11-22T10:04:44+0000'
+                    updatedBy:
+                      loginName: ops_admin_user
+                      lastName: ' '
+                      firstName: Ops Admin
+                      email: ops.admin@myorganization.com
+                businessImpact:
+                  id: 10
+                  name: Impact 2
+                  description: Impact level 2
+                urgency:
+                  id: 25
+                  name: Urgency 1
+                  description: Urgency level 1
+                attachedRequests:
+                  - id: SRQ0000001388
+                  - id: SRQ0000001391
+                  - id: SRQ0000001394
+                  - id: SRQ0000001397
+                knowledgeArticleIds:
+                  - 14
+                  - 22
+                referenceArticles:
+                  - id: 14
+                    subject: Troubleshoot a Windows Network
+                  - id: 22
+                    subject: Windows Network Connect Details
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: incidentId
+    required: true

@@ -1,0 +1,152 @@
+summary: Search jobs
+description: |
+  This endpoint is used to fetch the list of jobs defined by a tenant.
+
+  This endpoint can be used to fetch the paginated list of the scheduled jobs of a partner or client.
+get:
+  tags:
+    - automation
+  parameters:
+    - schema:
+        type: integer
+        default: "1"
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: "100"
+      in: query
+      name: pageSize
+    - schema:
+        type: boolean
+        default: "true"
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+        default: id
+      in: query
+      name: sortName
+    - schema:
+        type: string
+      in: query
+      name: queryString
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+##@TODO
+#                    schedule:
+#                      $ref: './components.yaml#/components/schemas/schedule'
+                    jobQueued:
+                      type: boolean
+                    script:
+                      $ref: './components.yaml#/components/schemas/script'
+                    id:
+                      type: string
+                    totalResults:
+                      type: integer
+                    orderBy:
+                      type: string
+                    pageNo:
+                      type: integer
+                    pageSize:
+                      type: integer
+                    totalPages:
+                      type: integer
+                    nextPage:
+                      type: boolean
+                    previousPageNo:
+                      type: integer
+                    descendingOrder:
+                      type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - name: test
+                    schedule:
+                      startDate: "2016-04-14T10:10:00+0000"
+                      pattern:
+                        type: daily
+                        frequency: recurrence
+                        repeatFrequency: 2
+                        repeatType: days
+                    jobQueued: true
+                    script:
+                      jobType: appinstall
+                      approvalType:
+                        approvalType: 1
+                        approvalReason: for testing
+                        alertRequired: true
+                    id: 8a87f644-0bdc-4d5a-9e41-0ca333b71acd
+                  - name: Network Config Backup
+                    schedule:
+                      startDate: "2016-04-14T10:10:00+0000"
+                      pattern:
+                        type: daily
+                        frequency: recurrence
+                        repeatFrequency: 2
+                        repeatType: days
+                    jobQueued: true
+                    script:
+                      jobType: networkconfigbackup
+                      configParams:
+                        versionsSaved: ALL_VERSIONS
+                        backUpTrigger: true
+                        startupConfigAlert: true
+                        runtimeConfigAlert: true
+                        startUpConfigFilesBackUp: true
+                        runTimeConfigFilesBackUp: true
+                    id: cc242a8d-b0b4-430e-a89f-7081bc5e79b0
+                  - name: Job - test script
+                    schedule:
+                      startDate: "2016-04-14T10:10:00+0000"
+                      pattern:
+                        type: daily
+                        frequency: recurrence
+                        repeatFrequency: 2
+                        repeatType: days
+                    jobQueued: true
+                    script:
+                      customScript:
+                        id: 7
+                        name: test script
+                        description: test script
+                        platforms:
+                          - WINDOWS
+                      userType: 2
+                    id: ce1088d5-81cc-4262-b515-a75230f0d8e4
+                  - name: Ad Check List
+                    schedule:
+                      startDate: "2016-04-14T10:10:00+0000"
+                      pattern:
+                        type: daily
+                        frequency: recurrence
+                        repeatFrequency: 2
+                        repeatType: days
+                    jobQueued: true
+                    script:
+                      jobType: adCheckList
+                    id: 4902d87c-b5df-4797-9f45-e807cd871ac9
+                totalResults: 4
+                orderBy: job.name
+                pageNo: 1
+                pageSize: 10
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: true
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

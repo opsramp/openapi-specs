@@ -1,0 +1,30 @@
+summary: Download KB article attachments (comments)
+description: This endpoint is used to download any attachment (comments) of an article.
+get:
+  tags:
+    - knowledge-base
+  responses:
+    '200':
+      description: OK
+      content:
+        text/plain:
+          schema:
+            type: object
+            properties: {}
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: articleId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: commentId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: resourceId
+    required: true

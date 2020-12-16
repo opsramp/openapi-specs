@@ -1,0 +1,28 @@
+summary: Decommission a resource
+description: This endpoint is used to decommission a resource.
+post:
+  tags:
+    - resource-management
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            reason:
+              type: string
+              description: (Optional) Reason to decommission a resource.
+        examples:
+          example-1:
+            value:
+              reason: Decommission Reason/Note
+  responses:
+    '200':
+      description: OK
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: resourceId
+    required: true

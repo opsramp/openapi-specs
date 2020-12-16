@@ -1,0 +1,15 @@
+summary: Acknowledge alert
+description: This endpoint is used to acknowledge an alert.
+post:
+  tags:
+    - alerts
+  responses:
+    '200':
+      description: OK
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: alertId
+    required: true

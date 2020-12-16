@@ -1,0 +1,1322 @@
+summary: Manage alert escalation policy
+description: |-
+    This endpoint is used to retrieve, update, and delete alert escalation policy information.
+delete:
+  tags:
+    - alerts
+  responses:
+    '200':
+      description: OK
+get:
+  tags:
+    - alerts
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              description:
+                type: string
+              policyType:
+                type: string
+              clientMatchingType:
+                type: string
+              createdDate:
+                type: string
+                format: date-time
+              updatedDate:
+                type: string
+                format: date-time
+              active:
+                type: boolean
+              scope:
+                type: object
+                properties:
+                  uniqueId:
+                    type: string
+                  name:
+                    type: string
+                  activated:
+                    type: boolean
+              createdBy:
+                type: object
+                properties:
+                  loginName:
+                    type: string
+                  lastName:
+                    type: string
+                  firstName:
+                    type: string
+                  email:
+                    type: string
+              updatedBy:
+                type: object
+                properties:
+                  loginName:
+                    type: string
+                  lastName:
+                    type: string
+                  firstName:
+                    type: string
+                  email:
+                    type: string
+              allClients:
+                type: boolean
+              resources:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    type:
+                      type: string
+                    resourceType:
+                      type: string
+                    aliasName:
+                      type: string
+                    hostName:
+                      type: string
+              filterCriteria:
+                type: object
+                properties:
+                  matchingType:
+                    type: string
+                  rules:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                        operator:
+                          type: string
+                        value:
+                          type: string
+              escalationType:
+                type: string
+              escalations:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    waitMins:
+                      type: integer
+                    priority:
+                      type: string
+                    repeatFrequency:
+                      type: integer
+                    notifyLimitCount:
+                      type: integer
+                    action:
+                      type: string
+                    recipients:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          name:
+                            type: string
+                          type:
+                            type: string
+                    incident:
+                      type: object
+                      properties:
+                        status:
+                          type: string
+                        priority:
+                          type: string
+                        assignedUser:
+                          type: object
+                          properties:
+                            loginName:
+                              type: string
+                            lastName:
+                              type: string
+                            firstName:
+                              type: string
+                            email:
+                              type: string
+                            phoneNumber:
+                              type: string
+                            mobileNumber:
+                              type: string
+                        customFields:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              fieldName:
+                                type: string
+                        businessImpact:
+                          type: object
+                          properties:
+                            uniqueId:
+                              type: string
+                            name:
+                              type: string
+                            description:
+                              type: string
+                        urgency:
+                          type: object
+                          properties:
+                            uniqueId:
+                              type: string
+                            name:
+                              type: string
+                            description:
+                              type: string
+                        toEmail:
+                          type: string
+                        machineLearning:
+                          type: object
+                          properties:
+                            continuousLearning:
+                              type: boolean
+                            learnedFieldsToOutputColumnsMap:
+                              type: object
+                              properties:
+                                Assignee Group:
+                                  type: string
+                                Priority:
+                                  type: string
+                    updateIncident:
+                      type: object
+                      properties:
+                        none:
+                          type: boolean
+                        priorityRules:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              key:
+                                type: string
+                              operator:
+                                type: string
+                              value:
+                                type: string
+                              businessImpact:
+                                type: object
+                                properties:
+                                  uniqueId:
+                                    type: string
+                                  name:
+                                    type: string
+                                  description:
+                                    type: string
+                              urgency:
+                                type: object
+                                properties:
+                                  uniqueId:
+                                    type: string
+                                  name:
+                                    type: string
+                                  description:
+                                    type: string
+                    notifyIncident:
+                      type: string
+          examples:
+            example-1:
+              value:
+                id: POLICY-9d6bbe58-2bf6-41cc-9983-fca53b64c9e7
+                name: Cloud Instance Alerts Policy
+                description: ''
+                policyType: ESCALATION_POLICY
+                clientMatchingType: ALL
+                createdDate: '2017-05-15T12:13:31+0000'
+                updatedDate: '2017-05-15T12:13:31+0000'
+                active: true
+                scope:
+                  uniqueId: msp_5
+                  name: Luminalto
+                  activated: true
+                createdBy:
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                updatedBy:
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                allClients: true
+                resources:
+                  - id: 7447fef1-68ee-4c2a-a366-273abc819dbc
+                    name: ESC00002
+                    type: RESOURCE
+                    resourceType: RESOURCE
+                    aliasName: ''
+                    resourceName: ''
+                    hostName: Device11
+                  - id: 59d820d3-7a64-4329-ba9c-bb9c14a4815c
+                    name: Device12
+                    type: RESOURCE
+                    resourceType: RESOURCE
+                    aliasName: ''
+                    resourceName: ''
+                    hostName: Device12
+                filterCriteria:
+                  matchingType: ALL
+                  rules:
+                    - key: 'Alert  : Description'
+                      operator: CONTAINS
+                      value: critical
+                escalationType: AUTOMATIC
+                escalations:
+                  - waitMins: 0
+                    priority: High
+                    repeatFrequency: 10
+                    notifyLimitCount: 2
+                    action: NOTIFICATION
+                    recipients:
+                      - id: ES-d16473ee-29de-1cf2-4983-86307733e34c
+                        name: Support Team
+                        type: ROSTER
+                      - id: USR0000000019
+                        name: Jim Bolt
+                        type: USER
+                  - action: INCIDENT
+                    waitMins: 5
+                    incident:
+                      status: New
+                      priority: Low
+                      assignedUser:
+                        loginName: James.Hudson
+                        lastName: Hudson
+                        firstName: James
+                        email: james.hudson@myorganization.com
+                        phoneNumber: ''
+                        mobileNumber: 802-123-4123
+                      customFields:
+                        - id: UDF0000000002
+                          classCode: INCIDENT
+                          displayLabel: Component
+                          name: test_cutom_2
+                          fieldType: TYPE_TEXT
+                          mandatory: false
+                          editable: true
+                          description: ''
+                          value: Test1
+                          defaultValue: Default Component
+                          customField: true
+                      businessImpact:
+                        uniqueId: SIMPACT-e8853b21-ebc5-dd1d-d9a3-7a7b121a5e0f
+                        name: Impact 3
+                        description: SP Level Impact
+                      urgency:
+                        uniqueId: SURG-09358506-4af1-4d35-b902-cd3b14a00c10
+                        name: Urgency 3
+                        description: SP Level Urgency
+                      toEmail: support@myorganization
+                      machineLearning:
+                        continuousLearning: false
+                        learnedFieldsToOutputColumnsMap:
+                          Assignee Group: incident.assigneeGroup
+                          Priority: incident.priority
+                    updateIncident:
+                      none: true
+                      priorityRules:
+                        - key: currentState.code
+                          operator: Is
+                          value: Warning
+                          businessImpact:
+                            uniqueId: SIMPACT-d8853b21-ebc5-dd1d-d9a3-7a7b121ae0e
+                            name: Test Ops impact
+                            description: ''
+                          urgency:
+                            uniqueId: SURG-59358506-4bf1-4d35-c902-de3b14a00c10
+                            name: Test Ops urgency
+                            description: ''
+                          priority: High
+                    notifyIncident: forEveryUpdate
+  parameters:
+    - schema:
+        type: string
+      in: query
+      name: scope
+      description: 'Users, User Groups, and Rosters to receive the escalations.'
+    - schema:
+        type: string
+      in: query
+      name: rosters
+      description: |
+        Roster is a list of users part of the schedule doing particular duty.
+    - schema:
+        type: string
+        enum:
+          - MANUAL
+          - AUTOMATIC
+      in: query
+      name: escalationType
+      description: |
+        Escalation rules are actions taken when an alert is not acknowledged within the desired time.OpsRamp supports manual and automatic escalation types.
+    - schema:
+        type: string
+        enum:
+          - NOTIFICATION
+          - INCIDENT
+      in: query
+      name: action
+      description: |-
+        Escalation action to take
+        - Escalate as Notification implies to send periodic notifications to users until the alert is acknowledged.
+        - Escalate as Incident implies to automatically create an incident from the alert and assign to the desired user/team.
+    - schema:
+        type: string
+      in: query
+      name: escalations
+      description: |
+        Information about the escalation actions.
+    - schema:
+        type: string
+      in: query
+      name: waitMins
+      description: |
+        The time interval to escalate an alert after generation. Escalate after the alert has elapsed the set time.
+    - schema:
+        type: string
+      in: query
+      name: notifyLimitCount
+      description: |-
+        A threshold limit on the number of notifications a user receives.
+        Example: notifyLimitCount: 5
+    - schema:
+        type: string
+      in: query
+      name: alertStateTransitionFrom
+      description: |
+        For every change in the alert state, user receives notifications.
+    - schema:
+        type: string
+      in: query
+      name: recipients
+      description: |-
+        - For escalationType: MANUAL- Users to contact directly. User ID (or) name.
+        - For escalationType: AUTOMATIC- Recipients who receives notifications.
+    - schema:
+        type: string
+      in: query
+      name: allClients
+      description: |
+        This string helps to differentiate between partner and client escalation policies. allClients: true indicates the policy is a partner level policy.
+    - schema:
+        type: string
+      in: query
+      name: machineLearning
+      description: |-
+        This string indicates that machine-learning is enabled to automatically escalate an incident to appropriate teams.
+        - Machine-learning enabled incident attributes:
+        Example: Assignee Group, Priority
+            - "Assignee Group" is the Incident attribute and "incident.assigneeGroup" is the respective output column in a CSV file.
+        - learnedFieldsToOutputColumnsMap"Assignee Group": "incident.assigneeGroup","Priority": "incident.priority"
+    - schema:
+        type: string
+      in: query
+      name: repeatFrequency
+      description: |-
+        The time interval when a user receives repeated notifications.
+        This example indicates that a user receives repeated notifications every 15 minutes: repeatFrequency: 15.
+post:
+  description: |-
+    When the escalation action is set to INCIDENT, an incident is automatically created from the alert and assigned to the desired user/team.
+    - Create New Incident
+    - Update Incident
+
+    No further level of escalation can be added as the escalation ends when an incident is created from the alert.
+  tags:
+    - alerts
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              description:
+                type: string
+              policyType:
+                type: string
+              clientMatchingType:
+                type: string
+              createdDate:
+                type: string
+                format: date-time
+              updatedDate:
+                type: string
+                format: date-time
+              active:
+                type: boolean
+              scope:
+                type: object
+                properties:
+                  uniqueId:
+                    type: string
+                  name:
+                    type: string
+                  activated:
+                    type: boolean
+                  id:
+                    type: integer
+              createdBy:
+                type: object
+                properties:
+                  loginName:
+                    type: string
+                  lastName:
+                    type: string
+                  firstName:
+                    type: string
+                  email:
+                    type: string
+              updatedBy:
+                type: object
+                properties:
+                  loginName:
+                    type: string
+                  lastName:
+                    type: string
+                  firstName:
+                    type: string
+                  email:
+                    type: string
+              resources:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    type:
+                      type: string
+              filterCriteria:
+                type: object
+                properties:
+                  matchingType:
+                    type: string
+                  rules:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                        operator:
+                          type: string
+                        value:
+                          type: object
+                          properties:
+                            occurrences:
+                              type: integer
+                            frequency:
+                              type: integer
+                            frequencyType:
+                              type: string
+              escalationType:
+                type: string
+              escalations:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    waitMins:
+                      type: integer
+                    priority:
+                      type: string
+                    repeatFrequency:
+                      type: integer
+                    action:
+                      type: string
+                    recipients:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          name:
+                            type: string
+                          type:
+                            type: string
+                    incident:
+                      type: object
+                      properties:
+                        status:
+                          type: string
+                        priority:
+                          type: string
+                        assignedUser:
+                          type: object
+                          properties:
+                            loginName:
+                              type: string
+                            lastName:
+                              type: string
+                            firstName:
+                              type: string
+                            email:
+                              type: string
+                            phoneNumber:
+                              type: string
+                            mobileNumber:
+                              type: string
+                        customFields:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              fieldName:
+                                type: string
+                        toEmail:
+                          type: string
+                        assigneeGroup:
+                          type: object
+                          properties:
+                            uniqueId:
+                              type: string
+                            name:
+                              type: string
+                            description:
+                              type: string
+                            id:
+                              type: string
+                        cc:
+                          type: string
+                    updateIncident:
+                      type: object
+                      properties:
+                        none:
+                          type: boolean
+                        priorityRules:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              key:
+                                type: string
+                              operator:
+                                type: string
+                              value:
+                                type: string
+                              businessImpact:
+                                type: object
+                                properties:
+                                  uniqueId:
+                                    type: string
+                                  name:
+                                    type: string
+                                  description:
+                                    type: string
+                              urgency:
+                                type: object
+                                properties:
+                                  uniqueId:
+                                    type: string
+                                  name:
+                                    type: string
+                                  description:
+                                    type: string
+                              priority:
+                                type: string
+                    notifyIncident:
+                      type: string
+          examples:
+            example-automatic-escalation:
+              value:
+                id: POLICY-e29f63f3-951a-4b41-a2a9-94835f6e9a42
+                name: Network Devices Down
+                description: Issue in Network devices.
+                policyType: ESCALATION_POLICY
+                clientMatchingType: ALL
+                createdDate: '2017-05-15T10:35:51+0000'
+                updatedDate: '2017-05-15T10:35:51+0000'
+                active: true
+                scope:
+                  id: 7
+                  uniqueId: client_7
+                  name: AB Client
+                  activated: true
+                createdBy:
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@domain.com
+                updatedBy:
+                  loginName: vJohn.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@domain.com
+                resources:
+                  - id: bf3a10a2-92f1-4610-b3f4-174ed83db7b9
+                    name: LPT00001
+                    type: RESOURCE
+                  - id: 7_AWS
+                    name: AWS
+                    type: LOCATION
+                  - id: DGP-0b165e70-7152-49f1-bfe3-ebe77409d5f2
+                    name: Test Group
+                    type: DEVICEGROUP
+                  - id: SGP-11f1a6a8-acc8-411f-86c1-b693dd8e9817
+                    name: Test SG
+                    type: SERVICEGROUP
+                  - id: client_6
+                    name: OpsRamp Client
+                    type: CLIENT
+                filterCriteria:
+                  matchingType: ALL
+                  rules:
+                    - key: 'Alert   : Description'
+                      operator: CONTAINS
+                      value: critical
+                    - key: 'Alert : Occurrence Frequency'
+                      operator: GREATERTHANOREQUALTO
+                      value:
+                        occurrences: '5'
+                        frequency: '2'
+                        frequencyType: days
+                escalationType: AUTOMATIC
+                escalations:
+                  - waitMins: 5
+                    priority: Low
+                    repeatFrequency: 5
+                    action: NOTIFICATION
+                    recipients:
+                      - id: USR0000000028
+                        name: AP_User
+                        type: USER
+                      - id: USRGRP-9498fc95-67b7-3477-953f-1ec70bf0c61d
+                        name: Cloud group
+                        type: USERGROUP
+                      - id: ES-de9bfd9f-d8ee-430f-4bc0-e6e4645cdb47
+                        name: Cloud roster
+                        type: ROSTER
+                      - id: USRGRP-9498fc95-67b7-3477-953f-1ec70bf0c61d
+                        name: OpsRamp group
+                        type: USERGROUP_DL
+                  - waitMins: 5
+                    updateIncident:
+                      none: true
+                      priorityRules:
+                        - key: currentState.code
+                          operator: Is
+                          value: Warning
+                          businessImpact:
+                            uniqueId: SIMPACT-e8853b21-ebc5-dd1d-d9a3-7a7b121a5e0f
+                            name: High Level Impact
+                            description: The issue may cause fluctuations in network.
+                          urgency:
+                            uniqueId: SURG-09358506-4af1-4d35-b902-cd3b14a00c10
+                            name: High
+                            description: Need to fix within 2 hours.
+                          priority: High
+                    incident:
+                      status: New
+                      priority: Low
+                      assignedUser:
+                        id: USR0000000030
+                        loginName: James.Rivers
+                        lastName: Rivers
+                        firstName: James
+                        email: James.Rivers@domain.com
+                        phoneNumber: ''
+                        mobileNumber: 406-559-1234
+                      assigneeGroup:
+                        id: 1
+                        name: Network Group
+                        description: ''
+                        uniqueId: USRGRP-4189ae2e-bcf5-f686-26d0-8b6eabd91558
+                      customFields:
+                        - id: UDF0000000002
+                          classCode: INCIDENT
+                          displayLabel: Number of attached incidents
+                          name: Attached Incidents
+                          fieldType: TYPE_TEXT
+                          mandatory: false
+                          editable: true
+                          description: ''
+                          value: '2'
+                          defaultValue: ''
+                          customField: true
+                        - id: UDF0000000004
+                          classCode: INCIDENT
+                          displayLabel: Incident History
+                          name: Incident History
+                          fieldType: TYPE_TEXT
+                          mandatory: false
+                          editable: true
+                          description: ''
+                          value: request custom field - text
+                          defaultValue: ''
+                          customField: true
+                      cc: support@domain.com
+                      toEmail: james.scott@domain.com
+                    action: INCIDENT
+                    notifyIncident: whenAlertStateChanged
+            example-manual-escalation:
+              value:
+                id: POLICY-a204aea2-f943-46cb-86fa-86197e796f70
+                name: Network Devices Down
+                description: Issues in network devices.
+                policyType: ESCALATION_POLICY
+                clientMatchingType: ALL
+                createdDate: '2017-05-15T11:10:32+0000'
+                updatedDate: '2017-05-15T11:10:32+0000'
+                active: true
+                scope:
+                  id: 5
+                  uniqueId: msp_5
+                  name: OpsRamp Partner
+                  activated: true
+                createdBy:
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@domain.com
+                updatedBy:
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@domain.com
+                resources:
+                  - id: bf3a10a2-92f1-4610-b3f4-174ed83db7b9
+                    name: LPT00001
+                    type: RESOURCE
+                  - id: 7_AWS
+                    name: AWS
+                    type: LOCATION
+                  - id: DGP-0b165e70-7152-49f1-bfe3-ebe77409d5f2
+                    name: Network Group
+                    type: DEVICEGROUP
+                  - id: SGP-11f1a6a8-acc8-411f-86c1-b693dd8e9817
+                    name: Network Service Group
+                    type: SERVICEGROUP
+                  - id: client_6
+                    name: OpsRamp Client
+                    type: CLIENT
+                filterCriteria:
+                  matchingType: ALL
+                  rules:
+                    - key: 'Alert  : Description'
+                      operator: CONTAINS
+                      value: critical
+                escalationType: MANUAL
+                escalations:
+                  - action: NOTIFICATION
+                    recipients:
+                      - id: USR0000000019
+                        name: Partner.A
+                        type: USER
+                      - id: USRGRP-9498fc95-67b7-3477-953f-1ec70bf0c61d
+                        name: Cloud group
+                        type: USERGROUP
+                      - id: ES-d16473ee-29de-1cf2-4983-86307733e34c
+                        name: Test roster
+                        type: ROSTER
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: |
+                (Optional) Escalation policy name.
+            description:
+              type: string
+              description: |
+                (Optional) Escalation policy description.
+            resources:
+              type: array
+              description: |-
+                (Optional) Resources on which the policy would be applied.
+                1. Resource ID
+                2. Resource type Example: DEVICE,Use the following APIs to fetch the resource types:
+                    1. DEVICE: Search Devices or Get Minimal Details of Resources API to fetch the list of devices or resources in a client.
+                    2. DEVICEGROUP: Get Child Device Groups and Get Root Level Device Groups to fetch the list of device groups.
+                    3. SERVICEGROUP: Get Service Groups to fetch the list of service groups.
+                    4. LOCATION: Search Sites to fetch the list of sites.
+                    5. CLIENT: Search Clients to fetch the list of clients. Only partner users have permission to fetch the details of client.
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                      - DEVICE
+                      - DEVICEGROUP
+                      - SERVICEGROUP
+                      - LOCATION
+                      - CLIENT
+            filterCriteria:
+              type: object
+              properties:
+                matchingType:
+                  type: string
+                  description: (Optional) Define alert conditions for the policy. Only the filtered alerts are escalated. All the alerts on the resource will match this policy if NO condition is defined. Match ANY or ALL of the filter rules.
+                  enum:
+                    - ALL
+                    - ANY
+                rules:
+                  type: array
+                  description: Conditions to filter the alerts.
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                        enum:
+                          - 'Alert: Created Date'
+                          - 'Alert: Description'
+                          - 'Alert: Event Type'
+                          - 'Alert: Healed Time'
+                          - 'Alert: Metric'
+                          - 'Alert: No of Occurrence'
+                          - 'Alert: Source'
+                          - 'Alert: State'
+                          - 'Alert: Subject'
+                          - 'Alert: Type'
+                          - 'Alert: Update Time'
+                          - 'Alert: Update Time'
+                          - 'Resource: Aws Instance Name'
+                          - 'Resource: Instance Id'
+                          - 'Resource: Resource IP'
+                          - 'Resource: Resource Name'
+                          - 'Resource: Resource Type'
+                        description: |-
+                          Unique attribute to filter the alert.Use Get Alert Types API to fetch the list of alert types.Alert: Occurrence Frequency: Escalate alerts which trigger repeatedly despite Acknowledge/Suppress actions. Below are the fields for alert occurrence frequency:
+
+                          occurrences
+                          Datatype: Integer
+                          Description: Rate at which an alert triggers repeatedly over a particular duration. Example: 5
+
+                          frequency
+                          Data Type: Integer
+                          Description: Duration in which alert triggers repeatedly. Example: 2
+
+                          frequencyType
+                          Data Type: String
+                          Description: Provide the type of duration.Supported values: hours, days, weeks. Example: days
+                          Consider a scenario where a user wants to escalate alerts which trigger repeatedly for 5 times in 2 days. For this scenario, the values are provided as
+                          "occurrences": 5
+                          "frequency": 2
+                          "frequencyType": "days"
+                      operator:
+                        type: string
+                        enum:
+                          - Contains
+                          - Not Contains
+                          - Equals
+                          - Not Equals
+                          - Starts with
+                          - Ends with
+                          - Regex
+                          - Is
+                        description: 'Operating values to filter the resource types. Operators Is and Is Not are applicable only for "key": "Resource: Resource Type"'
+                      value:
+                        type: object
+                        description: |-
+                          Unique information of alert. Example: Critical.
+                          Example for filter rules: key: Alert: Subject, operator: Contains, value: Critical, this implies that filter the alerts that contain the subject critical.
+                        properties:
+                          occurrences:
+                            type: integer
+                          frequency:
+                            type: integer
+                          frequencyType:
+                            type: string
+            escalationType:
+              type: string
+              description: |-
+                Escalation rules are actions to be taken when an alert is not acknowledged within the desired time. OpsRamp supports manual and automatic escalation types.
+
+                If escalation Type is Manual, then escalations would be: 
+                - recipients
+
+                If escalation Type is Automatic, then escalations would be:
+                - waitMins
+                - action
+              enum:
+                - MANUAL
+                - AUTOMATIC
+            escalations:
+              type: array
+              items:
+                type: object
+                properties:
+                  waitMins:
+                    type: integer
+                    description: |-
+                      Configure the time interval to escalate an alert after it is generated. Escalate after the alert has elapsed the set time.
+
+                      Convert hours and days to minutes and provide the minutes time format. Example: For 6 hours provide the value as 360 minutes.
+
+                      Acceptable values: 0 to 30 mins, 45 mins
+                      1 to 6 hours, 12 hours
+                      1 day, 3 days, 5 days, 7 days, 10 days
+                  priority:
+                    type: string
+                    description: |
+                      Priority of the notification.
+                    enum:
+                      - Very Low
+                      - Low
+                      - Normal
+                      - High
+                      - Urgent
+                  repeatFrequency:
+                    type: integer
+                    description: |-
+                      Repeat alert notification at specific time intervals. Example: If repeatFrequency is set as 15 minutes, then the alert notification would repeat every 15 minutes until the alert is acknowledged.
+                      Convert hours to minutes.
+
+                      Acceptable values: 5 mins, 10 mins, 15 mins, 20 mins, 30 mins, 1 hour, 2 hours, 3 hours, 4 hours, 6 hours, 8 hours, 12 hours, 24 hours
+                  action:
+                    type: string
+                    description: Escalation action to be taken.Escalate as Notification implies to send periodic notifications to users until the alert is acknowledged. Escalate as Incident implies to automatically create an incident from the alert and assign it to the desired user or team.
+                    enum:
+                      - NOTIFICATION
+                      - INCIDENT
+                  recipients:
+                    type: array
+                    description: ''
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: |
+                            (Optional) Users to contact directly. User ID (or) name.
+                        name:
+                          type: string
+                          description: |
+                            (Optional) Users to contact directly. User ID (or) name.
+                        type:
+                          type: string
+                          enum:
+                            - USERS
+                            - USER GROUPS
+                            - ROSTERS
+                            - USERGROUP_DL
+                          description: |-
+                            Recipient type. Example: USER
+                            Use the following APIs to fetch the recipient types:
+                            1. Search Users to fetch the list of users.
+                            2. Search User Groups to fetch the list of user groups.
+                            3. Search Rosters to fetch the list of Rosters.
+                            4. User Group which has distributed list of email addresses. Click here to know more about User Group Distribution List. Provide only the user group IDs which have distributed list of email address configured in OpsRamp.
+                  updateIncident:
+                    type: object
+                    description: |2-
+                        Configure how to update an existing incident of an escalated alert.
+                        
+                      If an Open incident (other than Closed) is available for the alert, the incident gets updated instead of creating a new incident.
+
+                      Either "none" or "withAlertState" must be included
+                    properties:
+                      none:
+                        type: boolean
+                        description: The latest description is appended on the alert. NO change to the status of the incident is made based on escalated alert's state.
+                      withAlertState:
+                        type: boolean
+                        description: The incident gets updated every time the escalated alert repeats with a state change.
+                      priorityRules:
+                        type: array
+                        description: |-
+                          Update incident priority based on these rules:
+                          1. Unique attribute of the alert. Example: Alert State
+                          2. Operating values to filter the incident. Example: Is
+                          3. Status of the incident. Example: Critical
+                          4. The severity of an incident on the business. Use Get Business Impacts to get the list of defined business impacts.
+                          5. Urgency to prioritize and work on the incident. Use Get Urgencies to get the list of defined urgencies.
+                          6. Priority of the incident. This can be defined with respect to business impact and urgency.
+                        items:
+                          type: object
+                          properties:
+                            key:
+                              type: string
+                              description: 'Value for key is [currentState.code].'
+                            operator:
+                              type: string
+                              description: Supported value for operator - Is.
+                              enum:
+                                - Is
+                            value:
+                              type: string
+                              description: 'Supported values for the priority rule value are Warning, Critical.'
+                              enum:
+                                - Warning
+                                - Critical
+                            businessImpact:
+                              type: object
+                              description: ID of the business impact.
+                              properties:
+                                uniqueId:
+                                  type: string
+                            urgency:
+                              type: object
+                              description: Urgency to prioritize the incident.
+                              properties:
+                                uniqueId:
+                                  type: string
+                            priority:
+                              type: string
+                              description: 'Supported value for priority are Low, Normal, High, Urgent, Very Low.'
+                              enum:
+                                - Low
+                                - Normal
+                                - High
+                                - Urgent
+                                - Very Low
+                  notifyIncident:
+                    type: string
+                    enum:
+                      - forEveryUpdate
+                      - whenAlertStateChanged
+                    description: Notify users when incident is updated due to change in alert state.
+                  incident:
+                    type: object
+                    description: 'Create New Incident: Configure the properties of an incident that will be created when an alert''s condition matches with this policy.'
+                    properties:
+                      priority:
+                        type: string
+                        description: Priority of the incident. This can be defined with respect to business impact and urgency.
+                        enum:
+                          - Low
+                          - Normal
+                          - High
+                          - Urgent
+                          - Very Low
+                      assigneeGroup:
+                        type: object
+                        description: |
+                          Escalate incident to a user group who would be responsible for working on the incident
+                        properties:
+                          uniqueId:
+                            type: string
+                          name:
+                            type: string
+                      assignedUser:
+                        type: object
+                        description: |
+                          Escalate incident to a user
+                        properties:
+                          id:
+                            type: string
+                          loginName:
+                            type: string
+                      customFields:
+                        type: array
+                        description: |
+                          User customized fields. User can include additional information of incident by creating custom fields. Use Get Incident Custom Fields to get the custom forms of incident.
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            name:
+                              type: string
+                            value:
+                              type: string
+                      cc:
+                        type: object
+                        description: |
+                          User would receive the incident notifications via email.
+                        properties:
+                          toEmail:
+                            type: string
+                      businessImpact:
+                        description: The severity of an incident on the business. Use Get Business Impacts to get the list of defined business impacts.
+                        type: object
+                        properties:
+                          uniqueId:
+                            type: string
+                      urgency:
+                        type: object
+                        properties:
+                          uniqueId:
+                            type: string
+                            description: |
+                              Urgency to prioritize and work on the incident. Use Get Urgencies to get the list of defined urgencies.
+                  notifyLimitCount:
+                    type: integer
+                    description: |-
+                      Number of repeated notifications a user has to receive within a certain time interval. For example, if repeatFrequency: 15 and notifyLimitCount: 5. The above example indicates that user receives notifications every 15 minutes and stops receiving after 5 notifications. When a notification limit count is not provided, the default notifyLimitCount is 2.
+
+                      Can be set from 1 to 10.
+                    default: 2
+                  alertStateTransitionFrom:
+                    type: string
+                    enum:
+                      - CRITICAL
+                      - WARNING
+                    description: 'Escalate alerts as notification on a change in alert state. For example, escalate alerts as notification when alert state changes from Warning to Critical. The notification is a one-time notification sent at the time of the state transition.'
+        examples:
+          example-automatic-escalation:
+            value:
+              name: Network Devices Down
+              description: Issues in network devices.
+              resources:
+                - id: bf3a10a2-92f1-4610-b3f4-174ed83db7b9
+                  type: RESOURCE
+                - id: DGP-0b165e70-7152-49f1-bfe3-ebe77409d5f2
+                  type: DEVICEGROUP
+                - id: SGP-11f1a6a8-acc8-411f-86c1-b693dd8e9817
+                  type: SERVICEGROUP
+                - id: 7_AWS
+                  type: LOCATION
+                - id: client_7
+                  type: CLIENT
+              filterCriteria:
+                matchingType: ANY
+                rules:
+                  - key: 'Alert   : Description'
+                    operator: CONTAINS
+                    value: critical
+                  - key: 'Alert : Occurrence Frequency'
+                    operator: GREATERTHANOREQUALTO
+                    value:
+                      occurrences: '5'
+                      frequency: '2'
+                      frequencyType: days
+              escalationType: AUTOMATIC
+              escalations:
+                - waitMins: 5
+                  priority: Low
+                  repeatFrequency: 5
+                  action: NOTIFICATION
+                  recipients:
+                    - id: USR0000000028
+                      name: AP_User
+                      type: USER
+                    - id: USRGRP-9498fc95-67b7-3477-953f-1ec70bf0c61d
+                      name: Cloud group
+                      type: USERGROUP
+                    - id: ES-de9bfd9f-d8ee-430f-4bc0-e6e4645cdb47
+                      name: Cloud roster
+                      type: ROSTER
+                    - id: USRGRP-9498fc95-67b7-3477-953f-1ec70bf0c61d
+                      name: OpsRamp group
+                      type: USERGROUP_DL
+                - waitMins: 5
+                  action: INCIDENT
+                  updateIncident:
+                    none: 'true'
+                    withAlertState: 'true'
+                    priorityRules:
+                      - key: currentState.code
+                        operator: Is
+                        value: Warning
+                        businessImpact:
+                          uniqueId: SIMPACT-e8853b21-ebc5-dd1d-d9a3-7a7b121a5e0f
+                        urgency:
+                          uniqueId: SURG-09358506-4af1-4d35-b902-cd3b14a00c10
+                        priority: High
+                  notifyIncident: whenAlertStateChanged
+                  incident:
+                    priority: Very Low
+                    assigneeGroup:
+                      uniqueId: USRGRP-4189ae2e-bcf5-f686-26d0-8b6eabd91558
+                      name: Network Group
+                    assignedUser:
+                      id: USR0000000030
+                      loginName: Ops_User
+                    customFields:
+                      - id: UDF0000000002
+                        name: Number of attached incidents
+                        value: '2'
+                      - id: UDF0000000004
+                        name: esc_custom_field_4
+                        value: |-
+                          $function.substring($alert.description ,'SITE ID=','
+                          ')
+                    cc: support@domain.com
+                    toEmail: james.scott@domain.co
+          example-manual-escalation:
+            value:
+              id: POLICY-a204aea2-f943-46cb-86fa-86197e796f70
+              name: Network Devices Down
+              description: Issues in network devices.
+              policyType: ESCALATION_POLICY
+              clientMatchingType: ALL
+              createdDate: '2017-05-15T11:10:32+0000'
+              updatedDate: '2017-05-15T11:10:32+0000'
+              active: true
+              scope:
+                id: 5
+                uniqueId: msp_5
+                name: OpsRamp Partner
+                activated: true
+              createdBy:
+                loginName: John.Smith
+                lastName: Smith
+                firstName: John
+                email: john.smith@domain.com
+              updatedBy:
+                loginName: John.Smith
+                lastName: Smith
+                firstName: John
+                email: john.smith@domain.com
+              resources:
+                - id: bf3a10a2-92f1-4610-b3f4-174ed83db7b9
+                  name: LPT00001
+                  type: RESOURCE
+                - id: 7_AWS
+                  name: AWS
+                  type: LOCATION
+                - id: DGP-0b165e70-7152-49f1-bfe3-ebe77409d5f2
+                  name: Network Group
+                  type: DEVICEGROUP
+                - id: SGP-11f1a6a8-acc8-411f-86c1-b693dd8e9817
+                  name: Network Service Group
+                  type: SERVICEGROUP
+                - id: client_6
+                  name: OpsRamp Client
+                  type: CLIENT
+              filterCriteria:
+                matchingType: ALL
+                rules:
+                  - key: 'Alert  : Description'
+                    operator: CONTAINS
+                    value: critical
+              escalationType: MANUAL
+              escalations:
+                - action: NOTIFICATION
+                  recipients:
+                    - id: USR0000000019
+                      name: Partner.A
+                      type: USER
+                    - id: USRGRP-9498fc95-67b7-3477-953f-1ec70bf0c61d
+                      name: Cloud group
+                      type: USERGROUP
+                    - id: ES-d16473ee-29de-1cf2-4983-86307733e34c
+                      name: Test roster
+                      type: ROSTER
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: id
+    required: true

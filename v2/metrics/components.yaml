@@ -1,0 +1,75 @@
+components:
+  securitySchemes:
+    accessToken:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: ''
+          refreshUrl: ''
+          scopes: {}
+  schemas:
+    metric:
+      title: metric
+      type: object
+      description: ''
+      properties:
+        resource:
+          type: integer
+        metric:
+          type: string
+          description: |
+            Metric type name.
+        metricType:
+          type: string
+          description: |
+            Metric type.
+        unit:
+          type: string
+          description: |
+            Metric type unit.
+        unitLabel:
+          type: string
+          description: |
+            (Optional) Label of the y-axis in the graph widget).
+        component:
+          type: string
+        description:
+          type: string
+          description: |
+            Summary of the metric type.
+        consolFunc:
+          type: string
+        factor:
+          type: integer
+        data:
+          type: object
+        timeSeriesType:
+          type: string
+        minVals:
+          type: object
+        maxVals:
+          type: object
+        lastVals:
+          type: object
+        displayName:
+          type: string
+          description: |
+            Metric display name.
+        groupName:
+          type: string
+          description: |
+            (Optional) Metric group name.
+        displayUnit:
+          type: string
+          description: |
+            (Optional) Unit name displayed in the graph.
+        resourceType:
+          type: string
+          description: |
+            (Optional) Resource type.
+        displayByComponent:
+          type: boolean
+        displayOrder:
+          type: integer
+        topMetric:
+          type: boolean

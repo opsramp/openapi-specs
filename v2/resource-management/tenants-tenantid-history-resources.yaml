@@ -1,0 +1,183 @@
+summary: Search decommissioned resources
+description: |-
+  This endpoint is used to retrieve the list of decommissioned resources.
+
+  Notes
+  There are special characters that can be used in a query string:
+  - (+) represents the next field and must be URL-encoded.
+  - (:) represents equals. An example is `key : value`.
+  - Space characters must be URL-encoded.
+  - Date format must be `yyyy-MM-ddTHH:mm:ssZ (GMT)`.
+
+  ### Query variables
+
+  |Query Variables|Description|
+  |----|----|
+  |id|Resource ID.<br>Example: d7bce6fe-d19f-4ad7-8c50-2f639f2dd778|
+  |state|Resource state.Supported value: DECOMMISSIONED|
+  |hostName|Resource host name.<br>Example: SJKT1212|
+  |ipAddress|Resource IP Address.<br>Example: 10.23.89.226|
+  |instanceId|Cloud instance ID.|
+  |tags|Additional information of a resource, preferably, a custom attribute name.|
+  |startDate|Search for resources decommissioned within a specific duration. startDate indicates the from date. For example, to fetch list resources decommissioned between 14th Aug 2018 to 18th Aug 2018, provide startDate as 2018-08-14T10:20:20 0000 and endDate as 2018-08-18T12:10:20 0000Note: Date format: yyyy-MM-ddTHH:mm:ssZ (GMT).|
+  |endDate|Search for resources decommissioned within a specific duration. endDate indicates the to date.Note: Date format: yyyy-MM-ddTHH:mm:ssZ (GMT).|
+  |type|Resource type.<br>Example: DEVICE|
+  |accountNumber|Instance account number. This varies for each provider:<br>- AWS: Account number<br>- Azure: Subscription ID<br>- Google: Project ID|
+  |provider|Cloud provider name.<br>Example: AWS|
+  |owner|Owner ID.<br>Example: 23422135901|
+  |instanceType|Cloud instance type.|
+  |instanceState|Cloud instance state.Supported Value: DECOMMISSIONED|
+  |zone|Zone name in which instance is located.<br>Example: virgina-east|
+  |region|Geographical location in which instance is located.<br>Example: US-EAST|
+  |ami|Amazon Machine image.|
+  |hostedServiceName|Domain role.|
+  |startLaunchDate|Search for decommissioned cloud instances launched within a specific duration.Provide from date.<br>Example: 2018-07-11T10:05:20 0000|
+  |endLaunchDate|Search for decommissioned cloud instances launched within a specific duration.Provide to date.<br>Example: 2018-08-20T11:10:20 0000|
+get:
+  tags:
+    - resource-management
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: string
+      in: query
+      name: queryString
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: './components.yaml#/components/schemas/resourceFull'
+              totalResults:
+                type: integer
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: 740e2b6d-77ae-46d0-85ca-414e41607b15
+                    hostName: SJLPT1122
+                    ipAddress: 161.43.12.54
+                    dns: opsrampdev
+                    updatedDate: '2018-08-02T10:24:16+0000'
+                    deviceType: Linux
+                    devicePath: Server >> Linux
+                    type: DEVICE
+                    state: Decommissioned
+                    macAddress: '0A:00:27:00:00:02'
+                    make: innotek GmbH
+                    model: VirtualBox
+                    osName: Ubuntu 16.04.4 LTS
+                    osArchitecture: '64'
+                    serialNumber: 7GH9NH2
+                    systemUID: 5G6H6874-1246-4H60-9012-D4C04F4E4123
+                    description: 'BIOS Date: 09/12/17 00:52:26 Ver: 1.6.4.00 '
+                    agentInstalled: true
+                    aliasName: HYDLPT117@OpsRamp
+                    name: SJLPT117
+                    resourceName: SJLPT117
+                    resiurceType: Linux
+                    attributes:
+                      provider: AWS
+                      instanceId: i-373dcec7
+                      instanceState: running
+                      instanceType: t1.micro
+                      publicIp: 54.211.85.6
+                      ami: ami-84562dec
+                      launchDate: '2015-11-03T21:14:28+0000'
+                      owner: '23422135901'
+                      privateDns: ip-10-33-136-158.ec2.internal
+                      privateIp: 12.32.345.132
+                      zone: us-east-1e
+                      monitoringState: disabled
+                    managementProfile:
+                      id: 7
+                      name: vg-ubuntu16
+                      type: Gateway
+                    tags:
+                      - name: vmtesttag
+                        value: tagvalue
+                    history:
+                      decommissionReason: Sample decommission reason
+                  - id: d0d2c5f0-22e0-4a02-be73-135e696ca4f9
+                    hostName: Windows-SJ
+                    ipAddress: 123.11.32.34
+                    dns: Sample DNS
+                    updatedDate: '2018-07-27T09:48:48+0000'
+                    type: DEVICE
+                    state: Decommissioned
+                    serialNumber: HYD102394574
+                    agentInstalled: false
+                    managementProfile:
+                      id: 7
+                      name: vg-ubuntu16
+                      type: Gateway
+                    history:
+                      decommissionReason: Replacement of the server
+                  - id: fd6b542f-e35c-4d34-8068-47e4f2e92391
+                    hostName: globalasset1
+                    ipAddress: 132.23.1.2
+                    updatedDate: '2018-07-27T09:36:48+0000'
+                    type: DEVICE
+                    state: Decommissioned
+                    systemUID: 6709ADA4-2345-C148-DCDE-4236F5C6DE12
+                    agentInstalled: false
+                    attributes:
+                      instanceId: /subscriptions/9ee6993f-a036-4118-9eab-c66d9fda1ef3/resourceGroups/TEST/providers/Microsoft.Compute/virtualMachines/globalasset1
+                    history:
+                      decommissionReason: Expiry of the Instance
+                  - id: fbb6c1df-b85e-4016-bcac-93487b6129f4
+                    hostName: TestLinuxVM
+                    ipAddress: 10.0.0.4
+                    updatedDate: '2018-07-26T12:46:42+0000'
+                    type: DEVICE
+                    state: Decommissioned
+                    systemUID: 223C543D-0CD7-2A56-2345-3DCDD332901D
+                    agentInstalled: false
+                    tags:
+                      - name: vmtesttag
+                        value: tagvalue
+                    history:
+                      decommissionReason: Sample decommission reason
+                  - id: f22d5518-d380-4edf-a6f4-1fb52af83151
+                    hostName: Linux-SJ
+                    ipAddress: 12.321.43.125
+                    updatedDate: '2018-07-21T11:03:47+0000'
+                    type: DEVICE
+                    state: Decommissioned
+                    agentInstalled: false
+                    tags:
+                      - name: Device Location
+                        value: SJ
+                totalResults: 5
+                pageNo: 1
+                pageSize: 100
+                totalPages: 1
+                nextPage: false
+                descendingOrder: false
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

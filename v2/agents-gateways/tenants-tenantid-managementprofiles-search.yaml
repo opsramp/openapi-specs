@@ -1,0 +1,187 @@
+summary: Search management profile
+description: |-
+  This endpoint is used to search for management profiles.
+
+  ## Query Variables
+  |Variable|Value|Description|
+  |---|---|---|
+  |id|{id}|The management profile ID.|
+  |name|{name}|The management profile name.|
+  |type|Agent, Gateway|The anagement profile type. An example is: Agent.|
+  |startCreationDate|{startCreationDate}|Search for the management profile created within a certain duration. Start indicates the from date. An example is: 2016-06-10T10:40:20 0000 (GMT).|
+  |endCreationDate|{endCreationDate}|Search for the management profile created within a certain duration. End indicates the to date. An Example is: 2016-06-20T10:40:20 0000 (GMT).|
+
+  ## Notes
+  1. Special characters in the query string
+      1. Plus (+) indicates next field and must be URL encoded.
+      2. Color (:) indicates Equals. An example is: key: value.
+      3. Space characters must be URL encoded.
+  2. Date format must use this format: yyyy-MM-ddTHH: mm: ssZ (GMT).
+get:
+  tags:
+    - agents-gateways
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    type:
+                      type: string
+                    tunnelType:
+                      type: string
+                    activationToken:
+                      type: string
+                    registered:
+                      type: boolean
+                    createdDate:
+                      type: string
+                    status:
+                      type: string
+                    device:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        generalInfo:
+                          type: object
+                          properties:
+                            ipAddresses:
+                              type: string
+                            hostName:
+                              type: string
+                        clientUniqueId:
+                          type: string
+                        type:
+                          type: string
+                    statusUpdatedDate:
+                      type: string
+                    softwareVersion:
+                      type: string
+                    uuId:
+                      type: string
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              nextPageNo:
+                type: integer
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: 76
+                    name: LB1 Gateway Profile
+                    description: Gateway Management Profile_LB1
+                    type: Gateway
+                    tunnelType: SSHD
+                    activationToken: 423e2e3c-a300-4218-a69c-9e3d8c3c3c63
+                    registered: false
+                    createdDate: '2016-06-22T07:34:40+0000'
+                  - id: 75
+                    name: Agent Profile
+                    description: Agent Management Profile
+                    type: Agent
+                    status: DOWN
+                    createdDate: '2016-06-22T07:24:14+0000'
+                    device:
+                      id: 96dd7237-a0cf-40b7-ac5f-56b1bd5221d7
+                      generalInfo:
+                        ipAddresses: 172.28.2.233
+                        hostName: SJLPT159
+                      clientUniqueId: client_69900
+                      type: DEVICE
+                  - id: 74
+                    name: Gateway Profile
+                    description: Gateway Management Profile
+                    type: Gateway
+                    status: DOWN
+                    statusUpdatedDate: '2016-06-20T06:54:46+0000'
+                    softwareVersion: 1.4.3
+                    createdDate: '2016-06-14T06:57:46+0000'
+                    device:
+                      id: fbfe0ecd-8200-4cbf-a13c-f309f341a8c8
+                      generalInfo:
+                        ipAddresses: 172.30.31.137
+                        hostName: 172.30.31.137
+                    tunnelType: SSHD
+                    registered: true
+                    uuId: d004de59-3e72-4c9a-82d7-df3f27f5a7aa
+                  - id: 37
+                    name: Default
+                    description: Default Management Profile
+                    type: Gateway
+                    status: DOWN
+                    statusUpdatedDate: '2016-06-12T06:54:46+0000'
+                    softwareVersion: 1.4.3
+                    createdDate: '2016-06-02T00:27:53+0000'
+                    device:
+                      id: cbee0ecd-5200-3fbf-f13c-c309f341a8c8
+                      generalInfo:
+                        ipAddresses: 172.30.32.110
+                        hostName: 172.30.32.110
+                    tunnelType: SSHD
+                    registered: true
+                    uuId: 95dd2fc2-4d13-11e3-8623-005056910D5D
+                totalResults: 4
+                orderBy: id
+                pageNo: 1
+                pageSize: 10
+                totalPages: 1
+                nextPage: false
+                nextPageNo: 0
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: string
+      in: query
+      name: pageNo
+      description: '{pageNo}'
+    - schema:
+        type: string
+      in: query
+      name: pageSize
+      description: '{pageSize}'
+    - schema:
+        type: boolean
+      in: query
+      name: isDescendingOrder
+      description: '{true/false}'
+    - schema:
+        type: string
+      in: query
+      name: sortName
+      description: '{field}'
+    - schema:
+        type: string
+      in: query
+      name: queryString
+      description: '{queryString}'
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

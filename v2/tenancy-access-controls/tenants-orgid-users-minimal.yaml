@@ -1,0 +1,66 @@
+summary: Get minimal details of users
+description: |-
+  This endpoint is used to retrieve the minimal details of the users.
+
+  ## Notes
+  There are special characters that can be used in a query string:
+  - (:) represents equals. An example is key : value.
+  - Space characters must be URL-encoded.
+get:
+  tags:
+    - tenancy-access-controls
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                loginName:
+                  type: string
+                lastName:
+                  type: string
+                firstName:
+                  type: string
+                email:
+                  type: string
+                changePassword:
+                  type: boolean
+          examples:
+            example-1:
+              value:
+                - id: USR0000000453
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@domain.com
+                  changePassword: false
+                - id: USR0000000216
+                  loginName: James.Scott
+                  lastName: Scott
+                  firstName: James
+                  email: james.scott@domain.com
+                  changePassword: false
+                - id: USR0000002097
+                  loginName: Scarlett.John
+                  lastName: Scarlett
+                  firstName: John
+                  email: scarlett@domain.com
+                  changePassword: false
+                - id: USR0000002115
+                  loginName: Denny.Partner
+                  lastName: Rivers
+                  firstName: Denny
+                  email: denny.partner@domain.com
+                  changePassword: false
+parameters:
+  - schema:
+      type: string
+    in: path
+    name: orgId
+    required: true

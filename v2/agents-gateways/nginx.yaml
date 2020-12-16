@@ -1,0 +1,37 @@
+summary: Status and restart NGINX service
+description: This endpoint is used to get the NGINX service status and to restart the NGINX service on the gateway.
+post:
+  tags:
+    - agents-gateways
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              Success:
+                type: string
+          examples:
+            example-1:
+              value:
+                Success: Service NGINX active (Running)
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            action:
+              type: string
+              description: 'Action item: restart or status'
+              enum:
+                - restart
+                - status
+          required:
+            - action
+        examples:
+          example-1:
+            value:
+              action: status

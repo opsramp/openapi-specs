@@ -1,0 +1,1118 @@
+summary: Search time bound requests
+description: |-
+  This endpoint is used to search for time bound requests.
+
+  >## Notes
+  The request parameter include is required in order to retrieve the following information in the response:
+  >- Custom fields
+  >- Status flow
+  Example: include=customFields, statusFlow
+
+  ### Query variables
+
+  |Field|Default Value|
+  |----|----|
+  |uniqueId|ID of the time bound request.<br>Example: CHG0000002401|
+  |status|Current status of time bound request.<br>Supported values: New, Open, Pending, Resolved, Closed, and On Hold.<br>Example: Closed, Resolved|
+  |priority|Current priority of time bound request.<br>Supported values: Low, Normal, High, Urgent, and Very Low<br>Example: High, Urgent|
+  |subject|A short summary of time bound request.<br>Example: time bound request from Alert.|
+  |assignedTo|User who has been assigned time bound request.<br>Example: USR0000000129|
+  |requester|User who requests the time bound request.<br>Example: USR0000000129|
+  |startCreationDate|Filter time bound request with the creation date. Provide the from date.<br>Example: 2016-07-26T14:49:44 0000 (GMT)|
+  |endCreationDate|Provide the to date.<br>Example: 2016-07-28T07:12:19 0000 (GMT)|
+  |startUpdationDate|Filter time bound request with the updation date.<br>Example: 2016-08-12T06:54:59 0000 (GMT)|
+  |endUpdationDate|Provide the to date.<br>Example: 2016-08-15T10:40:20 0000 (GMT)|
+  |oldStatus|Previous status of time bound request.<br>Supported values: New, Open, Pending, Resolved, and On Hold<br>Example: Resolved|
+  |oldPriority|Previous priority of time bound request.<br>Supported values: Low, Normal, High, Urgent, and Very Low<br>Example: Urgent|
+  |deviceId|Unique ID of the device.<br>Example: 481af404-33a6-4d61-af77-c483ca6641fa|
+  |source|Source of the time bound request.<br>Supported values: PORTAL, INTEGRATION, MOBILE, EMAIL|
+  |sourcePolicyType|Source policy type of the time bound request.<br>Supported values: AUTOINCIDENT, INTEGRATION|
+  |firstContactFix|Problem fixed without assigning to another group.<br>Example: true, false|
+  |startResponseBreachDate|Filter time bound request with response breach date. Provide from date.<br>Example: 2016-08-25T08:12:19+0000 (GMT)|
+  |endResponseBreachDate|Provide to date.<br>Example: 2016-09-28T10:40:20 0000 (GMT)|
+  |startResolutionBreachDate|Filter time bound request with resolution breach date. Provide from date.<br>Example: 2016-08-25T08:12:19 0000 (GMT)|
+  |endResolutionBreachDate|Provide to date.<br>Example: 2016-09-29T10:40:20 0000 (GMT)|
+  |responseBreach|Response to time bound request beyond the time limit.<br>Example: false|
+  |resolutionBreach|time bound request fixed within the time limit.<br>Example: true|
+  |assigneeGroupIds|ID of the group to which the time bound request is assigned.<br>Example: 1, 2, 3|
+  |minResponseTime|Minimum response time of time bound request.<br>Example: 300 (time in seconds)|
+  |maxResponseTime|Maximum response time of time bound request.<br>Example: 600 (time in seconds)|
+  |minResolutionTime|Minimum resolution time of time bound request.<br>Example: 3600 (time in seconds)|
+  |maxResolutionTime|Maximum resolution time of time bound request.<br>Example: 7200 (time in seconds)|
+  |minReOpens|Minimum number of times time bound request is reopened.<br>Example: 5|
+  |maxReOpens|Maximum number of times time bound request is reopened.<br>Example: 8|
+  |startClosedDate|Filter time bound requests with the closed date. Provide the from closed date.<br>Example: 2016-08-12T06:54:59 0000 (GMT)|
+  |endClosedDate|Provide to closed date.<br>Example: 2016-08-15T06:54:59 0000 (GMT)|
+  |startResolvedDate|Filter time bound requests with the resolved date. Provide from resolved date.<br>Example: 2016-08-12T06:49:59 0000 (GMT)|
+  |endResolvedDate|Provide to resolved date.<br>Example: 2016-08-14T07:49:59 0000 (GMT)|
+  |extTicketId|External ticket ID.|
+
+  >## Notes
+  >To view tickets created within a given date range, provide both startCreationDate and endCreationDate. Otherwise, the tickets created in the last month would be returned.
+  >There are special characters that can be used in a query string:
+  >- (+) represents the next field and must be URL-encoded.
+  >- (:) represents equals. An example is `key : value`.
+  >- Space characters must be URL-encoded.
+  >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT)
+get:
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: './components.yaml#/components/schemas/incident'
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              nextPageNo:
+                type: integer
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: TBT0000000307
+                    subject: Request for deleting expired tickets
+                    description: Some tickets are expired and not at all needed. We need support for deleting those tickets
+                    status: Open
+                    oldStatus: On Hold
+                    priority: Low
+                    oldPriority: Low
+                    requester:
+                      id: USR0000000014
+                      loginName: brocadeLab@organization.com
+                      lastName: Lab
+                      firstName: Brocade
+                      email: brocadeLab@gmail.com
+                      phoneNumber: 999-225-1235
+                    assignedUser:
+                      id: USR0000000014
+                      loginName: brocadeLab@oragnization.com
+                      lastName: Lab
+                      firstName: Brocade
+                      email: brocadeLab@gmail.com
+                      phoneNumber: 999-225-1235
+                    resources:
+                      - id: 481af404-33a6-4d61-af77-c483ca6641fa
+                        name: VTHLPT1000
+                        type: DEVICE
+                      - id: SGP-7adf3762-f310-4c14-9ecd-443eb7c6c208
+                        name: VTH-SERVICES
+                        type: SERVICE
+                      - id: DGP-8d44a504-fd4b-4a78-ba34-2dfdf3ffb85e
+                        name: VTH-ADMIN-DEVS
+                        type: DEVICE_GROUP
+                    extTicketId: TBT0000000259
+                    cc: test@gmail.com
+                    ticketArisedTime: ''
+                    createdUser:
+                      loginName: john.bolt
+                      lastName: Bolt
+                      firstName: John
+                      email: john.bolt@admin.com
+                    alertIds: []
+                    reOpenCount: 0
+                    createdDate: '2016-08-28T10:16:44+0000'
+                    consoles:
+                      - consoleProtocol: SSH
+                        type: MANAGEMENTCONSOLE
+                        options: 'CLIPBOARDACCESS,FILETRANSFER'
+                      - consoleProtocol: TELNET
+                        type: MANAGEMENTCONSOLE
+                        options: CLIPBOARDACCESS
+                      - consoleProtocol: RDP
+                        type: MANAGEMENTCONSOLE
+                        options: 'CLIPBOARDACCESS,DISKSHARE'
+                      - consoleProtocol: VNC
+                        type: MANAGEMENTCONSOLE
+                      - consoleProtocol: RDP
+                        type: ADMINCONSOLE
+                    client:
+                      id: 8
+                      uniqueId: client_8
+                      name: Brocade Lab
+                      activated: true
+                    sourcePolicyType: INTEGRATION
+                    updatedDate: '2016-11-02T10:18:25+0000'
+                    priorityUpdatedBy:
+                      id: USR0000000014
+                      loginName: brocadeLab@organization.com
+                      lastName: Lab
+                      firstName: Brocade
+                      email: brocadeLab@gmail.com
+                      phoneNumber: 999-225-1234
+                    priorityUpdatedDate: '2016-11-02T10:16:44+0000'
+                    statusUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                      phoneNumber: 999-225-1234
+                    statusUpdatedDate: '2016-11-02T10:18:25+0000'
+                    resolvedDate: '2016-11-02T10:18:12+0000'
+                    slaDetails:
+                      resolutionTime: 103
+                      responseTime: 65
+                      responseBreach: false
+                      resolutionBreach: false
+                      responseBreachDate: ''
+                      resolutionBreachDate: ''
+                    source: INTEGRATION
+                    sourceEntityTypeId: TBT0000000259
+                    schedule:
+                      type: one-time
+                      startTime: '2016-10-10T17:45:00+0000'
+                      endTime: '2016-11-20T15:05:00+0000'
+                  - id: TBT0000000254
+                    subject: REST API support for ITSM
+                    description: Rest api's support needed for itsm services
+                    status: Closed
+                    oldStatus: Open
+                    priority: Low
+                    oldPriority: Urgent
+                    requester:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    assignedUser:
+                      id: USR0000000014
+                      loginName: brocadeLab@organization.com
+                      lastName: Lab
+                      firstName: Brocade
+                      email: brocadeLab@gmail.com
+                    resources:
+                      - id: a17d1896-d18a-4d3e-ae6e-e00465770119
+                        name: SVR-DEMO
+                        type: DEVICE
+                    cc: 'brocade@gmail.com, escalationmails@gmail.com'
+                    ticketArisedTime: ''
+                    createdUser:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    reason: Close TBR
+                    alertIds: []
+                    reOpenCount: 1
+                    createdDate: '2016-08-17T08:32:36+0000'
+                    consoles:
+                      - consoleProtocol: SSH
+                        type: MANAGEMENTCONSOLE
+                        options: CLIPBOARDACCESS
+                      - consoleProtocol: VNC
+                        type: MANAGEMENTCONSOLE
+                      - consoleProtocol: RDP
+                        type: ADMINCONSOLE
+                    participantUsers:
+                      - id: USR0000000023
+                        loginName: brocadeLabBusiness@organization.com
+                      - id: USR0000000015
+                        loginName: brocadeCAdmin@organization.com
+                    client:
+                      id: 8
+                      uniqueId: client_8
+                      name: Brocade Lab
+                      activated: true
+                    updatedDate: '2016-08-12T08:33:37+0000'
+                    priorityUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    priorityUpdatedDate: '2016-08-12T08:33:10+0000'
+                    statusUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    statusUpdatedDate: '2016-08-12T08:33:37+0000'
+                    closedDate: '2016-08-12T08:33:37+0000'
+                    slaDetails:
+                      resolutionTime: 37
+                      responseTime: 22
+                      responseBreach: false
+                      resolutionBreach: false
+                      responseBreachDate: ''
+                      resolutionBreachDate: ''
+                    source: PORTAL
+                    schedule:
+                      type: recurring
+                      startTime: '2016-08-12T04:02:00+0000'
+                      endTime: '2016-08-30T19:19:00+0000'
+                      pattern:
+                        dayOfWeek: SUN
+                  - id: TBT0000000253
+                    subject: Support for service catalog items
+                    description: Service catalog items support should avail in 5.0 release
+                    status: On Hold
+                    oldStatus: Pending
+                    priority: High
+                    oldPriority: Low
+                    requester:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    assignedUser:
+                      id: USR0000000011
+                      loginName: brocadeInc@organization.com
+                      lastName: Inc Admin
+                      firstName: Brocade
+                      email: brocade@gmail.com
+                    assigneeGroup:
+                      id: 5
+                      name: Brocade Inc Users
+                      description: Brocade Partner Users
+                    resources:
+                      - id: a17d1896-d18a-4d3e-ae6e-e00465770119
+                        name: SVR-DEMO
+                        type: DEVICE
+                      - id: ad0a218d-7512-435c-9b58-614470ee8658
+                        name: WORK-PC
+                        type: DEVICE
+                    cc: 'brocade@gmail.com, escalationmails@gmail.com'
+                    ticketArisedTime: ''
+                    createdUser:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    reason: On hold TBR
+                    alertIds: []
+                    reOpenCount: 0
+                    createdDate: '2016-08-12T08:30:18+0000'
+                    consoles:
+                      - consoleProtocol: SSH
+                        type: MANAGEMENTCONSOLE
+                        options: CLIPBOARDACCESS
+                      - consoleProtocol: RDP
+                        type: ADMINCONSOLE
+                    participantUsers:
+                      - id: USR0000000011
+                        loginName: brocadeInc@organization.com
+                      - id: USR0000000013
+                        loginName: brocadePAdmin@gmail.com
+                    client:
+                      id: 8
+                      uniqueId: client_8
+                      name: Brocade Lab
+                      activated: true
+                    updatedDate: '2016-08-12T08:30:53+0000'
+                    priorityUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    priorityUpdatedDate: '2016-08-12T08:30:41+0000'
+                    statusUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    statusUpdatedDate: '2016-08-12T08:30:53+0000'
+                    slaDetails:
+                      resolutionTime: 23
+                      responseTime: 0
+                      responseBreach: false
+                      resolutionBreach: false
+                      responseBreachDate: ''
+                      resolutionBreachDate: ''
+                    source: PORTAL
+                    schedule:
+                      type: one-time
+                      startTime: '2016-08-14T18:00:00+0000'
+                      endTime: '2016-08-30T19:00:00+0000'
+                  - id: TBT0000000245
+                    subject: Halt for Device maintenance Services
+                    description: No Device maintenance window should be available for the given time period.
+                    status: Resolved
+                    oldStatus: Open
+                    priority: Low
+                    oldPriority: Normal
+                    requester:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    assignedUser:
+                      id: USR0000000013
+                      loginName: brocadePAdmin@gmail.com
+                      lastName: Inc PAdmin
+                      firstName: Brocade
+                      email: brocadePAdmin@gmail.com
+                    resources:
+                      - id: 43d49023-4c47-4dbf-a59b-9c40610e1ab8
+                        name: VTHLPT005
+                        type: DEVICE
+                    cc: 'escalationmails@gmail.com, brocade@gmail.com'
+                    ticketArisedTime: ''
+                    createdUser:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    reason: Resolve TBR
+                    alertIds: []
+                    reOpenCount: 2
+                    createdDate: '2016-08-08T06:35:11+0000'
+                    consoles:
+                      - consoleProtocol: SSH
+                        type: MANAGEMENTCONSOLE
+                        options: 'CLIPBOARDACCESS,FILETRANSFER'
+                      - consoleProtocol: TELNET
+                        type: MANAGEMENTCONSOLE
+                        options: CLIPBOARDACCESS
+                      - consoleProtocol: RDP
+                        type: MANAGEMENTCONSOLE
+                        options: 'CLIPBOARDACCESS,DISKSHARE'
+                      - consoleProtocol: VNC
+                        type: MANAGEMENTCONSOLE
+                      - consoleProtocol: RDP
+                        type: ADMINCONSOLE
+                    participantUsers:
+                      - id: USR0000000011
+                        loginName: brocadeInc@organization.com
+                      - id: USR0000000013
+                        loginName: brocadePAdmin@gmail.com
+                    client:
+                      id: 8
+                      uniqueId: client_8
+                      name: Brocade Lab
+                      activated: true
+                    updatedDate: '2016-08-12T08:28:22+0000'
+                    priorityUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    priorityUpdatedDate: '2016-08-12T08:24:26+0000'
+                    statusUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    statusUpdatedDate: '2016-08-12T08:27:05+0000'
+                    resolvedDate: '2016-08-12T08:27:05+0000'
+                    slaDetails:
+                      resolutionTime: 352296
+                      responseTime: 352259
+                      responseBreach: false
+                      resolutionBreach: false
+                      responseBreachDate: ''
+                      resolutionBreachDate: ''
+                    source: PORTAL
+                    schedule:
+                      type: one-time
+                      startTime: '2016-08-09T10:00:00+0000'
+                      endTime: '2016-09-30T20:00:00+0000'
+                totalResults: 4
+                orderBy: ticket.id
+                pageNo: 1
+                pageSize: 10
+                totalPages: 1
+                nextPage: false
+                previousPageNo: 0
+                descendingOrder: true
+            example-include-customFields:
+              value:
+                results:
+                  - alertIds:
+                      - null
+                    allowedStatus:
+                      - id: string
+                        name: string
+                        reasonsEnabled: true
+                        reasonsDefined: true
+                    assignedUser:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    assigneeGroup:
+                      id: 0
+                      name: string
+                      description: string
+                      userCount: 0
+                    attachedArticles:
+                      - id: 0
+                        subject: string
+                    attachedRequests:
+                      - id: string
+                    attachments:
+                      - file: string
+                        name: string
+                    businessImpact:
+                      uniqueId: string
+                      name: string
+                      description: string
+                      createdBy:
+                        id: string
+                        loginName: string
+                        lastName: string
+                        firstName: string
+                        email: string
+                        phoneNumber: string
+                      updatedBy:
+                        id: string
+                        loginName: string
+                        lastName: string
+                        firstName: string
+                        email: string
+                        phoneNumber: string
+                      createdDate: '2019-08-24T14:15:22Z'
+                      updatedDate: '2019-08-24T14:15:22Z'
+                    category:
+                      id: 0
+                    cc: string
+                    changePlan: string
+                    changeType: string
+                    changeRequest:
+                      id: string
+                    channelId: string
+                    client:
+                      id: 0
+                      uniqueId: string
+                      name: string
+                      activated: true
+                      updatedTime: string
+                      createdTime: '2019-08-24T14:15:22Z'
+                    closedSummary: string
+                    consoles:
+                      - type: MANAGEMENTCONSOLE
+                        consoleProtocol: RDP
+                        options: string
+                    createdDate: '2019-08-24T14:15:22Z'
+                    createdUser:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    customFields:
+                      - id: UDF0000003808
+                        classCode: ACSTICKET
+                        displayLabel: text field
+                        name: text_field_3808
+                        fieldType: TYPE_TEXT
+                        mandatory: false
+                        editable: true
+                        description: all partners
+                        value: available
+                        defaultValue: ''
+                      - id: UDF0000003810
+                        classCode: ACSTICKET
+                        displayLabel: numeric
+                        name: numeric_3810
+                        fieldType: TYPE_NUMBER
+                        mandatory: false
+                        editable: true
+                        description: testing numeric
+                        value: '120'
+                        defaultValue: ''
+                      - id: UDF0000003790
+                        classCode: ACSTICKET
+                        displayLabel: drop-down-api-lab
+                        name: drop_down_api_lab_3790
+                        fieldType: TYPE_DROPDOWN
+                        mandatory: false
+                        editable: true
+                        description: Test case
+                        options:
+                          - label: first
+                            value: '1'
+                          - label: second
+                            value: '2'
+                        value: '1'
+                        defaultValue: ''
+                        selectedOption:
+                          label: first
+                          value: '1'
+                      - id: UDF0000003791
+                        classCode: ACSTICKET
+                        displayLabel: text-api-lab
+                        name: text_api_lab_3791
+                        fieldType: TYPE_TEXT
+                        mandatory: false
+                        editable: true
+                        description: test case for text field
+                        value: request custom field - text-updated
+                        defaultValue: Test Text
+                      - id: UDF0000003792
+                        classCode: ACSTICKET
+                        displayLabel: multi line text-api-lab
+                        name: multi_line_text_api_lab_3792
+                        fieldType: TYPE_TEXTAREA
+                        mandatory: false
+                        editable: true
+                        description: test case for multi line text
+                        value: text
+                        defaultValue: |-
+                          multi 
+                          line 
+                          text
+                      - id: UDF0000003793
+                        classCode: ACSTICKET
+                        displayLabel: Numeric-api-lab
+                        name: numeric_api_lab_3793
+                        fieldType: TYPE_NUMBER
+                        mandatory: false
+                        editable: true
+                        description: numeric test case
+                        value: '1'
+                        defaultValue: '1'
+                      - id: UDF0000003794
+                        classCode: ACSTICKET
+                        displayLabel: checkbox-api-lab
+                        name: checkbox_api_lab_3794
+                        fieldType: TYPE_CHECKBOX
+                        mandatory: false
+                        editable: true
+                        description: test case for check box
+                        options:
+                          - label: 'yes'
+                            value: '1'
+                        value: '1'
+                        defaultValue: '0'
+                        selectedOption:
+                          label: 'yes'
+                          value: '1'
+                      - id: UDF0000003795
+                        classCode: ACSTICKET
+                        displayLabel: Date-ap-lab
+                        name: date_ap_lab_3795
+                        fieldType: TYPE_DATE
+                        mandatory: false
+                        editable: true
+                        description: test case for date field
+                        value: '2016-02-26T00:00:00+0000'
+                        defaultValue: '2016-02-26T00:00:00+0000'
+                      - id: UDF0000003796
+                        classCode: ACSTICKET
+                        displayLabel: dateTime-api-lab
+                        name: datetime_api_lab_3796
+                        fieldType: TYPE_DATETIME
+                        mandatory: false
+                        editable: true
+                        description: test case for Date and time
+                        value: '2016-02-26T12:13:00+0000'
+                        defaultValue: '2016-02-26T12:13:00+0000'
+                    description: string
+                    dueDate: string
+                    extTicketId: string
+                    id: string
+                    knowledgeArticleIds:
+                      - 0
+                    location: string
+                    notes: string
+                    oldPriority: string
+                    oldStatus: string
+                    parentId: string
+                    participantUsers:
+                      - id: string
+                        loginName: string
+                    plannedEnd: '2019-08-24T14:15:22Z'
+                    plannedStart: '2019-08-24T14:15:22Z'
+                    policy:
+                      id: 0
+                      name: string
+                      policyType: string
+                      createdDate: string
+                      updatedDate: string
+                      executionOrder: 0
+                      active: true
+                    priority: string
+                    priorityUpdatedBy:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    priorityUpdatedDate: '2019-08-24T14:15:22Z'
+                    problem:
+                      id: string
+                    reOpenCount: 0
+                    requester:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    resolutionSummary: string
+                    resolveDate: '2019-08-24T14:15:22Z'
+                    resources:
+                      - id: string
+                        name: string
+                        type: string
+                        metaData: {}
+                        resourceType: string
+                        hostName: string
+                        resourceName: string
+                        aliasName: string
+                    rollbackPlan: string
+                    schedule:
+                      startTime: string
+                      endTime: string
+                      type: string
+                      timezone: string
+                      pattern:
+                        type: daily
+                        dayFrequency: everyday
+                        weekDays: SUN
+                        dayOfMonth: 1
+                        weekIndex: FIRST
+                        dayOfWeek: SUN
+                    serviceRestoreDate: '2019-08-24T14:15:22Z'
+                    slaDetails:
+                      resolutionTime: 0
+                      responseTime: 0
+                      responseBreach: true
+                      resolutionBreach: true
+                      responseBreachDate: string
+                      resolutionBreachDate: string
+                      slaPolicy:
+                        id: 0
+                        name: string
+                        timezone:
+                          id: string
+                          name: string
+                          label: string
+                          code: string
+                        businessSchedule:
+                          id: 0
+                          shiftType: 0
+                          startTime: string
+                          endTime: string
+                          sunday: true
+                          monday: true
+                          tuesday: true
+                          wednesday: true
+                          thursday: true
+                          friday: true
+                          saturday: true
+                        requestType: string
+                        withinBussinessHours: true
+                        active: true
+                        priority: string
+                        createdDate: '2019-08-24T14:15:22Z'
+                        updatedDate: '2019-08-24T14:15:22Z'
+                        responseBreachTime: 0
+                        resolutionBreachTime: 0
+                        responseReminders:
+                          - reminderTime: 0
+                            percentage: 0
+                            cc: string
+                        resolutionReminders:
+                          - reminderTime: 0
+                            cc: string
+                        createdBy:
+                          id: string
+                          loginName: string
+                          lastName: string
+                          firstName: string
+                          email: string
+                          phoneNumber: string
+                        updatedBy:
+                          id: string
+                          loginName: string
+                          lastName: string
+                          firstName: string
+                          email: string
+                          phoneNumber: string
+                    source: string
+                    sourceEntityType: string
+                    sourceEntityTypeId: string
+                    sourcePolicyType: string
+                    sourcePolicyTypeId: string
+                    status: string
+                    statusFlow:
+                      - status: string
+                        timeSpent: 0
+                        createdDate: '2019-08-24T14:15:22Z'
+                        updatedBy:
+                          id: string
+                          loginName: string
+                          lastName: string
+                          firstName: string
+                          email: string
+                          phoneNumber: string
+                        reason: string
+                        notes: string
+                    statusUpdatedBy:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    statusUpdatedDate: '2019-08-24T14:15:22Z'
+                    subCategory:
+                      id: 0
+                    subject: string
+                    tags: string
+                    testPlan: string
+                    ticketArisedTime: string
+                    toEmail: string
+                    updatedDate: '2019-08-24T14:15:22Z'
+                    urgency:
+                      id: 0
+                    workEnd: '2019-08-24T14:15:22Z'
+                    workStart: '2019-08-24T14:15:22Z'
+                totalResults: 0
+                orderBy: string
+                pageNo: 0
+                pageSize: 0
+                totalPages: 0
+                nextPage: true
+                nextPageNo: 0
+                previousPageNo: 0
+                descendingOrder: true
+            example-include-statusFlow:
+              value:
+                results:
+                  - alertIds:
+                      - null
+                    allowedStatus:
+                      - id: string
+                        name: string
+                        reasonsEnabled: true
+                        reasonsDefined: true
+                    assignedUser:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    assigneeGroup:
+                      id: 0
+                      name: string
+                      description: string
+                      userCount: 0
+                    attachedArticles:
+                      - id: 0
+                        subject: string
+                    attachedRequests:
+                      - id: string
+                    attachments:
+                      - file: string
+                        name: string
+                    businessImpact:
+                      uniqueId: string
+                      name: string
+                      description: string
+                      createdBy:
+                        id: string
+                        loginName: string
+                        lastName: string
+                        firstName: string
+                        email: string
+                        phoneNumber: string
+                      updatedBy:
+                        id: string
+                        loginName: string
+                        lastName: string
+                        firstName: string
+                        email: string
+                        phoneNumber: string
+                      createdDate: '2019-08-24T14:15:22Z'
+                      updatedDate: '2019-08-24T14:15:22Z'
+                    category:
+                      id: 0
+                    cc: string
+                    changePlan: string
+                    changeType: string
+                    changeRequest:
+                      id: string
+                    channelId: string
+                    client:
+                      id: 0
+                      uniqueId: string
+                      name: string
+                      activated: true
+                      updatedTime: string
+                      createdTime: '2019-08-24T14:15:22Z'
+                    closedSummary: string
+                    consoles:
+                      - type: MANAGEMENTCONSOLE
+                        consoleProtocol: RDP
+                        options: string
+                    createdDate: '2019-08-24T14:15:22Z'
+                    createdUser:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    customFields:
+                      - id: string
+                        classCode: string
+                        displayLabel: string
+                        name: string
+                        fieldType: string
+                        mandatory: true
+                        editable: true
+                        description: string
+                        value: string
+                        defaultValue: string
+                        options:
+                          - label: string
+                            value: string
+                        selectedOption:
+                          label: string
+                          value: string
+                        customField: true
+                    description: string
+                    dueDate: string
+                    extTicketId: string
+                    id: string
+                    knowledgeArticleIds:
+                      - 0
+                    location: string
+                    notes: string
+                    oldPriority: string
+                    oldStatus: string
+                    parentId: string
+                    participantUsers:
+                      - id: string
+                        loginName: string
+                    plannedEnd: '2019-08-24T14:15:22Z'
+                    plannedStart: '2019-08-24T14:15:22Z'
+                    policy:
+                      id: 0
+                      name: string
+                      policyType: string
+                      createdDate: string
+                      updatedDate: string
+                      executionOrder: 0
+                      active: true
+                    priority: string
+                    priorityUpdatedBy:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    priorityUpdatedDate: '2019-08-24T14:15:22Z'
+                    problem:
+                      id: string
+                    reOpenCount: 0
+                    requester:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    resolutionSummary: string
+                    resolveDate: '2019-08-24T14:15:22Z'
+                    resources:
+                      - id: string
+                        name: string
+                        type: string
+                        metaData: {}
+                        resourceType: string
+                        hostName: string
+                        resourceName: string
+                        aliasName: string
+                    rollbackPlan: string
+                    schedule:
+                      startTime: string
+                      endTime: string
+                      type: string
+                      timezone: string
+                      pattern:
+                        type: daily
+                        dayFrequency: everyday
+                        weekDays: SUN
+                        dayOfMonth: 1
+                        weekIndex: FIRST
+                        dayOfWeek: SUN
+                    serviceRestoreDate: '2019-08-24T14:15:22Z'
+                    slaDetails:
+                      resolutionTime: 0
+                      responseTime: 0
+                      responseBreach: true
+                      resolutionBreach: true
+                      responseBreachDate: string
+                      resolutionBreachDate: string
+                      slaPolicy:
+                        id: 0
+                        name: string
+                        timezone:
+                          id: string
+                          name: string
+                          label: string
+                          code: string
+                        businessSchedule:
+                          id: 0
+                          shiftType: 0
+                          startTime: string
+                          endTime: string
+                          sunday: true
+                          monday: true
+                          tuesday: true
+                          wednesday: true
+                          thursday: true
+                          friday: true
+                          saturday: true
+                        requestType: string
+                        withinBussinessHours: true
+                        active: true
+                        priority: string
+                        createdDate: '2019-08-24T14:15:22Z'
+                        updatedDate: '2019-08-24T14:15:22Z'
+                        responseBreachTime: 0
+                        resolutionBreachTime: 0
+                        responseReminders:
+                          - reminderTime: 0
+                            percentage: 0
+                            cc: string
+                        resolutionReminders:
+                          - reminderTime: 0
+                            cc: string
+                        createdBy:
+                          id: string
+                          loginName: string
+                          lastName: string
+                          firstName: string
+                          email: string
+                          phoneNumber: string
+                        updatedBy:
+                          id: string
+                          loginName: string
+                          lastName: string
+                          firstName: string
+                          email: string
+                          phoneNumber: string
+                    source: string
+                    sourceEntityType: string
+                    sourceEntityTypeId: string
+                    sourcePolicyType: string
+                    sourcePolicyTypeId: string
+                    status: string
+                    statusFlow:
+                      - status: New
+                        timeSpent: 1492634
+                        createdDate: '2016-08-12T12:42:19+0000'
+                        updatedBy:
+                          loginName: john.smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@gmail.com
+                      - status: Resolved
+                        reason: Resolving as fixed
+                        notes: resolution summary
+                        timeSpent: 18
+                        createdDate: '2016-08-11T19:19:33+0000'
+                        updatedBy:
+                          loginName: john.smith
+                          lastName: smith
+                          firstName: john
+                          email: john@gmail.com
+                      - status: Pending
+                        timeSpent: 13
+                        reason: Waiting for customer inputs
+                        createdDate: '2016-08-22T10:04:31+0000'
+                        updatedBy:
+                          id: USR0000000018
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: SP
+                          email: sample@gmail.com
+                      - status: On Hold
+                        reason: On hold TBR
+                        createdDate: '2016-08-22T10:04:44+0000'
+                        updatedBy:
+                          id: USR0000000018
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: SP
+                          email: sample@gmail.com
+                    statusUpdatedBy:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    statusUpdatedDate: '2019-08-24T14:15:22Z'
+                    subCategory:
+                      id: 0
+                    subject: string
+                    tags: string
+                    testPlan: string
+                    ticketArisedTime: string
+                    toEmail: string
+                    updatedDate: '2019-08-24T14:15:22Z'
+                    urgency:
+                      id: 0
+                    workEnd: '2019-08-24T14:15:22Z'
+                    workStart: '2019-08-24T14:15:22Z'
+                totalResults: 0
+                orderBy: string
+                pageNo: 0
+                pageSize: 0
+                totalPages: 0
+                nextPage: true
+                nextPageNo: 0
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: string
+        default: ticket.id
+      in: query
+      name: sortName
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+      in: query
+      name: queryString
+    - schema:
+        type: string
+      in: query
+      name: include
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

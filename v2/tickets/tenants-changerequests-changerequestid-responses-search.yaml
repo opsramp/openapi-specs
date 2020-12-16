@@ -1,0 +1,137 @@
+summary: Get change request responses
+description: |-
+  This endpoint is used to retrieve responses of a change request.
+
+  ## Notes
+  There are special characters that can be used in a query string:
+  - (+) represents the next field and must be URL-encoded.
+  - (:) represents equals. An example is `key : value`.
+  - Space characters must be URL-encoded.
+  - Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+get:
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: './components.yaml#/components/schemas/changeRequestResponse'
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              nextPageNo:
+                type: integer
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - creator:
+                      id: USR0000002095
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@opsramp.com
+                    createdDate: '2016-03-29T10:15:55+0000'
+                    attachments:
+                      - id: 96
+                        name: file-1.txt
+                        createdDate: '2016-03-29T10:15:55+0000'
+                        contentURL: 'https://<api-url>/api/v2/tenants/client_1000/changeRequests/CHG0000001111/responses/1901/resources/96'
+                      - id: 97
+                        name: file-2.txt
+                        createdDate: '2016-03-29T10:15:55+0000'
+                        contentURL: 'https://<api-url>/api/v2/tenants/client_1000/changeRequests/CHG0000001111/responses/1901/resources/97'
+                    hasAttachments: true
+                    tags: 'API,Change Request'
+                    internal: 'false'
+                    description: Change Request Attachment
+                  - creator:
+                      id: USR0000002095
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@opsramp.com
+                    createdDate: '2016-03-29T09:17:45+0000'
+                    hasAttachments: false
+                    internal: 'false'
+                    description: Need quick response on this issue
+                  - creator:
+                      id: USR0000002147
+                      loginName: FSSL-API-Lab-User-2
+                      lastName: API-Lab-2
+                      firstName: FSSL
+                      email: tester3@gmail.com
+                    createdDate: '2016-03-29T14:38:41+0000'
+                    attachments:
+                      - id: 92
+                        name: 2.txt
+                        createdDate: '2016-03-29T09:08:40+0000'
+                        contentURL: 'https://<api-url>/api/v2/tenants/client_1000/changeRequests/CHG0000001111/responses/1898/resources/92'
+                      - id: 93
+                        name: 1.txt
+                        createdDate: '2016-03-29T09:08:40+0000'
+                        contentURL: 'https://<api-url>/api/v2/tenants/client_1000/changeRequests/CHG0000001111/responses/1898/resources/93'
+                    hasAttachments: true
+                    internal: 'false'
+                    description: 'Unable to login into VPN account, please change and inform'
+                totalResults: 3
+                orderBy: response.id
+                pageNo: 1
+                pageSize: 10
+                totalPages: 1
+                nextPage: false
+                nextPageNo: 0
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: string
+        default: response.id
+      in: query
+      name: sortName
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+      in: query
+      name: queryString
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: changeRequestId
+    required: true

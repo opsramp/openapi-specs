@@ -1,0 +1,17 @@
+components:
+  securitySchemes:
+    accessToken:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: ''
+          refreshUrl: ''
+          scopes: {}
+  parameters:
+    tenantId:
+      in: path
+      name: tenantId
+      schema:
+        type: string
+      required: true
+  schemas:

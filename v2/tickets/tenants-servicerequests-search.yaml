@@ -1,0 +1,926 @@
+summary: Search service requests
+description: |-
+  This endpoint is used to search for service requests.
+
+  ## Notes
+  The request parameter include is required in order to retrieve the following information in the response:
+  - Custom fields
+  - Status flow
+  Example: include=customFields, statusFlow
+
+  ### Query variables
+
+  |Field|Default Value|
+  |----|----|
+  |uniqueId|ID of the service request.<br>Example: CHG0000002401|
+  |status|Current status of service request.<br>Supported values: New, Open, Pending, Resolved, Closed, and On Hold.<br>Example: Closed, Resolved|
+  |priority|Current priority of service request.<br>Supported values: Low, Normal, High, Urgent, and Very Low<br>Example: High, Urgent|
+  |subject|A short summary of service request.<br>Example: service Request from Alert.|
+  |assignedTo|User who has been assigned service request.<br>Example: USR0000000129|
+  |requester|User who requests the service request.<br>Example: USR0000000129|
+  |startCreationDate|Filter service request with the creation date. Provide the from date.<br>Example: 2016-07-26T14:49:44 0000 (GMT)|
+  |endCreationDate|Provide the to date.<br>Example: 2016-07-28T07:12:19 0000 (GMT)|
+  |startUpdationDate|Filter service request with the updation date.<br>Example: 2016-08-12T06:54:59 0000 (GMT)|
+  |endUpdationDate|Provide the to date.<br>Example: 2016-08-15T10:40:20 0000 (GMT)|
+  |oldStatus|Previous status of service request.<br>Supported values: New, Open, Pending, Resolved, and On Hold<br>Example: Resolved|
+  |oldPriority|Previous priority of service request.<br>Supported values: Low, Normal, High, Urgent, and Very Low<br>Example: Urgent|
+  |deviceId|Unique ID of the device.<br>Example: 481af404-33a6-4d61-af77-c483ca6641fa|
+  |source|Source of the service request.<br>Supported values: PORTAL, INTEGRATION, MOBILE, EMAIL|
+  |sourcePolicyType|Source policy type of the service request.<br>Supported values: AUTOINCIDENT, INTEGRATION|
+  |firstContactFix|Problem fixed without assigning to another group.<br>Example: true, false|
+  |startResponseBreachDate|Filter service request with response breach date. Provide from date.<br>Example: 2016-08-25T08:12:19+0000 (GMT)|
+  |endResponseBreachDate|Provide to date.<br>Example: 2016-09-28T10:40:20 0000 (GMT)|
+  |startResolutionBreachDate|Filter service request with resolution breach date. Provide from date.<br>Example: 2016-08-25T08:12:19 0000 (GMT)|
+  |endResolutionBreachDate|Provide to date.<br>Example: 2016-09-29T10:40:20 0000 (GMT)|
+  |responseBreach|Response to service request beyond the time limit.<br>Example: false|
+  |resolutionBreach|Service request fixed within the time limit.<br>Example: true|
+  |assigneeGroupIds|ID of the group to which the problem is assigned.<br>Example: 1, 2, 3|
+  |minResponseTime|Minimum response time of request.<br>Example: 300 (time in seconds)|
+  |maxResponseTime|Maximum response time of request.<br>Example: 600 (time in seconds)|
+  |minResolutionTime|Minimum resolution time of request.<br>Example: 3600 (time in seconds)|
+  |maxResolutionTime|Maximum resolution time of request.<br>Example: 7200 (time in seconds)|
+  |minReOpens|Minimum number of times service request is reopened.<br>Example: 5|
+  |maxReOpens|Maximum number of times service request is reopened.<br>Example: 8|
+  |startClosedDate|Filter service requests with the closed date. Provide the from closed date.<br>Example: 2016-08-12T06:54:59 0000 (GMT)|
+  |endClosedDate|Provide to closed date.<br>Example: 2016-08-15T06:54:59 0000 (GMT)|
+  |startResolvedDate|Filter service requests with the resolved date. Provide from resolved date.<br>Example: 2016-08-12T06:49:59 0000 (GMT)|
+  |endResolvedDate|Provide to resolved date.<br>Example: 2016-08-14T07:49:59 0000 (GMT)|
+  |extTicketId|External ticket ID.|
+
+  ## Notes
+  To view tickets created within a given date range, provide both startCreationDate and endCreationDate. Otherwise, the tickets created in the last month would be returned.
+  There are special characters that can be used in a query string:
+  - (+) represents the next field and must be URL-encoded.
+  - (:) represents equals. An example is `key : value`.
+  - Space characters must be URL-encoded.
+  - Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT)
+get:
+  tags:
+    - tickets
+  parameters:
+    - schema:
+        type: integer
+        default: '1'
+      in: query
+      name: pageNo
+    - schema:
+        type: integer
+        default: '100'
+      in: query
+      name: pageSize
+    - schema:
+        type: string
+        default: ticket.id
+      in: query
+      name: sortName
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+    - schema:
+        type: string
+      in: query
+      name: queryString
+    - schema:
+        type: string
+      in: query
+      name: include
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: './components.yaml#/components/schemas/problem'
+              totalResults:
+                type: integer
+              orderBy:
+                type: string
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              nextPageNo:
+                type: integer
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: SRQ0000000099
+                    subject: VLC Software Required
+                    description: VLC software is required to get the demo videos for learning development processing.
+                    status: Resolved
+                    oldStatus: Pending
+                    priority: Normal
+                    oldPriority: Low
+                    requester:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    assignedUser:
+                      id: USR0000000011
+                      loginName: brocadeInc@organization.com
+                      lastName: Inc Admin
+                      firstName: Brocade
+                      email: brocade@gmail.com
+                    assigneeGroup:
+                      id: 5
+                      name: Brocade Inc Users
+                      description: Brocade Partner Users
+                    resources:
+                      - id: 481af404-33a6-4d61-af77-c483ca6641fa
+                        name: VTHLPT1000
+                        type: DEVICE
+                      - id: SGP-7adf3762-f310-4c14-9ecd-443eb7c6c208
+                        name: VTH-SERVICES
+                        type: SERVICE
+                      - id: DGP-8d44a504-fd4b-4a78-ba34-2dfdf3ffb85e
+                        name: VTH-ADMIN-DEVS
+                        type: DEVICE_GROUP
+                    cc: 'brocade@gmail.com, escalationmails@gmail.com'
+                    ticketArisedTime: ''
+                    createdUser:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    reason: 'Done, Hence moving service request to resolved'
+                    category:
+                      id: 14
+                      name: Service Urgency Level
+                    alertIds: []
+                    reOpenCount: 0
+                    createdDate: '2016-07-24T11:02:53+0000'
+                    client:
+                      id: 8
+                      uniqueId: client_8
+                      name: Brocade Lab
+                      activated: true
+                    subCategory:
+                      id: 17
+                      name: High
+                    updatedDate: '2016-08-12T07:47:46+0000'
+                    priorityUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    priorityUpdatedDate: '2016-08-12T07:47:15+0000'
+                    statusUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    statusUpdatedDate: '2016-08-12T07:47:46+0000'
+                    resolvedDate: '2016-08-12T07:47:46+0000'
+                    slaDetails:
+                      resolutionTime: 1629879
+                      responseTime: 1629892
+                      responseBreach: false
+                      resolutionBreach: false
+                      responseBreachDate: ''
+                      resolutionBreachDate: ''
+                    source: PORTAL
+                    serviceCatalogItemId: '0'
+                  - id: SRQ0000000098
+                    subject: LAN Service Request
+                    description: 'As wi-fi is not much effective with the development environment, we are requesting for lan services'
+                    status: Open
+                    oldStatus: Resolved
+                    priority: High
+                    oldPriority: Normal
+                    requester:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    assignedUser:
+                      id: USR0000000023
+                      loginName: brocadeLabBusiness@organization.com
+                      lastName: Business User
+                      firstName: BLab
+                      email: brocadeLabBusiness@organization.com
+                    assigneeGroup:
+                      id: 8
+                      name: Brocade Lab Escalation Users
+                      description: All brocade lab escalation users
+                    resources:
+                      - id: b1483cfe-5f2e-46d5-8aaa-c294f90ba271
+                        name: VMSCAN-PC
+                        type: DEVICE
+                      - id: 5bc778e3-b08e-49b4-8a64-5a919dbca83d
+                        name: vnetvm
+                        type: DEVICE
+                    extTicketId: BMCXC00907
+                    cc: 'brocade@gmail.com, brocadePAdmin@gmail.com'
+                    ticketArisedTime: ''
+                    createdUser:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    reason: 'Done, Hence moving service request to resolved'
+                    category:
+                      id: 14
+                      name: Service Urgency Level
+                    alertIds: []
+                    reOpenCount: 1
+                    createdDate: '2016-07-24T11:02:01+0000'
+                    client:
+                      id: 8
+                      uniqueId: client_8
+                      name: Brocade Lab
+                      activated: true
+                    subCategory:
+                      id: 17
+                      name: High
+                    updatedDate: '2016-08-12T07:49:18+0000'
+                    priorityUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    priorityUpdatedDate: '2016-08-12T07:48:45+0000'
+                    statusUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    statusUpdatedDate: '2016-08-12T07:49:18+0000'
+                    slaDetails:
+                      resolutionTime: 1630246
+                      responseTime: 1630025
+                      responseBreach: false
+                      resolutionBreach: false
+                      responseBreachDate: ''
+                      resolutionBreachDate: ''
+                    source: PORTAL
+                    serviceCatalogItemId: '0'
+                  - id: SRQ0000000097
+                    subject: Wi-Fi services should be allowed to mobile phones
+                    description: |-
+                      According to the auditing process done recently, we have followed the standards by turning of the wi-fi for mobiles and and all.
+                      We just want to renew it again to process further.
+                    status: Closed
+                    oldStatus: Resolved
+                    priority: Urgent
+                    oldPriority: High
+                    requester:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    assignedUser:
+                      id: USR0000000014
+                      loginName: brocadeLab@organization.com
+                      lastName: Lab
+                      firstName: Brocade
+                      email: brocadeLab@gmail.com
+                    assigneeGroup:
+                      id: 7
+                      name: Brocade Lab Users
+                      description: All Brocade Lab Users group
+                    resources:
+                      - id: 06898fdf-8e96-49d3-94d9-4c262540b11e
+                        name: VM1
+                        type: DEVICE
+                      - id: 037361e1-71ff-4e11-8ec9-688b4aa6b262
+                        name: VM2
+                        type: DEVICE
+                    extTicketId: BMCXC00907
+                    cc: brocade@gmail.com
+                    ticketArisedTime: ''
+                    createdUser:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    reason: SR Close
+                    category:
+                      id: 14
+                      name: Service Urgency Level
+                    alertIds: []
+                    reOpenCount: 0
+                    createdDate: '2016-07-24T11:01:13+0000'
+                    client:
+                      id: 8
+                      uniqueId: client_8
+                      name: Brocade Lab
+                      activated: true
+                    subCategory:
+                      id: 15
+                      name: Low
+                    updatedDate: '2016-08-12T07:51:09+0000'
+                    priorityUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    priorityUpdatedDate: '2016-08-12T07:50:09+0000'
+                    statusUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    statusUpdatedDate: '2016-08-12T07:51:09+0000'
+                    resolvedDate: '2016-08-12T07:50:29+0000'
+                    closedDate: '2016-08-12T07:51:09+0000'
+                    slaDetails:
+                      resolutionTime: 1630156
+                      responseTime: 1630155
+                      responseBreach: false
+                      resolutionBreach: false
+                      responseBreachDate: ''
+                      resolutionBreachDate: ''
+                    source: PORTAL
+                    serviceCatalogItemId: '0'
+                  - id: SRQ0000000096
+                    subject: Windows Services Required
+                    description: 'As of windows 10 is available, we required those on all platforms'
+                    status: Pending
+                    oldStatus: Open
+                    priority: Very Low
+                    oldPriority: Urgent
+                    requester:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    assignedUser:
+                      id: USR0000000023
+                      loginName: brocadeLabBusiness@organization.com
+                      lastName: Business User
+                      firstName: BLab
+                      email: brocadeLabBusiness@organization.com
+                    assigneeGroup:
+                      id: 8
+                      name: Brocade Lab Escalation Users
+                      description: All brocade lab escalation users
+                    resources:
+                      - id: ad0a218d-7512-435c-9b58-614470ee8658
+                        name: WORK-PC
+                        type: DEVICE
+                    cc: 'brocade@gmail.com, escalationmails@gmail.com'
+                    ticketArisedTime: ''
+                    createdUser:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    reason: Revisit service request in future
+                    category:
+                      id: 14
+                      name: Service Urgency Level
+                    alertIds: []
+                    reOpenCount: 1
+                    createdDate: '2016-07-24T10:58:51+0000'
+                    client:
+                      id: 8
+                      uniqueId: client_8
+                      name: Brocade Lab
+                      activated: true
+                    subCategory:
+                      id: 16
+                      name: Medium
+                    updatedDate: '2016-08-12T07:52:41+0000'
+                    priorityUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    priorityUpdatedDate: '2016-08-12T07:52:10+0000'
+                    statusUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SA
+                      email: escalationmails@gmail.com
+                    statusUpdatedDate: '2016-08-12T07:52:41+0000'
+                    slaDetails:
+                      resolutionTime: 1630398
+                      responseTime: 1630397
+                      responseBreach: false
+                      resolutionBreach: false
+                      responseBreachDate: ''
+                      resolutionBreachDate: ''
+                    source: PORTAL
+                    serviceCatalogItemId: '0'
+                totalResults: 17
+                orderBy: ticket.id
+                pageNo: 2
+                pageSize: 13
+                totalPages: 2
+                nextPage: false
+                previousPageNo: 1
+                descendingOrder: true
+            example-include-customFields:
+              value:
+                results:
+                  - id: string
+                    subject: string
+                    description: string
+                    status: string
+                    oldStatus: string
+                    priority: string
+                    oldPriority: string
+                    requester:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    assignedUser:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    assigneeGroup:
+                      id: 0
+                      name: string
+                      description: string
+                      userCount: 0
+                    resources:
+                      - id: string
+                        name: string
+                        type: string
+                        metaData: {}
+                        resourceType: string
+                        hostName: string
+                        resourceName: string
+                        aliasName: string
+                    extTicketId: string
+                    customFields:
+                      - id: UDF0000003808
+                        classCode: SERVICEREQUEST
+                        displayLabel: text field
+                        name: text_field_3808
+                        fieldType: TYPE_TEXT
+                        mandatory: false
+                        editable: true
+                        description: all partners
+                        value: available
+                        defaultValue: ''
+                      - id: UDF0000003810
+                        classCode: SERVICEREQUEST
+                        displayLabel: numeric
+                        name: numeric_3810
+                        fieldType: TYPE_NUMBER
+                        mandatory: false
+                        editable: true
+                        description: testing numeric
+                        value: '120'
+                        defaultValue: ''
+                      - id: UDF0000003790
+                        classCode: SERVICEREQUEST
+                        displayLabel: drop-down-api-lab
+                        name: drop_down_api_lab_3790
+                        fieldType: TYPE_DROPDOWN
+                        mandatory: false
+                        editable: true
+                        description: Test case
+                        options:
+                          - label: first
+                            value: '1'
+                          - label: second
+                            value: '2'
+                        value: '1'
+                        defaultValue: ''
+                        selectedOption:
+                          label: first
+                          value: '1'
+                      - id: UDF0000003791
+                        classCode: SERVICEREQUEST
+                        displayLabel: text-api-lab
+                        name: text_api_lab_3791
+                        fieldType: TYPE_TEXT
+                        mandatory: false
+                        editable: true
+                        description: test case for text field
+                        value: request custom field - text-updated
+                        defaultValue: Test Text
+                      - id: UDF0000003792
+                        classCode: SERVICEREQUEST
+                        displayLabel: multi line text-api-lab
+                        name: multi_line_text_api_lab_3792
+                        fieldType: TYPE_TEXTAREA
+                        mandatory: false
+                        editable: true
+                        description: test case for multi line text
+                        value: text
+                        defaultValue: |-
+                          multi 
+                          line 
+                          text
+                      - id: UDF0000003793
+                        classCode: SERVICEREQUEST
+                        displayLabel: Numeric-api-lab
+                        name: numeric_api_lab_3793
+                        fieldType: TYPE_NUMBER
+                        mandatory: false
+                        editable: true
+                        description: numeric test case
+                        value: '1'
+                        defaultValue: '1'
+                      - id: UDF0000003794
+                        classCode: SERVICEREQUEST
+                        displayLabel: checkbox-api-lab
+                        name: checkbox_api_lab_3794
+                        fieldType: TYPE_CHECKBOX
+                        mandatory: false
+                        editable: true
+                        description: test case for check box
+                        options:
+                          - label: 'yes'
+                            value: '1'
+                        value: '1'
+                        defaultValue: '0'
+                        selectedOption:
+                          label: 'yes'
+                          value: '1'
+                      - id: UDF0000003795
+                        classCode: SERVICEREQUEST
+                        displayLabel: Date-ap-lab
+                        name: date_ap_lab_3795
+                        fieldType: TYPE_DATE
+                        mandatory: false
+                        editable: true
+                        description: test case for date field
+                        value: '2016-02-26T00:00:00+0000'
+                        defaultValue: '2016-02-26T00:00:00+0000'
+                      - id: UDF0000003796
+                        classCode: SERVICEREQUEST
+                        displayLabel: dateTime-api-lab
+                        name: datetime_api_lab_3796
+                        fieldType: TYPE_DATETIME
+                        mandatory: false
+                        editable: true
+                        description: test case for Date and time
+                        value: '2016-02-26T12:13:00+0000'
+                        defaultValue: '2016-02-26T12:13:00+0000'
+                    cc: string
+                    ticketArisedTime: string
+                    createdUser:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    category:
+                      id: 0
+                      name: string
+                    reason: string
+                    alertIds:
+                      - null
+                    reOpenCount: 0
+                    createdDate: '2019-08-24T14:15:22Z'
+                    allowedStatus:
+                      - id: string
+                        name: string
+                        reasonsEnabled: true
+                        reasonsDefined: true
+                    client:
+                      id: 0
+                      uniqueId: string
+                      name: string
+                      activated: true
+                      updatedTime: string
+                      createdTime: '2019-08-24T14:15:22Z'
+                    subCategory:
+                      id: 0
+                      name: string
+                    updatedDate: '2019-08-24T14:15:22Z'
+                    priorityUpdatedBy:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    priorityUpdatedDate: '2019-08-24T14:15:22Z'
+                    statusUpdatedBy:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    statusUpdatedDate: '2019-08-24T14:15:22Z'
+                    resolvedDate: '2019-08-24T14:15:22Z'
+                    slaDetails:
+                      resolutionTime: 0
+                      responseTime: 0
+                      responseBreach: true
+                      resolutionBreach: true
+                      responseBreachDate: string
+                      resolutionBreachDate: string
+                      slaPolicy:
+                        id: 0
+                        name: string
+                        timezone:
+                          id: string
+                          name: string
+                          label: string
+                          code: string
+                        businessSchedule:
+                          id: 0
+                          shiftType: 0
+                          startTime: string
+                          endTime: string
+                          sunday: true
+                          monday: true
+                          tuesday: true
+                          wednesday: true
+                          thursday: true
+                          friday: true
+                          saturday: true
+                    source: string
+                    rootCause: string
+                    workaround: string
+                    application: string
+                    statusFlow:
+                      - status: string
+                        timeSpent: 0
+                        createdDate: '2019-08-24T14:15:22Z'
+                        updatedBy:
+                          id: string
+                          loginName: string
+                          lastName: string
+                          firstName: string
+                          email: string
+                          phoneNumber: string
+                        reason: string
+                        notes: string
+                    knowledgeArticleIds:
+                      - 0
+                    attachedArticles:
+                      - id: 0
+                        subject: string
+                    estimatedHours: 0
+                    estimatedMinutes: 0
+                    timeSpent: 0
+                    notes: string
+                    closedSummary: string
+                    suspendEndDate: '2019-08-24T14:15:22Z'
+                    closedDate: string
+                    tags: string
+                    changeRequest:
+                      id: string
+                    knownIssue: true
+                    attachments:
+                      - id: 0
+                        name: string
+                        createdDate: '2019-08-24T14:15:22Z'
+                        createdBy:
+                          id: string
+                          loginName: string
+                          lastName: string
+                          firstName: string
+                          email: string
+                          phoneNumber: string
+                          mobileNumber: string
+                        contentURL: string
+                    channelId: 0
+                totalResults: 0
+                orderBy: string
+                pageNo: 0
+                pageSize: 0
+                totalPages: 0
+                nextPage: true
+                nextPageNo: 0
+                previousPageNo: 0
+                descendingOrder: true
+            example-include-statusFlow:
+              value:
+                results:
+                  - id: string
+                    subject: string
+                    description: string
+                    status: string
+                    oldStatus: string
+                    priority: string
+                    oldPriority: string
+                    requester:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    assignedUser:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    assigneeGroup:
+                      id: 0
+                      name: string
+                      description: string
+                      userCount: 0
+                    resources:
+                      - id: string
+                        name: string
+                        type: string
+                        metaData: {}
+                        resourceType: string
+                        hostName: string
+                        resourceName: string
+                        aliasName: string
+                    extTicketId: string
+                    customFields:
+                      - id: string
+                        classCode: string
+                        displayLabel: string
+                        name: string
+                        fieldType: string
+                        mandatory: true
+                        editable: true
+                        description: string
+                        value: string
+                        defaultValue: string
+                        options:
+                          - label: string
+                            value: string
+                        selectedOption:
+                          label: string
+                          value: string
+                        customField: true
+                    cc: string
+                    ticketArisedTime: string
+                    createdUser:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    category:
+                      id: 0
+                      name: string
+                    reason: string
+                    alertIds:
+                      - null
+                    reOpenCount: 0
+                    createdDate: '2019-08-24T14:15:22Z'
+                    allowedStatus:
+                      - id: string
+                        name: string
+                        reasonsEnabled: true
+                        reasonsDefined: true
+                    client:
+                      id: 0
+                      uniqueId: string
+                      name: string
+                      activated: true
+                      updatedTime: string
+                      createdTime: '2019-08-24T14:15:22Z'
+                    subCategory:
+                      id: 0
+                      name: string
+                    updatedDate: '2019-08-24T14:15:22Z'
+                    priorityUpdatedBy:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    priorityUpdatedDate: '2019-08-24T14:15:22Z'
+                    statusUpdatedBy:
+                      id: string
+                      loginName: string
+                      lastName: string
+                      firstName: string
+                      email: string
+                      phoneNumber: string
+                    statusUpdatedDate: '2019-08-24T14:15:22Z'
+                    resolvedDate: '2019-08-24T14:15:22Z'
+                    slaDetails:
+                      resolutionTime: 0
+                      responseTime: 0
+                      responseBreach: true
+                      resolutionBreach: true
+                      responseBreachDate: string
+                      resolutionBreachDate: string
+                      slaPolicy:
+                        id: 0
+                        name: string
+                        timezone:
+                          id: string
+                          name: string
+                          label: string
+                          code: string
+                        businessSchedule:
+                          id: 0
+                          shiftType: 0
+                          startTime: string
+                          endTime: string
+                          sunday: true
+                          monday: true
+                          tuesday: true
+                          wednesday: true
+                          thursday: true
+                          friday: true
+                          saturday: true
+                    source: string
+                    rootCause: string
+                    workaround: string
+                    application: string
+                    statusFlow:
+                      - status: New
+                        timeSpent: 1492634
+                        createdDate: '2016-07-24T12:42:19+0000'
+                        updatedBy:
+                          loginName: john.smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@gmail.com
+                      - status: Resolved
+                        reason: Resolving as fixed
+                        notes: resolution summary
+                        timeSpent: 18
+                        createdDate: '2016-07-24T19:19:33+0000'
+                        updatedBy:
+                          loginName: john.smith
+                          lastName: smith
+                          firstName: john
+                          email: john@gmail.com
+                      - status: Open
+                        timeSpent: 27
+                        reason: Re-opening as per comments
+                        createdDate: '2016-07-25T19:19:51+0000'
+                        updatedBy:
+                          loginName: john.smith
+                          lastName: smith
+                          firstName: john
+                          email: john@gmail.com
+                      - status: Resolved
+                        reason: 'Done, Hence moving service request to resolved'
+                        notes: resolution summary
+                        createdDate: '2016-07-25T07:47:46+0000'
+                        updatedBy:
+                          id: USR0000000018
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: SP
+                          email: sample@gmail.com
+                    knowledgeArticleIds:
+                      - 0
+                    attachedArticles:
+                      - id: 0
+                        subject: string
+                    estimatedHours: 0
+                    estimatedMinutes: 0
+                    timeSpent: 0
+                    notes: string
+                    closedSummary: string
+                    suspendEndDate: '2019-08-24T14:15:22Z'
+                    closedDate: string
+                    tags: string
+                    changeRequest:
+                      id: string
+                    knownIssue: true
+                    attachments:
+                      - id: 0
+                        name: string
+                        createdDate: '2019-08-24T14:15:22Z'
+                        createdBy:
+                          id: string
+                          loginName: string
+                          lastName: string
+                          firstName: string
+                          email: string
+                          phoneNumber: string
+                          mobileNumber: string
+                        contentURL: string
+                    channelId: 0
+                totalResults: 0
+                orderBy: string
+                pageNo: 0
+                pageSize: 0
+                totalPages: 0
+                nextPage: true
+                nextPageNo: 0
+                previousPageNo: 0
+                descendingOrder: true
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

@@ -1,0 +1,106 @@
+summary: Manage resource metrics
+description: This endpoint is used update and retrieve metrics on a resource.
+get:
+  description: This endpoint is used to retrieve the list of metrics on a resource.
+  tags:
+    - metrics
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                metricName:
+                  type: string
+                thresholdType:
+                  type: string
+                displayName:
+                  type: string
+                description:
+                  type: string
+                unit:
+                  type: string
+                unitLabel:
+                  type: string
+                availabilityMetric:
+                  type: boolean
+          examples:
+            example-1:
+              value:
+                - metricName: system.cpu.utilization
+                  thresholdType: STATIC
+                  displayName: CPU Utilization
+                  description: The percentage of elapsed time that the processor spends to execute a non-Idle thread
+                  unit: '%'
+                  unitLabel: Utilization
+                  availabilityMetric: true
+                - metricName: system.disk.used
+                  thresholdType: FORECAST
+                  displayName: Disk Utilization
+                  description: Used space on the selected logical disk drive
+                  unit: GB
+                  unitLabel: Utilization
+                  availabilityMetric: false
+post:
+  description: This endpoint is used to post multiple metrics on a resource.
+  tags:
+    - metrics
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              metricName:
+                type: string
+                description: |
+                  Metric name.
+              instanceName:
+                type: string
+                description: |
+                  Instance name.
+              instanceVal:
+                type: string
+                description: |
+                  Instance value.
+              ts:
+                type: string
+                description: |
+                  Time in seconds.
+            required:
+              - metricName
+              - instanceName
+              - instanceVal
+              - ts
+        examples:
+          example-1:
+            value:
+              - metricName: system.cpu.utilization
+                instanceName: cpu.utilization
+                instanceVal: '13.50'
+                ts: '1448274610'
+              - metricName: system.ping.rta
+                instanceName: rta
+                instanceVal: '10.50'
+                ts: '1448274620'
+  responses:
+    '200':
+      description: OK
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: rtype
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: resource
+    required: true

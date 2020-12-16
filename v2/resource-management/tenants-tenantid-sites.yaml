@@ -1,0 +1,112 @@
+summary: Create site
+description: This endpoint is used to create a site to organize the devices based on location.
+post:
+  tags:
+    - resource-management
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/site'
+        examples:
+          example-1:
+            value:
+              name: SJ-North_EAST
+              parent:
+                id: 4
+                name: SJ-East
+              description: Resources in north east zone
+              address: '5th Avenue, Park street'
+              state: California
+              city: San Jose
+              country: USA
+              zip: '94088'
+              primaryContact:
+                id: USR0000000014
+                loginName: InsLab@organization.com
+              phoneNumber: 406-232-1234
+              phoneExtension: '1'
+              resources:
+                - id: ad0a218d-7512-435c-9b58-614470ee8658
+                - id: b7001583-db6a-4c7c-b4df-ab1ba6505d60
+              filterCriteria:
+                matchType: ANY
+                rules:
+                  - key: Name
+                    operator: Contains
+                    value: SJ
+                    resourceType: DEVICE
+                  - key: Name
+                    operator: Regex
+                    value: VM
+                    resourceType: LOAD_BALANCER
+                  - key: Agent Installed
+                    operator: Is
+                    value: 'TRUE'
+                    resourceType: DEVICE
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/site'
+          examples:
+            example-1:
+              value:
+                id: 31
+                name: SJ-North_EAST
+                parent:
+                  id: 4
+                  name: SJ-East
+                  description: Resources in east zone
+                  address: Parkway
+                description: Resources in north east zone
+                address: '5th Avenue, Park street'
+                city: San Jose
+                state: california
+                country: USA
+                zip: '94088'
+                phoneNumber: 406-232-1234
+                phoneExtension: '1'
+                primaryContact:
+                  id: USR0000000014
+                  loginName: InsLab@organization.com
+                  lastName: Lab
+                  firstName: Ins
+                  email: john.smith@gamil.com
+                  phoneNumber: 406-625-1234
+                resources:
+                  - id: b7001583-db6a-4c7c-b4df-ab1ba6505d60
+                    name: DESKTOP-V5DV65M
+                    ipAddress: 192.168.56.1
+                    type: DEVICE
+                  - id: 19a49e09-da18-4d91-92b7-01d6858ec2cf
+                    name: Windows
+                    ipAddress: 10.0.4.15
+                    type: DEVICE
+                  - id: ad0a218d-7512-435c-9b58-614470ee8658
+                    name: WORK-PC
+                    ipAddress: 192.168.126.1
+                    type: DEVICE
+                filterCriteria:
+                  id: 70
+                  matchType: ANY
+                  rules:
+                    - id: 223
+                      key: Name
+                      operator: Contains
+                      value: SJ
+                      resourceType: DEVICE
+                    - id: 224
+                      key: Name
+                      operator: Regex
+                      value: .*VM.*
+                      resourceType: LOAD_BALANCER
+                    - id: 225
+                      key: Agent Installed
+                      operator: Is
+                      value: 'TRUE'
+                      resourceType: DEVICE
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'

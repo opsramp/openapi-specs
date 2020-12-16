@@ -1,0 +1,49 @@
+summary: Update business impact
+description: This endpoint is used to update a business impact on an incident.
+post:
+  tags:
+    - tickets
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/businessImpact'
+          examples:
+            example-1:
+              value:
+                uniqueId: SIMPACT-2e70bb64-3a10-4236-ab01-c2a833df96d8
+                name: Network Servers Down
+                description: Network Server in CA down
+                createdBy:
+                  id: USR0000000009
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                  phoneNumber: ''
+                updatedBy:
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                createdDate: '2017-12-14T09:08:21+0000'
+                updatedDate: '2017-12-14T09:09:13+0000'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/businessImpact'
+        examples:
+          example-1:
+            value:
+              name: Network Servers Down
+              description: Network Server in CA Site down
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: uniqueId
+    required: true

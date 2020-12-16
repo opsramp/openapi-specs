@@ -1,0 +1,42 @@
+summary: Post alert action
+description: |-
+  This endpoint is used to post an action on an alert.
+
+  ## Notes
+  When unacknowledge or unsuppress is specified, the alert status becomes either open or ticketed (if there is an incident ID associated with the alert).
+post:
+  tags:
+    - alerts
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              type: string
+        examples:
+          example-1:
+            value:
+              description: close a ticket
+  responses:
+    '200':
+      description: OK
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: alertId
+    required: true
+  - schema:
+      type: string
+      enum:
+        - Acknowledge
+        - Suppress
+        - Close
+        - Unacknowledge
+        - Unsuppress
+    in: path
+    name: action
+    required: true

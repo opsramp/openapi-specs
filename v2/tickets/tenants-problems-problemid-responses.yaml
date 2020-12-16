@@ -1,0 +1,70 @@
+summary: Add response to a problem
+description: |-
+  This endpoint is used to add a response to a problem.
+
+  ## Notes
+  - For attachments, files must be converted to bytes stream with base64-encoding.
+  - The default creator (OpsRamp API User) can send id and loginName to change the default.
+  - Based on the setting Make default submission status of a pending request as open, the status of the Pending request will change to Open.
+  - A file attachment is limited to 50MB.
+post:
+  tags:
+    - tickets
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/incidentResponse'
+        examples:
+          example-1:
+            value:
+              description: Adding Problem Attachment
+              internal: false
+              tags: 'API, Problem'
+              creator:
+                id: USR0000002146
+                loginName: FSSL-API-Lab-User-1
+              attachments:
+                - name: file-1.txt
+                  file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+                - name: file-2.txt
+                  file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
+              timeSpent: 120
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/incidentResponse'
+          examples:
+            example-1:
+              value:
+                creator:
+                  id: USR0000002146
+                  loginName: FSSL-API-Lab-User-1
+                  lastName: API-Lab
+                  firstName: FSSL
+                  email: fssl.user@gmail.com
+                createdDate: '2016-03-29T11:02:19+0000'
+                attachments:
+                  - id: 100
+                    name: file-1.txt
+                    createdDate: '2016-03-29T11:02:19+0000'
+                    contentURL: 'https:///api/v2/tenants/client_7/problems/PRB0000001112/responses/1904/resources/100'
+                  - id: 101
+                    name: file-2.txt
+                    createdDate: '2016-03-29T11:02:19+0000'
+                    contentURL: 'https:///api/v2/tenants/client_7/problems/PRB0000001112/responses/1904/resources/101'
+                hasAttachments: true
+                tags: 'API,Problem'
+                internal: false
+                description: Adding Problem Attachment
+                timeSpent: 120
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: problemId
+    required: true

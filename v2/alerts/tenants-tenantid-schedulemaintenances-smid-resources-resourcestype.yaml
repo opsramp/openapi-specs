@@ -1,0 +1,143 @@
+summary: Get resources of schedule maintenance windows
+description: This endpoint is used to retrieve the list of devices (or device groups or sites) of a scheduled maintenance window.
+get:
+  tags:
+    - alerts
+  parameters:
+    - schema:
+        type: string
+        default: '1'
+      in: query
+      name: pageNo
+      description: '{pageNo}'
+    - schema:
+        type: string
+        default: '100'
+      in: query
+      name: pageSize
+      description: '{pageSize}'
+    - schema:
+        type: boolean
+        default: 'true'
+      in: query
+      name: isDescendingOrder
+      description: '{true/false}'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: boolean
+                    name:
+                      type: string
+                    description:
+                      type: string
+              totalResults:
+                type: integer
+              pageNo:
+                type: integer
+              pageSize:
+                type: integer
+              totalPages:
+                type: integer
+              nextPage:
+                type: boolean
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-devices:
+              value:
+                results:
+                  - id: 4b7e4bc4-2115-4f15-bbd9-642396d486b6
+                    hostName: cn-agent-docker01
+                    ipAddress: 212.328.345.123
+                    type: DOCKER
+                  - id: e8893d5c-5448-4123-992f-2a7631a97310
+                    hostName: k8-pool1-wk1
+                    ipAddress: 121.321.435.251
+                    type: DEVICE
+                  - id: 66296829-c08d-45fb-9c8c-b6702189611d
+                    hostName: WIN7-PC
+                    ipAddress: 132.346.768.121
+                    type: DEVICE
+                  - id: 9be5120f-f2f7-45d0-88e4-83d67461f751
+                    hostName: HYDLPT272167
+                    ipAddress: 121.345.321.134
+                    type: DEVICE
+                  - id: 8016775e-f1b4-47d5-bdd0-e039b115c45f
+                    hostName: DBMS10734
+                    ipAddress: 177.162.136.193
+                    type: DEVICE
+                totalResults: 50
+                pageNo: 1
+                pageSize: 5
+                totalPages: 5
+                nextPage: true
+                nextPageNo: 2
+                previousPageNo: 0
+                descendingOrder: false
+            example-deviceGroups:
+              value:
+                results:
+                  - id: DGP-98a9dac3-18ae-4456-88d3-e7ffa5ce4ace
+                    name: Windows Servers
+                    description: ''
+                    createdDate: '2018-02-10T10:15:32+0000'
+                    updatedDate: '2018-08-02T14:20:10+0000'
+                  - id: DGP-6fd28a3f-9f10-4c74-ac15-bd9de54ec056
+                    name: Network Devices
+                    description: ''
+                    createdDate: '2018-03-13T11:20:50+0000'
+                    updatedDate: '2018-08-02T17:15:40+0000'
+                totalResults: 6
+                pageNo: 1
+                pageSize: 2
+                totalPages: 3
+                nextPage: true
+                nextPageNo: 2
+                previousPageNo: 0
+                descendingOrder: false
+            example-sites:
+              value:
+                results:
+                  - id: 164
+                    name: Virginia-East
+                    description: Server locations in East Virgnia
+                  - id: 165
+                    name: California-Central
+                    description: Network Centers in California
+                totalResults: 6
+                pageNo: 1
+                pageSize: 2
+                totalPages: 3
+                nextPage: true
+                nextPageNo: 2
+                previousPageNo: 0
+                descendingOrder: false
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: smId
+    required: true
+  - schema:
+      type: string
+      enum:
+        - resources
+        - deviceGroups
+        - sites
+    in: path
+    name: resourcesType
+    required: true

@@ -1,0 +1,397 @@
+summary: Update and delete resources
+description: This endpoint is used to update details of a resource and delete a resource using a resource ID.
+delete:
+  summary: Delete resource
+  description: This endpoint is used to delete a resource using a resource ID.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+get:
+  summary: Get resource
+  description: This endpoint is used to retrieve information, and optional details of a device, of a specific resource.
+  tags:
+    - resource-management
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/resourceFull'
+          examples:
+            example-resource:
+              value:
+                id: 46646d0b-976f-46ed-b47b-40178f5b0508
+                ipAddress: 172.31.20.84
+                extResourceId: '67034'
+                state: active
+                source: MANUAL
+                agentInstalled: false
+                status: UP
+                location:
+                  id: 516
+                  name: us-east-1a
+                  clientId: 10
+                  mspId: 3
+                  city: N.Virginia
+                components:
+                  - disks
+                tags:
+                  - name: test
+                    value: testValue
+                    tagSource: OPSRAMP
+                bios:
+                  systemSerial: ''
+                  systemModel: c1.medium
+                cpus: []
+                generalInfo:
+                  name: Test Device1
+                  osName: ''
+                  make: ''
+                  description: ''
+                  hostName: Test Device1
+                  dns: ''
+                  resourceType: Linux
+                  keyboardType: US104
+                  encodingType: UTF8
+                  physicalMemory: '0.0'
+                  resourceName: ''
+                  aliasName: ''
+                  createdTime: '2016-06-30T15:24:40+0000'
+                  updatedTime: '2016-06-30T15:25:00+0000'
+                  agentDeploytime: '2016-06-30T15:24:40+0000'
+                  assetManagedTime: ''
+                  firstAssetManagedTime: ''
+                consoles: []
+                networkCardDetails:
+                  - id: 1
+                    networkName: wlp2s0
+                    status: Up
+                    ipAddress: 172.24.133.91
+                    macAddress: 'f8:94:c2:0c:10:f2'
+                    dhcpEnabled: false
+                    linkMode: MGNT_MODE_LINK
+                    aliasIps: '172.24.133.100, 172.24.133.101'
+                installedApp:
+                  id: INTG-0d249a09-32a5-4703-b5c9-1475456f2011
+                  displayName: AWS_INTG
+                  integration:
+                    id: AWS
+                    name: AWS
+                properties:
+                  provider: AWS
+                  instanceId: i-0eff82b84a8037c2d
+                  instanceState: running
+                  instanceType: c1.medium
+                  publicIp: 34.202.160.29
+                  ami: ami-021800badbd6a2e64
+                  launchDate: '2018-12-12T05:37:09+0000'
+                  owner: '371067416711'
+                  privateDns: ip-172-31-20-84.ec2.internal
+                  privateIp: 172.31.20.84
+                  zone: us-east-1a
+                  monitoringState: disabled
+                metricTypes:
+                  - metricName: resource.availability
+                    displayName: Availability
+                    unit: COUNTER
+                    availabilityMetric: false
+                    thresholdType: STATIC
+                clientUniqueId: client_10
+                appRoles:
+                  - name: cassandra
+                  - name: hbase
+                  - name: hdfs-namenode
+                wsusSettings: disabled
+            example-device:
+              value:
+                id: 4f7f63a0-c7a3-4f2a-89de-74ff5eecb805
+                createdDate: '2018-05-03T06:29:38+0000'
+                updatedDate: '2018-05-04T10:20:30+0000'
+                type: EBS
+                state: active
+                source: MANUAL
+                status: UP
+                location:
+                  id: 0
+                  name: East US
+                resourceName: SJ-Host
+                consoles: []
+                clientUniqueId: client_16
+            example-synthetic-resource:
+              value:
+                id: ed74701d-7f41-4fd1-861e-513647051734
+                resourceType: SYNTHETIC
+                name: Google Monitor
+                consoles: []
+                checkType: HTTP
+                host: www.google.com
+                deleted: false
+                url: www.google.com
+                credential:
+                  id: 0
+                  secure: false
+                  port: 0
+                  snmpVersion: V2
+                  autoEnableMode: false
+                  universal: true
+                  spSecure: false
+                  spPort: 0
+                  securityLevel: oAuth2
+                  timeoutMs: 0
+                  oauthClientKey: kHSageRP9CTeCFP7Wfrzzc45pFJZ99N4
+                  oauthClientSecret: 5w6rKEAgYpsYDdd8vm5PnUMsQWqTnh423FArQYxGW6V3zqDcTG2z7UvjV3YBMq9Y
+                  oauthAccessTokenUrl: auth/oauth/token
+                  oauthGrantType: client_credentials
+                locationUuids:
+                  - 7b77f37f-5eb0-4ec2-bd19-15cc6853e3ca
+                ts: 1551175570000
+                clientId: 5
+                locationOffset: 0
+                totalLocations: 0
+post:
+  summary: Update resource
+  description: This endpoint is used to update details of a resource.
+  tags:
+    - resource-management
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            aliasName:
+              type: string
+              description: |
+                Another name of a resource.
+            alternateIP:
+              type: string
+              description: |
+                Gateway uses alternate IP to discover a resource when populated.
+            extResourceId:
+              type: string
+              description: |
+                Attach third-party integration ID.
+            description:
+              type: string
+              description: Description for the resource.
+            managementProfile:
+              type: string
+              description: |
+                Name of management profile of a resource that is managed.
+            resourceNetworkInterface:
+              type: array
+              description: |
+                Details of network interface.
+              items:
+                type: object
+                properties:
+                  ipAddressType:
+                    type: string
+                  macAddress:
+                    type: string
+                  default:
+                    type: integer
+                  ipAddress:
+                    type: string
+            logicalDiskDrives:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Name of the disk drive.
+                  utilizationWarningThreshold:
+                    type: integer
+                    description: |-
+                      Define a warning threshold value for disk utilization. A warning alert is triggered when the utilization exceeds the threshold value.
+
+                      Example: 60
+                    minimum: 0
+                    maximum: 100
+                  utilizationCriticalThreshold:
+                    type: integer
+                    description: Define a critical threshold value for disk utilization. A critical alert is triggered when the utilization exceeds the threshold value. The utilization threshold value is represented as a percentage.
+                    minimum: 0
+                    maximum: 100
+                  freeDiskWarningThreshold:
+                    type: integer
+                    description: |-
+                      Define a warning threshold value for free disk space. A warning alert is triggered when the free disk space exceeds the threshold value.
+
+                      Example: 40
+                    minimum: 0
+                    maximum: 100
+                  freeDiskCriticalThreshold:
+                    type: integer
+                    description: |-
+                      Define a critical threshold value for free disk space. A critical alert is triggered when the free disk space exceeds the threshold value.
+
+                      Example: 80.
+
+                      The free disk threshold value is represented in MB.
+                    maximum: 100
+                    minimum: 0
+            oobInterfaceCards:
+              type: array
+              description: |
+                OOB interface card details.
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  macAddress:
+                    type: string
+                  description:
+                    type: string
+                  url:
+                    type: string
+                  oobVersion:
+                    type: string
+                  accessInfo:
+                    type: string
+                  accessInfoIpV4:
+                    type: string
+                  remoteAccessType:
+                    type: string
+                  port:
+                    type: integer
+                  make:
+                    type: string
+                  model:
+                    type: string
+            resourceType:
+              type: string
+              description: |-
+                Type of resource.
+
+                Example: server, SYNTHETICS
+            systemUID:
+              type: string
+              description: |
+                Unique ID of system.
+            serialNumber:
+              type: string
+              description: |
+                Serial number of resource.
+            providerType:
+              type: string
+              description: |
+                Type of provider.
+            providerUID:
+              type: string
+              description: |
+                Unique ID of provider.
+            checkType:
+              type: string
+              description: |-
+                Category type for Synthetics.
+                Example: http, https, ftp, and so on.
+            credential:
+              type: object
+              description: |-
+                (Optional) Credentials for Synthetics.
+              properties:
+                securityLevel:
+                  type: string
+                  description: Security level. For example, oauth2.
+                oauthClientKey:
+                  type: string
+                  description: Generated client key.
+                oauthClientSecret:
+                  type: string
+                  description: Generated secret key.
+                oauthAccessTokenUrl:
+                  type: string
+                  description: auth or oauth token.
+                oauthGrantType:
+                  type: string
+                  description: Credentials of the client.
+            sslCertPath:
+              type: string
+              description: |
+                (Optional) Path of the SSL Certificate
+            SslCertKeyPath:
+              type: string
+              description: |
+                (Optional) Path of the SSL certificate key.
+            downloadFilePath:
+              type: string
+              description: |
+                (Optional) Path where you want to download the file.
+            script:
+              type: string
+          required:
+            - resourceType
+            - checkType
+        examples:
+          example-1:
+            value:
+              aliasName: aliasServerName
+              alternateIP: 4.2.2.2
+              extResourceId: '67035'
+              managementProfile: Gateway Profile
+              resourceNetworkInterface:
+                - ipAddressType: STATIC
+                  macAddress: '5G:7H:HN:12:8H:D7'
+                  default: 1
+                  ipAddress: 121.156.43.12
+                - ipAddressType: STATIC
+                  macAddress: '00:0C:23:C5:D6:H7'
+                  default: 0
+                  ipAddress: 161.32.556.56
+                - ipAddressType: DHCP
+                  macAddress: '00:0C:32:B7:D8:54'
+                  default: 0
+                  ipAddress: 161.11.132.21
+              logicalDiskDrives:
+                - name: /
+                  utilizationWarningThreshold: 85
+                  utilizationCriticalThreshold: 90
+                  freeDiskWarningThreshold: 0
+                  freeDiskCriticalThreshold: 0
+                - name: /boot/efi
+                  utilizationWarningThreshold: 85
+                  utilizationCriticalThreshold: 90
+                  freeDiskWarningThreshold: 0
+                  freeDiskCriticalThreshold: 0
+              oobInterfaceCards:
+                - name: Controller 1
+                  macAddress: 'hj:12:hb:32:vg:sa'
+                  description: Server controller details
+                  url: 'https://www.myorganization.com/'
+                  oobVersion: '7.5'
+                  accessInfo: source-ip location
+                  accessInfoIpV4: 121.32.21.112
+                  remoteAccessType: SSH
+                  port: 443
+                  make: Cisco Routers
+                  model: Cisco 890 Series
+          example-2:
+            value:
+              resourceType: SYNTHETIC
+              checkType: HTTP
+              resourceName: Indians
+              url: www.oriental.com
+              credential:
+                securityLevel: oauth2
+                oauthClientKey: kHSageRP9CTeCFP7Wfrzzc45pFJZ99N4
+                oauthClientSecret: 5w6rKEAgYpsYDdd8vm5PnUMsQWqTnh423FArQYxGW6V3zqDcTG2z7UvjV3YBMq9Y
+                oauthAccessTokenUrl: auth/oauth/token
+                oauthGrantType: client_credentials
+              locationUuids:
+                - 7b77f37f-5eb0-4ec2-bd19-15cc6853e3ca
+  responses:
+    '200':
+      description: OK
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: resourceId
+    required: true

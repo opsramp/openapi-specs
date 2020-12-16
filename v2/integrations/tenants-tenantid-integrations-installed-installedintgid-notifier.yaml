@@ -1,0 +1,98 @@
+summary: Manage installed integration base notifiers
+description: This endpoint is used to create or update an installed integration base notifier.
+post:
+  tags:
+    - integrations
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './components.yaml#/components/schemas/notifier'
+          examples:
+            example-NONE:
+              value:
+                baseURI: www.google.com
+                authType: NONE
+            example-OAUTH2-CLIENT_CREDENTIALS:
+              value:
+                baseURI: www.google.com
+                authType: OAUTH2
+                grantType: CLIENT_CREDENTIALS
+                apiKey: 6h67PAAFscVPMwhQZFcshpcqN5b6pyU9
+                accessTokenURI: www.token.com/cred
+            example-OAUTH2-PASSWORD:
+              value:
+                baseURI: www.google.com
+                authType: OAUTH2
+                grantType: PASSWORD
+                userName: testUser
+                apiKey: 6h67PAAFscVPMwhQZFcshpcqN5b6pyU9
+                accessTokenURI: www.token.com/cred
+            example-JWT:
+              value:
+                baseURI: 'https://us1-smax.saas.microfocus.com'
+                authType: JWT
+                userName: test
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/notifier'
+        examples:
+          example-NONE:
+            value:
+              type: SOAP_API
+              baseURI: www.google.com
+              authType: NONE
+          example-OAUTH2-CLIENT_CREDENTIALS:
+            value:
+              type: REST_API
+              baseURI: www.google.com
+              authType: OAUTH2
+              grantType: CLIENT_CREDENTIALS
+              accessTokenURI: www.token.com/cred
+              apiKey: 6h67PAAFscVPMwhQZFcshpcqN5b6pyU9
+              apiSecret: '**********************'
+          example-OAUTH2-PASSWORD:
+            value:
+              type: REST_API
+              baseURI: www.google.com
+              authType: OAUTH2
+              grantType: PASSWORD
+              userName: testUser
+              password: '**********'
+              accessTokenURI: www.token.com/cred
+              apiKey: 6h67PAAFscVPMwhQZFcshpcqN5b6pyU9
+              apiSecret: '*****************************************'
+          example-JWT:
+            value:
+              type: REST_API
+              baseURI: 'https://us1-smax.saas.microfocus.com'
+              authType: JWT
+              userName: test
+              password: Test
+              tokenPayload:
+                rest: ''
+              tokenURL: 'https://us1-smax.saas.microfocus.com/auth/authentication-endpoint/authenticate/login'
+              tokenHeaders:
+                - key: Authorization
+                  value: Basic Base64EncodedCredentials
+                - key: accept
+                  value: application/json
+                - key: Content-Type
+                  value: application/json
+              tokensPath:
+                - key: jwtToken
+                  value: rest_access.access_key
+              resourceAuthHeaders:
+                - key: accept
+                  value: $jwtToken
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: installedIntgId
+    required: true
