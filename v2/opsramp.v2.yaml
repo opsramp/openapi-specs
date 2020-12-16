@@ -385,7 +385,7 @@ paths:
     $ref: './knowledge-base/tenants-tenantid-kb-templatesList.yaml'
   /api/v2/tenants/{tenantId}/kb/template:
     $ref: './knowledge-base/tenants-tenantid-kb-template.yaml'
-  /api/v2/tenants/{tenantId}/kb/template/{templatedId}:
+  /api/v2/tenants/{tenantId}/kb/template/{templateId}:
     $ref: './knowledge-base/tenants-tenantid-kb-template-templateId.yaml'
   /api/v2/tenants/{tenantId}/kb/article-DUP:
     $ref: './knowledge-base/tenants-tenantid-kb-article-update.yaml'
@@ -484,9 +484,9 @@ paths:
   /api/v2/tenants/{tenantId}/customAttributes/{attributeId}:
     $ref: './resource-management/tenants-tenantId-customAttributes-attributeId.yaml'
   /api/v2/tenants/{tenantId}/deviceGroups/{deviceGroupId}/childs:
-    $ref: './resource-management/tenants-tenantId-deviceGroups-childs.yaml'
+    $ref: './resource-management/tenants-tenantId-deviceGroups-devicegroupid-childs.yaml'
   /api/v2/tenants/{tenantId}/deviceGroups/{deviceGroupId}/childs/search:
-    $ref: './resource-management/tenants-tenantId-deviceGroups-childs-search.yaml'
+    $ref: './resource-management/tenants-tenantId-deviceGroups-devicegroupid-childs-search.yaml'
   /api/v2/tenants/{tenantId}/deviceGroups:
     $ref: './resource-management/tenants-tenantId-deviceGroups.yaml'
   /api/v2/tenants/{tenantId}/deviceGroups/{deviceGroupId}:
