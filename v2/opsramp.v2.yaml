@@ -199,7 +199,7 @@ paths:
     $ref: './alerts/tenants-tenantId-alerts-alertId-acknowledge.yaml'
   /api/v2/tenants/{tenantId}/alerts/{alertId}/actions/{action}:
     $ref: './alerts/tenants-tenantId-alerts-alertId-actions-action.yaml'
-  /api/v2/alerts/tenants/{tenantId}/alerts/event/{eventId}:
+  /api/v2/tenants/{tenantId}/alerts/event/{eventId}:
     $ref: './alerts/tenants-tenantId-alerts-event-eventId.yaml'
   /api/v2/tenants/{tenantId}/alerts/{alertId}/comments:
     $ref: './alerts/tenants-tenantId-alerts-alertId-comments.yaml'
