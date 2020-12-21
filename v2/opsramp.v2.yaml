@@ -387,8 +387,6 @@ paths:
     $ref: './knowledge-base/tenants-tenantid-kb-template.yaml'
   /api/v2/tenants/{tenantId}/kb/template/{templateId}:
     $ref: './knowledge-base/tenants-tenantid-kb-template-templateId.yaml'
-  /api/v2/tenants/{tenantId}/kb/article-DUP:
-    $ref: './knowledge-base/tenants-tenantid-kb-article-update.yaml'
   # Metrics
   /api/v2/metric/tenants/{tenantId}/rtypes/{rtype}/resources/{resource}/metrics:
     $ref: './metrics/metric-tenants-tenantId-rtypes-rtype-resources-resource-metrics.yaml'
