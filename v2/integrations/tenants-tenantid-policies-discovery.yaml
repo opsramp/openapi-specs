@@ -1,5 +1,8 @@
 summary: Manage discovery profiles
-description: This endpoint is used to create, update discovery profiles for AWS, Azure, and Google and to retrieve a list of discovery profiles.
+description: |-
+  This endpoint is used to create, update discovery profiles for AWS, Azure, and Google and to retrieve a list of discovery profiles.
+
+  > To fetch supported cloud resource types (AWS, Azure, and Google) during discovery, see Get cloud resource types.
 post:
   tags:
     - integrations
