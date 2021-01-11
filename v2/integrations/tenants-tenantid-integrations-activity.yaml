@@ -2,7 +2,7 @@ summary: Get integration activity
 description: This endpoint is used to retrieve the installation activity details of an installed integration activity.
 get:
   tags:
-    - agents-gateways
+    - integrations
   responses:
     '200':
       description: OK
