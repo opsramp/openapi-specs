@@ -1,5 +1,5 @@
 summary: Assign agent profile for resources
-description: This endpoint is used to assign an agent profile for resources.
+description: This endpoint is used to assign agent profiles for resources.
 post:
   summary: Test summary for post
   description: Test description for post
