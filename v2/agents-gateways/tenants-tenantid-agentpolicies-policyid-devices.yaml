@@ -1,5 +1,5 @@
 summary: Assign agent policy for resources
-description: This endpoint to assign agent policy for resources.
+description: This endpoint is used to assign agent policies for resources.
 post:
   tags:
     - agents-gateways
