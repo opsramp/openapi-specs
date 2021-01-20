@@ -1,8 +1,7 @@
 summary: Manage device management policy
-description: This endpoint is used to create and update device management policy, and retrieve device management policies of a tenant without pagination.
+description: This endpoint is used to create and update device management policies, and retrieve device management policies of a tenant without pagination.
 get:
-  summary: Get device management policy
-  description: This endpoint is used to retrieve device management policies of a tenant without pagination.
+  description: Retrieves device management policies of a tenant without pagination.
   tags:
     - resource-management
   responses:
@@ -304,8 +303,7 @@ get:
                         - item: '264313'
                       forceAssignOrUnassign: true
 post:
-  summary: Create device management policy
-  description: This endpoint is used to create a device management policy with required filters on the resources.
+  description: Creates a device management policy with required filters on the resources.
   tags:
     - resource-management
   requestBody:
@@ -446,8 +444,7 @@ post:
                         - item: KB0000000123
                       forceAssignOrUnassign: true
 put:
-  summary: Update device management policy
-  description: This endpoint is used to update the device management policy.
+  description: Updates the device management policy.
   tags:
     - resource-management
   responses:

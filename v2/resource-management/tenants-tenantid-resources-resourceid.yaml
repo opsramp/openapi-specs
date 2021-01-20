@@ -1,16 +1,14 @@
-summary: Update and delete resources
-description: This endpoint is used to update details of a resource and delete a resource using a resource ID.
+summary: Manage resources
+description: This endpoint is used to retrieve resource information, update resource details, and delete a resource using a resource ID.
 delete:
-  summary: Delete resource
-  description: This endpoint is used to delete a resource using a resource ID.
+  description: Deletes a resource using the resource ID.
   tags:
     - resource-management
   responses:
     '200':
       description: OK
 get:
-  summary: Get resource
-  description: This endpoint is used to retrieve information, and optional details of a device, of a specific resource.
+  description: Retrieves information and optional device details for a specific resource.
   tags:
     - resource-management
   responses:
@@ -152,8 +150,7 @@ get:
                 locationOffset: 0
                 totalLocations: 0
 post:
-  summary: Update resource
-  description: This endpoint is used to update details of a resource.
+  description: Updates the details of a resource.
   tags:
     - resource-management
   requestBody:

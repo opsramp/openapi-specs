@@ -1,8 +1,7 @@
 summary: Get and delete device management policy
 description: The endpoint is used to retrieve device management policy details and unassign agent policy for resources.
 delete:
-  summary: Delete device management policy
-  description: The endpoint is used to unassign agent policy for resources.
+  description: Unassigns agent policies for resources.
   tags:
     - resource-management
   responses:
@@ -30,8 +29,7 @@ delete:
                   reasonPhrase: OK
                 actualEntity: 'Removed policy with id: 2325'
 get:
-  summary: Get device management policy
-  description: This endpoint is used to retrieve device management policy details.
+  description: Retrieves device management policy details.
   tags:
     - resource-management
   responses:
