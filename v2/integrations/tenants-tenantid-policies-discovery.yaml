@@ -7,18 +7,18 @@ post:
   description: |-
   Creates discovery profiles for AWS, Azure, and Google.
 
-  - AWS basic discovery profile: Create a basic AWS discovery profile with credentials to administer the management of discovered resources. The returned sample response can be posted again with any modification.
-  - AWS discovery profile with delivery schedule: Create an AWS discovery profile with a schedule to define the discovery time of resources.
-  - AWS discovery profile with policy: Create an AWS discovery profile with a policy to define specific actions performed on the discovered resources
-  - AWS discovery profile with credentials, schedule, and policy: Create an AWS discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources.
-  - Azure basic discovery profile: Create a basic Azure discovery profile with credentials to administer the management of discovered resources.
-  - Azure discovery profile with discovery schedule: Create an Azure discovery profile with a schedule to define the discovery time of resources.
-  - Azure discovery profile with schedule and policy: Create Azure discovery profile with schedule and policy to schedule discovery of resources and define actions performed on the discovered devices.
-  - Azure discovery profile with credentials, schedule, and policy: Create an Azure discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources.
-  - Google basic discovery profile: Create a basic Google discovery profile with credentials to administer the management of discovered resources.
-  - Google discovery profile with credentials, schedule, and policy: Create a Google discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources.
+  - AWS basic discovery profile - Create a basic AWS discovery profile with credentials to administer the management of discovered resources. The returned sample response can be posted again with any modification.
+  - AWS discovery profile with delivery schedule - Create an AWS discovery profile with a schedule to define the discovery time of resources.
+  - AWS discovery profile with policy - Create an AWS discovery profile with a policy to define specific actions performed on the discovered resources
+  - AWS discovery profile with credentials, schedule, and policy - Create an AWS discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources.
+  - Azure basic discovery profile - Create a basic Azure discovery profile with credentials to administer the management of discovered resources.
+  - Azure discovery profile with discovery schedule - Create an Azure discovery profile with a schedule to define the discovery time of resources.
+  - Azure discovery profile with schedule and policy - Create Azure discovery profile with schedule and policy to schedule discovery of resources and define actions performed on the discovered devices.
+  - Azure discovery profile with credentials, schedule, and policy - Create an Azure discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources.
+  - Google basic discovery profile - Create a basic Google discovery profile with credentials to administer the management of discovered resources.
+  - Google discovery profile with credentials, schedule, and policy - Create a Google discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources.
 
-  Note: The certificate attachment must be encoded with base64 and can be provided in `ServiceAccountManagementCertificate`.
+  The certificate attachment must be encoded with base64 and can be provided in `ServiceAccountManagementCertificate`.
 
   tags:
     - integrations
