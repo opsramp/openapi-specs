@@ -4,6 +4,22 @@ description: |-
 
   > To fetch supported cloud resource types (AWS, Azure, and Google) during discovery, use `GET https://{api-url}/api/v2/tenants/{tenantId}/resourceTypes/{cloudType}`.
 post:
+  description: |-
+  Creates discovery profiles for AWS, Azure, and Google.
+
+  - AWS basic discovery profile: Create a basic AWS discovery profile with credentials to administer the management of discovered resources. The returned sample response can be posted again with any modification.
+  - AWS discovery profile with delivery schedule: Create an AWS discovery profile with a schedule to define the discovery time of resources.
+  - AWS discovery profile with policy: Create an AWS discovery profile with a policy to define specific actions performed on the discovered resources
+  - AWS discovery profile with credentials, schedule, and policy: Create an AWS discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources.
+  - Azure basic discovery profile: Create a basic Azure discovery profile with credentials to administer the management of discovered resources.
+  - Azure discovery profile with discovery schedule: Create an Azure discovery profile with a schedule to define the discovery time of resources.
+  - Azure discovery profile with schedule and policy: Create Azure discovery profile with schedule and policy to schedule discovery of resources and define actions performed on the discovered devices.
+  - Azure discovery profile with credentials, schedule, and policy: Create an Azure discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources.
+  - Google basic discovery profile: Create a basic Google discovery profile with credentials to administer the management of discovered resources.
+  - Google discovery profile with credentials, schedule, and policy: Create a Google discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources.
+
+  Note: The certificate attachment must be encoded with base64 and can be provided in `ServiceAccountManagementCertificate`.
+
   tags:
     - integrations
   responses:
@@ -355,31 +371,8 @@ post:
                   patternType: MINUTES
                   pattern: '30'
                   startTime: '00:30:00'
-    description: |
-      ### AWS basic discovery profile
-      Create a basic AWS discovery profile with credentials to administer the management of discovered resources:
-      >The returned sample response can be posted again with any modification.
-      ### AWS discovery profile with delivery schedule  
-      Create an AWS discovery profile with a schedule to define the discovery time of resources:
-      ### AWS discovery profile with policy
-      Create an AWS discovery profile with a policy to define specific actions performed on the discovered resources:
-      ### AWS discovery profile with credentials, schedule, and policy  
-      Create an AWS discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources:
-      ### Azure basic discovery profile
-      Create a basic Azure discovery profile with credentials to administer the management of discovered resources:
-      ### Azure discovery profile with discovery schedule
-      Create an Azure discovery profile with a schedule to define the discovery time of resources:
-      ### Azure discovery profile with schedule and policy
-      Create Azure discovery profile with schedule and policy to schedule discovery of resources and define actions performed on the discovered devices:
-      ### Azure discovery profile with credentials, schedule, and policy
-      Create an Azure discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources:
-      ### Google basic discovery profile
-      Create a basic Google discovery profile with credentials to administer the management of discovered resources:
-      ### Google discovery profile with credentials, schedule, and policy
-      Create a Google discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources:
-      >Certificate attachment must be encoded with base64 and can be provided in ServiceAccountManagementCertificate.
 get:
-  description: This endpoint is used to retrieve a list of discovery profiles and their details for AWS and Azure.
+  description: Retrieves a list of discovery profiles and their details for AWS, Azure, and Google.
   tags:
     - integrations
   responses:
@@ -487,9 +480,8 @@ get:
                     startTime: '00:30:00'
 put:
   description: |-
-    This endpoint is used to update a discovery profile for AWS and Google.
+    Updates discovery profiles for AWS, Azure, and Google.
 
-    See Cloud Discovery Create Post for request/response documentation.
   tags:
     - integrations
   responses:
