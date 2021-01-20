@@ -7,7 +7,7 @@ post:
   description: |-
   Creates discovery profiles for AWS, Azure, and Google.
 
-  - AWS basic discovery profile - Create a basic AWS discovery profile with credentials to administer the management of discovered resources. The returned sample response can be posted again with any modification.
+  AWS basic discovery profile - Create a basic AWS discovery profile with credentials to administer the management of discovered resources. The returned sample response can be posted again with any modification.
   - AWS discovery profile with delivery schedule - Create an AWS discovery profile with a schedule to define the discovery time of resources.
   - AWS discovery profile with policy - Create an AWS discovery profile with a policy to define specific actions performed on the discovered resources
   - AWS discovery profile with credentials, schedule, and policy - Create an AWS discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources.
