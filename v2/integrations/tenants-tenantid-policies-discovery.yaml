@@ -1,8 +1,8 @@
 summary: Manage discovery profiles
 description: |-
-  This endpoint is used to create, and update discovery profiles for AWS, Azure, and Google and to retrieve a list of discovery profiles.
+  This endpoint is used to create and update discovery profiles for AWS, Azure, and Google and to retrieve a list of discovery profiles.
 
-  > To fetch supported cloud resource types (AWS, Azure, and Google) during discovery, use `GET https://{api-url}/api/v2/tenants/{tenantId}/resourceTypes/{cloudType}`.
+  > To fetch supported cloud resource types (AWS, Azure, and Google) during discovery, use the `{api-url}/api/v2/tenants/{tenantId}/resourceTypes/{cloudType}` endpoint.
 post:
   description: |-
   Creates discovery profiles for AWS, Azure, and Google.
@@ -19,7 +19,6 @@ post:
   - Google discovery profile with credentials, schedule, and policy - Create a Google discovery profile with credentials, schedule, and policy to administer the management of resources, schedule discovery of resources, and define specific actions performed on the discovered resources.
 
   The certificate attachment must be encoded with base64 and can be provided in `ServiceAccountManagementCertificate`.
-
   tags:
     - integrations
   responses:
