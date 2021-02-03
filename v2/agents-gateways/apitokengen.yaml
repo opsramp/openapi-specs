@@ -6,6 +6,7 @@ description: |-
 
   - Register the gateway.
   - Use all gateway-related activities.
+  - Provides a secured connectivity with OpsRamp cloud
 post:
   tags:
     - agents-gateways
