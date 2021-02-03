@@ -2,7 +2,7 @@ summary: Get task responses
 description: |-
   This endpoint is used to retrieve responses of a task.
 
-  ### Query variables
+  ##### Query Variables
 
   |Query Variable|Values|Description|
   |-----|----|-----|

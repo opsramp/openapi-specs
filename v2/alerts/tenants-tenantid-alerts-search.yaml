@@ -2,7 +2,7 @@ summary: Search alerts
 description: |-
   This endpoint is used to search alerts.
 
-  ### Query variables
+  ##### Query Variables
   |Query Variable|Value|Description|
   |----|---|---|
   |states|Ok, Warning, Critical, Info|Current status of the alert.

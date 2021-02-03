@@ -2,7 +2,7 @@ summary: Search sites
 description: |-
   This endpoint is used to search sites.
 
-  ## Query variables
+  ##### Query Variables
 
   |Query Variables|Description|
   |----|----|

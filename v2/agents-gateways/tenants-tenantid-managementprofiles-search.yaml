@@ -2,7 +2,7 @@ summary: Search management profile
 description: |-
   This endpoint is used to search for management profiles.
 
-  ## Query Variables
+  ##### Query Variables
   |Variable|Value|Description|
   |---|---|---|
   |id|{id}|The management profile ID.|

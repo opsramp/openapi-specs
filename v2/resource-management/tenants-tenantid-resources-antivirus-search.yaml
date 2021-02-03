@@ -2,7 +2,7 @@ summary: Get latest antivirus definitions on resources
 description: |-
   This endpoint is used to retrieve the latest antivirus definitions installed on resources.
 
-  ### Query variables
+  ##### Query Variables
 
   |Query Variables|Values|Description|
   |----|----|----|

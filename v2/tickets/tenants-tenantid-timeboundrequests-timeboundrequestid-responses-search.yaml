@@ -2,7 +2,7 @@ summary: Get time bound responses
 description: |-
   This endpoint is used to retrieve responses of a time bound request.
 
-  ### Query variables
+  ##### Query Variables
 
   |Query Variable|Values|Description|
   |-----|----|-----|

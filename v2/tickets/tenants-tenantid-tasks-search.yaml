@@ -8,7 +8,7 @@ description: |-
   >- Status flow
   Example: include=customFields, statusFlow
 
-  ### Query variables
+  ##### Query Variables
 
   |Field|Default Value|
   |----|----|

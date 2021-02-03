@@ -2,7 +2,7 @@ summary: Search patches
 description: |-
   This endpoint is used to retrieve a tenant’s list of patches.
 
-  ### Query variables
+  ##### Query Variables
   Search for patches using these patch attributes:
 
   |Query Variables|Description|

@@ -2,7 +2,7 @@ summary: Get patch scan status of all devices of a missing job
 description: |-
   This endpoint is used to retrieve the patch scan status of all devices assigned to a missing patch job and display paginated output.
 
-  ### Query variables
+  ##### Query Variables
 
   |Query Variables|Description|
   |-----|-----|

@@ -2,7 +2,7 @@ summary: Get service request responses
 description: |-
   This endpoint is used to retrieve responses of a service request.
 
-  ### Query variables
+  ##### Query Variables
 
   |Query Variable|Values|Description|
   |-----|----|-----|

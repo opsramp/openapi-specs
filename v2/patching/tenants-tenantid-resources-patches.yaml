@@ -55,7 +55,7 @@ description: |-
   >- (:) represents equals. An example is key : value.
   >- Space characters must be URL-encoded.
 
-  ### Query variables
+  ##### Query Variables
   |Query Variables|Values|Description|
   |-----|-----|------|
   |resourceUUID|NA|Unique ID of a resource.<br>Example: d5bce6fe-d19f-4ad7-8c50-5f639f2dd321. Use the Search Resources API to fetch the list of resources.|

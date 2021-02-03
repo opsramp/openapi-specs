@@ -2,7 +2,7 @@ summary: Search montoring templates
 description: |-
   This endpoint is used to activate a user.
 
-  ### Query variables
+  ##### Query Variables
   |Query Variables|Description|
   |-----|-----|
   |id|Template ID.|
