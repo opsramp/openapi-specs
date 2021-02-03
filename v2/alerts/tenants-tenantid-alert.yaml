@@ -11,10 +11,6 @@ description: |-
   - A new resource is created and new device group, service group, and location are assigned.
   - A new resource is created and existing device group, service group, and location are assigned.
   - An already existing resource cannot be assigned to a new or existing Device Group, Service Group and Location.
-
-  The response depends on the returned status code.
-
-  Sample 4 shows how to create a resource and its attributes with an alert:
 post:
   tags:
     - alerts

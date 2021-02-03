@@ -64,11 +64,7 @@ delete:
                 name: 'arn:aws:sns:us-east-1:290642135901:alarm-notifications-topic'
   responses:
     '200':
-      description: |-
-        OK
-
-        >## Notes
-        >The response depends on the returned status code.
+      description: OK
 parameters:
   - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:

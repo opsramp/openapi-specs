@@ -51,11 +51,7 @@ delete:
               - id: USR0000000030
   responses:
     '200':
-      description: |-
-        OK
-
-        >## Notes
-        > The response depends on the returned status code.
+      description: OK
 get:
   summary: Get users of a user group
   description: This endpoint is used to fetch users belonging to a user group.

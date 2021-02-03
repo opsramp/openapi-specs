@@ -166,11 +166,7 @@ delete:
     - automation
   responses:
     "200":
-      description: |-
-        OK
-
-        ## Notes
-        The response depends on the returned status code.
+      description: OK
 get:
   description: A list of scripts is retrieved within a category.
   tags:
