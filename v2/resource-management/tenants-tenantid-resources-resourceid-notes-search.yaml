@@ -13,7 +13,7 @@ description: |-
   |endUpdationDate|Search for the resource note created within a duration. endUpdationDate indicates the to date.|
   |id|Resource ID|
 
-  ## Notes
+  ##### Notes
   There are special characters that can be used in a query string:
   - (+) represents the next field and must be URL-encoded.
   - (:) represents equals. An example is key : value.

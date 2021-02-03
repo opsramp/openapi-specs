@@ -2,7 +2,7 @@ summary: Search alert occurrences
 description: |
   This endpoint retrieves the occurrences of an alert based on the alert-triggered time.
 
-  ## Notes
+  ##### Notes
   There are special characters that can be used in a query string:
   - (+) represents the next field and must be URL-encoded.
   - (:) represents equals. An example is key : value.

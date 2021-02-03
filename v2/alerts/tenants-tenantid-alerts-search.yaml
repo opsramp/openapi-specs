@@ -41,7 +41,7 @@ description: |-
   |startClosedTime||2015-08-10T05:39:51 0000|
   |endClosedTime||2015-08-10T05:39:51 0000|
 
-  ## Notes
+  ##### Notes
   - Special characters to use in the query string are:
       - (+) indicates next field and must be URL-encoded.
       - (:) indicates Equals. An example is key: value.

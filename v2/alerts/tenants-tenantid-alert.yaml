@@ -2,7 +2,7 @@ summary: Create alert on a resource
 description: |-
   Create a single alert on a resource.
 
-  ## Notes
+  ##### Notes
   - A list of event IDs is generated when alerts are created. This list is valid for 30 days.
   - Use the event IDs to search and retrieve alert details.
 

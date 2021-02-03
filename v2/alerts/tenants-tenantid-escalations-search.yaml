@@ -2,7 +2,7 @@ summary: Search alert escalation policies
 description: |-
   This endpoint is used to fetch the alert escalation policies attached to an alert.
 
-  ## Notes
+  ##### Notes
   There are special characters that can be used in a query string:
   (+) represents the next field and must be URL-encoded.
   (:) represents equals. An example is key : value.
@@ -59,7 +59,7 @@ get:
       description: |-
         OK
 
-        ## Notes
+        ##### Notes
         `"mlBased"` indicates a machine-learning based alert escalation policy:
         - `"mlBased": true` indicates the machine-learning based escalation policy.
         - `"mlBased": false` indicates manual escalation policy.

@@ -2,7 +2,7 @@ summary: Get minimal details of users
 description: |-
   This endpoint is used to retrieve the minimal details of the users.
 
-  ## Notes
+  ##### Notes
   There are special characters that can be used in a query string:
   - (:) represents equals. An example is key : value.
   - Space characters must be URL-encoded.

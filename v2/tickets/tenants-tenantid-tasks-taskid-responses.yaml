@@ -2,7 +2,7 @@ summary: Add response to task
 description: |-
   This endpoint is used to add a response to a task.
 
-  >## Notes
+  >##### Notes
   >- For attachments, files must be converted to bytes stream with base64-encoding.
   >- The default creator (OpsRamp API User) uses id and loginName to change default settings.
   >- Make default submission status of a pending request as open, the status of the incident which is in Pending status will change to Open status.

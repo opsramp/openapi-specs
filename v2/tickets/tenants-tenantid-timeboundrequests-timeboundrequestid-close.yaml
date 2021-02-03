@@ -25,7 +25,7 @@ description: |-
   3. In Configuration, click Status Change Reasons.
   4. Click Add, select the scope, client, request type, entity status as Closed and provide the reason and then click Submit.
 
-  >## Notes
+  >##### Notes
   >- Use the get time bound request to check if status Closed and reasons to provide for Close are enabled. If under the field allowedStatus if name: Closed and reasonsEnabled: true, this indicates reasons should be provided for closing a time bound request.
   >- Use the get status change reasons to provide the reasons to Close. The reasons configured in status: Closed are accepted, but a new provided reason would result in an error.
 post:

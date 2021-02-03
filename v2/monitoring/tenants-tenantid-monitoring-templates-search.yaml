@@ -17,7 +17,7 @@ description: |-
   |endUpdationDate|Search for templates updated within a certain duration.<br>endUpdationDate denotes the to update date.|
   |sourceType|Template source.<br>Supported values are: DEVICE, DATA_CENTER, VI_CLUSTER, VI_DATASTORE, JMX_APP_CLUSTER, JMX_APP_INSTANCE, DISTRIBUTED_VIRTUAL_SWITCH, CONTRAIL_ANALYTICS_NODE, CONTRAIL_CONFIG_NODE, CONTRAIL_CONTROL_NODE, VIRTUVAL_ROUTER, STORAGE_ARRAY_VOLUME|
 
-  ## Notes
+  ##### Notes
   1. There are special characters that can be used in a query string:
   - (+) represents the next field and must be URL-encoded.
   - (:) represents equals. An example is key : value.

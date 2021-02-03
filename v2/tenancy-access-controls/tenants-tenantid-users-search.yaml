@@ -2,7 +2,7 @@ summary: Search users
 description: |-
   This endpoint is used to fetch users within a tenant.
 
-  ## Notes
+  ##### Notes
   - This API provides minimal user details.
   - To retrieve the complete details of a user, use the Get User API.
 
@@ -21,7 +21,7 @@ description: |-
   |endUpdationDate|Filter the users updated within a date range. Provide the to date.<br>Example: 2016-11-03T11:54:24 0000|
   |status|- To retrieve a list of active users, provide status: active.<br>- To fetch list of inactive users, provide status: inactive.|
 
-  ## Notes
+  ##### Notes
   There are special characters that can be used in a query string:
   - (+) represents the next field and must be URL-encoded.
   - (:) represents equals. An example is `key : value`.

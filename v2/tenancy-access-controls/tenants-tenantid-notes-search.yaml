@@ -11,7 +11,7 @@ description: |-
   |startUpdationDate|Search for the note updated within a specific date range. startUpdationDate denotes the from date.<br>Example: 2016-03-25T09:54:52+0000|
   |endUpdationDate|endUpdationDate denotes the to date.<br>Example: 2016-03-27T10:54:52+0000|
 
-  ## Notes
+  ##### Notes
   There are special characters that can be used in a query string:
   - (+) represents the next field and must be URL-encoded.
   - (:) represents equals. An example is `key : value`.

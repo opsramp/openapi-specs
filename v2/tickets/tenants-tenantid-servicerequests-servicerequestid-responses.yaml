@@ -2,7 +2,7 @@ summary: Add response to a service request
 description: |-
   This endpoint is used to add a response to a service request.
 
-  >## Notes
+  >##### Notes
   >- For attachments, files must be converted to bytes stream with base64-encoding.
   >- The default creator (OpsRamp API User) can send id and loginName to change the default.
   >- Based on the setting Make default submission status of a pending request as open, the status of the Pending request will change to Open.

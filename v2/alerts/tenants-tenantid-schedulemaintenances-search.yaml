@@ -2,7 +2,7 @@ summary: Search scheduled maintenance windows
 description: |-
   This endpoint is used to retrieve the scheduled maintenance windows under a specific tenant.
 
-  ## Notess
+  ##### Notess
   There are special characters that can be used in a query string:
   - (+) represents the next field and must be URL-encoded.
   - (:) represents equals. An example is key : value.

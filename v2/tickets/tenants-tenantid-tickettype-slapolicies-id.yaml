@@ -2,7 +2,7 @@ summary: Get SLA policy
 description: |-
   This endpoint is used to retrieve the details of a service level agreement policy.
 
-  ## Notes
+  ##### Notes
   1. Sample responses for response time, resolution breach time, resolution remainders, and response remainders use seconds format.
   2. SLA Polices are valid only for incident and service request ticket types.
 get:

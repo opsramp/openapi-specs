@@ -2,7 +2,7 @@ summary: Create patch configuration
 description: |-
   This endpoint is used to create a patch configuration and execute patches on the resources.
 
-  ## Notes
+  ##### Notes
   - Approved Windows patches are installed on the device during the scheduled installation window.
   - The device is immediately rebooted following any patch that requires a reboot.
   - Standard checks are performed on rebooted devices to ensure the device is operating properly.

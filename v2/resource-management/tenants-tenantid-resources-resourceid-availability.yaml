@@ -4,7 +4,7 @@ description: |-
 
   To view availability of a resource within a given time frame, provide the start time and end time.
 
-  ## Notes
+  ##### Notes
   - State 0 indicates the status of resource is down.
   - State 4 indicates the status of resource is unknown.
 get:

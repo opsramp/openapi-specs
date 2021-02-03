@@ -67,7 +67,7 @@ post:
   description: |-
     This endpoint is used to update a patch configuration.
 
-    >## Notes
+    >##### Notes
     >- Approved Windows patches will be installed on the device during the scheduled installation window.
     >- The device will be immediately rebooted following any patch that requiring a reboot.
     >- Standard checks are performed on rebooted devices to ensure the device is operating properly.

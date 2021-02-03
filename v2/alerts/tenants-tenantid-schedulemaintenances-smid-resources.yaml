@@ -4,7 +4,7 @@ post:
   description: |-
     This endpoint is used to add resources to a scheduled maintenance window.
 
-    ## Notes
+    ##### Notes
     - Resources can only be added to Active, Pending, or Suspended scheduled maintenance windows.
     - To search for scheduled maintenance windows on the basis of status, use the search schedule maintenance API.
     - Entities can be added such as resource, device group, location to a schedule maintenance window. For example, all resource types such as Server, Storage, Volumes, RedShift, RDS or Lambda services are now supported.
@@ -63,7 +63,7 @@ delete:
   description: |-
     This endpoint is used to remove resources from a scheduled maintenance window.
 
-    ## Notes
+    ##### Notes
     - Resources can only be removed from Active, Pending, or Suspended scheduled maintenance windows.
   tags:
     - alerts

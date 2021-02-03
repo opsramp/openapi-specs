@@ -5,7 +5,7 @@ delete:
   description: |-
     This endpoint is used to delete a service group.
 
-    ## Notes
+    ##### Notes
     - Deleting a service group removes the service group name and its details.
     - Deleting a parent service group also deletes the child entities (resources or service groups).
     - Resources or Services under the deleted service group are retained and are available in the OpsRamp infrastructure page.
