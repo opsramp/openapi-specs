@@ -1,6 +1,6 @@
 summary: Add response to a service request
 description: |-
-  This endpoint is used to add a response to a service request.
+  Adds a response to a service request.
 
   >##### Notes
   >- For attachments, files must be converted to bytes stream with base64-encoding.

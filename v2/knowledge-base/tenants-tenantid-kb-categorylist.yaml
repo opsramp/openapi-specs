@@ -1,5 +1,5 @@
 summary: Get KB category lists
-description: This endpoint is used to retrieve list of knowledge base categories.
+description: Gets list of knowledge base categories.
 get:
   tags:
     - knowledge-base

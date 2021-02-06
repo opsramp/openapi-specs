@@ -1,6 +1,6 @@
 summary: Get integration event placeholders
 description: |-
-  This endpoint is used to retrieve the integration event placeholders of an entity.
+  Gets the integration event placeholders of an entity.
 
   Supported entities are:
   - Incident

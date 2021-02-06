@@ -1,6 +1,6 @@
-summary: Get agent package for Linux
+summary: Get the Linux agent
 description: |-
-  This endpoint is used to download the agent for Linux resources. This is usually followed by an API call to Download Linux Agent.
+  Gets the Linux agent. This is usually followed by an API call to Download Linux Agent.
 
   Returns the JSON payload containing package name, package size, package checksum. The response also contains package S3 bucket URL for downloading the agent directly.
 get:

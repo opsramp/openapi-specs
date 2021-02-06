@@ -1,5 +1,5 @@
-summary: Manage integration events
-description: This endpoint is used to update, retrieve, and delete an integration event.
+summary: Manage integration event
+description: Updates, gets, and deletes an integration event.
 delete:
   tags:
     - integrations

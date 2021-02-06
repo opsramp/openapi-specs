@@ -1,6 +1,6 @@
 summary: Search resource notes
 description: |-
-  This endpoint is used to retrieve the latest antivirus definitions installed on resources.
+  Gets the latest antivirus definitions installed on resources.
 
   ##### Query Variables
 

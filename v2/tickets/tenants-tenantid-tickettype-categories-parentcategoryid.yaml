@@ -1,5 +1,5 @@
 summary: Get service desk list of categories
-description: This endpoint is used to retrieve the list of categories for an entity type.
+description: Gets the list of categories for an entity type.
 get:
   tags:
     - tickets

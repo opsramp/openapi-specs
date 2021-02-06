@@ -1,6 +1,6 @@
 summary: Install integrations
 description: |-
-  This endpoint is used to install the following integrations:
+  Installs the following integrations:
 
   - cloud
   - monitoring

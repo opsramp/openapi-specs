@@ -1,8 +1,8 @@
-summary: Manage custom attribute of a tenant
-description: This endpoint is used to update, get, and delete custom attributes of a tenant.
+summary: Manage tenant custom attributes
+description: Updates, gets, and deletes tenant custom attributes.
 delete:
   summary: Delete custom attribute of a tenant
-  description: This endpoint is used to delete the custom attribute of a tenant.
+  description: Deletes the tenant custom attribute.
   tags:
     - resource-management
   responses:
@@ -10,7 +10,7 @@ delete:
       description: OK
 get:
   summary: Get custom attributes types and values of a tenant
-  description: This endpoint is used to fetch custom attribute type and their respective values.
+  description: Gets the custom attribute types and respective values.
   tags:
     - resource-management
   responses:
@@ -40,7 +40,7 @@ get:
                   activated: true
 post:
   summary: Update custom attribute type and add new values
-  description: This endpoint is used to update the description and add new values to a custom attribute.
+  description: Updates the description and adds new values to a custom attribute.
   tags:
     - resource-management
   requestBody:

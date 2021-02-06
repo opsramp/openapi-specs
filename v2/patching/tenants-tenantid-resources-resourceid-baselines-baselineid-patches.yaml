@@ -1,6 +1,6 @@
-summary: Get compliance of resource and baseline
+summary: Check resource patch compliance against baseline
 description: |-
-  This endpoint is used to check the compliance of a certain resource against a patch baseline.
+  Checks the compliance of a resource against a patch baseline.
 
   ##### Notes
   There are special characters that can be used in a query string:

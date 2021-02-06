@@ -1,6 +1,6 @@
 summary: Get activity log of a change request
 description: |-
-  This endpoint is used to retrieve user activities on a change request.
+  Gets user activities on a change request.
 
   ##### Notes
   - (+) represents the next field and must be URL-encoded.

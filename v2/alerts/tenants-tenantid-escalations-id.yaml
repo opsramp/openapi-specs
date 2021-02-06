@@ -1,6 +1,6 @@
 summary: Manage alert escalation policy
 description: |-
-    This endpoint is used to retrieve, update, and delete alert escalation policy information.
+    Gets, update, and delete alert escalation policy information.
 delete:
   tags:
     - alerts

@@ -1,5 +1,5 @@
 summary: Get alert view by view ID
-description: This endpoint is used to retrieve an alert view of a user.
+description: Gets an alert view of a user.
 get:
   tags:
     - alerts

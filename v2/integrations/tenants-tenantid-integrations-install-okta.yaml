@@ -1,5 +1,5 @@
-summary: Install SSO integrations
-description: This endpoint is used to install a SSO integration.
+summary: Install SSO integration
+description: Installs a SSO integration.
 post:
   tags:
     - integrations

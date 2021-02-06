@@ -1,8 +1,8 @@
-summary: Update, get, and delete user group
-description: This endpoint is used to update, retrieve, and delete user groups.
+summary: Manage user groups
+description: Updates, gets, and deletes user groups.
 post:
   summary: Update user group
-  description: This endpoint is used to update a user group’s properties.
+  description: Updates user group properties.
   tags:
     - tenancy-access-controls
   responses:
@@ -46,7 +46,7 @@ post:
                 - uniqueId: ROLE-836704cd-9faf-355e-6995-f124e1c5de48
 delete:
   summary: Delete a user group
-  description: This endpoint is used to delete a user group under a tenant.
+  description: Deletes a user group for a tenant.
   tags:
     - tenancy-access-controls
   responses:
@@ -54,7 +54,7 @@ delete:
       description: OK
 get:
   summary: Get user group
-  description: This endpoint is used to retrieve the details of a user group.
+  description: Gets the details of a user group.
   tags:
     - tenancy-access-controls
   responses:

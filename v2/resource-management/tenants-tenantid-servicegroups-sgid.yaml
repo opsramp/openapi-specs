@@ -1,9 +1,9 @@
 summary: Manage service group
-description: This endpoint is used to retrieve and delete service groups.
+description: Gets and delete service groups.
 delete:
   summary: Delete service group
   description: |-
-    This endpoint is used to delete a service group.
+    Deletes a service group.
 
     ##### Notes
     - Deleting a service group removes the service group name and its details.
@@ -15,8 +15,8 @@ delete:
     '200':
       description: OK
 get:
-  summary: Get service group
-  description: This endpoint is used to retrieve details of a service group.
+  summary: Get service group details
+  description: Gets service group details.
   tags:
     - resource-management
   responses:

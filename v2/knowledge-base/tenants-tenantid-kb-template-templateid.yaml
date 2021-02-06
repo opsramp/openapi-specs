@@ -1,6 +1,6 @@
-summary: Get KB templates
+summary: Get KB article template
 description: |-
-  This endpoint is used to get the template details of a knowledge base article.
+  Gets KB article template details.
 get:
   tags:
     - knowledge-base

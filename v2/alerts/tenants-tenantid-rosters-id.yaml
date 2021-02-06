@@ -1,5 +1,5 @@
 summary: Manage rosters
-description: This endpoint is used to update, retrieve, and delete rosters.
+description: Updates, gets, and deletes rosters.
 delete:
 
   tags:

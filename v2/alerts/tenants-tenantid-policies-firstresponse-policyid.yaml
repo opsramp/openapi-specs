@@ -1,5 +1,5 @@
-summary: Manage first response policy by Id
-description: This endpoint is used to update, retrieve, and delete a first response policy by Id.
+summary: Manage first response policy by ID
+description: Updates, gets, and deletes a first response policy by ID.
 delete:
   tags:
     - alerts

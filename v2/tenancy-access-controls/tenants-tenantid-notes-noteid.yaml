@@ -1,16 +1,16 @@
 summary: Manage client note
-description: This endpoint is used to update, retrieve, and delete a client note.
+description: Updates, gets, and deletes a client note.
 delete:
   summary: Delete client note
-  description: This endpoint is used to delete a client note. This endpoint is also used to delete notes from the resource-level.
+  description: Deletes a client note and deletes notes from the resource-level.
   tags:
     - tenancy-access-controls
   responses:
     '200':
       description: OK
 get:
-  summary: Get client note
-  description: This endpoint is used to retrieve the details of a client note.
+  summary: Get client note details
+  description: Gets client note details.
   tags:
     - tenancy-access-controls
   responses:
@@ -38,8 +38,8 @@ get:
                   email: john.smith@gmail.com
                   changePassword: false
 post:
-  summary: Update client notes
-  description: This endpoint is used to update the details in a client note.
+  summary: Update client note details
+  description: Updates client note details.
   tags:
     - tenancy-access-controls
   responses:

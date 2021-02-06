@@ -1,5 +1,5 @@
-summary: Custom attributes
-description: This endpoint is used to update description of a custom attribute value.
+summary: Update custom attribute value description
+description: Updates a custom attribute value description.
 post:
   tags:
     - resource-management

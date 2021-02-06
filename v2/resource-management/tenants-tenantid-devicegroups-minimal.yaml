@@ -1,5 +1,5 @@
 summary: Get minimal details of device groups
-description: This endpoint is used to retrieve minimal details of device groups.
+description: Gets minimal details of device groups.
 get:
   tags:
     - resource-management

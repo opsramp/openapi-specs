@@ -1,6 +1,6 @@
 summary: Add response to task
 description: |-
-  This endpoint is used to add a response to a task.
+  Adds a response to a task.
 
   >##### Notes
   >- For attachments, files must be converted to bytes stream with base64-encoding.

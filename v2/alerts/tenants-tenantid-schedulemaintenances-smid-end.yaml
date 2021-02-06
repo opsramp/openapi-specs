@@ -1,6 +1,6 @@
-summary: End scheduled maintenance windows
+summary: End scheduled maintenance window
 description: |-
-  This endpoint is used to end a scheduled maintenance window.
+  Ends a scheduled maintenance window.
 
   ##### Notes
   - User can end only active schedule maintenance windows.

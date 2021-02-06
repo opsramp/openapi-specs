@@ -1,6 +1,6 @@
 summary: Search installed integrations
 description: |
-  This endpoint is used to search for installed integrations.
+  Searches for installed integrations.
 
   >##### Notes
   >There are special characters that can be used in a query string:

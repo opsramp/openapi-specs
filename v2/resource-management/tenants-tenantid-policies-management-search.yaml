@@ -1,5 +1,5 @@
 summary: Search device management policy
-description: This endpoint is used to search for a device management policy with a policy name.
+description: Searches for a device management policy with a policy name.
 get:
   tags:
     - resource-management

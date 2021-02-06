@@ -1,5 +1,5 @@
 summary: Get timezones
-description: This endpoint is used to retrieve the list of timezones.
+description: Gets the list of timezones.
 get:
   tags:
     - tenancy-access-controls

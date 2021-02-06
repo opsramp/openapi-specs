@@ -1,6 +1,6 @@
-summary: Install email request integrations
+summary: Install email request integration
 description: |
-  This endpoint is used to install an email request integration.
+  Installs an email request integration.
 
   Email request integration creates tickets in OpsRamp via email.
 

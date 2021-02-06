@@ -1,6 +1,6 @@
-summary: Get minimal details of resources
+summary: Get minimal resource details
 description: |-
-  This endpoint is used to fetch minimal details of resources.
+  Gets minimal resource details.
 
   |Query Variables|Description|
   |-----|-----|

@@ -1,6 +1,6 @@
 summary: Close task
 description: |-
-  This endpoint is used to close a task.
+  Closes a task.
 
   Perform these steps prior to closing a task:
 

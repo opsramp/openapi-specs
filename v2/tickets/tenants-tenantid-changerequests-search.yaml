@@ -1,5 +1,5 @@
 summary: Search change requests
-description: This endpoint is used to search for change requests.
+description: Searches for change requests.
 get:
   tags:
     - tickets

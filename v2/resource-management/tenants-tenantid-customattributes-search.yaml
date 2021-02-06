@@ -1,5 +1,5 @@
-summary: Get custom attribute types and values of a tenant
-description: This endpoint is used to search for custom attribute types and their respective values.
+summary: Search tenant custom attribute types and values
+description: Searches for tenant custom attribute types and respective values.
 get:
   tags:
     - resource-management

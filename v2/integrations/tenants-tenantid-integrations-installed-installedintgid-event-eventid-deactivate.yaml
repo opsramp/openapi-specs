@@ -1,5 +1,5 @@
 summary: Deactivate integration event
-description: This endpoint is used to deactivate an integration event.
+description: Deactivates an integration event.
 post:
   tags:
     - integrations

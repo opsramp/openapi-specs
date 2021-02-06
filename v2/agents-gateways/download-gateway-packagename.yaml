@@ -1,5 +1,5 @@
-summary: Download gateway
-description: This endpoint is used to download gateway files from the OpsRamp download server.
+summary: Download gateway files
+description: Downloads gateway files from the download server.
 get:
   tags:
     - agents-gateways

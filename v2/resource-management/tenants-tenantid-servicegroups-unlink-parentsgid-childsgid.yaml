@@ -1,5 +1,5 @@
-summary: Unlink a service group
-description: This endpoint is used to unlink a child service group from a parent service group.
+summary: Unlink child service group
+description: Unlinks a child service group from a parent service group.
 delete:
   tags:
     - resource-management

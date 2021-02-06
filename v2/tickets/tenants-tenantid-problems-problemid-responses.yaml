@@ -1,6 +1,6 @@
 summary: Add response to a problem
 description: |-
-  This endpoint is used to add a response to a problem.
+  Adds a response to a problem.
 
   ##### Notes
   - For attachments, files must be converted to bytes stream with base64-encoding.

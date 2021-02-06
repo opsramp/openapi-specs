@@ -1,6 +1,6 @@
-summary: Search management profile
+summary: Search for management profile
 description: |-
-  This endpoint is used to search for management profiles.
+  Searches for a management profiles.
 
   ##### Query Variables
   |Variable|Value|Description|

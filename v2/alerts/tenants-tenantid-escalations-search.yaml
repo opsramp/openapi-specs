@@ -1,6 +1,6 @@
-summary: Search alert escalation policies
+summary: Get alert escalation policies
 description: |-
-  This endpoint is used to fetch the alert escalation policies attached to an alert.
+  Gets the alert escalation policies attached to an alert.
 
   ##### Notes
   There are special characters that can be used in a query string:

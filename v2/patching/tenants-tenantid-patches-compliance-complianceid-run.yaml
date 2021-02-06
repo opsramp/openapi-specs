@@ -1,5 +1,5 @@
-summary: Run patch compliance
-description: This endpoint is used to run a patch compliance and all devices and device groups are checked for compliance.
+summary: Run patch compliance check
+description: Runs a patch compliance, checking all devices and device groups for compliance.
 post:
   tags:
     - patching

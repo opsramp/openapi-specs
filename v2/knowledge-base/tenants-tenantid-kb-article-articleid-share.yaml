@@ -1,5 +1,5 @@
 summary: Share KB article
-description: This endpoint is used to share the knowledge base article.
+description: Shares KB article.
 post:
   tags:
     - knowledge-base

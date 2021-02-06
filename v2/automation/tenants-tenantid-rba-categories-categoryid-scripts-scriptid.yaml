@@ -1,5 +1,5 @@
-summary: Manage scripts by Id
-description: This endpoint is used to retrieve and update the details of a script.
+summary: Manage scripts by ID
+description: Gets and update the details of a script.
 get:
   tags:
     - automation

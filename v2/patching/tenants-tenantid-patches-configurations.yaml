@@ -1,6 +1,6 @@
-summary: Create patch configuration
+summary: Create patch configuration and execute
 description: |-
-  This endpoint is used to create a patch configuration and execute patches on the resources.
+  Creates a patch configuration and executes patches on the resources.
 
   ##### Notes
   - Approved Windows patches are installed on the device during the scheduled installation window.

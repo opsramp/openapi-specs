@@ -1,5 +1,5 @@
-summary: Get KB template lists
-description: This endpoint is used to get the list of knowledge base templates.
+summary: Get KB templates list
+description: Gets the list of KB templates.
 get:
   tags:
     - knowledge-base

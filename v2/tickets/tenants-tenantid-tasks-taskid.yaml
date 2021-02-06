@@ -1,8 +1,8 @@
-summary: Update and get task
-description: This endpoint is used to update and retrieve tasks.
+summary: Update and get tasks
+description: Updates and gets tasks.
 get:
   summary: Get task
-  description: This endpoint is used to retrieve details of a task.
+  description: Gets details of a task.
   tags:
     - tickets
   responses:
@@ -275,7 +275,7 @@ get:
                     subject: Service Level Agreement Metrics
 post:
   summary: Update task
-  description: This endpoint is used to update a task.
+  description: Updates a task.
   tags:
     - tickets
   requestBody:

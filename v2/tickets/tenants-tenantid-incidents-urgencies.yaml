@@ -1,8 +1,8 @@
 summary: Manage incident urgency
-description: This endpoint is used to create and retrieve urgencies for an incident.
+description: Create and gets urgencies for an incident.
 get:
-  summary: Get urgencies
-  description: This endpoint is used to retrieve the list of urgencies of an incident.
+  summary: Get incident urgencies
+  description: Gets incident urgencies list.
   tags:
     - tickets
   responses:
@@ -30,8 +30,8 @@ get:
                   name: Level 3
                   description: Low level of impact
 post:
-  summary: Create urgency
-  description: This endpoint is used to create urgency.
+  summary: Create incidenturgency
+  description: Creates incident urgency.
   tags:
     - tickets
   responses:

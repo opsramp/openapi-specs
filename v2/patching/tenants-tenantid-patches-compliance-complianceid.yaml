@@ -1,8 +1,8 @@
 summary: Update and delete patch compliance
-description: This endpoint is used to update and delete a patch compliance
+description: Update sand deletes a patch compliance
 delete:
   summary: Delete patch compliance
-  description: This endpoint is used to delete a patch compliance.
+  description: Delete a patch compliance.
   tags:
     - patching
   responses:
@@ -10,7 +10,7 @@ delete:
       description: OK
 post:
   summary: Update patch compliance
-  description: This endpoint is used to update a patch compliance.
+  description: Updates a patch compliance.
   tags:
     - patching
   requestBody:

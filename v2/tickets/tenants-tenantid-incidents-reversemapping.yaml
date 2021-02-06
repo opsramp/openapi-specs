@@ -1,8 +1,8 @@
 summary: Manage reverse mapping
-description: his endpoint is used to create, update, and retrieve reverse mappings.
+description: Creates, updates, and gets reverse mappings.
 post:
   summary: Create or update reverse mapping
-  description: This endpoint is used to create or update a reverse mapping of priorities for incidents.
+  description: Creates or updates a reverse mapping of priorities for incidents.
   tags:
     - tickets
   requestBody:
@@ -119,7 +119,7 @@ post:
                     description: Email servers down
 get:
   summary: Get reverse mapping details
-  description: This endpoint is used to retrieve details of reverse mapping priorities.
+  description: Gets details of reverse mapping priorities.
   tags:
     - tickets
   responses:

@@ -1,6 +1,6 @@
 summary: Get activity log of a task
 description: |-
-  This endpoint is used to retrieve a list of user activities on a task..
+  Gets a list of user activities on a task..
 
   >##### Notes
   >- (+) represents the next field and must be URL-encoded.

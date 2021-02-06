@@ -1,7 +1,7 @@
-summary: Manage templates on resources
-description: This endpoint is used to assign, unassign, and update templates on a resource.
+summary: Manage resource templates
+description: Assigns, unassigns, and updates resource templates.
 post:
-  description: This endpoint is used to assign and update templates on a resource.
+  description: Assigns and updates resource templates.
   tags:
     - monitoring
   requestBody:
@@ -57,7 +57,7 @@ post:
     '200':
       description: OK
 delete:
-  description: This endpoint is used to unassign templates from resources.
+  description: Unassigns resource templates.
   tags:
     - monitoring
   requestBody:

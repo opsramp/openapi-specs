@@ -1,5 +1,5 @@
 summary: Register gateway
-description: This endpoint is used to register the gateway.
+description: Registers the gateway.
 servers:
   - url: 'http://{gatewayIp}:port'
 post:

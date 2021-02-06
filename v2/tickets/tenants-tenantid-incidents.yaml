@@ -1,6 +1,6 @@
 summary: Create incident
 description: |-
-  This endpoint is used to create an incident.
+  Creates an incident.
 
   Below are the steps to attach a business impact and urgency to an incident.
 

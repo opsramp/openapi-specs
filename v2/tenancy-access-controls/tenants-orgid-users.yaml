@@ -1,5 +1,5 @@
 summary: Create user
-description: This endpoint is used to create a user.
+description: Creates a user.
 post:
   tags:
     - tenancy-access-controls

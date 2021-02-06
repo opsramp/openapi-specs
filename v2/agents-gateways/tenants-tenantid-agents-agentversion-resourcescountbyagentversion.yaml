@@ -1,5 +1,5 @@
 summary: Get agent count by agent version
-description: This endpoint is used to retrieve the number of installed agent resources by agent version.
+description: Gets the number of installed agent resources by agent version.
 get:
   tags:
     - agents-gateways

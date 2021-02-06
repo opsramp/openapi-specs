@@ -1,6 +1,6 @@
 summary: Get metric (time series) on resources
 description: |-
-  This endpoint is used to retrieve the details of metric behavior at a certain time period.
+  Gets the details of metric behavior at a certain time period.
   There are three common examples that show how to retrieve metric data based on a specific time series.
 
   1. Time series type (RealTime):

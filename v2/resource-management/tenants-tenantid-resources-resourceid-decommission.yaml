@@ -1,5 +1,5 @@
 summary: Decommission a resource
-description: This endpoint is used to decommission a resource.
+description: Decommissions a resource.
 post:
   tags:
     - resource-management

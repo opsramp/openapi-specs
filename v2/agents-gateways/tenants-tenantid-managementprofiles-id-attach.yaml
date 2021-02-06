@@ -1,5 +1,5 @@
 summary: Attach gateway to management profile
-description: This endpoint is used to attach a gateway to a management profile and generates an activation token. The generated activation token is used in gateway registration.
+description: Attaches a gateway to a management profile and generates an activation token. The generated activation token is used in gateway registration.
 get:
   tags:
     - agents-gateways

@@ -1,5 +1,5 @@
-summary: Manage KB articles
-description: This endpoint is used to get and update knowledge base article.
+summary: Manage KB article
+description: Gets and updates a KB article.
 get:
   tags:
     - knowledge-base

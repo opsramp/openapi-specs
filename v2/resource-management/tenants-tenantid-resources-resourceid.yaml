@@ -1,5 +1,5 @@
 summary: Manage resources
-description: This endpoint is used to retrieve resource information, update resource details, and delete a resource using a resource ID.
+description: Gets resource information, update resource details, and delete a resource using a resource ID.
 delete:
   description: Deletes a resource using the resource ID.
   tags:

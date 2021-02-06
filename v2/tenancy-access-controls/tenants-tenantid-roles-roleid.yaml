@@ -1,16 +1,16 @@
 summary: Manage role
-description: This endpoint is used to update, retrieve, and delete roles.
+description: Updates, gets, and deletes roles.
 delete:
   summary: Delete role
-  description: This endpoint is used to delete a role.
+  description: Deletes a role.
   tags:
     - tenancy-access-controls
   responses:
     '200':
       description: OK
 get:
-  summary: Get role
-  description: This endpoint is used to retrieve the details of a role.
+  summary: Get role details
+  description: Gets role details.
   tags:
     - tenancy-access-controls
   responses:
@@ -121,8 +121,8 @@ get:
                     name: Auditor View
                     description: Auditor View
 post:
-  summary: Update roles
-  description: This endpoint is used to update the details of a role.
+  summary: Update role details
+  description: Updates role details.
   tags:
     - tenancy-access-controls
   responses:

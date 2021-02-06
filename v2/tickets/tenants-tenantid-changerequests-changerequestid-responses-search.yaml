@@ -1,6 +1,6 @@
 summary: Get change request responses
 description: |-
-  This endpoint is used to retrieve responses of a change request.
+  Gets responses of a change request.
 
   ##### Notes
   There are special characters that can be used in a query string:

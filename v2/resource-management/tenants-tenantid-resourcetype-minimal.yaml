@@ -1,5 +1,5 @@
-summary: Get minimal details of resource types
-description: This endpoint is used to fetch minimal details of resource types.
+summary: Get minimal resource type details
+description: Gets minimal resource type details.
 get:
   tags:
     - resource-management

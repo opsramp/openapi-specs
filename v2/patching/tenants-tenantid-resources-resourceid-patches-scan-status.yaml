@@ -1,6 +1,6 @@
 summary: Get patch scan status of a device
 description: |-
-  This endpoint is used to retrieve the details of patch scan status of a device.
+  Gets the details of patch scan status of a device.
 
   Patch scan of a device provides the details of latest patch scan performed on a device. This API is used to retrieve the following patch scan details of a device:
 

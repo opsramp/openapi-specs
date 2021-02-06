@@ -1,5 +1,5 @@
 summary: Create change request
-description: This endpoint is used to create a change request.
+description: Creates a change request.
 post:
   tags:
     - tickets

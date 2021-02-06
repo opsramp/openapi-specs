@@ -1,6 +1,6 @@
 summary: Create or update service group
 description: |
-  This endpoint is used to create a service group.
+  Creates or updates a service group.
 
   >Use this API to create a parent (root level) service group.
 

@@ -1,5 +1,5 @@
-summary: Get decommissioned resource
-description: This endpoint is used to fetch the data of a decommissioned resource.
+summary: Get decommissioned resource data
+description: Gets the data of a decommissioned resource.
 get:
   tags:
     - resource-management

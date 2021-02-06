@@ -1,5 +1,5 @@
 summary: Get device group details of a compliance
-description: This endpoint is used to retrieve the device groups attached to a patch compliance.
+description: Gets the device groups attached to a patch compliance.
 get:
   tags:
     - patching

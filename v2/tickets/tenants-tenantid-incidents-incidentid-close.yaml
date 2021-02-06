@@ -1,6 +1,6 @@
 summary: Close incident
 description: |-
-  This endpoint is used to close an incident.
+  Closes an incident.
 
   Follow the steps before closing an incident:
 

@@ -1,6 +1,6 @@
 summary: Close problem
 description: |-
-  This endpoint is used to close a problem.
+  Closes a problem.
 
   Follow the steps before closing a problem:
 

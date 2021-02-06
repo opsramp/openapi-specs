@@ -1,6 +1,6 @@
 summary: Close service request
 description: |-
-  This endpoint is used to close a service request.
+  Closes a service request.
 
   Follow the steps before closing a service request:
 

@@ -1,9 +1,9 @@
-summary: Manage device group
-description: This endpoint is used to get device group details and delete device groups.
+summary: Manage device groups
+description: Gets device group details and delete sdevice groups.
 delete:
   summary: Delete device group
   description: |-
-    This endpoint is used to delete a device group.
+    Deletes a device group.
 
     ##### Notes
     - Deleting a device group indicates removing the device group name and details.
@@ -16,7 +16,7 @@ delete:
       description: OK
 get:
   summary: Get device group
-  description: This endpoint is used to fetch the details of a device group.
+  description: Gets the details of a device group.
   tags:
     - resource-management
   responses:

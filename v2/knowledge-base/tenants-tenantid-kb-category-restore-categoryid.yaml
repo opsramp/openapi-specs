@@ -1,5 +1,5 @@
 summary: Restore KB categories
-description: This endpoint is used to retrieve a knowledge base category from TRASH.
+description: Gets a knowledge base category from TRASH.
 post:
   tags:
     - knowledge-base

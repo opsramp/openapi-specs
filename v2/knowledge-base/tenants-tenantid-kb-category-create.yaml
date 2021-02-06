@@ -1,5 +1,5 @@
 summary: Create KB category
-description: This endpoint is used to create a knowledge base category.
+description: Creates a KB category.
 post:
   tags:
     - knowledge-base

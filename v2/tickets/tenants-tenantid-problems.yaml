@@ -1,5 +1,5 @@
 summary: Create problem
-description: This endpoint is used to create a problem.
+description: Creates a problem.
 post:
   tags:
     - tickets

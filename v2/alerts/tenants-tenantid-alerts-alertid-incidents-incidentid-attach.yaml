@@ -1,5 +1,5 @@
-summary: Attach incident to an alert
-description: This endpoint is used to attach an incident to an alert.
+summary: Attach incident to alert
+description: Attaches an incident to an alert.
 post:
   tags:
     - alerts

@@ -1,6 +1,6 @@
 summary: Get activity log of an incident
 description: |-
-  This endpoint is used to retrieve user activities on an incident.
+  Gets user activities on an incident.
 
   ##### Notes
   - (+) represents the next field and must be URL-encoded.

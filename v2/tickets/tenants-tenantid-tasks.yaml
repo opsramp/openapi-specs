@@ -1,5 +1,5 @@
 summary: Create task
-description: This endpoint is used to create a task.
+description: Creates a task.
 post:
   tags:
     - tickets

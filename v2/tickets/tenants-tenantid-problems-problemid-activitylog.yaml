@@ -1,6 +1,6 @@
 summary: Get activity log of a problem
 description: |-
-  This endpoint is used to retrieve user activities on a problem.
+  Gets user activities on a problem.
 
   ##### Notes
   - (+) represents the next field and must be URL-encoded.

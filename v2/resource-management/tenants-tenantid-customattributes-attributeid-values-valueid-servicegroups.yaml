@@ -1,8 +1,8 @@
 summary: Manage custom attributes for service groups
-description: This endpoint is used to assign and unassign custom attributes for service groups
+description: Assigns and unassigns custom attributes for service groups
 post:
   summary: Assign custom attributes to service groups
-  description: This endpoint is used to assign custom attributes to service groups.
+  description: Assigns custom attributes to service groups.
   tags:
     - resource-management
   responses:
@@ -42,7 +42,7 @@ post:
               - id: SGP-a4659431-2699-8895-c07f-b2ef9aa078ce
 delete:
   summary: Unassign custom attribute from service groups
-  description: This endpoint is used to unassign custom attribute from service groups.
+  description: Unassigns custom attribute from service groups.
   tags:
     - resource-management
   responses:

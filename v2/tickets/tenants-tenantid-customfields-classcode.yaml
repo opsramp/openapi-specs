@@ -1,6 +1,6 @@
 summary: Get custom fields
 description: |-
-  This endpoint is used to retrieve details of custom fields attached to an entity.
+  Gets details of custom fields attached to an entity.
 
   Use the supported entities along with their class code:
 

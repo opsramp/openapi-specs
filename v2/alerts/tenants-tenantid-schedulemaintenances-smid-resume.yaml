@@ -1,6 +1,6 @@
-summary: Resume scheduled maintenance windows
+summary: Activate user
 description: |
-  This endpoint is used to activate a user.
+  Activates a user.
 
   Only suspended schedule maintenance windows can be resumed.
 post:

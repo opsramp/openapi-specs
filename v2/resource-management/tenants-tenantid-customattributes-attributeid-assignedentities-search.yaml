@@ -1,6 +1,6 @@
-summary: Custom attributes (assigned entities)
+summary: Search assigned entities by attribute
 description: |-
-  This endpoint is used to search for the assigned entities by attribute.
+  Searches for the assigned entities by attribute.
 
   ##### Query Variables
 

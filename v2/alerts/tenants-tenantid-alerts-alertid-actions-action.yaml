@@ -1,6 +1,6 @@
-summary: Post alert action
+summary: Post action on an alert
 description: |-
-  This endpoint is used to post an action on an alert.
+  Posts an action on an alert.
 
   ##### Notes
   When unacknowledge or unsuppress is specified, the alert status becomes either open or ticketed (if there is an incident ID associated with the alert).

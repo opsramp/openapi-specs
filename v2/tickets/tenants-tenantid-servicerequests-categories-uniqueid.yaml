@@ -1,6 +1,6 @@
 summary: Update service request category
 description: |-
-  This endpoint is used to update a category of entity type Service Request.
+  Updates a category of entity type service request.
 
   In this API, the following actions can be performed on a category:
   - Rename a category

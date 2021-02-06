@@ -1,6 +1,6 @@
 summary: Get assigned templates of resource
 description: |-
-  This endpoint is used to retrieve templates assigned to a resource.
+  Gets templates assigned to a resource.
 
   >##### Notes
   >There are special characters that can be used in a query string:

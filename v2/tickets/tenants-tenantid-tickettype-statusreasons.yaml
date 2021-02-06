@@ -1,5 +1,5 @@
-summary: Get status change reasons
-description: This endpoint is used to fetch the status change reasons of a ticket.
+summary: Get ticket status change reasons
+description: Gets ticket status change reasons.
 get:
   tags:
     - tickets

@@ -1,6 +1,6 @@
 summary: Activate or deactivate client
 description: |-
-  This endpoint is used to activate or deactivate a client.
+  Activates and deactivates a client.
 
   The action specified in the URL is the action to be performed on the client profile.
 

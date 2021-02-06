@@ -1,8 +1,8 @@
 summary: Update and get time bound request
-description: This endpoint is used to update and retrieve time bound requests.
+description: Updates and gets time bound requests.
 get:
   summary: Get time bound request
-  description: This endpoint is used to retrieve the details of a time bound request.
+  description: Gets the details of a time bound request.
   tags:
     - tickets
   responses:
@@ -276,7 +276,7 @@ get:
                     subject: Setup Log Files
 post:
   summary: Update time bound request
-  description: "This endpoint is used to update a time bound request.\n\n## Sample URLs\n```\nhttps://{api-url}/api/v2/tenants/client_7/timeBoundRequests/TBT0000001127\n```\n\n### Schedule Pattern Types\nDefine the time duration for the time bound request to occur once or repeatedly.\n\nDefine the time bound request to occur for one-time only:\n```\n{\n\t\"type\": \"one-time\",\n\t\"startTime\": \"2016-04-10T12:15:00+0000\",\n\t\"endTime\": \"2016-04-10T12:15:00+0000\",\n\t\"timezone\": \"America/Los_Angeles\"\n}\n```\nDefine the time bound request to occur repeatedly:\n```\n{\n\t\"type\": \"recurring\",\n\t\"startTime\": \"2016-04-10T12:15:00+0000\",\n\t\"endTime\": \"2016-04-10T12:15:00+0000\",\n\t\"timezone\": \"America/Los_Angeles\",\n\t\"pattern\": {\n\t\t\"type\": \"daily\",\n\t\t\"dayFrequency\": \"everyday\"\n\t}\n}\n```\nBelow are the recurrence schedule pattern types:\n\n1. Daily\n```\n\"pattern\": {\n\t\t\"type\": \"daily\",\n\t\t\"dayFrequency\": \"everyday\"\n\t}\n```\n2. Weekly\n```\n\"pattern\": {\n\t\t\"type\": \"weekly\",\n\t\t\"weekDays\": \"Monday\"\n}\n```\n3. Monthly\n```\n\"pattern\": {\n\t\t\"type\": \"monthly\",\n\t\t\"dayOfMonth\": \"1\",\n\t\t\"weekIndex\": \"First\",\n\t\t\"dayOfWeek\": \"Monday\"\n}\n```"
+  description: "Updates a time bound request.\n\n## Sample URLs\n```\nhttps://{api-url}/api/v2/tenants/client_7/timeBoundRequests/TBT0000001127\n```\n\n### Schedule Pattern Types\nDefine the time duration for the time bound request to occur once or repeatedly.\n\nDefine the time bound request to occur for one-time only:\n```\n{\n\t\"type\": \"one-time\",\n\t\"startTime\": \"2016-04-10T12:15:00+0000\",\n\t\"endTime\": \"2016-04-10T12:15:00+0000\",\n\t\"timezone\": \"America/Los_Angeles\"\n}\n```\nDefine the time bound request to occur repeatedly:\n```\n{\n\t\"type\": \"recurring\",\n\t\"startTime\": \"2016-04-10T12:15:00+0000\",\n\t\"endTime\": \"2016-04-10T12:15:00+0000\",\n\t\"timezone\": \"America/Los_Angeles\",\n\t\"pattern\": {\n\t\t\"type\": \"daily\",\n\t\t\"dayFrequency\": \"everyday\"\n\t}\n}\n```\nBelow are the recurrence schedule pattern types:\n\n1. Daily\n```\n\"pattern\": {\n\t\t\"type\": \"daily\",\n\t\t\"dayFrequency\": \"everyday\"\n\t}\n```\n2. Weekly\n```\n\"pattern\": {\n\t\t\"type\": \"weekly\",\n\t\t\"weekDays\": \"Monday\"\n}\n```\n3. Monthly\n```\n\"pattern\": {\n\t\t\"type\": \"monthly\",\n\t\t\"dayOfMonth\": \"1\",\n\t\t\"weekIndex\": \"First\",\n\t\t\"dayOfWeek\": \"Monday\"\n}\n```"
   tags:
     - tickets
   responses:

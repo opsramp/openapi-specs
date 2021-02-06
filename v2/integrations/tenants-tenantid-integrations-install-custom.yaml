@@ -1,5 +1,5 @@
 summary: Install custom integration
-description: This endpoint is used to install a custom integration.
+description: Installs a custom integration.
 post:
   tags:
     - integrations

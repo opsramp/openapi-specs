@@ -1,5 +1,5 @@
 summary: Create resource monitors
-description: This endpoint is used to create resource monitors.
+description: Creates resource monitors.
 post:
   tags:
     - monitoring

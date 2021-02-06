@@ -1,6 +1,6 @@
 summary: Add response to an incident
 description: |-
-  This endpoint is used to add a response to an incident.
+  Adds a response to an incident.
 
   ##### Notes
   - For attachments, files must be converted to bytes stream with base64-encoding.

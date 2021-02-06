@@ -1,6 +1,6 @@
 summary: Create integration event
 description: |-
-  This endpoint is used to create an integration event.
+  Creates an integration event.
 
   Events are used for sending certain notifications whenever an action is performed on OpsRamp entities.
 

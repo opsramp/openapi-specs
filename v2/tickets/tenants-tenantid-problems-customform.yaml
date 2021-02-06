@@ -1,6 +1,6 @@
 summary: Get problem custom form
 description: |-
-  This endpoint is used to retrieve the custom form for a problem.
+  Gets the custom form for a problem.
 
   ##### Notes
   Identify if the field is either a custom default field: customField: false/true.

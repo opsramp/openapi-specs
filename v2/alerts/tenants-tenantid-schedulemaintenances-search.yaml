@@ -1,6 +1,6 @@
 summary: Search scheduled maintenance windows
 description: |-
-  This endpoint is used to retrieve the scheduled maintenance windows under a specific tenant.
+  Gets the scheduled maintenance windows under a specific tenant.
 
   ##### Notess
   There are special characters that can be used in a query string:

@@ -1,8 +1,8 @@
 summary: Get and delete patch details
-description: This endpoint is used to retrieve patch details and delete a patch qualification.
+description: Gets patch details and delete a patch qualification.
 get:
   summary: Get patch details
-  description: This endpoint is used to retrieve details of a patch.
+  description: Gets details of a patch.
   tags:
     - patching
   responses:
@@ -41,8 +41,8 @@ get:
                   rebootRequired: false
                 id: PR-04a9824f-be2c-463f-bc38-e14363dab496
 delete:
-  summary: Delete a patch qualification
-  description: This endpoint is used to delete a patch qualification in the feed.
+  summary: Delete patch qualification
+  description: Deletes a patch qualification in the feed.
   tags:
     - patching
   responses:

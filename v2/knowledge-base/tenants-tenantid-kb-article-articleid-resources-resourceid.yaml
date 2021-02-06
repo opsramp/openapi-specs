@@ -1,5 +1,5 @@
-summary: Download KB article attachments
-description: This endpoint is used to download any attachment of an article.
+summary: Download KB article attachment
+description: Downloads a KB article attachment.
 get:
   tags:
     - knowledge-base

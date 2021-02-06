@@ -1,8 +1,8 @@
 summary: Manage resource dependency
-description: This endpoint is used to create, retrieve, and delete resource dependency.
+description: Creates, gets, and deletes resource dependency.
 post:
   summary: Create impact dependency
-  description: This endpoint is used to group the resources which are dependent on a resource.
+  description: Groups the resources dependent on a resource.
   tags:
     - resource-management
   requestBody:
@@ -59,7 +59,7 @@ post:
                 message: 'No resource found with UUID : 8e821346-d93f-464e-84b8-d17f02ae4a6c'
 delete:
   summary: Delete impact dependency
-  description: This endpoint is used to delete a single or multiple dependent resources from a resource.
+  description: Deletes a single or multiple dependent resources from a resource.
   tags:
     - resource-management
   responses:
@@ -113,8 +113,8 @@ delete:
                 - 421f2a13-4338-a357-4c4b-c3fa7ee0a1ca
                 - 3CE66868-8813-4EA2-AFCD-F52927DCE28D
 get:
-  summary: Get impact dependency
-  description: This endpoint is used to group the resources which are dependent on a resource.
+  summary: Group resources dependent on resource
+  description: Groups the resources that are dependent on a resource.
   tags:
     - resource-management
   responses:

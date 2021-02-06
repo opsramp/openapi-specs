@@ -1,5 +1,5 @@
 summary: Manage jobs
-description: This endpoint is used to retrieve, update, and delete the jobs.
+description: Gets, update, and delete the jobs.
 get:
   tags:
     - automation

@@ -1,6 +1,6 @@
-summary: Delete RBA categories
+summary: Delete RBA category
 description: |-
-  This endpoint is used to delete an RBA category.
+  Deletes an RBA category.
 
   Categories are only deleted when no scripts exist in that category (or related child categories).
 delete:

@@ -1,5 +1,5 @@
 summary: Get countries
-description: This endpoint is used to retrieve the list of countries based on country code.
+description: Gets the list of countries based on country code.
 get:
   tags:
     - tenancy-access-controls

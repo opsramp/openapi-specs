@@ -1,5 +1,5 @@
-summary: Create KB templates
-description: This endpoint is used to create a knowledge base template.
+summary: Create KB template
+description: Creates a KB template.
 post:
   tags:
     - knowledge-base

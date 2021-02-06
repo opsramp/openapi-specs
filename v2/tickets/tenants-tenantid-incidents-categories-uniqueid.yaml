@@ -1,6 +1,6 @@
 summary: Update incident category
 description: |-
-  This endpoint is used to update a category of entity type Incident.
+  Updates a category of entity type incident.
 
   In this API, the following actions can be performed on a category:
   - Rename a category

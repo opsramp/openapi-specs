@@ -1,5 +1,5 @@
 summary: Create management profile
-description: This endpoint is used to create a management profile.
+description: Creates a management profile.
 post:
   tags:
     - agents-gateways

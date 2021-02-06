@@ -1,5 +1,5 @@
-summary: Enable or disable resource decommission of client
-description: This endpoint is used to enable or disable resource decommission at partner level.
+summary: Enable and disable client resource decommission
+description: Enables and disables resource decommission at partner level.
 post:
   tags:
     - resource-management

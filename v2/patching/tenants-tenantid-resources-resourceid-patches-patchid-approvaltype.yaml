@@ -1,5 +1,5 @@
-summary: Approve or disapprove patch
-description: This endpoint is used to approve or disapprove a patch.
+summary: Approve and disapprove patch
+description: Approves and disapproves a patch.
 post:
   tags:
     - patching

@@ -1,6 +1,6 @@
-summary: Generate access token for gateway
+summary: Generate gateway access token
 description: |-
-  This endpoint is used to generate an access token on the gateway.
+  Generates an access token on the gateway.
 
   An access token is needed to:
 

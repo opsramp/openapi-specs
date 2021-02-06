@@ -1,8 +1,8 @@
 summary: Manage child resource for service group
-description: This endpoint is used to assign and unassign child resources for a service group.
+description: Assigns and unassigns child resources for a service group.
 post:
-  summary: Assign resources as child to a service group
-  description: This endpoint is used to add resources/devices of the same resource type as a child to a service group.
+  summary: Add resources as child to service group
+  description: Adds resources and devices of the same resource type as a child to a service group.
   tags:
     - resource-management
   requestBody:
@@ -38,7 +38,7 @@ post:
       description: OK
 delete:
   summary: Unassign resources as child from a service group
-  description: This endpoint is used to remove child resources/devices from a service group.
+  description: Deletes child resources and devices from a service group.
   tags:
     - resource-management
   requestBody:
