@@ -1,5 +1,5 @@
 summary: Get service availability
-description: This endpoint is used to retrieve availability details of a service.
+description: Gets availability details of a service.
 get:
   tags:
     - resource-management

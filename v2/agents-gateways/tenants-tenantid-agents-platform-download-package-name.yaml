@@ -1,6 +1,6 @@
-summary: Download agent for Linux
+summary: Download Linux agent 
 description: |-
-  This endpoint is used to download the agent for Linux resources.
+  Downloads the Linux agents.
 
   This usually follows calling the Get Agent Package for Linux API.
 

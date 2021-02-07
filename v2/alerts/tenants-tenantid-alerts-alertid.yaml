@@ -1,6 +1,6 @@
-summary: Get alert
+summary: Get alert details
 description: |-
-  This endpoint retrieves alert details.
+  Gets alert details.
 
   ##### Notes
   For an inference alert, resource name and client ID are provided in the response. For an RCA alert, device ID, Name, and IP address are provided in the response.

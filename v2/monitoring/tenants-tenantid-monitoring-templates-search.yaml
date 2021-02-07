@@ -1,6 +1,6 @@
-summary: Search montoring templates
+summary: Activate a user
 description: |-
-  This endpoint is used to activate a user.
+  Activates a user.
 
   ##### Query Variables
   |Query Variables|Description|

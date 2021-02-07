@@ -1,5 +1,5 @@
-summary: Manage inbound authentications
-description: This endpoint is used to create or update inbound authentication of an installed integration.
+summary: Manage inbound authentication
+description: Creates and updates installed integration inbound authentication.
 post:
   tags:
     - integrations

@@ -1,5 +1,5 @@
-summary: Activate or deactivate patch baseline
-description: This endpoint is used to activate or deactivate a patch baseline.
+summary: Activate and deactivate patch baseline
+description: Activates and deactivates a patch baseline.
 post:
   tags:
     - patching

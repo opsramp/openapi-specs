@@ -1,5 +1,5 @@
 summary: Get alert views
-description: This endpoint is used to retrieve a list of alert views.
+description: Gets a list of alert views.
 get:
   tags:
     - alerts

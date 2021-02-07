@@ -1,5 +1,5 @@
-summary: Manage alert correlation policy
-description: This endpoint is used to create and fetch alert correlation policies.
+summary: Create and get alert correlation policy
+description: Creates and gets alert correlation policies.
 get:
   tags:
     - alerts

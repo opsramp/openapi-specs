@@ -1,5 +1,5 @@
 summary: Download task response attachment
-description: This endpoint is used to download the response attachment attached to a task.
+description: Downloads the response attached to a task.
 get:
   tags:
     - tickets

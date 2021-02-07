@@ -1,5 +1,5 @@
 summary: Search roles
-description: This endpoint is used to retrieve roles under a partner or client.
+description: Gets roles under a partner or client.
 get:
   tags:
     - tenancy-access-controls

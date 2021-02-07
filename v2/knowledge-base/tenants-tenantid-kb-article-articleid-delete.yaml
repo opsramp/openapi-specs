@@ -1,5 +1,5 @@
 summary: Delete KB articles
-description: This endpoint is used to delete a knowledge base category.
+description: Deletes a KB category.
 delete:
   tags:
     - knowledge-base

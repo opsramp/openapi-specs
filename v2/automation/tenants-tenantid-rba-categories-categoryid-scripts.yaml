@@ -1,5 +1,5 @@
 summary: Manage scripts
-description: This endpoint is used to create and delete a script and to retrieve a list of scripts within a category.
+description: Creates and deletes a script and gets a list of scripts for a category.
 post:
   description: |-
     When creating a script:

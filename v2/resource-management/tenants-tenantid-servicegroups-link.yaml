@@ -1,5 +1,5 @@
 summary: Link service group
-description: This endpoint is used to link or share an existing service group with other service groups.
+description: Links or shares an existing service group with other service groups.
 post:
   tags:
     - resource-management

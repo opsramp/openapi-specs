@@ -1,6 +1,6 @@
-summary: Manage alert correlation policy by Id
+summary: Manage alert correlation policy by ID
 description: |-
-  This endpoint is used to update, retrieve, and delete an alert correlation policy by Id.
+  Update, gets, and deletes an alert correlation policy by ID.
 delete:
   tags:
     - alerts

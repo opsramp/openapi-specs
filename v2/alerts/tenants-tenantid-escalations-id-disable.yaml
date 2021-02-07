@@ -1,6 +1,6 @@
 summary: Disable alert escalation policy
 description: |-
-  This endpoint is used to disable an alert escalation policy.
+  Disables an alert escalation policy.
 post:
   tags:
     - alerts

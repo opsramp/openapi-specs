@@ -1,9 +1,9 @@
 summary: Create and get patch baselines
-description: This endpoint is used to create and get patch baselines.
+description: Creates and gets patch baselines.
 post:
   summary: Create patch baseline
   description: |
-    This endpoint is used to create a patch baseline.
+    Createsa patch baseline.
 
     A patch baseline is a collection of patches that are approved for installation on your instances. From a given feed, the user selects a subset of the packages that address the key vulnerabilities. The chosen set of packages form the patch baseline.
 
@@ -116,7 +116,7 @@ post:
 get:
   summary: Get patch baselines
   description: |-
-    This endpoint is used to retrieve the list of patch baselines for a client.
+    Gets the list of patch baselines for a client.
 
     ##### Notes
     There are special characters that can be used in a query string:

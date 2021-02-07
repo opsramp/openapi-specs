@@ -1,5 +1,5 @@
-summary: Get custom attributes of a service group
-description: This endpoint is used to fetch the custom attributes of a service group.
+summary: Get service group custom attributes
+description: Gets service group custom attributes.
 get:
   tags:
     - resource-management

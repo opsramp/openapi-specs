@@ -1,6 +1,6 @@
-summary: Search users
+summary: Search tenant users
 description: |-
-  This endpoint is used to fetch users within a tenant.
+  Gets users for a tenant.
 
   ##### Notes
   - This API provides minimal user details.

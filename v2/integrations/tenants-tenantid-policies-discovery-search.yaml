@@ -1,5 +1,5 @@
 summary: Search cloud discovery profiles
-description: This endpoint is used to use a discovery profile name to search for a discovery profile in AWS, Azure, and Google.
+description: Uses a discovery profile name to search for an AWS, Azure, and Google discovery profile.
 get:
   tags:
     - integrations

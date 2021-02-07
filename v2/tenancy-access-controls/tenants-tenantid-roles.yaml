@@ -1,6 +1,6 @@
-summary: Create roles
+summary: Create role
 description: |-
-  This endpoint is used to create a partner-level or client-level role.
+  Creates a partner- or client-level role.
 
   A role defines permission sets to user and -user groups on devices and device groups. A user (or user group) can be assigned to one or more roles
 

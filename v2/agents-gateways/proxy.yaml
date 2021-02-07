@@ -1,5 +1,5 @@
-summary: Turn on and off Squid proxy service
-description: This endpoint is used to turn on and off the Squid proxy server on the gateway.
+summary: Turn Squid proxy service on and off
+description: Turn the gateway Squid proxy server on and off.
 servers:
   - url: 'http://{gatewayIp}:port'
 post:

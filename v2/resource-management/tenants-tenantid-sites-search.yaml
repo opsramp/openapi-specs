@@ -1,6 +1,6 @@
 summary: Search sites
 description: |-
-  This endpoint is used to search sites.
+  Searches sites.
 
   ##### Query Variables
 

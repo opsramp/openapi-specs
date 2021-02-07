@@ -1,5 +1,5 @@
-summary: Enable or disable alert correlation policy
-description: This endpoint is used to enable, disable, and create an observed mode on an alert correlation policy.
+summary: Manage alert correlation policy
+description: Enables, disables, and creates an observed mode on an alert correlation policy.
 post:
   tags:
     - alerts

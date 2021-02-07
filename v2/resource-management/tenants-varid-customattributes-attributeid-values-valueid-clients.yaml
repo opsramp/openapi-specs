@@ -1,8 +1,8 @@
-summary: Manage custom attributes for client
-description: This endpoint is used to assign and unassign custom attributes for clients.
+summary: Manage client custom attributes
+description: Assigns and unassigns client custom attributes.
 post:
   summary: Assign custom attributes to clients
-  description: This endpoint is used to assign custom attributes to clients.
+  description: Assign client custom attributes.
   tags:
     - resource-management
   responses:
@@ -35,7 +35,7 @@ post:
               - id: client_69856
 delete:
   summary: Unassign custom attribute from clients
-  description: This endpoint is used to unassign custom attribute from clients.
+  description: Unassigns client custom attribute.
   tags:
     - resource-management
   responses:

@@ -1,6 +1,6 @@
-summary: Suspend schedule maintenance windows
+summary: Suspend scheduled maintenance window
 description: |-
-  This endpoint is used to suspend a scheduled maintenance window.
+  Suspends a scheduled maintenance window.
 
   ##### Notes
   - Only active schedule maintenance windows can be suspended.

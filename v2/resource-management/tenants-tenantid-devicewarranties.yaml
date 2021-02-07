@@ -1,5 +1,5 @@
 summary: Get warranties
-description: This endpoint is used to retrieve the details of multiple device warranties.
+description: Gets the details of multiple device warranties.
 get:
   tags:
     - resource-management

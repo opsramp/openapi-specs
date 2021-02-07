@@ -1,6 +1,6 @@
 summary: Add response to a time bound request
 description: |-
-  This endpoint is used to add a response to a time bound request.
+  Adds a response to a time bound request.
 
   >##### Notes
   >- For attachments, files must be converted to bytes stream with base64-encoding.

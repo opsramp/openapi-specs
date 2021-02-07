@@ -1,5 +1,5 @@
-summary: Manage first response policy
-description: This endpoint is used to create and view details of a first response policy.
+summary: Manage first response policy details
+description: Creates and views first response policydetails.
 get:
   tags:
     - alerts

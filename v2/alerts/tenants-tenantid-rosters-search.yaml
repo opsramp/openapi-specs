@@ -1,6 +1,6 @@
-summary: Search rosters
+summary: Get organization rosters
 description: |
-  This endpoint is used to fetch the rosters within an organization.
+  Gets the rosters in an organization.
 
   ## Special Characters
   There are special characters that can be used in a query string:

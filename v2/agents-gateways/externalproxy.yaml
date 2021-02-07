@@ -1,6 +1,6 @@
-summary: Set external proxy connection
+summary: Configure gateway external proxy connection
 description: |-
-  This endpoint is used to configure the external proxy connection on the gateway.
+  Configures the external proxy connection on the gateway.
 
   An access token must be generated to use this API.
 post:

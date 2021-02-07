@@ -1,6 +1,6 @@
 summary: Update problem category
 description: |-
-  This endpoint is used to update a category of the entity type Problem.
+  Updates a category of the entity type problem.
 
   Provide the unique ID of the category you would like to update. Use the get categories API to retrieve the list of categories of the problem entity type.
 

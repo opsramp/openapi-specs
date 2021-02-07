@@ -1,5 +1,5 @@
-summary: Manage metric types
-description: This endpoint is used to update and get the metric type details.
+summary: Manage metric type
+description: Updates and gets metric type details.
 post:
   tags:
     - metrics

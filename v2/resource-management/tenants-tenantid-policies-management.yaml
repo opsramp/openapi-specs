@@ -1,5 +1,5 @@
 summary: Manage device management policy
-description: This endpoint is used to create and update device management policies, and retrieve device management policies of a tenant without pagination.
+description: Creates and updates device management policies, and gets tenant device management policies, without pagination.
 get:
   description: Retrieves device management policies of a tenant without pagination.
   tags:

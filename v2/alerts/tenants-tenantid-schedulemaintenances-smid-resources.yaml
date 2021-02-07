@@ -1,8 +1,8 @@
-summary: Manage resources of schedule maintenance windows
-description: This endpoint is used to add and delete resources to and from a schedule maintenance window.
+summary: Manage schedule maintenance window resources
+description: Adds and deletes schedule maintenance window resources.
 post:
   description: |-
-    This endpoint is used to add resources to a scheduled maintenance window.
+    Adds resources to a scheduled maintenance window.
 
     ##### Notes
     - Resources can only be added to Active, Pending, or Suspended scheduled maintenance windows.
@@ -61,7 +61,7 @@ post:
       description: OK
 delete:
   description: |-
-    This endpoint is used to remove resources from a scheduled maintenance window.
+    Deletes resources from a scheduled maintenance window.
 
     ##### Notes
     - Resources can only be removed from Active, Pending, or Suspended scheduled maintenance windows.

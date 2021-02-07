@@ -1,8 +1,8 @@
 summary: Manage custom attributes for devices
-description: This endpoint is used to assign and unassign custom attributes for devices
+description: Assigns and unassigns custom attributes for devices
 post:
   summary: Assign custom attributes to devices
-  description: This endpoint is used to assign custom attributes to devices.
+  description: Assigns custom attributes to devices.
   tags:
     - resource-management
   responses:
@@ -69,7 +69,7 @@ post:
               - id: 671fc5fb-8a75-401d-9367-4f1bfe5e8d42
 delete:
   summary: Unassign custom attribute from devices
-  description: This endpoint is used to unassign custom attribute from devices.
+  description: Unassigns custom attribute from devices.
   tags:
     - resource-management
   responses:

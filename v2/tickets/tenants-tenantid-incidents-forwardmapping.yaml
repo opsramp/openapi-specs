@@ -1,8 +1,8 @@
 summary: Manage forward mapping
-description: This endpoint is used to create, update, and retrieve forward mapping.
+description: Creates, updates, and gets forward mapping.
 post:
     summary: Create or update forward mapping
-    description: This endpoint is used to create or update a forward mapping based on priority.
+    description: Create or updates forward mapping based on priority.
     tags:
       - tickets
     requestBody:
@@ -194,7 +194,7 @@ post:
                       description: Email servers down
 get:
   summary: Get forward mapping details
-  description: This endpoint is used to retrieve details of forward mapping priorities.
+  description: Gets details of forward mapping priorities.
   tags:
     - tickets
   responses:

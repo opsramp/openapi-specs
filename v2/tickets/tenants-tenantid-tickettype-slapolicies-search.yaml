@@ -1,6 +1,6 @@
 summary: Search SLA policies
 description: |-
-  This endpoint is used to retrieve a list of all service level agreement policies along with their details.
+  Gets a list of all service level agreement policies along with their details.
 
   ##### Query Variables
 

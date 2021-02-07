@@ -1,5 +1,5 @@
 summary: Restart network service
-description: This endpoint is used to restart the network service on the gateway.
+description: Restarts the gateway network service.
 post:
   tags:
     - agents-gateways

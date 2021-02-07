@@ -1,6 +1,6 @@
 summary: Enable alert escalation policy
 description: |-
-  This endpoint is used to enable an alert escalation policy.
+  Enables an alert escalation policy.
 post:
   tags:
     - alerts

@@ -1,6 +1,6 @@
 summary: Get incident responses
 description: |-
-  This endpoint is used to retrieve responses of an incident.
+  Gets responses of an incident.
 
   ##### Query Variables
 

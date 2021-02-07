@@ -1,6 +1,6 @@
 summary: Create alerts on resources
 description: |-
-  This endpoint is used to generate multiple alerts on resources.
+  Creates multiple alerts on resources.
 
   ##### Notes
   - A list of event IDs is generated when alerts are created. This list is valid for 30 days.

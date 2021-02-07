@@ -1,8 +1,8 @@
 summary: Manage change request
-description: This endpoint is used to retrieve and update change requests.
+description: Gets and update change requests.
 get:
   summary: Get change request
-  description: This endpoint is used to retrieve the details of a change request.
+  description: Gets the details of a change request.
   tags:
     - tickets
   responses:
@@ -290,7 +290,7 @@ get:
                     subject: Best Practises in VPN Use and Data Security
 post:
   summary: Update change request
-  description: This endpoint is used to update a change request.
+  description: Updates a change request.
   tags:
     - tickets
   requestBody:

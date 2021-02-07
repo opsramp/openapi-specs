@@ -1,9 +1,9 @@
 summary: Manage resource availability rule
-description: This endpoint is used to update and retrieve the availability rule defined on a resource.
+description: Updates and gets the availability rule defined on a resource.
 get:
   summary: Get availability rule on a resource
   description: |-
-    This endpoint is used to fetch the availability rule defined on a resource.
+    Gets the availability rule defined on a resource.
 
     ##### Notes
     Refer to Search Resources API to retrieve the list of a client’s resource IDs.
@@ -32,7 +32,7 @@ get:
                 description: 'Resource is Up if ANY availability monitor is OK, Resource is Down otherwise'
 post:
   summary: Update availability rule on a resource
-  description: This endpoint is used to update the availability rule defined on a resource.
+  description: Updates the availability rule defined on a resource.
   tags:
     - resource-management
   requestBody:

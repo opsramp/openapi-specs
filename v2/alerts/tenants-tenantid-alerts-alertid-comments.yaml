@@ -1,5 +1,5 @@
 summary: Get alert comments
-description: This endpoint is used to retrieve the comments on an alert.
+description: Gets alert comments.
 get:
   tags:
     - alerts

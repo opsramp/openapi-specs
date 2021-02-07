@@ -1,5 +1,5 @@
-summary: Enable integrations
-description: This endpoint is used to enable an installed integration.
+summary: Enable installed integration
+description: Enables an installed integration.
 post:
   tags:
     - integrations

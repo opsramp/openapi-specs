@@ -1,8 +1,8 @@
-summary: Manage ticket notes by Id
-description: This endpoint is used to update, retrieve, and delete ticket notes by Id.
+summary: Manage ticket notes by ID
+description: Updates, gets, and deletes ticket notes by ID.
 delete:
   summary: Delete ticket note
-  description: This endpoint is used to delete note of a ticket.
+  description: Deletes ticket note.
   tags:
     - tickets
   responses:
@@ -10,7 +10,7 @@ delete:
       description: OK
 get:
   summary: Get a ticket note
-  description: This endpoint is used to retrieve a note from a ticket.
+  description: Gets a note from a ticket.
   tags:
     - tickets
   responses:
@@ -37,7 +37,7 @@ get:
                   changePassword: false
 post:
   summary: Update ticket notes
-  description: This endpoint is used to update a note of a ticket.
+  description: Updates ticket notes.
   tags:
     - tickets
   responses:

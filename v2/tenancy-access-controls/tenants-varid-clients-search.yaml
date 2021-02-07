@@ -1,6 +1,6 @@
 summary: Search clients
 description: |-
-  This endpoint is used to search for the clients.
+  Searches for clients.
 
   ##### Notes
   There are special characters that can be used in a query string:

@@ -1,6 +1,6 @@
-summary: Download agent installation script for Linux
+summary: Download Linux agent installation script
 description: |-
-  This endpoint is used to download the agent installation script for Linux resources.
+  Downloads the Linux agent installation script.
 
   This returns the JSON payload containing package name, package size, package checksum, and the package S3 bucket URL to directly download the agent.
 get:

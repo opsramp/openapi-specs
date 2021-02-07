@@ -1,8 +1,8 @@
-summary: Manage business impact
-description: This endpoint is used to create and retrieve a business impact.
+summary: Manage incident business impact
+description: Creates and gets an incident business impact.
 post:
-  summary: Create business impact
-  description: This endpoint is used to create a business impact on an incident.
+  summary: Create incident business impact
+  description: Creates an incident business impact.
   tags:
     - tickets
   responses:
@@ -41,8 +41,8 @@ post:
               name: SJ Servers Down
               description: Servers in site SJ are down
 get:
-  summary: Get business impacts
-  description: Business impact defines the severity of an entity in the business.
+  summary: Get incident usiness impacts
+  description: Defines the severity of an entity on the business.
   tags:
     - tickets
   responses:

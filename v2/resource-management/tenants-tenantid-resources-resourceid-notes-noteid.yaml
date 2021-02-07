@@ -1,5 +1,5 @@
-summary: Update resource notes
-description: This endpoint is used to update a resource note.
+summary: Update resource note
+description: Updates a resource note.
 post:
   tags:
     - resource-management

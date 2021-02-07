@@ -1,6 +1,6 @@
 summary: Close change request
 description: |-
-  This endpoint is used to close a change request.
+  Closes a change request.
 
   Follow the steps before closing a change request:
 

@@ -1,6 +1,6 @@
 summary: Search resources
 description: |
-  This endpoint is used to retrieve the resources of a partner or a client.
+  Gets the resources of a partner or a client.
 
   ##### Query Variables
 

@@ -1,6 +1,6 @@
-summary: Create resources
+summary: Create generic resource
 description: |-
-  This endpoint is used to create a generic resource.
+  Creates a generic resource.
 
   ### Resource Types Supported
   - Generic

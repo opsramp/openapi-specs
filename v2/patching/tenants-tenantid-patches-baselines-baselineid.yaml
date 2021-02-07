@@ -1,8 +1,8 @@
 summary: Get, update, and delete patch baselines
-description: This endpoint is used to get, update, and delete patch baselines.
+description: Gets, updates, and deletes patch baselines.
 delete:
   summary: Delete patch baseline
-  description: This endpoint is used to delete a patch baseline.
+  description: Deletes a patch baseline.
   tags:
     - patching
   responses:
@@ -11,7 +11,7 @@ delete:
 get:
   summary: Get patch list in a patch baseline
   description: |-
-    This endpoint is used to retrieve the list of patches in a patch baseline.
+    Gets the list of patches in a patch baseline.
 
     ##### Notes
     There are special characters that can be used in a query string:
@@ -183,8 +183,8 @@ get:
                 previousPageNo: 0
                 descendingOrder: true
 post:
-  summary: Update patch baseline
-  description: This endpoint is used to update details of a patch baseline.
+  summary: Update patch baseline details
+  description: Updates patch baseline details.
   tags:
     - patching
   requestBody:

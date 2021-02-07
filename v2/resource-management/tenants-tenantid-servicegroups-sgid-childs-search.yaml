@@ -1,5 +1,5 @@
 summary: Get child resources and service groups
-description: This endpoint is used to retrieve the child entities (resources or service groups) of a parent service group.
+description: Gets the child entities (resources or service groups) of a parent service group.
 get:
   tags:
     - resource-management

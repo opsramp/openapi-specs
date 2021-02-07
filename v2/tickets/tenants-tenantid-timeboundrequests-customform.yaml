@@ -1,6 +1,6 @@
 summary: Get time-bound request custom form
 description: |-
-  This endpoint is used to retrieve the custom form for a time-bound request.
+  Gets the custom form for a time-bound request.
 
   >##### Notes
   > Identify if the field is either a custom default field: customField: false/true.

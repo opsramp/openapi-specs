@@ -1,5 +1,5 @@
 summary: Search KB articles
-description: This endpoint is used to search for the list of articles in a knowledge base category.
+description: Searchs for the list of articles in a KB category.
 get:
   tags:
     - knowledge-base

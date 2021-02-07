@@ -1,6 +1,6 @@
-summary: Status, start, and stop service
+summary: Get status, start and stop application services
 description: |-
-  This endpoint is used to get the service status and to start and stop application services.
+  Gets the service status and starts and stops application services.
 
   An access token must be generated to use this API.
 

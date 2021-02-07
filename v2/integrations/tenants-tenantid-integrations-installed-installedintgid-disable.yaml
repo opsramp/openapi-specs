@@ -1,5 +1,5 @@
-summary: Disable integrations
-description: This endpoint is used to disable an installed integration and will temporarily disable its services.
+summary: Disable integration
+description: Disables an installed integration, temporarily disabling the integration services.
 post:
   tags:
     - integrations

@@ -1,5 +1,5 @@
 summary: Search available integrations
-description: This endpoint is used to search available integrations.
+description: Searches available integrations.
 get:
   tags:
     - integrations

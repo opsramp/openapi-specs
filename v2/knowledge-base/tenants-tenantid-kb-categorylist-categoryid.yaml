@@ -1,5 +1,5 @@
 summary: Get KB sub-category lists
-description: This endpoint is used to retrieve the list of sub-categories of a knowledge base category.
+description: Gets the list of sub-categories of a knowledge base category.
 get:
   tags:
     - knowledge-base

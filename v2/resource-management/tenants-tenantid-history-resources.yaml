@@ -1,6 +1,6 @@
 summary: Search decommissioned resources
 description: |-
-  This endpoint is used to retrieve the list of decommissioned resources.
+  Gets the list of decommissioned resources.
 
   Notes
   There are special characters that can be used in a query string:

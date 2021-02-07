@@ -1,6 +1,6 @@
 summary: Get patching status of all devices in a patch configuration
 description: |-
-  This endpoint is used to retrieve the patching status of all devices in a patch configuration and display paginated output.
+  Gets the patching status of all devices in a patch configuration and display paginated output.
 
   ##### Query Variables
 

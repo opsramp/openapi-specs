@@ -1,5 +1,5 @@
 summary: Manage cloud discovery profile
-description: This endpoint is used to retrieve and delete discovery profiles for AWS, Azure, and Google.
+description: Gets and delete discovery profiles for AWS, Azure, and Google.
 delete:
   tags:
     - integrations

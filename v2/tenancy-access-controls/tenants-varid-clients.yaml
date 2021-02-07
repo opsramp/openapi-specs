@@ -1,6 +1,6 @@
-summary: Create clients
+summary: Create client
 description: |-
-  This endpoint is used to create a client.
+  Creates a client.
 
   #### The supported timezones are:
 

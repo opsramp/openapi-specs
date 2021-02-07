@@ -1,5 +1,5 @@
-summary: Set NTP servers
-description: This endpoint is used to update the NTP server IP addresses on the gateway.
+summary: Update gateway NTP server IP addresses
+description: Updates gateway NTP server IP addresses.
 post:
   tags:
     - agents-gateways

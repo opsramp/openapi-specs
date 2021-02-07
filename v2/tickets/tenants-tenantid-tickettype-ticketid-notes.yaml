@@ -1,8 +1,8 @@
 summary: Create and get ticket notes
-description: This endpoint is used to create and retrieve ticket notes.
+description: Creates and gets ticket notes.
 post:
   summary: Create ticket notes
-  description: This endpoint is used to create notes for a ticket.
+  description: Creates ticket notes.
   tags:
     - tickets
   responses:
@@ -37,7 +37,7 @@ post:
 get:
   summary: Get multiple ticket notes
   description: |-
-    This endpoint is used to retrieve multiple notes from a ticket.
+    Gets multiple notes from a ticket.
     
     |Query Variable|Description|
     |----|-----|

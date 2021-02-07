@@ -1,8 +1,8 @@
 summary: Update and get user details
-description: This endpoint is used to update and get user details.
+description: Updates and gets user details.
 post:
-  summary: Update user
-  description: This endpoint is used to update the details of a user.
+  summary: Update user details
+  description: Updates user details.
   tags:
     - tenancy-access-controls
   requestBody:
@@ -110,8 +110,8 @@ post:
                 createdTime: '2017-11-01T11:54:24+0000'
                 updatedTime: '2018-03-09T09:45:21+0000'
 get:
-  summary: Get user
-  description: This endpoint is used to retrieve the details of a user.
+  summary: Get user details
+  description: Gets user details.
   tags:
     - tenancy-access-controls
   responses:

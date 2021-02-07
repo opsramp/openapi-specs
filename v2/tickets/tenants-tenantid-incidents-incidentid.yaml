@@ -1,8 +1,8 @@
 summary: Manage incident
-description: This endpoint is used to update and retrieve incidents.
+description: Updates and Gets incidents.
 get:
-  summary: Get incident
-  description: This endpoint is used to retrieve the details of an incident.
+  summary: Get incident details
+  description: Gets the details of an incident.
   tags:
     - tickets
   responses:
@@ -335,7 +335,7 @@ get:
                     subject: LAN Settings
 post:
   summary: Update incident
-  description: This endpoint is used to update an incident.
+  description: Updates an incident.
   tags:
     - tickets
   requestBody:

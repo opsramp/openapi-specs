@@ -1,8 +1,8 @@
 summary: Manage service request
-description: This endpoint is used to update and retrieve a service request.
+description: Updates and gets a service request.
 get:
-  summary: Get service request
-  description: This endpoint is used to retrieve the details of a service request.
+  summary: Get service request details
+  description: Gets service request details.
   tags:
     - tickets
   responses:
@@ -275,7 +275,7 @@ get:
                     subject: Updated Windows Version
 post:
   summary: Update service request
-  description: This endpoint is used to update a service request.
+  description: Updates a service request.
   tags:
     - tickets
   requestBody:

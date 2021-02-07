@@ -1,5 +1,5 @@
 summary: Get integration mappable properties
-description: This endpoint is used to retrieve the integration mappable properties for an entity.
+description: Gets the integration mappable properties for an entity.
 get:
   tags:
     - integrations

@@ -1,6 +1,6 @@
-summary: Get alerts by an event ID
+summary: Get alert details by event ID
 description: |-
-  This endpoint is used to retrieve the details of an alert by event ID.
+  Gets alert details by event ID.
 
   ##### Notes
   - A list of event IDs is generated when alerts are created. This list is valid for 30 days.

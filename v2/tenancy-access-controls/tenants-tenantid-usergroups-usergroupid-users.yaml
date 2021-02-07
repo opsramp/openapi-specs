@@ -1,8 +1,8 @@
 summary: Manage users for user group
-description: This endpoint is used to add, retrieve, and delete users for a user group.
+description: Adds, gets, and deletes users for a user group.
 post:
   summary: Add users to a user group
-  description: This endpoint is used to add users to an existing user group.
+  description: Adds users to an existing user group.
   tags:
     - tenancy-access-controls
   requestBody:
@@ -27,8 +27,8 @@ post:
     '200':
       description: OK
 delete:
-  summary: Remove users from a user group
-  description: This endpoint is used to remove users from an existing user group.
+  summary: Delete users from a user group
+  description: Deletes users from an existing user group.
   tags:
     - tenancy-access-controls
   requestBody:
@@ -54,7 +54,7 @@ delete:
       description: OK
 get:
   summary: Get users of a user group
-  description: This endpoint is used to fetch users belonging to a user group.
+  description: Gets users for a user group.
   tags:
     - tenancy-access-controls
   responses:

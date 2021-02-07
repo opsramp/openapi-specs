@@ -1,5 +1,5 @@
 summary: Download time bound request response attachment
-description: This endpoint is used to download the response attachment attached to a time bound request.
+description: Downloads the response attached to a time bound request.
 get:
   tags:
     - tickets

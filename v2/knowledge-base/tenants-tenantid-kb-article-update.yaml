@@ -1,5 +1,5 @@
-summary: Update KB templates
-description: This endpoint is used to update a knowledge base template.
+summary: Update KB template
+description: Updates a KB template.
 post:
   tags:
     - knowledge-base

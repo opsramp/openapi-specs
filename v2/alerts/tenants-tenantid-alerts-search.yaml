@@ -1,6 +1,6 @@
 summary: Search alerts
 description: |-
-  This endpoint is used to search alerts.
+  Searches alerts.
 
   ##### Query Variables
   |Query Variable|Value|Description|

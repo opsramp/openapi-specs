@@ -1,6 +1,6 @@
 summary: Get topology data by relationships
 description: |-
-  This endpoint is used to get topology data by providing relationship information about resources.
+  Gets topology data by providing relationship information about resources.
 
   Topology relationships provide operators and administrators with the background for troubleshooting, capacity planning, and architecture review. This API retrieves these relationships that exist across the hybrid infrastructure. Topology data can be retrieved one-level away from the resource (nearest neighbor).
 get:

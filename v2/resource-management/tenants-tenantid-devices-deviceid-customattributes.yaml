@@ -1,5 +1,5 @@
-summary: Get custom attributes of a device
-description: This endpoint is used to fetch the custom attributes of a device.
+summary: Get device custom attributes of a device
+description: Gets device custom attributes.
 get:
   tags:
     - resource-management

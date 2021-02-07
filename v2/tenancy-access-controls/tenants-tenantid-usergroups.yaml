@@ -1,9 +1,9 @@
 summary: Create and search user group
-description: This endpoint is used to create a partner-level or client-level user group, and search user groups.
+description: Creates a partner- or client-level user group, and searches user groups.
 post:
   summary: Create user group
   description: |-
-    This endpoint is used to create a partner-level or client-level user group.
+    Creates a partner- or client-level user group.
 
     ##### Notes
     - This API allows a user group to be created with minimal details like: user group name and roles.
@@ -47,7 +47,7 @@ post:
 get:
   summary: Search user groups
   description: |-
-    This endpoint is used to retrieve the list of user groups available within a tenant.
+    Gets the list of tenant user groups.
 
     ##### Notes
     - This API provides a paginated list with minimal details of user groups.

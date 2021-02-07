@@ -1,6 +1,6 @@
 summary: Get time bound responses
 description: |-
-  This endpoint is used to retrieve responses of a time bound request.
+  Gets responses of a time bound request.
 
   ##### Query Variables
 

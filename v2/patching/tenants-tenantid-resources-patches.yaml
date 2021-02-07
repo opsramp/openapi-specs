@@ -1,6 +1,6 @@
 summary: Get patches on a resource
 description: |-
-  This endpoint is used to retrieve the details of installed, missing, or installation-failed patches for a client’s resources.
+  Gets the details of installed, missing, or installation-failed patches for a client’s resources.
 
   ### Status Code
   NULL - The NULL value in the file indicates that the Agent did not trigger any installation job.

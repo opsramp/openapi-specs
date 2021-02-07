@@ -1,8 +1,8 @@
 summary: Manage patch configuration
-description: This endpoint is used to update, get, and delete a patch configuration.
+description: Updates, gets, and deletes a patch configuration.
 delete:
   summary: Delete patch configuration
-  description: This endpoint is used to delete a patch configuration.
+  description: Deletes a patch configuration.
   tags:
     - patching
   responses:
@@ -10,7 +10,7 @@ delete:
       description: OK
 get:
   summary: Get patch configuration
-  description: This endpoint is used to fetch patch configuration details.
+  description: Gets patch configuration details.
   tags:
     - patching
   responses:
@@ -65,7 +65,7 @@ get:
 post:
   summary: Update patch configuration
   description: |-
-    This endpoint is used to update a patch configuration.
+    Updates a patch configuration.
 
     >##### Notes
     >- Approved Windows patches will be installed on the device during the scheduled installation window.

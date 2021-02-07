@@ -1,8 +1,8 @@
-summary: Update and get client
-description: This endpoint is used to update and retrieve client details.
+summary: Update and get client details
+description: Updates and gets client details.
 get:
   summary: Get client
-  description: This endpoint is used to retrieve the details of a client.
+  description: Gets client details.
   tags:
     - tenancy-access-controls
   responses:
@@ -123,7 +123,7 @@ get:
                 whiteListedIps: '172.22.22.*,172.22.2.[0-50]'
 post:
   summary: Update clients
-  description: This endpoint is used to update a client.
+  description: Updates a client.
   tags:
     - tenancy-access-controls
   responses:

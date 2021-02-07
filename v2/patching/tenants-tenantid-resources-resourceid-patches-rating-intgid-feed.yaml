@@ -1,5 +1,5 @@
-summary: Update patch feed
-description: This endpoint is used to rate and qualify patches in a patch feed.
+summary: Rate and qualify patch feed
+description: Rates and qualifies patches in a patch feed.
 post:
   tags:
     - patching

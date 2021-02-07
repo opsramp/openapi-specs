@@ -1,6 +1,6 @@
-summary: Add response to a change request
+summary: Add response to change request
 description: |-
-  This endpoint is used to add a response to a change request.
+  Adds a response to a change request.
 
   ##### Notes
   - For attachments, files must be converted to bytes stream with base64-encoding.

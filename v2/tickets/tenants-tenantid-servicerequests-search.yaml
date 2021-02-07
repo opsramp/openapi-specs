@@ -1,6 +1,6 @@
 summary: Search service requests
 description: |-
-  This endpoint is used to search for service requests.
+  Searches for service requests.
 
   ##### Notes
   The request parameter include is required in order to retrieve the following information in the response:

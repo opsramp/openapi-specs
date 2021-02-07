@@ -1,5 +1,5 @@
-summary: Get list of comments for KB articles
-description: This endpoint is used to get a list of comments for an article.
+summary: Get list of comments for KB article
+description: Gets a list of comments for a KB article.
 get:
   tags:
     - knowledge-base

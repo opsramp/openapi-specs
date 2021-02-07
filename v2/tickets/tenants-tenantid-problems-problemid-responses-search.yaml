@@ -1,6 +1,6 @@
 summary: Get problem responses
 description: |-
-  This endpoint is used to retrieve responses of a problem.
+  Gets responses of a problem.
 
   ##### Query Variables
 

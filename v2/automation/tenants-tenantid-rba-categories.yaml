@@ -1,5 +1,5 @@
 summary: Manage RBA categories
-description: This endpoint is used to create and update an RBA category and to retrieve a list of RBA categories.
+description: Creates and updates an RBA category and gets a list of RBA categories.
 post:
   tags:
     - automation

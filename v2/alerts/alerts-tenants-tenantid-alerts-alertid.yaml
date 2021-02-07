@@ -1,5 +1,5 @@
-summary: Get alerts by an alert ID
-description: This endpoint is used to retrieve the details of an alert by alert ID.
+summary: Get alert details by alert ID
+description: Gets alert details by alert ID.
 get:
   tags:
     - alerts

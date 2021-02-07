@@ -1,6 +1,6 @@
-summary: Search jobs
+summary: Get tenant jobs list
 description: |
-  This endpoint is used to fetch the list of jobs defined by a tenant.
+  Gets the list of jobs defined by a tenant.
 
   This endpoint can be used to fetch the paginated list of the scheduled jobs of a partner or client.
 get:

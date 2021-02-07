@@ -1,8 +1,8 @@
 summary: Manage site
-description: This endpoint is used to update and retrieve details, and to delete a site.
+description: Updates and gets site details, and deletes a site.
 delete:
   summary: Delete a site
-  description: This endpoint is used to delete a site.
+  description: Deletes a site.
   tags:
     - resource-management
   responses:
@@ -10,7 +10,7 @@ delete:
       description: OK
 get:
   summary: Get site
-  description: This endpoint is used to retrieve site details.
+  description: Gets site details.
   tags:
     - resource-management
   responses:
@@ -80,7 +80,7 @@ get:
                       resourceType: DEVICE
 post:
   summary: Update site
-  description: This endpoint is used to update site details.
+  description: Updates site details.
   tags:
     - resource-management
   requestBody:

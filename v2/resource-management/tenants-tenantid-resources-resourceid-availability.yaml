@@ -1,6 +1,6 @@
 summary: Get resource availability
 description: |-
-  This endpoint is used to retrieve the availability details of a resource within a specific time frame.
+  Gets the availability details of a resource within a specific time frame.
 
   To view availability of a resource within a given time frame, provide the start time and end time.
 

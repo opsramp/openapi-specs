@@ -1,5 +1,5 @@
-summary: Create custom attribute type and values of a tenant
-description: This endpoint is used to create a custom attribute type and the list of values for a tenant
+summary: Create tenant custom attribute type and values
+description: Creates a tenant custom attribute type and the list of values
 post:
   tags:
     - resource-management

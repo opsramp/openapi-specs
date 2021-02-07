@@ -1,6 +1,6 @@
 summary: Close time bound request
 description: |-
-  This endpoint is used to close a time bound request.
+  Closes a time bound request.
 
   Follow the steps before closing a time bound request:
 

@@ -1,9 +1,9 @@
-summary: Get login audit report
-description: This endpoint is used to get the login history for users.
+summary: Get user login history
+description: Gets the user login history.
 get:
-  summary: Get login audit report
+  summary: Get user login history
   description: |-
-    This endpoint is used to retrieve the login history details of users.
+    Gets the login history details of users.
 
     ##### Notes
     There are special characters that can be used in a query string:

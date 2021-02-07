@@ -1,8 +1,8 @@
 summary: Manage problem
-description: This endpoint is used to update and retrieve a problem
+description: Updates and gets a problem
 get:
-  summary: Get problem
-  description: This endpoint is used to retrieve the details of a problem.
+  summary: Get problem details
+  description: Gets problem details.
   tags:
     - tickets
   responses:
@@ -278,8 +278,8 @@ get:
                 estimatedMinutes: 45
                 timeSpent: 120
 post:
-  summary: Update problem
-  description: This endpoint is used to update a problem.
+  summary: Update problem details
+  description: Updates problem details.
   tags:
     - tickets
   requestBody:

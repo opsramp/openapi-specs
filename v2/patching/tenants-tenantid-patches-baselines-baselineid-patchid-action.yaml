@@ -1,5 +1,5 @@
-summary: Assign or unassign a patch baseline
-description: This endpoint is used to add or remove patches from a baseline.
+summary: Add and remove patches from baseline
+description: Adds and removes patches from a baseline.
 post:
   tags:
     - patching

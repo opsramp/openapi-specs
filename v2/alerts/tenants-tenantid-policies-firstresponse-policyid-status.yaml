@@ -1,5 +1,5 @@
-summary: Enable or disable first response policy
-description: This endpoint is used to enable or disable the first response policy.
+summary: Enable and disable first response policy
+description: Enables and disables the first response policy.
 post:
   tags:
     - alerts

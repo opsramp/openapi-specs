@@ -1,5 +1,5 @@
 summary: Download problem response attachment
-description: This endpoint is used to download the response attachment attached to a problem.
+description: Downloads the response attached to a problem.
 get:
   tags:
     - tickets

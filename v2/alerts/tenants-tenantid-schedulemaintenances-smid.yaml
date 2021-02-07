@@ -1,7 +1,7 @@
-summary: Manage schedule maintenance windows
-description: This endpoint is used to update, retrieve, and delete scheduled maintenence windows.
+summary: Manage scheduled maintenance windows
+description: Updates, gets, and deletes scheduled maintenence windows.
 get:
-  description: This endpoint is used to retrieve the details of a scheduled maintenance window.
+  description: Gets scheduled maintenance window details.
   tags:
     - alerts
   requestBody:
@@ -336,7 +336,7 @@ get:
                 status: Completed
 post:
   description: |-
-    This endpoint is used to update a pending schedule maintenance window.
+    Updates a pending schedule maintenance window.
 
     ##### Notes
     - Schedule details can be updated. For example: name, schedule type, and alert conditions. Resource details cannot be updated.
@@ -516,7 +516,7 @@ post:
                     operator: CONTAINS
                     value: newTest
 delete:
-  description: This endpoint is used to delete a scheduled maintenance window.
+  description: Deletes a scheduled maintenance window.
   tags:
     - alerts
   responses:

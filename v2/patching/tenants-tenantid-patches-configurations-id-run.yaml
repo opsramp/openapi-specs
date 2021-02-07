@@ -1,5 +1,5 @@
 summary: Run patch configuration
-description: This endpoint is used to run a patch configuration.
+description: Runs a patch configuration.
 post:
   tags:
     - patching

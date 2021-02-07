@@ -1,6 +1,6 @@
-summary: Search client note
+summary: Search for client notes
 description: |-
-  This endpoint is used to search for the clients.
+  Searches for client notes.
 
   |Query Variables|Description|
   |------|-----|

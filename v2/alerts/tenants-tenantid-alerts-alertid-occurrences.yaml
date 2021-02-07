@@ -1,6 +1,6 @@
-summary: Search alert occurrences
+summary: Get alerts for alert-triggered time
 description: |
-  This endpoint retrieves the occurrences of an alert based on the alert-triggered time.
+  Gets the alert occurrences based on the alert-triggered time.
 
   ##### Notes
   There are special characters that can be used in a query string:
