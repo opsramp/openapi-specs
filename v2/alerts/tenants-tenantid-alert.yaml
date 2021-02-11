@@ -1,6 +1,6 @@
 summary: Create alert on a resource
 description: |-
-  Create a single alert on a resource.
+  Creates a single alert on a resource.
 
   ##### Notes
   - A list of event IDs is generated when alerts are created. This list is valid for 30 days.
