@@ -1,5 +1,5 @@
-summary: Get events of installed integrations
-description: This endpoint retrieves the events of an installed integration.
+summary: Get installed integration events
+description: Gets installed integration events.
 get:
   tags:
     - integrations

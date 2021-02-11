@@ -40,7 +40,7 @@ paths:
   /auth/oauth/token:
     post:
       summary: Get OAuth2 access token with client credentials
-      description: This endpoint is used to generate an access token using client credentials.
+      description: Generates an access token using client credentials.
       tags:
         - alerts
       requestBody:

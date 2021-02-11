@@ -1,6 +1,6 @@
 summary: Install email alert integration
 description: |-
-  This endpoint installs email alert integrations. OpsRamp processes all incoming Alert emails.
+  Installs email alert integrations. OpsRamp processes all incoming Alert emails.
 
   Apply user-defined rules to create, acknowledge, and close alerts incoming emails.
 

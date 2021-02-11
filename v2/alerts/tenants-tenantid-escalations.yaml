@@ -1,6 +1,6 @@
 summary: Create alert escalation policy
 description: |
-  This endpoint creates an alert escalation policy. The policy is a predefined action to be taken when an alert is not acknowledged.
+  Creates an alert escalation policy. The policy is a predefined action to be taken when an alert is not acknowledged.
 
   ##### Notes
   - resources: Used to define different resources to apply the escalate alert policy.
