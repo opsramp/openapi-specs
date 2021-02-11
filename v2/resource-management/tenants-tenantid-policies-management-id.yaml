@@ -29,7 +29,7 @@ delete:
                   reasonPhrase: OK
                 actualEntity: 'Removed policy with id: 2325'
 get:
-  description: Retrieves device management policy details.
+  description: Gets device management policy details.
   tags:
     - resource-management
   responses:

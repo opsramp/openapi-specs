@@ -1,7 +1,7 @@
 summary: Manage device management policy
 description: Creates and updates device management policies, and gets tenant device management policies, without pagination.
 get:
-  description: Retrieves device management policies of a tenant without pagination.
+  description: Gets device management policies of a tenant without pagination.
   tags:
     - resource-management
   responses:

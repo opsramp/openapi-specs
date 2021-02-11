@@ -1,5 +1,5 @@
 summary: Manage device warranty
-description: Creates a device warranty and retrieves device warranty details.
+description: Creates a device warranty and gets device warranty details.
 post:
   summary: Create warranty
   description: Creates a warranty for a device.

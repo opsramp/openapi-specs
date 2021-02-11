@@ -371,7 +371,7 @@ post:
                   pattern: '30'
                   startTime: '00:30:00'
 get:
-  description: Retrieves a list of discovery profiles and their details for AWS, Azure, and Google.
+  description: gets a list of discovery profiles and their details for AWS, Azure, and Google.
   tags:
     - integrations
   responses:

@@ -8,7 +8,7 @@ delete:
     '200':
       description: OK
 get:
-  description: Retrieves information and optional device details for a specific resource.
+  description: Gets information and optional device details for a specific resource.
   tags:
     - resource-management
   responses:
