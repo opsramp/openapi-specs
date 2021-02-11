@@ -93,7 +93,7 @@ components:
         timeZone:
           type: object
           description: |-
-            Time zone of the country. Use the Get Timezones API to retrieve the list of timezones.
+            Time zone of the country. Use the Get Timezones API to get the list of timezones.
 
             Example: "timeZone": { "code": "EST"}
           properties:
@@ -123,7 +123,7 @@ components:
         roles:
           type: array
           description: |
-            (Optional) Defines permission sets to user and user groups on devices and device groups. Assign roles to a user. See Search Roles API to retrieve roles created under a partner or client.
+            (Optional) Defines permission sets to user and user groups on devices and device groups. Assign roles to a user. See Search Roles API to get roles created under a partner or client.
           items:
             type: object
             properties:
@@ -134,7 +134,7 @@ components:
         userGroups:
           type: array
           description: |
-            (Optional) Assign users to specific user groups. Provide name of the user group.Use Search User Groups API to retrieve details of user groups.
+            (Optional) Assign users to specific user groups. Provide name of the user group.Use Search User Groups API to get details of user groups.
           items:
             type: object
             properties:
@@ -809,7 +809,7 @@ components:
             Credential sets are client-specific. To allow users in a role to view only specific credential sets, provide only the credential set IDs of the client provided in clients.
           type: boolean
         permissions:
-          description: (Optional) Assign permission sets to a role. All users in a role would be assigned these permissions. Search Permissions Sets API is used to retrieve the list of permissions for a partner or client.
+          description: (Optional) Assign permission sets to a role. All users in a role would be assigned these permissions. Search Permissions Sets API is used to get the list of permissions for a partner or client.
           type: array
           items:
             type: object
@@ -850,6 +850,6 @@ components:
         roles:
           type: array
           description: |
-            (Optional) Assign roles to user group. Users part of a group automatically inherit the permissions associated with that group. To retrieve roles within a tenant, use Search Roles API.
+            (Optional) Assign roles to user group. Users part of a group automatically inherit the permissions associated with that group. To get roles within a tenant, use Search Roles API.
           items:
             $ref: '#/components/schemas/role'

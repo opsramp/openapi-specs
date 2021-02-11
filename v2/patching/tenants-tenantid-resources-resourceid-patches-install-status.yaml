@@ -2,7 +2,7 @@ summary: Get patching status of a device
 description: |-
   Gets the patching status of a device.
 
-  Patching status of a device provides the details of the most recent patches performed on a device. This API is used to retrieve the following details of patching performed on a device (or devices):
+  Patching status of a device provides the details of the most recent patches performed on a device. This API is used to get the following details of patching performed on a device (or devices):
 
   - Completion status of the patch
   - Status of machine reboot

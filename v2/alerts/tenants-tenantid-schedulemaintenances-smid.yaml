@@ -340,7 +340,7 @@ post:
 
     ##### Notes
     - Schedule details can be updated. For example: name, schedule type, and alert conditions. Resource details cannot be updated.
-    - To retrieve the list of pending schedule maintenance windows, use the Search Schedule Maintenance Windows endpoint.
+    - To get the list of pending schedule maintenance windows, use the Search Schedule Maintenance Windows endpoint.
     - For a  recurring schedule maintenance to end at a specific time period, provide the end date and time in the field endTime. Example: "2016-05-29T18:55:27+0000"
 
     ### Timezones

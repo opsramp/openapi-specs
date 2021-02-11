@@ -41,7 +41,7 @@ post:
             customFields:
               type: array
               description: |
-                User-customized fields that can include additional information about an incident. Use the Get Incident Custom Fields API to retrieve custom fields of an incident.
+                User-customized fields that can include additional information about an incident. Use the Get Incident Custom Fields API to get custom fields of an incident.
               items:
                 type: object
                 properties:

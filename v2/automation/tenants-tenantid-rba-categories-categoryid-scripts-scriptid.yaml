@@ -158,7 +158,7 @@ post:
     To update a script:
 
     - Attachment files must be converted to byte stream and base64-encoded. Always include a name and file.
-    - To retrieve the list of available categories, invoke the Get Categories endpoint.
+    - To get the list of available categories, invoke the Get Categories endpoint.
   tags:
     - automation
   responses:

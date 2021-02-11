@@ -6,7 +6,7 @@ get:
     Gets the availability rule defined on a resource.
 
     ##### Notes
-    Refer to Search Resources API to retrieve the list of a client’s resource IDs.
+    Refer to Search Resources API to get the list of a client’s resource IDs.
   tags:
     - resource-management
   responses:

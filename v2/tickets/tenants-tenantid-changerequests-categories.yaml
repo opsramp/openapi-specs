@@ -128,7 +128,7 @@ post:
               type: object
               description: |-
                 (Optional) Create a child category under a parent category.
-                This field is mandatory while creating a subcategory. Use the get categories API to retrieve parent categories of the change request entity type. (A child category is always specific to a parent category.)
+                This field is mandatory while creating a subcategory. Use the get categories API to get parent categories of the change request entity type. (A child category is always specific to a parent category.)
               properties:
                 uniqueId:
                   type: string

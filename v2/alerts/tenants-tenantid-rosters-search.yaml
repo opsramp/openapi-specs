@@ -192,7 +192,7 @@ get:
       in: query
       name: allList
       description: |
-        If true, retrieve both partner and client level rosters and if false (the default), retrieve partner level rosters.
+        If true, get both partner and client level rosters and if false (the default), get partner level rosters.
   tags:
     - alerts
 parameters:

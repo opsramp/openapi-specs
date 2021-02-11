@@ -88,7 +88,7 @@ get:
       in: query
       name: startTs
       description: |-
-        To retrieve activities performed on a service request within a certain duration, provide the start time and end time. startTs indicates the from date and time.
+        To get activities performed on a service request within a certain duration, provide the start time and end time. startTs indicates the from date and time.
         Example: 2018-08-10T05:39:51 0000
     - schema:
         type: string

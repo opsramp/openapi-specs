@@ -3,7 +3,7 @@ description: |-
   Searches for incidents.
 
   ##### Notes
-    The request parameter include is required in order to retrieve the following information in the response:
+    The request parameter include is required to get the following information in the response:
   - Custom fields
   - Status flow.
 

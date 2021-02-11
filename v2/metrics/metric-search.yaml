@@ -1,7 +1,7 @@
 summary: Get metric (time series) on resources
 description: |-
   Gets the details of metric behavior at a certain time period.
-  There are three common examples that show how to retrieve metric data based on a specific time series.
+  There are three common examples that show how to get metric data based on a specific time series.
 
   1. Time series type (RealTime):
   ```
@@ -28,11 +28,11 @@ description: |-
   |Using "data=raw" query param|Raw (up to 7 days)|data (RAW)|
 
   ### Sample responses
-  To retrieve metric behavior at multiple time series patterns: example-multiple-time-series
+  To get metric behavior at multiple time series patterns: example-multiple-time-series
 
-  To retrieve metric behavior at current time stamp in real time: example-current-real-time
+  To get metric behavior at current time stamp in real time: example-current-real-time
 
-  To retrieve significant changes on a metric (using CHANGE_DETECTION): example-change-detection
+  To get significant changes on a metric (using CHANGE_DETECTION): example-change-detection
 
   To forecast values of a metric (using FORECAST): example-forecast
 
@@ -40,7 +40,7 @@ description: |-
 
   >When OpsRamp receives data points for a given time series, this data is accumulated for specific periods of time. This data is stored in four roll-ups for each interval: average, minimum, maximum, and latest.
 
-  To retrieve metric data for a roll-up time series: example-roll-up
+  To get metric data for a roll-up time series: example-roll-up
 get:
   tags:
     - metrics
@@ -548,7 +548,7 @@ get:
       in: query
       name: resourceGroup
       description: |
-        (Optional) ID of resource group the metric is applied. Use Get Minimal Details of Device Groups API to retrieve list of resource groups.
+        (Optional) ID of resource group the metric is applied. Use Get Minimal Details of Device Groups API to get list of resource groups.
     - schema:
         type: string
       in: query

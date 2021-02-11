@@ -2,7 +2,7 @@ summary: Update change request category
 description: |-
   Updates a category of the change request entity type.
 
-  Provide the unique ID of the category you would like to update. Use the get categories API to retrieve the list of categories of the change request entity type.
+  Provide the unique ID of the category you would like to update. Use the get categories API to get the list of categories of the change request entity type.
 
   In this API, the following actions can be performed on a category:
 

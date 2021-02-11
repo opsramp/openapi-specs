@@ -23,7 +23,7 @@ components:
             2. Status flow transitions of problem.The status flows are defined in the field allowedStatus.
             Example: "name" : "Update"
             3. Option to provide reasons to change the status is enabled."reasonsEnabled" : "true" indicates, reason is mandatory while changing the status."reasonsEnabled" : "false" indicates reason is optional.
-            4. If status change reasons are defined, use the get status change reasons to retrieve the list of reasons. Provide the reasons configured in status "Update".
+            4. If status change reasons are defined, use the get status change reasons to get the list of reasons. Provide the reasons configured in status "Update".
         oldStatus:
           type: string
         priority:
@@ -123,7 +123,7 @@ components:
         knowledgeArticleIds:
           type: array
           description: |-
-            (Optional) Attach knowledge base articles related to the problem for further reference. To retrieve a knowledge base article ID:
+            (Optional) Attach knowledge base articles related to the problem for further reference. To get a knowledge base article ID:
             1. Log into OpsRamp.
             2. Click Knowledge Base.
             3. Select the required article and then copy the article ID.
@@ -224,7 +224,7 @@ components:
     customField:
       title: customField
       type: object
-      description: User-defined fields. User can create additional fields to attach more information related to the change request. Create a custom field and use the get change request custom fields retrieve the list of the customized fields for change request.
+      description: User-defined fields. User can create additional fields to attach more information related to the change request. Create a custom field and use the get change request custom fields get the list of the customized fields for change request.
       properties:
         id:
           type: string
@@ -469,13 +469,13 @@ components:
           description: Cc email.
         category:
           type: object
-          description: Add the change request under a category. Use the get API to retrieve the list of categories.
+          description: Add the change request under a category. Use the get API to get the list of categories.
           properties:
             id:
               type: integer
         subCategory:
           type: object
-          description: Add the change request under a sub-category. Use get categories to retrieve the list of sub-categories.
+          description: Add the change request under a sub-category. Use get categories to get the list of sub-categories.
           properties:
             id:
               type: integer
@@ -515,7 +515,7 @@ components:
         knowledgeArticleIds:
           type: array
           description: |-
-            Attach knowledge base articles related to the change request for further reference. To retrieve a knowledge base article ID:
+            Attach knowledge base articles related to the change request for further reference. To get a knowledge base article ID:
             1. Log into OpsRamp.
             2. Click Knowledge Base.
             3. Select the required article and then copy the article ID.
@@ -647,7 +647,7 @@ components:
               subject:
                 type: string
         attachedRequests:
-          description: Attach service requests to an incident. Use the search service requests to retrieve list of service requests in a client.
+          description: Attach service requests to an incident. Use the search service requests to get list of service requests in a client.
           type: array
           items:
             type: object
@@ -667,7 +667,7 @@ components:
         businessImpact:
           $ref: '#/components/schemas/businessImpact'
         category:
-          description: Add the change request under a category. Use the get API to retrieve the list of categories.
+          description: Add the change request under a category. Use the get API to get the list of categories.
           type: object
           properties:
             id:
@@ -740,7 +740,7 @@ components:
           type: string
         knowledgeArticleIds:
           description: |-
-            Attach knowledge base articles related to the change request for further reference. To retrieve a knowledge base article ID:
+            Attach knowledge base articles related to the change request for further reference. To get a knowledge base article ID:
             1. Log into OpsRamp.
             2. Click Knowledge Base.
             3. Select the required article and then copy the article ID.
@@ -932,7 +932,7 @@ components:
           format: date-time
           type: string
         subCategory:
-          description: Add the change request under a sub-category. Use get categories to retrieve the list of sub-categories.
+          description: Add the change request under a sub-category. Use get categories to get the list of sub-categories.
           type: object
           properties:
             id:
@@ -991,7 +991,7 @@ components:
               type: string
             name:
               type: string
-      description: Add the problem/changeRequest/incident under a category. Use the get categories API to retrieve the list of categories.
+      description: Add the problem/changeRequest/incident under a category. Use the get categories API to get the list of categories.
     mappingDetails:
       title: mappingDetails
       type: object

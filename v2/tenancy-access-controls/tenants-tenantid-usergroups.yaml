@@ -51,8 +51,8 @@ get:
 
     ##### Notes
     - This API provides a paginated list with minimal details of user groups.
-    - Use Get User Group API to retrieve the assigned roles to a user group.
-    - Use Get Users or a User Group API to retrieve the ausers that are part of a user group.
+    - Use Get User Group API to get the assigned roles to a user group.
+    - Use Get Users or a User Group API to get the ausers that are part of a user group.
   tags:
     - tenancy-access-controls
   responses:

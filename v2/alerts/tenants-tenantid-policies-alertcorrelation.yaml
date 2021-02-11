@@ -520,12 +520,12 @@ post:
                   default: 5
                 upstreamMetrics:
                   type: array
-                  description: Metrics on the upstream resource that may generate alerts. Use the Get Metrics API to retrieve metrics assigned to a resource.
+                  description: Metrics on the upstream resource that may generate alerts. Use the Get Metrics API to get metrics assigned to a resource.
                   items:
                     type: string
                 downstreamMetrics:
                   type: array
-                  description: Metrics on the downstream resource that may generate alerts. Use the Get Metrics API to retrieve metrics assigned to a resource.
+                  description: Metrics on the downstream resource that may generate alerts. Use the Get Metrics API to get metrics assigned to a resource.
                   items:
                     type: string
             algorithmCorrelation:

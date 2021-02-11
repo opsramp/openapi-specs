@@ -4,7 +4,7 @@ description: |-
 
   ##### Notes
   - A list of event IDs is generated when alerts are created. This list is valid for 30 days.
-  - Use the event IDs to search and retrieve alert details.
+  - Use the event IDs to search and get alert details.
 
   Creation of a new resource depends on the following:
 
@@ -129,7 +129,7 @@ post:
               properties:
                 id:
                   type: string
-                  description: The resource unique ID. Use the Search Resources API to retrieve a list of resources.
+                  description: The resource unique ID. Use the Search Resources API to get a list of resources.
                 extResourceId:
                   type: string
                   description: External ID of resource.

@@ -67,7 +67,7 @@ description: |-
   |patchStatus|MISSING, INSTALLED|Search for missing patches or patches installed on the resources.|
   |category|CRITICAL, SECURITY|Category to which the patches belong.|
   |patchName|NA|Search for patches with the patch name.|
-  |patchId|NA|Unique ID of a patch. To retrieve the list of patches along with their unique Id, use the Search Patches API.<br>Example: PATCH-1fde1043-0d9c-4f3f-8a34-2d0afc3a137a.|
+  |patchId|NA|Unique ID of a patch. To get the list of patches along with their unique Id, use the Search Patches API.<br>Example: PATCH-1fde1043-0d9c-4f3f-8a34-2d0afc3a137a.|
   |externalId|NA|External ID of a patch.|
   |severity|NA|Severity of a patch.|
   |approvalStatus|APPROVED, NOT_APPROVED|Approval status of a patch.For example, to search for approved patches, provide approvalStatus: APPROVED.|
