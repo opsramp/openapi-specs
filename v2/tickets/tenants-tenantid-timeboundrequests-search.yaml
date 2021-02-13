@@ -1106,7 +1106,13 @@ get:
         default: 'true'
       in: query
       name: isDescendingOrder
-    - in: query
+    - schema:
+        type: string
+      in: query
       name: queryString
+    - schema:
+        type: string
+      in: query
+      name: include
 parameters:
   - $ref: '../components-global.yaml#/components/parameters/tenantId'
