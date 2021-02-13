@@ -1,6 +1,6 @@
 summary: Search time bound requests
 description: |-
-  Seares for time bound requests.
+  Searches for time bound requests.
 
   >##### Notes
   The request parameter include is required to get the following information in the response:
