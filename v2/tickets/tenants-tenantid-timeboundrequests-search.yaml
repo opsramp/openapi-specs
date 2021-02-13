@@ -1110,10 +1110,7 @@ get:
         type: string
       in: query
       name: queryString
-      uniqueItems: true
-      items:
-        type: string
-        enum: [uniqueId, status, priority]
+      description: 'queryString variables.'
     - schema:
         type: string
       in: query
