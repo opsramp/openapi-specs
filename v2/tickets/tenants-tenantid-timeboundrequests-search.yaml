@@ -1106,9 +1106,7 @@ get:
         default: 'true'
       in: query
       name: isDescendingOrder
-    - schema:
-        type: string
-      in: query
+    - in: query
       name: queryString
       content:
         application/json:
