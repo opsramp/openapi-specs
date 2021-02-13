@@ -1114,18 +1114,5 @@ get:
         type: string
       in: query
       name: include
-    - in: query
-      name: qString
-      schema:
-        type: string
-      description: queryString Variables
-        schema:
-          type: string
-        name: uniqueId
-        description: ID of the time bound request.
-        schema:
-          type: string
-        name: status
-        description: Current status of time bound request.
 parameters:
   - $ref: '../components-global.yaml#/components/parameters/tenantId'
