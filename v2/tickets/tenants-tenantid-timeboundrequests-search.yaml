@@ -1110,6 +1110,14 @@ get:
         type: string
       in: query
       name: queryString
+      description: |-
+        ##### Query Variables
+
+        |Field|Default Value|
+        |----|----|
+        |uniqueId|ID of the time bound request.<br>Example: CHG0000002401|
+        |status|Current status of time bound request.<br>Supported values: New, Open, Pending, Resolved, Closed, and On Hold.<br>Example: Closed, Resolved|
+        |priority|Current priority of time bound request.<br>Supported values: Low, Normal, High, Urgent, and Very Low<br>Example: High, Urgent|
     - schema:
         type: string
       in: query
