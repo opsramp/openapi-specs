@@ -143,7 +143,7 @@ paths:
   /api/v2/proxy:
     $ref: './agents-gateways/proxy.yaml'
   /api/v2/apiTokenGen:
-    $ref: './agents-gateways/apiTokenGen.yaml'
+    $ref: './agents-gateways/apitokengen.yaml'
   /api/v2/networksettings:
     $ref: './agents-gateways/networksettings.yaml'
   /api/v2/nginx:
@@ -208,7 +208,7 @@ paths:
   /api/v2/tenants/{tenantId}/alerts/{alertId}:
     $ref: './alerts/tenants-tenantid-alerts-alertid.yaml'
   /api/v2/alertTypes:
-    $ref: './alerts/alertTypes.yaml'
+    $ref: './alerts/alerttypes.yaml'
   /api/v2/tenants/{tenantId}/users/{userId}/alertViews:
     $ref: './alerts/tenants-tenantid-users-userid-alertviews.yaml'
   /api/v2/tenants/{tenantId}/users/{userId}/alertViews/{viewId}:
