@@ -179,9 +179,23 @@ get:
       name: sortName
       description: '{field}'
     - schema:
-        type: string
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+          type:
+            type: string
+          startCreationDate:
+            type: string
+          endCreationDate:
+            type: string
+        enum: [id: string, name: string, type: string, startCreationDate: string, endCreationDate: string]
+        uniqueItems: true
       in: query
       name: queryString
-      description: '{queryString}'
+      allowReserved: true
+      explode: false
 parameters:
   - $ref: '../components-global.yaml#/components/parameters/tenantId'
