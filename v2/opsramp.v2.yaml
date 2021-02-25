@@ -578,9 +578,9 @@ paths:
   /api/v2/tenants/{tenantId}/topology/{resourceUUID}:
     $ref: './resource-management/tenants-tenantid-topology-resourceuuid.yaml'
   /api/v2/synthetics/publiclocations:
-    $ref: './synthetics-publiclocations.yaml'
+    $ref: './resource-management/synthetics-publiclocations.yaml'
   /api/v2/synthetics/{tenantId}/privatelocations:
-    $ref: './synthetics-tenantid-privatelocations.yaml'
+    $ref: './resource-management/synthetics-tenantid-privatelocations.yaml'
   # Tenancy Access Controls
   /api/v2/tenants/{tenantId}/notes:
     $ref: './tenancy-access-controls/tenants-tenantid-notes.yaml'
@@ -649,7 +649,7 @@ paths:
   /api/v2/tenants/{tenantId}/resourceTypes/{cloudType}:
     $ref: './tenancy-access-controls/tenants-tenantid-resourcetypes-cloudtype.yaml'
   /api/v2/tenants/{tenantId}/customBranding:
-    $ref: './tenants-tenantid-custombranding.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantid-custombranding.yaml'
   # Tickets
   /api/v2/tenants/{tenantId}/incidents/businessImpacts:
     $ref: './tickets/tenants-tenantid-incidents-businessimpacts.yaml'
