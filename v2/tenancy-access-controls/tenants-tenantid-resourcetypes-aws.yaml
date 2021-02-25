@@ -177,8 +177,8 @@ get:
                 type: string
           examples:
             example-1:
-              value:
               summary: Request with smartFilters response
+              value:
                 API_GATEWAY: API Gateways
                 AWS_APP_MESH: App Mesh
                 AWS_APP_STREAM: App Stream
@@ -262,8 +262,8 @@ get:
                 WAF: WAF
                 WORKSPACE: Workspace
             example-2:
-              value:
               summary: Request with smartFilters response
+              value:
                 ANY_CLOUD_RESOURCE: All Resources
                 API_GATEWAY: API Gateways
                 AWS_APP_MESH: App Mesh
