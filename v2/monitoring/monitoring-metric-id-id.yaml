@@ -75,19 +75,10 @@ get:
                     unitConversionFactor: 0.0
                     appType: CUSTOM
                     adapterType: Application
-components:
-  securitySchemes:
-    accessToken:
-      type: oauth2
-      flows:
-        clientCredentials:
-          tokenUrl: ''
-          refreshUrl: ''
-          scopes: {}
-  parameters:
-    tenantId:
-      in: path
-      name: name
-      schema:
-        type: string
-      required: true
+parameters:
+  id:
+    in: path
+    name: id
+    schema:
+      type: string
+    required: true
