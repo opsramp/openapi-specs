@@ -8,12 +8,12 @@ get:
         type: string
       in: query
       name: zone
-      description: Zone. Values: North America, HYDERABAD, On-premises.
+      description: Zone.
     - schema:
         type: string
       in: query
       name: locationName
-      description: Location name. Example: Public
+      description: Location name.
   responses:
     '200':
       description: OK
