@@ -9,85 +9,75 @@ get:
       content:
         application/json:
           schema:
-            type: object 
+            type: object
             properties:
-              results:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    description:
-                      type: string
-                    device:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        generalInfo:
-                          type: object
-                          properties:
-                            ipAddresses:
-                              type: string
-                            hostName:
-                              type: string
-                        clientUniqueId:
-                          type: string
-                    statusUpdatedDate:
-                      type: string
-              previousPageNo:
+              metricName:
+                type: string
+              displayName:
+                type: string
+              groupName:
+                type: string
+              factor:
+                type: number
+              consolFunc:
                 type: integer
-              descendingOrder:
+              displayByComponent:
                 type: boolean
+              displayOrder:
+                type: integer
+              topMetric:
+                type: boolean
+              timeSeries:
+                type: boolean
+              warnRepeatCount:
+                type: integer
+              criticalRepeatCount:
+                type: integer
+              state:
+                type: string
+              graphPoint:
+                type: string
+              format:
+                type: string
+              recommended:
+                type: integer
+              useExpression:
+                type: boolean
+              formattedDataUsage:
+                type: string
+              unitConversionFactor:
+                type: number
+              appType:
+                type: string
+              adapterType:
+                type: string
           examples:
             example-1:
               value:
                 results:
-                  - id: 76
-                    name: LB1 Gateway Profile
-                    description: Gateway Management Profile_LB1
-                    type: Gateway
-                    tunnelType: SSHD
-                    activationToken: 423e2e3c-a300-4218-a69c-9e3d8c3c3c63
-                    registered: false
-                    createdDate: '2016-06-22T07:34:40+0000'
-                  - id: 75
-                    name: Agent Profile
-                    description: Agent Management Profile
-                    type: Agent
-                    status: DOWN
-                    createdDate: '2016-06-22T07:24:14+0000'
-                    device:
-                      id: 96dd7237-a0cf-40b7-ac5f-56b1bd5221d7
-                      generalInfo:
-                        ipAddresses: 172.28.2.233
-                        hostName: SJLPT159
-                      clientUniqueId: client_69900
-                      type: DEVICE
-                previousPageNo: 0
-                descendingOrder: true
-  parameters:
-    - schema:
-        type: string
-      in: query
-      name: pageNo
-      description: '{pageNo}'
-    - schema:
-        type: string
-      in: query
-      name: pageSize
-      description: '{pageSize}'
+                  - metricName: system.cpu.utilization
+                    displayName: CPU Utilization
+                    groupName: system.cpu.utilization
+                    factor: 1.0
+                    consolFunc: AVERAGE
+                    displayByComponent: false
+                    displayOrder: 100
+                    topMetric: false
+                    timeSeries: true
+                    warnRepeatCount: 1
+                    criticalRepeatCount: 1
+                    state: Active
+                    graphPoint: NONE
+                    format: VALUE
+                    recommended: 0
+                    useExpression: false
+                    formattedDataUsage: NONE
+                    unitConversionFactor: 0.0
+                    appType: CUSTOM
+                    adapterType: Application
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - schema:
       type: string
-      enum:
-        - 'NULL'
-        - ova
-        - iso
-        - windows
-        - google
-      default: 'NULL'
     in: path
-    name: packageName
+    name: name
     required: true
-    description: Refers to the gateway package.
