@@ -32,8 +32,12 @@ get:
                 type: string
               visibleCustomerId:
                 type: integer
-              Zone:
-                type: boolean
+              zone:
+                type: string
+                enum:
+                  - North America
+                  - HYDERABAD
+                  - On-premises
           examples:
             example-1:
               value:
