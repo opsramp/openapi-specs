@@ -579,7 +579,7 @@ paths:
     $ref: './resource-management/tenants-tenantid-topology-resourceuuid.yaml'
   /api/v2/synthetics/publiclocations:
     $ref: './synthetics-publiclocations.yaml'
-  /api/v2/synthetics/privatelocations:
+  /api/v2/synthetics/{tenantId}/privatelocations:
     $ref: './synthetics-tenantid-privatelocations.yaml'
   # Tenancy Access Controls
   /api/v2/tenants/{tenantId}/notes:
