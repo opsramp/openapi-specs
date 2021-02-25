@@ -1,0 +1,93 @@
+summary: Get cloud resource types
+description: Gets supported cloud resource types, including AWS, Azure, Google, with or without using smart filters during discovery.
+get:
+  tags:
+    - tenancy-access-controls
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                    device:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        generalInfo:
+                          type: object
+                          properties:
+                            ipAddresses:
+                              type: string
+                            hostName:
+                              type: string
+                        clientUniqueId:
+                          type: string
+                    statusUpdatedDate:
+                      type: string
+              previousPageNo:
+                type: integer
+              descendingOrder:
+                type: boolean
+          examples:
+            example-1:
+              value:
+                results:
+                  - id: 76
+                    name: LB1 Gateway Profile
+                    description: Gateway Management Profile_LB1
+                    type: Gateway
+                    tunnelType: SSHD
+                    activationToken: 423e2e3c-a300-4218-a69c-9e3d8c3c3c63
+                    registered: false
+                    createdDate: '2016-06-22T07:34:40+0000'
+                  - id: 75
+                    name: Agent Profile
+                    description: Agent Management Profile
+                    type: Agent
+                    status: DOWN
+                    createdDate: '2016-06-22T07:24:14+0000'
+                    device:
+                      id: 96dd7237-a0cf-40b7-ac5f-56b1bd5221d7
+                      generalInfo:
+                        ipAddresses: 172.28.2.233
+                        hostName: SJLPT159
+                      clientUniqueId: client_69900
+                      type: DEVICE
+                previousPageNo: 0
+                descendingOrder: true
+  parameters:
+    - schema:
+        type: string
+      in: query
+      name: pageNo
+      description: '{pageNo}'
+    - schema:
+        type: string
+      in: query
+      name: pageSize
+      description: '{pageSize}'
+parameters:
+  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - schema:
+      type: string
+      enum:
+        - 'NULL'
+        - ova
+        - iso
+        - windows
+        - google
+      default: 'NULL'
+    in: path
+    name: packageName
+    required: true
+    description: Refers to the gateway package.

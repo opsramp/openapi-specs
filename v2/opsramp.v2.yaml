@@ -407,6 +407,10 @@ paths:
     $ref: './monitoring/tenants-tenantid-monitoring-templates-search.yaml'
   /api/v2/tenants/{tenantId}/resourceMonitors:
     $ref: './monitoring/tenants-tenantid-resourcemonitors.yaml'
+  /api/v2/monitoring/metric/name/{name}:
+    $ref: './monitoring/monitoring-metric-name-name.yaml'
+  /api/v2/monitoring/metric/id/{id}:
+    $ref: './monitoring/monitoring-metric-id-id.yaml'
   # Patching
   /api/v2/tenants/{tenantId}/patches/baselines/{baselineId}/{action}:
     $ref: './patching/tenants-tenantid-patches-baselines-baselineid-action.yaml'
@@ -573,6 +577,10 @@ paths:
     $ref: './resource-management/tenants-tenantid-sites-minimal.yaml'
   /api/v2/tenants/{tenantId}/topology/{resourceUUID}:
     $ref: './resource-management/tenants-tenantid-topology-resourceuuid.yaml'
+  /api/v2/synthetics/publiclocations:
+    $ref: './resource-management/synthetics-publiclocations.yaml'
+  /api/v2/synthetics/privatelocations:
+    $ref: './resource-management/synthetics-privatelocations.yaml'
   # Tenancy Access Controls
   /api/v2/tenants/{tenantId}/notes:
     $ref: './tenancy-access-controls/tenants-tenantid-notes.yaml'
@@ -638,6 +646,10 @@ paths:
     $ref: './tenancy-access-controls/tenants-tenantid-users-search.yaml'
   /api/v2/tenants/{orgId}/users/{userId}:
     $ref: './tenancy-access-controls/tenants-orgid-users-userid.yaml'
+  /api/v2/tenants/{tenantId}/resourceTypes/{cloudType}:
+    $ref: './tenants-tenantid-resourcetypes-cloudtype.yaml'
+  /api/v2/tenants/{tenantId}/customBranding:
+    $ref: './tenants-tenantid-custombranding.yaml'
   # Tickets
   /api/v2/tenants/{tenantId}/incidents/businessImpacts:
     $ref: './tickets/tenants-tenantid-incidents-businessimpacts.yaml'
