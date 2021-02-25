@@ -647,7 +647,7 @@ paths:
   /api/v2/tenants/{orgId}/users/{userId}:
     $ref: './tenancy-access-controls/tenants-orgid-users-userid.yaml'
   /api/v2/tenants/{tenantId}/resourceTypes/{cloudType}:
-    $ref: './tenants-tenantid-resourcetypes-cloudtype.yaml'
+    $ref: './tenancy-access-controls/tenants-tenantid-resourcetypes-cloudtype.yaml'
   /api/v2/tenants/{tenantId}/customBranding:
     $ref: './tenants-tenantid-custombranding.yaml'
   # Tickets
