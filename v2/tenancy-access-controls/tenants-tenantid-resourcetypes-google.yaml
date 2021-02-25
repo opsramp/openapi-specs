@@ -89,8 +89,8 @@ get:
                 type: string
           examples:
             example-1:
-              value:
               summary: Request with smartFilters response
+              value:
                 APPENGINE_SERVICE: App Engine Service
                 BIGQUERY_DATASET: BigQuery Dataset
                 GCP_BIGTABLE_CLUSTER: Bigtable Cluster
@@ -130,8 +130,8 @@ get:
                 GCP_VPC_NETWORK: Vpc Network
                 VPN: VPN Gateway
             example-2:
-              value:
               summary: Request with smartFilters response
+              value:
                 ANY_CLOUD_RESOURCE: All Resources
                 APPENGINE_SERVICE: App Engine Service
                 BIGQUERY_DATASET: BigQuery Dataset

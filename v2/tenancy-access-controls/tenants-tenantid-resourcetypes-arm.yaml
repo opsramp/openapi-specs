@@ -161,8 +161,8 @@ get:
                 type: string
           examples:
             example-1:
-              value:
               summary: Request with smartFilters response
+              value:
                 AZ_AD_B2C: Active Directory B2C
                 AZ_ANALYSIS_SERVICE: Analysis Service
                 AZ_API_MANAGEMENT: Api Management Service
@@ -238,8 +238,8 @@ get:
                 AZ_WEB_SLOT: Website Slot
                 WEBSITE: Websites
             example-2:
-              value:
               summary: Request with smartFilters response
+              value:
                 AZ_AD_B2C: Active Directory B2C
                 ANY_CLOUD_RESOURCE: All Resources
                 AZ_ANALYSIS_SERVICE: Analysis Service
