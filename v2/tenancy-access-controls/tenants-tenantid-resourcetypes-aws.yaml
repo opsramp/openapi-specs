@@ -1,5 +1,5 @@
-summary: Get cloud resource types
-description: Gets AWS cloud resource types, using optional smart filters during discovery.
+summary: Get AWS cloud resources
+description: Gets AWS cloud resources, using optional smart filters during discovery.
 get:
   tags:
     - tenancy-access-controls
