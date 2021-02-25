@@ -174,7 +174,7 @@ get:
               WAF:
                 type: string
               WORKSPACE:
-  type: string
+                type: string
           examples:
             example-1:
               value:
