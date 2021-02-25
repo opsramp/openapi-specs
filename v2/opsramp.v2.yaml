@@ -580,7 +580,7 @@ paths:
   /api/v2/synthetics/publiclocations:
     $ref: './synthetics-publiclocations.yaml'
   /api/v2/synthetics/privatelocations:
-    $ref: './synthetics-privatelocations.yaml'
+    $ref: './synthetics-tenantid-privatelocations.yaml'
   # Tenancy Access Controls
   /api/v2/tenants/{tenantId}/notes:
     $ref: './tenancy-access-controls/tenants-tenantid-notes.yaml'
