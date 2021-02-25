@@ -176,7 +176,7 @@ get:
               WORKSPACE:
                 type: string
           examples:
-            example-1:
+            Request without smartFilters response:
               value:
                 API_GATEWAY: API Gateways
                 AWS_APP_MESH: App Mesh
@@ -256,6 +256,93 @@ get:
                 SQS: SQS
                 STORAGE_GATEWAY: Storage Gateway
                 AWS_SWF_DOMAIN: SWF
+                AWS_TRANSLATE_JOB: Translate Job
+                EBS: Volumes
+                WAF: WAF
+                WORKSPACE: Workspace
+            Request with smartFilters response:
+              value:
+                ANY_CLOUD_RESOURCE: All Resources
+                API_GATEWAY: API Gateways
+                AWS_APP_MESH: App Mesh
+                AWS_APP_STREAM: App Stream
+                AWS_APPSYNC: App Sync API
+                CODEDEPLOY_APPLICATION: Applications
+                AWS_ATHENA: Athena
+                AUTO_SCALING: Auto Scaling Groups
+                BEAN_STALK: BeanStalks
+                AWS_LEX_BOT: Bot
+                AWS_CLOUD_HSM_CLUSTER: Cloud HSM Cluster
+                AWS_CLOUD_SEARCH: Cloud Search Domain
+                CLOUDFRONT: CloudFront
+                AWS_COGNITO_USER_POOL: Cognito User Pool
+                AWS_COGNITO_USER_CLIENT: Cognito User Pool Client
+                DC_CONNECTION: Direct Connections
+                AWS_DOCDB_CLUSTER: DocDB Cluster
+                DYNAMO_DB: Dynamodb
+                ANY_DEVICE: EC2 Instances
+                ECS_CLUSTER: ECS Clusters
+                AWS_EFS: EFS
+                ES_SERVICE: Elastic Search Services
+                ELASTIC_TRANCODER: Elastic Transcoders
+                ELASTICACHE: ElastiCache
+                ELASTICMAPREDUCE: EMR
+                AWS_EVENT_BRIDGE_BUS: Event Bridge Bus
+                AWS_GAMELIFT_ALIAS: Gamelift Alias
+                AWS_GAMELIFT_BUILD: Gamelift Build
+                AWS_GAMELIFT_FLEET: Gamelift Fleet
+                AWS_GAMELIFT_CONFIG: Gamelift Matchmaking Config
+                AWS_GAMELIFT_RULESET: Gamelift Matchmaking Ruleset
+                AWS_GAMELIFT_QUEUE: Gamelift Queue
+                AWS_GAMELIFT_SCRIPT: Gamelift Script
+                AWS_GLUE_JOBS: Glue
+                AWS_GUARDDUTY_IP_LIST: GuardDuty
+                AWS_HOSTED_ZONE: Hosted Zone
+                AWS_INSPECTOR_TARGET: Inspector Target
+                AWS_INSPECTOR_TEMPLATE: Inspector Template
+                AWS_IOT_JOB: IOT Job
+                AWS_IOT_RULE: IOT Rule
+                KINESIS: Kinesis
+                KINESIS_FIREHOSE: Kinesis Firehoses
+                AWS_KMS_AWS_MANAGED_KEYS: Kms
+                LAMBDA: Lambda
+                LIGHTSAIL: Lightsail
+                LOAD_BALANCER: Load Balancers
+                MACHINE_LEARNING: Machine Learning
+                AWS_MEDIA_CONNECT_ENTITLEMENTS: Media Connect Entitlements
+                AWS_MEDIA_CONNECT_FLOW: Media Connect Flow
+                AWS_MEDIA_CONVERT_JOB: Media Convert Job
+                AWS_MEDIA_CONVERT_JOB_TEMPLATE: Media Convert Job Template
+                AWS_MEDIA_CONVERT_PRESET: Media Convert Preset
+                AWS_MEDIA_CONVERT_QUEUE: Media Convert Queue
+                AWS_MEDIA_PACKAGE_CHANNEL: Media Package Channel
+                AWS_MEDIA_PACKAGE_HARVEST_JOB: Media Package Harvest Job
+                AWS_MP_ORIGIN_ENDPOINT: Media Package Origin Endpoint
+                AWS_MEDIA_TAILOR_CONFIG: Media Tailor Playback Config
+                AWS_MQ_BROKER: Mq Broker
+                AWS_MSK_CLUSTER: MSK Cluster
+                AWS_NAT_GATEWAY: Nat Gateway
+                AWS_NEPTUNE_DB_CLUSTER: Neptune DB Cluster
+                AWS_OPSWORKS_STACKS: OpsWorks Stack
+                PIPELINE: Pipelines
+                CODEBUILD_PROJECT: Projects
+                RDS: RDS
+                REDSHIFT: Redshift
+                AWS_DMS: Replication Instance
+                CODECOMMIT_REPOSITORY: Repositories
+                ROUTE_53: Route 53
+                AWS_S3_BUCKET: S3 Bucket
+                AWS_SAGEMAKER_ENDPOINT: SageMaker EndPoint
+                AWS_SAGEMAKER_GROUNDTRUTH: SageMaker GroundTruth
+                AWS_SAGEMAKER_TRAINING: SageMaker Training
+                AWS_SAGEMAKER_TRANSFORM: SageMaker Transform
+                SNS: SNS
+                AWS_SPOT_FLEET_REQUEST: Spot Requests
+                SQS: SQS
+                AWS_STATE_MACHINE: State Machine
+                STORAGE_GATEWAY: Storage Gateway
+                AWS_SWF_DOMAIN: SWF
+                AWS_TRANSIT_GATEWAY: Transit Gateway
                 AWS_TRANSLATE_JOB: Translate Job
                 EBS: Volumes
                 WAF: WAF
