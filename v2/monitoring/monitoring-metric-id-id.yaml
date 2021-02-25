@@ -76,9 +76,8 @@ get:
                     appType: CUSTOM
                     adapterType: Application
 parameters:
-  id:
+  - schema:
+      type: string
     in: path
     name: id
-    schema:
-      type: string
     required: true
