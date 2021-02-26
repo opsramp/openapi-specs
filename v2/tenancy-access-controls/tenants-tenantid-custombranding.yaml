@@ -26,7 +26,7 @@ put:
                   file:
                     type: string
               loginPageImage:
-               type: object
+                type: object
                 properties:
                   name:
                     type: string
