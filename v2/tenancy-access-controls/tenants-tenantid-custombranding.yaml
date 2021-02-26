@@ -84,19 +84,16 @@ put:
                     thumbPath: https://app.opsramp.com/images//org/69903/thumb-164.png?1600154254595
                     tinyThumbPath: https://app.opsramp.com/images//org/69903/tiny-thumb-164.png?1600154254635
                     imageType: image/png
-                    },
                 favIcon:
                     logoPath: https://app.opsramp.com/images//org/favicon/69903/165.png?1600154254655
                     thumbPath: https://app.opsramp.com/images//org/favicon/69903/thumb-165.png?1600154254687
                     tinyThumbPath: https://app.opsramp.com/images//org/favicon/69903/tiny-thumb-165.png?1600154254707
                     imageType: image/png
-                    },
                 loginPageImage:
                     logoPath: https://app.opsramp.com/images//org/login/69903/166.png?1600154254727
                     thumbPath: https://app.opsramp.com/images//org/login/69903/thumb-166.png?1600154254807
                     tinyThumbPath: https://app.opsramp.com/images//org/login/69903/tiny-thumb-166.png?1600154254851
                     imageType: image/png
-                    },
                 applicationTitle: OpsRamp
                 headerBackgroundColor: ffffff
                 tabBackgroundColor: 444444
