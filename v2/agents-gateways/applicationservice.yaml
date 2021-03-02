@@ -1,4 +1,4 @@
-summary: Get status, start and stop application services
+summary: status, start and stop application services
 description: |-
   Gets the service status and starts and stops application services.
 
