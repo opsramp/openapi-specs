@@ -20,8 +20,7 @@ post:
                 type: string
           examples:
             example-1:
-              value:
-                Success: Service Squid Proxy started successfully.
+              Success: Service Squid Proxy started successfully.
   requestBody:
     content:
       application/json:
