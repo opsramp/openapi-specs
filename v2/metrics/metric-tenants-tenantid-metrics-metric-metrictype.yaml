@@ -9,15 +9,16 @@ post:
         schema:
           $ref: './components.yaml#/components/schemas/metric'
         examples:
-          value:
-            metricName: system.cpu.stats.kernel
-            displayName: CPUSTATS
-            description: Cpu Statistics
-            groupName: system.cpustats.*
-            unit: '%'
-            type: Gauge
-            displayUnit: '%'
-            unitLabel: Percentage
+          example-1:
+            value:
+              metricName: system.cpu.stats.kernel
+              displayName: CPUSTATS
+              description: Cpu Statistics
+              groupName: system.cpustats.*
+              unit: '%'
+              type: Gauge
+              displayUnit: '%'
+              unitLabel: Percentage
   responses:
     '200':
       description: OK
