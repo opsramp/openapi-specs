@@ -1,4 +1,4 @@
-summary: status, start and stop application services
+summary: Get status, start and stop application services
 description: |-
   Gets the service status and starts and stops application services.
 
@@ -20,7 +20,8 @@ post:
                 type: string
           examples:
             example-1:
-              Success: Service Squid Proxy started successfully.
+              value:
+                Success: Service Squid Proxy started successfully.
   requestBody:
     content:
       application/json:
