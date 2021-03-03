@@ -114,6 +114,36 @@ paths:
                     error: unauthorized
                     error_description: Bad API credentials
   # Agents and Gateways
+  /api/v2/applicationservice:
+    $ref: './agents-gateways/applicationservice.yaml'
+  /api/v2/download/gateway/{packagename}:
+    $ref: './agents-gateways/download-gateway-packagename.yaml'
+  /api/v2/externalproxy:
+    $ref: './agents-gateways/externalproxy.yaml'
+  /api/v2/generalinfo:
+    $ref: './agents-gateways/generalinfo.yaml'
+  /api/v2/getntpdetails:
+    $ref: './agents-gateways/getntpdetails.yaml'
+  /api/v2/tenants/{tenantId}/agents/{platform}/download/{package-name}:
+    $ref: './agents-gateways/tenants-tenantid-agents-platform-download-package-name.yaml'
+  /api/v2/tenants/{tenantId}/agents/{agentversion}/resourcesCountByAgentVersion:
+    $ref: './agents-gateways/tenants-tenantid-agents-agentversion-resourcescountbyagentversion.yaml'
+  /api/v2/tenants/{tenantId}/agents/deployAgentsScript:
+    $ref: './agents-gateways/tenants-tenantid-agents-deployagentsscript.yaml'
+  /api/v2/tenants/{tenantId}/agents/{platform}/info:
+    $ref: './agents-gateways/tenants-tenantid-agents-platform-info.yaml'
+  /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices:
+    $ref: './agents-gateways/tenants-tenantid-agentpolicies-policyid-devices.yaml'
+  /api/v2/tenants/{tenantId}/agentProfiles/{profileId}/devices:
+    $ref: './agents-gateways/tenants-tenantid-agentprofiles-profileid-devices.yaml'
+  /api/v2/tenants/{tenantId}/agents/windows:
+    $ref: './agents-gateways/tenants-tenantid-agents-windows.yaml'
+  /api/v2/registration:
+    $ref: './agents-gateways/registration.yaml'
+  /api/v2/proxy:
+    $ref: './agents-gateways/proxy.yaml'
+  /api/v2/apiTokenGen:
+    $ref: './agents-gateways/apitokengen.yaml'
   /api/v2/networksettings:
     $ref: './agents-gateways/networksettings.yaml'
   /api/v2/nginx:

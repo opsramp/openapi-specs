@@ -49,7 +49,7 @@ get:
                 Appliance Information:
                   Model: XXXX
                   Registration Status: XXXX
-                  'Firmware Build Tag ': XXXX
+                  Firmware Build Tag: XXXX
                   Tunnel Status: XXXx
                 Network Information:
                   IP Address: XXXX
@@ -60,4 +60,4 @@ get:
                   Default Gateway: XXXX
                   DNS Entries: XXXX
                   Domain Name: XXXX
-                  'Host Name ': XXXX
+                  Host Name: XXXX
