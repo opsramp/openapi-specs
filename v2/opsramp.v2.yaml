@@ -399,71 +399,7 @@ paths:
   /api/v2/metric/tenants/{tenantId}/metrics/{metric}/metricType:
     $ref: './metrics/metric-tenants-tenantid-metrics-metric-metrictype.yaml'
   # Monitoring
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/templates:
-    $ref: './monitoring/tenants-tenantid-resources-resourceid-templates.yaml'
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/templates/search:
-    $ref: './monitoring/tenants-tenantid-resources-resourceid-templates-search.yaml'
-  /api/v2/tenants/{tenantId}/monitoring/templates/search:
-    $ref: './monitoring/tenants-tenantid-monitoring-templates-search.yaml'
-  /api/v2/tenants/{tenantId}/resourceMonitors:
-    $ref: './monitoring/tenants-tenantid-resourcemonitors.yaml'
-  /api/v2/monitoring/metric/name/{name}:
-    $ref: './monitoring/monitoring-metric-name-name.yaml'
-  /api/v2/monitoring/metric/id/{id}:
-    $ref: './monitoring/monitoring-metric-id-id.yaml'
   # Patching
-  /api/v2/tenants/{tenantId}/patches/baselines/{baselineId}/{action}:
-    $ref: './patching/tenants-tenantid-patches-baselines-baselineid-action.yaml'
-  /api/v2/tenants/{tenantId}/patches/baselines/{baselineId}/{patchId}/{action}:
-    $ref: './patching/tenants-tenantid-patches-baselines-baselineid-patchid-action.yaml'
-  /api/v2/tenants/{tenantId}/patches/baselines:
-    $ref: './patching/tenants-tenantid-patches-baselines.yaml'
-  /api/v2/tenants/{tenantId}/patches/baselines/{baselineId}:
-    $ref: './patching/tenants-tenantid-patches-baselines-baselineid.yaml'
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/baselines/{baselineId}/{action}:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid-baselines-baselineid-action.yaml'
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/deviceGroups/{deviceGrpId}/{action}:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid-devicegroups-devicegrpid-action.yaml'
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/devices/{deviceId}/{action}:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid-devices-deviceid-action.yaml'
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/baselines:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid-baselines.yaml'
-  /api/v2/tenants/{tenantId}/patches/compliance:
-    $ref: './patching/tenants-tenantid-patches-compliance.yaml'
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid.yaml'
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/devices:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid-devices.yaml'
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/deviceGroups:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid-devicegroups.yaml'
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/run:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid-run.yaml'
-  /api/v2/tenants/{tenantId}/patches/configurations:
-    $ref: './patching/tenants-tenantid-patches-configurations.yaml'
-  /api/v2/tenants/{tenantId}/patches/configurations/{id}:
-    $ref: './patching/tenants-tenantid-patches-configurations-id.yaml'
-  /api/v2/tenants/{tenantId}/patches/configurations/{id}/run:
-    $ref: './patching/tenants-tenantid-patches-configurations-id-run.yaml'
-  /api/v2/tenants/{tenantId}/patches/configurations/search:
-    $ref: './patching/tenants-tenantid-patches-configurations-search.yaml'
-  /api/v2/tenants/{tenantId}/patches/rating/{intgId}/feed/{patchId}:
-    $ref: './patching/tenants-tenantid-patches-rating-intgid-feed-patchid.yaml'
-  /api/v2/tenants/{tenantId}/patches:
-    $ref: './patching/tenants-tenantid-patches.yaml'
-  /api/v2/tenants/{tenantId}/patches/{resourceId}/scan/status:
-    $ref: './patching/tenants-tenantid-patches-resourceid-scan-status.yaml'
-  /api/v2/tenants/{tenantId}/patches/{resourceId}/install/status:
-    $ref: './patching/tenants-tenantid-patches-resourceid-install-status.yaml'
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/{patchId}/{approvalType}:
-    $ref: './patching/tenants-tenantid-resources-resourceid-patches-patchid-approvaltype.yaml'
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/scan/status:
-    $ref: './patching/tenants-tenantid-resources-resourceid-patches-scan-status.yaml'
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/install/status:
-    $ref: './patching/tenants-tenantid-resources-resourceid-patches-install-status.yaml'
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/baselines/{baselineId}/patches:
-    $ref: './patching/tenants-tenantid-resources-resourceid-baselines-baselineid-patches.yaml'
-  /api/v2/tenants/{tenantId}/resources/patches:
-    $ref: './patching/tenants-tenantid-resources-patches.yaml'
   # Resource Management
   # Tenancy Access Controls
   # Tickets
