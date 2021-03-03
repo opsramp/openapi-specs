@@ -14,8 +14,8 @@ get:
               version:
                 type: integer
           examples:
-              value:
-                version: 2
+            value:
+              version: 2
 parameters:
   - $ref: '../components-global.yaml#/components/parameters/tenantId'
   - in: path
