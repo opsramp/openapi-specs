@@ -114,7 +114,151 @@ paths:
                     error: unauthorized
                     error_description: Bad API credentials
   # Agents and Gateways
+  /api/v2/applicationservice:
+    $ref: './agents-gateways/applicationservice.yaml'
+  /api/v2/download/gateway/{packagename}:
+    $ref: './agents-gateways/download-gateway-packagename.yaml'
+  /api/v2/externalproxy:
+    $ref: './agents-gateways/externalproxy.yaml'
+  /api/v2/generalinfo:
+    $ref: './agents-gateways/generalinfo.yaml'
+  /api/v2/getntpdetails:
+    $ref: './agents-gateways/getntpdetails.yaml'
+  /api/v2/tenants/{tenantId}/agents/{platform}/download/{package-name}:
+    $ref: './agents-gateways/tenants-tenantid-agents-platform-download-package-name.yaml'
+  /api/v2/tenants/{tenantId}/agents/{agentversion}/resourcesCountByAgentVersion:
+    $ref: './agents-gateways/tenants-tenantid-agents-agentversion-resourcescountbyagentversion.yaml'
+  /api/v2/tenants/{tenantId}/agents/deployAgentsScript:
+    $ref: './agents-gateways/tenants-tenantid-agents-deployagentsscript.yaml'
+  /api/v2/tenants/{tenantId}/agents/{platform}/info:
+    $ref: './agents-gateways/tenants-tenantid-agents-platform-info.yaml'
+  /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices:
+    $ref: './agents-gateways/tenants-tenantid-agentpolicies-policyid-devices.yaml'
+  /api/v2/tenants/{tenantId}/agentProfiles/{profileId}/devices:
+    $ref: './agents-gateways/tenants-tenantid-agentprofiles-profileid-devices.yaml'
+  /api/v2/tenants/{tenantId}/agents/windows:
+    $ref: './agents-gateways/tenants-tenantid-agents-windows.yaml'
+  /api/v2/registration:
+    $ref: './agents-gateways/registration.yaml'
+  /api/v2/proxy:
+    $ref: './agents-gateways/proxy.yaml'
+  /api/v2/apiTokenGen:
+    $ref: './agents-gateways/apitokengen.yaml'
+  /api/v2/networksettings:
+    $ref: './agents-gateways/networksettings.yaml'
+  /api/v2/nginx:
+    $ref: './agents-gateways/nginx.yaml'
+  /api/v2/ntpmanualconfig:
+    $ref: './agents-gateways/ntpmanualconfig.yaml'
+  /api/v2/ntpservice:
+    $ref: './agents-gateways/ntpservice.yaml'
+  /api/v2/ntpupdateips:
+    $ref: './agents-gateways/ntpupdateips.yaml'
+  /api/v2/ntpsyncips:
+    $ref: './agents-gateways/ntpsyncips.yaml'
+  /api/v2/restartnetwork:
+    $ref: './agents-gateways/restartnetwork.yaml'
+  /api/v2/staticroute:
+    $ref: './agents-gateways/staticroute.yaml'
+  /api/v2/gettimezoneinfo:
+    $ref: './agents-gateways/gettimezoneinfo.yaml'
+  /api/v2/settimezone:
+    $ref: './agents-gateways/settimezone.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles/{id}/attach:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles-id-attach.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles/{profileId}:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles-profileid.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles/{profileId}/detach:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles-profileid-detach.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles/{profileId}/reconnectTunnel:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles-profileid-reconnecttunnel.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles/search:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles-search.yaml'
   # Alerts
+  /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}/{action}:
+    $ref: './alerts/tenants-tenantid-policies-alertcorrelation-policyid-action.yaml'
+  /api/v2/tenants/{tenantId}/rosters/search:
+    $ref: './alerts/tenants-tenantid-rosters-search.yaml'
+  /api/v2/tenants/{tenantId}/policies/alertCorrelation:
+    $ref: './alerts/tenants-tenantid-policies-alertcorrelation.yaml'
+  /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}:
+    $ref: './alerts/tenants-tenantid-policies-alertcorrelation-policyid.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}/escalations:
+    $ref: './alerts/tenants-tenantid-alerts-alertid-escalations.yaml'
+  /api/v2/tenants/{tenantId}/escalations:
+    $ref: './alerts/tenants-tenantid-escalations.yaml'
+  /api/v2/tenants/{tenantId}/escalations/{id}:
+    $ref: './alerts/tenants-tenantid-escalations-id.yaml'
+  /api/v2/tenants/{tenantId}/escalations/{id}/disable:
+    $ref: './alerts/tenants-tenantid-escalations-id-disable.yaml'
+  /api/v2/tenants/{tenantId}/escalations/{id}/enable:
+    $ref: './alerts/tenants-tenantid-escalations-id-enable.yaml'
+  /api/v2/tenants/{tenantId}/escalations/search:
+    $ref: './alerts/tenants-tenantid-escalations-search.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}/acknowledge:
+    $ref: './alerts/tenants-tenantid-alerts-alertid-acknowledge.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}/actions/{action}:
+    $ref: './alerts/tenants-tenantid-alerts-alertid-actions-action.yaml'
+  /api/v2/tenants/{tenantId}/alerts/event/{eventId}:
+    $ref: './alerts/tenants-tenantid-alerts-event-eventid.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}/comments:
+    $ref: './alerts/tenants-tenantid-alerts-alertid-comments.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}:
+    $ref: './alerts/tenants-tenantid-alerts-alertid.yaml'
+  /api/v2/alertTypes:
+    $ref: './alerts/alerttypes.yaml'
+  /api/v2/tenants/{tenantId}/users/{userId}/alertViews:
+    $ref: './alerts/tenants-tenantid-users-userid-alertviews.yaml'
+  /api/v2/tenants/{tenantId}/users/{userId}/alertViews/{viewId}:
+    $ref: './alerts/tenants-tenantid-users-userid-alertviews-viewid.yaml'
+  /api/v2/alerts/tenants/{tenantId}/alerts/{alertId}:
+    $ref: './alerts/alerts-tenants-tenantid-alerts-alertid.yaml'
+  /api/v2/alerts/tenants/{tenantId}/tickets/{ticketId}:
+    $ref: './alerts/alerts-tenants-tenantid-tickets-ticketid.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}/incidents/{incidentId}/attach:
+    $ref: './alerts/tenants-tenantid-alerts-alertid-incidents-incidentid-attach.yaml'
+  /api/v2/tenants/{tenantId}/alert:
+    $ref: './alerts/tenants-tenantid-alert.yaml'
+  /api/v2/tenants/{tenantId}/alerts:
+    $ref: './alerts/tenants-tenantid-alerts.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}/occurrences:
+    $ref: './alerts/tenants-tenantid-alerts-alertid-occurrences.yaml'
+  /api/v2/tenants/{tenantId}/alerts/search:
+    $ref: './alerts/tenants-tenantid-alerts-search.yaml'
+  /api/v2/tenants/{tenantId}/alertStatusHistory/{alertId}:
+    $ref: './alerts/tenants-tenantid-alertstatushistory-alertid.yaml'
+  /api/v2/tenants/{tenantId}/subAlertTypes:
+    $ref: './alerts/tenants-tenantid-subalerttypes.yaml'
+  /api/v2/tenants/{tenantId}/alerts/{alertId}/tickets/{ticketId}/update:
+    $ref: './alerts/tenants-tenantid-alerts-alertid-tickets-ticketid-update.yaml'
+  /api/v2/tenants/{tenantId}/policies/firstResponse:
+    $ref: './alerts/tenants-tenantid-policies-firstresponse.yaml'
+  /api/v2/tenants/{tenantId}/policies/firstResponse/{policyId}:
+    $ref: './alerts/tenants-tenantid-policies-firstresponse-policyid.yaml'
+  /api/v2/tenants/{tenantId}/policies/firstResponse/{policyId}/{status}:
+    $ref: './alerts/tenants-tenantid-policies-firstresponse-policyid-status.yaml'
+  /api/v2/tenants/{tenantId}/rosters:
+    $ref: './alerts/tenants-tenantid-rosters.yaml'
+  /api/v2/tenants/{tenantId}/rosters/{id}:
+    $ref: './alerts/tenants-tenantid-rosters-id.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resources:
+    $ref: './alerts/tenants-tenantid-schedulemaintenances-smid-resources.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances:
+    $ref: './alerts/tenants-tenantid-schedulemaintenances.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/end:
+    $ref: './alerts/tenants-tenantid-schedulemaintenances-smid-end.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resources/{resourcesType}:
+    $ref: './alerts/tenants-tenantid-schedulemaintenances-smid-resources-resourcestype.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resume:
+    $ref: './alerts/tenants-tenantid-schedulemaintenances-smid-resume.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances/search:
+    $ref: './alerts/tenants-tenantid-schedulemaintenances-search.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/suspend:
+    $ref: './alerts/tenants-tenantid-schedulemaintenances-smid-suspend.yaml'
+  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}:
+    $ref: './alerts/tenants-tenantid-schedulemaintenances-smid.yaml'
   # Automation
   /api/v2/tenants/{tenantId}/jobs:
     $ref: './automation/tenants-tenantid-jobs.yaml'
@@ -142,6 +286,64 @@ paths:
   /api/v2/exports/tenants/{tenantId}/create:
     $ref: './exports/exports-tenants-tenantid-create.yaml'
   # Integrations
+  /api/v2/tenants/{tenantId}/integrations/activity:
+    $ref: './integrations/tenants-tenantid-integrations-activity.yaml'
+  /api/v2/tenants/{tenantId}/policies/discovery:
+    $ref: './integrations/tenants-tenantid-policies-discovery.yaml'
+  /api/v2/tenants/{tenantId}/policies/discovery/{discoveryId}:
+    $ref: './integrations/tenants-tenantid-policies-discovery-discoveryid.yaml'
+  /api/v2/tenants/{tenantId}/policies/discovery/action/scan/{discoveryProfileId}:
+    $ref: './integrations/tenants-tenantid-policies-discovery-action-scan-discoveryprofileid.yaml'
+  /api/v2/tenants/{tenantId}/policies/discovery/search:
+    $ref: './integrations/tenants-tenantid-policies-discovery-search.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/CUSTOM:
+    $ref: './integrations/tenants-tenantid-integrations-install-custom.yaml'
+  /api/v2/tenants/{tenantId}/integrations/available/{intgId}/emailProps/{entityType}:
+    $ref: './integrations/tenants-tenantid-integrations-available-intgid-emailprops-entitytype.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/inbound/authentication:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-inbound-authentication.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/mappingAttr:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-mappingattr.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/notifier:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-notifier.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/disable:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-disable.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/enable:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-enable.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}/activate:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-event-eventid-activate.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-event.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}/deactivate:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-event-eventid-deactivate.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-event-eventid.yaml'
+  /api/v2//tenants/{tenantId}/integrations/installed/{installedIntgId}/events:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-events.yaml'
+  /api/v2//tenants/{tenantId}/integrations/events/placeHolders/{entityType}:
+    $ref: './integrations/tenants-tenantid-integrations-events-placeholders-entitytype.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid.yaml'
+  /api/v2/tenants/{tenantId}/integrations/available/{intgId}/mappingAttr/{entityType}:
+    $ref: './integrations/tenants-tenantid-integrations-available-intgid-mappingattr-entitytype.yaml'
+  /api/v2/tenants/{tenantId}/integrations/available/search:
+    $ref: './integrations/tenants-tenantid-integrations-available-search.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/search:
+    $ref: './integrations/tenants-tenantid-integrations-installed-search.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/EMAILINCIDENTS:
+    $ref: './integrations/tenants-tenantid-integrations-install-emailincidents.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/EMAILALERTS:
+    $ref: './integrations/tenants-tenantid-integrations-install-emailalerts.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/AWS:
+    $ref: './integrations/tenants-tenantid-integrations-install-aws.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/AZURE:
+    $ref: './integrations/tenants-tenantid-integrations-install-azure.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/GOOGLE:
+    $ref: './integrations/tenants-tenantid-integrations-install-google.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/{intgId}:
+    $ref: './integrations/tenants-tenantid-integrations-install-intgid.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/OKTA:
+    $ref: './integrations/tenants-tenantid-integrations-install-okta.yaml'
   # Knowledge Base
   /api/v2/tenants/{tenantId}/kb/{articleId}/activitylog:
     $ref: './knowledge-base/tenants-tenantid-kb-articleid-activitylog.yaml'
