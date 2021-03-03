@@ -407,6 +407,10 @@ paths:
     $ref: './monitoring/tenants-tenantid-monitoring-templates-search.yaml'
   /api/v2/tenants/{tenantId}/resourceMonitors:
     $ref: './monitoring/tenants-tenantid-resourcemonitors.yaml'
+  /api/v2/monitoring/metric/name/{name}:
+    $ref: './monitoring/monitoring-metric-name-name.yaml'
+  /api/v2/monitoring/metric/id/{id}:
+    $ref: './monitoring/monitoring-metric-id-id.yaml'
   # Patching
   /api/v2/tenants/{tenantId}/patches/baselines/{baselineId}/{action}:
     $ref: './patching/tenants-tenantid-patches-baselines-baselineid-action.yaml'
@@ -573,6 +577,10 @@ paths:
     $ref: './resource-management/tenants-tenantid-sites-minimal.yaml'
   /api/v2/tenants/{tenantId}/topology/{resourceUUID}:
     $ref: './resource-management/tenants-tenantid-topology-resourceuuid.yaml'
+  /api/v2/synthetics/publiclocations:
+    $ref: './resource-management/synthetics-publiclocations.yaml'
+  /api/v2/synthetics/{tenantId}/privatelocations:
+    $ref: './resource-management/synthetics-tenantid-privatelocations.yaml'
   # Tenancy Access Controls
   /api/v2/tenants/{tenantId}/notes:
     $ref: './tenancy-access-controls/tenants-tenantid-notes.yaml'
@@ -638,6 +646,14 @@ paths:
     $ref: './tenancy-access-controls/tenants-tenantid-users-search.yaml'
   /api/v2/tenants/{orgId}/users/{userId}:
     $ref: './tenancy-access-controls/tenants-orgid-users-userid.yaml'
+  /api/v2/tenants/{tenantId}/resourceTypes/ARM:
+    $ref: './tenancy-access-controls/tenants-tenantid-resourcetypes-arm.yaml'
+  /api/v2/tenants/{tenantId}/resourceTypes/AWS:
+    $ref: './tenancy-access-controls/tenants-tenantid-resourcetypes-aws.yaml'
+  /api/v2/tenants/{tenantId}/resourceTypes/GOOGLE:
+    $ref: './tenancy-access-controls/tenants-tenantid-resourcetypes-google.yaml'
+  /api/v2/tenants/{tenantId}/customBranding:
+    $ref: './tenancy-access-controls/tenants-tenantid-custombranding.yaml'
   # Tickets
   /api/v2/tenants/{tenantId}/incidents/businessImpacts:
     $ref: './tickets/tenants-tenantid-incidents-businessimpacts.yaml'
@@ -767,6 +783,8 @@ paths:
     $ref: './tickets/tenants-tenantid-tasks-taskid.yaml'
   /api/v2/tenants/{tenantId}/{ticketType}/{ticketId}/notes:
     $ref: './tickets/tenants-tenantid-tickettype-ticketid-notes.yaml'
+  /api/v2/tenants/{tenantId}/{ticketType}/{ticketId}/notes/{noteId}:
+    $ref: './tickets/tenants-tenantid-tickettype-ticketid-notes-noteid.yaml'
   /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/activitylog:
     $ref: './tickets/tenants-tenantid-timeboundrequests-timeboundrequestid-activitylog.yaml'
   /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/responses:
