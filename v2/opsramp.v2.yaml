@@ -345,59 +345,7 @@ paths:
   /api/v2/tenants/{tenantId}/integrations/install/OKTA:
     $ref: './integrations/tenants-tenantid-integrations-install-okta.yaml'
   # Knowledge Base
-  /api/v2/tenants/{tenantId}/kb/{articleId}/activitylog:
-    $ref: './knowledge-base/tenants-tenantid-kb-articleid-activitylog.yaml'
-  /api/v2/tenants/{tenantId}/kb/article/{articleId}/comment:
-    $ref: './knowledge-base/tenants-tenantid-kb-article-articleid-comment.yaml'
-  /api/v2/tenants/{tenantId}/kb/articlesList:
-    $ref: './knowledge-base/tenants-tenantid-kb-articleslist.yaml'
-  /api/v2/tenants/{tenantId}/kb/articles/search:
-    $ref: './knowledge-base/tenants-tenantid-kb-articles-search.yaml'
-  /api/v2/tenants/{tenantId}/kb/article/{articleId}/comments/{commentId}/resources/{resourceId}:
-    $ref: './knowledge-base/tenants-tenantid-kb-article-articleid-comments-commentid-resources-resourceid.yaml'
-  /api/v2/tenants/{tenantId}/kb/article/{articleId}/resources/{resourceId}:
-    $ref: './knowledge-base/tenants-tenantid-kb-article-articleid-resources-resourceid.yaml'
-  /api/v2/tenants/{tenantId}/kb/article:
-    $ref: './knowledge-base/tenants-tenantid-kb-article.yaml'
-  /api/v2/tenants/{tenantId}/kb/article/{articleId}/delete:
-    $ref: './knowledge-base/tenants-tenantid-kb-article-articleid-delete.yaml'
-  /api/v2/tenants/{tenantId}/kb/article/{articleId}:
-    $ref: './knowledge-base/tenants-tenantid-kb-article-articleid.yaml'
-  /api/v2/tenants/{tenantId}/kb/article/{articleId}/comments:
-    $ref: './knowledge-base/tenants-tenantid-kb-article-articleid-comments.yaml'
-  /api/v2/tenants/{tenantId}/kb/article/{articleId}/share:
-    $ref: './knowledge-base/tenants-tenantid-kb-article-articleid-share.yaml'
-  /api/v2/tenants/{tenantId}/kb/category/{categoryId}:
-    $ref: './knowledge-base/tenants-tenantid-kb-category-categoryid.yaml'
-  /api/v2/tenants/{tenantId}/kb/category/create:
-    $ref: './knowledge-base/tenants-tenantid-kb-category-create.yaml'
-  /api/v2/tenants/{tenantId}/kb/category/delete/{categoryId}:
-    $ref: './knowledge-base/tenants-tenantid-kb-category-delete-categoryid.yaml'
-  /api/v2/tenants/{tenantId}/kb/categorylist:
-    $ref: './knowledge-base/tenants-tenantid-kb-categorylist.yaml'
-  /api/v2/tenants/{tenantId}/kb/category/restore/{categoryId}:
-    $ref: './knowledge-base/tenants-tenantid-kb-category-restore-categoryid.yaml'
-  /api/v2/tenants/{tenantId}/kb/categorylist/{categoryId}:
-    $ref: './knowledge-base/tenants-tenantid-kb-categorylist-categoryid.yaml'
-  /api/v2/tenants/{tenantId}/kb/category/update/{categoryId}:
-    $ref: './knowledge-base/tenants-tenantid-kb-category-update-categoryid.yaml'
-  /api/v2/tenants/{tenantId}/kb/template/{templateId}/delete:
-    $ref: './knowledge-base/tenants-tenantid-kb-template-templateid-delete.yaml'
-  /api/v2/tenants/{tenantId}/kb/templatesList:
-    $ref: './knowledge-base/tenants-tenantid-kb-templateslist.yaml'
-  /api/v2/tenants/{tenantId}/kb/template:
-    $ref: './knowledge-base/tenants-tenantid-kb-template.yaml'
-  /api/v2/tenants/{tenantId}/kb/template/{templateId}:
-    $ref: './knowledge-base/tenants-tenantid-kb-template-templateid.yaml'
   # Metrics
-  /api/v2/metric/tenants/{tenantId}/rtypes/{rtype}/resources/{resource}/metrics:
-    $ref: './metrics/metric-tenants-tenantid-rtypes-rtype-resources-resource-metrics.yaml'
-  /api/v2/metric/search:
-    $ref: './metrics/metric-search.yaml'
-  /api/v2/metric/tenants/{tenantId}/metrictype:
-    $ref: './metrics/metric-tenants-tenantid-metrictype.yaml'
-  /api/v2/metric/tenants/{tenantId}/metrics/{metric}/metricType:
-    $ref: './metrics/metric-tenants-tenantid-metrics-metric-metrictype.yaml'
   # Monitoring
   # Patching
   # Resource Management
