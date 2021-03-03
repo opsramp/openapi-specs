@@ -51,64 +51,6 @@ post:
   responses:
     '200':
       description: OK
-      content:
-        application/json:
-          schema:
-            $ref: './components.yaml#/components/schemas/user'
-          examples:
-            example-1:
-              value:
-                id: USR0000002145
-                loginName: ScarletJohn
-                lastName: John
-                firstName: Scarlet
-                email: scarlet@gmail.com
-                altEmail: scarletjohn@gmail.com
-                userAccountType: REGULAR
-                designation: Architect
-                address: 300 BOYLSTON AVE E
-                city: 'SEATTLE '
-                state: WA
-                country: United States
-                zip: '98102'
-                phoneNumber: 5232324543 Extn 1
-                mobileNumber: '8337311540'
-                timeZone:
-                  id: '7'
-                  name: America/New_York
-                  label: 'GMT -05:00 Eastern'
-                  code: EST
-                roles:
-                  - id: 4
-                    name: ACS Client Administrator
-                  - id: 6
-                    name: FULL PERMISSIONS-CLIENT
-                authType: LOCAL
-                userGroups:
-                  - uniqueId: USRGRP-43cfc675-hg45-bfe3-6eg6-c46a192d0786
-                    name: ACS Admins
-                  - uniqueId: USRGRP-fr4afe06-0cca-6g8f-6053-654531f7d9ff
-                    name: Design Department
-                status: active
-                orgId: client_16
-                profileImage:
-                  logoPath: 'https://yourdomain.com/img/nophoto.gif'
-                  thumbPath: 'https://yourdomain.com/img/nophoto.gif'
-                  tinyThumbPath: 'https://yourdomain.com/img/wall_img1.gif'
-                organizationName: Luminalto
-                userNotifications:
-                  - notifyType: Account Information
-                    notifyMethod: Email
-                    notifyInputType: Primary Email
-                    notifyRecurringReport: false
-                  - notifyType: Alert Notification
-                    notifyMethod: No Notify
-                    notifyRecurringReport: false
-                  - notifyType: Report Notification
-                    notifyMethod: No Notify
-                    notifyRecurringReport: false
-                createdTime: '2017-11-01T11:54:24+0000'
-                updatedTime: '2018-03-09T09:45:21+0000'
 get:
   summary: Get user details
   description: Gets user details.
