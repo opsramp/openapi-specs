@@ -277,9 +277,9 @@ components:
             - Inbound-Outbound
         description:
           type: string
-        inboundConfig:
+        'inboundConfig ':
           $ref: '#/components/schemas/inboundConfig'
-        outboundConfig:
+        'outboundConfig ':
           $ref: '#/components/schemas/outboundConfig'
         emailProps:
           type: array
