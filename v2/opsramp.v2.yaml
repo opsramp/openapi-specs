@@ -114,11 +114,131 @@ paths:
                     error: unauthorized
                     error_description: Bad API credentials
   # Agents and Gateways
+  /api/v2/applicationservice:
+    $ref: './agents-gateways/applicationservice.yaml'
+  /api/v2/download/gateway/{packagename}:
+    $ref: './agents-gateways/download-gateway-packagename.yaml'
+  /api/v2/externalproxy:
+    $ref: './agents-gateways/externalproxy.yaml'
+  /api/v2/generalinfo:
+    $ref: './agents-gateways/generalinfo.yaml'
+  /api/v2/getntpdetails:
+    $ref: './agents-gateways/getntpdetails.yaml'
+  /api/v2/tenants/{tenantId}/agents/{platform}/download/{package-name}:
+    $ref: './agents-gateways/tenants-tenantid-agents-platform-download-package-name.yaml'
+  /api/v2/tenants/{tenantId}/agents/{agentversion}/resourcesCountByAgentVersion:
+    $ref: './agents-gateways/tenants-tenantid-agents-agentversion-resourcescountbyagentversion.yaml'
+  /api/v2/tenants/{tenantId}/agents/deployAgentsScript:
+    $ref: './agents-gateways/tenants-tenantid-agents-deployagentsscript.yaml'
+  /api/v2/tenants/{tenantId}/agents/{platform}/info:
+    $ref: './agents-gateways/tenants-tenantid-agents-platform-info.yaml'
+  /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices:
+    $ref: './agents-gateways/tenants-tenantid-agentpolicies-policyid-devices.yaml'
+  /api/v2/tenants/{tenantId}/agentProfiles/{profileId}/devices:
+    $ref: './agents-gateways/tenants-tenantid-agentprofiles-profileid-devices.yaml'
+  /api/v2/tenants/{tenantId}/agents/windows:
+    $ref: './agents-gateways/tenants-tenantid-agents-windows.yaml'
+  /api/v2/registration:
+    $ref: './agents-gateways/registration.yaml'
+  /api/v2/proxy:
+    $ref: './agents-gateways/proxy.yaml'
+  /api/v2/apiTokenGen:
+    $ref: './agents-gateways/apitokengen.yaml'
+  /api/v2/networksettings:
+    $ref: './agents-gateways/networksettings.yaml'
+  /api/v2/nginx:
+    $ref: './agents-gateways/nginx.yaml'
+  /api/v2/ntpmanualconfig:
+    $ref: './agents-gateways/ntpmanualconfig.yaml'
+  /api/v2/ntpservice:
+    $ref: './agents-gateways/ntpservice.yaml'
+  /api/v2/ntpupdateips:
+    $ref: './agents-gateways/ntpupdateips.yaml'
+  /api/v2/ntpsyncips:
+    $ref: './agents-gateways/ntpsyncips.yaml'
+  /api/v2/restartnetwork:
+    $ref: './agents-gateways/restartnetwork.yaml'
+  /api/v2/staticroute:
+    $ref: './agents-gateways/staticroute.yaml'
+  /api/v2/gettimezoneinfo:
+    $ref: './agents-gateways/gettimezoneinfo.yaml'
+  /api/v2/settimezone:
+    $ref: './agents-gateways/settimezone.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles/{id}/attach:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles-id-attach.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles/{profileId}:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles-profileid.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles/{profileId}/detach:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles-profileid-detach.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles/{profileId}/reconnectTunnel:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles-profileid-reconnecttunnel.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles/search:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles-search.yaml'
   # Alerts
   # Exports
   /api/v2/exports/tenants/{tenantId}/create:
     $ref: './exports/exports-tenants-tenantid-create.yaml'
   # Integrations
+  /api/v2/tenants/{tenantId}/integrations/activity:
+    $ref: './integrations/tenants-tenantid-integrations-activity.yaml'
+  /api/v2/tenants/{tenantId}/policies/discovery:
+    $ref: './integrations/tenants-tenantid-policies-discovery.yaml'
+  /api/v2/tenants/{tenantId}/policies/discovery/{discoveryId}:
+    $ref: './integrations/tenants-tenantid-policies-discovery-discoveryid.yaml'
+  /api/v2/tenants/{tenantId}/policies/discovery/action/scan/{discoveryProfileId}:
+    $ref: './integrations/tenants-tenantid-policies-discovery-action-scan-discoveryprofileid.yaml'
+  /api/v2/tenants/{tenantId}/policies/discovery/search:
+    $ref: './integrations/tenants-tenantid-policies-discovery-search.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/CUSTOM:
+    $ref: './integrations/tenants-tenantid-integrations-install-custom.yaml'
+  /api/v2/tenants/{tenantId}/integrations/available/{intgId}/emailProps/{entityType}:
+    $ref: './integrations/tenants-tenantid-integrations-available-intgid-emailprops-entitytype.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/inbound/authentication:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-inbound-authentication.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/mappingAttr:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-mappingattr.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/notifier:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-notifier.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/disable:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-disable.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/enable:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-enable.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}/activate:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-event-eventid-activate.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-event.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}/deactivate:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-event-eventid-deactivate.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-event-eventid.yaml'
+  /api/v2//tenants/{tenantId}/integrations/installed/{installedIntgId}/events:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-events.yaml'
+  /api/v2//tenants/{tenantId}/integrations/events/placeHolders/{entityType}:
+    $ref: './integrations/tenants-tenantid-integrations-events-placeholders-entitytype.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}:
+    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid.yaml'
+  /api/v2/tenants/{tenantId}/integrations/available/{intgId}/mappingAttr/{entityType}:
+    $ref: './integrations/tenants-tenantid-integrations-available-intgid-mappingattr-entitytype.yaml'
+  /api/v2/tenants/{tenantId}/integrations/available/search:
+    $ref: './integrations/tenants-tenantid-integrations-available-search.yaml'
+  /api/v2/tenants/{tenantId}/integrations/installed/search:
+    $ref: './integrations/tenants-tenantid-integrations-installed-search.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/EMAILINCIDENTS:
+    $ref: './integrations/tenants-tenantid-integrations-install-emailincidents.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/EMAILALERTS:
+    $ref: './integrations/tenants-tenantid-integrations-install-emailalerts.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/AWS:
+    $ref: './integrations/tenants-tenantid-integrations-install-aws.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/AZURE:
+    $ref: './integrations/tenants-tenantid-integrations-install-azure.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/GOOGLE:
+    $ref: './integrations/tenants-tenantid-integrations-install-google.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/{intgId}:
+    $ref: './integrations/tenants-tenantid-integrations-install-intgid.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/OKTA:
+    $ref: './integrations/tenants-tenantid-integrations-install-okta.yaml'
   # Knowledge Base
   # Metrics
   # Monitoring
