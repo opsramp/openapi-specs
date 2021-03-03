@@ -114,6 +114,38 @@ paths:
                     error: unauthorized
                     error_description: Bad API credentials
   # Agents and Gateways
+  /api/v2/networksettings:
+    $ref: './agents-gateways/networksettings.yaml'
+  /api/v2/nginx:
+    $ref: './agents-gateways/nginx.yaml'
+  /api/v2/ntpmanualconfig:
+    $ref: './agents-gateways/ntpmanualconfig.yaml'
+  /api/v2/ntpservice:
+    $ref: './agents-gateways/ntpservice.yaml'
+  /api/v2/ntpupdateips:
+    $ref: './agents-gateways/ntpupdateips.yaml'
+  /api/v2/ntpsyncips:
+    $ref: './agents-gateways/ntpsyncips.yaml'
+  /api/v2/restartnetwork:
+    $ref: './agents-gateways/restartnetwork.yaml'
+  /api/v2/staticroute:
+    $ref: './agents-gateways/staticroute.yaml'
+  /api/v2/gettimezoneinfo:
+    $ref: './agents-gateways/gettimezoneinfo.yaml'
+  /api/v2/settimezone:
+    $ref: './agents-gateways/settimezone.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles/{id}/attach:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles-id-attach.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles/{profileId}:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles-profileid.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles/{profileId}/detach:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles-profileid-detach.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles/{profileId}/reconnectTunnel:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles-profileid-reconnecttunnel.yaml'
+  /api/v2/tenants/{tenantId}/managementProfiles/search:
+    $ref: './agents-gateways/tenants-tenantid-managementprofiles-search.yaml'
   # Alerts
   /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}/{action}:
     $ref: './alerts/tenants-tenantid-policies-alertcorrelation-policyid-action.yaml'
