@@ -119,64 +119,6 @@ paths:
   /api/v2/exports/tenants/{tenantId}/create:
     $ref: './exports/exports-tenants-tenantid-create.yaml'
   # Integrations
-  /api/v2/tenants/{tenantId}/integrations/activity:
-    $ref: './integrations/tenants-tenantid-integrations-activity.yaml'
-  /api/v2/tenants/{tenantId}/policies/discovery:
-    $ref: './integrations/tenants-tenantid-policies-discovery.yaml'
-  /api/v2/tenants/{tenantId}/policies/discovery/{discoveryId}:
-    $ref: './integrations/tenants-tenantid-policies-discovery-discoveryid.yaml'
-  /api/v2/tenants/{tenantId}/policies/discovery/action/scan/{discoveryProfileId}:
-    $ref: './integrations/tenants-tenantid-policies-discovery-action-scan-discoveryprofileid.yaml'
-  /api/v2/tenants/{tenantId}/policies/discovery/search:
-    $ref: './integrations/tenants-tenantid-policies-discovery-search.yaml'
-  /api/v2/tenants/{tenantId}/integrations/install/CUSTOM:
-    $ref: './integrations/tenants-tenantid-integrations-install-custom.yaml'
-  /api/v2/tenants/{tenantId}/integrations/available/{intgId}/emailProps/{entityType}:
-    $ref: './integrations/tenants-tenantid-integrations-available-intgid-emailprops-entitytype.yaml'
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/inbound/authentication:
-    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-inbound-authentication.yaml'
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/mappingAttr:
-    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-mappingattr.yaml'
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/notifier:
-    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-notifier.yaml'
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/disable:
-    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-disable.yaml'
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/enable:
-    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-enable.yaml'
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}/activate:
-    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-event-eventid-activate.yaml'
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event:
-    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-event.yaml'
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}/deactivate:
-    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-event-eventid-deactivate.yaml'
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}:
-    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-event-eventid.yaml'
-  /api/v2//tenants/{tenantId}/integrations/installed/{installedIntgId}/events:
-    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid-events.yaml'
-  /api/v2//tenants/{tenantId}/integrations/events/placeHolders/{entityType}:
-    $ref: './integrations/tenants-tenantid-integrations-events-placeholders-entitytype.yaml'
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}:
-    $ref: './integrations/tenants-tenantid-integrations-installed-installedintgid.yaml'
-  /api/v2/tenants/{tenantId}/integrations/available/{intgId}/mappingAttr/{entityType}:
-    $ref: './integrations/tenants-tenantid-integrations-available-intgid-mappingattr-entitytype.yaml'
-  /api/v2/tenants/{tenantId}/integrations/available/search:
-    $ref: './integrations/tenants-tenantid-integrations-available-search.yaml'
-  /api/v2/tenants/{tenantId}/integrations/installed/search:
-    $ref: './integrations/tenants-tenantid-integrations-installed-search.yaml'
-  /api/v2/tenants/{tenantId}/integrations/install/EMAILINCIDENTS:
-    $ref: './integrations/tenants-tenantid-integrations-install-emailincidents.yaml'
-  /api/v2/tenants/{tenantId}/integrations/install/EMAILALERTS:
-    $ref: './integrations/tenants-tenantid-integrations-install-emailalerts.yaml'
-  /api/v2/tenants/{tenantId}/integrations/install/AWS:
-    $ref: './integrations/tenants-tenantid-integrations-install-aws.yaml'
-  /api/v2/tenants/{tenantId}/integrations/install/AZURE:
-    $ref: './integrations/tenants-tenantid-integrations-install-azure.yaml'
-  /api/v2/tenants/{tenantId}/integrations/install/GOOGLE:
-    $ref: './integrations/tenants-tenantid-integrations-install-google.yaml'
-  /api/v2/tenants/{tenantId}/integrations/install/{intgId}:
-    $ref: './integrations/tenants-tenantid-integrations-install-intgid.yaml'
-  /api/v2/tenants/{tenantId}/integrations/install/OKTA:
-    $ref: './integrations/tenants-tenantid-integrations-install-okta.yaml'
   # Knowledge Base
   # Metrics
   # Monitoring
