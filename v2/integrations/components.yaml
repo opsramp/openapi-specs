@@ -227,6 +227,8 @@ components:
           type: string
         name:
           type: string
+        multipleInstallations:
+          type: boolean
     alertSource:
       title: alertSource
       type: object
@@ -264,6 +266,12 @@ components:
             - Monitoring
             - SSO
             - Automation
+        installedBy:
+          type: string
+        installedTime:
+          type: time
+        status:
+          type: string
         alertSource:
           $ref: '#/components/schemas/alertSource'
         direction:

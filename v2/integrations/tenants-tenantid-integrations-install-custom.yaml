@@ -19,6 +19,9 @@ post:
                   id: CUSTOM
                   name: Custom
                 category: Monitoring
+                installedBy: opsramp_api_user
+                installedTime: 2020-10-08T07:25:24+0100
+                status: enabled
                 alertSource:
                   id: 30
                   name: Custom
@@ -32,6 +35,9 @@ post:
                   id: CUSTOM
                   name: Custom
                 category: Collaboration
+                installedBy: opsramp_api_user
+                installedTime: 2020-10-08T07:25:24+0100
+                status: enabled
                 direction: Inbound
             example-authentication-only:
               value:
@@ -41,6 +47,9 @@ post:
                   id: CUSTOM
                   name: Custom
                 category: Custom
+                installedBy: opsramp_api_user
+                installedTime: 2020-10-08T07:25:24+0100
+                status: enabled
                 inboundConfig:
                   authentication:
                     authType: OAUTH2
