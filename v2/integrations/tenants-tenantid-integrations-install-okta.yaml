@@ -33,6 +33,10 @@ post:
                 integration:
                   id: OKTA
                   name: Okta
+                ssoInstalled:
+                  installedBy: opsramp_api_user
+                  installedTime: 2020-10-08T08:13:55+0100
+                  status: enabled
                 singleSignOnAuthentication:
                   type: Okta
                   issuerUrl: 'https://localhost.com'
@@ -41,11 +45,16 @@ post:
             example-other:
               value:
                 id: INTG-4d3042af-af4e-4fa0-9629-b23ab6d745da
-                displayName: testSSOIntg
                 integration:
                   id: CUSTOM
                   name: custom
                   multipleInstallations: true
+                ssoInstalled:
+                  displayName: testSSOIntg
+                  category: SSO
+                  installedBy: opsramp_api_user
+                  installedTime: 2020-10-08T08:13:55+0100
+                  status: enabled
                 singleSignOnAuthentication:
                   type: Other
                   issuerUrl: 'https://localhost.com'
