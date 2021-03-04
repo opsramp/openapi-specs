@@ -733,3 +733,27 @@ components:
           type: string
           description: |
             Certificate issued by the SSO system.
+    ssoIntg:
+      title: ssoIntg
+      type: object
+      properties:
+        displayName:
+          type: string
+          description: |
+            Display name of SSO.
+        category:
+          type: string
+          description: |
+            SSO as Category
+        installedBy:
+          type: string
+          description: |
+            SSO installed by.
+        installedTime:
+          type: time
+          description: |
+            SSO installed time.
+        status:
+          type: string
+          description: |
+          status of the Integration.
