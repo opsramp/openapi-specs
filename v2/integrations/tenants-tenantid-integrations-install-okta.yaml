@@ -20,6 +20,10 @@ post:
                     type: string
                   name:
                     type: string
+                  multipleInstallations:
+                    type: boolean
+              ssoInstalled:
+                $ref: './components.yaml#/components/schemas/ssoIntg'
               singleSignOnAuthentication:
                 $ref: './components.yaml#/components/schemas/ssoAuth'
           examples:
@@ -37,10 +41,11 @@ post:
             example-other:
               value:
                 id: INTG-4d3042af-af4e-4fa0-9629-b23ab6d745da
-                displayName: testIntg
+                displayName: testSSOIntg
                 integration:
-                  id: OTHER
-                  name: Other
+                  id: CUSTOM
+                  name: custom
+                  multipleInstallations: true
                 singleSignOnAuthentication:
                   type: Other
                   issuerUrl: 'https://localhost.com'
@@ -53,6 +58,8 @@ post:
           type: object
           properties:
             displayName:
+              type: string
+            category:
               type: string
             singleSignOnAuthentication:
               $ref: './components.yaml#/components/schemas/ssoAuth'
@@ -70,8 +77,9 @@ post:
           example-other:
             value:
               displayName: testSSOIntg
+              category: SSO
               singleSignOnAuthentication:
-                type: Other
+                type: CUSTOM
                 issuerUrl: 'https://localhost.com'
                 redirectionUrl: 'https://localhost.com'
                 logoutUrl: 'https://localhost.com'
