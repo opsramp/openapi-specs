@@ -756,4 +756,4 @@ components:
         status:
           type: string
           description: |
-          status of the Integration.
+            status of the Integration.
