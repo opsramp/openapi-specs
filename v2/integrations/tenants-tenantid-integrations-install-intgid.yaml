@@ -221,7 +221,6 @@ post:
               displayName: Test Integration
               logo:
                 name: test.png
-                displayID: newId
                 file: /9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUSExMVFhUVGBcXFhcYGBgaFxgVFRUYFxcYFRcYHSggHh8lGxsXIjEiJSkrLi4wFx8zODMtOCgtLisBCgoKDg0OGxAQGy0lICYtLS0tLy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAHABwwMBEQACEQEDEQH/xAAcAAEAAgIDAQAAAAAp8j1D+zC/vI1R5usr1w5LeIXrhyW8RLd0GZTzYzPDR9FmJ/EcB5FdNOFM/FLppwpn45SvJ2S4oBaNgF9p2uPeSu3HirSPww7seKuOPwwzFo0EBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQf//Z
           example-parent-inheritance:
             value:
