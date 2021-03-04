@@ -744,7 +744,7 @@ components:
         category:
           type: string
           description: |
-            SSO as Category
+            SSO as Category.
         installedBy:
           type: string
           description: |
