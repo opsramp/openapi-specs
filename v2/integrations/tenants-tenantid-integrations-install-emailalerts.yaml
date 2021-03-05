@@ -20,6 +20,8 @@ post:
               value:
                 id: INTG-d9b99937-7906-42c7-955c-68a237144ac7
                 displayName: email alerts test from api try 44
+                inboundConfig:
+                  dropAlerts: true
                 integration:
                   id: Email Alerts
                   name: Email Alerts
@@ -60,6 +62,8 @@ post:
               logo:
                 name: logo.png
                 file: 'zWc/aG7Ws5nifQL0cHF6fxW8vRwcXp/Ffyky7HaICAgIXNbBkr5hzWwZK+YY9FmJ/FLppwpn45SvJ2S4oBaNgBAQEBAQEBAQEBAQEBAQEBAQf//Z '
+              inboundConfig:
+                dropAlerts: true
               emailProps:
                 - name: test set 1
                   identifier: identify

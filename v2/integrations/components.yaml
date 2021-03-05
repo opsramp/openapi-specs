@@ -229,6 +229,15 @@ components:
           type: string
         multipleInstallations:
           type: boolean
+    logo:
+      type: object
+      properties:
+        name:
+          type: string
+        file:
+          type: string
+          description: |
+            Base64 code file of the logo.
     alertSource:
       title: alertSource
       type: object
@@ -253,6 +262,8 @@ components:
           type: string
           description: |
             Name used to identify the integration.
+        logos:
+          $ref: '#/components/schemas/logo'
         integration:
           $ref: '#/components/schemas/integration'
         category:
@@ -312,12 +323,27 @@ components:
       title: inboundConfig
       type: object
       properties:
+        dropAlerts:
+          type: boolean
+          description: |
+            configure to drop alerts.
         authentication:
           $ref: '#/components/schemas/authentication'
         mapAttributes:
           type: array
           items:
             $ref: '#/components/schemas/mapAttributes'
+        entityTypes:
+          type: array
+          items:
+             type: string
+          description: |
+            Type of supported service desk entitie (INCIDENT,CHANGE,SERVICEREQUEST,PROBLEM) using WEBHOOK only.
+        webhookUris:
+          type: array
+          items:
+            $ref: '#/components/schemas/webhookDetails'
+
     authentication:
       title: authentication
       type: object
@@ -391,6 +417,18 @@ components:
                   Third-party mapping attribute value
         mode:
           type: string
+    webhookDetails:
+      title: webhook-based-service-Desk-entities
+      type: object
+      properties:
+        webhookEntityType:
+          type: string
+          description: |
+            OpsRamp service desk entity.
+        url:
+          type: string
+          description: |
+            OpsRamp enityType webHook uri.
     notifier:
       title: notifier
       type: object

@@ -28,6 +28,25 @@ post:
                   name: Custom
                   displayName: Custom
                   techUid: CUSTOM
+            example-category-dropAlerts-monitoring:
+              value:
+                id: INTG-6aa0bbec-ef5b-4ff2-b373-5a4f7ab0a385
+                displayName: API Testing
+                integration:
+                  id: CUSTOM
+                  name: Custom
+                  multipleInstallations: true
+                category: Monitoring
+                inboundConfig:
+                  dropAlerts: true
+                installedBy: opsramp_api_user
+                installedTime: 2020-10-08T07:25:24+0100
+                status: enabled
+                alertSource:
+                  id: 30
+                  name: Custom
+                  displayName: Custom
+                  techUid: CUSTOM
             example-category-direction:
               value:
                 id: INTG-7213eaa0-8c59-42b2-a1db-90147cfd3ef3
@@ -60,6 +79,37 @@ post:
                     role:
                       uniqueId: ROLE-4718b729-50cc-6634-42c4-ecd09558389d
                       name: Customer
+            example-category-collaboration-entities:
+              value:
+                id: INTG-58431d1c-1bdc-4a68-a49f-34435ead1d14
+                displayName: API Testing
+                integration:
+                  id: CUSTOM
+                  name: Custom
+                  multipleInstallations: true
+                category: Custom
+                installedBy: opsramp_api_user
+                installedTime: 2020-10-08T07:25:24+0100
+                status: enabled
+                inboundConfig:
+                  authentication:
+                    authType: WEBHOOK
+                    token: 7VttjkVtm7qk6AwaRpED4Uh4jdAFpaVb
+                    role:
+                      uniqueId: ROLE-4718b729-50cc-6634-42c4-ecd09558389d
+                      name: Customer
+                    webhookUrl: https://api.opsramp.com/integrations/client_4/webhook/incident?vtoken=k6v4SUF3TSEgyxJsmvRShZwVs9Ran3VY
+                    entityTypes:
+                      - INCIDENT
+                      - CHANGE
+                    webhookDetails:
+                      -
+                        webhookEntityType: Incident
+                        url: https://api.opsramp.com/integrations/client_4/webhook/incident?vtoken=k6v4SUF3TSEgyxJsmvRShZwVs9Ran3VY
+                      -
+                        webhookEntityType: Incident
+                        url: https://api.opsramp.com/integrations/client_4/webhook/incident?vtoken=k6v4SUF3TSEgyxJsmvRShZwVs9Ran3VY
+
   requestBody:
     content:
       application/json:
@@ -72,6 +122,14 @@ post:
               category: Monitoring
               alertSource:
                 id: 30
+          example-category-dropAlerts-monitoring:
+            value:
+              displayName: API Testing
+              category: Monitoring
+              alertSource:
+                id: 30
+              inboundConfig:
+                dropAlerts: true
           example-category-direction:
             value:
               displayName: InboundApp
@@ -86,6 +144,16 @@ post:
                   authType: OAUTH2
                   role:
                     uniqueId: ROLE-4718b729-50cc-6634-42c4-ecd09558389d
+          example-category-collaboration-entities:
+            value:
+              displayName: InboundApp
+              category: Collaboration
+              direction: Inbound
+              inboundConfig:
+                authentication: WEBHOOK
+                entityTypes:
+                  - INCIDENT
+                  - CHANGE
     description: ''
 parameters:
   - $ref: '../components-global.yaml#/components/parameters/tenantId'
