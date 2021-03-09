@@ -15,127 +15,6 @@ get:
           examples:
             example-1:
               value:
-                uniqueId: client_8
-                name: Brocade Lab
-                activated: true
-                updatedTime: '2016-08-29T12:05:08+0000'
-                createdTime: '2016-07-23T16:17:12+0000'
-                timeZone: Asia/Calcutta
-                createdBy:
-                  loginName: superadmin
-                  lastName: Admin
-                  firstName: Ops
-                  email: escalationmails@opsramp.com
-                lastUpdatedBy:
-                  loginName: superadmin
-                  lastName: Admin
-                  firstName: Ops
-                  email: escalationmails@opsramp.com
-                channel:
-                  id: 7
-                  name: Opsramp
-                  timeZone: GMT
-                address: 'Madapur, Near Global edge school'
-                city: Hyderabad
-                state: Telangana
-                country: India
-                zip: '500081'
-                phoneNumber: '5232324543'
-                mobileNumber: '5232324543'
-                showCopyClipBoard: true
-                twoFactorAuthentication: true
-                duoSecurity:
-                  apiHostName: 'https://api.opsramp.com'
-                passwordPolicy:
-                  defaultPolicy: true
-                  minPasswordLength: 7
-                  enablePasswordConstraints: true
-                  changePasswordAtFirstLogin: true
-                  passwordValidity: 90
-                  allowLastFourPasswords: false
-                  maxAttemptsToLockout: 6
-                mspId: msp_6
-                extOrgId: EXT10001
-                rdp2swfState: true
-                enableCLIRecording: true
-                clientDetails:
-                  businessStartHour: 10
-                  businessStartMin: 0
-                  businessEndHour: 22
-                  businessEndMin: 0
-                  businessDayStart: 2
-                  businessDayEnd: 6
-                  clientTechnologies:
-                    - OPSRAMP
-                    - Zabbix
-                  boughtServices:
-                    - Customer Services
-                  remoteAccess: true
-                agentPolicies:
-                  - id: 6
-                    name: Desktops Policy
-                    deviceCount: 16
-                    policies:
-                      - id: 1
-                        name: PatchManagement
-                        enable: true
-                      - id: 2
-                        name: uvnc
-                        enable: false
-                      - id: 3
-                        name: ncaretrayicon
-                        enable: false
-                      - id: 6
-                        name: VCareCoreModule
-                        enable: false
-                      - id: 7
-                        name: sqlitedb
-                        enable: false
-                  - id: 5
-                    name: Servers Policy
-                    deviceCount: 33
-                    policies:
-                      - id: 1
-                        name: PatchManagement
-                        enable: true
-                      - id: 2
-                        name: uvnc
-                        enable: false
-                      - id: 3
-                        name: ncaretrayicon
-                        enable: true
-                      - id: 6
-                        name: VCareCoreModule
-                        enable: false
-                      - id: 7
-                        name: sqlitedb
-                        enable: false
-                saClient: true
-                nableClient: false
-                lpiClient: false
-                ncareAgent: false
-                ncareDevsCount: 5
-                noPolicyDevsCount: 0
-                allDevicesCount: 50
-                nocDetails:
-                  id: 2
-                  name: HYD NOC1
-                whiteListedIps: '172.22.22.*,172.22.2.[0-50]'
-post:
-  summary: Update clients
-  description: Updates a client.
-  tags:
-    - tenancy-access-controls
-  responses:
-    '200':
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: './components.yaml#/components/schemas/client'
-          examples:
-            example-1:
-              value:
                 name: GEO Services
                 extOrgId: Ext1010
                 address: 'GEO Services, Parkway'
@@ -187,6 +66,268 @@ post:
                         enable: false
                       - name: sqlitedb
                         enable: true
+                addOns:
+                  - name: 'Alert Enrichment'
+                  - name: 'Knowledgebase Management'
+                packages:
+                  - name: 'Hybrid Discovery and Monitoring'
+                  - name: 'Event and Incident Management'
+                  - name: 'Remediation and Automation'
+
+post:
+  summary: Update clients
+  description: Updates a client.
+  tags:
+    - tenancy-access-controls
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: './components.yaml#/components/schemas/client'
+        examples:
+          example-1:
+            value:
+              name: GEO Services
+              extOrgId: Ext1010
+              address: Parkway
+              channel:
+                id: 7
+              nocDetails:
+                id: 11
+              city: San Jose
+              state: California
+              zip: '95101'
+              country: USA
+              rdp2swfState: true
+              enableCLIRecording: true
+              phoneNumber: 408-555-1234
+              phoneExtension: '+1'
+              mobileNumber: 646-222-3333
+              timeZone: America/Los_Angeles
+              showCopyClipBoard: true
+              resourceDecommission: false
+              whiteListedIps: '172.22.22.*,172.22.2.[0-50]'
+              clientDetails:
+                smsVoiceNotification: false
+                businessStartHour: 10
+                businessStartMin: 0
+                businessEndHour: 20
+                businessEndMin: 0
+                businessDayStart: 2
+                businessDayEnd: 6
+                services:
+                  - id: 1
+                    technologies:
+                      - id: '1'
+                      - id: '2'
+                      - id: '3'
+                serviceAccessDetails:
+                  - technology:
+                      id: '6'
+                    hostedManager:
+                      accessType: SSH
+                      ipAddress: 192.168.56.121
+                      userName: superadmin
+                      password: change.me
+                      port: '8443'
+                      ipRange: 172.21.30.* - 172.21.32.*
+                  - technology:
+                      id: '7'
+                    hostedManager:
+                      accessType: RDP
+                      ipAddress: 192.168.56.121
+                      userName: superadmin
+                      password: change.me
+                      port: '8443'
+                      ipRange: 172.21.30.* - 172.21.32.*
+                internetSPDetails:
+                  - name: SP Name
+                    plan: Monthly
+                    circuitId: SP-01
+                    memberId: MEM001215
+                    url: 'https://spname.net.org'
+                    userName: consumer001215x
+                    phone: 408-555-2345
+                  - name: SP_1 Name
+                    plan: Yearly
+                    circuitId: SP_1-01
+                    memberId: MEM001216
+                    url: 'https://sp1.net.org'
+                    userName: consumer001216x
+                    phone: 408-555-4567
+                networkArchitectures:
+                  - name: arch-1.png
+                    file: iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAQMAAACTPww9AAAABlBMVEX///+up58H0gfvAAAAAXRSTlMAQObYZgAAABVJREFUeF4dwAENAAAAQDDRRbc5sgADiACBp7r5nAAAAABJRU5ErkJggg==
+                  - name: arch-2.png
+                    file: iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAQMAAACTPww9AAAABlBMVEX///+up58H0gfvAAAAAXRSTlMAQObYZgAAABVJREFUeF4dwAENAAAAQDDRRbc5sgADiACBp7r5nAAAAABJRU5ErkJggg==
+                remoteAccess: true
+              agentPolicies:
+                - name: Servers Policy
+                  policies:
+                    - name: PatchManagement
+                      enable: true
+                    - name: sqlitedb
+                      enable: true
+                - name: Desktops Policy
+                  policies:
+                    - name: PatchManagement
+                      enable: true
+                    - name: sqlitedb
+                      enable: false
+                - name: Agent Policy
+                  policies:
+                    - name: PatchManagement
+                      enable: false
+                    - name: sqlitedb
+                      enable: true
+              addOns:
+                - name: 'Alert Enrichment'
+                - name: 'Knowledgebase Management'
+              packages:
+                - name: 'Hybrid Discovery and Monitoring'
+                - name: 'Event and Incident Management'
+                - name: 'Remediation and Automation'
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: './components.yaml#/components/schemas/client'
+            examples:
+              example-1:
+                value:
+                  uniqueId: client_8
+                  name: Brocade Lab
+                  activated: true
+                  updatedTime: '2016-08-29T12:05:08+0000'
+                  createdTime: '2016-07-23T16:17:12+0000'
+                  timeZone: Asia/Calcutta
+                  createdBy:
+                    loginName: superadmin
+                    lastName: Admin
+                    firstName: Ops
+                    email: escalationmails@opsramp.com
+                  lastUpdatedBy:
+                    loginName: superadmin
+                    lastName: Admin
+                    firstName: Ops
+                    email: escalationmails@opsramp.com
+                  channel:
+                    id: 7
+                    name: Opsramp
+                    timeZone: GMT
+                  address: 'Madapur, Near Global edge school'
+                  city: Hyderabad
+                  state: Telangana
+                  country: India
+                  zip: '500081'
+                  phoneNumber: '5232324543'
+                  mobileNumber: '5232324543'
+                  showCopyClipBoard: true
+                  twoFactorAuthentication: true
+                  duoSecurity:
+                    apiHostName: 'https://api.opsramp.com'
+                  passwordPolicy:
+                    defaultPolicy: true
+                    minPasswordLength: 7
+                    enablePasswordConstraints: true
+                    changePasswordAtFirstLogin: true
+                    passwordValidity: 90
+                    allowLastFourPasswords: false
+                    maxAttemptsToLockout: 6
+                  mspId: msp_6
+                  extOrgId: EXT10001
+                  rdp2swfState: true
+                  enableCLIRecording: true
+                  clientDetails:
+                    businessStartHour: 10
+                    businessStartMin: 0
+                    businessEndHour: 22
+                    businessEndMin: 0
+                    businessDayStart: 2
+                    businessDayEnd: 6
+                    clientTechnologies:
+                      - OPSRAMP
+                      - Zabbix
+                    boughtServices:
+                      - Customer Services
+                    remoteAccess: true
+                  agentPolicies:
+                    - id: 6
+                      name: Desktops Policy
+                      deviceCount: 16
+                      policies:
+                        - id: 1
+                          name: PatchManagement
+                          enable: true
+                        - id: 2
+                          name: uvnc
+                          enable: false
+                        - id: 3
+                          name: ncaretrayicon
+                          enable: false
+                        - id: 6
+                          name: VCareCoreModule
+                          enable: false
+                        - id: 7
+                          name: sqlitedb
+                          enable: false
+                    - id: 5
+                      name: Servers Policy
+                      deviceCount: 33
+                      policies:
+                        - id: 1
+                          name: PatchManagement
+                          enable: true
+                        - id: 2
+                          name: uvnc
+                          enable: false
+                        - id: 3
+                          name: ncaretrayicon
+                          enable: true
+                        - id: 6
+                          name: VCareCoreModule
+                          enable: false
+                        - id: 7
+                          name: sqlitedb
+                          enable: false
+                  saClient: true
+                  nableClient: false
+                  lpiClient: false
+                  ncareAgent: false
+                  ncareDevsCount: 5
+                  noPolicyDevsCount: 0
+                  allDevicesCount: 50
+                  nocDetails:
+                    id: 2
+                    name: HYD NOC1
+                  whiteListedIps: '172.22.22.*,172.22.2.[0-50]'
+                  addOns:
+                    - name: 'Alert Enrichment'
+                    - name: 'Knowledgebase Management'
+                  packages:
+                    - name: 'Hybrid Discovery and Monitoring'
+                    - name: 'Event and Incident Management'
+                    - name: 'Remediation and Automation'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              uniqueId:
+                type: string
+              name:
+                type: string
+          examples:
+            example-1:
+              value:
+                uniqueId: client_69883
+                name: GEO Services            
+
 parameters:
   - schema:
       type: string

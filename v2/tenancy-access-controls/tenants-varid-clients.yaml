@@ -136,6 +136,13 @@ post:
                       enable: false
                     - name: sqlitedb
                       enable: true
+              addOns:
+                - name: 'Alert Enrichment'
+                - name: 'Knowledgebase Management'
+              packages:
+                - name: 'Hybrid Discovery and Monitoring'
+                - name: 'Event and Incident Management'
+                - name: 'Remediation and Automation'
 parameters:
   - schema:
       type: string

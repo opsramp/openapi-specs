@@ -508,6 +508,23 @@ components:
               type: string
               description: |
                 file converted to base64.
+        addOns:
+          description: (Optional)Client specific addOns as provided by OPSRAMP.
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+        packages:
+          description: (Optional) Assign the client specific packages which is according to their billing
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+
     credentialSet:
       title: credentialSet
       type: object
