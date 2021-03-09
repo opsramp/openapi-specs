@@ -17,7 +17,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/cloudIntegrations'
+            $ref: './components.yaml#/components/schemas/integrationInstall'
           examples:
             example-google:
               value:
@@ -33,7 +33,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/cloudIntegrations'
+          $ref: './components.yaml#/components/schemas/integrationInstall'
         examples:
           example-google:
             value:

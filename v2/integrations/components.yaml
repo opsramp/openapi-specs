@@ -262,34 +262,6 @@ components:
           type: string
           description: |
             Base64 code file of the logo.
-    containerConfig:
-      type: object
-      properties:
-        deployment:
-          type: string
-        containerEngineType:
-          type: string
-        description: |
-                (Optional Value to specify)
-        configFiles:
-          type: array
-          description: |
-            Configuration files:
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-                description: |
-                  Container id
-              name:
-                type: string
-                description: |
-                  Container config YAML file name
-              contentURL:
-                type: string
-                description: |
-                  Identified url
     alertSource:
       title: alertSource
       type: object
@@ -304,18 +276,6 @@ components:
           type: string
       description: |
         Source of alert. Applicable only when installing category is Monitoring. Default Alert Source is taken as Custom.
-    cloudIntegrations:
-      title: Cloud integrations
-      type: object
-      properties:
-        integrationInstall:
-          $ref: '#/components/schemas/integrationInstall'
-        containerConfigs:
-          $ref: '#/components/schemas/containerConfig'
-        httpResponse:
-          $ref: '#/components/schemas/httpResponse'
-        discoveryProfile:
-          $ref: '#/components/schemas/discoveryProfile'
     integrationInstall:
       title: integrationInstall
       type: object
@@ -406,7 +366,13 @@ components:
         mapAttributes:
           type: array
           items:
-            $ref: '#/components/schemas/mapAttributes'
+            $ref:
+
+
+
+              '#/components/schemas/mapAttributes'
+        discoveryProfile:
+          $ref: '#/components/schemas/discoveryProfile'
         entityTypes:
           type: array
           items:
