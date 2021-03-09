@@ -127,6 +127,28 @@ components:
         ManagementCertificatePassPhrase:
           type: string
           description: Google
+    credential-Set:
+      title: private cloud credential set
+      type: object
+      properties:
+        name:
+          type: string
+        autoMonitorable:
+          type: boolean
+        id:
+          type: integer
+          description: VmWare
+        uniqueId:
+          type: string
+          description: uuid
+        description:
+          type: string
+          description: VMware details description
+        port:
+          type: integer
+          description: Port no
+        secure:
+          type: boolean
     discoveryProfile:
       title: discoveryProfile
       type: object
@@ -137,6 +159,8 @@ components:
           type: string
           description: |
             Discovery profile name.
+        scanNow:
+          type: boolean
         installedIntegrationId:
           type: string
         credentialSet:
@@ -262,8 +286,20 @@ components:
           type: string
           description: |
             Name used to identify the integration.
+        ipAddress:
+          type: string
+          description: |
+            ipAddress for the private cloud. To be only used for compute Integration.
+        credentialSets:
+          type: string
+          description: |
+            Name of credentialSets. Only used for compute Integration
+        computeCredentials:
+          $ref: '#/components/schemas/credential-Set'
         logos:
           $ref: '#/components/schemas/logo'
+        discovery:
+          $ref: '#/components/schemas/discoveryProfile'
         integration:
           $ref: '#/components/schemas/integration'
         category:
@@ -326,7 +362,7 @@ components:
         dropAlerts:
           type: boolean
           description: |
-            configure to drop alerts.
+            Configure to drop alerts from UnManaged resources.
         authentication:
           $ref: '#/components/schemas/authentication'
         mapAttributes:
@@ -338,7 +374,7 @@ components:
           items:
              type: string
           description: |
-            Type of supported service desk entitie (INCIDENT,CHANGE,SERVICEREQUEST,PROBLEM) using WEBHOOK only.
+            Type of supported service desk entities (INCIDENT,CHANGE,SERVICEREQUEST,PROBLEM) using WEBHOOK only.
         webhookUris:
           type: array
           items:

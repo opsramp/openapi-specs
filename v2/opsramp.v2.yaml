@@ -340,6 +340,8 @@ paths:
     $ref: './integrations/tenants-tenantid-integrations-install-azure.yaml'
   /api/v2/tenants/{tenantId}/integrations/install/GOOGLE:
     $ref: './integrations/tenants-tenantid-integrations-install-google.yaml'
+  /api/v2/tenants/{tenantId}/integrations/install/VMWARE:
+    $ref: './integrations/tenants-tenantid-integrations-install-vmware.yaml'
   /api/v2/tenants/{tenantId}/integrations/install/{intgId}:
     $ref: './integrations/tenants-tenantid-integrations-install-intgid.yaml'
   /api/v2/tenants/{tenantId}/integrations/install/OKTA:
