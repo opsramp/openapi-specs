@@ -32,3 +32,6 @@ post:
           example-1:
             value:
               ntpArray: '192.168.xx.xx,172.26.xx.xx'
+          example-2:
+            value:
+              ntpArray: 'time-d-g.nist.gov,ime-a-wwv.nist.gov'
