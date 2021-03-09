@@ -509,15 +509,18 @@ components:
               description: |
                 file converted to base64.
         addOns:
-          description: (Optional)Client specific addOns as provided by OPSRAMP.
           type: array
           items:
-            type: string
+             type: string
+          description: |
+            (Optional)Client specific addOns as provided by OPSRAMP on specific packages Viz "SMS and Voice", "Knowledgebase Management", "OS Service Start/Stop Actions", "Remote Access Management", "Process Automation", "Extended Data Retention", "Mask Resource Identity Management", "Event Enrichment".
         packages:
-          description: (Optional) Assign the client specific packages which is according to their billing
           type: array
           items:
-            type: string
+             type: string
+          description: |
+            (Optional)Client specific Packages as provided by OPSRAMP i..e Hybrid Discovery and Monitoring", "Event and Incident Management", "Remediation and Automation".
+
     credentialSet:
       title: credentialSet
       type: object
