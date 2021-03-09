@@ -137,12 +137,12 @@ post:
                     - name: sqlitedb
                       enable: true
               addOns:
-                - name: 'Alert Enrichment'
-                - name: 'Knowledgebase Management'
+                - 'Alert Enrichment'
+                - 'Knowledgebase Management'
               packages:
-                - name: 'Hybrid Discovery and Monitoring'
-                - name: 'Event and Incident Management'
-                - name: 'Remediation and Automation'
+                - 'Hybrid Discovery and Monitoring'
+                - 'Event and Incident Management'
+                - 'Remediation and Automation'
 parameters:
   - schema:
       type: string

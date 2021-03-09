@@ -67,12 +67,12 @@ get:
                       - name: sqlitedb
                         enable: true
                 addOns:
-                  - name: 'Alert Enrichment'
-                  - name: 'Knowledgebase Management'
+                  - 'Alert Enrichment'
+                  - 'Knowledgebase Management'
                 packages:
-                  - name: 'Hybrid Discovery and Monitoring'
-                  - name: 'Event and Incident Management'
-                  - name: 'Remediation and Automation'
+                  - 'Hybrid Discovery and Monitoring'
+                  - 'Event and Incident Management'
+                  - 'Remediation and Automation'
 
 post:
   summary: Update clients
@@ -304,12 +304,12 @@ post:
                     name: HYD NOC1
                   whiteListedIps: '172.22.22.*,172.22.2.[0-50]'
                   addOns:
-                    - name: 'Alert Enrichment'
-                    - name: 'Knowledgebase Management'
+                    - 'Alert Enrichment'
+                    - 'Knowledgebase Management'
                   packages:
-                    - name: 'Hybrid Discovery and Monitoring'
-                    - name: 'Event and Incident Management'
-                    - name: 'Remediation and Automation'
+                    - 'Hybrid Discovery and Monitoring'
+                    - 'Event and Incident Management'
+                    - 'Remediation and Automation'
   responses:
     '200':
       description: OK
@@ -326,8 +326,7 @@ post:
             example-1:
               value:
                 uniqueId: client_69883
-                name: GEO Services            
-
+                name: GEO Services
 parameters:
   - schema:
       type: string
