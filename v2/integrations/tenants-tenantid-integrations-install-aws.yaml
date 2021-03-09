@@ -6,6 +6,7 @@ description: |-
   - AWS
   - AZURE
   - GOOGLE
+  - KUBERNETES
 
   These are not supported for deployment, email requests, and other category integrations.
 post:
@@ -17,7 +18,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/integrationInstall'
+            $ref: './components.yaml#/components/schemas/cloudIntegrations'
           examples:
             example-aws-type-iam:
               value:
@@ -41,11 +42,29 @@ post:
                   AccountNumber: '326542154381'
                   AWSType: IAM
                   Regions: us-east-1
+            example-kubernetes:
+              value:
+                id: INTG-b898d6b4-cbf6-4863-a050-3ce5f3658a85
+                integration:
+                  id: KUBERNETES
+                  name: Kubernetes
+                  multipleInstallations: true
+                containerConfigs:
+                  deployment: onPrem
+                  configFiles:
+                    -
+                      id: 0
+                      name: Kubernetes.yaml
+                      contentURL: https://cloud-native.api.opsramp.net/api/v2/tenants/client_498/integrations/installed/INTG-3dabbf8d-af66-4a4f-a8d4-d7ffeb496ba7/configFile/Kubernetes
+                   -
+                      id: 1
+                      name: Kubernetes.yaml
+                      contentURL: https://cloud-native.api.opsramp.net/api/v2/tenants/client_498/integrations/installed/INTG-3dabbf8d-af66-4a4f-a8d4-d7ffeb496ba7/configFile/Kubernetes
   requestBody:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/integrationInstall'
+          $ref: './components.yaml#/components/schemas/cloudIntegrations'
         examples:
           example-aws-type-iam:
             value:
@@ -69,6 +88,10 @@ post:
                 SecurityKey: '***********'
                 AssumeRoleARN: '*********************'
                 ExternalId: '**********************'
+          example-kubernetes:
+            value:
+              displayName: Kube-Integration
+              deployment: onPrem
     description: ''
 parameters:
   - schema:
