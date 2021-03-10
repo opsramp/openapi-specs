@@ -309,6 +309,36 @@ post:
                   issuerUrl: 'https://localhost.com/modify'
                   redirectionUrl: 'https://localhost.com/update'
                   logoutUrl: 'https://localhost.com/change'
+            example-vmware-update:
+              value:
+                id: INTG-2e2854c6-8543-4a3c-be29-3ccc20542375
+                displayName: VMWARE-Updated_API_VMWARE
+                integration:
+                  id: VMWARE
+                  name: VMware
+                  multipleInstallations: true
+                computeCredentials:
+                  Name: vmcenter
+                  autoMonitorable: false
+                  id: 326
+                  description: current credentials
+                  port: 443
+                  secure: true
+                installedBy: Dev
+                installedTime: 2021-02-29T12:40:07+0530
+                discovery:
+                  -
+                    scanNow: true
+                    mgmtProfileUuid: 76a89355-9c0a-443e-a897-8f69e6ca2da2
+                    policy:
+                      entityType: All
+                      matchType: Any
+                      rules:
+                        -
+                          filterType: ANY_CLOUD_RESOURCE
+                      actions:
+                        -
+                          action: Manage Device
   requestBody:
     content:
       application/json:
@@ -560,6 +590,24 @@ post:
                 redirectionUrl: 'https://localhost.com/update'
                 logoutUrl: 'https://localhost.com/change'
                 certificate: MIIDrTCCAxagAwIBAgIBADANBgkqhkiG9w0BAQQFADCBnDEbMBkGA1UEChMSVGhlIFNhbXBsZSBDb21wYW55MRQwEgYDVQQLEwtDQSBEaXZpc2lvbjEcMBoGCSqGSIb3DQEJARYNY2FAc2FtcGxlLmNvbTETMBEGA1UEBxMKTWV0cm9wb2xpczERMA8GA1UECBMITmV3IFlvcmsxCzAJBgNVBAYTAlVTMRQwEgYDVQQDEwtUU0MgUm9vdCBDQTAeFw0wMTEyMDgwNDI3MDVaFw0wMjEyMDgwNDI3MDVaMIGcMRswGQYDVQQKExJUaGUgU2FtcGxlIENvbXBhbnkxFDASBgNVBAsTC0NBIERpdmlzaW9uMRwwGgYJKoZIhvcNAQkBFg1jYUBzYW1wbGUuY29tMRMwEQYDVQQHEwpNZXRyb3BvbGlzMREwDwYDVQQIEwhOZXcgWW9yazELMAkGA1UEBhMCVVMxFDASBgNVBAMTC1RTQyBSb290IENBMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDaiAwfKB6ZBtnTRTIo6ddomt0S9ec0NcuvtJogt0s9dXpHowh98FCDjnLtCi8du6LDTZluhlOtTFARPlV/LVnpsbyMCXMsG2qpdjJop+XIBdvoCz2HpGXjUmym8WLqt+coWwJqUSwiEba74JG93v7TU+Xcvc005MWnxmKZzDR3QIDAQABo4H8MIH5MAwGA1UdEwQFMAMBAf8wHQYDVR0OBBYEFGvyytrBtEquMX2dreysixMlPMMIHJBgNVHSMEgcEwgb6AFGvyytrBtEquMX2dreysixMlPMoYGipIGfMIGcMRswGQYDVQQKExJUaGUgU2FtcGxlIENvbXBhbnkxFDASBgNVBAsTC0NBIERpdmlzaW9uMRwwGgYJKoZIhvcNAQkBFg1jYUBzYW1wbGUuY29tMRMwEQYDVQQHEwpNZXRyb3BvbGlzMREwDwYDVQQIEwhOZXcgWW9yazELMAkGA1UEBhMCVVMxFDASBgNVBAMTC1RTQyBSb290IENBggEAMA0GCSqGSIb3DQEBBAUAA4GBABclymJfsPOUazNQO8aIaxwVbXWS+8AFEkMMRx6O68ICAMubQBvs8Buz3ALXhqYeFS5G13pW2ZnAlSdTkSTKkE5wGZ1RYSfyiEKXb+uOKhDN9LnajDzaMPkNDU2NDXDzSqHk9ZiE1boQaMzjNLu+KabTLpmL9uXvFA/i+gdenFHv
+          example-vmware-update:
+            value:
+              displayName: VMWARE-Updated_API_VMWARE
+              credentialSet: vmcenter
+              ipAddress: 10.11.01.10
+              discovery:
+                - id: 101
+                  scanNow: true
+                  mgmtProfileUuid: 76a89355-9c0a-443e-a897-8f69e6ca2da2
+                  policy:
+                    entityType: All
+                    matchType: Any
+                    rules:
+                      -
+                        filterType: ANY_CLOUD_RESOURCE
+                    actions:
+                      -
+                        action: Manage Device
     description: ''
 get:
   summary: Get installed integration
