@@ -1,5 +1,10 @@
-summary: Execute the required training TYPE
-description: Schedules the appropirate learning
+summary: Execute the required training type
+description: |-
+   Schedules the appropirate learning
+
+  ##### Notes
+  - Based on the training data one should train
+  - Supported trainings are ALERT_ESCALATION_TRAINING,ALERT_FIRST_RESPONSE_TRAINING,ALERT_CORRELATION_TRAINING
 post:
   tags:
     - alerts
