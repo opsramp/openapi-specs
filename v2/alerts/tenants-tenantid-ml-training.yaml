@@ -1,5 +1,5 @@
-summary: Get supported alert types
-description: Gets the list of supported alert types.
+summary: Execute the required training TYPE
+description: Schedules the appropirate learning
 post:
   tags:
     - alerts
