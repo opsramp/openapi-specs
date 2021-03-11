@@ -259,6 +259,9 @@ paths:
     $ref: './alerts/tenants-tenantid-schedulemaintenances-smid-suspend.yaml'
   /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}:
     $ref: './alerts/tenants-tenantid-schedulemaintenances-smid.yaml'
+  /api/v2/tenants/{tenantId}/machineLearning/train/{trainingType}:
+    $ref: './alerts/tenants-tenantid-ml-training.yaml'
+
   # Automation
   /api/v2/tenants/{tenantId}/jobs:
     $ref: './automation/tenants-tenantid-jobs.yaml'

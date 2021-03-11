@@ -1,0 +1,31 @@
+summary: Get supported alert types
+description: Gets the list of supported alert types.
+post:
+  tags:
+    - alerts
+    - machineLearning
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: string
+          examples:
+            example-1:
+              value: Train Model is Scheduled Successfully.
+  parameters:
+    - schema:
+        type: string
+      in: path
+      name: tenantId
+      required: true
+    - schema:
+        type: string
+        enum:
+          - ALERT_ESCALATION_TRAINING
+          - ALERT_FIRST_RESPONSE_TRAINING
+          - ALERT_CORRELATION_TRAINING
+      in: path
+      name: trainingType
+      required: true
