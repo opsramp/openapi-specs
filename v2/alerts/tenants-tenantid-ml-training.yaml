@@ -11,40 +11,6 @@ post:
   responses:
     '200':
       description: OK
-  requestBody:
-    content:
-       multipart/form-data:
-        schema:
-          type: object
-          properties:
-          attachment:
-            type: string
-            format: binary
-          metaData:
-            type: object
-            properties:
-            category:
-              type: string
-            inputColumns:
-              type: array
-              items:
-                type: string
-            outputColumns:
-              type: array
-              items:
-                type: string
-        examples:
-          example-1:
-            value:
-              attachment: "test.csv"
-              metaData:
-                category: ALERT_ESCALATION_TRAINING
-                inputColumns:
-                  - xyz
-                  - abc
-                outputColumns:
-                  - out1
-                  - out2
 parameters:
     - schema:
         type: string
