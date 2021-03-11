@@ -3,17 +3,9 @@ description: Gets the list of supported alert types.
 post:
   tags:
     - alerts
-    - machineLearning
   responses:
     '200':
       description: OK
-      content:
-        application/json:
-          schema:
-            type: string
-          examples:
-            example-1:
-              value: Train Model is Scheduled Successfully.
   parameters:
     - schema:
         type: string
