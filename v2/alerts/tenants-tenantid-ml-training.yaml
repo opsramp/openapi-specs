@@ -6,7 +6,7 @@ post:
   responses:
     '200':
       description: OK
-  parameters:
+parameters:
     - schema:
         type: string
       in: path
