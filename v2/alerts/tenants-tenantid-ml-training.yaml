@@ -25,22 +25,20 @@ post:
             properties:
             category:
               type: string
-            metaData:
-              type: object
-              properties:
-                inputColumns:
-                  type: array
-                  items:
-                    type: string
-                outputColumns:
-                  type: array
-                  items:
-                    type: string
+            inputColumns:
+              type: array
+              items:
+                type: string
+            outputColumns:
+              type: array
+              items:
+                type: string
         examples:
           example-1:
             value:
               attachment: "test.csv"
               metaData:
+                category: ALERT_ESCALATION_TRAINING
                 inputColumns:
                   - xyz
                   - abc
