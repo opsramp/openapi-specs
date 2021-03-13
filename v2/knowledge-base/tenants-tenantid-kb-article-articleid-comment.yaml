@@ -17,11 +17,11 @@ post:
                 type: string
                 format: date-time
               createdUser:
-                $ref: './components.yaml#/components/schemas/user'
+                $ref: '#/components/schemas/knowledgeBase-user'
               attachments:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/attachment'
+                  $ref: '#/components/schemas/knowledgeBase-attachment'
           examples:
             example-1:
               value:
@@ -59,7 +59,7 @@ post:
               description: |
                 (Optional) Defines the attachment of an article.
               items:
-                $ref: './components.yaml#/components/schemas/attachment'
+                $ref: '#/components/schemas/knowledgeBase-attachment'
           required:
             - comment
         examples:

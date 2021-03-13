@@ -11,7 +11,7 @@ get:
           schema:
             type: array
             items:
-              $ref: './components.yaml#/components/schemas/comment'
+              $ref: '#/components/schemas/knowledgeBase-comment'
           examples:
             example-1:
               value:

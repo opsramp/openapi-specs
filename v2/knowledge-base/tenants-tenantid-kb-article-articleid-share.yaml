@@ -9,7 +9,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/article'
+            $ref: '#/components/schemas/knowledgeBase-article'
           examples:
             example-1:
               value:

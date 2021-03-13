@@ -9,7 +9,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/category'
+            $ref: '#/components/schemas/knowledgeBase-category'
           examples:
             example-client:
               value:
@@ -63,7 +63,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/category'
+          $ref: '#/components/schemas/knowledgeBase-category'
         examples:
           example-client:
             value:

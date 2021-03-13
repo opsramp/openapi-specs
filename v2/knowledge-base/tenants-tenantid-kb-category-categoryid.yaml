@@ -9,7 +9,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/category'
+            $ref: '#/components/schemas/knowledgeBase-category'
           examples:
             example-1:
               value:
