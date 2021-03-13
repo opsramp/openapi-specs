@@ -132,9 +132,9 @@ get:
                     installedResult:
                       type: string
                     patch:
-                      $ref: './components.yaml#/components/schemas/patch'
+                      $ref: '#/components/schemas/patching-patch'
                     resource:
-                      $ref: './components.yaml#/components/schemas/resource'
+                      $ref: '#/components/schemas/patching-resource'
               totalResults:
                 type: integer
               orderBy:

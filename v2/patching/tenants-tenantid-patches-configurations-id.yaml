@@ -19,7 +19,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/patchConfig'
+            $ref: '#/components/schemas/patching-patchConfig'
           examples:
             example-1:
               value:
@@ -79,7 +79,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/patchConfig'
+            $ref: '#/components/schemas/patching-patchConfig'
           examples:
             example-1:
               value:
@@ -129,7 +129,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/patchConfig'
+          $ref: '#/components/schemas/patching-patchConfig'
         examples:
           example-1:
             value:

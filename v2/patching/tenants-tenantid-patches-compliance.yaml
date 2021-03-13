@@ -9,7 +9,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/patchCompliance'
+          $ref: '#/components/schemas/patching-patchCompliance'
         examples:
           example-1:
             value:
@@ -22,7 +22,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/patchCompliance'
+            $ref: '#/components/schemas/patching-patchCompliance'
           examples:
             example-1:
               value:
@@ -58,7 +58,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/patchCompliance'
+                  $ref: '#/components/schemas/patching-patchCompliance'
               totalResults:
                 type: integer
               orderBy:

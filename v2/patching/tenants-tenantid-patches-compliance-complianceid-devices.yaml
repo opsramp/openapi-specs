@@ -14,7 +14,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/device'
+                  $ref: '#/components/schemas/patching-device'
               totalResults:
                 type: integer
               orderBy:

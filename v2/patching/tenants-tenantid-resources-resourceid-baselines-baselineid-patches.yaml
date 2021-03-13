@@ -21,7 +21,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/baselineResourceCompliance'
+                  $ref: '#/components/schemas/patching-baselineResourceCompliance'
               totalResults:
                 type: integer
               orderBy:

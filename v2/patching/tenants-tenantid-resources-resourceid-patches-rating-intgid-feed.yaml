@@ -25,7 +25,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/patchDetails'
+            $ref: '#/components/schemas/patching-patchDetails'
           examples:
             example-1:
               value:

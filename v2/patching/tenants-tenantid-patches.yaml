@@ -32,7 +32,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/patch'
+                  $ref: '#/components/schemas/patching-patch'
               totalResults:
                 type: integer
               orderBy:

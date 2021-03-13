@@ -54,9 +54,9 @@ get:
                   type: object
                   properties:
                     device:
-                      $ref: './components.yaml#/components/schemas/device'
+                      $ref: '#/components/schemas/patching-device'
                     scanStatus:
-                      $ref: './components.yaml#/components/schemas/scanstatus'
+                      $ref: '#/components/schemas/patching-scanstatus'
               totalResults:
                 type: integer
               orderBy:

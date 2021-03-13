@@ -20,9 +20,9 @@ get:
             type: object
             properties:
               device:
-                $ref: './components.yaml#/components/schemas/device'
+                $ref: '#/components/schemas/patching-device'
               installStatus:
-                $ref: './components.yaml#/components/schemas/installStatus'
+                $ref: '#/components/schemas/patching-installStatus'
           examples:
             example-1:
               value:
