@@ -25,7 +25,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/deviceGroup'
+            $ref: '#/components/schemas/resourceManagement-deviceGroup'
           examples:
             example-group-without-policy:
               value:

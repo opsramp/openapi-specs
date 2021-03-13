@@ -11,7 +11,7 @@ get:
           schema:
             type: array
             items:
-              $ref: './components.yaml#/components/schemas/customAttribute'
+              $ref: '#/components/schemas/resourceManagement-customAttribute'
           examples:
             example-1:
               value:

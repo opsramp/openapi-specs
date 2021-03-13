@@ -11,7 +11,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/response'
+            $ref: '#/components/schemas/resourceManagement-response'
           examples:
             example-success:
               value:
@@ -51,7 +51,7 @@ delete:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/response'
+            $ref: '#/components/schemas/resourceManagement-response'
           examples:
             example-success:
               value:

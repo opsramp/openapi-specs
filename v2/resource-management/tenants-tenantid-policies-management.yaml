@@ -12,7 +12,7 @@ get:
           schema:
             type: array
             items:
-              $ref: './components.yaml#/components/schemas/policy'
+              $ref: '#/components/schemas/resourceManagement-policy'
           examples:
             example-1:
               value:
@@ -312,7 +312,7 @@ post:
         schema:
           type: array
           items:
-            $ref: './components.yaml#/components/schemas/policy'
+            $ref: '#/components/schemas/resourceManagement-policy'
         examples:
           example-assign-all-actions:
             value:
@@ -379,7 +379,7 @@ post:
           schema:
             type: array
             items:
-              $ref: './components.yaml#/components/schemas/policy'
+              $ref: '#/components/schemas/resourceManagement-policy'
           examples:
             example-assign-all-actions:
               value:
@@ -455,7 +455,7 @@ put:
           schema:
             type: array
             items:
-              $ref: './components.yaml#/components/schemas/policy'
+              $ref: '#/components/schemas/resourceManagement-policy'
           examples:
             example-1:
               value:
@@ -488,7 +488,7 @@ put:
         schema:
           type: array
           items:
-            $ref: './components.yaml#/components/schemas/policy'
+            $ref: '#/components/schemas/resourceManagement-policy'
         examples:
           example-1:
             value:

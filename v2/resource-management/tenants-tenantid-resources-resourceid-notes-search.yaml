@@ -33,7 +33,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/resourceNote'
+                  $ref: '#/components/schemas/resourceManagement-resourceNote'
               totalResults:
                 type: integer
               orderBy:

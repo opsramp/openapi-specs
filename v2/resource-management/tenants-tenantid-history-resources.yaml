@@ -62,7 +62,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/resourceFull'
+                  $ref: '#/components/schemas/resourceManagement-resourceFull'
               totalResults:
                 type: integer
               pageNo:

@@ -39,7 +39,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/customAttributeTypes'
+                  $ref: '#/components/schemas/resourceManagement-customAttributeTypes'
               totalResults:
                 type: integer
               orderBy:

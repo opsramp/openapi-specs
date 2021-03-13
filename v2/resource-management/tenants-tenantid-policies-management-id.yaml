@@ -10,7 +10,7 @@ delete:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/httpResponse'
+            $ref: '#/components/schemas/resourceManagement-httpResponse'
           examples:
             example-1:
               value:
@@ -38,7 +38,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/policy'
+            $ref: '#/components/schemas/resourceManagement-policy'
           examples:
             example-1:
               value:

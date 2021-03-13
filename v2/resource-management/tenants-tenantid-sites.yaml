@@ -7,7 +7,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/site'
+          $ref: '#/components/schemas/resourceManagement-site'
         examples:
           example-1:
             value:
@@ -50,7 +50,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/site'
+            $ref: '#/components/schemas/resourceManagement-site'
           examples:
             example-1:
               value:

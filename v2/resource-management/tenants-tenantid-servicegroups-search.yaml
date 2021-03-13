@@ -43,7 +43,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/serviceGroup'
+                  $ref: '#/components/schemas/resourceManagement-serviceGroup'
               totalResults:
                 type: integer
               orderBy:

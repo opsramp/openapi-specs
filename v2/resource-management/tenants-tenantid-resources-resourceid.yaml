@@ -17,7 +17,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/resourceFull'
+            $ref: '#/components/schemas/resourceManagement-resourceFull'
           examples:
             example-resource:
               value:

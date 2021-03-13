@@ -16,7 +16,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/availablility'
+            $ref: '#/components/schemas/resourceManagement-availablility'
           examples:
             example-1:
               value:

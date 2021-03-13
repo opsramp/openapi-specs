@@ -19,7 +19,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/customAttributeTypes'
+            $ref: '#/components/schemas/resourceManagement-customAttributeTypes'
           examples:
             example-1:
               value:
@@ -47,7 +47,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/customAttributeTypes'
+          $ref: '#/components/schemas/resourceManagement-customAttributeTypes'
         examples:
           example-1:
             value:
