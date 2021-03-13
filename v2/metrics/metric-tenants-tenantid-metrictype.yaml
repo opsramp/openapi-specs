@@ -7,7 +7,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/metric'
+          $ref: '#/components/schemas/metrics-metric'
         examples:
           example-1:
             value:
