@@ -82,7 +82,7 @@ get:
 
         For example, if 17 Dec 2018 12:00 PM is the end time, then epoch timestamp is 1545048000
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

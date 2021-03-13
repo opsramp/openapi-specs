@@ -73,7 +73,7 @@ post:
                 uniqueId: SCAT-8d55d25d-b6e1-4609-a001-17c441c02a0a
                 name: Network
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

@@ -150,4 +150,4 @@ post:
                 kbArticlesIds:
                   - 20122
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

@@ -640,7 +640,7 @@ post:
                   - id: 15
                     subject: Best Practises in VPN Use and Data Security
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

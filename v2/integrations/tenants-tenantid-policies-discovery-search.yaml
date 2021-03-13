@@ -119,4 +119,4 @@ get:
       description: Discovery profile name
       required: true
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

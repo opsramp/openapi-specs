@@ -281,7 +281,7 @@ post:
                 name: apache-restart.sh
                 file: UkVTVEFSVD0iL3NiaW4vc2VydmljZSBodHRwZCByZXN0YXJ0Ig0KUEdSRVA9Ii91c3IvYmluL3BncmVwIg0KSFRUUEQ9Imh0dHBkIg0KJFBHUkVQICR7SFRUUER9DQppZiBbICQ/IC1uZSAwIF0NCnRoZW4NCiAkUkVTVEFSVA0KZmk=
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

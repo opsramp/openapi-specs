@@ -52,4 +52,4 @@ post:
                 name: custom_attr_type_for_tenant
                 description: creating custom_type for tenant-create
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

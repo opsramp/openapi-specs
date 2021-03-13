@@ -78,4 +78,4 @@ post:
               name: SJ Server Down-Critical
               description: Servers in site SJ are down. Need to resolve the issue immediately.
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

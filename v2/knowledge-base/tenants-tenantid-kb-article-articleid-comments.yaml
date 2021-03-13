@@ -86,7 +86,7 @@ get:
                     firstName: OpsRamp API User
                     email: john@opsramp.com
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

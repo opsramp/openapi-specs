@@ -151,4 +151,4 @@ post:
                 uniqueId: SCAT-7c602980-b15d-4b50-8088-23d49307fb02
                 name: Internal Support
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

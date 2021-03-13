@@ -180,4 +180,4 @@ get:
                 nextPage: false
                 descendingOrder: false
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

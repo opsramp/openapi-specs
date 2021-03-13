@@ -339,7 +339,7 @@ post:
                 continuousLearning: false
                 trainingFileId: ml_alert_suppression_training
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

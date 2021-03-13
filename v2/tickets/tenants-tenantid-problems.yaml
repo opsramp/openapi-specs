@@ -179,4 +179,4 @@ post:
                 estimatedHours: 3
                 estimatedMinutes: 45
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

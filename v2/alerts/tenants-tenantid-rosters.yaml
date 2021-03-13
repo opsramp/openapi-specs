@@ -376,4 +376,4 @@ post:
                         description: Team to monitor all Database issues.
                         createdTime: '2017-03-14T11:40:35+0000'
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

@@ -1115,4 +1115,4 @@ get:
       in: query
       name: include
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

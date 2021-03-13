@@ -136,7 +136,7 @@ get:
                   pattern: '2'
                   startTime: '02:00:00'
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

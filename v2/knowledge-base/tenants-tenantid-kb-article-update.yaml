@@ -58,4 +58,4 @@ post:
               subject: Updated the Template
               content: Updated the Template Content Changes
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

@@ -79,4 +79,4 @@ get:
                   name: Site down
                   description: FDS issue
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

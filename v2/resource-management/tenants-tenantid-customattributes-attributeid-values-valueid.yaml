@@ -36,7 +36,7 @@ post:
                 value: value of the custom attribute value
                 description: update for description
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

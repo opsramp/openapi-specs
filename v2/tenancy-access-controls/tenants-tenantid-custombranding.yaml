@@ -186,4 +186,4 @@ put:
                 name: OpsRamp.png
                 file: /9j/4AAQSkZ...flaKKV2B//9k=
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

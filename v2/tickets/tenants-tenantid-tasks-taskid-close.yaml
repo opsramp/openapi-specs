@@ -236,7 +236,7 @@ post:
               reason: Project Integration Completed
               notes: Project structure integration shared with the admin team and architect team.
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

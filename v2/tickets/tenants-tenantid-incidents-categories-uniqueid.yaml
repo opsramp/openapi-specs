@@ -75,7 +75,7 @@ post:
                 uniqueId: SCAT-8e8ee079-2b38-43c2-b59c-1a0c19e0fdb6
                 name: Software
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

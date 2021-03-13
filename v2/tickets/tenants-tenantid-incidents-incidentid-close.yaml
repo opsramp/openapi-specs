@@ -259,7 +259,7 @@ post:
               reason: Remote consoles issue solved
               notes: Able to launch remote consoles on Windows devices
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

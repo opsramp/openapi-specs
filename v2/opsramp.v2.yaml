@@ -381,7 +381,7 @@ paths:
               schema:
                 description: File
     parameters:
-      - $ref: '../components-global.yaml#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/tenantId'
       - schema:
           type: string
           enum:
@@ -419,7 +419,7 @@ paths:
                 value:
                   version: 2
     parameters:
-      - $ref: '../components-global.yaml#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/tenantId'
       - in: path
         name: agentversion
         schema:
@@ -471,7 +471,7 @@ paths:
           name: profileId
           description: '(Optional) Used by the agent to connect to OpsRamp. If a profile ID is not provided, the agent connects directly to OpsRamp.'
     parameters:
-      - $ref: '../components-global.yaml#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/tenantId'
   /api/v2/tenants/{tenantId}/agents/{platform}/info:
     summary: Get the Linux agent
     description: |-
@@ -540,7 +540,7 @@ paths:
 
             For all other distributions, use x86_64 (64-bit) or i386 (32-bit)
     parameters:
-      - $ref: '../components-global.yaml#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/tenantId'
         description: ''
       - schema:
           type: string
@@ -655,7 +655,7 @@ paths:
                   - id: 023471da-698b-3a2e-1e93-6dbaca8eea23
                   - id: 855eb82e-3064-40a1-a26e-77efabe300da
     parameters:
-      - $ref: '../components-global.yaml#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/tenantId'
       - schema:
           type: string
         in: path
@@ -700,7 +700,7 @@ paths:
                     checksum: <checksum>
                     generation: G2
     parameters:
-      - $ref: '../components-global.yaml#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/tenantId'
   /api/v2/registration:
     summary: Register gateway
     description: Registers the gateway.
@@ -1258,7 +1258,7 @@ paths:
                     registered: false
                     createdDate: '2016-06-22T07:34:40+0000'
     parameters:
-      - $ref: '../components-global.yaml#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/tenantId'
       - schema:
           type: string
         in: path
@@ -1376,7 +1376,7 @@ paths:
                   description: Management Profile for Gateway
                   type: Gateway
     parameters:
-      - $ref: '../components-global.yaml#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/tenantId'
   /api/v2/tenants/{tenantId}/managementProfiles/{profileId}:
     summary: Manage management profile
     description: Gets, updates, and deletes a management profile.
@@ -1579,7 +1579,7 @@ paths:
                   description: Gateway Management Profile
                   type: Gateway
     parameters:
-      - $ref: '../components-global.yaml#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/tenantId'
       - schema:
           type: string
         in: path
@@ -1625,7 +1625,7 @@ paths:
                     registered: false
                     createdDate: '2016-06-22T07:34:40+0000'
     parameters:
-      - $ref: '../components-global.yaml#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/tenantId'
       - schema:
           type: string
         in: path
@@ -1652,7 +1652,7 @@ paths:
                   value:
                     message: Tunnel disconnected successfully on VG G01_Gateway. Please wait for few minutes(up to 5 minutes) to re-establish tunnel connection.
     parameters:
-      - $ref: '../components-global.yaml#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/tenantId'
       - schema:
           type: string
         in: path
@@ -1857,7 +1857,7 @@ paths:
           allowReserved: true
           explode: false
     parameters:
-      - $ref: '../components-global.yaml#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/tenantId'
   # Alerts
   /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}/{action}:
     $ref: './alerts/tenants-tenantid-policies-alertcorrelation-policyid-action.yaml'
@@ -2492,3 +2492,20 @@ paths:
     $ref: './tickets/tenants-tenantid-incidents-urgencies.yaml'
   /api/v2/tenants/{tenantId}/incidents/urgencies/{uniqueId}:
     $ref: './tickets/tenants-tenantid-incidents-urgencies-uniqueid.yaml'
+components:
+  securitySchemes:
+    accessToken:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: ''
+          refreshUrl: ''
+          scopes: {}
+  parameters:
+    tenantId:
+      in: path
+      name: tenantId
+      schema:
+        type: string
+      required: true
+  schemas:

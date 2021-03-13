@@ -102,4 +102,4 @@ post:
                 uniqueId: SCAT-b610567d-2966-496f-8ff2-2e67fef5378b
                 name: Hardware
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

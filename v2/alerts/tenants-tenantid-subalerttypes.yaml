@@ -37,4 +37,4 @@ post:
       name: alertTypes
       description: '{alertType}'
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

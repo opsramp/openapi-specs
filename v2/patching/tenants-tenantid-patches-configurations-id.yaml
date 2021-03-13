@@ -162,7 +162,7 @@ post:
               enablePatching: true
               maintenancePeriod: 60
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

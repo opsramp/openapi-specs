@@ -189,7 +189,7 @@ get:
         Example: To arrange data from 30th Oct to 1st Oct, 
         provide isDescendingOrder: true
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

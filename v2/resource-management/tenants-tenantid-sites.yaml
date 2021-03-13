@@ -109,4 +109,4 @@ post:
                       value: 'TRUE'
                       resourceType: DEVICE
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

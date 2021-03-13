@@ -378,4 +378,4 @@ post:
                 updatedCount: 0
                 createdCount: 1
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

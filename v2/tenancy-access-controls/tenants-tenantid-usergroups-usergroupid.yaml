@@ -83,7 +83,7 @@ get:
                     description: AWS Cloud Instances Permissions
                     defaultRole: false
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

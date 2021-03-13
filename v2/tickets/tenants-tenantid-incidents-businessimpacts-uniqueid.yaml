@@ -41,7 +41,7 @@ post:
               name: Network Servers Down
               description: Network Server in CA Site down
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

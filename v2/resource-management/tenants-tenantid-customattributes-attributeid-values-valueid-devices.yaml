@@ -115,7 +115,7 @@ delete:
               - id: d69b7c66-f827-4c1a-8399-f059cfb9cfc7
                 entityType: RESOURCE
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

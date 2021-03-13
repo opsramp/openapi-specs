@@ -476,7 +476,7 @@ post:
                   - id: 16
                     subject: Updated Windows Version
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

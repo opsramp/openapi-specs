@@ -111,7 +111,7 @@ get:
                   defaultValue: '2016-04-24 10:19'
                   description: Test case for Date and time
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
       enum:

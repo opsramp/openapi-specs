@@ -50,7 +50,7 @@ get:
                 displayOrder: 100
                 topMetric: false
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

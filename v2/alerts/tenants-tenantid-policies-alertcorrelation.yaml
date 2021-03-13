@@ -718,4 +718,4 @@ post:
                     matchType: Identical
                 primaryAlertSubject: subject-alertMetric policy
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

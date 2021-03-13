@@ -56,4 +56,4 @@ get:
                   name: EBS
                   path: Volume
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

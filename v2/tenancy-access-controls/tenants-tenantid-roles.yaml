@@ -368,4 +368,4 @@ post:
                 - id: 20
                 - id: 6
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

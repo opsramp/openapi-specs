@@ -771,4 +771,4 @@ put:
                   pattern: '30'
                   startTime: '00:30:00'
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

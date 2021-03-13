@@ -61,4 +61,4 @@ get:
                     visibleCustomerId: 6
                     zone: North America
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

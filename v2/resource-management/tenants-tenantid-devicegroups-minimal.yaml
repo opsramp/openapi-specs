@@ -31,4 +31,4 @@ get:
                 - id: DGP-420a80f4-5fba-46d5-a1c1-20e2df4a326a
                   name: Storage Resources
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

@@ -301,4 +301,4 @@ post:
               value:
                 uniqueId: SM-d21b6b44-c85a-426c-9963-0e977070ce98
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

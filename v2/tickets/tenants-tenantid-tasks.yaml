@@ -254,4 +254,4 @@ post:
                   - id: 17
                     subject: Frequently Asked Questions on Python
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

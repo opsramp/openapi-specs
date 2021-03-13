@@ -79,4 +79,4 @@ post:
               name: Test API category
               description: Category
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

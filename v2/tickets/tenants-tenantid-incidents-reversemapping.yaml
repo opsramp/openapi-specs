@@ -180,4 +180,4 @@ get:
                     name: 1 hour
                     description: Email servers down
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

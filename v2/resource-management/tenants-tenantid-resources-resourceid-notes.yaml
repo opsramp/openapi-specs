@@ -46,7 +46,7 @@ post:
                   email: john.smith@opsramp.com
                   changePassword: false
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

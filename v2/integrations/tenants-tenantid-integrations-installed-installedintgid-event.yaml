@@ -160,7 +160,7 @@ post:
                     value: application/json
                 eventPayload: "{\n\t'serviceName':'$alert.serviceName',\n\t'resource':{\n\t\t'id':'$alert.resourceId'\n\t},\n\t'subject':'$alert.subject',\n        'currentState':'$alert.currentState',\n\t'app':'OPSRAMP'\n}"
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

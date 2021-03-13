@@ -182,7 +182,7 @@ get:
                 code: '0003'
                 message: 'No resouce found with UUID : 8e821346-d93f-464-84b8-d17f02ae4a6c'
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

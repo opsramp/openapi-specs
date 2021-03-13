@@ -122,7 +122,7 @@ get:
                 endDate: '2018-11-01T12:26:27+0000'
                 descendingOrder: true
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

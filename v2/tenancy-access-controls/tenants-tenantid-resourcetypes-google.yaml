@@ -180,4 +180,4 @@ get:
       description: Enables smart filters on the cloud resource type.
       default: false
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

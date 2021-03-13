@@ -77,4 +77,4 @@ post:
               category:
                 id: KBC0000000018
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

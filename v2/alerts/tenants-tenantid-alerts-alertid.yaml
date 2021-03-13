@@ -278,7 +278,7 @@ get:
                   createdBy: system
                   createdTime: '2018-05-07T12:55:19+0000'
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

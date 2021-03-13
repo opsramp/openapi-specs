@@ -196,4 +196,4 @@ post:
                 masterAgentUUID: 5b850347-8798-45aa-9332-c7ff3dd1c60e
     description: Provide either `device` or `resource` object.
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

@@ -48,4 +48,4 @@ get:
                   description: Resources in San Jose
                   address: 'Street#4, Parkway, San Jose'
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'

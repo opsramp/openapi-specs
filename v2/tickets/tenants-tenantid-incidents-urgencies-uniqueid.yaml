@@ -50,7 +50,7 @@ post:
               name: Network Servers Issue-High
               description: High amount of traffic on network servers in site SJ
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path

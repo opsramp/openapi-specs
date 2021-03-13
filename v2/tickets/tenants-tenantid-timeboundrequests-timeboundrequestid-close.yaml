@@ -262,7 +262,7 @@ post:
               reason: Network Serveres up and running
               notes: Network Servers issue solved in site CA.
 parameters:
-  - $ref: '../components-global.yaml#/components/parameters/tenantId'
+  - $ref: '#/components/parameters/tenantId'
   - schema:
       type: string
     in: path
