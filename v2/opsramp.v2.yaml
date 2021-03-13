@@ -14200,7 +14200,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/integrations-discoveryProfile'
+                  $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-discoveryProfile'
               examples:
                 example-aws-basic:
                   value:
@@ -14399,7 +14399,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: './components.yaml#/components/schemas/integrations-discoveryProfile'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-discoveryProfile'
             examples:
               example-aws-basic:
                 value:
@@ -14553,7 +14553,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/integrations-discoveryProfile'
+                  $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-discoveryProfile'
               examples:
                 example-aws:
                   value:
@@ -14662,7 +14662,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/integrations-discoveryProfile'
+                  $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-discoveryProfile'
               examples:
                 example-aws-basic:
                   value:
@@ -14823,7 +14823,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: './components.yaml#/components/schemas/integrations-discoveryProfile'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-discoveryProfile'
             examples:
               example-aws-basic:
                 value:
@@ -14955,7 +14955,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-httpResponse'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-httpResponse'
               examples:
                 example-1:
                   value:
@@ -14982,7 +14982,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-discoveryProfile'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-discoveryProfile'
               examples:
                 example-aws:
                   value:
@@ -15100,7 +15100,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-httpResponse'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-httpResponse'
               examples:
                 example-1:
                   value:
@@ -15141,7 +15141,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/integrations-discoveryProfile'
+                  $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-discoveryProfile'
               examples:
                 example-aws:
                   value:
@@ -15262,7 +15262,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
               examples:
                 example-category-alertSource:
                   value:
@@ -15367,7 +15367,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+              $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
             examples:
               example-category-alertSource:
                 value:
@@ -15470,7 +15470,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './components.yaml#/components/schemas/integrations-authentication'
+              $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-authentication'
             examples:
               example-OAUTH2:
                 value:
@@ -15501,9 +15501,9 @@ paths:
               type: object
               properties:
                 inboundConfig:
-                  $ref: './components.yaml#/components/schemas/integrations-mapAttributes'
+                  $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-mapAttributes'
                 outboundConfig:
-                  $ref: './components.yaml#/components/schemas/integrations-mapAttributes'
+                  $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-mapAttributes'
             examples:
               example-inbound:
                 value:
@@ -15585,7 +15585,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/integrations-mapAttributes'
+                  $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-mapAttributes'
               examples:
                 example-inbound:
                   value:
@@ -15670,7 +15670,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/integrations-mapAttributes'
+                  $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-mapAttributes'
               examples:
                 example-entity:
                   value:
@@ -15760,7 +15760,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-notifier'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-notifier'
               examples:
                 example-NONE:
                   value:
@@ -15790,7 +15790,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './components.yaml#/components/schemas/integrations-notifier'
+              $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-notifier'
             examples:
               example-NONE:
                 value:
@@ -15920,7 +15920,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './components.yaml#/components/schemas/integrations-integrationEvent'
+              $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationEvent'
             examples:
               example-create:
                 value:
@@ -16106,7 +16106,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './components.yaml#/components/schemas/integrations-integrationEvent'
+              $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationEvent'
             examples:
               example-1:
                 value:
@@ -16146,7 +16146,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-integrationEvent'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationEvent'
               examples:
                 example-1:
                   value:
@@ -16188,7 +16188,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-integrationEvent'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationEvent'
               examples:
                 example-1:
                   value:
@@ -16256,7 +16256,7 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: './components.yaml#/components/schemas/integrations-integrationEvent'
+                      $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationEvent'
                   totalResults:
                     type: integer
                   pageNo:
@@ -16608,7 +16608,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
               examples:
                 example-authentication-oauth2:
                   value:
@@ -16942,7 +16942,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+              $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
             examples:
               example-authentication-oauth2:
                 value:
@@ -17219,7 +17219,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
               examples:
                 example-1:
                   value:
@@ -17583,7 +17583,7 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+                      $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
                   totalResults:
                     type: integer
                   pageSize:
@@ -17800,7 +17800,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
               examples:
                 example-EMAILINCIDENTS:
                   value:
@@ -17836,7 +17836,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+              $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
             examples:
               example-EMAILINCIDENTS:
                 value:
@@ -17888,7 +17888,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
               examples:
                 example-EMAILALERTS:
                   value:
@@ -17928,7 +17928,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+              $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
             examples:
               example-EMAILALERTS:
                 value:
@@ -17990,7 +17990,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
               examples:
                 example-aws-type-iam:
                   value:
@@ -18018,7 +18018,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+              $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
             examples:
               example-aws-type-iam:
                 value:
@@ -18069,7 +18069,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
               examples:
                 example-azure-type-arm:
                   value:
@@ -18097,7 +18097,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+              $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
             examples:
               example-azure-type-arm:
                 value:
@@ -18145,7 +18145,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
               examples:
                 example-google:
                   value:
@@ -18161,7 +18161,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+              $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
             examples:
               example-google:
                 value:
@@ -18196,7 +18196,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
               examples:
                 example-vmware-credentialSet:
                   value:
@@ -18249,7 +18249,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+              $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
             examples:
               example-vmware-credentialSet:
                 value:
@@ -18305,7 +18305,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+                $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
               examples:
                 example-pingdom:
                   value:
@@ -18503,7 +18503,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
+              $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-integrationInstall'
             examples:
               example-display-name-and-logo:
                 value:
@@ -18687,9 +18687,9 @@ paths:
                       multipleInstallations:
                         type: boolean
                   ssoInstalled:
-                    $ref: './components.yaml#/components/schemas/integrations-ssoIntg'
+                    $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-ssoIntg'
                   singleSignOnAuthentication:
-                    $ref: './components.yaml#/components/schemas/integrations-ssoAuth'
+                    $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-ssoAuth'
               examples:
                 example-okta:
                   value:
@@ -18735,7 +18735,7 @@ paths:
                 category:
                   type: string
                 singleSignOnAuthentication:
-                  $ref: './components.yaml#/components/schemas/integrations-ssoAuth'
+                  $ref: '#/components/schemas/knowledgeBase-#/components/schemas/integrations-ssoAuth'
                 uninstallReason:
                   type: string
             examples:
