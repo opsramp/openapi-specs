@@ -36,7 +36,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/authentication'
+          $ref: './components.yaml#/components/schemas/integrations-authentication'
         examples:
           example-OAUTH2:
             value:

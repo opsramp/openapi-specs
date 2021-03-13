@@ -23,9 +23,9 @@ post:
                   multipleInstallations:
                     type: boolean
               ssoInstalled:
-                $ref: './components.yaml#/components/schemas/ssoIntg'
+                $ref: './components.yaml#/components/schemas/integrations-ssoIntg'
               singleSignOnAuthentication:
-                $ref: './components.yaml#/components/schemas/ssoAuth'
+                $ref: './components.yaml#/components/schemas/integrations-ssoAuth'
           examples:
             example-okta:
               value:
@@ -71,7 +71,7 @@ post:
             category:
               type: string
             singleSignOnAuthentication:
-              $ref: './components.yaml#/components/schemas/ssoAuth'
+              $ref: './components.yaml#/components/schemas/integrations-ssoAuth'
             uninstallReason:
               type: string
         examples:

@@ -9,7 +9,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/notifier'
+            $ref: './components.yaml#/components/schemas/integrations-notifier'
           examples:
             example-NONE:
               value:
@@ -39,7 +39,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/notifier'
+          $ref: './components.yaml#/components/schemas/integrations-notifier'
         examples:
           example-NONE:
             value:

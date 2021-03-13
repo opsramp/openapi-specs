@@ -14,7 +14,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/integrationInstall'
+            $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
           examples:
             example-vmware-credentialSet:
               value:
@@ -67,7 +67,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/integrationInstall'
+          $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
         examples:
           example-vmware-credentialSet:
             value:

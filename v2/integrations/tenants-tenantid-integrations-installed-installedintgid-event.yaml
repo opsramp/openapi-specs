@@ -17,7 +17,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/integrationEvent'
+          $ref: './components.yaml#/components/schemas/integrations-integrationEvent'
         examples:
           example-create:
             value:

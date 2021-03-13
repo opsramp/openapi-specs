@@ -9,7 +9,7 @@ delete:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/httpResponse'
+            $ref: './components.yaml#/components/schemas/integrations-httpResponse'
           examples:
             example-1:
               value:
@@ -36,7 +36,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/discoveryProfile'
+            $ref: './components.yaml#/components/schemas/integrations-discoveryProfile'
           examples:
             example-aws:
               value:

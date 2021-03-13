@@ -11,7 +11,7 @@ get:
           schema:
             type: array
             items:
-              $ref: './components.yaml#/components/schemas/discoveryProfile'
+              $ref: './components.yaml#/components/schemas/integrations-discoveryProfile'
           examples:
             example-aws:
               value:

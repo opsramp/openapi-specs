@@ -13,9 +13,9 @@ post:
           type: object
           properties:
             inboundConfig:
-              $ref: './components.yaml#/components/schemas/mapAttributes'
+              $ref: './components.yaml#/components/schemas/integrations-mapAttributes'
             outboundConfig:
-              $ref: './components.yaml#/components/schemas/mapAttributes'
+              $ref: './components.yaml#/components/schemas/integrations-mapAttributes'
         examples:
           example-inbound:
             value:
@@ -97,7 +97,7 @@ post:
           schema:
             type: array
             items:
-              $ref: './components.yaml#/components/schemas/mapAttributes'
+              $ref: './components.yaml#/components/schemas/integrations-mapAttributes'
           examples:
             example-inbound:
               value:
@@ -182,7 +182,7 @@ get:
           schema:
             type: array
             items:
-              $ref: './components.yaml#/components/schemas/mapAttributes'
+              $ref: './components.yaml#/components/schemas/integrations-mapAttributes'
           examples:
             example-entity:
               value:

@@ -9,7 +9,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/integrationInstall'
+            $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
           examples:
             example-category-alertSource:
               value:
@@ -114,7 +114,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/integrationInstall'
+          $ref: './components.yaml#/components/schemas/integrations-integrationInstall'
         examples:
           example-category-alertSource:
             value:
