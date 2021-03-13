@@ -24239,3 +24239,109 @@ components:
           type: integer
         topMetric:
           type: boolean
+    monitoring-monitoringTemplate:
+      title: monitoringTemplate
+      type: object
+      properties:
+        id:
+          type: integer
+        uniqueId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        templateType:
+          type: string
+        collectorType:
+          type: string
+        status:
+          type: string
+        generation:
+          type: integer
+        tags:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type: string
+          format: date-time
+        monitors:
+          type: array
+          items:
+            $ref: '#/components/schemas/monitoring-monitor'
+        assignedInterfaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/monitoring-interface'
+        configParameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/monitoring-configParameter'
+    monitoring-monitor:
+      title: monitor
+      type: object
+      properties:
+        name:
+          type: string
+        frequency:
+          type: integer
+        repeatFrequency:
+          type: integer
+        repeatCount: {}
+        warningThreshHold:
+          type: string
+        criticalThreshHold:
+          type: string
+        raiseAlert:
+          type: boolean
+        availability:
+          type: boolean
+    monitoring-interface:
+      title: interface
+      type: object
+      properties:
+        id:
+          type: integer
+        networkName:
+          type: string
+        status:
+          type: string
+        ifName:
+          type: string
+        ifAlias:
+          type: string
+        ifDescription:
+          type: string
+        ifTxType:
+          type: string
+        ifType:
+          type: string
+        macAddress:
+          type: string
+        speed:
+          type: string
+        confLinkSpeed:
+          type: string
+        adminStatus:
+          type: string
+        operationalStatus:
+          type: string
+    monitoring-configParameter:
+      title: configParameter
+      type: object
+      properties:
+        parameter:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            description:
+              type: string
+            type:
+              type: string
+        value:
+          type: string

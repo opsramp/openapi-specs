@@ -17,11 +17,11 @@ post:
               configParameters:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/configParameter'
+                  $ref: '#/components/schemas/monitoring-configParameter'
               assignedInterfaces:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/interface'
+                  $ref: '#/components/schemas/monitoring-interface'
         examples:
           example-1:
             value:

@@ -60,7 +60,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/monitoringTemplate'
+                  $ref: '#/components/schemas/monitoring-monitoringTemplate'
               totalResults:
                 type: integer
               orderBy:
