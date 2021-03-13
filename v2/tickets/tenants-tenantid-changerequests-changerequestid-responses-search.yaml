@@ -22,7 +22,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/changeRequestResponse'
+                  $ref: '#/components/schemas/tickets-changeRequestResponse'
               totalResults:
                 type: integer
               orderBy:

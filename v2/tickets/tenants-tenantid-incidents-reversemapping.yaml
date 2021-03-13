@@ -11,7 +11,7 @@ post:
         schema:
           type: array
           items:
-            $ref: './components.yaml#/components/schemas/mappingDetails'
+            $ref: '#/components/schemas/tickets-mappingDetails'
         examples:
           example-1:
             value:
@@ -68,7 +68,7 @@ post:
           schema:
             type: array
             items:
-              $ref: './components.yaml#/components/schemas/mappingDetails'
+              $ref: '#/components/schemas/tickets-mappingDetails'
           examples:
             example-1:
               value:
@@ -130,7 +130,7 @@ get:
           schema:
             type: array
             items:
-              $ref: './components.yaml#/components/schemas/mappingDetails'
+              $ref: '#/components/schemas/tickets-mappingDetails'
           examples:
             example-1:
               value:

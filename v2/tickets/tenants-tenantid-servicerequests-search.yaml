@@ -97,7 +97,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/problem'
+                  $ref: '#/components/schemas/tickets-problem'
               totalResults:
                 type: integer
               orderBy:

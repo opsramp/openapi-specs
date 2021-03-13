@@ -19,7 +19,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/note'
+            $ref: '#/components/schemas/tickets-note'
           examples:
             example-1:
               value:

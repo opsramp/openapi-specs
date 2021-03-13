@@ -11,7 +11,7 @@ post:
           schema:
             type: array
             items:
-              $ref: './components.yaml#/components/schemas/category'
+              $ref: '#/components/schemas/tickets-category'
           examples:
             example-create-parent:
               value:

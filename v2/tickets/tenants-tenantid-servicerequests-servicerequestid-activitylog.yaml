@@ -44,7 +44,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/activity'
+                  $ref: '#/components/schemas/tickets-activity'
               totalResults:
                 type: integer
               pageSize:

@@ -16,7 +16,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/incidentResponse'
+            $ref: '#/components/schemas/tickets-incidentResponse'
           examples:
             example-1:
               value:
@@ -45,7 +45,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/incidentResponse'
+          $ref: '#/components/schemas/tickets-incidentResponse'
         examples:
           example-1:
             value:

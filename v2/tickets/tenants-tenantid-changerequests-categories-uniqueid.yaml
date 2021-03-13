@@ -42,9 +42,9 @@ post:
                   uniqueId:
                     type: string
               createdBy:
-                $ref: './components.yaml#/components/schemas/user'
+                $ref: '#/components/schemas/tickets-user'
               updatedBy:
-                $ref: './components.yaml#/components/schemas/user'
+                $ref: '#/components/schemas/tickets-user'
               createdDate:
                 type: string
                 format: date-time

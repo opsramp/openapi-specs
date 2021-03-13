@@ -53,7 +53,7 @@ get:
               results:
                 type: array
                 items:
-                  $ref: './components.yaml#/components/schemas/incident'
+                  $ref: '#/components/schemas/tickets-incident'
               totalResults:
                 type: integer
               orderBy:

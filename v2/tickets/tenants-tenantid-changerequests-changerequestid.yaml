@@ -11,7 +11,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/changeRequest'
+            $ref: '#/components/schemas/tickets-changeRequest'
           examples:
             example-1:
               value:
@@ -297,7 +297,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/changeRequest'
+          $ref: '#/components/schemas/tickets-changeRequest'
         examples:
           example-1:
             value:
@@ -362,7 +362,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/changeRequest'
+            $ref: '#/components/schemas/tickets-changeRequest'
           examples:
             example-1:
               value:

@@ -25,7 +25,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/customField'
+            $ref: '#/components/schemas/tickets-customField'
           examples:
             example-dropdown:
               value:
