@@ -23575,57 +23575,3184 @@ paths:
         required: true
   # Patching
   /api/v2/tenants/{tenantId}/patches/baselines/{baselineId}/{action}:
-    $ref: './patching/tenants-tenantid-patches-baselines-baselineid-action.yaml'
+    summary: Activate and deactivate patch baseline
+    description: Activates and deactivates a patch baseline.
+    post:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: baselineId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: action
+        required: true
   /api/v2/tenants/{tenantId}/patches/baselines/{baselineId}/{patchId}/{action}:
-    $ref: './patching/tenants-tenantid-patches-baselines-baselineid-patchid-action.yaml'
+    summary: Add and remove patches from baseline
+    description: Adds and removes patches from a baseline.
+    post:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: baselineId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: patchId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: action
+        required: true
   /api/v2/tenants/{tenantId}/patches/baselines:
-    $ref: './patching/tenants-tenantid-patches-baselines.yaml'
+    summary: Create and get patch baselines
+    description: Creates and gets patch baselines.
+    post:
+      summary: Create patch baseline
+      description: |
+        Createsa patch baseline.
+
+        A patch baseline is a collection of patches that are approved for installation on your instances. From a given feed, the user selects a subset of the packages that address the key vulnerabilities. The chosen set of packages form the patch baseline.
+
+        As a prerequisite, create a patch feed before creating a baseline.
+      tags:
+        - patching
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patching-patchBaseline'
+            examples:
+              example-static-baseline:
+                value:
+                  name: Linux_Patch_Feed
+                  description: Ubuntu_Vulnerabilities
+                  dynamic: false
+                  installedIntg:
+                    id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+              example-dynamic-baseline:
+                value:
+                  name: Security_Patches
+                  description: Security_Patches_for_Windows
+                  dynamic: true
+                  policy:
+                    matchType: ALL
+                    rules:
+                      - key: Category
+                        operator: Contains
+                        value: updates
+                      - key: Rating
+                        operator: Equals
+                        value: Whitelisted
+                  installedIntg:
+                    id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/patching-patchBaseline'
+              examples:
+                example-static-baseline:
+                  value:
+                    id: PBL-bafd3744-9a59-4cd6-9825-00a0a5a54f6e
+                    name: Linux_Patch_Feed
+                    description: Ubuntu_Vulnerabilities
+                    dynamic: false
+                    enabled: false
+                    createdUser:
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: admin@opsramp.com
+                    updatedUser:
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: admin@opsramp.com
+                    createdTime: '2019-02-08T07:40:05+0000'
+                    updatedTime: '2019-02-08T07:40:05+0000'
+                    installedIntg:
+                      id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                      displayName: Default Linux Feed
+                      integration:
+                        id: LINUXPATCH
+                        name: Linux Patch Feed
+                example-dynamic-baseline:
+                  value:
+                    id: PBL-198014e3-74c0-4e12-a6e1-c161d9003fd6
+                    name: Security_Patches
+                    description: Security_Patches_for_Windows
+                    dynamic: true
+                    enabled: false
+                    createdUser:
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: admin@opsramp.com
+                    updatedUser:
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: admin@opsramp.com
+                    createdTime: '2019-02-08T07:45:10+0000'
+                    updatedTime: '2019-02-08T07:45:10+0000'
+                    policy:
+                      id: 662
+                      uid: POLICY-e4780e1f-e707-4858-9c0e-b68b6e8b6bf7
+                      matchType: ALL
+                      rules:
+                        - id: 12512
+                          key: Category
+                          operator: Contains
+                          value: updates
+                          resourceType: DEVICE
+                        - id: 12513
+                          key: Severity
+                          operator: Contains
+                          value: critical
+                          resourceType: DEVICE
+                      actions: []
+                    installedIntg:
+                      id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                      displayName: Default Windows Feed
+                      integration:
+                        id: WINDOWSPATCH
+                        name: Windows Patch Feed
+    get:
+      summary: Get patch baselines
+      description: |-
+        Gets the list of patch baselines for a client.
+
+        ##### Notes
+        There are special characters that can be used in a query string:
+        - (+) represents the next field and must be URL-encoded.
+        - (:) represents equals. An example is key : value.
+        - Space characters must be URL-encoded.
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/patching-patchBaseline'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - id: PBL-1bfe0514-f882-4300-8d62-7e67d0ec149c
+                        name: Updates-policytest
+                        description: Updates
+                        dynamic: true
+                        enabled: true
+                        createdUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                          phoneNumber: ''
+                        updatedUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                          phoneNumber: ''
+                        createdTime: '2018-11-27T10:05:53+0000'
+                        updatedTime: '2018-11-29T11:10:30+0000'
+                        policy:
+                          id: 506
+                          uid: POLICY-8f9c5645-f205-4659-9762-5f675ac4da41
+                          name: Updates-policytest
+                          matchType: ALL
+                          rules:
+                            - id: 12376
+                              key: '560'
+                              operator: Equals
+                              value: Updates - Windows 7
+                            - id: 12377
+                              key: '559'
+                              operator: Starts with
+                              value: Important
+                          actions: []
+                        installedIntg:
+                          id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                          displayName: Default Windows Feed
+                          integration:
+                            id: WINDOWSPATCH
+                            name: Windows Patch Feed
+                      - id: PBL-9aecfcab-4ab5-4a79-9e38-81fb06a400a9
+                        name: Updates
+                        description: Patch Updates
+                        dynamic: false
+                        enabled: true
+                        createdUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                          phoneNumber: ''
+                        updatedUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                          phoneNumber: ''
+                        createdTime: '2018-11-20T13:43:44+0000'
+                        updatedTime: '2018-11-21T12:40:30+0000'
+                        installedIntg:
+                          id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                          displayName: Default Windows Feed
+                          integration:
+                            id: WINDOWSPATCH
+                            name: Windows Patch Feed
+                      - id: PBL-56d22620-50b6-4b94-ab5b-b6cd360c7e8c
+                        name: Security Updates
+                        description: Security Updates
+                        dynamic: true
+                        enabled: true
+                        createdUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                          phoneNumber: ''
+                        updatedUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                          phoneNumber: ''
+                        createdTime: '2018-11-20T13:41:30+0000'
+                        updatedTime: '2018-11-20T13:42:13+0000'
+                        policy:
+                          id: 502
+                          uid: POLICY-6c5b7ccf-7f79-447e-be8a-81deaa0b419e
+                          name: Security Updates
+                          matchType: ALL
+                          rules:
+                            - id: 12372
+                              key: '560'
+                              operator: Contains
+                              value: Security Updates
+                          actions: []
+                        installedIntg:
+                          id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                          displayName: Default Windows Feed
+                          integration:
+                            id: WINDOWSPATCH
+                            name: Windows Patch Feed
+                      - id: PBL-8ef7bb6a-1b9e-4ce5-8b63-858b9fe9d6d2
+                        name: Rating WHITELISTED
+                        description: Rating WHITELISTED
+                        dynamic: true
+                        enabled: true
+                        createdUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                          phoneNumber: ''
+                        updatedUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                          phoneNumber: ''
+                        createdTime: '2018-11-27T12:38:48+0000'
+                        updatedTime: '2018-11-29T04:20:10+0000'
+                        policy:
+                          id: 507
+                          uid: POLICY-2f65d515-1758-45c0-9f4d-c5d659de2f3d
+                          name: Rating WHITELISTED
+                          matchType: ALL
+                          rules:
+                            - id: 12378
+                              key: '560'
+                              operator: Equals
+                              value: Definition Updates - Windows Defender
+                            - id: 12379
+                              key: '559'
+                              operator: Ends with
+                              value: Critical
+                            - id: 12380
+                              key: '562'
+                              operator: Equals
+                              value: WHITELISTED
+                          actions: []
+                        installedIntg:
+                          id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                          displayName: Default Windows Feed
+                          integration:
+                            id: WINDOWSPATCH
+                            name: Windows Patch Feed
+                      - id: PBL-52795034-7085-4d0c-adf3-ed58d9ec0d56
+                        name: Feature Packs - Windows 7
+                        description: Feature Packs - Windows 7
+                        dynamic: true
+                        enabled: true
+                        createdUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                          phoneNumber: ''
+                        updatedUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                          phoneNumber: ''
+                        createdTime: '2018-11-20T14:10:14+0000'
+                        updatedTime: '2018-11-22T10:20:32+0000'
+                        policy:
+                          id: 504
+                          uid: POLICY-b802b846-653b-4b69-abcc-0113577f167a
+                          name: Feature Packs - Windows 7
+                          matchType: ALL
+                          rules:
+                            - id: 12374
+                              key: '560'
+                              operator: Contains
+                              value: Feature Packs - Windows 7
+                          actions: []
+                        installedIntg:
+                          id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                          displayName: Default Windows Feed
+                          integration:
+                            id: WINDOWSPATCH
+                            name: Windows Patch Feed
+                    totalResults: 5
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+      parameters:
+        - schema:
+            type: integer
+            default: '1'
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+            default: '100'
+          in: query
+          name: pageSize
+        - schema:
+            type: boolean
+            default: 'true'
+          in: query
+          name: isDescendingOrder
+        - schema:
+            type: string
+            default: name
+          in: query
+          name: sortName
+        - schema:
+            type: string
+          in: query
+          name: queryString
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
   /api/v2/tenants/{tenantId}/patches/baselines/{baselineId}:
-    $ref: './patching/tenants-tenantid-patches-baselines-baselineid.yaml'
+    summary: Get, update, and delete patch baselines
+    description: Gets, updates, and deletes patch baselines.
+    delete:
+      summary: Delete patch baseline
+      description: Deletes a patch baseline.
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+    get:
+      summary: Get patch list in a patch baseline
+      description: |-
+        Gets the list of patches in a patch baseline.
+
+        ##### Notes
+        There are special characters that can be used in a query string:
+        - (+) represents the next field and must be URL-encoded.
+        - (:) represents equals. An example is key : value.
+        - Space characters must be URL-encoded.
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        externalId:
+                          type: string
+                        severity:
+                          type: string
+                        category:
+                          type: string
+                        releaseTime:
+                          type: string
+                        type:
+                          type: string
+                        rebootRequired:
+                          type: boolean
+                        rating:
+                          type: object
+                          properties:
+                            rating:
+                              type: string
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - id: PATCH-be4069ba-f432-4a02-b861-fbd826890cb3
+                        name: Update for Windows 7 (KB3184143)
+                        externalId: '3184143'
+                        severity: Important
+                        category: Updates - Windows 7
+                        releaseTime: '2016-10-11T00:00:00+0000'
+                        type: WINDOWS
+                        rebootRequired: true
+                        rating:
+                          rating: TESTING
+                      - id: PATCH-d119f423-9b5f-4685-9145-85a011ddc29d
+                        name: Update for Windows 7 (KB3179573)
+                        externalId: '3179573'
+                        severity: Important
+                        category: Updates - Windows 7
+                        releaseTime: '2016-09-13T00:00:00+0000'
+                        type: WINDOWS
+                        rebootRequired: true
+                        rating:
+                          rating: TESTING
+                      - id: PATCH-3a011c95-a03f-4a35-93f1-75f6e1fe6d63
+                        name: Update for Windows 7 (KB3170735)
+                        externalId: '3170735'
+                        severity: Important
+                        category: Updates - Windows 7
+                        releaseTime: '2016-07-12T00:00:00+0000'
+                        type: WINDOWS
+                        rebootRequired: true
+                        rating:
+                          rating: TESTING
+                      - id: PATCH-f0a474bc-008c-4569-aff9-9b1aa5134a65
+                        name: Update for Windows 7 (KB3161102)
+                        externalId: '3161102'
+                        severity: Important
+                        category: Updates - Windows 7
+                        releaseTime: '2016-09-13T00:00:00+0000'
+                        type: WINDOWS
+                        rebootRequired: true
+                        rating:
+                          rating: TESTING
+                      - id: PATCH-1ee57411-43da-42da-80db-3e26cbdf52cf
+                        name: Update for Windows 7 (KB3147071)
+                        externalId: '3147071'
+                        severity: Important
+                        category: Updates - Windows 7
+                        releaseTime: '2016-04-12T00:00:00+0000'
+                        type: WINDOWS
+                        rebootRequired: true
+                        rating:
+                          rating: TESTING
+                      - id: PATCH-a90ed74a-8283-4368-8dd2-51f982ffe082
+                        name: Update for Windows 7 (KB3138378)
+                        externalId: '3138378'
+                        severity: Important
+                        category: Updates - Windows 7
+                        releaseTime: '2016-05-10T00:00:00+0000'
+                        type: WINDOWS
+                        rebootRequired: true
+                        rating:
+                          rating: TESTING
+                      - id: PATCH-f9b5f8dd-f7ca-4a42-9558-34db7913ce39
+                        name: Update for Windows 7 (KB3137061)
+                        externalId: '3137061'
+                        severity: Important
+                        category: Updates - Windows 7
+                        releaseTime: '2016-04-12T00:00:00+0000'
+                        type: WINDOWS
+                        rebootRequired: true
+                        rating:
+                          rating: TESTING
+                      - id: PATCH-e4a948bc-4274-4cbc-9f1d-8a3d22415630
+                        name: Update for Windows 7 (KB3133977)
+                        externalId: '3133977'
+                        severity: Important
+                        category: Updates - Windows 7
+                        releaseTime: '2016-04-12T00:00:00+0000'
+                        type: WINDOWS
+                        rebootRequired: true
+                        rating:
+                          rating: TESTING
+                      - id: PATCH-5cc371f8-b82c-4aa8-9bab-ae452c7a75fe
+                        name: Update for Windows 7 (KB3102429)
+                        externalId: '3102429'
+                        severity: Important
+                        category: Updates - Windows 7
+                        releaseTime: '2016-01-19T00:00:00+0000'
+                        type: WINDOWS
+                        rebootRequired: true
+                        rating:
+                          rating: TESTING
+                      - id: PATCH-f178f950-12d4-49a4-be5e-5a8418ceb5bf
+                        name: Update for Windows 7 (KB3080149)
+                        externalId: '3080149'
+                        severity: Important
+                        category: Updates - Windows 7
+                        releaseTime: '2015-09-08T00:00:00+0000'
+                        type: WINDOWS
+                        rebootRequired: true
+                        rating:
+                          rating: TESTING
+                    totalResults: 10
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+    post:
+      summary: Update patch baseline details
+      description: Updates patch baseline details.
+      tags:
+        - patching
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patching-patchBaseline'
+            examples:
+              example-static:
+                value:
+                  name: Windows_Patch_Feed
+                  description: Windows_Vulnerabilities
+                  dynamic: true
+                  installedIntg:
+                    id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+              example-dynamic:
+                value:
+                  name: Linux_Patch_Baseline
+                  description: Linux_Patches_for_SJ_Devices
+                  dynamic: true
+                  policy:
+                    matchType: ALL
+                    rules:
+                      - key: Category
+                        operator: Contains
+                        value: Updates
+                      - key: Rating
+                        operator: Equals
+                        value: WHITELISTED
+                      - key: Severity
+                        operator: Not Equals
+                        value: Critical
+                  installedIntg:
+                    id: INTG-35160619-ea2d-4450-8b8d-7c4bc51ebc92
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/patching-patchBaseline'
+              examples:
+                example-static:
+                  value:
+                    id: PBL-bafd3744-9a59-4cd6-9825-00a0a5a54f6e
+                    name: Windows_Patch_Feed
+                    description: Windows_Vulnerabilities
+                    dynamic: false
+                    enabled: false
+                    createdUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                    updatedUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                    createdTime: '2019-02-08T07:40:06+0000'
+                    updatedTime: '2019-02-08T09:11:19+0000'
+                    installedIntg:
+                      id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                      displayName: Default Windows Feed
+                      integration:
+                        id: WINDOWSPATCH
+                        name: Windows Patch Feed
+                example-dynamic:
+                  value:
+                    id: PBL-198014e3-74c0-4e12-a6e1-c161d9003fd6
+                    name: Linux_Patch_Baseline
+                    description: Linux_Patches_for_SJ_Devices
+                    dynamic: true
+                    enabled: false
+                    createdUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                    updatedUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                    createdTime: '2019-02-08T07:45:10+0000'
+                    updatedTime: '2019-02-08T09:18:21+0000'
+                    policy:
+                      id: 663
+                      uid: POLICY-1308aebb-94a8-4bde-aed9-1dd4aafe78a8
+                      matchType: ALL
+                      rules:
+                        - id: 12514
+                          key: Category
+                          operator: Contains
+                          value: Updates
+                          resourceType: DEVICE
+                        - id: 12515
+                          key: Rating
+                          operator: Equals
+                          value: WHITELISTED
+                          resourceType: DEVICE
+                        - id: 12516
+                          key: Severity
+                          operator: Not Equals
+                          value: Critical
+                          resourceType: DEVICE
+                      actions: []
+                    installedIntg:
+                      id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                      displayName: Default Linux Feed
+                      integration:
+                        id: LINUXPATCH
+                        name: Linux Patch Feed
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: baselineId
+        required: true
   /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/baselines/{baselineId}/{action}:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid-baselines-baselineid-action.yaml'
+    summary: Assign or unassign a baseline for patch compliance
+    description: Assigns and unassigns a patch baseline attached for a patch compliance check.
+    post:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: complianceId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: baselineId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: action
+        required: true
   /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/deviceGroups/{deviceGrpId}/{action}:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid-devicegroups-devicegrpid-action.yaml'
+    summary: Assign or unassign device group for patch compliance
+    description: Assigns and unassigns a device group for a patch compliance.
+    post:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: complianceId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: deviceGrpId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: action
+        required: true
   /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/devices/{deviceId}/{action}:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid-devices-deviceid-action.yaml'
+    summary: Assign or unassign devices for patch compliance
+    description: Assigns and unassigns devices for patch compliance.
+    post:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: complianceId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: deviceId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: action
+        required: true
   /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/baselines:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid-baselines.yaml'
+    summary: Get baseline details of compliance
+    description: Gets the baselines attached to a patch compliance.
+    get:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/patching-patchBaseline'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - id: PBL-bafd3744-9a59-4cd6-9825-00a0a5a54f6e
+                        name: Windows-DefaultPatchBaseline
+                        description: This baseline includes patches approved for Windows device
+                        dynamic: false
+                        enabled: true
+                        createdUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                        updatedUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                        createdTime: '2019-02-08T07:40:06+0000'
+                        updatedTime: '2019-02-10T09:54:17+0000'
+                        installedIntg:
+                          id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                          displayName: Default Windows Feed
+                          integration:
+                            id: WINDOWSPATCH
+                            name: Windows Patch Feed
+                      - id: PBL-63c75c7b-bee0-41f5-816b-e241f8753472
+                        name: Linux-DefaultPatchBaseline
+                        description: This baseline includes patches approved for Linux device
+                        dynamic: false
+                        enabled: true
+                        createdUser:
+                          loginName: James.Blake
+                          lastName: Blake
+                          firstName: James
+                          email: james.blake@myorganization.com
+                        updatedUser:
+                          loginName: James.Blake
+                          lastName: Blake
+                          firstName: James
+                          email: james.blake@myorganization.com
+                          phoneNumber: ''
+                        createdTime: '2019-01-23T09:41:12+0000'
+                        updatedTime: '2019-01-24T06:08:07+0000'
+                        installedIntg:
+                          id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                          displayName: Default Linux Feed
+                          integration:
+                            id: LINUXPATCH
+                            name: Linux Patch Feed
+                      - id: PBL-c8622232-5dcc-4dba-9426-882e7205b065
+                        name: Critical Windows Patch Baseline
+                        description: This baseline includes all critical Windows patches
+                        dynamic: false
+                        enabled: true
+                        createdUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                        updatedUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                          phoneNumber: ''
+                        createdTime: '2019-01-23T09:39:13+0000'
+                        updatedTime: '2019-01-24T08:48:11+0000'
+                        installedIntg:
+                          id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                          displayName: Default Windows Feed
+                          integration:
+                            id: WINDOWSPATCH
+                            name: Windows Patch Feed
+                      - id: PBL-198014e3-74c0-4e12-a6e1-c161d9003fd6
+                        name: Critical Linux Patch Baseline
+                        description: This baseline includes Linux operating system security patches
+                        dynamic: true
+                        enabled: true
+                        createdUser:
+                          loginName: James.Blake
+                          lastName: Blake
+                          firstName: James
+                          email: james.blake@myorganization.com
+                        updatedUser:
+                          loginName: James.Blake
+                          lastName: Blake
+                          firstName: James
+                          email: james.blake@myorganization.com
+                        createdTime: '2019-02-08T07:45:10+0000'
+                        updatedTime: '2019-02-08T09:18:22+0000'
+                        policy:
+                          id: 663
+                          uid: POLICY-1308aebb-94a8-4bde-aed9-1dd4aafe78a8
+                          matchType: ALL
+                          rules:
+                            - id: 12514
+                              key: Category
+                              operator: Contains
+                              value: Security Updates
+                              resourceType: DEVICE
+                            - id: 12515
+                              key: Rating
+                              operator: Equals
+                              value: BLACKLISTED
+                              resourceType: DEVICE
+                            - id: 12516
+                              key: Severity
+                              operator: Not Equals
+                              value: Critical
+                              resourceType: DEVICE
+                          actions: []
+                        installedIntg:
+                          id: INTG-c2f39b7b-ad25-11e8-924d-080027f0b4d6
+                          displayName: Default Windows Feed
+                          integration:
+                            id: WINDOWSPATCH
+                            name: Windows Patch Feed
+                    totalResults: 4
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 10
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+      parameters:
+        - schema:
+            type: integer
+            default: '1'
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+            default: '100'
+          in: query
+          name: pageSize
+        - schema:
+            type: boolean
+            default: 'true'
+          in: query
+          name: isDescendingOrder
+        - schema:
+            type: string
+            default: name
+          in: query
+          name: sortName
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: complianceId
+        required: true
   /api/v2/tenants/{tenantId}/patches/compliance:
-    $ref: './patching/tenants-tenantid-patches-compliance.yaml'
+    summary: Create compliance and get compliance checks
+    description: Creates a patch compliance and gets the list of patch compliance checks.
+    post:
+      summary: Create patch compliance
+      description: Creates a patch compliance.
+      tags:
+        - patching
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patching-patchCompliance'
+            examples:
+              example-1:
+                value:
+                  name: Patch Compliance of Windows Devices
+                  description: Compliance Check for Certain Windows Devices
+                  osType: WINDOWS
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/patching-patchCompliance'
+              examples:
+                example-1:
+                  value:
+                    id: PCMP-5c70ea87-2350-4781-9762-df47194d06d3
+                    name: Patch Compliance of Windows Devices
+                    description: Compliance check for Certain Windows Devices
+                    createdUser:
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: admin@opsramp.com
+                    updatedUser:
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: admin@opsramp.com
+                    createdTime: '2019-02-08T12:37:02+0000'
+                    updatedTime: '2019-02-10T10:40:05+0000'
+                    osType: WINDOWS
+    get:
+      summary: Get patch compliance
+      description: Gets the list of patch compliance checks.
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/patching-patchCompliance'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - id: PCMP-9393677c-e3f4-4df0-89c5-17c648268e65
+                        name: Compliance for Windows Device Group-3
+                        description: Compliance check for Windows Device Group-3
+                        createdUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                        updatedUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                        createdTime: '2019-01-29T12:47:07+0000'
+                        updatedTime: '2019-01-29T12:48:07+0000'
+                        osType: WINDOWS
+                      - id: PCMP-4ea84abe-acb1-427a-ad90-a23dc34a3953
+                        name: Compliance for Windows Device Group-2
+                        description: Compliance check for Windows Device Group-2
+                        createdUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                        updatedUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                        createdTime: '2019-01-29T07:53:28+0000'
+                        updatedTime: '2019-01-30T10:20:10+0000'
+                        osType: WINDOWS
+                      - id: PCMP-2ec8e6e1-38c0-466f-b82e-8c242a13ee4e
+                        name: Compliance for Windows Device Group-1
+                        description: Patch Compliance for specific Windows Device Group-1
+                        createdUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                        updatedUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                        createdTime: '2019-01-26T10:48:04+0000'
+                        updatedTime: '2019-01-30T11:30:20+0000'
+                        osType: WINDOWS
+                      - id: PCMP-0e14f0bd-8f7d-49a5-bd84-d28267444971
+                        name: Compliance for Windows Devices
+                        description: Compliance check for Windows Devices
+                        createdUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                        updatedUser:
+                          loginName: John.Smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@myorganization.com
+                          phoneNumber: ''
+                        createdTime: '2019-01-26T10:25:26+0000'
+                        updatedTime: '2019-01-29T04:55:05+0000'
+                        osType: WINDOWS
+                      - id: PCMP-9c7ff57d-fe04-4d89-aebe-f8c8958d7677
+                        name: Compliance for Linux Devices
+                        description: Patch Compliance for Linux Devices
+                        createdUser:
+                          loginName: James.Blake
+                          lastName: Blake
+                          firstName: James
+                          email: james.blake@myorganization.com
+                          phoneNumber: ''
+                        updatedUser:
+                          loginName: James.Blake
+                          lastName: Blake
+                          firstName: James
+                          email: james.blake@myorganization.com
+                          phoneNumber: ''
+                        createdTime: '2019-01-26T08:43:52+0000'
+                        updatedTime: '2019-01-27T10:40:20+0000'
+                        osType: LINUX
+                      - id: PCMP-f3ea1402-1186-41ef-9069-c47de1075771
+                        name: Compliance for Linux Device Group-1
+                        description: Compliance check for Linux Device Group-1
+                        createdUser:
+                          loginName: James.Blake
+                          lastName: Blake
+                          firstName: James
+                          email: james.blake@myorganization.com
+                        updatedUser:
+                          loginName: James.Blake
+                          lastName: Blake
+                          firstName: James
+                          email: james.blake@myorganization.com
+                          phoneNumber: ''
+                        createdTime: '2019-01-26T10:38:45+0000'
+                        updatedTime: '2019-01-29T05:06:09+0000'
+                        osType: LINUX
+                    totalResults: 6
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+      parameters:
+        - schema:
+            type: integer
+            default: '1'
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+            default: '100'
+          in: query
+          name: pageSize
+        - schema:
+            type: boolean
+            default: 'true'
+          in: query
+          name: isDescendingOrder
+        - schema:
+            type: string
+            default: name
+          in: query
+          name: sortName
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
   /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid.yaml'
+    summary: Update and delete patch compliance
+    description: Update sand deletes a patch compliance
+    delete:
+      summary: Delete patch compliance
+      description: Delete a patch compliance.
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Update patch compliance
+      description: Updates a patch compliance.
+      tags:
+        - patching
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patching-patchCompliance'
+            examples:
+              example-1:
+                value:
+                  name: Linux Compliance
+                  description: Compliance check on Linux Devices
+                  osType: LINUX
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/patching-patchCompliance'
+              examples:
+                example-1:
+                  value:
+                    id: PCMP-5c70ea87-2350-4781-9762-df47194d06d3
+                    name: Linux Compliance
+                    description: Compliance check for Linux Devices
+                    createdUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                    updatedUser:
+                      loginName: John.Smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@myorganization.com
+                    createdTime: '2019-02-08T12:37:02+0000'
+                    updatedTime: '2019-02-10T10:38:24+0000'
+                    osType: LINUX
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: complianceId
+        required: true
   /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/devices:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid-devices.yaml'
+    summary: Get devices of a compliance
+    description: Gets the list of devices attached to a patch compliance.
+    get:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/patching-device'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - id: 2771a95d-496a-4c0b-a4f4-1cf1b7f94045
+                        generalInfo:
+                          osName: 'Microsoft Windows 7 Professional Service Pack 1, 32-bit'
+                          ipAddresses: 10.0.3.15
+                          hostName: ADMIN-PC
+                          resourceType: Windows
+                          resourceName: 172.31.26.40
+                          aliasName: alias name
+                        clientUniqueId: client_16
+                        type: DEVICE
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 10
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+      parameters:
+        - schema:
+            type: integer
+            default: '1'
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+            default: '100'
+          in: query
+          name: pageSize
+        - schema:
+            type: boolean
+            default: 'true'
+          in: query
+          name: isDescendingOrder
+        - schema:
+            type: string
+            default: name
+          in: query
+          name: sortName
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: complianceId
+        required: true
   /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/deviceGroups:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid-devicegroups.yaml'
+    summary: Get device group details of a compliance
+    description: Gets the device groups attached to a patch compliance.
+    get:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/patching-deviceGroup'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - id: '1011'
+                        uniqueId: DGP-6f0f8fa6-480d-45a1-9acd-e261647860e1
+                        name: Windows Device Group-SJ
+                        description: Procurement division Windows devices
+                        client:
+                          id: 16
+                          uniqueId: client_16
+                          name: Logix
+                          activated: true
+                      - id: '1076'
+                        uniqueId: DGP-cd55439b-eb44-4b68-a8b1-3e787df39191
+                        name: Linux Device Group-CA
+                        description: Maintenance division Linux devices
+                        client:
+                          id: 16
+                          uniqueId: client_16
+                          name: Logix
+                          activated: true
+                      - id: '1077'
+                        uniqueId: DGP-3d12eb46-d0ec-4825-a247-0fc87726a73d
+                        name: Linux Device Group
+                        description: ''
+                        client:
+                          id: 16
+                          uniqueId: client_16
+                          name: Logix
+                          activated: true
+                      - id: '1075'
+                        uniqueId: DGP-468b2466-0d94-444f-82bf-367c5d5b891e
+                        name: Critical Windows Devices
+                        description: High priority devices
+                        client:
+                          id: 16
+                          uniqueId: client_16
+                          name: Logix
+                          activated: true
+                    totalResults: 4
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 10
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+      parameters:
+        - schema:
+            type: integer
+            default: '1'
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+            default: '100'
+          in: query
+          name: pageSize
+        - schema:
+            type: boolean
+            default: 'true'
+          in: query
+          name: isDescendingOrder
+        - schema:
+            type: string
+            default: name
+          in: query
+          name: sortName
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: complianceId
+        required: true
   /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/run:
-    $ref: './patching/tenants-tenantid-patches-compliance-complianceid-run.yaml'
+    summary: Run patch compliance check
+    description: Runs a patch compliance, checking all devices and device groups for compliance.
+    post:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: complianceId
+        required: true
   /api/v2/tenants/{tenantId}/patches/configurations:
-    $ref: './patching/tenants-tenantid-patches-configurations.yaml'
+    summary: Create patch configuration and execute
+    description: |-
+      Creates a patch configuration and executes patches on the resources.
+
+      ##### Notes
+      - Approved Windows patches are installed on the device during the scheduled installation window.
+      - The device is immediately rebooted following any patch that requires a reboot.
+      - Standard checks are performed on rebooted devices to ensure the device is operating properly.
+    post:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/patching-patchConfig'
+              examples:
+                example-1:
+                  value:
+                    scheduleJob:
+                      name: test
+                      entities:
+                        - resource:
+                            id: 04e26c5a-2173-4857-98b5-31190bb9985d
+                            generalInfo:
+                              ipAddresses: 10.21.0.212
+                              hostName: opsramp-demo-ubuntu-2
+                            clientUniqueId: client_13
+                            type: DEVICE
+                        - resource:
+                            id: 338382d8-d4e3-4573-85fc-27580b68ac5c
+                            generalInfo:
+                              ipAddresses: 10.21.0.213
+                              hostName: opsramp-demo-ubuntu-3
+                            clientUniqueId: client_13
+                            type: DEVICE
+                      schedule:
+                        startDate: '2016-04-14T10:10:00+0000'
+                        pattern:
+                          type: daily
+                          frequency: recurrence
+                          repeatFrequency: 2
+                          repeatType: days
+                      client:
+                        id: 13
+                        uniqueId: client_13
+                        name: patch client
+                        activated: true
+                      script:
+                        jobType: missingPatchesDownloadUpdate
+                    id: PATCHCONF-9db1451f-1441-4bd9-90b9-aa371fc11e6d
+                    patchConfigName: test
+                    description: testing
+                    approvalType:
+                      approvalType: 1
+                      approvalReason: testing data
+                    rebootOptions:
+                      rebootRequired: true
+                      forceReboot: true
+                    enablePatching: true
+                    maintenancePeriod: 60
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patching-patchConfig'
+            examples:
+              example-1:
+                value:
+                  patchConfigName: Test_Patch_Config
+                  description: testing
+                  approvalType:
+                    approvalType: 1
+                    approvalReason: testing data
+                  rebootOptions:
+                    rebootRequired: true
+                    forceReboot: true
+                  scheduleJob:
+                    entities:
+                      - resource:
+                          id: 04e26c5a-2173-4857-98b5-31190bb9985d
+                          type: DEVICE
+                      - resource:
+                          id: 338382d8-d4e3-4573-85fc-27580b68ac5c
+                          type: DEVICE
+                    script:
+                      jobType: missingPatchesDownloadUpdate
+                    schedule:
+                      startDate: '2016-04-14T10:10:10+0000'
+                      pattern:
+                        type: daily
+                        frequency: recurrence
+                        repeatType: Days
+                        repeatFrequency: 2
+                  enablePatching: true
+                  maintenancePeriod: 60
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
   /api/v2/tenants/{tenantId}/patches/configurations/{id}:
-    $ref: './patching/tenants-tenantid-patches-configurations-id.yaml'
+    summary: Manage patch configuration
+    description: Updates, gets, and deletes a patch configuration.
+    delete:
+      summary: Delete patch configuration
+      description: Deletes a patch configuration.
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+    get:
+      summary: Get patch configuration
+      description: Gets patch configuration details.
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/patching-patchConfig'
+              examples:
+                example-1:
+                  value:
+                    id: PATCHCONF-d708f385-e17f-41a0-b602-bf9d69a1f70d
+                    patchConfigName: patch1
+                    description: desc
+                    approvalType:
+                      approvalType: 0
+                      approvalReason: ''
+                    rebootOptions:
+                      rebootRequired: false
+                      forceReboot: false
+                    enablePatching: false
+                    approval: MANUAL
+                    installation: AUTO
+                    source: LOCAL
+                    scheduleJob:
+                      name: PATCHCONF-d708f385-e17f-41a0-b602-bf9d69a1f70d
+                      entities:
+                        - resource:
+                            id: eb1c8614-9593-4185-98f7-ac4266e180f1
+                            generalInfo:
+                              osName: ''
+                              ipAddresses: ''
+                              hostName: rewss
+                              resourceType: Desktop
+                              resourceName: test vm
+                              aliasName: ''
+                            clientUniqueId: client_4
+                            type: DEVICE
+                      schedule:
+                        startDate: '2019-05-23T00:00:00+0000'
+                        pattern:
+                          type: daily
+                          frequency: everyday
+                      client:
+                        id: 4
+                        uniqueId: client_4
+                        name: EHR
+                        activated: true
+                      script:
+                        jobType: missingPatchesDownloadUpdate
+    post:
+      summary: Update patch configuration
+      description: |-
+        Updates a patch configuration.
+
+        >##### Notes
+        >- Approved Windows patches will be installed on the device during the scheduled installation window.
+        >- The device will be immediately rebooted following any patch that requiring a reboot.
+        >- Standard checks are performed on rebooted devices to ensure the device is operating properly.
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/patching-patchConfig'
+              examples:
+                example-1:
+                  value:
+                    scheduleJob:
+                      name: test
+                      entities:
+                        - resource:
+                            id: 04e26c5a-2173-4857-98b5-31190bb9985d
+                            generalInfo:
+                              ipAddresses: 10.21.0.212
+                              hostName: opsramp-demo-ubuntu-2
+                            clientUniqueId: client_13
+                            type: DEVICE
+                        - resource:
+                            id: 338382d8-d4e3-4573-85fc-27580b68ac5c
+                            generalInfo:
+                              ipAddresses: 10.21.0.213
+                              hostName: opsramp-demo-ubuntu-3
+                            clientUniqueId: client_13
+                            type: DEVICE
+                      schedule:
+                        startDate: '2016-04-14T10:10:00+0000'
+                        pattern:
+                          type: daily
+                          frequency: recurrence
+                          repeatFrequency: 2
+                          repeatType: days
+                      client:
+                        id: 13
+                        uniqueId: client_13
+                        name: patch client
+                        activated: true
+                      script:
+                        jobType: missingPatchesDownloadUpdate
+                    id: PATCHCONF-9db1451f-1441-4bd9-90b9-aa371fc11e6d
+                    patchConfigName: test
+                    description: testing
+                    approvalType:
+                      approvalType: 1
+                      approvalReason: testing data
+                    rebootOptions:
+                      rebootRequired: true
+                      forceReboot: true
+                    enablePatching: true
+                    maintenancePeriod: 60
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patching-patchConfig'
+            examples:
+              example-1:
+                value:
+                  id: PATCHCONF-9db1451f-1441-4bd9-90b9-aa371fc11e6d
+                  patchConfigName: Test_Patch_Config
+                  description: testing
+                  approvalType:
+                    approvalType: 1
+                    approvalReason: testing data
+                  rebootOptions:
+                    rebootRequired: true
+                    forceReboot: true
+                  scheduleJob:
+                    entities:
+                      - resource:
+                          id: 04e26c5a-2173-4857-98b5-31190bb9985d
+                          type: DEVICE
+                      - resource:
+                          id: 338382d8-d4e3-4573-85fc-27580b68ac5c
+                          type: DEVICE
+                    script:
+                      jobType: missingPatchesDownloadUpdate
+                    schedule:
+                      startDate: '2016-04-14T10:10:10+0000'
+                      pattern:
+                        type: daily
+                        frequency: recurrence
+                        repeatType: Days
+                        repeatFrequency: 2
+                  enablePatching: true
+                  maintenancePeriod: 60
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
   /api/v2/tenants/{tenantId}/patches/configurations/{id}/run:
-    $ref: './patching/tenants-tenantid-patches-configurations-id-run.yaml'
+    summary: Run patch configuration
+    description: Runs a patch configuration.
+    post:
+      tags:
+        - patching
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: |
+                    Reason to run the patch configuration
+              required:
+                - reason
+            examples:
+              example-1:
+                value:
+                  reason: To run patch config on demand
+      responses:
+        '200':
+          description: OK
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
   /api/v2/tenants/{tenantId}/patches/configurations/search:
-    $ref: './patching/tenants-tenantid-patches-configurations-search.yaml'
+    summary: Search patch configuration by client
+    description: Searches for patch configurations by a client.
+    get:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/patching-patchConfig'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+      parameters:
+        - schema:
+            type: integer
+            default: '1'
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+            default: '100'
+          in: query
+          name: pageSize
+        - schema:
+            type: boolean
+            default: 'true'
+          in: query
+          name: isDescendingOrder
+        - schema:
+            type: string
+            default: job.id
+          in: query
+          name: sortName
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
   /api/v2/tenants/{tenantId}/patches/rating/{intgId}/feed/{patchId}:
-    $ref: './patching/tenants-tenantid-patches-rating-intgid-feed-patchid.yaml'
+summary: Get and delete patch details
+description: Gets patch details and delete a patch qualification.
+get:
+  summary: Get patch details
+  description: Gets details of a patch.
+  tags:
+    - patching
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/patching-patchDetails'
+          examples:
+            example-1:
+              value:
+                comments: ''
+                createdUser:
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                updatedUser:
+                  loginName: John.Smith
+                  lastName: Smith
+                  firstName: John
+                  email: john.smith@myorganization.com
+                createdTime: '2018-08-07T08:49:19+0000'
+                updatedTime: '2018-08-17T10:20:20+0000'
+                rating: WHITELISTED
+                cve: CVE-2014-12345
+                patch:
+                  id: PATCH-0be4130a-77bf-460e-b2c7-52906f86da5d
+                  name: Security Update for Microsoft .NET Framework 3.5.1 on Windows 7 SP1 x86 (KB2943357)
+                  externalId: '2943357'
+                  severity: Important
+                  category: Security Updates - Windows 7
+                  releaseTime: '2018-08-12T10:20:20+0000'
+                  type: WINDOWS
+                  rebootRequired: false
+                id: PR-04a9824f-be2c-463f-bc38-e14363dab496
+delete:
+  summary: Delete patch qualification
+  description: Deletes a patch qualification in the feed.
+  tags:
+    - patching
+  responses:
+    '200':
+      description: OK
+parameters:
+  - $ref: '#/components/parameters/tenantId'
+  - schema:
+      type: string
+    in: path
+    name: intgId
+    required: true
+  - schema:
+      type: string
+    in: path
+    name: patchId
+    required: true
   /api/v2/tenants/{tenantId}/patches:
-    $ref: './patching/tenants-tenantid-patches.yaml'
+    summary: Search patches
+    description: |-
+      Gets a tenant’s list of patches.
+      ##### Query Variables
+      Search for patches using these patch attributes:
+      |Query Variables|Description|
+      |---|---|
+      |name|Patch name.|
+      |uid|Patch unique ID.|
+      |startReleaseDate|Search for patches released within a specific duration.<br>startReleaseDate indicates the from date.For example, a user wants to fetch list of patches released between 12-Aug-2018 through 19-Aug-2018, provide startReleaseDate as 2018-08-12T05:40:51+0000 and endReleaseDate as 2018-08-19T08:30:20+0000.<br>Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).|
+      |endReleaseDate|Search for patches released within a specific duration. endReleaseDate indicates the to date.<br>Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).|
+      |extPatchId|External ID of a patch.|
+      |severity|Severity of patch.|
+      |category|Category in which a patch is created.|
+      |type|Type of patch. Example: Windows|
+      ##### Notes
+      There are special characters that can be used in a query string:
+      - (+) represents the next field and must be URL-encoded.
+      - (:) represents equals. An example is key : value.
+      - Space characters must be URL-encoded.
+    get:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/patching-patch'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  nextPageNo:
+                    type: integer
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+      parameters:
+        - schema:
+            type: integer
+            default: '1'
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+            default: '100'
+          in: query
+          name: pageSize
+        - schema:
+            type: boolean
+            default: 'true'
+          in: query
+          name: isDescendingOrder
+        - schema:
+            type: string
+            default: name
+          in: query
+          name: sortName
+        - schema:
+            type: object
+            properties:
+              name:
+                type: string
+              uid:
+                type: string
+              startReleaseDate:
+                type: string
+              endReleaseDate:
+                type: string
+              extPatchId:
+                type: string
+              severity:
+                type: string
+              category:
+                type: string
+              type:
+                type: string
+            enum: [name: string, uid: string, startReleaseDate: string, endReleaseDate: string, extPatchId: string, severity: string, category: string, type: string]
+            uniqueItems: true
+          description: >
+            Search for patches using these patch attributes.
+
+              There are special characters that can be used in a query string:
+              - (+) represents the next field and must be URL-encoded.
+              - (:) represents equals. An example is key : value.
+              - Space characters must be URL-encoded.
+
+            Parameter Variables:
+                
+            - `name` Patch name.
+            - `uid` Patch unique ID.
+            - `startReleaseDate` Search for patches released within a specific duration.<br>startReleaseDate indicates the from date.For example, a user wants to fetch list of patches released between 12-Aug-2018 through 19-Aug-2018, provide startReleaseDate as 2018-08-12T05:40:51+0000 and endReleaseDate as 2018-08-19T08:30:20+0000.<br>Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+            - `endReleaseDate` Search for patches released within a specific duration. endReleaseDate indicates the to date.<br>Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+            - `extPatchId` External ID of a patch.
+            - `severity` Severity of patch.
+            - `category` Category in which a patch is created.
+            - `type` Type of patch. Example: Windows.
+          in: query
+          name: queryString
+          allowReserved: true
+          explode: false
+        - schema:
+            type: string
+          in: query
+          name: viewId
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
   /api/v2/tenants/{tenantId}/patches/{resourceId}/scan/status:
-    $ref: './patching/tenants-tenantid-patches-resourceid-scan-status.yaml'
+    summary: Get patch scan status of all devices of a missing job
+    description: |-
+      Gets the patch scan status of all devices assigned to a missing patch job and display paginated output.
+
+      ##### Query Variables
+
+      |Query Variables|Description|
+      |-----|-----|
+      |id|Unique ID of the device.|
+      |ipAddress|IP address of the device.|
+      |resourceName|Name of the device.|
+      |hostName|Host name of the device.|
+      |aliasName|Alias name of the device.|
+      |resourceType|Type of the device.|
+    get:
+      tags:
+        - patching
+      parameters:
+        - schema:
+            type: integer
+            default: '1'
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+            default: '100'
+          in: query
+          name: pageSize
+        - schema:
+            type: boolean
+            default: 'true'
+          in: query
+          name: isDescendingOrder
+        - schema:
+            type: string
+            default: name
+          in: query
+          name: sortName
+        - schema:
+            type: string
+          in: query
+          name: queryString
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        device:
+                          $ref: '#/components/schemas/patching-device'
+                        scanStatus:
+                          $ref: '#/components/schemas/patching-scanstatus'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - device:
+                          id: 2ca44d27-888e-4ddb-a5ee-89eb962798fe
+                          generalInfo:
+                            osName: Ubuntu 14.04.5 LTS
+                            ipAddresses: 10.0.4.15
+                            hostName: opsrampdev
+                            resourceType: Linux
+                            resourceName: ''
+                            aliasName: ''
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        scanStatus:
+                          lastPatchScanDate: '2019-06-23T11:14:43+0000'
+                          lastPatchScanStatus: success
+                          missingPatchesBeforeScan: 134
+                          missingPatchesAfterScan: 134
+                          noOfMissingPatchesFoundInLastScan: 0
+                      - device:
+                          id: 2771a95d-496a-4c0b-a4f4-1cf1b7f94045
+                          generalInfo:
+                            osName: 'Microsoft Windows 7 Professional Service Pack 1, 32-bit'
+                            ipAddresses: 10.0.3.15
+                            hostName: ADMIN-PC
+                            resourceType: Work Station
+                            resourceName: ''
+                            aliasName: admin-pc
+                            osBuildNumber: '7601'
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        scanStatus:
+                          lastPatchScanDate: '2019-06-23T11:42:56+0000'
+                          lastPatchScanStatus: success
+                          missingPatchesBeforeScan: 0
+                          missingPatchesAfterScan: 0
+                          noOfMissingPatchesFoundInLastScan: 0
+                    totalResults: 2
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                example-query-ipAddress:
+                  value:
+                    results:
+                      - device:
+                          id: 2771a95d-496a-4c0b-a4f4-1cf1b7f94045
+                          generalInfo:
+                            osName: 'Microsoft Windows 7 Professional Service Pack 1, 32-bit'
+                            ipAddresses: 10.0.3.15
+                            hostName: ADMIN-PC
+                            resourceType: Work Station
+                            resourceName: ''
+                            aliasName: admin-pc
+                            osBuildNumber: '7601'
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        scanStatus:
+                          lastPatchScanDate: '2019-06-23T11:42:56+0000'
+                          lastPatchScanStatus: success
+                          missingPatchesBeforeScan: 0
+                          missingPatchesAfterScan: 0
+                          noOfMissingPatchesFoundInLastScan: 0
+                    totalResults: 2
+                    orderBy: ipAddress
+                    pageNo: 1
+                    pageSize: 1
+                    totalPages: 2
+                    nextPage: true
+                    nextPageNo: 2
+                    previousPageNo: 0
+                    descendingOrder: false
+                example-query-aliasName-and-ipAddress:
+                  value:
+                    results:
+                      - device:
+                          id: 2771a95d-496a-4c0b-a4f4-1cf1b7f94045
+                          generalInfo:
+                            osName: 'Microsoft Windows 7 Professional Service Pack 1, 32-bit'
+                            ipAddresses: 10.0.3.15
+                            hostName: ADMIN-PC
+                            resourceType: Work Station
+                            resourceName: ''
+                            aliasName: admin-pc
+                            osBuildNumber: '7601'
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        scanStatus:
+                          lastPatchScanDate: '2019-06-23T11:42:56+0000'
+                          lastPatchScanStatus: success
+                          missingPatchesBeforeScan: 0
+                          missingPatchesAfterScan: 0
+                          noOfMissingPatchesFoundInLastScan: 0
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                example-query-aliasName:
+                  value:
+                    results:
+                      - device:
+                          id: 2771a95d-496a-4c0b-a4f4-1cf1b7f94045
+                          generalInfo:
+                            osName: 'Microsoft Windows 7 Professional Service Pack 1, 32-bit'
+                            ipAddresses: 10.0.3.15
+                            hostName: ADMIN-PC
+                            resourceType: Work Station
+                            resourceName: ''
+                            aliasName: admin-pc
+                            osBuildNumber: '7601'
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        scanStatus:
+                          lastPatchScanDate: '2019-06-23T11:42:56+0000'
+                          lastPatchScanStatus: success
+                          missingPatchesBeforeScan: 0
+                          missingPatchesAfterScan: 0
+                          noOfMissingPatchesFoundInLastScan: 0
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                example-resource-type:
+                  value:
+                    results:
+                      - device:
+                          id: 2ca44d27-888e-4ddb-a5ee-89eb962798fe
+                          generalInfo:
+                            osName: Ubuntu 14.04.5 LTS
+                            ipAddresses: 10.0.4.15
+                            hostName: opsrampdev
+                            resourceType: Linux
+                            resourceName: ''
+                            aliasName: ''
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        scanStatus:
+                          lastPatchScanDate: '2019-06-23T11:14:43+0000'
+                          lastPatchScanStatus: success
+                          missingPatchesBeforeScan: 134
+                          missingPatchesAfterScan: 134
+                          noOfMissingPatchesFoundInLastScan: 0
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                example-query-specific-ipAddress:
+                  value:
+                    results:
+                      - device:
+                          id: 2771a95d-496a-4c0b-a4f4-1cf1b7f94045
+                          generalInfo:
+                            osName: 'Microsoft Windows 7 Professional Service Pack 1, 32-bit'
+                            ipAddresses: 10.0.3.15
+                            hostName: ADMIN-PC
+                            resourceType: Work Station
+                            resourceName: ''
+                            aliasName: admin-pc
+                            osBuildNumber: '7601'
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        scanStatus:
+                          lastPatchScanDate: '2019-06-23T11:42:56+0000'
+                          lastPatchScanStatus: success
+                          missingPatchesBeforeScan: 0
+                          missingPatchesAfterScan: 0
+                          noOfMissingPatchesFoundInLastScan: 0
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                example-query-specific-hostname:
+                  value:
+                    results:
+                      - device:
+                          id: 2ca44d27-888e-4ddb-a5ee-89eb962798fe
+                          generalInfo:
+                            osName: Ubuntu 14.04.5 LTS
+                            ipAddresses: 10.0.4.15
+                            hostName: opsrampdev
+                            resourceType: Linux
+                            resourceName: ''
+                            aliasName: ''
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        scanStatus:
+                          lastPatchScanDate: '2019-06-23T11:14:43+0000'
+                          lastPatchScanStatus: success
+                          missingPatchesBeforeScan: 134
+                          missingPatchesAfterScan: 134
+                          noOfMissingPatchesFoundInLastScan: 0
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                example-query-deviceId:
+                  value:
+                    results:
+                      - device:
+                          id: 2771a95d-496a-4c0b-a4f4-1cf1b7f94045
+                          generalInfo:
+                            osName: 'Microsoft Windows 7 Professional Service Pack 1, 32-bit'
+                            ipAddresses: 10.0.3.15
+                            hostName: ADMIN-PC
+                            resourceType: Work Station
+                            resourceName: ''
+                            aliasName: admin-pc
+                            osBuildNumber: '7601'
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        scanStatus:
+                          lastPatchScanDate: '2019-06-23T11:42:56+0000'
+                          lastPatchScanStatus: success
+                          missingPatchesBeforeScan: 0
+                          missingPatchesAfterScan: 0
+                          noOfMissingPatchesFoundInLastScan: 0
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: jobId
+        required: true
   /api/v2/tenants/{tenantId}/patches/{resourceId}/install/status:
-    $ref: './patching/tenants-tenantid-patches-resourceid-install-status.yaml'
+    summary: Get patching status of all devices in a patch configuration
+    description: |-
+      Gets the patching status of all devices in a patch configuration and display paginated output.
+
+      ##### Query Variables
+
+      |Query Variables|Description|
+      |-----|-----|
+      |id|Unique ID of the device.|
+      |ipAddress|IP address of the device.|
+      |resourceName|Name of the device.|
+      |hostName|Host name of the device.|
+      |aliasName|Alias name of the device.|
+      |resourceType|Type of the device.|
+    get:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        device:
+                          $ref: '#/components/schemas/patching-device'
+                        installStatus:
+                          $ref: '#/components/schemas/patching-installStatus'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - device:
+                          id: 2ca44d27-888e-4ddb-a5ee-89eb962798fe
+                          generalInfo:
+                            osName: Ubuntu 14.04.5 LTS
+                            ipAddresses: 10.0.4.15
+                            hostName: opsrampdev
+                            resourceType: Linux
+                            resourceName: ''
+                            aliasName: ''
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        installStatus:
+                          lastPatchTriggeredDate: '2019-06-21T13:51:39+0000'
+                          lastPatchInstalledDate: '2019-06-21T13:56:10+0000'
+                          lastMachineRebootDate: '2019-06-24T19:42:18+0000'
+                      - device:
+                          id: 2771a95d-496a-4c0b-a4f4-1cf1b7f94045
+                          generalInfo:
+                            osName: 'Microsoft Windows 7 Professional Service Pack 1, 32-bit'
+                            ipAddresses: 10.0.3.15
+                            hostName: ADMIN-PC
+                            resourceType: Work Station
+                            resourceName: ''
+                            aliasName: admin-pc
+                            osBuildNumber: '7601'
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        installStatus:
+                          lastPatchTriggeredDate: '2019-06-21T13:51:39+0000'
+                    totalResults: 2
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                example-ipAddress:
+                  value:
+                    results:
+                      - device:
+                          id: 2771a95d-496a-4c0b-a4f4-1cf1b7f94045
+                          generalInfo:
+                            osName: 'Microsoft Windows 7 Professional Service Pack 1, 32-bit'
+                            ipAddresses: 10.0.3.15
+                            hostName: ADMIN-PC
+                            resourceType: Work Station
+                            resourceName: ''
+                            aliasName: admin-pc
+                            osBuildNumber: '7601'
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        installStatus:
+                          lastPatchTriggeredDate: '2019-06-21T13:51:39+0000'
+                    totalResults: 2
+                    orderBy: ipAddress
+                    pageNo: 1
+                    pageSize: 1
+                    totalPages: 2
+                    nextPage: true
+                    nextPageNo: 2
+                    previousPageNo: 0
+                    descendingOrder: false
+                example-aliasName-and-ipAddress:
+                  value:
+                    results:
+                      - device:
+                          id: 2771a95d-496a-4c0b-a4f4-1cf1b7f94045
+                          generalInfo:
+                            osName: 'Microsoft Windows 7 Professional Service Pack 1, 32-bit'
+                            ipAddresses: 10.0.3.15
+                            hostName: ADMIN-PC
+                            resourceType: Work Station
+                            resourceName: ''
+                            aliasName: admin-pc
+                            osBuildNumber: '7601'
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        installStatus:
+                          lastPatchTriggeredDate: '2019-06-21T13:51:39+0000'
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                example-aliasName:
+                  value:
+                    results:
+                      - device:
+                          id: 2771a95d-496a-4c0b-a4f4-1cf1b7f94045
+                          generalInfo:
+                            osName: 'Microsoft Windows 7 Professional Service Pack 1, 32-bit'
+                            ipAddresses: 10.0.3.15
+                            hostName: ADMIN-PC
+                            resourceType: Work Station
+                            resourceName: ''
+                            aliasName: admin-pc
+                            osBuildNumber: '7601'
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        scanStatus:
+                          lastPatchScanDate: '2019-06-23T11:42:56+0000'
+                          lastPatchScanStatus: success
+                          missingPatchesBeforeScan: 0
+                          missingPatchesAfterScan: 0
+                          noOfMissingPatchesFoundInLastScan: 0
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                example-resourceType:
+                  value:
+                    results:
+                      - device:
+                          id: 2ca44d27-888e-4ddb-a5ee-89eb962798fe
+                          generalInfo:
+                            osName: Ubuntu 14.04.5 LTS
+                            ipAddresses: 10.0.4.15
+                            hostName: opsrampdev
+                            resourceType: Linux
+                            resourceName: ''
+                            aliasName: ''
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        installStatus:
+                          lastPatchTriggeredDate: '2019-06-21T13:51:39+0000'
+                          lastPatchInstalledDate: '2019-06-21T13:56:10+0000'
+                          lastMachineRebootDate: '2019-06-24T19:42:18+0000'
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                example-specific-ipAddress:
+                  value:
+                    results:
+                      - device:
+                          id: 2771a95d-496a-4c0b-a4f4-1cf1b7f94045
+                          generalInfo:
+                            osName: 'Microsoft Windows 7 Professional Service Pack 1, 32-bit'
+                            ipAddresses: 10.0.3.15
+                            hostName: ADMIN-PC
+                            resourceType: Work Station
+                            resourceName: ''
+                            aliasName: admin-pc
+                            osBuildNumber: '7601'
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        installStatus:
+                          lastPatchTriggeredDate: '2019-06-21T13:51:39+0000'
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                example-specific-hostname:
+                  value:
+                    results:
+                      - device:
+                          id: 2ca44d27-888e-4ddb-a5ee-89eb962798fe
+                          generalInfo:
+                            osName: Ubuntu 14.04.5 LTS
+                            ipAddresses: 10.0.4.15
+                            hostName: opsrampdev
+                            resourceType: Linux
+                            resourceName: ''
+                            aliasName: ''
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        installStatus:
+                          lastPatchTriggeredDate: '2019-06-21T13:51:39+0000'
+                          lastPatchInstalledDate: '2019-06-21T13:56:10+0000'
+                          lastMachineRebootDate: '2019-06-24T19:42:18+0000'
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                example-deviceId:
+                  value:
+                    results:
+                      - device:
+                          id: 2771a95d-496a-4c0b-a4f4-1cf1b7f94045
+                          generalInfo:
+                            osName: 'Microsoft Windows 7 Professional Service Pack 1, 32-bit'
+                            ipAddresses: 10.0.3.15
+                            hostName: ADMIN-PC
+                            resourceType: Work Station
+                            resourceName: ''
+                            aliasName: admin-pc
+                            osBuildNumber: '7601'
+                          clientUniqueId: client_16
+                          type: DEVICE
+                        installStatus:
+                          lastPatchTriggeredDate: '2019-06-21T13:51:39+0000'
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+      parameters:
+        - schema:
+            type: integer
+            default: '1'
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+            default: '100'
+          in: query
+          name: pageSize
+        - schema:
+            type: boolean
+            default: 'true'
+          in: query
+          name: isDescendingOrder
+        - schema:
+            type: string
+            default: name
+          in: query
+          name: sortName
+        - schema:
+            type: string
+          in: query
+          name: queryString
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: jobId
+        required: true
   /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/{patchId}/{approvalType}:
-    $ref: './patching/tenants-tenantid-resources-resourceid-patches-patchid-approvaltype.yaml'
+    summary: Approve and disapprove patch
+    description: Approves and disapproves a patch.
+    post:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: patchId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: approvalType
+        required: true
   /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/scan/status:
-    $ref: './patching/tenants-tenantid-resources-resourceid-patches-scan-status.yaml'
+    summary: Get patch scan status of a device
+    description: |-
+      Gets the details of patch scan status of a device.
+
+      Patch scan of a device provides the details of latest patch scan performed on a device. This API is used to get the following patch scan details of a device:
+
+      - Date of the last scan
+      - Result of the last scan
+      - Patches missing before the scan
+      - Patches found missing after the scan
+      - List of new patches found in the last scan
+    get:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  device:
+                    $ref: '#/components/schemas/patching-device'
+                  scanStatus:
+                    $ref: '#/components/schemas/patching-scanstatus'
+              examples:
+                example-1:
+                  value:
+                    device:
+                      id: 2ca44d27-888e-4ddb-a5ee-89eb962798fe
+                      generalInfo:
+                        osName: Ubuntu 14.04.5 LTS
+                        ipAddresses: 10.0.4.15
+                        hostName: opsrampdev
+                        resourceType: Linux
+                        resourceName: ''
+                        aliasName: ''
+                      clientUniqueId: client_16
+                      type: DEVICE
+                    scanStatus:
+                      lastPatchScanDate: '2019-06-23T11:14:43+0000'
+                      lastPatchScanStatus: success
+                      missingPatchesBeforeScan: 134
+                      missingPatchesAfterScan: 134
+                      noOfMissingPatchesFoundInLastScan: 0
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
   /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/install/status:
-    $ref: './patching/tenants-tenantid-resources-resourceid-patches-install-status.yaml'
+    summary: Get patching status of a device
+    description: |-
+      Gets the patching status of a device.
+
+      Patching status of a device provides the details of the most recent patches performed on a device. This API is used to get the following details of patching performed on a device (or devices):
+
+      - Completion status of the patch
+      - Status of machine reboot
+      - Last patch installation date
+      - Last reboot time of the machine
+    get:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  device:
+                    $ref: '#/components/schemas/patching-device'
+                  installStatus:
+                    $ref: '#/components/schemas/patching-installStatus'
+              examples:
+                example-1:
+                  value:
+                    device:
+                      id: 2ca44d27-888e-4ddb-a5ee-89eb962798fe
+                      generalInfo:
+                        osName: Ubuntu 14.04.5 LTS
+                        ipAddresses: 10.0.4.15
+                        hostName: opsrampdev
+                        resourceType: Linux
+                        resourceName: ''
+                        aliasName: ''
+                      clientUniqueId: client_16
+                      type: DEVICE
+                    installStatus:
+                      lastPatchTriggeredDate: '2019-06-21T13:51:39+0000'
+                      lastPatchInstalledDate: '2019-06-21T13:56:10+0000'
+                      lastMachineRebootDate: '2019-06-24T19:42:18+0000'
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
   /api/v2/tenants/{tenantId}/resources/{resourceId}/baselines/{baselineId}/patches:
-    $ref: './patching/tenants-tenantid-resources-resourceid-baselines-baselineid-patches.yaml'
+    summary: Check resource patch compliance against baseline
+    description: |-
+      Checks the compliance of a resource against a patch baseline.
+
+      ##### Notes
+      There are special characters that can be used in a query string:
+      - (+) represents the next field and must be URL-encoded.
+      - (:) represents equals. An example is key : value.
+      - Space characters must be URL-encoded.
+    get:
+      tags:
+        - patching
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/patching-baselineResourceCompliance'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - approvalStatus: NOT_APPROVED
+                        patchStatus: MISSING
+                        installedStatus: NEED_TO_INSTALL
+                        scanTime: '2019-05-29T08:56:11+0000'
+                        patch:
+                          id: PATCH-6ca40150-56b1-12ca-2b15-22a6ea787790
+                          name: Security Update for Windows Server 2008
+                          externalId: '10000'
+                          category: Critical Updates - Windows 8
+                          releaseTime: '2019-05-29T08:53:22+0000'
+                          type: WINDOWS
+                          rebootRequired: false
+                          rating:
+                            rating: CRITICAL
+                        resource:
+                          id: bae45962-981e-4611-bfef-b272c8d8aa87
+                          hostName: ''
+                          ipAddress: 172.31.26.40
+                          type: Windows
+                          aliasName: alias name
+                          resourceName: 172.31.26.40
+                          consoles: []
+                          resourceType: Windows
+                          frequency: 0
+                          paused: false
+                          deleted: false
+                          validateSSL: false
+                          port: 0
+                          encrypted: false
+                          timeout: 0
+                          days: 0
+                          ts: 0
+                          clientId: 0
+                          locationOffset: 0
+                          totalLocations: 0
+                          receiverHostPort: 0
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+      parameters:
+        - schema:
+            type: integer
+            default: '1'
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+            default: '100'
+          in: query
+          name: pageSize
+        - schema:
+            type: boolean
+            default: 'true'
+          in: query
+          name: isDescendingOrder
+        - schema:
+            type: string
+            default: name
+          in: query
+          name: sortName
+        - schema:
+            type: string
+          in: query
+          name: queryString
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: baseLineId
+        required: true
   /api/v2/tenants/{tenantId}/resources/patches:
-    $ref: './patching/tenants-tenantid-resources-patches.yaml'
+    summary: Get patches on a resource
+    description: |-
+      Gets the details of installed, missing, or installation-failed patches for a client’s resources.
+
+      ### Status Code
+      NULL - The NULL value in the file indicates that the Agent did not trigger any installation job.
+
+      0x0 - This value indicates that the patch is installed successfully.
+
+      The following are error codes that identify installation failures when patching the device:
+
+      |Code|
+      |-----|
+      | 0x80240020|
+      | 0x80070643       |
+      | 0x80070490       |
+      | 0x800b0100       |
+      | 0x80246007       |
+      | 0x80070663       |
+      | 0x80070652       |
+      | 0x80246013       |
+      | 0x80070005       |
+      | 0x240006         |
+      | 0x800f0831       |
+      | 0x80092004       |
+      | 0x8024000b       |
+      | 0x80073701       |
+      | 0x8024002d       |
+      | 0x800f083f       |
+      | 0x80070002       |
+      | 0x80071a90       |
+      | 0x8024200d       |
+      | 0x8007371c       |
+      | 0x800f082f       |
+      | 0x80070308       |
+      | 0x80070070       |
+      | 0x80246012       |
+      | 0x8000ffff       |
+      | 0x8007006e       |
+      | 0x80080005       |
+      | 0x80240017       |
+      | 0x800f0902       |
+      | 0x80070020       |
+      | 0x800700a1       |
+      | 0x800705aa       |
+      | 0x80004005       |
+      | 0x800736b3       |
+      | 0x80240009       |
+      | 0x80070570       |
+      | 0x80070570       |
+
+      >##### Notes
+      >There are special characters that can be used in a query string:
+      >- (+) represents the next field and must be URL-encoded.
+      >- (:) represents equals. An example is key : value.
+      >- Space characters must be URL-encoded.
+
+      ##### Query Variables
+      |Query Variables|Values|Description|
+      |-----|-----|------|
+      |resourceUUID|NA|Unique ID of a resource.<br>Example: d5bce6fe-d19f-4ad7-8c50-5f639f2dd321. Use the Search Resources API to fetch the list of resources.|
+      |startInstalledTime|yyyy-MM-ddTHH:mm: ssZ|Search for patches installed within a certain time frame. The startInstalledTime variable indicates the from time.<br>Example: 2018-10-10T09:20:00 0000|
+      |endInstalledTime|yyyy-MM-ddTHH:mm: ssZ|The endInstalledTime variable indicates the to time.<br>Example:  2018-10-15T10:30:00 0000|
+      |startScanTime|yyyy-MM-ddTHH:mm: ssZ|Starting time of searching the scan for patches.<br>The startScanTime variable indicates the from time.<br>Example: 2018-10-10T09:20:00 0000|
+      |endScanTime|yyyy-MM-ddTHH:mm: ssZ|End/Closing time of searching the scan for patches.<br>The endScanTime variable indicates the to time.<br>Example: 2018-10-15T10:30:00 0000|
+      |installedStatus|INPROGRESS, COMPLETED, FAILED, EXCLUDED, NEED_TO_INSTALL|Installed status of a patch.For example, to search for patches failed to install, provide installedStatus: FAILED.|
+      |patchStatus|MISSING, INSTALLED|Search for missing patches or patches installed on the resources.|
+      |category|CRITICAL, SECURITY|Category to which the patches belong.|
+      |patchName|NA|Search for patches with the patch name.|
+      |patchId|NA|Unique ID of a patch. To get the list of patches along with their unique Id, use the Search Patches API.<br>Example: PATCH-1fde1043-0d9c-4f3f-8a34-2d0afc3a137a.|
+      |externalId|NA|External ID of a patch.|
+      |severity|NA|Severity of a patch.|
+      |approvalStatus|APPROVED, NOT_APPROVED|Approval status of a patch.For example, to search for approved patches, provide approvalStatus: APPROVED.|
+    get:
+      tags:
+        - patching
+      parameters:
+        - schema:
+            type: integer
+            default: '1'
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+            default: '100'
+          in: query
+          name: pageSize
+        - schema:
+            type: boolean
+            default: 'true'
+          in: query
+          name: isDescendingOrder
+        - schema:
+            type: string
+            default: name
+          in: query
+          name: sortName
+        - schema:
+            type: string
+          in: query
+          name: queryString
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        approvalStatus:
+                          type: string
+                        patchStatus:
+                          type: string
+                        installedStatus:
+                          type: string
+                        scanTime:
+                          type: string
+                          format: date-time
+                        installedTime:
+                          type: string
+                          format: date-time
+                        approvedTime:
+                          type: string
+                          format: date-time
+                        installedApplicationId:
+                          type: string
+                        installedResult:
+                          type: string
+                        patch:
+                          $ref: '#/components/schemas/patching-patch'
+                        resource:
+                          $ref: '#/components/schemas/patching-resource'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-patch-missing-not-installed:
+                  value:
+                    results:
+                      - approvalStatus: APPROVED
+                        patchStatus: INSTALLED
+                        installedStatus: COMPLETED
+                        scanTime: '2019-10-29T08:56:11+0000'
+                        installedApplicationId: OpsRamp Agent
+                        installedResult: '0x0'
+                        patch:
+                          id: PATCH-6ca40150-56b1-12ca-2b15-22a6ea787790
+                          name: Dummy Patch Name0
+                          externalId: '10000'
+                          category: Critical Updates - Windows 7
+                          releaseTime: '2019-05-29T08:53:22+0000'
+                          type: WINDOWS
+                          rebootRequired: false
+                          rating:
+                            rating: TESTING
+                        resource:
+                          id: bae45962-981e-4611-bfef-b272c8d8aa87
+                          hostName: ''
+                          ipAddress: 172.31.26.40
+                          type: Windows
+                          aliasName: alias name
+                          resourceName: 172.31.26.40
+                          consoles: []
+                          resourceType: Windows
+                          frequency: 0
+                          paused: false
+                          deleted: false
+                          validateSSL: false
+                          port: 0
+                          encrypted: false
+                          timeout: 0
+                          days: 0
+                          ts: 0
+                          clientId: 0
+                          locationOffset: 0
+                          totalLocations: 0
+                          receiverHostPort: 0
+                    totalResults: 1
+                    orderBy: id
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                example-patch-installed:
+                  value:
+                    results:
+                      - approvalStatus: APPROVED
+                        patchStatus: INSTALLED
+                        installedStatus: COMPLETED
+                        scanTime: '2019-10-29T08:56:11+0000'
+                        installedApplicationId: OpsRamp Agent
+                        installedResult: '0x0'
+                        patch:
+                          id: PATCH-6ca40150-56b1-12ca-2b15-22a6ea787790
+                          name: Dummy Patch Name0
+                          externalId: '10000'
+                          category: Critical Updates - Windows 7
+                          releaseTime: '2019-05-29T08:53:22+0000'
+                          type: WINDOWS
+                          rebootRequired: false
+                          rating:
+                            rating: TESTING
+                        resource:
+                          id: bae45962-981e-4611-bfef-b272c8d8aa87
+                          hostName: ''
+                          ipAddress: 172.31.26.40
+                          type: Windows
+                          aliasName: alias name
+                          resourceName: 172.31.26.40
+                          consoles: []
+                          resourceType: Windows
+                          frequency: 0
+                          paused: false
+                          deleted: false
+                          validateSSL: false
+                          port: 0
+                          encrypted: false
+                          timeout: 0
+                          days: 0
+                          ts: 0
+                          clientId: 0
+                          locationOffset: 0
+                          totalLocations: 0
+                          receiverHostPort: 0
+                    totalResults: 1
+                    orderBy: id
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
   # Resource Management
   /api/v2/tenants/{tenantId}/customAttributes/{attributeId}/values/{valueId}:
     $ref: './resource-management/tenants-tenantid-customattributes-attributeid-values-valueid.yaml'
