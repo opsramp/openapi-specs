@@ -19,7 +19,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/role'
+            $ref: '#/components/schemas/tenancyAccessControl-role'
           examples:
             example-1:
               value:
@@ -131,7 +131,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/role'
+            $ref: '#/components/schemas/tenancyAccessControl-role'
           examples:
             example-msp-all-client-visibility:
               value:
@@ -524,7 +524,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/role'
+          $ref: '#/components/schemas/tenancyAccessControl-role'
         examples:
           example-msp-all-client-visibility:
             value:

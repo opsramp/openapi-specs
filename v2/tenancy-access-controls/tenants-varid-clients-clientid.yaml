@@ -11,7 +11,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/client'
+            $ref: '#/components/schemas/tenancyAccessControl-client'
           examples:
             example-1:
               value:
@@ -83,7 +83,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/client'
+          $ref: '#/components/schemas/tenancyAccessControl-client'
         examples:
           example-1:
             value:
@@ -193,7 +193,7 @@ post:
         content:
           application/json:
             schema:
-              $ref: './components.yaml#/components/schemas/client'
+              $ref: '#/components/schemas/tenancyAccessControl-client'
             examples:
               example-1:
                 value:

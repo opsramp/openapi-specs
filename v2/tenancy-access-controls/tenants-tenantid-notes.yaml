@@ -9,7 +9,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: './components.yaml#/components/schemas/clientNote'
+            $ref: '#/components/schemas/tenancyAccessControl-clientNote'
           examples:
             example-1:
               value:
@@ -29,7 +29,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: './components.yaml#/components/schemas/clientNote'
+          $ref: '#/components/schemas/tenancyAccessControl-clientNote'
         examples:
           example-never-expire:
             value:
