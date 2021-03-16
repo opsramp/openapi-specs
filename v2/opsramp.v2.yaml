@@ -56578,7 +56578,7 @@ components:
         id:
           type: string
         generalInfo:
-          $ref: '#/components/schemas/generalInfo'
+          $ref: '#/components/schemas/automation-generalInfo'
         clientUniqueId:
           type: string
         type:
@@ -56590,7 +56590,7 @@ components:
         type: object
         properties:
           resource:
-            $ref: '#/components/schemas/resource'
+            $ref: '#/components/schemas/automation-resource'
     automation-pattern:
       title: pattern
       type: object
@@ -56662,7 +56662,7 @@ components:
           type: string
           format: date-time
         pattern:
-          $ref: '#/components/schemas/pattern'
+          $ref: '#/components/schemas/automation-pattern'
     automation-approvalType:
       title: approvalType
       type: object
@@ -56734,17 +56734,17 @@ components:
             - appinstall
             - custom
         userType:
-          $ref: '#/components/schemas/userType'
+          $ref: '#/components/schemas/automation-userType'
         configParams:
-          $ref: '#/components/schemas/configParams'
+          $ref: '#/components/schemas/automation-configParams'
         approvalType:
-          $ref: '#/components/schemas/approvalType'
+          $ref: '#/components/schemas/automation-approvalType'
         customScript:
-          $ref: '#/components/schemas/customScript'
+          $ref: '#/components/schemas/automation-customScript'
         parameters:
           type: array
           items:
-            $ref: '#/components/schemas/parameter'
+            $ref: '#/components/schemas/automation-parameter'
     automation-parameter:
       title: parameter
       type: object
@@ -56823,7 +56823,7 @@ components:
           items:
             type: string
         parameters:
-          $ref: '#/components/schemas/rbaScriptParameter'
+          $ref: '#/components/schemas/automation-rbaScriptParameter'
         executionType:
           type: string
         installTimeout:
