@@ -46290,221 +46290,221 @@ paths:
         name: problemId
         required: true
   /api/v2/tenants/{tenantId}/problems/{problemId}/close:
-  summary: Close problem
-  description: |-
-    Closes a problem.
+    summary: Close problem
+    description: |-
+      Closes a problem.
 
-    Follow the steps before closing a problem:
+      Follow the steps before closing a problem:
 
-    Step 1: Check the status flow transition for Closed.
-    1. Login to OpsRamp.
-    2. Click Setup.
-    3. On the left-hand side panel, click Service Desk.
-    4. In Configuration, click Status Flows.
-    5. Check the status flow for the entity Problems.
-    6. Check the transition of the status Closed. If Closed is available this indicates the problem can be closed; otherwise, the problem cannot be closed.
+      Step 1: Check the status flow transition for Closed.
+      1. Login to OpsRamp.
+      2. Click Setup.
+      3. On the left-hand side panel, click Service Desk.
+      4. In Configuration, click Status Flows.
+      5. Check the status flow for the entity Problems.
+      6. Check the transition of the status Closed. If Closed is available this indicates the problem can be closed; otherwise, the problem cannot be closed.
 
-    Step 2: Provide the reason for changing the status.
-    1. Click Setup.
-    2. On the left-hand side panel, click Service Desk.
-    3. In Configuration, click Status Change Reasons and then click Add.
-    4. Select the scope, client, request type and entity status as Closed, provide the reason and then click Submit.
+      Step 2: Provide the reason for changing the status.
+      1. Click Setup.
+      2. On the left-hand side panel, click Service Desk.
+      3. In Configuration, click Status Change Reasons and then click Add.
+      4. Select the scope, client, request type and entity status as Closed, provide the reason and then click Submit.
 
-    Step 3: Enable the option to provide reason for closing a problem.
-    1. Click Setup.
-    2. On the left-hand side panel, click Service Desk.
-    3. In Configuration, click Settings.
-    4. Select client and then click Customize.
-    5. In Problem Settings section, select option Enable reasons to change status Close and then click Save.
+      Step 3: Enable the option to provide reason for closing a problem.
+      1. Click Setup.
+      2. On the left-hand side panel, click Service Desk.
+      3. In Configuration, click Settings.
+      4. Select client and then click Customize.
+      5. In Problem Settings section, select option Enable reasons to change status Close and then click Save.
 
-    ##### Notes
-    - Use the get problem API to check if status Closed and reasons to provide for Close are enabled. If under the field allowedStatus if name: Closed and reasonsEnabled: true, this indicates reasons should be provided for closing a problem.
-    - Use the get status change reasons API to provide the reasons to Close. The reasons configured in status: Closed are accepted, but a new provided reason would result in an error.
-    - Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
-  post:
-    tags:
-      - tickets
-    responses:
-      '200':
-        description: OK
+      ##### Notes
+      - Use the get problem API to check if status Closed and reasons to provide for Close are enabled. If under the field allowedStatus if name: Closed and reasonsEnabled: true, this indicates reasons should be provided for closing a problem.
+      - Use the get status change reasons API to provide the reasons to Close. The reasons configured in status: Closed are accepted, but a new provided reason would result in an error.
+      - Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+    post:
+      tags:
+        - tickets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tickets-problem'
+              examples:
+                example-1:
+                  value:
+                    id: PRB0000000114
+                    subject: 'Device Monitoring statistics  : alert- 104 '
+                    description: 'Monitoring Alerts Problems Report - 104 ,$alert.status '
+                    status: Closed
+                    oldStatus: Open
+                    priority: Normal
+                    oldPriority: Urgent
+                    notes: Able to receive device monitoring statistics
+                    closedSummary: All device monitoring statistics are received
+                    requester:
+                      loginName: john.smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@gmail.com
+                    assignedUser:
+                      id: USR0000000014
+                      loginName: brocadeLab@organization.com
+                      lastName: Lab
+                      firstName: Brocade
+                      email: sample@gmail.com
+                      phoneNumber: '8096250653'
+                    assigneeGroup:
+                      id: 7
+                      name: Brocade Lab Users
+                      description: All Brocade Lab Users group
+                    resources:
+                      - id: 200efca6-a75a-44e3-9360-1ff17a698e2e
+                        name: Local Setup
+                        type: SYNTHETIC
+                      - id: DGP-420a80f4-5fba-46d5-a1c1-20e2df4a326a
+                        name: OPSRAMP-SJ
+                        type: DEVICE_GROUP
+                      - id: SGP-c2af3866-fc89-47dd-b83f-bcc8df0b2a0a
+                        name: VTH Services
+                        type: SERVICE
+                    extTicketId: '000042526342'
+                    customFields:
+                      - id: UDF0000003778
+                        classCode: PROBLEM
+                        displayLabel: for service provider
+                        name: for_service_provider_3778
+                        fieldType: TYPE_TEXT
+                        mandatory: false
+                        editable: true
+                        description: All clients and all partners
+                      - id: UDF0000003779
+                        classCode: PROBLEM
+                        displayLabel: for service prov 2
+                        name: for_service_prov_2_3779
+                        fieldType: TYPE_CHECKBOX
+                        mandatory: false
+                        editable: true
+                        description: All partners and clients
+                        options:
+                          - label: 'yes'
+                            value: '1'
+                      - id: UDF0000003780
+                        classCode: PROBLEM
+                        displayLabel: for service pro 3
+                        name: for_service_pro_3_3780
+                        fieldType: TYPE_TEXT
+                        mandatory: false
+                        editable: true
+                        description: service provider
+                    cc: sample@gmail.com
+                    ticketArisedTime: ''
+                    createdUser:
+                      loginName: john.smith
+                      lastName: Smith
+                      firstName: John
+                      email: john.smith@gmail.com
+                    reason: Pr Close
+                    category:
+                      id: 10
+                      name: Critical Level
+                    reOpenCount: 0
+                    createdDate: '2016-07-25T14:58:30+0000'
+                    allowedStatus: []
+                    client:
+                      id: 8
+                      uniqueId: client_8
+                      name: Brocade Lab
+                      activated: true
+                    subCategory:
+                      id: 13
+                      name: Low
+                    sourcePolicyType: INTEGRATION
+                    updatedDate: '2016-11-25T10:01:39+0000'
+                    priorityUpdatedBy:
+                      id: USR0000000018
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: SP
+                      email: sample@gmail.com
+                    priorityUpdatedDate: '2016-11-25T09:59:51+0000'
+                    statusUpdatedBy:
+                      loginName: john.bolt
+                      lastName: Bolt
+                      firstName: John
+                      email: john.bolt@gmail.com
+                    statusUpdatedDate: '2016-11-25T10:01:39+0000'
+                    closedDate: '2016-11-25T10:01:39+0000'
+                    slaDetails:
+                      resolutionTime: 10364
+                      responseTime: 10204
+                      responseBreach: false
+                      resolutionBreach: false
+                      responseBreachDate: ''
+                      resolutionBreachDate: ''
+                    source: INTEGRATION
+                    statusFlow:
+                      - status: New
+                        timeSpent: 10204
+                        createdDate: '2016-07-25T14:58:31+0000'
+                        updatedBy:
+                          loginName: john.smith
+                          lastName: Smith
+                          firstName: John
+                          email: john.smith@gmail.com
+                      - status: Pending
+                        timeSpent: 10599024
+                        createdDate: '2016-07-25T17:48:35+0000'
+                        updatedBy:
+                          loginName: john.smith
+                          lastName: smith
+                          firstName: john
+                          email: sample@gmail.com
+                          phoneNumber: 998-559-7783
+                      - status: Open
+                        timeSpent: 160
+                        reason: Open Problem
+                        createdDate: '2016-11-25T09:58:59+0000'
+                        updatedBy:
+                          id: USR0000000018
+                          loginName: superadmin
+                          lastName: Admin
+                          firstName: SP
+                          email: sample@gmail.com
+                      - status: Closed
+                        reason: Issue fixed
+                        notes: Able to receive device monitoring statistics
+                        createdDate: '2016-11-25T10:01:39+0000'
+                        updatedBy:
+                          loginName: john.bolt
+                          lastName: Bolt
+                          firstName: John
+                          email: john.bolt@gmail.com
+      requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/tickets-problem'
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: Reason for closing the problem. This is mandatory only if the option Enable reasons to change status Close is enabled for problem in service desk settings (example steps below).
+                notes:
+                  type: string
+                  description: Additional information to add to a problem.
             examples:
               example-1:
                 value:
-                  id: PRB0000000114
-                  subject: 'Device Monitoring statistics  : alert- 104 '
-                  description: 'Monitoring Alerts Problems Report - 104 ,$alert.status '
-                  status: Closed
-                  oldStatus: Open
-                  priority: Normal
-                  oldPriority: Urgent
+                  reason: Issue fixed
                   notes: Able to receive device monitoring statistics
-                  closedSummary: All device monitoring statistics are received
-                  requester:
-                    loginName: john.smith
-                    lastName: Smith
-                    firstName: John
-                    email: john.smith@gmail.com
-                  assignedUser:
-                    id: USR0000000014
-                    loginName: brocadeLab@organization.com
-                    lastName: Lab
-                    firstName: Brocade
-                    email: sample@gmail.com
-                    phoneNumber: '8096250653'
-                  assigneeGroup:
-                    id: 7
-                    name: Brocade Lab Users
-                    description: All Brocade Lab Users group
-                  resources:
-                    - id: 200efca6-a75a-44e3-9360-1ff17a698e2e
-                      name: Local Setup
-                      type: SYNTHETIC
-                    - id: DGP-420a80f4-5fba-46d5-a1c1-20e2df4a326a
-                      name: OPSRAMP-SJ
-                      type: DEVICE_GROUP
-                    - id: SGP-c2af3866-fc89-47dd-b83f-bcc8df0b2a0a
-                      name: VTH Services
-                      type: SERVICE
-                  extTicketId: '000042526342'
-                  customFields:
-                    - id: UDF0000003778
-                      classCode: PROBLEM
-                      displayLabel: for service provider
-                      name: for_service_provider_3778
-                      fieldType: TYPE_TEXT
-                      mandatory: false
-                      editable: true
-                      description: All clients and all partners
-                    - id: UDF0000003779
-                      classCode: PROBLEM
-                      displayLabel: for service prov 2
-                      name: for_service_prov_2_3779
-                      fieldType: TYPE_CHECKBOX
-                      mandatory: false
-                      editable: true
-                      description: All partners and clients
-                      options:
-                        - label: 'yes'
-                          value: '1'
-                    - id: UDF0000003780
-                      classCode: PROBLEM
-                      displayLabel: for service pro 3
-                      name: for_service_pro_3_3780
-                      fieldType: TYPE_TEXT
-                      mandatory: false
-                      editable: true
-                      description: service provider
-                  cc: sample@gmail.com
-                  ticketArisedTime: ''
-                  createdUser:
-                    loginName: john.smith
-                    lastName: Smith
-                    firstName: John
-                    email: john.smith@gmail.com
-                  reason: Pr Close
-                  category:
-                    id: 10
-                    name: Critical Level
-                  reOpenCount: 0
-                  createdDate: '2016-07-25T14:58:30+0000'
-                  allowedStatus: []
-                  client:
-                    id: 8
-                    uniqueId: client_8
-                    name: Brocade Lab
-                    activated: true
-                  subCategory:
-                    id: 13
-                    name: Low
-                  sourcePolicyType: INTEGRATION
-                  updatedDate: '2016-11-25T10:01:39+0000'
-                  priorityUpdatedBy:
-                    id: USR0000000018
-                    loginName: superadmin
-                    lastName: Admin
-                    firstName: SP
-                    email: sample@gmail.com
-                  priorityUpdatedDate: '2016-11-25T09:59:51+0000'
-                  statusUpdatedBy:
-                    loginName: john.bolt
-                    lastName: Bolt
-                    firstName: John
-                    email: john.bolt@gmail.com
-                  statusUpdatedDate: '2016-11-25T10:01:39+0000'
-                  closedDate: '2016-11-25T10:01:39+0000'
-                  slaDetails:
-                    resolutionTime: 10364
-                    responseTime: 10204
-                    responseBreach: false
-                    resolutionBreach: false
-                    responseBreachDate: ''
-                    resolutionBreachDate: ''
-                  source: INTEGRATION
-                  statusFlow:
-                    - status: New
-                      timeSpent: 10204
-                      createdDate: '2016-07-25T14:58:31+0000'
-                      updatedBy:
-                        loginName: john.smith
-                        lastName: Smith
-                        firstName: John
-                        email: john.smith@gmail.com
-                    - status: Pending
-                      timeSpent: 10599024
-                      createdDate: '2016-07-25T17:48:35+0000'
-                      updatedBy:
-                        loginName: john.smith
-                        lastName: smith
-                        firstName: john
-                        email: sample@gmail.com
-                        phoneNumber: 998-559-7783
-                    - status: Open
-                      timeSpent: 160
-                      reason: Open Problem
-                      createdDate: '2016-11-25T09:58:59+0000'
-                      updatedBy:
-                        id: USR0000000018
-                        loginName: superadmin
-                        lastName: Admin
-                        firstName: SP
-                        email: sample@gmail.com
-                    - status: Closed
-                      reason: Issue fixed
-                      notes: Able to receive device monitoring statistics
-                      createdDate: '2016-11-25T10:01:39+0000'
-                      updatedBy:
-                        loginName: john.bolt
-                        lastName: Bolt
-                        firstName: John
-                        email: john.bolt@gmail.com
-    requestBody:
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              reason:
-                type: string
-                description: Reason for closing the problem. This is mandatory only if the option Enable reasons to change status Close is enabled for problem in service desk settings (example steps below).
-              notes:
-                type: string
-                description: Additional information to add to a problem.
-          examples:
-            example-1:
-              value:
-                reason: Issue fixed
-                notes: Able to receive device monitoring statistics
-  parameters:
-    - $ref: '#/components/parameters/tenantId'
-    - schema:
-        type: string
-      in: path
-      name: problemId
-      required: true
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: problemId
+        required: true
   /api/v2/tenants/{tenantId}/problems/categories:
     summary: Create problem categories
     description: |-
