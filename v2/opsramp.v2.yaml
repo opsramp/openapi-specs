@@ -33642,146 +33642,129 @@ paths:
                     - 'Hybrid Discovery and Monitoring'
                     - 'Event and Incident Management'
                     - 'Remediation and Automation'
-        responses:
-          '200':
-            description: OK
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/tenancyAccessControls-client'
-                examples:
-                  example-1:
-                    value:
-                      uniqueId: client_8
-                      name: Brocade Lab
-                      activated: true
-                      updatedTime: '2016-08-29T12:05:08+0000'
-                      createdTime: '2016-07-23T16:17:12+0000'
-                      timeZone: Asia/Calcutta
-                      createdBy:
-                        loginName: superadmin
-                        lastName: Admin
-                        firstName: Ops
-                        email: escalationmails@opsramp.com
-                      lastUpdatedBy:
-                        loginName: superadmin
-                        lastName: Admin
-                        firstName: Ops
-                        email: escalationmails@opsramp.com
-                      channel:
-                        id: 7
-                        name: Opsramp
-                        timeZone: GMT
-                      address: 'Madapur, Near Global edge school'
-                      city: Hyderabad
-                      state: Telangana
-                      country: India
-                      zip: '500081'
-                      phoneNumber: '5232324543'
-                      mobileNumber: '5232324543'
-                      showCopyClipBoard: true
-                      twoFactorAuthentication: true
-                      duoSecurity:
-                        apiHostName: 'https://api.opsramp.com'
-                      passwordPolicy:
-                        defaultPolicy: true
-                        minPasswordLength: 7
-                        enablePasswordConstraints: true
-                        changePasswordAtFirstLogin: true
-                        passwordValidity: 90
-                        allowLastFourPasswords: false
-                        maxAttemptsToLockout: 6
-                      mspId: msp_6
-                      extOrgId: EXT10001
-                      rdp2swfState: true
-                      enableCLIRecording: true
-                      clientDetails:
-                        businessStartHour: 10
-                        businessStartMin: 0
-                        businessEndHour: 22
-                        businessEndMin: 0
-                        businessDayStart: 2
-                        businessDayEnd: 6
-                        clientTechnologies:
-                          - OPSRAMP
-                          - Zabbix
-                        boughtServices:
-                          - Customer Services
-                        remoteAccess: true
-                      agentPolicies:
-                        - id: 6
-                          name: Desktops Policy
-                          deviceCount: 16
-                          policies:
-                            - id: 1
-                              name: PatchManagement
-                              enable: true
-                            - id: 2
-                              name: uvnc
-                              enable: false
-                            - id: 3
-                              name: ncaretrayicon
-                              enable: false
-                            - id: 6
-                              name: VCareCoreModule
-                              enable: false
-                            - id: 7
-                              name: sqlitedb
-                              enable: false
-                        - id: 5
-                          name: Servers Policy
-                          deviceCount: 33
-                          policies:
-                            - id: 1
-                              name: PatchManagement
-                              enable: true
-                            - id: 2
-                              name: uvnc
-                              enable: false
-                            - id: 3
-                              name: ncaretrayicon
-                              enable: true
-                            - id: 6
-                              name: VCareCoreModule
-                              enable: false
-                            - id: 7
-                              name: sqlitedb
-                              enable: false
-                      saClient: true
-                      nableClient: false
-                      lpiClient: false
-                      ncareAgent: false
-                      ncareDevsCount: 5
-                      noPolicyDevsCount: 0
-                      allDevicesCount: 50
-                      nocDetails:
-                        id: 2
-                        name: HYD NOC1
-                      whiteListedIps: '172.22.22.*,172.22.2.[0-50]'
-                      addOns:
-                        - 'Alert Enrichment'
-                        - 'Knowledgebase Management'
-                      packages:
-                        - 'Hybrid Discovery and Monitoring'
-                        - 'Event and Incident Management'
-                        - 'Remediation and Automation'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  uniqueId:
-                    type: string
-                  name:
-                    type: string
+                $ref: '#/components/schemas/tenancyAccessControls-client'
               examples:
                 example-1:
                   value:
-                    uniqueId: client_69883
-                    name: GEO Services
+                    uniqueId: client_8
+                    name: Brocade Lab
+                    activated: true
+                    updatedTime: '2016-08-29T12:05:08+0000'
+                    createdTime: '2016-07-23T16:17:12+0000'
+                    timeZone: Asia/Calcutta
+                    createdBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: Ops
+                      email: escalationmails@opsramp.com
+                    lastUpdatedBy:
+                      loginName: superadmin
+                      lastName: Admin
+                      firstName: Ops
+                      email: escalationmails@opsramp.com
+                    channel:
+                      id: 7
+                      name: Opsramp
+                      timeZone: GMT
+                    address: 'Madapur, Near Global edge school'
+                    city: Hyderabad
+                    state: Telangana
+                    country: India
+                    zip: '500081'
+                    phoneNumber: '5232324543'
+                    mobileNumber: '5232324543'
+                    showCopyClipBoard: true
+                    twoFactorAuthentication: true
+                    duoSecurity:
+                      apiHostName: 'https://api.opsramp.com'
+                    passwordPolicy:
+                      defaultPolicy: true
+                      minPasswordLength: 7
+                      enablePasswordConstraints: true
+                      changePasswordAtFirstLogin: true
+                      passwordValidity: 90
+                      allowLastFourPasswords: false
+                      maxAttemptsToLockout: 6
+                    mspId: msp_6
+                    extOrgId: EXT10001
+                    rdp2swfState: true
+                    enableCLIRecording: true
+                    clientDetails:
+                      businessStartHour: 10
+                      businessStartMin: 0
+                      businessEndHour: 22
+                      businessEndMin: 0
+                      businessDayStart: 2
+                      businessDayEnd: 6
+                      clientTechnologies:
+                        - OPSRAMP
+                        - Zabbix
+                      boughtServices:
+                        - Customer Services
+                      remoteAccess: true
+                    agentPolicies:
+                      - id: 6
+                        name: Desktops Policy
+                        deviceCount: 16
+                        policies:
+                          - id: 1
+                            name: PatchManagement
+                            enable: true
+                          - id: 2
+                            name: uvnc
+                            enable: false
+                          - id: 3
+                            name: ncaretrayicon
+                            enable: false
+                          - id: 6
+                            name: VCareCoreModule
+                            enable: false
+                          - id: 7
+                            name: sqlitedb
+                            enable: false
+                      - id: 5
+                        name: Servers Policy
+                        deviceCount: 33
+                        policies:
+                          - id: 1
+                            name: PatchManagement
+                            enable: true
+                          - id: 2
+                            name: uvnc
+                            enable: false
+                          - id: 3
+                            name: ncaretrayicon
+                            enable: true
+                          - id: 6
+                            name: VCareCoreModule
+                            enable: false
+                          - id: 7
+                            name: sqlitedb
+                            enable: false
+                    saClient: true
+                    nableClient: false
+                    lpiClient: false
+                    ncareAgent: false
+                    ncareDevsCount: 5
+                    noPolicyDevsCount: 0
+                    allDevicesCount: 50
+                    nocDetails:
+                      id: 2
+                      name: HYD NOC1
+                    whiteListedIps: '172.22.22.*,172.22.2.[0-50]'
+                    addOns:
+                      - 'Alert Enrichment'
+                      - 'Knowledgebase Management'
+                    packages:
+                      - 'Hybrid Discovery and Monitoring'
+                      - 'Event and Incident Management'
+                      - 'Remediation and Automation'
     parameters:
       - schema:
           type: string
