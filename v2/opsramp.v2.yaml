@@ -415,7 +415,7 @@ paths:
                 properties:
                   version:
                     type: integer
-              examples:
+              example:
                 value:
                   version: 2
     parameters:
