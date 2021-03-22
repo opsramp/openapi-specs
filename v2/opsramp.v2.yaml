@@ -33148,7 +33148,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-clientNote'
+                $ref: '#/components/schemas/tenancyAccessControls-clientNote'
               examples:
                 example-1:
                   value:
@@ -33168,7 +33168,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/tenancyAccessControl-clientNote'
+              $ref: '#/components/schemas/tenancyAccessControls-clientNote'
             examples:
               example-never-expire:
                 value:
@@ -33206,7 +33206,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-clientNote'
+                $ref: '#/components/schemas/tenancyAccessControls-clientNote'
               examples:
                 example-1:
                   value:
@@ -33235,7 +33235,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-clientNote'
+                $ref: '#/components/schemas/tenancyAccessControls-clientNote'
               examples:
                 example-1:
                   value:
@@ -33255,7 +33255,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/tenancyAccessControl-clientNote'
+              $ref: '#/components/schemas/tenancyAccessControls-clientNote'
             examples:
               example-never-expire:
                 value:
@@ -33314,7 +33314,7 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: '#/components/schemas/tenancyAccessControl-clientNote'
+                      $ref: '#/components/schemas/tenancyAccessControls-clientNote'
                   totalResults:
                     type: integer
                   orderBy:
@@ -33466,7 +33466,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-client'
+                $ref: '#/components/schemas/tenancyAccessControls-client'
               examples:
                 example-1:
                   value:
@@ -33538,7 +33538,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/tenancyAccessControl-client'
+              $ref: '#/components/schemas/tenancyAccessControls-client'
             examples:
               example-1:
                 value:
@@ -33648,7 +33648,7 @@ paths:
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/tenancyAccessControl-client'
+                  $ref: '#/components/schemas/tenancyAccessControls-client'
                 examples:
                   example-1:
                     value:
@@ -33835,7 +33835,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/tenancyAccessControl-client'
+              $ref: '#/components/schemas/tenancyAccessControls-client'
             examples:
               example-1:
                 value:
@@ -34016,7 +34016,7 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: '#/components/schemas/tenancyAccessControl-client'
+                      $ref: '#/components/schemas/tenancyAccessControls-client'
                   totalResults:
                     type: integer
                   orderBy:
@@ -34424,7 +34424,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-credentialSet'
+                $ref: '#/components/schemas/tenancyAccessControls-credentialSet'
               examples:
                 example-1:
                   value:
@@ -34446,7 +34446,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/tenancyAccessControl-credentialSet'
+              $ref: '#/components/schemas/tenancyAccessControls-credentialSet'
             examples:
               example-1:
                 value:
@@ -34479,7 +34479,7 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: '#/components/schemas/tenancyAccessControl-credentialSet'
+                      $ref: '#/components/schemas/tenancyAccessControls-credentialSet'
                   totalResults:
                     type: integer
                   orderBy:
@@ -34614,7 +34614,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-credentialSet'
+                $ref: '#/components/schemas/tenancyAccessControls-credentialSet'
               examples:
                 example-1:
                   value:
@@ -34977,7 +34977,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-credentialSet'
+                $ref: '#/components/schemas/tenancyAccessControls-credentialSet'
               examples:
                 example-1:
                   value:
@@ -34999,7 +34999,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/tenancyAccessControl-credentialSet'
+              $ref: '#/components/schemas/tenancyAccessControls-credentialSet'
             examples:
               example-1:
                 value:
@@ -35030,7 +35030,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/tenancyAccessControl-credentialSet'
+                  $ref: '#/components/schemas/tenancyAccessControls-credentialSet'
               examples:
                 example-1:
                   value:
@@ -35083,7 +35083,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/tenancyAccessControl-credentialSet'
+                  $ref: '#/components/schemas/tenancyAccessControls-credentialSet'
               examples:
                 example-1:
                   value:
@@ -35128,7 +35128,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-client'
+                $ref: '#/components/schemas/tenancyAccessControls-client'
               examples:
                 example-1:
                   value:
@@ -35233,7 +35233,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-role'
+                $ref: '#/components/schemas/tenancyAccessControls-role'
               examples:
                 example-msp-specific-client-visibilty:
                   value:
@@ -35486,7 +35486,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/tenancyAccessControl-role'
+              $ref: '#/components/schemas/tenancyAccessControls-role'
             examples:
               example-msp-specific-client-visibilty:
                 value:
@@ -35592,7 +35592,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-role'
+                $ref: '#/components/schemas/tenancyAccessControls-role'
               examples:
                 example-1:
                   value:
@@ -35704,7 +35704,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-role'
+                $ref: '#/components/schemas/tenancyAccessControls-role'
               examples:
                 example-msp-all-client-visibility:
                   value:
@@ -36097,7 +36097,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/tenancyAccessControl-role'
+              $ref: '#/components/schemas/tenancyAccessControls-role'
             examples:
               example-msp-all-client-visibility:
                 value:
@@ -36427,7 +36427,7 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: '#/components/schemas/tenancyAccessControl-user'
+                      $ref: '#/components/schemas/tenancyAccessControls-user'
                   totalResults:
                     type: integer
                   orderBy:
@@ -36514,7 +36514,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-userGroup'
+                $ref: '#/components/schemas/tenancyAccessControls-userGroup'
               examples:
                 example-1:
                   value:
@@ -36533,7 +36533,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/tenancyAccessControl-userGroup'
+              $ref: '#/components/schemas/tenancyAccessControls-userGroup'
             examples:
               example-1:
                 value:
@@ -36564,7 +36564,7 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: '#/components/schemas/tenancyAccessControl-userGroup'
+                      $ref: '#/components/schemas/tenancyAccessControls-userGroup'
                   totalResults:
                     type: integer
                   orderBy:
@@ -36641,7 +36641,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-userGroup'
+                $ref: '#/components/schemas/tenancyAccessControls-userGroup'
               examples:
                 example-1:
                   value:
@@ -36664,7 +36664,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/tenancyAccessControl-userGroup'
+              $ref: '#/components/schemas/tenancyAccessControls-userGroup'
             examples:
               example-1:
                 value:
@@ -36693,7 +36693,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-userGroup'
+                $ref: '#/components/schemas/tenancyAccessControls-userGroup'
               examples:
                 example-1:
                   value:
@@ -36820,7 +36820,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/tenancyAccessControl-user'
+              $ref: '#/components/schemas/tenancyAccessControls-user'
             examples:
               example-1:
                 value:
@@ -36866,7 +36866,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-user'
+                $ref: '#/components/schemas/tenancyAccessControls-user'
               examples:
                 example-1:
                   value:
@@ -37274,7 +37274,7 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: '#/components/schemas/tenancyAccessControl-user'
+                      $ref: '#/components/schemas/tenancyAccessControls-user'
                   totalResults:
                     type: integer
                   orderBy:
@@ -37307,7 +37307,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/tenancyAccessControl-user'
+              $ref: '#/components/schemas/tenancyAccessControls-user'
             examples:
               example-1:
                 value:
@@ -37360,7 +37360,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenancyAccessControl-user'
+                $ref: '#/components/schemas/tenancyAccessControls-user'
               examples:
                 example-1:
                   value:
@@ -60500,29 +60500,29 @@ components:
         oldPriority:
           type: string
         requester:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         assignedUser:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         assigneeGroup:
-          $ref: '#/components/schemas/group'
+          $ref: '#/components/schemas/tickets-group'
         resources:
           type: array
           items:
-            $ref: '#/components/schemas/resource'
+            $ref: '#/components/schemas/tickets-resource'
         extTicketId:
           type: string
           description: Attach an external ticket ID to the problem.
         customFields:
           type: array
           items:
-            $ref: '#/components/schemas/customField'
+            $ref: '#/components/schemas/tickets-customField'
         cc:
           type: string
           description: Cc email.
         ticketArisedTime:
           type: string
         createdUser:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         category:
           type: object
           properties:
@@ -60543,9 +60543,9 @@ components:
         allowedStatus:
           type: array
           items:
-            $ref: '#/components/schemas/status'
+            $ref: '#/components/schemas/tickets-status'
         client:
-          $ref: '#/components/schemas/client'
+          $ref: '#/components/schemas/tickets-client'
         subCategory:
           type: object
           properties:
@@ -60557,12 +60557,12 @@ components:
           type: string
           format: date-time
         priorityUpdatedBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         priorityUpdatedDate:
           type: string
           format: date-time
         statusUpdatedBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         statusUpdatedDate:
           type: string
           format: date-time
@@ -60570,7 +60570,7 @@ components:
           type: string
           format: date-time
         slaDetails:
-          $ref: '#/components/schemas/slaDetails'
+          $ref: '#/components/schemas/tickets-slaDetails'
         source:
           type: string
         rootCause:
@@ -60586,7 +60586,7 @@ components:
         statusFlow:
           type: array
           items:
-            $ref: '#/components/schemas/statusHistory'
+            $ref: '#/components/schemas/tickets-statusHistory'
         knowledgeArticleIds:
           type: array
           description: |-
@@ -60637,7 +60637,7 @@ components:
         attachments:
           type: array
           items:
-            $ref: '#/components/schemas/attachment'
+            $ref: '#/components/schemas/tickets-attachment'
         channelId:
           type: integer
     tickets-user:
@@ -60777,7 +60777,7 @@ components:
         resolutionBreachDate:
           type: string
         slaPolicy:
-          $ref: '#/components/schemas/slaPolicy'
+          $ref: '#/components/schemas/tickets-slaPolicy'
     tickets-statusHistory:
       title: statusHistory
       type: object
@@ -60790,7 +60790,7 @@ components:
           type: string
           format: date-time
         updatedBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         reason:
           type: string
         notes:
@@ -60810,9 +60810,9 @@ components:
           description: |
             (Optional) Short summary describing the business impact.
         createdBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         updatedBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         createdDate:
           type: string
           format: date-time
@@ -60835,7 +60835,7 @@ components:
         logType:
           type: string
         createdBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         changeLog:
           type: array
           items:
@@ -60868,7 +60868,7 @@ components:
           description: |
             (Optional) Labels attached to the response.
         creator:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         attachments:
           type: array
           description: |
@@ -60950,7 +60950,7 @@ components:
           type: string
           description: 'Normal or Emergency depending on the Priority of a change request. For example, create a change type Emergency for change requests that must be processed immediately or if Priority of a request is High.'
         assigneeGroup:
-          $ref: '#/components/schemas/group'
+          $ref: '#/components/schemas/tickets-group'
         channelId:
           type: string
         tags:
@@ -60958,17 +60958,17 @@ components:
         location:
           type: string
         assignedUser:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         requester:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         resources:
           type: array
           items:
-            $ref: '#/components/schemas/resource'
+            $ref: '#/components/schemas/tickets-resource'
         customFields:
           type: array
           items:
-            $ref: '#/components/schemas/customField'
+            $ref: '#/components/schemas/tickets-customField'
         attachments:
           type: array
           description: Attach files related to the change request. Convert attachment files to byte stream with base64-encoding. The file size limit of an attachment is 50 MB.
@@ -60998,7 +60998,7 @@ components:
         ticketArisedTime:
           type: string
         createdUser:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         alertIds:
           type: array
           items: {}
@@ -61008,30 +61008,30 @@ components:
         allowedStatus:
           type: array
           items:
-            $ref: '#/components/schemas/status'
+            $ref: '#/components/schemas/tickets-status'
         client:
-          $ref: '#/components/schemas/client'
+          $ref: '#/components/schemas/tickets-client'
         updatedDate:
           type: string
           format: date-time
         priorityUpdatedBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         priorityUpdatedDate:
           type: string
           format: date-time
         statusUpdatedBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         statusUpdatedDate:
           type: string
           format: date-time
         slaDetails:
-          $ref: '#/components/schemas/slaDetails'
+          $ref: '#/components/schemas/tickets-slaDetails'
         source:
           type: string
         statusFlow:
           type: array
           items:
-            $ref: '#/components/schemas/statusHistory'
+            $ref: '#/components/schemas/tickets-statusHistory'
         attachedArticles:
           type: array
           items:
@@ -61057,13 +61057,13 @@ components:
         internal:
           type: boolean
         creator:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         tags:
           type: string
         attachments:
           type: array
           items:
-            $ref: '#/components/schemas/attachment'
+            $ref: '#/components/schemas/tickets-attachment'
         extTicketResponseId:
           type: string
         createdDate:
@@ -61099,11 +61099,11 @@ components:
         allowedStatus:
           type: array
           items:
-            $ref: '#/components/schemas/status'
+            $ref: '#/components/schemas/tickets-status'
         assignedUser:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         assigneeGroup:
-          $ref: '#/components/schemas/group'
+          $ref: '#/components/schemas/tickets-group'
         attachedArticles:
           type: array
           items:
@@ -61132,7 +61132,7 @@ components:
               name:
                 type: string
         businessImpact:
-          $ref: '#/components/schemas/businessImpact'
+          $ref: '#/components/schemas/tickets-businessImpact'
         category:
           description: Add the change request under a category. Use the get API to get the list of categories.
           type: object
@@ -61158,7 +61158,7 @@ components:
         channelId:
           type: string
         client:
-          $ref: '#/components/schemas/client'
+          $ref: '#/components/schemas/tickets-client'
         closedSummary:
           type: string
         consoles:
@@ -61189,11 +61189,11 @@ components:
           format: date-time
           type: string
         createdUser:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         customFields:
           type: array
           items:
-            $ref: '#/components/schemas/customField'
+            $ref: '#/components/schemas/tickets-customField'
         description:
           description: |
             Ticket description.
@@ -61265,7 +61265,7 @@ components:
             Ticket priority with supported priority values: Low, Normal, High, Urgent, and Very Low.
           type: string
         priorityUpdatedBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         priorityUpdatedDate:
           format: date-time
           type: string
@@ -61278,7 +61278,7 @@ components:
         reOpenCount:
           type: integer
         requester:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         resolutionSummary:
           type: string
         resolveDate:
@@ -61287,7 +61287,7 @@ components:
         resources:
           type: array
           items:
-            $ref: '#/components/schemas/resource'
+            $ref: '#/components/schemas/tickets-resource'
         rollbackPlan:
           description: |
             Description of roll back plan.
@@ -61376,7 +61376,7 @@ components:
           type: string
           format: date-time
         slaDetails:
-          $ref: '#/components/schemas/slaDetails'
+          $ref: '#/components/schemas/tickets-slaDetails'
         source:
           type: string
         sourceEntityType:
@@ -61392,9 +61392,9 @@ components:
         statusFlow:
           type: array
           items:
-            $ref: '#/components/schemas/statusHistory'
+            $ref: '#/components/schemas/tickets-statusHistory'
         statusUpdatedBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         statusUpdatedDate:
           format: date-time
           type: string
@@ -61442,9 +61442,9 @@ components:
         name:
           type: string
         createdBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         updatedBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         createdDate:
           type: string
           format: date-time
@@ -61466,9 +61466,9 @@ components:
         priority:
           type: string
         businessImpact:
-          $ref: '#/components/schemas/businessImpact'
+          $ref: '#/components/schemas/tickets-businessImpact'
         urgency:
-          $ref: '#/components/schemas/urgency'
+          $ref: '#/components/schemas/tickets-urgency'
     tickets-urgency:
       title: urgency
       type: object
@@ -61482,9 +61482,9 @@ components:
         id:
           type: integer
         createdBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         updatedBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         createdDate:
           type: string
           format: date-time
@@ -61574,9 +61574,9 @@ components:
               cc:
                 type: string
         createdBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
         updatedBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
     tickets-note:
       title: note
       type: object
@@ -61592,4 +61592,4 @@ components:
         updatedTime:
           type: string
         createdBy:
-          $ref: '#/components/schemas/user'
+          $ref: '#/components/schemas/tickets-user'
