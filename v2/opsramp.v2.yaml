@@ -420,11 +420,11 @@ paths:
                   version: 2
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - in: path
-        name: agentversion
-        schema:
+      - schema:
           type: string
-          default: 'NULL'
+        name: agentversion
+        in: path
+        required: true
   /api/v2/tenants/{tenantId}/agents/deployAgentsScript:
     summary: Download Linux agent installation script
     description: |-
