@@ -7952,19 +7952,19 @@ paths:
                 type: array
                 items:
                   type: string
-                  examples:
-                    example-1:
-                      value:
-                        - c1461bc2-eed5-4559-9d78-6ca6f35be8c5
-                    example-2:
-                      value:
-                        - 3885d3fc-4e92-4a9d-871a-a5940cf7079b
-                    example-3:
-                      value:
-                        - fa3245ca-6740-4f7a-bf06-02414c51595e
-                    example-4:
-                      value:
-                        - 62b5d1c7-5e17-4027-9d9e-a8d566590468
+              examples:
+                example-1:
+                  value:
+                    - c1461bc2-eed5-4559-9d78-6ca6f35be8c5
+                example-2:
+                  value:
+                    - 3885d3fc-4e92-4a9d-871a-a5940cf7079b
+                example-3:
+                  value:
+                    - fa3245ca-6740-4f7a-bf06-02414c51595e
+                example-4:
+                  value:
+                    - 62b5d1c7-5e17-4027-9d9e-a8d566590468
       requestBody:
         content:
           application/json:
