@@ -56548,8 +56548,7 @@ components:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: ''
-          refreshUrl: ''
+          tokenUrl: https://{subdomain}.api.opsramp.com
           scopes: {}
   parameters:
     tenantId:
