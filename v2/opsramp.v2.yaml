@@ -57225,7 +57225,7 @@ components:
         installedBy:
           type: string
         installedTime:
-          type: time
+          type: string
         status:
           type: string
         alertSource:
@@ -57723,13 +57723,11 @@ components:
           type: string
           description: SSO installed by.
         installedTime:
-          type: time
-          description: |
-            SSO installed time.
+          type: string
+          description: SSO installed time.
         status:
           type: string
-          description: |
-            status of the Integration.
+          description: Status of the Integration.
     knowledgeBase-user:
       title: user
       type: object
