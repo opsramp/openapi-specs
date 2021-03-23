@@ -1,0 +1,167 @@
+openapi: 3.0.0
+info:
+  title: opsramp-automation
+  version: 2.0.0
+  description: API Documentation
+  contact:
+    name: OpsRamp Support
+    email: support@opsramp.com
+    url: https://www.opsramp.com/about-opsramp/contact-us/
+
+tags:
+  - name: exports
+    description: Example description.
+    externalDocs:
+      url: https://docs.opsramp.com/api/agents-gateways/
+
+servers:
+  - url: https://api.opsramp.com
+    description: Partner - All Others
+  - url: https://{subdomain}.api.opsramp.com
+    description: Partner or Client custom branded sub-domain
+    variables:
+      subdomain:
+        default: demo
+        description: Custom sub-domain assigned to the client
+
+paths:
+  /api/v2/exports/tenants/{tenantId}/create:
+    summary: Create on-demand batch export template
+    description: Creates an on-demand batch export template.
+    post:
+      tags:
+        - exports
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              examples:
+                example-1:
+                  value: |-
+                    Export template created for client_9 with id : schexp-4154945d-9efb-4cdc-bffc-ed9237168662,
+                    Export template created for client_12 with id : schexp-445f0e02-8cb2-4225-94c0-6e2f5ac1f360,
+                    Export template already exists for client_4
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/export'
+            examples:
+              example-1:
+                value:
+                  name: API Test Inventory
+                  scheduleType: ON-DEMAND
+                  recurringType: Daily
+                  integrationId: INTG-b0975fb4-e54e-4a80-a65f-883bf1109aa1
+                  type: Inventory
+              example-daily-recurring:
+                value:
+                  name: API Test Inventory
+                  scheduleType: ON-DEMAND
+                  recurringType: Daily
+                  integrationId: INTG-b0975fb4-e54e-4a80-a65f-883bf1109aa1
+                  type: Inventory
+              example-monthly-recurring:
+                value:
+                  name: API Test Inventory
+                  scheduleType: RECURRING
+                  recurringType: Monthly
+                  startHours: '02'
+                  startMins: '04'
+                  startDate: 21st
+                  integrationId: INTG-b0975fb4-e54e-4a80-a65f-883bf1109aa1
+                  type: Inventory
+              example-weekly-recurring:
+                value:
+                  name: API Test Inventory
+                  scheduleType: RECURRING
+                  recurringType: Weekly
+                  startHours: '02'
+                  startMins: '04'
+                  startDay: TUE
+                  integrationId: INTG-b0975fb4-e54e-4a80-a65f-883bf1109aa1
+                  type: Inventory
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+components:
+  securitySchemes:
+    accessToken:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{subdomain}.api.opsramp.com
+          scopes: {}
+  parameters:
+    tenantId:
+      in: path
+      name: tenantId
+      schema:
+        type: string
+      required: true
+  schemas:
+    export:
+      title: export
+      type: object
+      properties:
+        name:
+          type: string
+          description: |
+            Name of the batch export template.
+        scheduleType:
+          type: string
+          description: |
+            Defines the schedule type. Example: ON-DEMAND.
+          enum:
+            - ON-DEMAND
+            - RECURRING
+        recurringType:
+          type: string
+          description: 'Defines the recurring type of batch export. Supported values: Daily, Weekly, Monthly.'
+          enum:
+            - Daily
+            - Weekly
+            - Monthly
+        integrationId:
+          type: string
+          description: |
+            Integration ID.
+        type:
+          type: string
+          description: |
+            Defines the batch type to export. Supported values: Inventory, Alerts, Tickets, Metrics.
+          enum:
+            - Inventory
+            - Alerts
+            - Tickets
+            - Metrics
+        startHours:
+          type: string
+          description: |
+            Defines the starting time of daily recurring in hours. Supported values: 00 to 23.
+        startMins:
+          type: string
+          description: |
+            Defines the starting time of daily recurrence in minutes. Supported values: 00 to 59.
+        startDate:
+          type: string
+          description: |
+            Defines the starting date of monthly recurrence of batch export. Supported values: 01st to 27th or last day of the month.
+        startDay:
+          type: string
+          description: |
+            Defines the starting day of the weekly recurrence of batch export. Supported values: SUN, MON, TUE, WED, THU, FRI, SAT.
+          enum:
+            - SUN
+            - MON
+            - TUE
+            - WED
+            - THU
+            - FRI
+            - SAT
+      required:
+        - name
+        - scheduleType
+        - recurringType
+        - integrationId
+        - type
