@@ -29,6 +29,7 @@ paths:
     summary: Create job
     description: Creates a job.
     post:
+      operationId: api-v2-tenants-tenantid-jobs-post
       tags:
         - automation
       responses:
@@ -319,6 +320,7 @@ paths:
     summary: Manage jobs
     description: Gets, update, and delete the jobs.
     get:
+      operationId: api-v2-tenants-tenantid-jobs-id-get
       tags:
         - automation
       responses:
@@ -453,6 +455,7 @@ paths:
                         runTimeConfigFilesBackUp: true
                     id: cc242a8d-b0b4-430e-a89f-7081bc5e79b0
     delete:
+      operationId: api-v2-tenants-tenantid-jobs-id-delete
       description: Partners and service providers have permission to delete a client job.
       tags:
         - automation
@@ -460,6 +463,7 @@ paths:
         "200":
           description: OK
     post:
+      operationId: api-v2-tenants-tenantid-jobs-id-post
       tags:
         - automation
       responses:
