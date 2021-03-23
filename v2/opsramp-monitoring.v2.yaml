@@ -1,0 +1,1291 @@
+openapi: 3.0.0
+info:
+  title: opsramp-monitoring
+  version: 2.0.0
+  description: Monitoring API Documentation
+  contact:
+    name: OpsRamp Support
+    email: support@opsramp.com
+    url: https://www.opsramp.com/about-opsramp/contact-us/
+
+tags:
+  - name: monitoring
+    description: Example description.
+    externalDocs:
+      url: https://docs.opsramp.com/api/agents-gateways/
+
+servers:
+  - url: https://api.opsramp.com
+    description: Partner - All Others
+  - url: https://{subdomain}.api.opsramp.com
+    description: Partner or Client custom branded sub-domain
+    variables:
+      subdomain:
+        default: demo
+        description: Custom sub-domain assigned to the client
+
+paths:
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/templates:
+    summary: Manage resource templates
+    description: Assigns, unassigns, and updates resource templates.
+    post:
+      description: Assigns and updates resource templates.
+      tags:
+        - monitoring
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  configParameters:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/configParameter'
+                  assignedInterfaces:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/interface'
+            examples:
+              example-1:
+                value:
+                  - id: 992
+                  - id: 1024
+                    configParameters:
+                      - parameter:
+                          id: 980
+                          name: Port
+                        value: '8086'
+                      - parameter:
+                          id: 981
+                          name: Additional Port
+                        value: '8998'
+                  - id: 6741
+                    assignedInterfaces:
+                      - id: 244345
+                      - id: 244346
+                  - id: 6742
+                    assignedInterfaces:
+                      - id: 244170
+                      - id: 244078
+                    configParameters:
+                      - parameter:
+                          id: 1395
+                          name: ad_port_1
+                        value: '8443'
+                      - parameter:
+                          id: 1396
+                          name: ad_port_2
+                        value: '9443'
+      responses:
+        '200':
+          description: OK
+    delete:
+      description: Unassigns resource templates.
+      tags:
+        - monitoring
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+            examples:
+              example-1:
+                value:
+                  - id: '6632'
+                  - id: '6634'
+      responses:
+        '200':
+          description: OK
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
+  /api/v2/tenants/{tenantId}/resources/{resourceId}/templates/search:
+    summary: Get assigned templates of resource
+    description: |-
+      Gets templates assigned to a resource.
+
+      >##### Notes
+      >There are special characters that can be used in a query string:
+      >- (+) represents the next field and must be URL-encoded.
+      >- (:) represents equals. An example is key : value.
+      >- Space characters must be URL-encoded.
+      >- Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+    get:
+      tags:
+        - monitoring
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/monitoringTemplate'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  nextPageNo:
+                    type: integer
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - id: 971
+                        uniqueId: 7EJFJGNXPPG6EIC00JX2EXE9
+                        name: '*Do not use* Standard Interface - IFMIB - Full Duplex'
+                        description: '*Do not use* This can be applied on all interfaces having the 64 bit counter OIDS and in the Full Duplex Transmission mode'
+                        templateType: INTERFACE
+                        collectorType: Gateway
+                        status: ACTIVE
+                        generation: 1
+                        resourceType: DEVICE
+                        tags: 'Monitors Status, Errors and Discards'
+                        createdDate: '2012-02-24T07:29:59+0000'
+                        updatedDate: '2012-09-10T11:22:52+0000'
+                        monitors:
+                          - name: interface health
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '70,70'
+                            criticalThreshHold: '80,80'
+                            raiseAlert: true
+                            availability: false
+                        assignedInterfaces:
+                          - id: 243935
+                            networkName: VLAN31
+                            status: UP
+                            ifName: VL31
+                            ifAlias: VL31
+                            ifDescription: VLAN31
+                            ifTxType: IFTXTYPE_AUTO
+                            ifType: ETHERNETCSMACD
+                            macAddress: '00:05:33:92:63:E4'
+                            speed: 10 Mbps
+                            confLinkSpeed: 10 Mbps
+                            adminStatus: UP
+                            operationalStatus: UP
+                          - id: 243751
+                            networkName: eth1
+                            status: DOWN
+                            ifName: eth1
+                            ifDescription: eth1
+                            speed: 1000 Mbps
+                            confLinkSpeed: 1000 Mbps
+                            adminStatus: DOWN
+                            operationalStatus: DOWN
+                      - id: 6650
+                        uniqueId: 7VTJ7AWNILGJ0QXFCE21XJY6
+                        name: agent test template
+                        description: asdfsdaf
+                        collectorType: Agent
+                        status: ACTIVE
+                        generation: 1
+                        resourceType: DEVICE
+                        tags: oid
+                        createdDate: '2013-11-08T12:50:53+0000'
+                        updatedDate: '2014-01-27T09:08:56+0000'
+                        monitors:
+                          - name: TotalDirectories
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '80'
+                            criticalThreshHold: '90'
+                            raiseAlert: false
+                            availability: false
+                      - id: 6632
+                        uniqueId: LBU9LAOHEIDCKSB00IVQ6GW3
+                        name: Agent_Basic_NCI_template
+                        description: Monitor basic performance monitors
+                        collectorType: Agent
+                        status: ACTIVE
+                        generation: 1
+                        resourceType: DEVICE
+                        createdDate: '2013-02-27T07:02:52+0000'
+                        updatedDate: '2013-03-13T11:14:10+0000'
+                        monitors:
+                          - name: CPU
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '60'
+                            criticalThreshHold: '90'
+                            raiseAlert: true
+                            availability: false
+                          - name: DISK
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '60'
+                            criticalThreshHold: '90'
+                            raiseAlert: true
+                            availability: false
+                          - name: MEMORY
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '60'
+                            criticalThreshHold: '90'
+                            raiseAlert: true
+                            availability: false
+                          - name: NETWORK
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '60'
+                            criticalThreshHold: '90'
+                            raiseAlert: true
+                            availability: false
+                          - name: FREEDISK
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '70'
+                            criticalThreshHold: '20'
+                            raiseAlert: true
+                            availability: false
+                          - name: MessagesReceived
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '80'
+                            criticalThreshHold: '90'
+                            raiseAlert: false
+                            availability: false
+                    totalResults: 9
+                    orderBy: t.id
+                    pageNo: 2
+                    pageSize: 3
+                    totalPages: 3
+                    nextPage: true
+                    nextPageNo: 3
+                    previousPageNo: 1
+                    descendingOrder: true
+      parameters:
+        - schema:
+            type: integer
+            default: '1'
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+            default: '100'
+          in: query
+          name: pageSize
+        - schema:
+            type: boolean
+            default: 'true'
+          in: query
+          name: isDescendingOrder
+        - schema:
+            type: string
+            default: id
+          in: query
+          name: sortName
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: resourceId
+        required: true
+  /api/v2/tenants/{tenantId}/monitoring/templates/search:
+    summary: Activate a user
+    description: |-
+      Activates a user.
+
+      ##### Query Variables
+      |Query Variables|Description|
+      |-----|-----|
+      |id|Template ID.|
+      |name|Template name.|
+      |scope|Template scope. Example: Global [note 3]|
+      |collectorType|Collector type.<br>Supported values are: Agent, Gateway, OpsRamp Cloud, AWS, GOOGLE, AZURE|
+      |status|Template status.<br>Example: ACTIVE, EOL
+      |generation|The generation.<br>Example: 1, 2|
+      |startCreationDate|Search for templates created within a certain duration.<br>startCreationDate denotes the from date.|
+      |endCreationDate|Search for templates created within a certain duration.<br>endCreationDate denotes the to date.|
+      |startUpdationDate|Search for templates updated within a certain duration.<br>startUpdationDate denotes the from update date.|
+      |endUpdationDate|Search for templates updated within a certain duration.<br>endUpdationDate denotes the to update date.|
+      |sourceType|Template source.<br>Supported values are: DEVICE, DATA_CENTER, VI_CLUSTER, VI_DATASTORE, JMX_APP_CLUSTER, JMX_APP_INSTANCE, DISTRIBUTED_VIRTUAL_SWITCH, CONTRAIL_ANALYTICS_NODE, CONTRAIL_CONFIG_NODE, CONTRAIL_CONTROL_NODE, VIRTUVAL_ROUTER, STORAGE_ARRAY_VOLUME|
+
+      ##### Notes
+      1. There are special characters that can be used in a query string:
+      - (+) represents the next field and must be URL-encoded.
+      - (:) represents equals. An example is key : value.
+      - Space characters must be URL-encoded.
+      2. Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+      3. Provide scope: Global, to get gGlobal templates
+      4. Provide scope: OpsRamp, to get OpsRamp templates
+      5. CLIENT AUTHENTICATION
+          1. Provide scope: Partner, to get partner templates
+          2. Provide scope: Client, to get client templates
+        6. PARTNER AUTHENTICATION
+          1. Provide scope: Partner, to get partner templates
+          2. Use this API with respective client_id, to get client templates as shown in example URL 1
+
+      Note: queryString not required with scope.
+
+      7. SERVICE PROVIDER AUTHENTICATION
+          1. Use this API with respective msp_id, to get partner templates as shown in example URL 3
+
+      Note: queryString not required with scope.
+
+          2. Use this API with respective client_id, to get client templates as shown in example URL 1
+
+        Note: queryString not required with scope.
+
+      8. Provide sourceType = DEVICE, to get available templates at the device level.
+
+      Note: This can be useful in assigning templates to a device.
+    get:
+      tags:
+        - monitoring
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/monitoringTemplate'
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  nextPageNo:
+                    type: integer
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - id: 6738
+                        uniqueId: 1463daa4-9c75-4911-8994-09cac072374a
+                        name: Second generation Gateway Template
+                        description: Template testing
+                        collectorType: Gateway
+                        status: ACTIVE
+                        generation: 2
+                        resourceType: DEVICE
+                        tags: testing
+                        notes: test cases
+                        createdDate: '2016-06-06T08:25:06+0000'
+                        updatedDate: '2016-06-06T08:25:06+0000'
+                        monitors:
+                          - name: testing form ui latest
+                            metricName: testing.dynamic.metric
+                            frequency: 15
+                            warningThreshHold: '70'
+                            warningOperator: GREATER_THAN_EQUAL
+                            warningRepeatCount: 2
+                            criticalThreshHold: '90'
+                            criticalOperator: EQUAL
+                            criticalRepeatCount: 1
+                            raiseAlert: true
+                            availability: true
+                            state: Active
+                          - name: Cisco Memory-2
+                            metricName: cisco.memory.pool.util.percent
+                            frequency: 15
+                            warningThreshHold: '80'
+                            warningOperator: GREATER_THAN_EQUAL
+                            warningRepeatCount: 1
+                            criticalThreshHold: '90'
+                            criticalOperator: GREATER_THAN_EQUAL
+                            criticalRepeatCount: 1
+                            raiseAlert: true
+                            availability: true
+                            state: Active
+                          - name: Cisco Memory-2
+                            metricName: cisco.memory.pool.largest.free
+                            frequency: 15
+                            warningThreshHold: '600'
+                            warningOperator: LESS_THAN_EQUAL
+                            warningRepeatCount: 1
+                            criticalThreshHold: '500'
+                            criticalOperator: LESS_THAN_EQUAL
+                            criticalRepeatCount: 1
+                            raiseAlert: true
+                            availability: true
+                            state: Active
+                        configParameters:
+                          - parameter:
+                              id: 592
+                              name: Port
+                              description: Port number that you want to monitor
+                              type: String
+                      - id: 6736
+                        uniqueId: 6f5efafc-c00e-4406-ba80-de89aaf931b7
+                        name: Testing with gateway Monitors
+                        description: ''
+                        collectorType: Gateway
+                        status: ACTIVE
+                        generation: 2
+                        resourceType: DEVICE
+                        createdDate: '2016-05-24T13:34:34+0000'
+                        updatedDate: '2016-05-24T13:34:34+0000'
+                        monitors:
+                          - name: testing from API
+                            metricName: metric for vmware
+                            frequency: 15
+                            warningOperator: NONE
+                            warningRepeatCount: 1
+                            criticalOperator: NONE
+                            criticalRepeatCount: 0
+                            raiseAlert: false
+                            availability: true
+                            state: Active
+                      - id: 6735
+                        uniqueId: c2996225-0cee-47bc-b347-9f1e98ad4fbc
+                        name: Testing Template with Gateway
+                        description: testing
+                        collectorType: Gateway
+                        status: ACTIVE
+                        generation: 1
+                        resourceType: DEVICE
+                        createdDate: '2016-05-24T13:32:32+0000'
+                        updatedDate: '2016-05-24T13:32:32+0000'
+                        monitors:
+                          - name: EVENTLOGS
+                            frequency: 15
+                            raiseAlert: false
+                            availability: false
+                          - name: PING
+                            frequency: 15
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '900,90%'
+                            criticalThreshHold: '1000,100%!3'
+                            raiseAlert: false
+                            availability: false
+                          - name: PING
+                            frequency: 15
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '900,90%'
+                            criticalThreshHold: '1000,100%!3'
+                            raiseAlert: false
+                            availability: false
+                          - name: WINDOWSCPU
+                            frequency: 15
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '90'
+                            criticalThreshHold: '95'
+                            raiseAlert: false
+                            availability: false
+                          - name: WINDOWSDISK
+                            frequency: 15
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '90'
+                            criticalThreshHold: '95'
+                            raiseAlert: false
+                            availability: false
+                          - name: WINDOWSDISK
+                            frequency: 15
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '90'
+                            criticalThreshHold: '96'
+                            raiseAlert: false
+                            availability: false
+                          - name: WINDOWSDISK
+                            frequency: 15
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '90'
+                            criticalThreshHold: '94'
+                            raiseAlert: false
+                            availability: false
+                          - name: WINDOWSMEMORY
+                            frequency: 15
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '90'
+                            criticalThreshHold: '95'
+                            raiseAlert: false
+                            availability: false
+                          - name: WINDOWSUPTIME
+                            frequency: 15
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '5'
+                            criticalThreshHold: '1'
+                            raiseAlert: false
+                            availability: false
+                      - id: 6706
+                        uniqueId: ELRZM98FIAWNKWQ2XK4QFW9G
+                        name: GATEWAY DEVICE MONITOR TEMPLATE
+                        description: ''
+                        collectorType: OpsRamp Cloud
+                        status: ACTIVE
+                        generation: 1
+                        resourceType: DEVICE
+                        createdDate: '2014-11-18T07:51:14+0000'
+                        updatedDate: '2014-12-01T14:26:09+0000'
+                        monitors:
+                          - name: Agent Status
+                            frequency: 15
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: ''
+                            criticalThreshHold: ''
+                            raiseAlert: false
+                            availability: false
+                    totalResults: 4
+                    orderBy: id
+                    pageNo: 1
+                    pageSize: 10
+                    totalPages: 1
+                    nextPage: false
+                    nextPageNo: 0
+                    previousPageNo: 0
+                    descendingOrder: true
+      parameters:
+        - schema:
+            type: integer
+            default: '1'
+          in: query
+          name: pageNo
+        - schema:
+            type: integer
+            default: '100'
+          in: query
+          name: pageSize
+        - schema:
+            type: boolean
+            default: 'true'
+          in: query
+          name: isDescendingOrder
+        - schema:
+            type: string
+            default: id
+          in: query
+          name: sortName
+        - schema:
+            type: string
+          in: query
+          name: queryString
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+  /api/v2/tenants/{tenantId}/resourceMonitors:
+    summary: Create resource monitors
+    description: Creates resource monitors.
+    post:
+      tags:
+        - monitoring
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  monitorScope:
+                    type: integer
+                  clientId: {}
+                  mspId: {}
+                  serviceProviderId: {}
+                  resourceMonAdditionalParams:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        oidType:
+                          type: string
+                        oid:
+                          type: string
+                        propertyMode:
+                          type: string
+                        lookupOID: {}
+                        useExpression:
+                          type: boolean
+                        expression: {}
+                        operator:
+                          type: string
+                        operand: {}
+                        format:
+                          type: string
+                        enumMap: {}
+                        unit: {}
+                  instanceType:
+                    type: string
+                  instanceIds: {}
+                  uuid:
+                    type: string
+                  desc:
+                    type: string
+                  mulInst:
+                    type: boolean
+                  disc_freq_min:
+                    type: string
+                  disc_metric: {}
+                  disc_type:
+                    type: string
+                  disc_lookup_Oid: {}
+                  create_ts: {}
+                  update_ts: {}
+                  discoveryFilters: {}
+                  staticMetrics: {}
+                  dynamicMetrics:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type: {}
+                        resourceType: {}
+                        unit:
+                          type: string
+                        displayUnit: {}
+                        unitLabel:
+                          type: string
+                        consolFunc:
+                          type: string
+                        metricCollectorType: {}
+                        metric:
+                          type: string
+                        alertSub:
+                          type: string
+                        alertBody:
+                          type: string
+                        enumMap:
+                          type: string
+                        recommended:
+                          type: integer
+                        useExpression:
+                          type: boolean
+                        warnOperatorChecked:
+                          type: boolean
+                        criticalOperatorChecked:
+                          type: boolean
+                        kbArticleUrl: {}
+                        intermediateMetric:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id: {}
+                              name:
+                                type: string
+                              oid:
+                                type: string
+                              oidType:
+                                type: string
+                              dataTypes:
+                                type: string
+                              formula:
+                                type: string
+                              pollFrequency:
+                                type: string
+                        customParams: {}
+                        name:
+                          type: string
+                        operator:
+                          type: string
+                        operand: {}
+                        frmt:
+                          type: string
+                        metricDefType:
+                          type: string
+                        dn:
+                          type: string
+                        fac:
+                          type: integer
+                        desc:
+                          type: string
+                        uuid:
+                          type: string
+                        wrc:
+                          type: integer
+                        crc:
+                          type: integer
+                        warn_oper:
+                          type: string
+                        critical_oper:
+                          type: string
+                        wth:
+                          type: string
+                        cth:
+                          type: string
+                        mt:
+                          type: string
+                        ct: {}
+                        st: {}
+                        re: {}
+                        dpe:
+                          type: string
+                        state:
+                          type: string
+                        alertState:
+                          type: string
+                        gp:
+                          type: string
+                        dpt:
+                          type: string
+                        metric_oper:
+                          type: string
+                        ms: {}
+                        gn: {}
+                        formattedDataUsage:
+                          type: string
+                        oidExp: {}
+                        dpunit: {}
+                        dprange: {}
+                        ma: {}
+                        mc: {}
+                        mtn: {}
+            examples:
+              example-1:
+                value:
+                  - name: CiscoMemory
+                    monitorScope: 0
+                    clientId: null
+                    mspId: null
+                    serviceProviderId: null
+                    resourceMonAdditionalParams:
+                      - name: Name
+                        oidType: SCALAROID
+                        oid: 1.3.6.1.4.1.9.9.48.1.1.1.2
+                        propertyMode: VALUE
+                        lookupOID: null
+                        useExpression: false
+                        expression: null
+                        operator: NONE
+                        operand: null
+                        format: OCTETSTRING
+                        enumMap: null
+                        unit: null
+                    instanceType: ALL
+                    instanceIds: null
+                    uuid: bc6649b9-6f6e-4256-9bca-66669b177cde
+                    desc: 'Monitorsthememorypoolutilizationbyapplicationsonthemanageddeviceandalsomonitorsthelargestcontiguousfreememory.[OID:1.3.6.1.4.1.9.9.48.1.1.1.2,1.3.6.1.4.1.9.9.48.1.1.1.4,1.3.6.1.4.1.9.9.48.1.1.1.5,1.3.6.1.4.1.9.9.48.1.1.1.6,1.3.6.1.4.1.9.9.48.1.1.1.7]'
+                    mulInst: true
+                    disc_freq_min: '480'
+                    disc_metric: null
+                    disc_type: VALUE
+                    disc_lookup_Oid: null
+                    create_ts: null
+                    update_ts: null
+                    discoveryFilters: null
+                    staticMetrics: null
+                    dynamicMetrics:
+                      - type: null
+                        resourceType: null
+                        unit: '%'
+                        displayUnit: null
+                        unitLabel: Percentage(%)
+                        consolFunc: AVERAGE
+                        metricCollectorType: null
+                        metric: 1.3.6.1.4.1.9.9.48.1.1.1.4
+                        alertSub: '${severity}-Ciscomemoryutilizationof${component.name}poolis${metric.value}(${threshold})'
+                        alertBody: |-
+                          Hostname:${resource.name}
+                          IP:${resource.ip}
+                          MetricName:${metric.name}
+                          MemoryPoolName:${component.name}
+                          Severity:${severity}
+                          MemoryUsed:${ciscoMemoryPoolUsed}bytes
+                          MemoryFree:${ciscoMemoryPoolFree}bytes
+                          MemoryUtilization:${metric.value}
+                          Reason:Ciscomemoryutilizationof${component.name}poolis${metric.value}(${threshold})
+                        enumMap: '[{''0'':''AdminDown''},{''1'':''up''},{''2'':''down''},{''3'':''testing''},{''4'':''unknown''},{''5'':''dormant''},{''6'':''notPresent''},{''7'':''lowerLinkDown''}]'
+                        recommended: 0
+                        useExpression: false
+                        warnOperatorChecked: false
+                        criticalOperatorChecked: false
+                        kbArticleUrl: null
+                        intermediateMetric:
+                          - id: null
+                            name: ciscoMemoryPoolValid
+                            oid: 1.3.6.1.4.1.9.9.48.1.1.1.4
+                            oidType: TABULAROID
+                            dataTypes: UINTEGER32
+                            formula: None
+                            pollFrequency: NORMAL
+                          - id: null
+                            name: ciscoMemoryPoolUsed
+                            oid: 1.3.6.1.4.1.9.9.48.1.1.1.5
+                            oidType: TABULAROID
+                            dataTypes: GUAGE32
+                            formula: None
+                            pollFrequency: NORMAL
+                          - id: null
+                            name: ciscoMemoryPoolFree
+                            oid: 1.3.6.1.4.1.9.9.48.1.1.1.6
+                            oidType: TABULAROID
+                            dataTypes: GUAGE32
+                            formula: None
+                            pollFrequency: NORMAL
+                        customParams: null
+                        name: cisco.memory.pool.util.percent
+                        operator: NONE
+                        operand: null
+                        frmt: NONE
+                        metricDefType: DYNAMIC
+                        dn: MemoryUtilization
+                        fac: 1
+                        desc: 'Monitorsthememoryutilizationofallmemorypoolslikeprocessorpool,I/Opool,Fastpooletc.[OID:1.3.6.1.4.1.9.9.48.1.1.1.2,1.3.6.1.4.1.9.9.48.1.1.1.4,1.3.6.1.4.1.9.9.48.1.1.1.5,1.3.6.1.4.1.9.9.48.1.1.1.6]'
+                        uuid: d03832e7-003c-4aae-b490-32f337691b49
+                        wrc: 1
+                        crc: 1
+                        warn_oper: GREATER_THAN_EQUAL
+                        critical_oper: GREATER_THAN_EQUAL
+                        wth: '80'
+                        cth: '90'
+                        mt: RESOURCE
+                        ct: null
+                        st: null
+                        re: null
+                        dpe: 'if(ciscoMemoryPoolValid==1,(ciscoMemoryPoolUsed/(ciscoMemoryPoolUsed+ciscoMemoryPoolFree))*100,0)'
+                        state: Active
+                        alertState: CRITICALANDWARNING
+                        gp: HISTORICAL
+                        dpt: Gauge
+                        metric_oper: VALUE
+                        ms: null
+                        gn: null
+                        formattedDataUsage: NONE
+                        oidExp: null
+                        dpunit: null
+                        dprange: null
+                        ma: null
+                        mc: null
+                        mtn: null
+                      - type: null
+                        resourceType: null
+                        unit: Kb
+                        displayUnit: null
+                        unitLabel: KiloBits(Kb)
+                        consolFunc: AVERAGE
+                        metricCollectorType: null
+                        metric: 1.3.6.1.4.1.9.9.48.1.1.1.7
+                        alertSub: '${severity}-Largestmemoryfreeof${component.name}poolis${metric.value}(${threshold})'
+                        alertBody: |-
+                          Hostname:${resource.name}
+                          IP:${resource.ip}
+                          MetricName:${metric.name}
+                          MemoryPoolName:${component.name}
+                          Severity:${severity}
+                          LargestMemoryFree:${metric.value}
+                          Reason:Largestmemoryfreeof${component.name}poolis${metric.value}(${threshold})
+                        enumMap: '[{''0'':''AdminDown''},{''1'':''up''},{''2'':''down''},{''3'':''testing''},{''4'':''unknown''},{''5'':''dormant''},{''6'':''notPresent''},{''7'':''lowerLinkDown''}]'
+                        recommended: 0
+                        useExpression: false
+                        warnOperatorChecked: false
+                        criticalOperatorChecked: false
+                        kbArticleUrl: null
+                        intermediateMetric:
+                          - id: null
+                            name: ciscoMemoryPoolLargestFree
+                            oid: 1.3.6.1.4.1.9.9.48.1.1.1.7
+                            oidType: TABULAROID
+                            dataTypes: GUAGE32
+                            formula: None
+                            pollFrequency: NORMAL
+                        customParams: null
+                        name: cisco.memory.pool.largest.free
+                        operator: NONE
+                        operand: null
+                        frmt: NONE
+                        metricDefType: DYNAMIC
+                        dn: LargestMemoryFree
+                        fac: 1
+                        desc: 'Monitorsthelargestcontiguousblockofmemoryfree.[OID:1.3.6.1.4.1.9.9.48.1.1.1.2,1.3.6.1.4.1.9.9.48.1.1.1.7]'
+                        uuid: 5cdccfa8-6767-40b9-aa50-e82f566862c6
+                        wrc: 1
+                        crc: 1
+                        warn_oper: LESS_THAN_EQUAL
+                        critical_oper: LESS_THAN_EQUAL
+                        wth: '600'
+                        cth: '500'
+                        mt: RESOURCE
+                        ct: null
+                        st: null
+                        re: null
+                        dpe: (ciscoMemoryPoolLargestFree)/1024
+                        state: Active
+                        alertState: CRITICALANDWARNING
+                        gp: HISTORICAL
+                        dpt: Gauge
+                        metric_oper: VALUE
+                        ms: null
+                        gn: null
+                        formattedDataUsage: NONE
+                        oidExp: null
+                        dpunit: null
+                        dprange: null
+                        ma: null
+                        mc: null
+                        mtn: null
+                    customParams: null
+                    collectorType: SNMP
+                    cred_type: null
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  failedCount:
+                    type: integer
+                  failedList:
+                    type: object
+                  updatedCount:
+                    type: integer
+                  createdCount:
+                    type: integer
+              examples:
+                example-1:
+                  value:
+                    failedCount: 0
+                    failedList: {}
+                    updatedCount: 0
+                    createdCount: 1
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+  /api/v2/monitoring/metric/name/{name}:
+    summary: Get monitoring metric by Name
+    description: Gets the metric details by providing the name of the monitoring metrics.
+    get:
+      tags:
+        - monitoring
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metricName:
+                    type: string
+                  displayName:
+                    type: string
+                  groupName:
+                    type: string
+                  factor:
+                    type: number
+                  consolFunc:
+                    type: integer
+                  displayByComponent:
+                    type: boolean
+                  displayOrder:
+                    type: integer
+                  topMetric:
+                    type: boolean
+                  timeSeries:
+                    type: boolean
+                  warnRepeatCount:
+                    type: integer
+                  criticalRepeatCount:
+                    type: integer
+                  state:
+                    type: string
+                  graphPoint:
+                    type: string
+                  format:
+                    type: string
+                  recommended:
+                    type: integer
+                  useExpression:
+                    type: boolean
+                  formattedDataUsage:
+                    type: string
+                  unitConversionFactor:
+                    type: number
+                  appType:
+                    type: string
+                  adapterType:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - metricName: system.cpu.utilization
+                        displayName: CPU Utilization
+                        groupName: system.cpu.utilization
+                        factor: 1.0
+                        consolFunc: AVERAGE
+                        displayByComponent: false
+                        displayOrder: 100
+                        topMetric: false
+                        timeSeries: true
+                        warnRepeatCount: 1
+                        criticalRepeatCount: 1
+                        state: Active
+                        graphPoint: NONE
+                        format: VALUE
+                        recommended: 0
+                        useExpression: false
+                        formattedDataUsage: NONE
+                        unitConversionFactor: 0.0
+                        appType: CUSTOM
+                        adapterType: Application
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: name
+        required: true
+  /api/v2/monitoring/metric/id/{id}:
+    summary: Get monitoring metric by ID
+    description: Gets the metric details by providing the ID of the monitoring metrics.
+    get:
+      tags:
+        - monitoring
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metricName:
+                    type: string
+                  displayName:
+                    type: string
+                  groupName:
+                    type: string
+                  factor:
+                    type: number
+                  consolFunc:
+                    type: integer
+                  displayByComponent:
+                    type: boolean
+                  displayOrder:
+                    type: integer
+                  topMetric:
+                    type: boolean
+                  timeSeries:
+                    type: boolean
+                  warnRepeatCount:
+                    type: integer
+                  criticalRepeatCount:
+                    type: integer
+                  state:
+                    type: string
+                  graphPoint:
+                    type: string
+                  format:
+                    type: string
+                  recommended:
+                    type: integer
+                  useExpression:
+                    type: boolean
+                  formattedDataUsage:
+                    type: string
+                  unitConversionFactor:
+                    type: number
+                  appType:
+                    type: string
+                  adapterType:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - metricName: system.cpu.utilization
+                        displayName: CPU Utilization
+                        groupName: system.cpu.utilization
+                        factor: 1.0
+                        consolFunc: AVERAGE
+                        displayByComponent: false
+                        displayOrder: 100
+                        topMetric: false
+                        timeSeries: true
+                        warnRepeatCount: 1
+                        criticalRepeatCount: 1
+                        state: Active
+                        graphPoint: NONE
+                        format: VALUE
+                        recommended: 0
+                        useExpression: false
+                        formattedDataUsage: NONE
+                        unitConversionFactor: 0.0
+                        appType: CUSTOM
+                        adapterType: Application
+    parameters:
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+components:
+  securitySchemes:
+    accessToken:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{subdomain}.api.opsramp.com
+          scopes: {}
+  parameters:
+    tenantId:
+      in: path
+      name: tenantId
+      schema:
+        type: string
+      required: true
+  schemas:
+    monitoringTemplate:
+      title: monitoringTemplate
+      type: object
+      properties:
+        id:
+          type: integer
+        uniqueId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        templateType:
+          type: string
+        collectorType:
+          type: string
+        status:
+          type: string
+        generation:
+          type: integer
+        tags:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type: string
+          format: date-time
+        monitors:
+          type: array
+          items:
+            $ref: '#/components/schemas/monitor'
+        assignedInterfaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/interface'
+        configParameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/configParameter'
+    monitor:
+      title: monitor
+      type: object
+      properties:
+        name:
+          type: string
+        frequency:
+          type: integer
+        repeatFrequency:
+          type: integer
+        repeatCount: {}
+        warningThreshHold:
+          type: string
+        criticalThreshHold:
+          type: string
+        raiseAlert:
+          type: boolean
+        availability:
+          type: boolean
+    interface:
+      title: interface
+      type: object
+      properties:
+        id:
+          type: integer
+        networkName:
+          type: string
+        status:
+          type: string
+        ifName:
+          type: string
+        ifAlias:
+          type: string
+        ifDescription:
+          type: string
+        ifTxType:
+          type: string
+        ifType:
+          type: string
+        macAddress:
+          type: string
+        speed:
+          type: string
+        confLinkSpeed:
+          type: string
+        adminStatus:
+          type: string
+        operationalStatus:
+          type: string
+    configParameter:
+      title: configParameter
+      type: object
+      properties:
+        parameter:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            description:
+              type: string
+            type:
+              type: string
+        value:
+          type: string
