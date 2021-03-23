@@ -1,0 +1,1786 @@
+openapi: 3.0.0
+info:
+  title: opsramp-agents-gateways
+  version: 2.0.0
+  description: Agents & Gateways API Documentation
+  contact:
+    name: OpsRamp Support
+    email: support@opsramp.com
+    url: https://www.opsramp.com/about-opsramp/contact-us/
+
+tags:
+  - name: agents-gateways
+    description: Example description.
+    externalDocs:
+      url: https://docs.opsramp.com/api/agents-gateways/
+
+servers:
+  - url: https://api.opsramp.com
+    description: Partner - All Others
+  - url: https://{subdomain}.api.opsramp.com
+    description: Partner or Client custom branded sub-domain
+    variables:
+      subdomain:
+        default: demo
+        description: Custom sub-domain assigned to the client
+
+paths:
+  /api/v2/applicationservice:
+    summary: Get status, start and stop application services
+    description: |-
+      Gets the service status and starts and stops application services.
+
+      An access token must be generated to use this API.
+
+      Supported services are network, squid, postgresql, vprobe, and ntp.
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Service Squid Proxy started successfully.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                service:
+                  type: string
+                  description: Name of the service.
+                  enum:
+                    - network
+                    - squid
+                    - postgresql
+                    - ntp
+                action:
+                  type: string
+                  description: 'Action item: status, start, or stop.'
+                  enum:
+                    - start
+                    - stop
+                    - status
+                    - restart
+              required:
+                - service
+                - action
+            examples:
+              example-1:
+                value:
+                  service: squid
+                  action: start
+        description: ''
+  /api/v2/download/gateway/{packagename}:
+    summary: Download gateway files
+    description: Downloads gateway files from the download server.
+    get:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  expires_in:
+                    type: integer
+                  url:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    expires_in: 900
+                    url: 'https://dl01.opsramp.com/itop/download/gateway/d3873201-c303-4846-8ce4-b9fd4cf1306b'
+    parameters:
+      - schema:
+          type: string
+          enum:
+            - 'NULL'
+            - ova
+            - iso
+            - windows
+            - google
+          default: 'NULL'
+        in: path
+        name: packageName
+        required: true
+        description: Refers to the gateway package.
+  /api/v2/externalproxy:
+    summary: Configure gateway external proxy connection
+    description: |-
+      Configures the external proxy connection on the gateway.
+
+      An access token must be generated to use this API.
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Successfully updated proxy settings.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                connection:
+                  type: string
+                  description: 'Type of network connection: direct or proxy'
+                  enum:
+                    - direct
+                    - proxy
+                proxy_ip:
+                  type: string
+                  description: Proxy IP address for the network.
+                proxy_port:
+                  type: string
+                  description: Port for the proxy IP address.
+                proxy_usr:
+                  type: string
+                  description: Proxy user name.
+                proxy_pwd:
+                  type: string
+                  description: Proxy password.
+              required:
+                - connection
+                - proxy_ip
+                - proxy_port
+            examples:
+              example-1:
+                value:
+                  connection: direct
+                  proxy_ip: <ip>
+                  proxy_port: <port>
+                  proxy_usr: <proxyuser>
+                  proxy_pwd: <proxypassword>
+        description: ''
+      parameters: []
+  /api/v2/generalinfo:
+    summary: Gets gateway information
+    description: Gets general information from the gateway, including appliance details and network information.
+    get:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Appliance Information:
+                    type: object
+                    properties:
+                      Model:
+                        type: string
+                      Registration Status:
+                        type: string
+                      Firmware Build Tag:
+                        type: string
+                      Tunnel Status:
+                        type: string
+                  Network Information:
+                    type: object
+                    properties:
+                      IP Address:
+                        type: string
+                      Subnet Mask:
+                        type: string
+                      Default Interface:
+                        type: string
+                      MAC Address:
+                        type: string
+                      DHCP:
+                        type: string
+                      Default Gateway:
+                        type: string
+                      DNS Entries:
+                        type: string
+                      Domain Name:
+                        type: string
+                      Host Name:
+                        type: string
+              examples:
+                example-1:
+                  value:
+                    Appliance Information:
+                      Model: XXXX
+                      Registration Status: XXXX
+                      Firmware Build Tag: XXXX
+                      Tunnel Status: XXXx
+                    Network Information:
+                      IP Address: XXXX
+                      Subnet Mask: XXXX
+                      Default Interface: XXXX
+                      MAC Address: XXXX
+                      DHCP: XXXX
+                      Default Gateway: XXXX
+                      DNS Entries: XXXX
+                      Domain Name: XXXX
+                      Host Name: XXXX
+  /api/v2/getntpdetails:
+    summary: Gets gateway NTP details
+    description: Gets NTP details from the gateway.
+    get:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  servers:
+                    type: string
+                  NTP Status:
+                    type: string
+                    enum:
+                      - 'ON'
+                      - 'OFF'
+                  time:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    servers: 'xxx,xxx'
+                    NTP Status: 'OFF'
+                    time: 'Tue May 19 21:40:08 UTC 2020'
+  /api/v2/tenants/{tenantId}/agents/{platform}/download/{package-name}:
+    summary: Download Linux agent 
+    description: |-
+      Downloads the Linux agents.
+
+      This usually follows calling the Get Agent Package for Linux API.
+
+      1. To capture the agent file: Use the package name from the response headers with the specific header package-name. The content of the file is available in the response body.
+      2. Create a file with the same name as provided in the header and then write the contents of the response body into the file.
+    get:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: File
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+          enum:
+            - LINUX
+        in: path
+        name: platform
+        required: true
+        description: The operating system on which you want to deploy the agent.
+      - schema:
+          type: string
+        in: path
+        name: package-name
+        required: true
+        description: |-
+          The name of the package you want to download.
+
+          Use the value in "name":"{package-name}" response from the Get Agent Package for Linux API.
+  /api/v2/tenants/{tenantId}/agents/{agentversion}/resourcesCountByAgentVersion:
+    summary: Get agent count by agent version
+    description: Gets the number of installed agent resources by agent version.
+    get:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  version:
+                    type: integer
+              example:
+                value:
+                  version: 2
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        name: agentversion
+        in: path
+        required: true
+  /api/v2/tenants/{tenantId}/agents/deployAgentsScript:
+    summary: Download Linux agent installation script
+    description: |-
+      Downloads the Linux agent installation script.
+
+      This returns the JSON payload containing package name, package size, package checksum, and the package S3 bucket URL to directly download the agent.
+    get:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  downloadUrl:
+                    type: string
+                  version:
+                    type: string
+                  size:
+                    type: integer
+                  checksum:
+                    type: string
+                  generation:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    name: <package-name>
+                    downloadUrl: <direct-s3-download-url>
+                    version: <agent-version>
+                    size: 100
+                    checksum: <checksum>
+                    generation: G2
+      parameters:
+        - schema:
+            type: string
+            default: 'NULL'
+          in: query
+          name: profileId
+          description: '(Optional) Used by the agent to connect to OpsRamp. If a profile ID is not provided, the agent connects directly to OpsRamp.'
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+  /api/v2/tenants/{tenantId}/agents/{platform}/info:
+    summary: Get the Linux agent
+    description: |-
+      Gets the Linux agent. This is usually followed by an API call to Download Linux Agent.
+
+      Returns the JSON payload containing package name, package size, package checksum. The response also contains package S3 bucket URL for downloading the agent directly.
+    get:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  downloadUrl:
+                    type: string
+                  version:
+                    type: string
+                  size:
+                    type: integer
+                  checksum:
+                    type: string
+                  generation:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    name: <package-name>
+                    downloadUrl: <direct-s3-download-url>
+                    version: <agent-version>
+                    size: 1000
+                    checksum: <checksum>
+                    generation: G2
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - ubuntu
+              - redhat
+              - amazon
+              - fedora
+              - sles
+          in: query
+          name: distName
+          required: true
+          description: Distribution name of the operating system on which you want to deploy the agent.
+        - schema:
+            type: string
+            enum:
+              - amd64
+              - i686
+              - x86_64
+              - i386
+          in: query
+          name: architecture
+          required: true
+          description: |-
+            64-bit and 32-bit operating system architectures.
+
+            For Ubuntu distributions, use amd64 (64-bit) or i686 (32-bit)
+
+            For all other distributions, use x86_64 (64-bit) or i386 (32-bit)
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+        description: ''
+      - schema:
+          type: string
+          enum:
+            - LINUX
+        in: path
+        name: platform
+        required: true
+        description: Operating system on which you want to deploy the agent.
+  /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices:
+    summary: Assign agent resources policy
+    description: Assigns agent resource policies.
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  failedEntities:
+                    type: object
+                    properties:
+                      entityID:
+                        type: string
+                  failedCount:
+                    type: integer
+                  successCount:
+                    type: integer
+              examples:
+                example-1:
+                  value:
+                    failedEntities:
+                      023471da-698b-3a2e-1e93-6dbaca8eea23: No device 023471da-698b-3a2e-1e93-6dbaca8eea23 found under client client_5
+                    failedCount: 1
+                    successCount: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+            examples:
+              example-1:
+                value:
+                  - id: 042761ba-542e-4a7a-8e38-3ebbea7eeb16
+                  - id: 023471da-698b-3a2e-1e93-6dbaca8eea23
+                  - id: 855eb82e-3064-40a1-a26e-77efabe300da
+    parameters:
+      - schema:
+          type: string
+        name: tenantId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: policyId
+        in: path
+        required: true
+  /api/v2/tenants/{tenantId}/agentProfiles/{profileId}/devices:
+    summary: Assign agent resources profiles
+    description: Assigns agent resource profiles.
+    post:
+      description: Test description for post
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  failedEntities:
+                    type: object
+                    properties:
+                      entityId:
+                        type: string
+                  failedCount:
+                    type: integer
+                  successCount:
+                    type: integer
+              examples:
+                example-1:
+                  value:
+                    failedEntities:
+                      023471da-698b-3a2e-1e93-6dbaca8eea23: No device 023471da-698b-3a2e-1e93-6dbaca8eea23 found under client client_5
+                    failedCount: 1
+                    successCount: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+            examples:
+              example-1:
+                value:
+                  - id: 042761ba-542e-4a7a-8e38-3ebbea7eeb16
+                  - id: 023471da-698b-3a2e-1e93-6dbaca8eea23
+                  - id: 855eb82e-3064-40a1-a26e-77efabe300da
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: profileId
+        required: true
+  /api/v2/tenants/{tenantId}/agents/windows:
+    summary: Download Windows agent 
+    description: |-
+      Downloads the Windows agent.
+
+      This returns the JSON payload containing package name, package size, package checksum, and the package S3 bucket URL to directly download the agent.
+    get:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  downloadUrl:
+                    type: string
+                  version:
+                    type: string
+                  size:
+                    type: integer
+                  checksum:
+                    type: string
+                  generation:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    name: <package-name>
+                    downloadUrl: <direct-s3-download-url>
+                    version: <agent-version>
+                    size: 1000
+                    checksum: <checksum>
+                    generation: G2
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+  /api/v2/registration:
+    summary: Register gateway
+    description: Registers the gateway.
+    servers:
+      - url: 'http://{gatewayIp}:port'
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+              examples:
+                example-1:
+                  value: Appliance Registered Successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                activationKey:
+                  type: string
+                  description: Activation token used to register the Gateway with the API server.
+                opsRampServer:
+                  type: string
+                  description: API server to which Gateway wants to connect.
+              required:
+                - activationKey
+                - opsRampServer
+            examples:
+              example-1:
+                value:
+                  activationKey: 360541b2-3f4e-407d-b61a-3aa73c638ed2
+                  opsRampServer: xxx.opsramp.com
+  /api/v2/proxy:
+    summary: Turn Squid proxy service on and off
+    description: Turn the gateway Squid proxy server on and off.
+    servers:
+      - url: 'http://{gatewayIp}:port'
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-on:
+                  value:
+                    Success: Squid Proxy Successfully Turned ON
+                example-off:
+                  value:
+                    Success: Squid Proxy Successfully Turned OFF
+    parameters:
+      - schema:
+          type: string
+          enum:
+            - 'ON'
+            - 'OFF'
+        name: action
+        in: path
+        required: true
+  /api/v2/apiTokenGen:
+    summary: Generate gateway access token
+    description: |-
+      Generates an access token on the gateway.
+
+      An access token is needed to:
+
+      - Register the gateway.
+      - Use all gateway-related activities.
+      - Provides a secured connectivity with OpsRamp cloud
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  expires_in:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    token: 4879423b58e637d140b77af3aeb09b53f1a4ed60
+                    expires_in: '3599.965947'
+  /api/v2/networksettings:
+    summary: Specifies gateway network settings
+    description: Specifies the network settings on the gateway.
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Successfully updated network configuration.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hostname:
+                  type: string
+                  description: Host name for the gateway.
+                domainname:
+                  type: string
+                  description: Domain name for the gateway.
+                interface:
+                  type: string
+                  description: Interface for the gateway.
+                static_IP:
+                  type: string
+                  description: |-
+                    If true, static IP is used instead of the (default) DHCP IP address.
+                    If false, IP address, subnet, gatewayIP, and dnsArray parameters are not required.
+                ipaddr:
+                  type: string
+                  description: |-
+                    Static IP (instead of DHCP).
+                    Note: If static_IP is false, IP address, subnet, gatewayIP, and dnsArray parameters are not required.
+                subnet:
+                  type: string
+                  description: |-
+                    Subnet for the gateway.
+                    Note: If static_IP is false, IP address, subnet, gatewayIP, and dnsArray parameters are not required.
+                gateway:
+                  type: string
+                  description: "\tDefault gateway IP address.\nNote: If static_IP is false, IP address, subnet, gatewayIP, and dnsArray parameters are not required."
+                dnsArray:
+                  type: string
+                  description: |-
+                    DNS entries for the gateway.
+                    Note: If static_IP is false, IP address, subnet, gatewayIP, and dnsArray parameters are not required.
+              required:
+                - hostname
+                - domainname
+                - interface
+                - static_IP
+                - ipaddr
+                - subnet
+                - gateway
+                - dnsArray
+            examples:
+              example-1:
+                value:
+                  hostname: <hostname>
+                  domainname: <domainname>
+                  interface: <interface>
+                  static_IP: <True/False>
+                  ipaddr: <IP Address>
+                  subnet: <subnet>
+                  gateway: <Default Gateway>
+                  dnsArray: '<xxx,xxx>'
+  /api/v2/nginx:
+    summary: Gets gateway NGINX status and restart service
+    description: Gets the NGINX service status and restarts the NGINX service on the gateway.
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Service NGINX active (Running)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  description: 'Action item: restart or status'
+                  enum:
+                    - restart
+                    - status
+              required:
+                - action
+            examples:
+              example-1:
+                value:
+                  action: status
+  /api/v2/ntpmanualconfig:
+    summary: Manually set gateway NTP date and time
+    description: Manually sets the NTP date and time on the gateway.
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Successfully updated time and date
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  description: Date (MM-DD-YYYY)
+                hour:
+                  type: string
+                  description: Hours (0-23)
+                min:
+                  type: string
+                  description: Minutes (0-59)
+                sec:
+                  type: string
+                  description: Seconds (0-59)
+              required:
+                - date
+                - hour
+                - min
+                - sec
+            examples:
+              example-1:
+                value:
+                  date: 06-21-2020
+                  hour: '8'
+                  min: '15'
+                  sec: '00'
+  /api/v2/ntpservice:
+    summary: Start and stop gateway NTP service
+    description: Starts and stops the gateway NTP service.
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Switched ON the NTP Service Successfully
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                service:
+                  type: string
+                  description: Use the ON and OFF switch to start or stop the NTP service.
+                  enum:
+                    - 'ON'
+                    - 'OFF'
+              required:
+                - service
+            examples:
+              example-1:
+                value:
+                  service: 'ON'
+  /api/v2/ntpupdateips:
+    summary: Update gateway NTP server IP addresses
+    description: Updates gateway NTP server IP addresses.
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Successfully updated NTP IP addresses.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ntpArray:
+                  type: string
+                  description: |
+                    NTP server IP addresses.
+              required:
+                - ntpArray
+            examples:
+              example-1:
+                value:
+                  ntpArray: '192.168.xx.xx,172.26.xx.xx'
+              example-2:
+                value:
+                  ntpArray: 'time-d-g.nist.gov,ime-a-wwv.nist.gov'
+  /api/v2/ntpsyncips:
+    summary: Synchronize NTP servers time
+    description: Synchronizes gateway NTP servers time.
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Server IPs:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Server IPs: Successfully synchronized date using NTP.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ntpArray:
+                  type: string
+                  description: NTP server IP addresses.
+              required:
+                - ntpArray
+            examples:
+              example-1:
+                value:
+                  ntpArray: '192.168.xx.xx,172.26.xx.xx'
+              example-2:
+                value:
+                  ntpArray: 'time-d-g.nist.gov,ime-a-wwv.nist.gov'
+  /api/v2/restartnetwork:
+    summary: Restart network service
+    description: Restarts the gateway network service.
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Network service restarted successfully.
+  /api/v2/staticroute:
+    summary: Set static route configuration
+    description: Sets the gateway static route configuration.
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    Success: Successfully added the static route configuration.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                srouteIP:
+                  type: string
+                  description: |
+                    Static route IP address.
+                srouteGateway:
+                  type: string
+                  description: |
+                    Static route gateway IP address.
+                srouteSubnet:
+                  type: string
+                  description: |
+                    Static route subnet.
+                srouteMetric:
+                  type: string
+                  description: Static route metric.
+                srouteInterface:
+                  type: string
+                  description: |
+                    Static route interface
+              required:
+                - srouteIP
+                - srouteGateway
+                - srouteSubnet
+                - srouteMetric
+                - srouteInterface
+            examples:
+              example-1:
+                value:
+                  srouteIP: <static route IP>
+                  srouteGateway: <static route Gateway>
+                  srouteSubnet: <static route subnet>
+                  srouteMetric: <static route Metric>
+                  srouteInterface: <static route Interface>
+  /api/v2/gettimezoneinfo:
+    summary: Gets gateway timezone information
+    description: Gets timezone information from the gateway.
+    get:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  'Regions and Corresponding Timezone Information':
+                    type: array
+                    items:
+                      type: string
+              examples:
+                example-1:
+                  value:
+                    Regions and Corresponding Timezone Information:
+                      '(GMT+10:00) Russia': Vladivostok
+                      '(GMT) UK ': London
+                      '(GMT+4:00) Armenia, Azerbaijan': Muscat
+                      '(GMT+5:00) Pakistan': Karachi
+  /api/v2/settimezone:
+    summary: Set gateway timezone
+    description: Sets the gateway timezone.
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                timezone:
+                  type: string
+                  description: |
+                    NTP service timezone.
+              required:
+                - timezone
+            examples:
+              example-1:
+                value:
+                  timezone: UTC
+  /api/v2/tenants/{tenantId}/managementProfiles/{id}/attach:
+    summary: Attach gateway to management profile
+    description: Attaches a gateway to a management profile and generates an activation token. The generated activation token is used in gateway registration.
+    get:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  type:
+                    type: string
+                  tunnelType:
+                    type: string
+                  activationToken:
+                    type: string
+                  registered:
+                    type: boolean
+                  createdDate:
+                    type: string
+                    description: 'Date format is yyyy-MM-ddTHH:mm:ssZ (GMT).'
+                    format: date-time
+              examples:
+                example-1:
+                  value:
+                    id: 76
+                    name: LB1 Gateway Profile
+                    description: Gateway Management Profile
+                    type: Gateway
+                    tunnelType: SSHD
+                    activationToken: d72eb58e-ff20-44e4-887c-341b0760eb00
+                    registered: false
+                    createdDate: '2016-06-22T07:34:40+0000'
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+  /api/v2/tenants/{tenantId}/managementProfiles:
+    summary: Create management profile
+    description: Creates a management profile.
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  type:
+                    type: string
+                  status:
+                    type: string
+                  createdDate:
+                    type: string
+                  device:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      generalInfo:
+                        type: object
+                        properties:
+                          ipAddresses:
+                            type: string
+                          hostName:
+                            type: string
+                      clientUniqueId:
+                        type: string
+                      type:
+                        type: string
+                  tunnelType:
+                    type: string
+                  registered:
+                    type: boolean
+                  activationToken:
+                    type: string
+              examples:
+                example-agent-profile:
+                  value:
+                    id: 78
+                    name: Agent Profile
+                    description: Management Profile for Agent
+                    type: Agent
+                    status: DOWN
+                    createdDate: '2016-06-22T09:57:09+0000'
+                    device:
+                      id: 014ec656-8dfa-404c-8269-015a96faa9b8
+                      generalInfo:
+                        ipAddresses: 172.28.2.138
+                        hostName: SJLPT177
+                      clientUniqueId: client_69900
+                      type: DEVICE
+                example-gateway-profile:
+                  value:
+                    id: 77
+                    name: Gateway Profile
+                    description: Management profile for Gateway
+                    type: Gateway
+                    createdDate: '2016-06-22T09:31:38+0000'
+                    tunnelType: SSHD
+                    registered: false
+                    activationToken: 6d8e4cc4-0be4-4706-bc1f-7e7e37a10b54
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The management profile name.
+                description:
+                  type: string
+                  description: (Optional) Summary describing the management profile.
+                type:
+                  type: string
+                  description: 'The management profile type. An example is: Agent.'
+                device:
+                  type: object
+                  description: 'The device details, applicable only for the agent management profile.'
+                  properties:
+                    id:
+                      type: string
+              required:
+                - name
+                - type
+            examples:
+              example-agent-profile:
+                value:
+                  name: Agent Profile
+                  description: Management Profile for Agent
+                  type: Agent
+                  device:
+                    id: 014ec656-8dfa-404c-8269-015a96faa9b8
+              example-gateway-profile:
+                value:
+                  name: Gateway Profile
+                  description: Management Profile for Gateway
+                  type: Gateway
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+  /api/v2/tenants/{tenantId}/managementProfiles/{profileId}:
+    summary: Manage management profile
+    description: Gets, updates, and deletes a management profile.
+    delete:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+    get:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  type:
+                    type: string
+                  status:
+                    type: string
+                  createdDate:
+                    type: string
+                    format: date-time
+                  device:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      generalInfo:
+                        type: object
+                        properties:
+                          ipAddresses:
+                            type: string
+                          hostName:
+                            type: string
+                      clientUniqueId:
+                        type: string
+                      type:
+                        type: string
+                  statusUpdatedDate:
+                    type: string
+                    format: date-time
+                  softwareVersion:
+                    type: string
+                  tunnelType:
+                    type: string
+                  registered:
+                    type: boolean
+                  uuId:
+                    type: string
+              examples:
+                example-agent-profile:
+                  value:
+                    id: 75
+                    name: Agent Profile
+                    description: Agent Management Profile
+                    type: Agent
+                    status: DOWN
+                    createdDate: '2016-06-22T07:24:14+0000'
+                    device:
+                      id: 96dd7237-a0cf-40b7-ac5f-56b1bd5221d7
+                      generalInfo:
+                        ipAddresses: 172.28.2.233
+                        hostName: SJLPT159
+                      clientUniqueId: client_69900
+                      type: DEVICE
+                example-gateway-profile:
+                  value:
+                    id: 74
+                    name: Gateway Profile
+                    description: Gateway Management Profile
+                    type: Gateway
+                    status: DOWN
+                    statusUpdatedDate: '2016-06-20T06:54:46+0000'
+                    softwareVersion: 1.4.3
+                    createdDate: '2016-06-14T06:57:46+0000'
+                    device:
+                      id: fbfe0ecd-8200-4cbf-a13c-f309f341a8c8
+                      generalInfo:
+                        ipAddresses: 172.30.31.137
+                        hostName: 172.30.31.137
+                    tunnelType: SSHD
+                    registered: true
+                    uuId: d004de59-3e72-4c9a-82d7-df3f27f5a7aa
+    post:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  type:
+                    type: string
+                  status:
+                    type: string
+                  createdDate:
+                    type: string
+                  device:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      generalInfo:
+                        type: object
+                        properties:
+                          ipAddresses:
+                            type: string
+                          hostName:
+                            type: string
+                      clientUniqueId:
+                        type: string
+                      type:
+                        type: string
+                  tunnelType:
+                    type: string
+                  registered:
+                    type: boolean
+                  activationToken:
+                    type: string
+              examples:
+                example-agent-profile:
+                  value:
+                    id: 78
+                    name: LB02 Agent Profile
+                    description: Agent Management Profile
+                    type: Agent
+                    status: DOWN
+                    createdDate: '2016-06-22T09:57:09+0000'
+                    device:
+                      id: 014ec656-8dfa-404c-8269-015a96faa9b8
+                      generalInfo:
+                        ipAddresses: 172.28.2.138
+                        hostName: SJLPT177
+                      clientUniqueId: client_69900
+                      type: DEVICE
+                example-gateway-profile:
+                  value:
+                    id: 77
+                    name: LB01 Gateway Profile
+                    description: Gateway Management Profile
+                    type: Gateway
+                    createdDate: '2016-06-22T09:31:38+0000'
+                    tunnelType: SSHD
+                    registered: false
+                    activationToken: 6d8e4cc4-0be4-4706-bc1f-7e7e37a10b54
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: |
+                    The management profile name.
+                description:
+                  type: string
+                  description: |
+                    Summary describing the management profile.
+                type:
+                  type: string
+                device:
+                  type: object
+                  description: |
+                    The device details, applicable only for the agent management profile.
+                  properties:
+                    id:
+                      type: string
+            examples:
+              example-agent-profile:
+                value:
+                  name: LB02 Agent Profile
+                  description: Agent Management Profile
+                  type: Agent
+                  device:
+                    id: 014ec656-8dfa-404c-8269-015a96faa9b8
+              example-gateway-profile:
+                value:
+                  name: LB01 Gateway Profile
+                  description: Gateway Management Profile
+                  type: Gateway
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: profileId
+        required: true
+  /api/v2/tenants/{tenantId}/managementProfiles/{profileId}/detach:
+    summary: Detach gateway from management profile
+    description: Unmaps, or detaches, the gateway from the management profile and invalidates the activation token.
+    get:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  type:
+                    type: string
+                  tunnelType:
+                    type: string
+                  registered:
+                    type: boolean
+                  createdDate:
+                    type: string
+                    format: date-time
+              examples:
+                example-1:
+                  value:
+                    id: 76
+                    name: LB1 Gateway Profile
+                    description: Gateway Management Profile
+                    type: Gateway
+                    tunnelType: SSHD
+                    registered: false
+                    createdDate: '2016-06-22T07:34:40+0000'
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: profileId
+        required: true
+  /api/v2/tenants/{tenantId}/managementProfiles/{profileId}/reconnectTunnel:
+    summary: Reconnect management profile tunnel
+    description: Reconnects the management profile tunnel.
+    get:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    message: Tunnel disconnected successfully on VG G01_Gateway. Please wait for few minutes(up to 5 minutes) to re-establish tunnel connection.
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        in: path
+        name: profileId
+        required: true
+  /api/v2/tenants/{tenantId}/managementProfiles/search:
+    summary: Search for management profile
+    description: |-
+      Searches for a management profiles.
+      ##### Query Variables
+      |Variable|Value|Description|
+      |---|---|---|
+      |id|{id}|The management profile ID.|
+      |name|{name}|The management profile name.|
+      |type|Agent, Gateway|The anagement profile type. An example is: Agent.|
+      |startCreationDate|{startCreationDate}|Search for the management profile created within a certain duration. Start indicates the from date. An example is: 2016-06-10T10:40:20 0000 (GMT).|
+      |endCreationDate|{endCreationDate}|Search for the management profile created within a certain duration. End indicates the to date. An Example is: 2016-06-20T10:40:20 0000 (GMT).|
+      ##### Notes
+      1. Special characters in the query string
+          1. Plus (+) indicates next field and must be URL encoded.
+          2. Color (:) indicates Equals. An example is: key: value.
+          3. Space characters must be URL encoded.
+      2. Date format must use this format: yyyy-MM-ddTHH: mm: ssZ (GMT).
+    get:
+      tags:
+        - agents-gateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        type:
+                          type: string
+                        tunnelType:
+                          type: string
+                        activationToken:
+                          type: string
+                        registered:
+                          type: boolean
+                        createdDate:
+                          type: string
+                        status:
+                          type: string
+                        device:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            generalInfo:
+                              type: object
+                              properties:
+                                ipAddresses:
+                                  type: string
+                                hostName:
+                                  type: string
+                            clientUniqueId:
+                              type: string
+                            type:
+                              type: string
+                        statusUpdatedDate:
+                          type: string
+                        softwareVersion:
+                          type: string
+                        uuId:
+                          type: string
+                  totalResults:
+                    type: integer
+                  orderBy:
+                    type: string
+                  pageNo:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  nextPage:
+                    type: boolean
+                  nextPageNo:
+                    type: integer
+                  previousPageNo:
+                    type: integer
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - id: 76
+                        name: LB1 Gateway Profile
+                        description: Gateway Management Profile_LB1
+                        type: Gateway
+                        tunnelType: SSHD
+                        activationToken: 423e2e3c-a300-4218-a69c-9e3d8c3c3c63
+                        registered: false
+                        createdDate: '2016-06-22T07:34:40+0000'
+                      - id: 75
+                        name: Agent Profile
+                        description: Agent Management Profile
+                        type: Agent
+                        status: DOWN
+                        createdDate: '2016-06-22T07:24:14+0000'
+                        device:
+                          id: 96dd7237-a0cf-40b7-ac5f-56b1bd5221d7
+                          generalInfo:
+                            ipAddresses: 172.28.2.233
+                            hostName: SJLPT159
+                          clientUniqueId: client_69900
+                          type: DEVICE
+                      - id: 74
+                        name: Gateway Profile
+                        description: Gateway Management Profile
+                        type: Gateway
+                        status: DOWN
+                        statusUpdatedDate: '2016-06-20T06:54:46+0000'
+                        softwareVersion: 1.4.3
+                        createdDate: '2016-06-14T06:57:46+0000'
+                        device:
+                          id: fbfe0ecd-8200-4cbf-a13c-f309f341a8c8
+                          generalInfo:
+                            ipAddresses: 172.30.31.137
+                            hostName: 172.30.31.137
+                        tunnelType: SSHD
+                        registered: true
+                        uuId: d004de59-3e72-4c9a-82d7-df3f27f5a7aa
+                      - id: 37
+                        name: Default
+                        description: Default Management Profile
+                        type: Gateway
+                        status: DOWN
+                        statusUpdatedDate: '2016-06-12T06:54:46+0000'
+                        softwareVersion: 1.4.3
+                        createdDate: '2016-06-02T00:27:53+0000'
+                        device:
+                          id: cbee0ecd-5200-3fbf-f13c-c309f341a8c8
+                          generalInfo:
+                            ipAddresses: 172.30.32.110
+                            hostName: 172.30.32.110
+                        tunnelType: SSHD
+                        registered: true
+                        uuId: 95dd2fc2-4d13-11e3-8623-005056910D5D
+                    totalResults: 4
+                    orderBy: id
+                    pageNo: 1
+                    pageSize: 10
+                    totalPages: 1
+                    nextPage: false
+                    nextPageNo: 0
+                    previousPageNo: 0
+                    descendingOrder: true
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: pageNo
+          description: '{pageNo}'
+        - schema:
+            type: string
+          in: query
+          name: pageSize
+          description: '{pageSize}'
+        - schema:
+            type: boolean
+          in: query
+          name: isDescendingOrder
+          description: '{true/false}'
+        - schema:
+            type: string
+          in: query
+          name: sortName
+          description: '{field}'
+        - schema:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              type:
+                type: string
+              startCreationDate:
+                type: string
+              endCreationDate:
+                type: string
+            enum: [id: string, name: string, type: string, startCreationDate: string, endCreationDate: string]
+            uniqueItems: true
+          in: query
+          name: queryString
+          allowReserved: true
+          explode: false
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+components:
+  securitySchemes:
+    accessToken:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{subdomain}.api.opsramp.com
+          scopes: {}
+  parameters:
+    tenantId:
+      in: path
+      name: tenantId
+      schema:
+        type: string
+      required: true
