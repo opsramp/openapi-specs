@@ -27,6 +27,7 @@ servers:
 paths:
   /auth/oauth/token:
     post:
+      operationId: auth-oauth-token
       summary: Get OAuth2 access token with client credentials
       description: Generates an access token using client credentials.
       tags:
@@ -109,4 +110,4 @@ components:
         clientCredentials:
           tokenUrl: https://{subdomain}.api.opsramp.com
           scopes: {}
-  parameters:
+  parameters: {}
