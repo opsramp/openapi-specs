@@ -5413,7 +5413,7 @@ components:
         type: string
       required: true
   schemas:
-    schemaclientNote:
+    clientNote:
       title: clientNote
       type: object
       properties:
@@ -5440,7 +5440,7 @@ components:
           description: Type of expiry. If expiryDateType is set as 1, it indicates Never Expire. If expiryDateType is set as 2, it indicates Validity period.
         createdBy:
           $ref: '#/components/schemas/user'
-    schemauser:
+    user:
       title: user
       type: object
       properties:
@@ -5595,7 +5595,7 @@ components:
         updatedTime:
           type: string
           format: date-time
-    schemachannel:
+    channel:
       title: channel
       type: object
       properties:
@@ -5606,7 +5606,7 @@ components:
         timeZone:
           type: string
       description: 'Channel ID. To get list of available channels, access the Get Channels API.'
-    schemapasswordPolicy:
+    passwordPolicy:
       title: passwordPolicy
       type: object
       properties:
@@ -5624,7 +5624,7 @@ components:
           type: boolean
         maxAttemptsToLockout:
           type: integer
-    schemaclientDetails:
+    clientDetails:
       title: clientDetails
       type: object
       properties:
@@ -5670,7 +5670,7 @@ components:
           type: boolean
           description: |
             Set as true to receive SMS Voice Notification .
-    schemaagentPolicy:
+    agentPolicy:
       title: agentPolicy
       type: object
       properties:
@@ -5693,7 +5693,7 @@ components:
                 type: boolean
         deviceCount:
           type: integer
-    schemaclient:
+    client:
       title: client
       type: object
       properties:
@@ -5919,7 +5919,7 @@ components:
           items:
              type: string
           description: (Optional) Client specific Packages as provided by OPSRAMP i..e Hybrid Discovery and Monitoring", "Event and Incident Management", "Remediation and Automation".
-    schemacredentialSet:
+    credentialSet:
       title: credentialSet
       type: object
       properties:
@@ -6050,7 +6050,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/deviceGroup'
-    schemadevice:
+    device:
       title: device
       type: object
       properties:
@@ -6091,7 +6091,7 @@ components:
           type: string
         uniqueId:
           type: string
-    schemadeviceGroup:
+    deviceGroup:
       title: deviceGroup
       type: object
       properties:
@@ -6122,7 +6122,7 @@ components:
           type: integer
         deviceCount:
           type: integer
-    schemarole:
+    role:
       title: role
       type: object
       properties:
@@ -6233,7 +6233,7 @@ components:
                 type: string
         defaultRole:
           type: boolean
-    schemauserGroup:
+    userGroup:
       title: userGroup
       type: object
       properties:
