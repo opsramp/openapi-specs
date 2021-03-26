@@ -35,7 +35,7 @@ paths:
         '200':
           description: OK
           content:
-            text/plain:
+            application/json:
               examples:
                 example-1:
                   value: |-
