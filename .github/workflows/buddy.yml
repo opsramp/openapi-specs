@@ -19,16 +19,16 @@ jobs:
   build:
     name: 'Perform REST API'
     runs-on: ubuntu-latest
-      steps:
-        - name: 'Call API'
-          uses: indiesdev/curl@v1
-          with:
-            url: https://api.buddy.works/workspaces/opsramp/projects/docs/pipelines/318801/executions
-            method: 'POST'
-            accept: 200,201,204
-            headers: 
-            params:
-            body: '{"comment": "Triggered by GitHub push"}'
-            timeout: 1000
-            bearer-token: ${{ secrets.bearer_token }}
-            is_debug: false
+    steps:
+      - name: 'Call API'
+        uses: indiesdev/curl@v1
+        with:
+          url: https://api.buddy.works/workspaces/opsramp/projects/docs/pipelines/318801/executions
+          method: 'POST'
+          accept: 200,201,204
+          headers: 
+          params:
+          body: '{"comment": "Triggered by GitHub push"}'
+          timeout: 1000
+          bearer-token: ${{ secrets.buddy_token }}
+          is_debug: false
