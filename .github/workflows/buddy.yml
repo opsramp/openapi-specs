@@ -26,9 +26,8 @@ jobs:
           url: https://api.buddy.works/workspaces/opsramp/projects/docs/pipelines/318801/executions
           method: 'POST'
           accept: 200,201,204
-          headers: 
-          params:
-          body: '{"comment": "Triggered by GitHub push"}'
-          timeout: 1000
+          headers: '{ "Content-type": "application/json" }'
+          body: '{ "comment": "Triggered by GitHub push" }'
+          timeout: 2000
           bearer-token: ${{ secrets.buddy_token }}
           is_debug: false
