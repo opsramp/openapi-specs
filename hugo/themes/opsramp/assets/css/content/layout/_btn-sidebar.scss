@@ -1,0 +1,56 @@
+
+// Provides a tool to collapse the sidebar
+.btn-sidebar {
+  z-index: 505;
+  padding: 0 0.533rem 0 0;
+
+  background: transparent;
+  border: 0;
+
+  transition: transform 0.3s;
+
+  &:active:focus,
+  &:active,
+  &:focus {
+    box-shadow: none !important;
+  }
+
+  @include media-breakpoint-down(md) {
+    &.collapsed {
+      transform: rotateX(180deg);
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    position: fixed;
+    top: .5rem;
+    left: calc(var(--sidebar-width) - 12px);
+
+    padding: 8px 4px;
+
+    font-size: 10px;
+    line-height: 1;
+
+    background: var(--gray-bg);
+    background: linear-gradient(0deg, rgba(247,247,248,1) 0%, rgba(231,234,235,1) 100%);
+    border: 2px solid var(--gray-100);
+    border-radius: 8px;
+    box-shadow: inset 1px 2px 0 #fff;
+    transition: all 0.3s, border-color 0.6s;
+
+    &:hover {
+      border-color: var(--gray-300);
+    }
+
+    &.collapsed {
+      left: 0;
+      transform: rotate(180deg);
+
+      border-radius: 4px 0 0 4px !important;
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    left: calc(var(--sidebar-xl-width) - 12px);
+  }
+}

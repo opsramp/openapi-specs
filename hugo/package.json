@@ -1,0 +1,34 @@
+{
+  "name": "opsramp-openapi",
+  "version": "2.0.0",
+  "description": "OpsRamp OpenAPI Specification",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/opsramp/openapi-specs.git"
+  },
+  "scripts": {
+    "dev": "./build.js --exclude-tag internal && hugo server --minify",
+    "dev:internal": "./build.js && hugo server --minify",
+    "build": "./build.js --exclude-tag internal && hugo --minify",
+    "build:internal": "./build.js && hugo --minify"
+  },
+  "author": "OpsRamp, Inc",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/opsramp/openapi-specs/issues"
+  },
+  "homepage": "https://github.com/opsramp/openapi-specs#readme",
+  "devDependencies": {
+    "@apidevtools/swagger-parser": "^10.0.2",
+    "autoprefixer": "^9.8.6",
+    "js-yaml": "^3.13.1",
+    "openapi-types": "^7.2.3",
+    "postcss-cli": "^6.1.3",
+    "slugify": "^1.5.0",
+    "yargs": "^12.0.5"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 2%"
+  ]
+}

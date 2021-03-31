@@ -1,0 +1,8 @@
+{{ $scss := "css/content/layout.scss"}}
+{{ if .Site.IsServer }}
+{{ $css := resources.Get $scss | toCSS (dict "enableSourceMap" true) }}
+<link href="{{ $css.RelPermalink }}" rel="stylesheet">
+{{ else }}
+{{ $css := resources.Get $scss | toCSS (dict "enableSourceMap" false) | postCSS | minify | fingerprint }}
+<link href="{{ $css.RelPermalink }}" rel="stylesheet" integrity="{{ $css.Data.integrity }}">
+{{ end }}

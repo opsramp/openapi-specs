@@ -1,0 +1,17 @@
+.alert {
+  background: $white;
+  color: inherit;
+  border-radius: 0;
+
+  @each $color,
+  $value in $theme-colors {
+    &-#{$color} {
+      & .alert-heading {
+        color: $value;
+      }
+
+      border-color: $value;
+      border-width: 0 0 0 4px;
+    }
+  }
+}

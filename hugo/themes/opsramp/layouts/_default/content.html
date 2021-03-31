@@ -1,0 +1,10 @@
+<article class="pt-4">
+  {{ partial "page/article-header.html" . }}
+  {{ partial "toc-page.html" . }}
+
+  <main class="article-body mt-2 pt-1" data-swiftype-name="body" data-swiftype-type="text">
+    {{ .Content }}
+  </main>
+</article>
+
+{{ partial "footer/feedback-button.html" . }}

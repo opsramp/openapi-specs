@@ -1,0 +1,24 @@
+{{ $jsjQuery := resources.Get "js/vendor/jquery-3.5.1.min.js" }}
+{{ $jsPopper := resources.Get "js/vendor/popper-1.16.1.min.js" }}
+{{ $jsBootstrap := resources.Get "js/vendor/bootstrap-4.4.1.min.js" }}
+{{ $jsHighlight := resources.Get "js/vendor/highlight-9.18.1.min.js" }}
+
+{{ $jsVendor := (slice $jsjQuery $jsPopper $jsBootstrap $jsHighlight) | resources.Concat "js/vendor.js" }}
+{{ $jsVendor := $jsVendor | minify | fingerprint }}
+<script defer src="{{ $jsVendor.RelPermalink }}" integrity="{{ $jsVendor.Data.Integrity }}" crossorigin="anonymous"></script>
+
+
+{{ $jsBase := resources.Get "js/base.js" }}
+{{ $jsHighlightBadge := resources.Get "js/prism.js" }}
+{{ $jsAnchor := resources.Get "js/anchor.js" }}
+{{/* $jsDarkMode := resources.Get "js/dark-mode.js" */}}
+
+{{ $jsMain := (slice $jsBase $jsHighlightBadge $jsAnchor) | resources.Concat "js/main.js" }}
+{{ $jsMain := $jsMain | minify | fingerprint }}
+<script defer src="{{ $jsMain.RelPermalink }}" integrity="{{ $jsMain.Data.Integrity }}" crossorigin="anonymous"></script>
+
+
+<script defer src="https://kit.fontawesome.com/48057decd1.js" crossorigin="anonymous"></script>
+<script>
+{{ $.Site.Params.searchScript | safeJS }}
+</script>

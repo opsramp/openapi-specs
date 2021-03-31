@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+{{ if .IsHome }}
+<meta http-equiv="refresh" content="0;url=http://localhost:1313/api/" />
+{{ else }}
+{{ partial "head/head.html" . }}
+{{ end }}
+</head>
+
+<body class="documentation hord-{{ .Kind }} sidebar-active">
+{{ if not .IsHome}}
+
+  <div class="page-loader"><i class="loading"></i></div>
+  
+  {{ partialCached "header/content-elements.html" . }}
+  
+  <div class="body-wrapper d-md-flex align-items-stretch">
+    <nav id="sidebar">
+      {{ partial "sidebar/sidebar.html" . }}
+    </nav>
+
+    {{ $scss := "css/content/components.scss"}}
+    {{ $css := resources.Get $scss | toCSS (dict "enableSourceMap" false) | postCSS | minify | fingerprint }}
+    <link href="{{ $css.RelPermalink }}" rel="stylesheet" integrity="{{ $css.Data.integrity }}">
+    <main id="content">
+      <div class="content-position">
+        <div class="content-wrapper">
+          {{ partial "breadcrumbs.html" . }}
+          {{ block "main" . }}{{ end }}
+          {{ partial "footer/footer-doc.html" . }}
+        </div>
+      </div>
+    </main>
+  </div>
+
+  {{ partialCached "footer/footer.html" . }}
+
+
+{{ end }}
+</body>
+</html>

@@ -1,0 +1,7 @@
+name = "OpsRamp"
+license = "Commercial"
+description = "Technical documentation website for OpsRamp"
+homepage = "https://docs.opsramp.com/"
+tags = []
+features = []
+min_version = 0.68

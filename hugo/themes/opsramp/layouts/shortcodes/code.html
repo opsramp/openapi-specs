@@ -1,0 +1,2 @@
+{{ $language := .Get 0 }}
+<pre><code  class="hljs language-{{ $language }}">{{ trim .Inner "\n" }}</code></pre>

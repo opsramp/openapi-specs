@@ -1,0 +1,10 @@
+{{ define "main" }}
+HALLO
+<article class="pt-4">
+  {{ partial "page/article-header.html" . }}
+
+  <main class="article-body mt-2 pt-1">
+    {{ partial "section-index.html" . }}
+  </main>
+</article>
+{{ end }}

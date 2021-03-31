@@ -1,0 +1,21 @@
+<div class="parameters">
+  <h5 class="pt-3 px-3">Query Parameters</h5>
+
+  {{ range $v := . }}
+  {{ $in := index $v "in" }}
+  {{ if eq $in "query" }}
+  <div class="parameter-wrapper">
+    <div class="parameter-name">
+      <h5>
+        {{ index $v "name" }}
+        <div class="badge badge-secondary">{{ index $v "schema" "type" }}</div>
+      </h5>
+    </div>
+    <div class="parameter-body">
+      <p>{{ index $v "description" }}</p>
+    </div>
+  </div>
+  {{ end }}
+  {{ end }}
+  
+</div>

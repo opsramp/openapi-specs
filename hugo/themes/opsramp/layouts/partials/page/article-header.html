@@ -1,0 +1,6 @@
+<header class="article-header mb-4">
+  <div class="article-header__intro">
+    <h1 data-swiftype-name="title" data-swiftype-type="string">{{ .Title }}</h1>
+    {{ with .Params.description }}<p class="mb-3" data-swiftype-name="description" data-swiftype-type="string">{{ . | markdownify }}</p>{{ end }}
+  </div>
+</header>

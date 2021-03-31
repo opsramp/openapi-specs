@@ -1,0 +1,8 @@
+{{ with .TableOfContents }}
+{{ if ge (len .) 100 }}
+<aside class="hord-toc d-print-none">
+  <h2>On this page</h2>
+{{ . }}
+</aside>
+{{ end }}
+{{ end }}

@@ -1,0 +1,14 @@
+{{ $scss := "css/content/sidebar.scss"}}
+{{ if .Site.IsServer }}
+{{ $css := resources.Get $scss | toCSS (dict "enableSourceMap" true) }}
+<link href="{{ $css.RelPermalink }}" rel="stylesheet">
+{{ else }}
+{{ $css := resources.Get $scss | toCSS (dict "enableSourceMap" false) | postCSS | minify | fingerprint }}
+<link href="{{ $css.RelPermalink }}" rel="stylesheet" integrity="{{ $css.Data.integrity }}">
+{{ end }}
+
+<div class="sidebar-wrapper">
+  {{ partial "header/content-header.html" . }}  
+
+  {{ partial "sidebar/sidebar-tree.html" . }}
+</div>

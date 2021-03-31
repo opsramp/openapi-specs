@@ -1,0 +1,17 @@
+.logo-wrap {
+  padding: .5rem 0 1rem;
+
+  .home & {
+    padding: 1rem;
+  }
+}
+
+.logo-page {
+
+  width: 100%;
+
+  @include media-breakpoint-up(md) {
+    position: fixed;
+    z-index: 50;  
+  }
+}

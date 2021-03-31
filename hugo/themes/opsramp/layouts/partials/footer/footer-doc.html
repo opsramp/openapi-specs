@@ -1,0 +1,25 @@
+{{ $links := .Site.Params.links }}
+<footer class="doc-footer mt-2 pt-2 pb-3 d-print-none row">
+    <div class="col-md-6 text-center text-md-left mb-1 my-md-1">
+      {{ with .Site.Params.copyright }}<p class="copyright mb-0">Copyright © {{ now.Year}} {{ .}}</p>{{ end }}
+    </div>
+    <div class="col-md-6 text-center text-md-right my-2 my-md-1">
+      {{ with $links }}
+      {{ with index . "footer"}}
+      {{ template "footer-links-block"  . }}
+      {{ end }}
+      {{ end }}
+    </div>
+</footer>
+
+{{ define "footer-links-block" }}
+<ul class="list-inline mb-0 p-0">
+  {{ range . }}
+  <li class="list-inline-item mx-2" title="{{ .name }}" aria-label="{{ .name }}">
+    <a class="text-muted" target="_blank" href="{{ .url }}">
+      {{ .name }}
+    </a>
+  </li>
+  {{ end }}
+</ul>
+{{ end }}

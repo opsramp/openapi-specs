@@ -1,0 +1,12 @@
+a {
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+    background: rgba($royal-blue, 0.03);
+    outline: 0;
+  }
+
+  &:visited:not(.btn-primary):not(.navigation-sidebar-link):not(.dropdown-toggle):not(.dropdown-item):not(.nav-link) {
+    color: $purple;
+  }
+}

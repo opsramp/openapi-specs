@@ -1,0 +1,31 @@
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ka-p.fontawesome.com" crossorigin>
+  <link rel="preconnect" href="https://s.swiftypecdn.com" crossorigin>  
+
+{{ partial "head/head-css.html" }}
+{{ partial "head/head-css-content.html" }}
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Roboto&display=swap" rel="stylesheet">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163273260-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-163273260-1');
+  </script>
+  
+  <meta name="description" class="swiftype" data-type="string" content="{{ if .Params.description }}{{ .Params.description }}{{ else if .Site.Params.description }}{{ .Site.Params.description }}{{ end }}">
+  {{ if .Params.keywords }}<meta name="keywords" class="swiftype" data-type="string" content="{{ delimit .Params.keywords ", " }}">{{ end }}
+  {{ with .Params.robotsdisallow }}<meta name="robots" content="noindex, nofollow, noarchive">{{ end }}
+
+  {{ partialCached "head/favicons.html" . }}
+
+  {{- template "_internal/opengraph.html" . -}}
+  {{- template "_internal/twitter_cards.html" . -}}
