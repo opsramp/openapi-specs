@@ -1,0 +1,9 @@
+
+{{ $scssBase := "css/base/base.scss"}}
+{{ if .Site.IsServer }}
+{{ $css := resources.Get $scssBase | toCSS (dict "enableSourceMap" true) }}
+<link href="{{ $css.RelPermalink }}" rel="stylesheet">
+{{ else }}
+{{ $css := resources.Get $scssBase | toCSS (dict "enableSourceMap" false) | postCSS | minify | fingerprint }}
+<link href="{{ $css.RelPermalink }}" rel="stylesheet" integrity="{{ $css.Data.integrity }}">
+{{ end }}

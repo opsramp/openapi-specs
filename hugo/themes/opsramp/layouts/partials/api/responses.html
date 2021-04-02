@@ -1,0 +1,107 @@
+{{ if isset .operation "responses" }}
+{{ $responses := index .operation "responses" }}
+
+{{ with $responses }}
+<h2 class="mt-5 d-none">Responses</h2>
+<ul class="nav nav-pills mt-5" id="requestResponses" role="tablist">
+  {{ range $tab, $response := $responses }}
+  <li class="nav-item">
+    <a class="nav-link{{ if eq $tab "200" }} active{{ end }}" id="tab-{{ $.request }}-{{ $tab }}" data-toggle="tab" href="#pane-{{ $.request }}-{{ $tab }}" role="tab" aria-controls="pane-{{ $.request }}-{{ $tab }}" {{ if eq $tab "200" }} aria-selected="true" {{ end }}>{{ $tab | upper }}</a>
+  </li>
+  {{ end }}
+</ul>
+
+<div class="tab-content mt-3">
+  {{ range $tab, $response := $responses }}
+  <div class="tab-pane fade{{ if eq $tab "200" }} show active{{ end }}" id="pane-{{ $.request }}-{{ $tab }}" role="tabpanel" aria-labelledby="tab-{{ $.request }}-{{ $tab }}">
+    {{ with index $response "description" }}
+    <p>{{ . | markdownify }}</p>
+    {{ end }}
+
+    {{ if or (isset $response "examples") (isset $response "schema") }}
+
+    <ul class="nav nav-tabs mt-3" id="responseBody-{{ $.request }}-{{ $tab }}" role="tablist">
+      {{ if (index $response "schema") }}
+      <li class="nav-item">
+        <a class="nav-link active" id="model-{{ $.request }}-{{ $tab }}-tab" data-toggle="tab" href="#model-{{ $.request }}-{{ $tab }}-pane" role="tab" aria-controls="model-{{ $.request }}-{{ $tab }}-pane" aria-selected="true">Schema</a>
+      </li>
+      {{ end }}
+      {{ if (index $response "examples") }}
+      <li class="nav-item">
+        <a class="nav-link" id="example-{{ $.request }}-{{ $tab }}-tab" data-toggle="tab" href="#example-{{ $.request }}-{{ $tab }}-pane" role="tab" aria-controls="example-{{ $.request }}-{{ $tab }}-pane">Example Response</a>
+      </li>
+      {{ end }}
+    </ul>
+    <div class="tab-content">
+      {{ if (index $response "schema") }}
+      <div class="tab-pane fade show active" id="model-{{ $.request }}-{{ $tab }}-pane" role="tabpanel" aria-labelledby="model-{{ $.request }}-{{ $tab }}-tab">
+
+        {{ $schema := index $response "schema" }}
+
+        {{ $parameters := index $schema "properties" }}
+        <div class="parameters-pane">
+          {{ range $param, $body := $parameters }}
+          <div class="parameter-wrapper">
+            <div class="parameter-name">
+              <h5>
+                {{ $param }}
+                <div class="badge badge-secondary">{{ index $body "type" }}</div>
+              </h5>
+            </div>
+            <div class="parameter-body">
+              <p>{{ index $body "description" }}</p>
+            </div>
+            {{ with (index $body "properties")}}
+            <h6><a class="collapsed" data-toggle="collapse" href="#children-{{ $param | lower }}" role="button" aria-expanded="false" aria-controls="children-{{ $param | lower }}"> Child Parameters</a></h6>
+            <div id="children-{{ $param | lower }}" class="parameter-children collapse">
+              <dl class="parameter-children__list">
+                {{ range $prop, $val := . }}
+                <dt><span>{{ $param }}.</span>{{ $prop }}</dt>
+                <dd>{{ with (index $val "description") }}{{ . }}{{ end }}</dd>
+                {{ end }}
+              </dl>
+            </div>
+            {{ end }}
+            {{ with (index $body "items")}}
+            <h6><a class="collapsed" data-toggle="collapse" href="#children-{{ $param | lower }}" role="button" aria-expanded="false" aria-controls="children-{{ $param | lower }}"> Child Parameters</a></h6>
+            <div id="children-{{ $param | lower }}" class="parameter-children collapse">
+              <dl class="parameter-children__list">
+                {{ range $prop, $val := (index . "properties")}}
+                <dt><span>{{ $param }}.</span>{{ $prop }}</dt>
+                <dd>{{ with (index $val "description") }}{{ . }}{{ end }}</dd>
+                {{ end }}
+              </dl>
+            </div>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+
+      </div>
+      {{ end }}
+      {{ if (index $response "examples") }}
+      <div class="tab-pane fade" id="example-{{ $.request }}-{{ $tab }}-pane" role="tabpanel" aria-labelledby="example-{{ $.request }}-{{ $tab }}-tab">
+        
+        {{ $examples := index $response "examples" }}
+
+        {{ range $example := $examples }}
+        {{ if isset $example "value" }}
+        <pre><code class="hljs language-json">{{ index . "value" | jsonify (dict "indent" "  ") }}</code></pre>
+        {{ end }}
+        {{ if isset $example "summary" }}
+        <p><small>{{ index . "summary" | markdownify }}</small></p>
+        {{ end }}
+        {{ end }}
+
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+
+
+  </div>
+  {{ end }}
+</div>
+
+{{ end }}
+{{ end }}

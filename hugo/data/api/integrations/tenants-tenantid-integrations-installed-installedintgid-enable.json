@@ -1,0 +1,1 @@
+{"summary":"Enable installed integration","description":"Enables an installed integration.","operations":{"post":{"description":"","parameters":"","responses":{"200":{"description":"OK"}}}},"parameters":[{"in":"path","name":"tenantId","schema":{"type":"string"},"required":true},{"schema":{"type":"string"},"in":"path","name":"installedIntgId","required":true}]}

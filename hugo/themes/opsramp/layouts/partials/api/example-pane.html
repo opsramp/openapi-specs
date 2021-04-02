@@ -1,0 +1,12 @@
+{{ with .requestBodyExamples }}
+
+{{ range $example := . }}
+{{ if isset $example "value" }}
+<pre><code class="hljs language-json">{{ index . "value" | jsonify (dict "indent" "  ") }}</code></pre>
+{{ end }}
+{{ if isset $example "summary" }}
+<p><small>{{ index . "summary" | markdownify }}</small></p>
+{{ end }}
+{{ end }}
+
+{{ end }}

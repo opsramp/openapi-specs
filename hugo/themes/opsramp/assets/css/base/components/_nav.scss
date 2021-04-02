@@ -1,0 +1,51 @@
+// Display dropdown for mobile, display regular navigation on larger
+
+@media screen and (max-width: 800px) {
+  .navbar {
+    display: block;
+    margin: 0 auto;
+    max-width: 500px;
+    width: 100%;
+  }
+
+}
+
+.nav-item.dropdown {
+  width: 100%;
+}
+
+.navbar {
+  padding: .75rem 0;
+}
+.navbar-nav .dropdown-menu {
+  width: 100%;
+}
+
+.navbar-nav .nav-link.dropdown-toggle {
+  width: 100%;
+  padding: 0 1rem;
+
+  color: var(--gray-900);
+  line-height: 48px;
+
+  background: var(--white);
+  border: 1px solid var(--gray-border);
+  border-radius: 10px;
+
+  &:hover {
+    background: var(--royal-blue);
+    color: var(--white);
+  }
+}
+
+
+.dropdown-toggle::after {
+  content: "\f0d7";
+  position: absolute;
+  right: 10px;
+
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+
+  border: 0 !important;
+}

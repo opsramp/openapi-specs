@@ -1,0 +1,42 @@
+{{ $.Page.Scratch.Set "tablesloaded" 1 }}
+
+{{ $table := .Get "name" | default "" }}
+
+{{ $datatable := .Get "datatable" | default 0 }}
+{{ $caption := .Get "caption" | default "" }}
+{{ $paging := .Get "paging" | default 0 }}
+{{ $searching := .Get "searching" | default 0 }}
+{{ $responsive := .Get "responsive" | default 0 }}
+
+{{ $data := index .Site.Data.tables $table }}
+{{ $headers := index $data "head" }}
+{{ $body := index $data "body" }}
+
+{{ $id := index (seq 999 | shuffle) 0 }}
+{{ $id2 := index (seq 999 | shuffle) 0 }}
+
+<table id="table-{{ $id }}0{{ $id2 }}" class="table table-striped{{ if eq $responsive 1 }} table-responsive{{ end }}">
+  <caption>{{ $caption }}</caption>
+  {{ if gt $headers 0 }}
+  <thead class="thead-dark">
+    <tr>
+      {{ range $headers }}
+      <th scope="col">{{ . }}</th>
+      {{ end }}
+    </tr>
+  </thead>
+  {{ end }}
+  <tbody>
+  {{ range $body }}
+  <tr>
+    {{ range . }}
+    <td>{{ . | safeHTML }}</td>
+    {{ end }}
+  </tr>
+  {{ end }}
+  </tbody>
+</table>
+{{ if eq $datatable 1 }}
+{{ $.Page.Scratch.Set "tablesloaded" 1 }}
+<script>jQuery(function(){$("#table-{{ $id }}0{{ $id2 }}").DataTable({paging:{{ $paging }},info:{{ $paging }},searching:{{ $searching }}})});</script>
+{{ end }}

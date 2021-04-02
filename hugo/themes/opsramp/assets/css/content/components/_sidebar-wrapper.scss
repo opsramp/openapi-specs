@@ -1,0 +1,30 @@
+.sidebar-wrapper {
+  padding: 1rem;
+  font-family: $font-family-roboto;
+  
+  @include media-breakpoint-down(sm) {
+    margin: 0 0 2rem;
+
+    background-color: var(--gray-bg);
+    border-bottom: 1px solid var(--gray-border);
+  }
+
+  @include media-breakpoint-up(md) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    
+    display: flex;
+    flex-direction: column;
+  }
+  
+  body.sidebar-active & {
+    @include media-breakpoint-up(md) {
+      width: var(--sidebar-width);
+    }
+
+    @include media-breakpoint-up(xl) {
+      width: var(--sidebar-xl-width);
+    }
+  }
+}

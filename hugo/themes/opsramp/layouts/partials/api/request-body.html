@@ -1,0 +1,23 @@
+
+{{/* Display the request method description if one is available */}}
+{{ if isset .requestBody "description" }}
+{{ index .requestBody "description" | markdownify }}
+{{ end }}
+
+{{ $requestLabel := (cond (eq .request "post") "Request Body" "Request Parameters") }}
+<ul class="nav nav-tabs mt-5" id="requestBody" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="model-{{ .request }}-tab" data-toggle="tab" href="#model-{{ .request }}-pane" role="tab" aria-controls="model-{{ .request }}-pane" aria-selected="true">{{ $requestLabel }}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="example-{{ .request }}-tab" data-toggle="tab" href="#example-{{ .request }}-pane" role="tab" aria-controls="example-{{ .request }}-pane">Examples</a>
+  </li>
+</ul>
+<div class="tab-content pb-2">
+  <div class="tab-pane fade show active" id="model-{{ .request }}-pane" role="tabpanel" aria-labelledby="model-{{ .request }}-tab">
+    {{ partial "api/model-pane.html" (dict "requestBody" .requestBody) }}
+  </div>
+  <div class="tab-pane fade" id="example-{{ .request }}-pane" role="tabpanel" aria-labelledby="example-{{ .request }}-tab">
+    {{ partial "api/example-pane.html" (dict "requestBodyExamples" .requestBodyExamples) }}
+  </div>
+</div>

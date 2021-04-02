@@ -1,0 +1,151 @@
+.navigation-sidebar {
+
+  @include media-breakpoint-up(md) {
+    display: block !important;
+    flex: 1;
+    margin-right: calc(-1rem + 2px);
+    
+    overflow-x: hidden;
+    overflow-y: scroll;
+      
+  }
+
+  &::-webkit-scrollbar-track
+  {
+    background-color: transparent
+  }
+  
+  &::-webkit-scrollbar
+  {
+    width: 0.5rem;
+    background-color: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb
+  {
+    margin: 2px;
+    border-radius: 4px 0 0 4px;
+    background-color: var(--gray-100);
+  }
+  
+
+  // Clean up list styles
+  &__section {
+    padding-left: 0;
+    list-style: none;
+
+    ul {
+      padding: 0;
+
+      list-style: none;
+    }
+  }
+
+  &__section-title {
+
+    &.show>.link-group a,
+    .link-group a.active {
+      color: var(--royal-blue);
+    }
+
+    .toggle {
+      .fa-plus {
+        display: block;
+      }
+
+      .fa-minus {
+        display: none;
+      }
+
+      &[aria-expanded="true"] {
+        .fa-plus {
+          display: none;
+        }
+
+        .fa-minus {
+          display: block;
+        }
+      }
+    }
+  }
+
+
+  // Mobile Toggle
+  &__toggle {
+    margin: 1rem;
+
+    line-height: 1;
+  }
+
+  &__search {
+    @include media-breakpoint-up(md) {
+      margin-right: -15px;
+      margin-left: -15px;
+
+      padding: 1rem;
+    }
+  }
+}
+
+
+.navigation-sidebar-link {
+  display: block;
+  width: 100%;
+
+  font-size: 15px;
+}
+
+
+.link-group {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-right: 6px;
+  padding: 6px 8px 4px;
+
+  .toggle.icon {
+    margin-top: 5px;
+    padding-right: 3px;
+  }
+
+  .single-doc & {
+    padding-left: 20px;
+  }
+  
+  &+ul {
+
+    li {
+      &:last-child {
+        margin-bottom: 16px !important;
+      }
+    }
+
+    .link-group {
+      padding-left: 14px;
+
+      .navigation-sidebar-link {
+        font-size: 14px;
+      }
+
+       + ul .link-group a {
+          padding-left: 10px;
+          font-size: 13px;
+       }
+    }
+  }
+
+
+  a {
+    color: $gray-900;
+
+    &:focus {
+      background: transparent;
+    }
+  }
+
+  &:hover {
+    background: rgba($gray-100, 0.7);
+    border-radius: 8px;
+  }
+}

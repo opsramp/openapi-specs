@@ -1,0 +1,78 @@
+.content-wrapper {
+  // Inline code
+  p code,
+  li>code,
+  table code,
+  div>code {
+    margin: 0;
+    padding: 0.2em 0.4em;
+    
+    color: inherit;
+    word-break: normal;
+    
+    background: rgba($black, 0.05);
+    border-radius: $border-radius;
+
+    br {
+      display: none;
+    }
+  }
+
+  // Code blocks
+  pre {
+    padding: 0;
+
+    >code {
+      word-break: normal;
+      white-space: pre;
+    }
+  }
+}
+
+// Copy Code
+.code-badge-pre {
+  position: relative;
+}
+
+.code-badge {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  display: flex;
+  padding: 5px 8px;
+  height: 34px;
+  width: 30px;
+
+  color: $white;
+  font-size: 1rem;
+  white-space: normal;
+
+  background: rgba($gray-500, 0.4);
+  border-radius: 0.25rem;
+
+  transition: background linear 0.5s;
+
+  &.active, &:hover {
+    background: rgba($gray-500, 1);
+  }
+}
+
+.code-badge-language {
+  display: none;
+}
+
+.code-badge-copy-icon {
+  margin-top: 2;
+  cursor: pointer;
+}
+
+.fa.text-success {
+  color: limegreen !important
+}
+
+@media print {
+  .code-badge {
+    display: none;
+  }
+}

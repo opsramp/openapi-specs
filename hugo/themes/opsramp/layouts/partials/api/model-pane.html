@@ -1,0 +1,50 @@
+{{ if isset .requestBody "schema" }}
+{{ $schema := index .requestBody "schema" }}
+
+{{ $parameters := "" }}
+{{ if eq (index $schema "type") "array"}}
+{{ $parameters = index $schema "items" "properties" }}
+{{ else }}
+{{ $parameters = index $schema "properties" }}
+{{ end }}
+
+
+<div class="parameters-pane">
+  {{ range $param, $body := $parameters }}
+  <div class="parameter-wrapper">
+    <div class="parameter-name">
+      <h5>
+        {{ $param }}
+        <div class="badge badge-secondary">{{ index $body "type" }}</div>
+      </h5>
+    </div>
+    <div class="parameter-body">
+      <p>{{ index $body "description" }}</p>
+    </div>
+    {{ with (index $body "properties")}}
+    <h6><a class="collapsed" data-toggle="collapse" href="#children-{{ $param | lower }}" role="button" aria-expanded="false" aria-controls="children-{{ $param | lower }}"> Child Parameters</a></h6>
+    <div id="children-{{ $param | lower }}" class="parameter-children collapse">
+      <dl class="parameter-children__list">
+        {{ range $prop, $val := . }}
+        <dt><span>{{ $param }}.</span>{{ $prop }}</dt>
+        <dd>{{ with (index $val "description") }}{{ . }}{{ end }}</dd>
+        {{ end }}
+      </dl>
+    </div>
+    {{ end }}
+    {{ with (index $body "items")}}
+    <h6><a class="collapsed" data-toggle="collapse" href="#children-{{ $param | lower }}" role="button" aria-expanded="false" aria-controls="children-{{ $param | lower }}"> Child Parameters</a></h6>
+    <div id="children-{{ $param | lower }}" class="parameter-children collapse">
+      <dl class="parameter-children__list">
+        {{ range $prop, $val := (index . "properties")}}
+        <dt><span>{{ $param }}.</span>{{ $prop }}</dt>
+        <dd>{{ with (index $val "description") }}{{ . }}{{ end }}</dd>
+        {{ end }}
+      </dl>
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+</div>
+
+{{ end }}

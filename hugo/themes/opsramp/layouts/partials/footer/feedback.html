@@ -1,0 +1,77 @@
+<div class="modal fade" id="feedbackForm" tabindex="-1" role="dialog" aria-labelledby="feedbackFormTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="feedbackFormTitle">Leave us feedback</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form id="feedback-form" action="https://formspree.io/xbjaevkp" method="post" role="form">
+          <input type="hidden" name="page_title" value="{{ .Title }}">
+          <input type="hidden" name="file_path" value="{{ with .File }}{{ .Path }}{{ end }}">
+          <div class="controls">
+            <div class="row">
+              <div class="col-md-12">
+                <div id="feedback-errors" class="alert alert-danger" style="display:none;" role="alert">
+                  <h4 class="alert-heading">Error</h4>
+                  <div id="err-state"></div>
+                </div>
+                <div id="feedback-success" class="alert alert-primary" style="display:none;" role="alert">
+                  <h4 class="alert-heading">Success</h4>
+                  Your feedback has been sent!
+                </div>
+              </div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="fn">Your Name</label>
+                  <input id="fn" type="text" name="name" class="form-control" required="required" data-error="Please enter your name!">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="fel">Email</label>
+                  <input id="fel" type="email" name="email" class="form-control" required="required" data-error="Valid email is required">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="col">
+                <div class="form-group">
+                  <label for="fsu" class="d-none">Please specify a subject for your feedback</label>
+                  <select id="fsu" name="_subject" class="form-control" required="required" data-error="Please specify the subject of your feedback">
+                    <option value="" selected disabled>--Please specify a subject for your feedback--</option>
+                    <option>General feedback or comments</option>
+                    <option>Instructions seem unclear</option>
+                    <option>Information provided is incorrect</option>
+                    <option>I want to see docs on this topic</option>
+                    <option>This topic should be easier to find</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="ffb">Message</label>
+                  <textarea id="ffb" name="message" class="form-control" rows="5" required="required" data-error="Please describe the issue you are having"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <input id="submitForm" type="submit" class="btn btn-primary px-5" value="Submit">
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
