@@ -14,10 +14,10 @@ const { argv } = require('yargs')
     default: 'content/api/',
     type: 'string',
   })
-  .options('e', {
-    alias: 'exclude-tags',
-    describe: 'Comma separated list of tags to exclude.',
-    type: 'string',
+  .options('i', {
+    alias: 'internal',
+    describe: 'Build all endpoints marked "internal"',
+    type: 'boolean',
   })
 
 const SwaggerParser = require('@apidevtools/swagger-parser')
@@ -34,6 +34,7 @@ Main()
  * Main() - Clones the API spec to a temporary location, then runs all of our helpers in sequence.
  */
 function Main() {
+  const ignoreTags = argv.i ? [] : ['internal']
 
   yamls = initializeBuild()
 
@@ -47,12 +48,9 @@ function Main() {
     prepLocation(cur.tag, argv.c)
     prepLocation(cur.tag, argv.d)
 
-    const ignoreTags = argv.e ? argv.e.split(',') : false
-
     generateContent(cur.tag, paths, ignoreTags)
     generateData(cur.tag, paths, ignoreTags)
   })
-
 }
 
 /**
@@ -118,7 +116,7 @@ function generateContent(tag, endpoints, ignore) {
     const slug = getSlugForEndpoint(endpoint)
     const requestMethods = getRequestMethods(data)
 
-    if (ignore) {
+    if (ignore.length) {
       const foundIgnore = requestMethods.filter((method) => {
         const found = data[method].tags.some((tag) => ignore.includes(tag))
         return found
@@ -159,11 +157,6 @@ function generateData(tag, paths, ignore) {
   for (const [endpoint, data] of paths) {
     const slug = getSlugForEndpoint(endpoint)
     const requestMethods = getRequestMethods(data)
-
-    // @TODO ignore should simply default to an empty array and generateContent can check for that
-    if (!ignore) {
-      ignore = []
-    }
 
     const operations = requestMethods
       .filter((method) => {
