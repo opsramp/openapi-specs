@@ -7,10 +7,10 @@
     "url": "https://github.com/opsramp/openapi-specs.git"
   },
   "scripts": {
-    "dev": "./build.js --exclude-tag internal && hugo server --minify",
-    "dev:internal": "./build.js && hugo server --minify",
-    "build": "./build.js --exclude-tag internal && hugo --minify",
-    "build:internal": "./build.js && hugo --minify"
+    "dev": "./build.js && hugo server --minify",
+    "dev:internal": "./build.js -i && hugo server --minify",
+    "build": "./build.js && hugo --minify",
+    "build:internal": "./build.js -i && hugo --minify"
   },
   "author": "OpsRamp, Inc",
   "license": "UNLICENSED",
