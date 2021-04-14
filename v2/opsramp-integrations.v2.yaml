@@ -381,7 +381,7 @@ paths:
           description: |-
             (Optional) Installed integration Id. To get the integration activity of a particular installed integration, provide the installed integration Id in the query parameter string.
 
-            Example: 
+            Example:
             ```
             https:///api/v2/tenants/client_9/integrations/activity?queryString=startTime:2017-03-08T16:00:00 0530%2BendTime:2017-03-08T17:00:00 0530%2BinstalledintgId:INTG-bb6dcbe3-6477-42d0-8b33-4b811ad53fe3%2BIntgMode:INBOUND%2Bstatus:SUCCESS
             ```
@@ -3147,7 +3147,7 @@ paths:
                       id: VMWARE
                       name: VMware
                       multipleInstallations: true
-                    computeCredentials:
+                    credential:
                       Name: vmcenter
                       autoMonitorable: false
                       id: 326
@@ -3156,13 +3156,13 @@ paths:
                       secure: true
                     installedBy: Dev
                     installedTime: 2021-02-29T12:40:07+0530
-                    discovery:
+                    discoveryProfiles:
                       -
                         scanNow: true
                         mgmtProfileUuid: 76a89355-9c0a-443e-a897-8f69e6ca2da2
                         policy:
                           entityType: All
-                          matchType: Any
+                          matchType: ANY
                           rules:
                             -
                               filterType: ANY_CLOUD_RESOURCE
@@ -3423,21 +3423,21 @@ paths:
               example-vmware-update:
                 value:
                   displayName: VMWARE-Updated_API_VMWARE
-                  credentialSet: vmcenter
+                  credential: vmcenter
                   ipAddress: 10.11.01.10
-                  discovery:
+                  discoveryProfiles:
                     - id: 101
                       scanNow: true
                       mgmtProfileUuid: 76a89355-9c0a-443e-a897-8f69e6ca2da2
                       policy:
                         entityType: All
-                        matchType: Any
+                        matchType: ANY
                         rules:
                           -
                             filterType: ANY_CLOUD_RESOURCE
                         actions:
                           -
-                            action: Manage Device
+                            action: MANAGE DEVICE
         description: ''
     get:
       summary: Get installed integration
@@ -4414,6 +4414,11 @@ paths:
     summary: Install VMWARE integration
     description: |-
       These endpoint IDs are used to install compute integrations
+      - Pre-requistes:
+        - User needs to use the set credentials for the VMware infra. To set credentials https://docs.opsramp.com/api/tenancy-access-controls/tenants-tenantid-credentialsets/
+        - User needs gateway profile ids, which can be known using search endpoint at https://docs.opsramp.com/api/agents-gateways/tenants-tenantid-managementprofiles-search/
+        - Supported values are not case-sensitive. 'All' & 'all' both are valid.
+        - For "schedule" attributes in payload refer https://docs.opsramp.com/api/integrations/tenants-tenantid-policies-discovery-search/
 
       The following compute integrations are supported:
         - VMWARE
@@ -4437,7 +4442,7 @@ paths:
                       id: VMWARE
                       name: VMware
                       multipleInstallations: true
-                    computeCredentials:
+                    credential:
                       Name: vcenter
                       autoMonitorable: false
                       id: 326
@@ -4446,19 +4451,23 @@ paths:
                       secure: true
                     installedBy: Dev
                     installedTime: 2021-02-19T12:40:07+0530
-                    discovery:
+                    discoveryProfiles:
                       -
                         scanNow: true
+                        schedule:
+                          patternType: MONTHLY
+                          pattern:  "FIRST,SUNDAY"
+                          startTime: 18
                         mgmtProfileUuid: 76a89355-9c0a-443e-a897-8f69e6ca2da1
                         policy:
-                          entityType: All
-                          matchType: Any
+                          entityType: ALL
+                          matchType: ANY
                           rules:
                             -
                               filterType: ANY_CLOUD_RESOURCE
                           actions:
                             -
-                              action: Manage Device
+                              action: MANAGE DEVICE
                 example-vmware-credentials:
                   value:
                     id: INTG-2e2854c6-8543-4a3c-be29-3ccc20542375
@@ -4467,7 +4476,7 @@ paths:
                       id: VMWARE
                       name: VMware
                       multipleInstallations: true
-                    computeCredentials:
+                    credential:
                       Name: vcenter
                       autoMonitorable: false
                       id: 326
@@ -4484,33 +4493,30 @@ paths:
             examples:
               example-vmware-credentialSet:
                 value:
-                  displayName: VMWARE
-                  credentialSet: vcenter
+                  displayName: API_VMWARE
+                  credential: vcenter
                   ipAddress: 10.10.01.10
-                  discovery:
-                    - id: 101
-                      scanNow: true
+                  discoveryProfiles:
+                    - scanNow: true
+                      schedule:
+                        patternType: MONTHLY
+                        pattern:  "FIRST,SUNDAY"
+                        startTime: 18
                       mgmtProfileUuid: 76a89355-9c0a-443e-a897-8f69e6ca2da1
                       policy:
-                        entityType: All
-                        matchType: Any
+                        entityType: ALL
+                        matchType: ANY
                         rules:
                           -
                             filterType: ANY_CLOUD_RESOURCE
                         actions:
                           -
-                            action: Manage Device
-              example-vmware-credentials:
+                            action: MANAGE DEVICE
+              example-vmware-install-only:
                 value:
-                  displayName: VMWARE
-                  computeCredentials:
-                    Name: vcenter
-                    autoMonitorable: false
-                    id: 326
-                    description: current credentials
-                    port: 443
-                    secure: true
-        description: ''
+                  displayName: API_VMWARE
+                  credential: "vcenter"
+                  "ipAddress": "10.10.01.10"
     parameters:
       - schema:
           type: string
@@ -5133,8 +5139,10 @@ components:
           type: string
           description: Google
     credential-Set:
-      title: private cloud credential set
+      title: Private cloud credential set
       type: object
+      description: |
+            Respose payload object
       properties:
         name:
           type: string
@@ -5295,10 +5303,10 @@ components:
           type: string
           description: |
             ipAddress for the private cloud. To be only used for compute Integration.
-        credentialSets:
+        credentialSet:
           type: string
           description: |
-            Name of credentialSets. Only used for compute Integration
+            Name of credentialSets. Only used for compute Integration.
         computeCredentials:
           $ref: '#/components/schemas/credential-Set'
         logos:
