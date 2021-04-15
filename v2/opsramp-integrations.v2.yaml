@@ -6,27 +6,23 @@ info:
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
-
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: integrations
     description: Example description.
     externalDocs:
-      url: https://docs.opsramp.com/api/agents-gateways/
-
+      url: 'https://docs.opsramp.com/api/agents-gateways/'
 servers:
-  - url: https://api.opsramp.com
+  - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: https://{subdomain}.api.opsramp.com
+  - url: 'https://{subdomain}.api.opsramp.com'
     description: Partner or Client custom branded sub-domain
     variables:
       subdomain:
         default: demo
         description: Custom sub-domain assigned to the client
-
 paths:
-  # Integrations
-  /api/v2/tenants/{tenantId}/integrations/activity:
+  '/api/v2/tenants/{tenantId}/integrations/activity':
     summary: Get integration activity
     description: Gets the installation activity details of an installed integration activity.
     get:
@@ -393,13 +389,12 @@ paths:
           in: query
           name: status
           description: (Optional) Status of integration
+      summary: List all the payload activities
+      operationId: Intg_acitivity
+      description: Details the payload activities
     parameters:
-      - schema:
-          type: string
-        name: tenantId
-        in: path
-        required: true
-  /api/v2/tenants/{tenantId}/policies/discovery:
+      - $ref: '#/components/parameters/tenantId'
+  '/api/v2/tenants/{tenantId}/policies/discovery':
     summary: Get and update discovery profiles
     description: |-
       Creates and updates AWS, Azure, and Google discovery profiles and gets a list of discovery profiles.
@@ -773,7 +768,7 @@ paths:
                       pattern: '30'
                       startTime: '00:30:00'
     get:
-      description: gets a list of discovery profiles and their details for AWS, Azure, and Google.
+      description: 'gets a list of discovery profiles and their details for AWS, Azure, and Google.'
       tags:
         - integrations
       responses:
@@ -880,9 +875,7 @@ paths:
                         pattern: '30'
                         startTime: '00:30:00'
     put:
-      description: |-
-        Updates discovery profiles for AWS, Azure, and Google.
-
+      description: 'Updates discovery profiles for AWS, Azure, and Google.'
       tags:
         - integrations
       responses:
@@ -1174,9 +1167,9 @@ paths:
                       startTime: '00:30:00'
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/policies/discovery/{discoveryId}:
+  '/api/v2/tenants/{tenantId}/policies/discovery/{discoveryProfileId}':
     summary: Manage cloud discovery profile
-    description: Gets and delete discovery profiles for AWS, Azure, and Google.
+    description: 'Gets and delete discovery profiles for AWS, Azure, and Google.'
     delete:
       tags:
         - integrations
@@ -1314,14 +1307,10 @@ paths:
                       startTime: '02:00:00'
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: discoveryId
-        required: true
-  /api/v2/tenants/{tenantId}/policies/discovery/action/scan/{discoveryProfileId}:
+      - $ref: '#/components/parameters/discoveryProfileId'
+  '/api/v2/tenants/{tenantId}/policies/discovery/action/scan/{discoveryProfileId}':
     summary: Rescan discovery profiles
-    description: Rescans an AWS, Azure, and Google discovery profile.
+    description: 'Rescans an AWS, Azure, and Google discovery profile.'
     get:
       tags:
         - integrations
@@ -1358,9 +1347,9 @@ paths:
         required: true
         description: |
           The discovery profile Id.
-  /api/v2/tenants/{tenantId}/policies/discovery/search:
+  '/api/v2/tenants/{tenantId}/policies/discovery/search':
     summary: Search cloud discovery profiles
-    description: Uses a discovery profile name to search for an AWS, Azure, and Google discovery profile.
+    description: 'Uses a discovery profile name to search for an AWS, Azure, and Google discovery profile.'
     get:
       tags:
         - integrations
@@ -1481,7 +1470,7 @@ paths:
           required: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/integrations/install/CUSTOM:
+  '/api/v2/tenants/{tenantId}/integrations/install/CUSTOM':
     summary: Install custom integration
     description: Installs a custom integration.
     post:
@@ -1505,7 +1494,7 @@ paths:
                       multipleInstallations: true
                     category: Monitoring
                     installedBy: opsramp_api_user
-                    installedTime: 2020-10-08T07:25:24+0100
+                    installedTime: '2020-10-08T07:25:24+0100'
                     status: enabled
                     alertSource:
                       id: 30
@@ -1524,7 +1513,7 @@ paths:
                     inboundConfig:
                       dropAlerts: true
                     installedBy: opsramp_api_user
-                    installedTime: 2020-10-08T07:25:24+0100
+                    installedTime: '2020-10-08T07:25:24+0100'
                     status: enabled
                     alertSource:
                       id: 30
@@ -1541,7 +1530,7 @@ paths:
                       multipleInstallations: true
                     category: Collaboration
                     installedBy: opsramp_api_user
-                    installedTime: 2020-10-08T07:25:24+0100
+                    installedTime: '2020-10-08T07:25:24+0100'
                     status: enabled
                     direction: Inbound
                 example-authentication-only:
@@ -1554,7 +1543,7 @@ paths:
                       multipleInstallations: true
                     category: Custom
                     installedBy: opsramp_api_user
-                    installedTime: 2020-10-08T07:25:24+0100
+                    installedTime: '2020-10-08T07:25:24+0100'
                     status: enabled
                     inboundConfig:
                       authentication:
@@ -1573,7 +1562,7 @@ paths:
                       multipleInstallations: true
                     category: Custom
                     installedBy: opsramp_api_user
-                    installedTime: 2020-10-08T07:25:24+0100
+                    installedTime: '2020-10-08T07:25:24+0100'
                     status: enabled
                     inboundConfig:
                       authentication:
@@ -1582,18 +1571,15 @@ paths:
                         role:
                           uniqueId: ROLE-4718b729-50cc-6634-42c4-ecd09558389d
                           name: Customer
-                        webhookUrl: https://api.opsramp.com/integrations/client_4/webhook/incident?vtoken=k6v4SUF3TSEgyxJsmvRShZwVs9Ran3VY
+                        webhookUrl: 'https://api.opsramp.com/integrations/client_4/webhook/incident?vtoken=k6v4SUF3TSEgyxJsmvRShZwVs9Ran3VY'
                         entityTypes:
                           - INCIDENT
                           - CHANGE
                         webhookDetails:
-                          -
-                            webhookEntityType: INCIDENT
-                            url: https://api.opsramp.com/integrations/client_4/webhook/incident?vtoken=k6v4SUF3TSEgyxJsmvRShZwVs9Ran3VY
-                          -
-                            webhookEntityType: CHANGE
-                            url: https://api.opsramp.com/integrations/client_4/webhook/change?vtoken=k6v4SUF3TSEgyxJsmvRShZwVs9Ran3VY
-
+                          - webhookEntityType: INCIDENT
+                            url: 'https://api.opsramp.com/integrations/client_4/webhook/incident?vtoken=k6v4SUF3TSEgyxJsmvRShZwVs9Ran3VY'
+                          - webhookEntityType: CHANGE
+                            url: 'https://api.opsramp.com/integrations/client_4/webhook/change?vtoken=k6v4SUF3TSEgyxJsmvRShZwVs9Ran3VY'
       requestBody:
         content:
           application/json:
@@ -1634,14 +1620,15 @@ paths:
                   category: Collaboration
                   direction: Inbound
                   inboundConfig:
-                    authentication: WEBHOOK
+                    authentication:
+                      authType: WEBHOOK
                     entityTypes:
                       - INCIDENT
                       - CHANGE
         description: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/integrations/available/{intgId}/emailProps/{entityType}:
+  '/api/v2/tenants/{tenantId}/integrations/available/{installedIntgId}/emailProps/{entityType}':
     summary: Get configurable email properties
     description: Gets the email properties of an entity.
     get:
@@ -1651,18 +1638,21 @@ paths:
         '200':
           description: OK
     parameters:
-      - $ref: '#/components/parameters/tenantId'
-      - schema:
+      - in: path
+        name: tenantId
+        schema:
           type: string
-        in: path
-        name: intgId
+        description: Describes the client ID or msp ID of the tenant
         required: true
-      - schema:
+      - name: installedIntgId
+        in: path
+        required: true
+        schema:
           type: string
-        in: path
-        name: entityType
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/inbound/authentication:
+          format: uuid
+        description: Unique Identifier of the installed integration
+      - $ref: '#/components/parameters/entityType'
+  '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/inbound/authentication':
     summary: Manage inbound authentication
     description: Creates and updates installed integration inbound authentication.
     post:
@@ -1711,12 +1701,8 @@ paths:
                   authType: WEBHOOK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: installedIntgId
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/mappingAttr:
+      - $ref: '#/components/parameters/installedIntgId'
+  '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/mappingAttr':
     summary: Manage installed integration mapping attributes
     description: |
       Creates, updates, and gets installed integration mapping attributes.
@@ -1974,12 +1960,8 @@ paths:
                           thirdPartyAttrValue: Completed
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: installedIntgId
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/notifier:
+      - $ref: '#/components/parameters/installedIntgId'
+  '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/notifier':
     summary: Manage installed integration base notifier
     description: Creates and updates an installed integration base notifier.
     post:
@@ -2073,14 +2055,10 @@ paths:
                       value: $jwtToken
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: installedIntgId
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/disable:
+      - $ref: '#/components/parameters/installedIntgId'
+  '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/disable':
     summary: Disable integration
-    description: Disables an installed integration, temporarily disabling the integration services.
+    description: 'Disables an installed integration, temporarily disabling the integration services.'
     post:
       tags:
         - integrations
@@ -2089,12 +2067,8 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: installedIntgId
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/enable:
+      - $ref: '#/components/parameters/installedIntgId'
+  '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/enable':
     summary: Enable installed integration
     description: Enables an installed integration.
     post:
@@ -2105,12 +2079,8 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: installedIntgId
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}/activate:
+      - $ref: '#/components/parameters/installedIntgId'
+  '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}/activate':
     summary: Activate integration event
     description: Activates an integration event.
     post:
@@ -2121,17 +2091,9 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: installedIntgId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: eventId
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event:
+      - $ref: '#/components/parameters/installedIntgId'
+      - $ref: '#/components/parameters/eventId'
+  '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event':
     summary: Create integration event
     description: |-
       Creates an integration event.
@@ -2295,12 +2257,8 @@ paths:
                     eventPayload: "{\n\t'serviceName':'$alert.serviceName',\n\t'resource':{\n\t\t'id':'$alert.resourceId'\n\t},\n\t'subject':'$alert.subject',\n        'currentState':'$alert.currentState',\n\t'app':'OPSRAMP'\n}"
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: installedIntgId
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}/deactivate:
+      - $ref: '#/components/parameters/installedIntgId'
+  '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}/deactivate':
     summary: Deactivate integration event
     description: Deactivates an integration event.
     post:
@@ -2311,19 +2269,11 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: installedIntgId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: eventId
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}:
+      - $ref: '#/components/parameters/installedIntgId'
+      - $ref: '#/components/parameters/eventId'
+  '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}':
     summary: Manage integration event
-    description: Updates, gets, and deletes an integration event.
+    description: 'Updates, gets, and deletes an integration event.'
     delete:
       tags:
         - integrations
@@ -2460,17 +2410,9 @@ paths:
                           value: $attch.id
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: installedIntgId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: eventId
-        required: true
-  /api/v2//tenants/{tenantId}/integrations/installed/{installedIntgId}/events:
+      - $ref: '#/components/parameters/installedIntgId'
+      - $ref: '#/components/parameters/eventId'
+  '/api/v2//tenants/{tenantId}/integrations/installed/{installedIntgId}/events':
     summary: Get installed integration events
     description: Gets installed integration events.
     get:
@@ -2624,12 +2566,8 @@ paths:
         in: path
         name: tenantId
         required: true
-      - schema:
-          type: string
-        in: path
-        name: installedIntgId
-        required: true
-  /api/v2//tenants/{tenantId}/integrations/events/placeHolders/{entityType}:
+      - $ref: '#/components/parameters/installedIntgId'
+  '/api/v2//tenants/{tenantId}/integrations/events/placeHolders/{entityType}':
     summary: Get integration event placeholders
     description: |-
       Gets the integration event placeholders of an entity.
@@ -2822,14 +2760,10 @@ paths:
                     descendingOrder: false
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: entityType
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}:
+      - $ref: '#/components/parameters/entityType'
+  '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}':
     summary: Manage installed integration
-    description: Updates, gets, and deletes the installed integration details.
+    description: 'Updates, gets, and deletes the installed integration details.'
     post:
       tags:
         - integrations
@@ -3155,20 +3089,17 @@ paths:
                       port: 443
                       secure: true
                     installedBy: Dev
-                    installedTime: 2021-02-29T12:40:07+0530
+                    installedTime: '2021-02-29T12:40:07+0530'
                     discoveryProfiles:
-                      -
-                        scanNow: true
+                      - scanNow: true
                         mgmtProfileUuid: 76a89355-9c0a-443e-a897-8f69e6ca2da2
                         policy:
                           entityType: All
                           matchType: ANY
                           rules:
-                            -
-                              filterType: ANY_CLOUD_RESOURCE
+                            - filterType: ANY_CLOUD_RESOURCE
                           actions:
-                            -
-                              action: Manage Device
+                            - action: Manage Device
       requestBody:
         content:
           application/json:
@@ -3433,11 +3364,9 @@ paths:
                         entityType: All
                         matchType: ANY
                         rules:
-                          -
-                            filterType: ANY_CLOUD_RESOURCE
+                          - filterType: ANY_CLOUD_RESOURCE
                         actions:
-                          -
-                            action: MANAGE DEVICE
+                          - action: MANAGE DEVICE
         description: ''
     get:
       summary: Get installed integration
@@ -3566,12 +3495,8 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: installedIntgId
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/available/{intgId}/mappingAttr/{entityType}:
+      - $ref: '#/components/parameters/installedIntgId'
+  '/api/v2/tenants/{tenantId}/integrations/available/{installedIntgId}/mappingAttr/{entityType}':
     summary: Get integration mappable properties
     description: Gets the integration mappable properties for an entity.
     get:
@@ -3686,17 +3611,9 @@ paths:
                     descendingOrder: false
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: intgId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: entityType
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/available/search:
+      - $ref: '#/components/parameters/installedIntgId'
+      - $ref: '#/components/parameters/entityType'
+  '/api/v2/tenants/{tenantId}/integrations/available/search':
     summary: Search available integrations
     description: Searches available integrations.
     get:
@@ -3790,7 +3707,7 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/integrations/installed/search:
+  '/api/v2/tenants/{tenantId}/integrations/installed/search':
     summary: Search installed integrations
     description: |
       Searches for installed integrations.
@@ -4014,7 +3931,7 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/integrations/install/EMAILINCIDENTS:
+  '/api/v2/tenants/{tenantId}/integrations/install/EMAILINCIDENTS':
     summary: Install email request integration
     description: |
       Installs an email request integration.
@@ -4097,12 +4014,8 @@ paths:
                           value: 'true'
         description: ''
     parameters:
-      - schema:
-          type: string
-        name: tenantId
-        in: path
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/install/EMAILALERTS:
+      - $ref: '#/components/parameters/tenantId'
+  '/api/v2/tenants/{tenantId}/integrations/install/EMAILALERTS':
     summary: Install email alert integration
     description: |-
       Installs email alert integrations. OpsRamp processes all incoming Alert emails.
@@ -4195,12 +4108,8 @@ paths:
                             endValue: value2
         description: ''
     parameters:
-      - schema:
-          type: string
-        name: tenantId
-        in: path
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/install/AWS:
+      - $ref: '#/components/parameters/tenantId'
+  '/api/v2/tenants/{tenantId}/integrations/install/AWS':
     summary: Install AWS integrations
     description: |-
       These endpoint IDs are used to install third-party integrations.
@@ -4275,12 +4184,8 @@ paths:
                     ExternalId: '**********************'
         description: ''
     parameters:
-      - schema:
-          type: string
-        name: tenantId
-        in: path
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/install/AZURE:
+      - $ref: '#/components/parameters/tenantId'
+  '/api/v2/tenants/{tenantId}/integrations/install/AZURE':
     summary: Install Azure integration
     description: |-
       These endpoint IDs are used to install third-party integrations.
@@ -4351,12 +4256,8 @@ paths:
                     KeystorePassword: '**********'
         description: ''
     parameters:
-      - schema:
-          type: string
-        name: tenantId
-        in: path
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/install/GOOGLE:
+      - $ref: '#/components/parameters/tenantId'
+  '/api/v2/tenants/{tenantId}/integrations/install/GOOGLE':
     summary: Install Google integration
     description: |-
       These endpoint IDs are used to install third-party integrations.
@@ -4405,12 +4306,8 @@ paths:
                     ManagementCertificatePassPhrase: '*********'
         description: ''
     parameters:
-      - schema:
-          type: string
-        name: tenantId
-        in: path
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/install/VMWARE:
+      - $ref: '#/components/parameters/tenantId'
+  '/api/v2/tenants/{tenantId}/integrations/install/VMWARE':
     summary: Install VMWARE integration
     description: |-
       These endpoint IDs are used to install compute integrations
@@ -4450,24 +4347,21 @@ paths:
                       port: 443
                       secure: true
                     installedBy: Dev
-                    installedTime: 2021-02-19T12:40:07+0530
+                    installedTime: '2021-02-19T12:40:07+0530'
                     discoveryProfiles:
-                      -
-                        scanNow: true
+                      - scanNow: true
                         schedule:
                           patternType: MONTHLY
-                          pattern:  "FIRST,SUNDAY"
+                          pattern: 'FIRST,SUNDAY'
                           startTime: 18
                         mgmtProfileUuid: 76a89355-9c0a-443e-a897-8f69e6ca2da1
                         policy:
                           entityType: ALL
                           matchType: ANY
                           rules:
-                            -
-                              filterType: ANY_CLOUD_RESOURCE
+                            - filterType: ANY_CLOUD_RESOURCE
                           actions:
-                            -
-                              action: MANAGE DEVICE
+                            - action: MANAGE DEVICE
                 example-vmware-credentials:
                   value:
                     id: INTG-2e2854c6-8543-4a3c-be29-3ccc20542375
@@ -4484,7 +4378,7 @@ paths:
                       port: 443
                       secure: true
                     installedBy: Dev
-                    installedTime: 2021-01-19T12:40:07+0530
+                    installedTime: '2021-01-19T12:40:07+0530'
       requestBody:
         content:
           application/json:
@@ -4500,30 +4394,25 @@ paths:
                     - scanNow: true
                       schedule:
                         patternType: MONTHLY
-                        pattern:  "FIRST,SUNDAY"
+                        pattern: 'FIRST,SUNDAY'
                         startTime: 18
                       mgmtProfileUuid: 76a89355-9c0a-443e-a897-8f69e6ca2da1
                       policy:
                         entityType: ALL
                         matchType: ANY
                         rules:
-                          -
-                            filterType: ANY_CLOUD_RESOURCE
+                          - filterType: ANY_CLOUD_RESOURCE
                         actions:
-                          -
-                            action: MANAGE DEVICE
+                          - action: MANAGE DEVICE
               example-vmware-install-only:
                 value:
                   displayName: API_VMWARE
-                  credential: "vcenter"
-                  "ipAddress": "10.10.01.10"
+                  credential: vcenter
+                  ipAddress: 10.10.01.10
+      summary: ''
     parameters:
-      - schema:
-          type: string
-        name: tenantId
-        in: path
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/install/{intgId}:
+      - $ref: '#/components/parameters/tenantId'
+  '/api/v2/tenants/{tenantId}/integrations/install/{installedIntgId}':
     summary: Install integrations
     description: |-
       Installs the following integrations:
@@ -4532,7 +4421,7 @@ paths:
       - monitoring
       - collaboration
 
-      To install the integration, provide the integration ID in {intgld}.'
+      To install the integration, provide the integration ID in {installedIntgId}.'
     post:
       tags:
         - integrations
@@ -4888,17 +4777,9 @@ paths:
                       apiSecret: asdfgnasinfpaiwerpfawpeojporwjaeprfwpejprwje
         description: ''
     parameters:
-      - schema:
-          type: string
-        name: tenantId
-        in: path
-        required: true
-      - schema:
-          type: string
-        name: intgId
-        in: path
-        required: true
-  /api/v2/tenants/{tenantId}/integrations/install/OKTA:
+      - $ref: '#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/installedIntgId'
+  '/api/v2/tenants/{tenantId}/integrations/install/OKTA':
     summary: Install SSO integration
     description: Installs a SSO integration.
     post:
@@ -4936,7 +4817,7 @@ paths:
                       name: Okta
                     ssoInstalled:
                       installedBy: opsramp_api_user
-                      installedTime: 2020-10-08T08:13:55+0100
+                      installedTime: '2020-10-08T08:13:55+0100'
                       status: enabled
                     singleSignOnAuthentication:
                       type: Okta
@@ -4954,7 +4835,7 @@ paths:
                       displayName: testSSOIntg
                       category: SSO
                       installedBy: opsramp_api_user
-                      installedTime: 2020-10-08T08:13:55+0100
+                      installedTime: '2020-10-08T08:13:55+0100'
                       status: enabled
                     singleSignOnAuthentication:
                       type: Other
@@ -5002,7 +4883,7 @@ components:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: https://{subdomain}.api.opsramp.com
+          tokenUrl: 'https://{subdomain}.api.opsramp.com'
           scopes: {}
   parameters:
     tenantId:
@@ -5010,7 +4891,38 @@ components:
       name: tenantId
       schema:
         type: string
+      description: Describes the client ID or msp ID of the tenant
       required: true
+    installedIntgId:
+      name: installedIntgId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Unique Identifier of the installed integration
+    eventId:
+      name: eventId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: The unique ID of an event related to  the integration
+    entityType:
+      name: entityType
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Mapped property
+    discoveryProfileId:
+      name: discoveryProfileId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Discovery profile unique Identifier
   schemas:
     rule:
       title: rule
@@ -5142,7 +5054,7 @@ components:
       title: Private cloud credential set
       type: object
       description: |
-            Respose payload object
+        Respose payload object
       properties:
         name:
           type: string
@@ -5385,7 +5297,7 @@ components:
         entityTypes:
           type: array
           items:
-             type: string
+            type: string
           description: |
             Type of supported service desk entities (INCIDENT,CHANGE,SERVICEREQUEST,PROBLEM) using WEBHOOK only.
         webhookUris:
@@ -5401,6 +5313,7 @@ components:
           enum:
             - WEBHOOK
             - OAUTH2
+            - ALL
           description: |
             Type of authentication.
         role:
