@@ -6,28 +6,26 @@ info:
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
-
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: alerts
     description: Example description.
     externalDocs:
-      url: https://docs.opsramp.com/api/alerts/
-
+      url: 'https://docs.opsramp.com/api/alerts/'
 servers:
-  - url: https://api.opsramp.com
+  - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: https://{subdomain}.api.opsramp.com
+
+  - url: 'https://{subdomain}.api.opsramp.com'
     description: Partner or Client custom branded sub-domain
     variables:
       subdomain:
         default: demo
         description: Custom sub-domain assigned to the client
-
 paths:
-  /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}/{action}:
+  '/api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}/{action}':
     summary: Manage alert correlation policy
-    description: Enables, disables, and creates an observed mode on an alert correlation policy.
+    description: 'Enables, disables, and creates an observed mode on an alert correlation policy.'
     post:
       tags:
         - alerts
@@ -37,16 +35,6 @@ paths:
     parameters:
       - schema:
           type: string
-        name: tenantId
-        in: path
-        required: true
-      - schema:
-          type: string
-        name: policyId
-        in: path
-        required: true
-      - schema:
-          type: string
           enum:
             - enable
             - disable
@@ -54,7 +42,13 @@ paths:
         name: action
         in: path
         required: true
-  /api/v2/tenants/{tenantId}/rosters/search:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        name: policyId
+        in: path
+        required: true
+  '/api/v2/tenants/{tenantId}/rosters/search':
     summary: Get organization rosters
     description: |
       Gets the rosters in an organization.
@@ -258,7 +252,7 @@ paths:
         name: tenantId
         in: path
         required: true
-  /api/v2/tenants/{tenantId}/policies/alertCorrelation:
+  '/api/v2/tenants/{tenantId}/policies/alertCorrelation':
     summary: Create and get alert correlation policy
     description: Creates and gets alert correlation policies.
     get:
@@ -980,10 +974,9 @@ paths:
                     primaryAlertSubject: subject-alertMetric policy
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}:
+  '/api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}':
     summary: Manage alert correlation policy by ID
-    description: |-
-      Update, gets, and deletes an alert correlation policy by ID.
+    description: 'Update, gets, and deletes an alert correlation policy by ID.'
     delete:
       tags:
         - alerts
@@ -1651,12 +1644,8 @@ paths:
                       - system.memory.utilization
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: policyId
-        required: true
-  /api/v2/tenants/{tenantId}/alerts/{alertId}/escalations:
+      - $ref: '#/components/parameters/policyId'
+  '/api/v2/tenants/{tenantId}/alerts/{alertId}/escalations':
     summary: Get alert escalation policy
     description: Gets the escalation policy attached to an alert.
     get:
@@ -2035,12 +2024,8 @@ paths:
                         notifyIncident: forEveryUpdate
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: alertId
-        required: true
-  /api/v2/tenants/{tenantId}/escalations:
+      - $ref: '#/components/parameters/alertId'
+  '/api/v2/tenants/{tenantId}/escalations':
     summary: Create alert escalation policy
     description: |
       Creates an alert escalation policy. The policy is a predefined action to be taken when an alert is not acknowledged.
@@ -2175,7 +2160,7 @@ paths:
                   description: |-
                     Escalation rules are actions to be taken when an alert is not acknowledged within the desired time. OpsRamp supports manual and automatic escalation types.
 
-                    If escalation Type is Manual, then escalations would be: 
+                    If escalation Type is Manual, then escalations would be:
                     - recipients
 
                     If escalation Type is Automatic, then escalations would be:
@@ -2256,8 +2241,84 @@ paths:
                         description: |2-
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             Configure how to update an existing incident of an escalated alert.
-                            
+
                           If an Open incident (other than Closed) is available for the alert, the incident gets updated instead of creating a new incident.
 
                           Either "none" or "withAlertState" must be included
@@ -3160,10 +3221,9 @@ paths:
                             type: ROSTER
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/escalations/{id}:
+  '/api/v2/tenants/{tenantId}/escalations/{policyId}':
     summary: Manage alert escalation policy
-    description: |-
-        Gets, update, and delete alert escalation policy information.
+    description: 'Gets, update, and delete alert escalation policy information.'
     delete:
       tags:
         - alerts
@@ -4114,7 +4174,7 @@ paths:
                   description: |-
                     Escalation rules are actions to be taken when an alert is not acknowledged within the desired time. OpsRamp supports manual and automatic escalation types.
 
-                    If escalation Type is Manual, then escalations would be: 
+                    If escalation Type is Manual, then escalations would be:
                     - recipients
 
                     If escalation Type is Automatic, then escalations would be:
@@ -4192,8 +4252,84 @@ paths:
                       updateIncident:
                         type: object
                         description: |2-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             Configure how to update an existing incident of an escalated alert.
-                            
+
                           If an Open incident (other than Closed) is available for the alert, the incident gets updated instead of creating a new incident.
 
                           Either "none" or "withAlertState" must be included
@@ -4477,16 +4613,22 @@ paths:
                           name: Test roster
                           type: ROSTER
     parameters:
-      - $ref: '#/components/parameters/tenantId'
-      - schema:
+      - in: path
+        name: tenantId
+        schema:
           type: string
-        in: path
-        name: id
         required: true
-  /api/v2/tenants/{tenantId}/escalations/{id}/disable:
+        description: Describes the client ID or msp ID of the tenant
+      - name: policyId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: Policy unique identifier
+  '/api/v2/tenants/{tenantId}/escalations/{policyId}/disable':
     summary: Disable alert escalation policy
-    description: |-
-      Disables an alert escalation policy.
+    description: Disables an alert escalation policy.
     post:
       tags:
         - alerts
@@ -4494,16 +4636,22 @@ paths:
         '200':
           description: OK
     parameters:
-      - $ref: '#/components/parameters/tenantId'
-      - schema:
+      - in: path
+        name: tenantId
+        schema:
           type: string
-        in: path
-        name: id
         required: true
-  /api/v2/tenants/{tenantId}/escalations/{id}/enable:
+        description: Describes the client ID or msp ID of the tenant
+      - name: policyId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: Policy unique identifier
+  '/api/v2/tenants/{tenantId}/escalations/{policyId}/enable':
     summary: Enable alert escalation policy
-    description: |-
-      Enables an alert escalation policy.
+    description: Enables an alert escalation policy.
     post:
       tags:
         - alerts
@@ -4511,13 +4659,20 @@ paths:
         '200':
           description: OK
     parameters:
-      - $ref: '#/components/parameters/tenantId'
-      - schema:
+      - in: path
+        name: tenantId
+        schema:
           type: string
-        in: path
-        name: id
         required: true
-  /api/v2/tenants/{tenantId}/escalations/search:
+        description: Describes the client ID or msp ID of the tenant
+      - name: policyId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: Policy unique identifier
+  '/api/v2/tenants/{tenantId}/escalations/search':
     summary: Get alert escalation policies
     description: |-
       Gets the alert escalation policies attached to an alert.
@@ -4771,7 +4926,7 @@ paths:
                     descendingOrder: false
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/alerts/{alertId}/acknowledge:
+  '/api/v2/tenants/{tenantId}/alerts/{alertId}/acknowledge':
     summary: Acknowledge alert
     description: Acknowledges an alert.
     post:
@@ -4780,14 +4935,11 @@ paths:
       responses:
         '200':
           description: OK
+      description: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: alertId
-        required: true
-  /api/v2/tenants/{tenantId}/alerts/{alertId}/actions/{action}:
+      - $ref: '#/components/parameters/alertId'
+  '/api/v2/tenants/{tenantId}/alerts/{alertId}/actions/{action}':
     summary: Post action on an alert
     description: |-
       Posts an action on an alert.
@@ -4814,23 +4966,9 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: alertId
-        required: true
-      - schema:
-          type: string
-          enum:
-            - Acknowledge
-            - Suppress
-            - Close
-            - Unacknowledge
-            - Unsuppress
-        in: path
-        name: action
-        required: true
-  /api/v2/tenants/{tenantId}/alerts/event/{eventId}:
+      - $ref: '#/components/parameters/alertId'
+      - $ref: '#/components/parameters/action'
+  '/api/v2/tenants/{tenantId}/alerts/event/{eventId}':
     summary: Get alert details by event ID
     description: |-
       Gets alert details by event ID.
@@ -5062,6 +5200,7 @@ paths:
                       createdTime: '2016-07-24T10:40:47+0000'
                       ticketedBy: 'opsramp_system_user '
                       ticketedTime: '2016-07-24T10:41:47+0000'
+      description: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
       - schema:
@@ -5069,7 +5208,8 @@ paths:
         in: path
         name: eventId
         required: true
-  /api/v2/tenants/{tenantId}/alerts/{alertId}/comments:
+        description: Raw event unique identifier
+  '/api/v2/tenants/{tenantId}/alerts/{alertId}/comments':
     summary: Get alert comments
     description: Gets alert comments.
     get:
@@ -5181,12 +5321,8 @@ paths:
                     descendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: alertId
-        required: true
-  /api/v2/tenants/{tenantId}/alerts/{alertId}:
+      - $ref: '#/components/parameters/alertId'
+  '/api/v2/tenants/{tenantId}/alerts/{alertId}':
     summary: Get alert details
     description: |-
       Gets alert details.
@@ -5468,11 +5604,7 @@ paths:
                       createdTime: '2018-05-07T12:55:19+0000'
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: alertId
-        required: true
+      - $ref: '#/components/parameters/alertId'
   /api/v2/alertTypes:
     summary: Get supported alert types
     description: Gets the list of supported alert types.
@@ -5499,7 +5631,7 @@ paths:
                     - OBSOLETE
                     - FORECAST
                     - CHANGE DETECTION
-  /api/v2/tenants/{tenantId}/users/{userId}/alertViews:
+  '/api/v2/tenants/{tenantId}/users/{userId}/alertViews':
     summary: Get alert views
     description: Gets a list of alert views.
     get:
@@ -5590,7 +5722,7 @@ paths:
         in: path
         name: userId
         required: true
-  /api/v2/tenants/{tenantId}/users/{userId}/alertViews/{viewId}:
+  '/api/v2/tenants/{tenantId}/users/{userId}/alertViews/{viewId}':
     summary: Get alert view by view ID
     description: Gets an alert view of a user.
     get:
@@ -5715,17 +5847,15 @@ paths:
         in: path
         name: orgId
         required: true
-      - schema:
-          type: string
-        in: path
-        name: userId
-        required: true
+        description: ClientId or mspId of the tenant
+      - $ref: '#/components/parameters/userId'
       - schema:
           type: string
         in: path
         name: viewId
         required: true
-  /api/v2/alerts/tenants/{tenantId}/alerts/{alertId}:
+        description: Filter view unique identifier
+  '/api/v2/alerts/tenants/{tenantId}/alerts/{alertId}':
     summary: Get alert details by alert ID
     description: Gets alert details by alert ID.
     get:
@@ -5851,15 +5981,11 @@ paths:
                       actedTs: 1448628691167
                       eventType: ALERT
                       metric: Disk
-                      inferenceId: 0
+                      inferenceId: 1230
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: alertId
-        required: true
-  /api/v2/alerts/tenants/{tenantId}/tickets/{ticketId}:
+      - $ref: '#/components/parameters/alertId'
+  '/api/v2/alerts/tenants/{tenantId}/tickets/{ticketId}':
     summary: Get alert details by incident ID
     description: Gets alert details by incident ID.
     get:
@@ -5985,15 +6111,11 @@ paths:
                       actedTs: 1448628691167
                       eventType: ALERT
                       metric: Windows Process
-                      inferenceId: 0
+                      inferenceId: 1230
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: ticketId
-        required: true
-  /api/v2/tenants/{tenantId}/alerts/{alertId}/incidents/{incidentId}/attach:
+      - $ref: '#/components/parameters/ticketId'
+  '/api/v2/tenants/{tenantId}/alerts/{alertId}/incidents/{incidentId}/attach':
     summary: Attach incident to alert
     description: Attaches an incident to an alert.
     post:
@@ -6081,17 +6203,14 @@ paths:
                       file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: alertId
-        required: true
+      - $ref: '#/components/parameters/alertId'
       - schema:
           type: string
         in: path
         name: IncidentId
         required: true
-  /api/v2/tenants/{tenantId}/alert:
+        description: Incident unique Identifier
+  '/api/v2/tenants/{tenantId}/alert':
     summary: Create alert on a resource
     description: |-
       Creates a single alert on a resource.
@@ -6327,7 +6446,7 @@ paths:
         in: path
         name: tenantId
         required: true
-  /api/v2/tenants/{tenantId}/alerts:
+  '/api/v2/tenants/{tenantId}/alerts':
     summary: Create alerts on resources
     description: |-
       Creates multiple alerts on resources.
@@ -6527,7 +6646,7 @@ paths:
         description: Provide either `device` or `resource` object.
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/alerts/{alertId}/occurrences:
+  '/api/v2/tenants/{tenantId}/alerts/{alertId}/occurrences':
     summary: Get alerts for alert-triggered time
     description: |
       Gets the alert occurrences based on the alert-triggered time.
@@ -6655,7 +6774,7 @@ paths:
         in: path
         name: alertId
         required: true
-  /api/v2/tenants/{tenantId}/alerts/search:
+  '/api/v2/tenants/{tenantId}/alerts/search':
     summary: Search alerts
     description: |-
       Searches alerts.
@@ -7100,7 +7219,7 @@ paths:
           name: statusHistory
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/alertStatusHistory/{alertId}:
+  '/api/v2/tenants/{tenantId}/alertStatusHistory/{alertId}':
     summary: Get alert status history
     description: Gets alert status history.
     get:
@@ -7142,12 +7261,8 @@ paths:
                     suppressedTime: '2019-04-02T14:33:59+0000'
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: alertId
-        required: true
-  /api/v2/tenants/{tenantId}/subAlertTypes:
+      - $ref: '#/components/parameters/alertId'
+  '/api/v2/tenants/{tenantId}/subAlertTypes':
     summary: Get sub-alert types
     description: Gets the sub-alert types.
     post:
@@ -7188,7 +7303,7 @@ paths:
           description: '{alertType}'
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/alerts/{alertId}/tickets/{ticketId}/update:
+  '/api/v2/tenants/{tenantId}/alerts/{alertId}/tickets/{ticketId}/update':
     summary: Update incident with alert ID
     description: Updates an incident with an alert ID
     put:
@@ -7199,17 +7314,9 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: alertId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: ticketId
-        required: true
-  /api/v2/tenants/{tenantId}/policies/firstResponse:
+      - $ref: '#/components/parameters/alertId'
+      - $ref: '#/components/parameters/ticketId'
+  '/api/v2/tenants/{tenantId}/policies/firstResponse':
     summary: Manage first response policy details
     description: Creates and views first response policydetails.
     get:
@@ -7514,9 +7621,9 @@ paths:
         description: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/policies/firstResponse/{policyId}:
+  '/api/v2/tenants/{tenantId}/policies/firstResponse/{policyId}':
     summary: Manage first response policy by ID
-    description: Updates, gets, and deletes a first response policy by ID.
+    description: 'Updates, gets, and deletes a first response policy by ID.'
     delete:
       tags:
         - alerts
@@ -7862,7 +7969,7 @@ paths:
         in: path
         name: policyId
         required: true
-  /api/v2/tenants/{tenantId}/policies/firstResponse/{policyId}/{status}:
+  '/api/v2/tenants/{tenantId}/policies/firstResponse/{policyId}/{status}':
     summary: Enable and disable first response policy
     description: Enables and disables the first response policy.
     post:
@@ -7873,11 +7980,7 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: policyId
-        required: true
+      - $ref: '#/components/parameters/policyId'
       - schema:
           type: string
           enum:
@@ -7886,7 +7989,8 @@ paths:
         in: path
         name: status
         required: true
-  /api/v2/tenants/{tenantId}/rosters:
+        description: Policy state
+  '/api/v2/tenants/{tenantId}/rosters':
     summary: Create partner and client rosters
     description: Creates partner-level and client-level rosters.
     post:
@@ -8266,18 +8370,16 @@ paths:
                             createdTime: '2017-03-14T11:40:35+0000'
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/rosters/{id}:
+  '/api/v2/tenants/{tenantId}/rosters/{rosterId}':
     summary: Manage rosters
-    description: Updates, gets, and deletes rosters.
+    description: 'Updates, gets, and deletes rosters.'
     delete:
-
       tags:
         - alerts
       responses:
         '200':
           description: OK
     get:
-
       tags:
         - alerts
       responses:
@@ -8766,13 +8868,14 @@ paths:
                       userGroups:
                         - uniqueId: USRGRP-37644ff5-7ea5-a3aa-e288-9c2666dc02e4
     parameters:
-      - $ref: '#/components/parameters/tenantId'
-      - schema:
+      - in: path
+        name: tenantId
+        schema:
           type: string
-        in: path
-        name: id
         required: true
-  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resources:
+        description: Describes the client ID or msp ID of the tenant
+      - $ref: '#/components/parameters/rosterId'
+  '/api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resources':
     summary: Manage schedule maintenance window resources
     description: Adds and deletes schedule maintenance window resources.
     post:
@@ -8892,12 +8995,8 @@ paths:
                     - id: '12'
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: smId
-        required: true
-  /api/v2/tenants/{tenantId}/scheduleMaintenances:
+      - $ref: '#/components/parameters/smId'
+  '/api/v2/tenants/{tenantId}/scheduleMaintenances':
     summary: Create daily recurring schedule
     description: Creates a daily recurring schedule.
     post:
@@ -9202,7 +9301,7 @@ paths:
                     uniqueId: SM-d21b6b44-c85a-426c-9963-0e977070ce98
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/end:
+  '/api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/end':
     summary: End scheduled maintenance window
     description: |-
       Ends a scheduled maintenance window.
@@ -9232,12 +9331,8 @@ paths:
                     status: Pending
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: smId
-        required: true
-  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resources/{resourcesType}:
+      - $ref: '#/components/parameters/smId'
+  '/api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resources/{resourcesType}':
     summary: End scheduled maintenance window
     description: |-
       Ends a scheduled maintenance window.
@@ -9267,12 +9362,8 @@ paths:
                     status: Pending
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: smId
-        required: true
-  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resume:
+      - $ref: '#/components/parameters/smId'
+  '/api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resume':
     summary: Activate user
     description: |
       Activates a user.
@@ -9286,12 +9377,8 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: smId
-        required: true
-  /api/v2/tenants/{tenantId}/scheduleMaintenances/search:
+      - $ref: '#/components/parameters/smId'
+  '/api/v2/tenants/{tenantId}/scheduleMaintenances/search':
     summary: Search scheduled maintenance windows
     description: |-
       Gets the scheduled maintenance windows under a specific tenant.
@@ -9490,7 +9577,7 @@ paths:
                     descendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/suspend:
+  '/api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/suspend':
     summary: Suspend scheduled maintenance window
     description: |-
       Suspends a scheduled maintenance window.
@@ -9533,14 +9620,10 @@ paths:
                   endDate: '2016-06-19T00:00:00+0000'
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: smId
-        required: true
-  /api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}:
+      - $ref: '#/components/parameters/smId'
+  '/api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}':
     summary: Manage scheduled maintenance windows
-    description: Updates, gets, and deletes scheduled maintenence windows.
+    description: 'Updates, gets, and deletes scheduled maintenence windows.'
     get:
       description: Gets scheduled maintenance window details.
       tags:
@@ -10065,12 +10148,8 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: smId
-        required: true
-  /api/v2/tenants/{tenantId}/machineLearning/train/{trainingType}:
+      - $ref: '#/components/parameters/smId'
+  '/api/v2/tenants/{tenantId}/machineLearning/train/{trainingType}':
     summary: Execute the required training type
     description: |-
       Schedules the appropirate learning
@@ -10085,27 +10164,15 @@ paths:
         '200':
           description: OK
     parameters:
-        - schema:
-            type: string
-          in: path
-          name: tenantId
-          required: true
-        - schema:
-            type: string
-            enum:
-              - ALERT_ESCALATION_TRAINING
-              - ALERT_FIRST_RESPONSE_TRAINING
-              - ALERT_CORRELATION_TRAINING
-          in: path
-          name: trainingType
-          required: true
+      - $ref: '#/components/parameters/policyId'
+      - $ref: '#/components/parameters/trainingType'
 components:
   securitySchemes:
     accessToken:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: https://{subdomain}.api.opsramp.com
+          tokenUrl: 'https://{subdomain}.api.opsramp.com'
           scopes: {}
   parameters:
     tenantId:
@@ -10114,3 +10181,65 @@ components:
       schema:
         type: string
       required: true
+      description: Describes the client ID or msp ID of the tenant
+    policyId:
+      name: policyId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Policy unique identifier
+    alertId:
+      name: alertId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Alert unique Identifier
+    action:
+      name: action
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Supported actions on alert
+    userId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique uuid for OpsRamp user
+    ticketId:
+      name: ticketId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: OpsRamp ITSM ticket unique identifier
+    rosterId:
+      name: rosterId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Roster unique Identifier
+    smId:
+      name: smId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Scheduled maintenance unique identifier
+    trainingType:
+      name: trainingType
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Training type option to train the policy
