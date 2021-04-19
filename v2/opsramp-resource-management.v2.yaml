@@ -3383,6 +3383,8 @@ paths:
                     tags:
                       - name: Device location
                         value: SJ
+                    history:
+                      decommissionReason: Replacement of resource
                 example-additional-data:
                   value:
                     id: 740e2b6d-77ae-46d0-85ca-414e41607b15
@@ -3711,6 +3713,8 @@ paths:
                         tags:
                           - name: Device Location
                             value: SJ
+                        history:
+                          decommissionReason: Sample decommission reason
                     totalResults: 5
                     pageNo: 1
                     pageSize: 100
