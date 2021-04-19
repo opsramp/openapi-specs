@@ -3356,12 +3356,11 @@ paths:
                     make: innotek GmbH
                     model: VirtualBox
                     osName: Ubuntu 16.04.4 LTS
-                    osArchitecture: '64'
                     serialNumber: 8FL9NH2
                     systemUID: 5D6C3423-2123-5F21-6836-H5D75G6G1232
                     description: 'BIOS Date : 09/12/17 00:52:26 Ver : 1.6.4.00 '
                     agentInstalled: true
-                    aliasName: HYDLPE132@OpsRamp
+                    aliasName: HYDLPE1010@OpsRamp
                     name: SJJCD110022
                     resourceName: SJJCD110022
                     attributes:
@@ -3384,8 +3383,6 @@ paths:
                     tags:
                       - name: Device location
                         value: SJ
-                    history:
-                      decommissionReason: Replacement of resource
                 example-additional-data:
                   value:
                     id: 740e2b6d-77ae-46d0-85ca-414e41607b15
@@ -3401,7 +3398,6 @@ paths:
                     make: innotek GmbH
                     model: VirtualBox
                     osName: Ubuntu 16.04.4 LTS
-                    osArchitecture: '64'
                     serialNumber: 8FL9NH2
                     systemUID: 5D6C3423-2123-5F21-6836-H5D75G6G1232
                     description: 'BIOS Date  : 09/12/17 00:52:26 Ver  : 1.6.4.00 '
@@ -3635,7 +3631,6 @@ paths:
                         make: innotek GmbH
                         model: VirtualBox
                         osName: Ubuntu 16.04.4 LTS
-                        osArchitecture: '64'
                         serialNumber: 7GH9NH2
                         systemUID: 5G6H6874-1246-4H60-9012-D4C04F4E4123
                         description: 'BIOS Date: 09/12/17 00:52:26 Ver: 1.6.4.00 '
@@ -4329,6 +4324,7 @@ paths:
                       name: Test Device1
                       osName: ''
                       make: ''
+                      osArchitecture: '64'
                       description: ''
                       hostName: Test Device1
                       dns: ''
@@ -4774,6 +4770,7 @@ paths:
       |firstAssetManagedTime|The first time a resource is managed.<br>Example: 2017-01-31T00:00:00 0000|
       |aliasIp|Alias IP address of the network you have.|
       |appRoles|Filter for resources based on applications running on the resources.List of supported applications:|
+      |osArchitecture|Filter for supported architecture 32 bit or 64 bit|
 
       |appRoles|appRoles|appRoles|appRoles|
       |-----|-----|-----|-----|
@@ -4860,6 +4857,99 @@ paths:
                     type: integer
                   descendingOrder:
                     type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - id: 840e216d-77ae-46d0-85ca-414e41607b15
+                        hostName: SJLPT3311
+                        ipAddress: 151.43.122.54
+                        dns: opsrampdev
+                        updatedDate: '2019-08-02T10:24:16+0000'
+                        deviceType: Linux
+                        devicePath: Server >> Linux
+                        type: DEVICE
+                        state: active
+                        macAddress: '0A:00:27:00:00:02'
+                        make: innotek GmbH
+                        model: VirtualBox
+                        osName: Ubuntu 16.04.4 LTS
+                        osArchitecture: '32'
+                        serialNumber: 7GU9NH2
+                        systemUID: 906H6874-1246-4H60-9012-D4C04F4E4123
+                        description: 'BIOS Date: 09/12/19 00:52:26 Ver: 1.6.4.00 '
+                        agentInstalled: true
+                        aliasName: HYDLPT216@OpsRamp
+                        name: SJLPT117
+                        resourceName: SJLPT216
+                        resiurceType: Linux
+                        attributes:
+                          provider: AWS
+                          instanceId: i-373dcec7
+                          instanceState: running
+                          instanceType: t1.micro
+                          publicIp: 54.211.85.6
+                          ami: ami-84562dec
+                          launchDate: '2015-11-03T21:14:28+0000'
+                          owner: '23422135901'
+                          privateDns: ip-10-33-136-158.ec2.internal
+                          privateIp: 12.32.345.132
+                          zone: us-east-1e
+                          monitoringState: disabled
+                        managementProfile:
+                          id: 7
+                          name: vg-ubuntu16
+                          type: Gateway
+                        tags:
+                          - name: vmtesttag
+                            value: tagvalue
+                      - id: 740e2b6d-77ae-46d0-85ca-414e41607b15
+                        hostName: SJJCD110022
+                        ipAddress: 142.11.32.12
+                        dns: opsrampdev
+                        updatedDate: '2018-08-02T10:24:16+0000'
+                        deviceType: Linux
+                        devicePath: Server >> Linux
+                        type: DEVICE
+                        state: Decommissioned
+                        macAddress: '0A:00:12:00:00:02'
+                        make: innotek GmbH
+                        model: VirtualBox
+                        osName: Ubuntu 16.04.4 LTS
+                        osArchitecture: '64'
+                        serialNumber: 8FL9NH2
+                        systemUID: 5D6C3423-2123-5F21-6836-H5D75G6G1232
+                        description: 'BIOS Date : 09/12/17 00:52:26 Ver : 1.6.4.00 '
+                        agentInstalled: true
+                        aliasName: HYDLPE2211@OpsRamp
+                        name: SJJCD110022
+                        resourceName: SJJCD110022
+                        attributes:
+                          provider: AWS
+                          instanceId: i-453dccd2
+                          instanceState: running
+                          instanceType: t1.micro
+                          publicIp: 52.321.54.2
+                          ami: ami-84562dec
+                          launchDate: '2015-11-03T21:14:28+0000'
+                          owner: '321432654123'
+                          privateDns: ip-11-12-142-221.ec2.internal
+                          privateIp: 11.12.142.221
+                          zone: us-east-1e
+                          monitoringState: disabled
+                        managementProfile:
+                          id: 7
+                          name: vg-ubuntu16
+                          type: Gateway
+                        tags:
+                          - name: Device location
+                            value: SJ
+                    totalResults: 2
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    descendingOrder: false
     parameters:
       - $ref: '#/components/parameters/tenantId'
   /api/v2/tenants/{tenantId}/serviceGroups/{sgId}/childs:
@@ -6936,6 +7026,8 @@ components:
             keyboardType:
               type: string
             make:
+              type: string
+            osArchitecture:
               type: string
             name:
               type: string
