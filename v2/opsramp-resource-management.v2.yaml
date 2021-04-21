@@ -6697,6 +6697,23 @@ components:
             $ref: '#/components/schemas/rule'
         actions:
           type: array
+          description: |-
+            - Supported actions 
+               - ASSIGN MONITORINGTEMPLATE
+               - ASSIGN KNOWLEDGEARTICLE
+               - Assign Availability Rule
+               - ASSIGN CUSTOMATTRIBUTES
+               - Assign Jobs
+               - ASSIGN CREDENTIALSET
+
+            - Supported values for items for given action
+              -  For Assign Availability Rule  , item value is AND 
+              -  For ASSIGN CUSTOMATTRIBUTES, item value is tagName[value='tagValue']
+              -  For all others this is  number in string eg  "12345"
+            - Scenarios for Custom attributes item values in response payload
+               - New TagName : New Tag created with given Name and Tag Value, and Assigned. - Id of New Tag Value added to response 
+               - Old TagName and New Tag Value : New Tag Value added to Tag and Assigned - Id of New Tag Value added to response. 
+               - Old TagName and Old TagValue : Both the details are verfied and Assigned - Id of TagValue added to Response
           items:
             $ref: '#/components/schemas/action'
         id:
