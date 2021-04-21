@@ -6,26 +6,23 @@ info:
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
-
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: resource-management
     description: Example description.
     externalDocs:
-      url: https://docs.opsramp.com/api/agents-gateways/
-
+      url: 'https://docs.opsramp.com/api/agents-gateways/'
 servers:
-  - url: https://api.opsramp.com
+  - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: https://{subdomain}.api.opsramp.com
+  - url: 'https://{subdomain}.api.opsramp.com'
     description: Partner or Client custom branded sub-domain
     variables:
       subdomain:
         default: demo
         description: Custom sub-domain assigned to the client
-
 paths:
-  /api/v2/tenants/{tenantId}/customAttributes/{attributeId}/values/{valueId}:
+  '/api/v2/tenants/{tenantId}/customAttributes/{attributeId}/values/{valueId}':
     summary: Update custom attribute value description
     description: Updates a custom attribute value description.
     post:
@@ -75,7 +72,7 @@ paths:
         in: path
         name: valueId
         required: true
-  /api/v2/tenants/{varId}/customAttributes/{attributeId}/values/{valueId}/clients:
+  '/api/v2/tenants/{varId}/customAttributes/{attributeId}/values/{valueId}/clients':
     summary: Manage client custom attributes
     description: Assigns and unassigns client custom attributes.
     post:
@@ -160,7 +157,7 @@ paths:
         in: path
         name: valueId
         required: true
-  /api/v2/tenants/{tenantId}/customAttributes/{attributeId}/values/{valueId}/devices:
+  '/api/v2/tenants/{tenantId}/customAttributes/{attributeId}/values/{valueId}/devices':
     summary: Manage custom attributes for devices
     description: Assigns and unassigns custom attributes for devices
     post:
@@ -289,7 +286,7 @@ paths:
         in: path
         name: valueId
         required: true
-  /api/v2/tenants/{tenantId}/customAttributes/{attributeId}/values/{valueId}/serviceGroups:
+  '/api/v2/tenants/{tenantId}/customAttributes/{attributeId}/values/{valueId}/serviceGroups':
     summary: Manage custom attributes for service groups
     description: Assigns and unassigns custom attributes for service groups
     post:
@@ -384,7 +381,7 @@ paths:
         in: path
         name: valueId
         required: true
-  /api/v2/tenants/{varId}/clients/{clientId}/customAttributes:
+  '/api/v2/tenants/{varId}/clients/{clientId}/customAttributes':
     summary: Get client custom attributes
     description: Gets client custom attributes.
     get:
@@ -435,7 +432,7 @@ paths:
         in: path
         name: clientId
         required: true
-  /api/v2/tenants/{tenantId}/customAttributes:
+  '/api/v2/tenants/{tenantId}/customAttributes':
     summary: Create tenant custom attribute type and values
     description: Creates a tenant custom attribute type and the list of values
     post:
@@ -491,7 +488,7 @@ paths:
                     description: creating custom_type for tenant-create
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/devices/{deviceId}/customAttributes:
+  '/api/v2/tenants/{tenantId}/devices/{deviceId}/customAttributes':
     summary: Get device custom attributes of a device
     description: Gets device custom attributes.
     get:
@@ -538,7 +535,7 @@ paths:
         in: path
         name: deviceId
         required: true
-  /api/v2/tenants/{tenantId}/customAttributes/{attributeId}/assignedEntities/search:
+  '/api/v2/tenants/{tenantId}/customAttributes/{attributeId}/assignedEntities/search':
     summary: Search assigned entities by attribute
     description: |-
       Searches for the assigned entities by attribute.
@@ -735,7 +732,7 @@ paths:
         in: path
         name: attributeId
         required: true
-  /api/v2/tenants/{tenantId}/customAttributes/search:
+  '/api/v2/tenants/{tenantId}/customAttributes/search':
     summary: Search tenant custom attribute types and values
     description: Searches for tenant custom attribute types and respective values.
     get:
@@ -894,7 +891,7 @@ paths:
                     descendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/serviceGroups/{serviceGroupId}/customAttributes:
+  '/api/v2/tenants/{tenantId}/serviceGroups/{serviceGroupId}/customAttributes':
     summary: Get service group custom attributes
     description: Gets service group custom attributes.
     get:
@@ -957,9 +954,9 @@ paths:
         in: path
         name: serviceGroupId
         required: true
-  /api/v2/tenants/{tenantId}/customAttributes/{attributeId}:
+  '/api/v2/tenants/{tenantId}/customAttributes/{attributeId}':
     summary: Manage tenant custom attributes
-    description: Updates, gets, and deletes tenant custom attributes.
+    description: 'Updates, gets, and deletes tenant custom attributes.'
     delete:
       summary: Delete custom attribute of a tenant
       description: Deletes the tenant custom attribute.
@@ -1044,7 +1041,7 @@ paths:
         in: path
         name: attributeId
         required: true
-  /api/v2/tenants/{tenantId}/deviceGroups/{deviceGroupId}/childs:
+  '/api/v2/tenants/{tenantId}/deviceGroups/{deviceGroupId}/childs':
     summary: Manage child resources for device groups
     description: Assigns and unassigns a child resources for device groups.
     post:
@@ -1119,7 +1116,7 @@ paths:
         in: path
         name: deviceGroupId
         required: true
-  /api/v2/tenants/{tenantId}/deviceGroups/{deviceGroupId}/childs/search:
+  '/api/v2/tenants/{tenantId}/deviceGroups/{deviceGroupId}/childs/search':
     summary: Get child resources and device groups
     description: Gets the child resources or child device groups within a parent device group.
     get:
@@ -1246,7 +1243,7 @@ paths:
         in: path
         name: deviceGroupId
         required: true
-  /api/v2/tenants/{tenantId}/deviceGroups:
+  '/api/v2/tenants/{tenantId}/deviceGroups':
     summary: Create and update device groups
     description: |-
       Creates and updates device groups.
@@ -1400,7 +1397,7 @@ paths:
                       - 20122
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/deviceGroups/{deviceGroupId}:
+  '/api/v2/tenants/{tenantId}/deviceGroups/{deviceGroupId}':
     summary: Manage device groups
     description: Gets device group details and delete sdevice groups.
     delete:
@@ -1471,7 +1468,7 @@ paths:
         in: path
         name: deviceGroupId
         required: true
-  /api/v2/tenants/{tenantId}/deviceGroups/minimal:
+  '/api/v2/tenants/{tenantId}/deviceGroups/minimal':
     summary: Get minimal details of device groups
     description: Gets minimal details of device groups.
     get:
@@ -1506,7 +1503,7 @@ paths:
                       name: Storage Resources
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/deviceGroups/search:
+  '/api/v2/tenants/{tenantId}/deviceGroups/search':
     summary: Get root level device groups
     description: Gets the root level device groups.
     get:
@@ -1624,7 +1621,7 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/policies/management/{id}:
+  '/api/v2/tenants/{tenantId}/policies/management/{id}':
     summary: Get and delete device management policy
     description: The endpoint is used to get device management policy details and unassign agent policy for resources.
     delete:
@@ -1718,9 +1715,9 @@ paths:
         in: path
         name: id
         required: true
-  /api/v2/tenants/{tenantId}/policies/management:
+  '/api/v2/tenants/{tenantId}/policies/management':
     summary: Manage device management policy
-    description: Creates and updates device management policies, and gets tenant device management policies, without pagination.
+    description: 'Creates and updates device management policies, and gets tenant device management policies, without pagination.'
     get:
       description: Gets device management policies of a tenant without pagination.
       tags:
@@ -2040,8 +2037,7 @@ paths:
                   - name: all actions
                     matchType: ALL
                     rules:
-                      - id: 182208
-                        key: Name
+                      - key: Name
                         operator: Contains
                         value: test
                         resourceType: DEVICE
@@ -2075,7 +2071,7 @@ paths:
                         forceAssignOrUnassign: true
                       - action: ASSIGN CUSTOMATTRIBUTES
                         items:
-                          - item: '264313'
+                          - item: 'tagName[value=''tagValue'']'
                         forceAssignOrUnassign: true
               example-assign-kb-article-with-uid:
                 value:
@@ -2092,6 +2088,23 @@ paths:
                         items:
                           - item: KB0000000123
                         forceAssignOrUnassign: true
+        description: |-
+          - Supported actions 
+             - ASSIGN MONITORINGTEMPLATE
+             - ASSIGN KNOWLEDGEARTICLE
+             - Assign Availability Rule
+             - ASSIGN CUSTOMATTRIBUTES
+             - Assign Jobs
+             - ASSIGN CREDENTIALSET
+
+          - Supported values for items for given action
+            -  For Assign Availability Rule  , item value is AND 
+            -  For ASSIGN CUSTOMATTRIBUTES, item value is tagName[value='tagValue']
+            -  For all others this is  number in string eg  "12345"
+          - Scenarios for Custom attributes item values in response payload
+             - New TagName : New Tag created with given Name and Tag Value, and Assigned. - Id of New Tag Value added to response 
+             - Old TagName and New Tag Value : New Tag Value added to Tag and Assigned - Id of New Tag Value added to response. 
+             - Old TagName and Old TagValue : Both the details are verfied and Assigned - Id of TagValue added to Response
       responses:
         '200':
           description: OK
@@ -2119,11 +2132,6 @@ paths:
                         - action: ASSIGN MONITORINGTEMPLATE
                           items:
                             - item: '4053'
-                              parameters:
-                                Packet Count: '3'
-                                Packet interval: '1000'
-                                Data Bytes: '64'
-                              instances: {}
                           forceAssignOrUnassign: false
                         - action: ASSIGN KNOWLEDGEARTICLE
                           items:
@@ -2146,6 +2154,8 @@ paths:
                           items:
                             - item: '264313'
                           forceAssignOrUnassign: true
+                      createdDate: '2020-04-21T12:50:34+0000'
+                      updatedDate: '2020-04-21T12:50:34+0000'
                 example-assign-kb-article-with-uid:
                   value:
                     - id: 9
@@ -2214,7 +2224,6 @@ paths:
               example-1:
                 value:
                   - id: 1790
-                    name: Mysql-policy
                     resourceType: DEVICE
                     matchType: ALL
                     rules:
@@ -2235,10 +2244,9 @@ paths:
                         items:
                           - item: '36218'
                         forceAssignOrUnassign: true
-                    executionOrder: 0
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/policies/management/{id}/action/run:
+  '/api/v2/tenants/{tenantId}/policies/management/{id}/action/run':
     summary: Run device management policy
     description: Runs a device management policy.
     get:
@@ -2275,7 +2283,7 @@ paths:
         in: path
         name: id
         required: true
-  /api/v2/tenants/{tenantId}/policies/management/search:
+  '/api/v2/tenants/{tenantId}/policies/management/search':
     summary: Search device management policy
     description: Searches for a device management policy with a policy name.
     get:
@@ -2368,7 +2376,7 @@ paths:
             Device management policy name.
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/devices/{deviceId}/deviceWarranty:
+  '/api/v2/tenants/{tenantId}/devices/{deviceId}/deviceWarranty':
     summary: Manage device warranty
     description: Creates a device warranty and gets device warranty details.
     post:
@@ -2428,7 +2436,7 @@ paths:
         in: path
         name: deviceId
         required: true
-  /api/v2/tenants/{tenantId}/deviceWarranties:
+  '/api/v2/tenants/{tenantId}/deviceWarranties':
     summary: Get warranties
     description: Gets the details of multiple device warranties.
     get:
@@ -2456,9 +2464,9 @@ paths:
                       deviceId: f4a82c4a-8b65-4e7d-a57c-2e8a1aef14ff
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/dependencies/{resourceuuid}:
+  '/api/v2/tenants/{tenantId}/dependencies/{resourceuuid}':
     summary: Manage resource dependency
-    description: Creates, gets, and deletes resource dependency.
+    description: 'Creates, gets, and deletes resource dependency.'
     post:
       summary: Create impact dependency
       description: Groups the resources dependent on a resource.
@@ -2647,7 +2655,7 @@ paths:
         in: path
         name: resourceuuid
         required: true
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/notes:
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}/notes':
     summary: Create resource note
     description: Creates a resource note.
     post:
@@ -2702,7 +2710,7 @@ paths:
         in: path
         name: resourceId
         required: true
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/notes/search:
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}/notes/search':
     summary: Search resource notes
     description: |-
       Gets the latest antivirus definitions installed on resources.
@@ -2842,7 +2850,7 @@ paths:
         in: path
         name: resourceId
         required: true
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/notes/{noteId}:
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}/notes/{noteId}':
     summary: Update resource note
     description: Updates a resource note.
     post:
@@ -2908,7 +2916,7 @@ paths:
         in: path
         name: noteId
         required: true
-  /api/v2/tenants/{tenantId}/devices/wsussettings/{action}:
+  '/api/v2/tenants/{tenantId}/devices/wsussettings/{action}':
     summary: Change WSUS settings
     description: The endpoint to assign agent policy for resources.
     post:
@@ -2945,7 +2953,7 @@ paths:
         in: path
         name: action
         required: true
-  /api/v2/tenants/{tenantId}/resources:
+  '/api/v2/tenants/{tenantId}/resources':
     summary: Create generic resource
     description: |-
       Creates a generic resource.
@@ -3277,7 +3285,7 @@ paths:
                     tenantID: client_12
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{mspId}/decommission/{action}:
+  '/api/v2/tenants/{mspId}/decommission/{action}':
     summary: Enable and disable client resource decommission
     description: Enables and disables resource decommission at partner level.
     post:
@@ -3314,7 +3322,7 @@ paths:
         in: path
         name: action
         required: true
-  /api/v2/tenants/{tenantId}/history/resources/{resourceId}:
+  '/api/v2/tenants/{tenantId}/history/resources/{resourceId}':
     summary: Get decommissioned resource data
     description: Gets the data of a decommissioned resource.
     get:
@@ -3509,7 +3517,7 @@ paths:
         in: path
         name: resourceId
         required: true
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/decommission:
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}/decommission':
     summary: Decommission a resource
     description: Decommissions a resource.
     post:
@@ -3538,7 +3546,7 @@ paths:
         in: path
         name: resourceId
         required: true
-  /api/v2/tenants/{tenantId}/history/resources:
+  '/api/v2/tenants/{tenantId}/history/resources':
     summary: Search decommissioned resources
     description: |-
       Gets the list of decommissioned resources.
@@ -3723,7 +3731,7 @@ paths:
                     descendingOrder: false
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/resources/antivirus/search:
+  '/api/v2/tenants/{tenantId}/resources/antivirus/search':
     summary: Get latest antivirus definitions on resources
     description: |-
       Gets the latest antivirus definitions installed on resources.
@@ -3862,7 +3870,7 @@ paths:
                     descendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/resources/minimal:
+  '/api/v2/tenants/{tenantId}/resources/minimal':
     summary: Get minimal resource details
     description: |-
       Gets minimal resource details.
@@ -4015,7 +4023,7 @@ paths:
                       resourceType: CLOUD_PROVIDER
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/applications:
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}/applications':
     summary: Get resource applications
     description: Gets the list of applications running on a resource.
     get:
@@ -4096,7 +4104,7 @@ paths:
         in: path
         name: resourceId
         required: true
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/availability:
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}/availability':
     summary: Get resource availability
     description: |-
       Gets the availability details of a resource within a specific time frame.
@@ -4187,7 +4195,7 @@ paths:
         in: path
         name: resourceId
         required: true
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/availability/rule:
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}/availability/rule':
     summary: Manage resource availability rule
     description: Updates and gets the availability rule defined on a resource.
     get:
@@ -4256,7 +4264,7 @@ paths:
         in: path
         name: resourceId
         required: true
-  /api/v2/tenants/{tenantId}/resources/Resourcetype/{resourceType}/{identity}:
+  '/api/v2/tenants/{tenantId}/resources/Resourcetype/{resourceType}/{identity}':
     summary: Delete resource by resource type
     description: Deletes a resource based on resource type.
     delete:
@@ -4277,9 +4285,9 @@ paths:
         in: path
         name: identity
         required: true
-  /api/v2/tenants/{tenantId}/resources/{resourceId}:
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}':
     summary: Manage resources
-    description: Gets resource information, update resource details, and delete a resource using a resource ID.
+    description: 'Gets resource information, update resource details, and delete a resource using a resource ID.'
     delete:
       description: Deletes a resource using the resource ID.
       tags:
@@ -4571,12 +4579,11 @@ paths:
                     Example: http, https, ftp, and so on.
                 credential:
                   type: object
-                  description: |-
-                    (Optional) Credentials for Synthetics.
+                  description: (Optional) Credentials for Synthetics.
                   properties:
                     securityLevel:
                       type: string
-                      description: Security level. For example, oauth2.
+                      description: 'Security level. For example, oauth2.'
                     oauthClientKey:
                       type: string
                       description: Generated client key.
@@ -4673,7 +4680,7 @@ paths:
         in: path
         name: resourceId
         required: true
-  /api/v2/tenants/{tenantId}/resourceType/minimal:
+  '/api/v2/tenants/{tenantId}/resourceType/minimal':
     summary: Get minimal resource type details
     description: Gets minimal resource type details.
     get:
@@ -4733,7 +4740,7 @@ paths:
                       path: Volume
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/resources/search:
+  '/api/v2/tenants/{tenantId}/resources/search':
     summary: Search resources
     description: |
       Gets the resources of a partner or a client.
@@ -4956,7 +4963,7 @@ paths:
                     descendingOrder: false
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/serviceGroups/{sgId}/childs:
+  '/api/v2/tenants/{tenantId}/serviceGroups/{sgId}/childs':
     summary: Manage child resource for service group
     description: Assigns and unassigns child resources for a service group.
     post:
@@ -5031,7 +5038,7 @@ paths:
         in: path
         name: sgId
         required: true
-  /api/v2/tenants/{tenantId}/serviceGroups/{sgId}/childs/search:
+  '/api/v2/tenants/{tenantId}/serviceGroups/{sgId}/childs/search':
     summary: Get child resources and service groups
     description: Gets the child entities (resources or service groups) of a parent service group.
     get:
@@ -5205,7 +5212,7 @@ paths:
         in: path
         name: sgId
         required: true
-  /api/v2/tenants/{tenantId}/serviceGroups:
+  '/api/v2/tenants/{tenantId}/serviceGroups':
     summary: Create or update service group
     description: |
       Creates or updates a service group.
@@ -5359,7 +5366,7 @@ paths:
         name: tenantId
         in: path
         required: true
-  /api/v2/tenants/{tenantId}/serviceGroups/{sgId}:
+  '/api/v2/tenants/{tenantId}/serviceGroups/{sgId}':
     summary: Manage service group
     description: Gets and delete service groups.
     delete:
@@ -5438,7 +5445,7 @@ paths:
         in: path
         name: sgId
         required: true
-  /api/v2/tenants/{tenantId}/serviceGroups/minimal:
+  '/api/v2/tenants/{tenantId}/serviceGroups/minimal':
     summary: Get minimal details of service groups
     description: Gets minimal details (including service group ID and name) of service groups.
     get:
@@ -5473,9 +5480,9 @@ paths:
                       name: Cloud Instances
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/serviceGroups/search:
+  '/api/v2/tenants/{tenantId}/serviceGroups/search':
     summary: Get root-level service groups
-    description: Gets root-level, parent service groups.
+    description: 'Gets root-level, parent service groups.'
     get:
       tags:
         - resource-management
@@ -5635,7 +5642,7 @@ paths:
                     descendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/serviceGroups/link:
+  '/api/v2/tenants/{tenantId}/serviceGroups/link':
     summary: Link service group
     description: Links or shares an existing service group with other service groups.
     post:
@@ -5662,7 +5669,7 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/services/{serviceId}/availability:
+  '/api/v2/tenants/{tenantId}/services/{serviceId}/availability':
     summary: Get service availability
     description: Gets availability details of a service.
     get:
@@ -5728,7 +5735,7 @@ paths:
         in: path
         name: serviceId
         required: true
-  /api/v2/tenants/{tenantId}/serviceGroups/unLink/{parentSgId}/{childSgId}:
+  '/api/v2/tenants/{tenantId}/serviceGroups/unLink/{parentSgId}/{childSgId}':
     summary: Unlink child service group
     description: Unlinks a child service group from a parent service group.
     delete:
@@ -5749,7 +5756,7 @@ paths:
         in: path
         name: childSgId
         required: true
-  /api/v2/tenants/{tenantId}/sites:
+  '/api/v2/tenants/{tenantId}/sites':
     summary: Create site
     description: Creates a site to organize devices based on location.
     post:
@@ -5862,7 +5869,7 @@ paths:
                           resourceType: DEVICE
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/sites/search:
+  '/api/v2/tenants/{tenantId}/sites/search':
     summary: Search sites
     description: |-
       Searches sites.
@@ -6038,9 +6045,9 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/sites/{siteId}:
+  '/api/v2/tenants/{tenantId}/sites/{siteId}':
     summary: Manage site
-    description: Updates and gets site details, and deletes a site.
+    description: 'Updates and gets site details, and deletes a site.'
     delete:
       summary: Delete a site
       description: Deletes a site.
@@ -6233,7 +6240,7 @@ paths:
         in: path
         name: siteId
         required: true
-  /api/v2/tenants/{tenantId}/sites/minimal:
+  '/api/v2/tenants/{tenantId}/sites/minimal':
     summary: Get minimal site details
     description: Gets minimal details of sites.
     get:
@@ -6285,7 +6292,7 @@ paths:
                       address: 'Street#4, Parkway, San Jose'
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/topology/{resourceUUID}:
+  '/api/v2/tenants/{tenantId}/topology/{resourceUUID}':
     summary: Get topology data by relationships
     description: |-
       Gets topology data by providing relationship information about resources.
@@ -6435,7 +6442,7 @@ paths:
                         visibility: PRIVATE
                         visibleCustomerId: 6
                         zone: North America
-  /api/v2/synthetics/{tenantId}/privatelocations:
+  '/api/v2/synthetics/{tenantId}/privatelocations':
     summary: Get private locations for synthetics
     description: Gets private locations for the synthetics.
     get:
@@ -6506,7 +6513,7 @@ components:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: https://{subdomain}.api.opsramp.com
+          tokenUrl: 'https://{subdomain}.api.opsramp.com'
           scopes: {}
   parameters:
     tenantId:
@@ -6515,6 +6522,7 @@ components:
       schema:
         type: string
       required: true
+      description: Describes the client ID or msp ID of the tenant
   schemas:
     taggable:
       title: taggable
