@@ -5308,8 +5308,10 @@ components:
           type: string
         containerEngineType:
           type: string
+          description: 'Specifies the k8s deployment environment where k8s cluster is on-premise or deployed using a cloud provider. Supported values : cloud | onPrem'
         configFiles:
           type: object
+          description: 'Specifies container runtime engine. Values: Docker | ContainerD'
           properties:
             id:
               type: string
