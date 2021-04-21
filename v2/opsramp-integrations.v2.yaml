@@ -4154,6 +4154,26 @@ paths:
                       AccountNumber: '326542154381'
                       AWSType: IAM
                       Regions: us-east-1
+                example-kubernetes:
+                  value:
+                    id: INTG-57b22278-b75f-4e9b-8877-39131a69f9e6
+                    displayName: Kube-Intg
+                    integration:
+                      id: KUBERNETES
+                      name: Kubernetes
+                      multipleInstallations: true
+                    deployment: onPrem
+                    configFiles:
+                      - id: 0
+                        name: Kubernetes.yaml
+                        contentURL: 'https://myintegrations.api.try.opsramp.com/api/v2/tenants/client_26813/integrations/installed/INTG-57b22278-b75f-4e9b-8877-39131a69f9e6/configFile/Kubernetes'
+                      - id: 0
+                        name: statsDMonitoringKubernetes.yaml
+                        contentURL: 'https://myintegrations.api.try.opsramp.com/api/v2/tenants/client_26813/integrations/installed/INTG-57b22278-b75f-4e9b-8877-39131a69f9e6/configFile/statsDMonitoringKubernetes'
+                    installedBy: opsramp_api_user
+                    installedTime: '2021-04-21T09:11:43+0100'
+                    containerEngineType: Docker
+                    status: enabled
       requestBody:
         content:
           application/json:
@@ -4182,6 +4202,11 @@ paths:
                     SecurityKey: '***********'
                     AssumeRoleARN: '*********************'
                     ExternalId: '**********************'
+              example-kubernetes:
+                value:
+                  displayName: Kube-Intg
+                  deployment: onPrem
+                  containerEngineType: Docker
         description: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
@@ -5204,6 +5229,7 @@ components:
     integrationInstall:
       title: integrationInstall
       type: object
+      x-examples: {}
       properties:
         id:
           type: string
@@ -5277,6 +5303,19 @@ components:
           type: object
           properties:
             id:
+              type: string
+        deployment:
+          type: string
+        containerEngineType:
+          type: string
+        configFiles:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            contentURL:
               type: string
     inboundConfig:
       title: inboundConfig
