@@ -2307,6 +2307,7 @@ paths:
                         items:
                           - item: '36218'
                         forceAssignOrUnassign: true
+      summary: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/policies/management/{id}/action/run':
