@@ -6,26 +6,23 @@ info:
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
-
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: knowledge-base
     description: Example description.
     externalDocs:
-      url: https://docs.opsramp.com/api/agents-gateways/
-
+      url: 'https://docs.opsramp.com/api/agents-gateways/'
 servers:
-  - url: https://api.opsramp.com
+  - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: https://{subdomain}.api.opsramp.com
+  - url: 'https://{subdomain}.api.opsramp.com'
     description: Partner or Client custom branded sub-domain
     variables:
       subdomain:
         default: demo
         description: Custom sub-domain assigned to the client
-
 paths:
-  /api/v2/tenants/{tenantId}/kb/{articleId}/activitylog:
+  '/api/v2/tenants/{tenantId}/kb/{articleId}/activitylog':
     summary: Get KB article activity log
     description: Gets KB article activity log with provided details.
     get:
@@ -236,12 +233,8 @@ paths:
                     descendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: articleId
-        required: true
-  /api/v2/tenants/{tenantId}/kb/article/{articleId}/comment:
+      - $ref: '#/components/parameters/articleId'
+  '/api/v2/tenants/{tenantId}/kb/article/{articleId}/comment':
     summary: Add comments to KB article
     description: Adds comments to a KB article.
     post:
@@ -315,12 +308,8 @@ paths:
                       file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: articleId
-        required: true
-  /api/v2/tenants/{tenantId}/kb/articlesList:
+      - $ref: '#/components/parameters/articleId'
+  '/api/v2/tenants/{tenantId}/kb/articlesList':
     summary: Get list of KB articles
     description: Gets a list of KB articles.
     get:
@@ -971,7 +960,7 @@ paths:
           name: categoryId
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/kb/articles/search:
+  '/api/v2/tenants/{tenantId}/kb/articles/search':
     summary: Search KB articles
     description: Searchs for the list of articles in a KB category.
     get:
@@ -1391,7 +1380,7 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/kb/article/{articleId}/comments/{commentId}/resources/{resourceId}:
+  '/api/v2/tenants/{tenantId}/kb/article/{articleId}/comments/{commentId}/resources/{resourceId}':
     summary: Download KB article attachments
     description: Downloads KB article attachment or comment.
     get:
@@ -1407,22 +1396,10 @@ paths:
                 properties: {}
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: articleId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: commentId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: resourceId
-        required: true
-  /api/v2/tenants/{tenantId}/kb/article/{articleId}/resources/{resourceId}:
+      - $ref: '#/components/parameters/articleId'
+      - $ref: '#/components/parameters/commentId'
+      - $ref: '#/components/parameters/resourceId'
+  '/api/v2/tenants/{tenantId}/kb/article/{articleId}/resources/{resourceId}':
     summary: Download KB article attachment
     description: Downloads a KB article attachment.
     get:
@@ -1437,17 +1414,9 @@ paths:
                 type: string
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: articleId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: resourceId
-        required: true
-  /api/v2/tenants/{tenantId}/kb/article:
+      - $ref: '#/components/parameters/articleId'
+      - $ref: '#/components/parameters/resourceId'
+  '/api/v2/tenants/{tenantId}/kb/article':
     summary: Create KB article
     description: Creates a KB article.
     post:
@@ -1528,7 +1497,7 @@ paths:
                     id: KBC0000000018
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/kb/article/{articleId}/delete:
+  '/api/v2/tenants/{tenantId}/kb/article/{articleId}/delete':
     summary: Delete KB articles
     description: Deletes a KB category.
     delete:
@@ -1539,12 +1508,8 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: articleId
-        required: true
-  /api/v2/tenants/{tenantId}/kb/article/{articleId}:
+      - $ref: '#/components/parameters/resourceId'
+  '/api/v2/tenants/{tenantId}/kb/article/{articleId}':
     summary: Manage KB article
     description: Gets and updates a KB article.
     get:
@@ -1756,12 +1721,8 @@ paths:
                       file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: articleId
-        required: true
-  /api/v2/tenants/{tenantId}/kb/article/{articleId}/comments:
+      - $ref: '#/components/parameters/articleId'
+  '/api/v2/tenants/{tenantId}/kb/article/{articleId}/comments':
     summary: Get list of comments for KB article
     description: Gets a list of comments for a KB article.
     get:
@@ -1851,12 +1812,8 @@ paths:
                         email: john@opsramp.com
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: articleId
-        required: true
-  /api/v2/tenants/{tenantId}/kb/article/{articleId}/share:
+      - $ref: '#/components/parameters/articleId'
+  '/api/v2/tenants/{tenantId}/kb/article/{articleId}/share':
     summary: Share KB article
     description: Shares KB article.
     post:
@@ -1973,12 +1930,8 @@ paths:
                   id: KBC0000000014
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: articleId
-        required: true
-  /api/v2/tenants/{tenantId}/kb/category/{categoryId}:
+      - $ref: '#/components/parameters/articleId'
+  '/api/v2/tenants/kb/category/{categoryId}':
     summary: Share KB article
     description: Shares KB article.
     post:
@@ -2095,12 +2048,8 @@ paths:
                   id: KBC0000000014
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: articleId
-        required: true
-  /api/v2/tenants/{tenantId}/kb/category/create:
+      - $ref: '#/components/parameters/categoryId'
+  '/api/v2/tenants/{tenantId}/kb/category/create':
     summary: Create KB category
     description: Creates a KB category.
     post:
@@ -2183,7 +2132,7 @@ paths:
                   description: Category
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/kb/category/delete/{categoryId}:
+  '/api/v2/tenants/{tenantId}/kb/category/delete/{categoryId}':
     summary: Delete KB category
     description: Deletes a KB category.
     delete:
@@ -2194,12 +2143,8 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: categoryId
-        required: true
-  /api/v2/tenants/{tenantId}/kb/categorylist:
+      - $ref: '#/components/parameters/categoryId'
+  '/api/v2/tenants/{tenantId}/kb/categorylist':
     summary: Get KB category lists
     description: Gets list of knowledge base categories.
     get:
@@ -2208,7 +2153,7 @@ paths:
       responses:
         '200':
           description: OK
-          content:  
+          content:
             application/json:
               schema:
                 type: object
@@ -2349,7 +2294,7 @@ paths:
           name: isDescendingOrder
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/kb/category/restore/{categoryId}:
+  '/api/v2/tenants/{tenantId}/kb/category/restore/{categoryId}':
     summary: Restore KB categories
     description: Gets a knowledge base category from TRASH.
     post:
@@ -2386,12 +2331,8 @@ paths:
                     updatedDate: '2019-05-20T07:31:28+0000'
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: categoryId
-        required: true
-  /api/v2/tenants/{tenantId}/kb/categorylist/{categoryId}:
+      - $ref: '#/components/parameters/categoryId'
+  '/api/v2/tenants/{tenantId}/kb/categorylist/{categoryId}':
     summary: Get KB sub-category lists
     description: Gets the list of sub-categories of a knowledge base category.
     get:
@@ -2428,12 +2369,8 @@ paths:
                       state: ACTIVE
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: categoryId
-        required: true
-  /api/v2/tenants/{tenantId}/kb/category/update/{categoryId}:
+      - $ref: '#/components/parameters/categoryId'
+  '/api/v2/tenants/{tenantId}/kb/category/update/{categoryId}':
     summary: Update KB category
     description: Updates a KB category.
     post:
@@ -2499,12 +2436,8 @@ paths:
         description: All parameters are optional
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: categoryId
-        required: true
-  /api/v2/tenants/{tenantId}/kb/template/{templateId}/delete:
+      - $ref: '#/components/parameters/categoryId'
+  '/api/v2/tenants/{tenantId}/kb/template/{templateId}/delete':
     summary: Delete KB template
     description: Deletes a KB template.
     delete:
@@ -2515,12 +2448,8 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: templateId
-        required: true
-  /api/v2/tenants/{tenantId}/kb/templatesList:
+      - $ref: '#/components/parameters/templateId'
+  '/api/v2/tenants/{tenantId}/kb/templatesList':
     summary: Get KB templates list
     description: Gets the list of KB templates.
     get:
@@ -2830,7 +2759,7 @@ paths:
           name: pageSize
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/kb/template:
+  '/api/v2/tenants/{tenantId}/kb/template':
     summary: Create KB template
     description: Creates a KB template.
     post:
@@ -2887,10 +2816,9 @@ paths:
                   state: PUBLISHED
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/kb/template/{templateId}:
+  '/api/v2/tenants/{tenantId}/kb/template/{templateId}':
     summary: Get KB article template
-    description: |-
-      Gets KB article template details.
+    description: Gets KB article template details.
     get:
       tags:
         - knowledge-base
@@ -2932,27 +2860,14 @@ paths:
                     state: PUBLISHED
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: templatedId
-        required: true
-
-
-
-
-
-
-
-
-        
+      - $ref: '#/components/parameters/templateId'
 components:
   securitySchemes:
     accessToken:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: https://{subdomain}.api.opsramp.com
+          tokenUrl: 'https://{subdomain}.api.opsramp.com'
           scopes: {}
   parameters:
     tenantId:
@@ -2961,6 +2876,42 @@ components:
       schema:
         type: string
       required: true
+      description: Describes the client ID or msp ID of the tenant
+    articleId:
+      name: articleId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Specifies the unique article identifier
+    resourceId:
+      name: resourceId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Specifies the UUID resource identifier
+    commentId:
+      name: commentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Specifies the unique comment identifier
+    categoryId:
+      name: categoryId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Specifies the unique category identifier in the knowledge base
+    templateId:
+      name: templateId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Specifies the unique  kb template identifier
   schemas:
     user:
       title: user
