@@ -2020,37 +2020,6 @@ paths:
                           items:
                             - item: '264313'
                           forceAssignOrUnassign: true
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                type: array
-                description: ''
-                minItems: 1
-                uniqueItems: true
-                items:
-                  type: object
-                  required:
-                    - code
-                    - fieldName
-                    - message
-                  properties:
-                    code:
-                      type: string
-                      minLength: 1
-                    fieldName:
-                      type: string
-                      minLength: 1
-                    message:
-                      type: string
-                      minLength: 1
-              examples:
-                invalid-action-item:
-                  value:
-                    - code: '0002'
-                      fieldName: item
-                      message: 'CUSTOMATTRIBUTES action does not support Numerical item : 89, please use item : tagName[value=''tagValue''] '
       summary: invalid item value
     post:
       description: Creates a device management policy with required filters on the resources.
@@ -2206,6 +2175,37 @@ paths:
                           items:
                             - item: KB0000000123
                           forceAssignOrUnassign: true
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: array
+                description: ''
+                minItems: 1
+                uniqueItems: true
+                items:
+                  type: object
+                  required:
+                    - code
+                    - fieldName
+                    - message
+                  properties:
+                    code:
+                      type: string
+                      minLength: 1
+                    fieldName:
+                      type: string
+                      minLength: 1
+                    message:
+                      type: string
+                      minLength: 1
+              examples:
+                invalid-action-item:
+                  value:
+                    - code: '0002'
+                      fieldName: item
+                      message: 'ASSIGN CUSTOMATTRIBUTES action does not support Numerical item : 89, please use item : tagName[value=''tagValue''] '
     put:
       description: Updates the device management policy.
       tags:
@@ -2245,6 +2245,37 @@ paths:
                             - item: '36218'
                           forceAssignOrUnassign: true
                       executionOrder: 0
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: array
+                description: ''
+                minItems: 1
+                uniqueItems: true
+                items:
+                  type: object
+                  required:
+                    - code
+                    - fieldName
+                    - message
+                  properties:
+                    code:
+                      type: string
+                      minLength: 1
+                    fieldName:
+                      type: string
+                      minLength: 1
+                    message:
+                      type: string
+                      minLength: 1
+              examples:
+                invalid-action-item:
+                  value:
+                    - code: '0002'
+                      fieldName: item
+                      message: 'ASSIGN CUSTOMATTRIBUTES action does not support Numerical item : 89, please use item : tagName[value=''tagValue''] '
       requestBody:
         content:
           application/json:
@@ -7597,12 +7628,4 @@ components:
           type: string
         ResourceName:
           type: string
-  responses:
-    '400':
-      description: Example response
-      content:
-        application/json:
-          schema:
-            properties:
-              id:
-                type: string
+  responses: {}
