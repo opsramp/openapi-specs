@@ -6,26 +6,23 @@ info:
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
-
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: tenancy-access-controls
     description: Example description.
     externalDocs:
-      url: https://docs.opsramp.com/api/agents-gateways/
-
+      url: 'https://docs.opsramp.com/api/agents-gateways/'
 servers:
-  - url: https://api.opsramp.com
+  - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: https://{subdomain}.api.opsramp.com
+  - url: 'https://{subdomain}.api.opsramp.com'
     description: Partner or Client custom branded sub-domain
     variables:
       subdomain:
         default: demo
         description: Custom sub-domain assigned to the client
-
 paths:
-  /api/v2/tenants/{tenantId}/notes:
+  '/api/v2/tenants/{tenantId}/notes':
     summary: Create client notes
     description: Creates client notes.
     post:
@@ -73,9 +70,9 @@ paths:
                   expiryTime: '2016-09-30T05:57:32+0000'
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/notes/{noteId}/:
+  '/api/v2/tenants/{tenantId}/notes/{noteId}/':
     summary: Manage client note
-    description: Updates, gets, and deletes a client note.
+    description: 'Updates, gets, and deletes a client note.'
     delete:
       summary: Delete client note
       description: Deletes a client note and deletes notes from the resource-level.
@@ -169,7 +166,8 @@ paths:
         in: path
         name: noteId
         required: true
-  /api/v2/tenants/{tenantId}/notes/search:
+        description: Unique Identifier (UUID) of the client notes
+  '/api/v2/tenants/{tenantId}/notes/search':
     summary: Search for client notes
     description: |-
       Searches for client notes.
@@ -301,7 +299,7 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{varId}/clients/{clientId}/{action}:
+  '/api/v2/tenants/{orgId}/clients/{clientId}/{action}':
     summary: Activate or deactivate client
     description: |-
       Activates and deactivates a client.
@@ -322,26 +320,10 @@ paths:
         '200':
           description: OK
     parameters:
-      - schema:
-          type: string
-        in: path
-        name: varId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: clientId
-        required: true
-      - schema:
-          type: string
-          enum:
-            - activate
-            - suspend
-            - terminate
-        in: path
-        name: action
-        required: true
-  /api/v2/tenants/{varId}/clients/{clientId}:
+      - $ref: '#/components/parameters/clientId'
+      - $ref: '#/components/parameters/action'
+      - $ref: '#/components/parameters/orgId'
+  '/api/v2/tenants/{orgId}/clients/{clientId}':
     summary: Update and get client details
     description: Updates and gets client details.
     get:
@@ -411,13 +393,12 @@ paths:
                           - name: sqlitedb
                             enable: true
                     addOns:
-                      - 'Alert Enrichment'
-                      - 'Knowledgebase Management'
+                      - Alert Enrichment
+                      - Knowledgebase Management
                     packages:
-                      - 'Hybrid Discovery and Monitoring'
-                      - 'Event and Incident Management'
-                      - 'Remediation and Automation'
-
+                      - Hybrid Discovery and Monitoring
+                      - Event and Incident Management
+                      - Remediation and Automation
     post:
       summary: Update clients
       description: Updates a client.
@@ -525,12 +506,12 @@ paths:
                         - name: sqlitedb
                           enable: true
                   addOns:
-                    - 'Alert Enrichment'
-                    - 'Knowledgebase Management'
+                    - Alert Enrichment
+                    - Knowledgebase Management
                   packages:
-                    - 'Hybrid Discovery and Monitoring'
-                    - 'Event and Incident Management'
-                    - 'Remediation and Automation'
+                    - Hybrid Discovery and Monitoring
+                    - Event and Incident Management
+                    - Remediation and Automation
       responses:
         '200':
           description: OK
@@ -648,24 +629,16 @@ paths:
                       name: HYD NOC1
                     whiteListedIps: '172.22.22.*,172.22.2.[0-50]'
                     addOns:
-                      - 'Alert Enrichment'
-                      - 'Knowledgebase Management'
+                      - Alert Enrichment
+                      - Knowledgebase Management
                     packages:
-                      - 'Hybrid Discovery and Monitoring'
-                      - 'Event and Incident Management'
-                      - 'Remediation and Automation'
+                      - Hybrid Discovery and Monitoring
+                      - Event and Incident Management
+                      - Remediation and Automation
     parameters:
-      - schema:
-          type: string
-        in: path
-        name: varId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: clientId
-        required: true
-  /api/v2/tenants/{varId}/clients:
+      - $ref: '#/components/parameters/clientId'
+      - $ref: '#/components/parameters/orgId'
+  '/api/v2/tenants/{orgId}/clients':
     summary: Create client
     description: |-
       Creates a client.
@@ -805,19 +778,15 @@ paths:
                         - name: sqlitedb
                           enable: true
                   addOns:
-                    - 'Alert Enrichment'
-                    - 'Knowledgebase Management'
+                    - Alert Enrichment
+                    - Knowledgebase Management
                   packages:
-                    - 'Hybrid Discovery and Monitoring'
-                    - 'Event and Incident Management'
-                    - 'Remediation and Automation'
+                    - Hybrid Discovery and Monitoring
+                    - Event and Incident Management
+                    - Remediation and Automation
     parameters:
-      - schema:
-          type: string
-        in: path
-        name: varId
-        required: true
-  /api/v2/tenants/{varId}/clients/minimal:
+      - $ref: '#/components/parameters/orgId'
+  '/api/v2/tenants/{orgId}/clients/minimal':
     summary: Get minimal details of clients
     description: Gets the minimal details of clients.
     get:
@@ -847,12 +816,8 @@ paths:
                     - uniqueId: client_69856
                       name: Brocade Inc Client
     parameters:
-      - schema:
-          type: string
-        in: path
-        name: varId
-        required: true
-  /api/v2/tenants/{varId}/clients/search:
+      - $ref: '#/components/parameters/orgId'
+  '/api/v2/tenants/{orgId}/clients/search':
     summary: Search clients
     description: |-
       Searches for clients.
@@ -993,12 +958,8 @@ paths:
           in: query
           name: queryString
     parameters:
-      - schema:
-          type: string
-        in: path
-        name: varId
-        required: true
-  /api/v2/cfg/alertSource/available/custIntg/{intgId}:
+      - $ref: '#/components/parameters/orgId'
+  '/api/v2/cfg/alertSource/available/custIntg/{intgId}':
     summary: Get alert technologies
     description: Gets the list of available custom (and email alert integration) alert sources.
     get:
@@ -1075,6 +1036,7 @@ paths:
         in: path
         name: intgId
         required: true
+        description: Unique Identifier (UUID) of the required integration
   /api/v2/cfg/tenants/channels:
     summary: Get channels
     description: Gets the list of channels.
@@ -1282,7 +1244,7 @@ paths:
                       name: Europe/Paris
                       label: 'GMT +01:00 Western Europe'
                       code: WEST
-  /api/v2/tenants/{tenantId}/credentialSets:
+  '/api/v2/tenants/{tenantId}/credentialSets':
     summary: Create and get credential set
     description: Creates and gets a credential set.
     post:
@@ -1464,9 +1426,9 @@ paths:
           name: isDescendingOrder
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/credentialSets/{credentialSetId}:
+  '/api/v2/tenants/{tenantId}/credentialSets/{credentialSetId}':
     summary: Manage credential set by ID
-    description: Updates, gets, and deletes a credential set by ID.
+    description: 'Updates, gets, and deletes a credential set by ID.'
     delete:
       summary: Delete a credential set
       description: Deletes a credential set.
@@ -1883,12 +1845,8 @@ paths:
                     - uniqueId: DEV0000015402
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: credentialSetId
-        required: true
-  /api/v2/tenants/{tenantId}/credentialSets/minimal:
+      - $ref: '#/components/parameters/credentialSetId'
+  '/api/v2/tenants/{tenantId}/credentialSets/minimal':
     summary: Get minimal details of client credential sets
     description: Gets the minimal details of client credential sets.
     get:
@@ -1941,7 +1899,7 @@ paths:
                       timeoutMs: 15000
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/devices/{deviceId}/credentialSets/minimal:
+  '/api/v2/tenants/{tenantId}/devices/{resourceId}/credentialSets/minimal':
     summary: Get minimal details of device credential sets
     description: Gets the minimal details of client credential sets.
     get:
@@ -1982,13 +1940,19 @@ paths:
                       spPort: 0
                       timeoutMs: 15000
     parameters:
-      - $ref: '#/components/parameters/tenantId'
+      - in: path
+        name: tenantId
+        schema:
+          type: string
+        required: true
+        description: Describes the clientId or mspId of the tenant
       - schema:
           type: string
+        name: resourceId
         in: path
-        name: deviceId
         required: true
-  /api/v2/tenants/{varId}:
+        description: 'Unique Identifier (UUID) of the resource '
+  '/api/v2/tenants/{orgId}':
     summary: Get partner details
     description: This API is used to get details of a partner.
     get:
@@ -2065,12 +2029,8 @@ paths:
                       remoteAccess: true
                     whiteListedIps: '172.22.22.*,172.22.2.[0-50]'
     parameters:
-      - schema:
-          type: string
-        in: path
-        name: varId
-        required: true
-  /api/v2/tenants/{tenantId}/roles:
+      - $ref: '#/components/parameters/orgId'
+  '/api/v2/tenants/{tenantId}/roles':
     summary: Create role
     description: |-
       Creates a partner- or client-level role.
@@ -2442,9 +2402,9 @@ paths:
                     - id: 6
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/roles/{roleId}:
+  '/api/v2/tenants/{tenantId}/roles/{roleId}':
     summary: Manage role
-    description: Updates, gets, and deletes roles.
+    description: 'Updates, gets, and deletes roles.'
     delete:
       summary: Delete role
       description: Deletes a role.
@@ -3028,12 +2988,8 @@ paths:
                     - id: 8
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: roleId
-        required: true
-  /api/v2/tenants/{tenantId}/roles/search:
+      - $ref: '#/components/parameters/roleId'
+  '/api/v2/tenants/{tenantId}/roles/search':
     summary: Search roles
     description: Gets roles under a partner or client.
     get:
@@ -3131,7 +3087,7 @@ paths:
           name: isDescendingOrder
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/permissionSets:
+  '/api/v2/tenants/{tenantId}/permissionSets':
     summary: Search permission sets
     description: Gets the list of permission sets assigned to a tenant.
     get:
@@ -3228,9 +3184,9 @@ paths:
           name: isDescendingOrder
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/userGroups/{userGroupId}/users:
+  '/api/v2/tenants/{tenantId}/userGroups/{userGroupId}/users':
     summary: Manage users for user group
-    description: Adds, gets, and deletes users for a user group.
+    description: 'Adds, gets, and deletes users for a user group.'
     post:
       summary: Add users to a user group
       description: Adds users to an existing user group.
@@ -3362,14 +3318,10 @@ paths:
           name: isDescendingOrder
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: userGroupId
-        required: true
-  /api/v2/tenants/{tenantId}/userGroups:
+      - $ref: '#/components/parameters/userGroupId'
+  '/api/v2/tenants/{tenantId}/userGroups':
     summary: Create and search user group
-    description: Creates a partner- or client-level user group, and searches user groups.
+    description: 'Creates a partner- or client-level user group, and searches user groups.'
     post:
       summary: Create user group
       description: |-
@@ -3499,9 +3451,9 @@ paths:
           name: isDescendingOrder
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/userGroups/{userGroupId}:
+  '/api/v2/tenants/{tenantId}/userGroups/{userGroupId}':
     summary: Manage user groups
-    description: Updates, gets, and deletes user groups.
+    description: 'Updates, gets, and deletes user groups.'
     post:
       summary: Update user group
       description: Updates user group properties.
@@ -3586,12 +3538,8 @@ paths:
                         defaultRole: false
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: userGroupId
-        required: true
-  /api/v2/tenants/{tenantId}/users/{userId}/{action}:
+      - $ref: '#/components/parameters/userGroupId'
+  '/api/v2/tenants/{tenantId}/users/{userId}/{action}':
     summary: Activate user
     description: The endpoint to assign agent policy for resources.
     post:
@@ -3614,25 +3562,10 @@ paths:
         '200':
           description: OK
     parameters:
-      - schema:
-          type: string
-        in: path
-        name: tenantId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: userId
-        required: true
-      - schema:
-          type: string
-          enum:
-            - ACTIVATE
-            - DEACTIVATE
-        in: path
-        name: action
-        required: true
-  /api/v2/tenants/{orgId}/users/{userId}/changePassword:
+      - $ref: '#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/action'
+  '/api/v2/tenants/{orgId}/users/{userId}/changePassword':
     summary: Change password
     description: Changes the password.
     post:
@@ -3672,17 +3605,9 @@ paths:
         '200':
           description: OK
     parameters:
-      - schema:
-          type: string
-        in: path
-        name: orgId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: userId
-        required: true
-  /api/v2/tenants/{orgId}/users:
+      - $ref: '#/components/parameters/orgId'
+      - $ref: '#/components/parameters/userId'
+  '/api/v2/tenants/{orgId}/users':
     summary: Create user
     description: Creates a user.
     post:
@@ -3800,12 +3725,8 @@ paths:
                     createdTime: '2016-11-01T11:54:24+0000'
                     updatedTime: '2016-11-01T11:54:24+0000'
     parameters:
-      - schema:
-          type: string
-        in: path
-        name: orgId
-        required: true
-  /api/v2/tenants/{tenantId}/users/loginHistory/search:
+      - $ref: '#/components/parameters/orgId'
+  '/api/v2/tenants/{tenantId}/users/loginHistory/search':
     summary: Get user login history
     description: Gets the user login history.
     get:
@@ -4010,7 +3931,7 @@ paths:
                     descendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{orgId}/users/minimal:
+  '/api/v2/tenants/{orgId}/users/minimal':
     summary: Get minimal details of users
     description: |-
       Gets the minimal details of the users.
@@ -4077,7 +3998,7 @@ paths:
         in: path
         name: orgId
         required: true
-  /api/v2/tenants/{tenantId}/users/search:
+  '/api/v2/tenants/{tenantId}/users/search':
     summary: Search tenant users
     description: |-
       Gets users for a tenant.
@@ -4167,7 +4088,7 @@ paths:
                     type: boolean
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{orgId}/users/{userId}:
+  '/api/v2/tenants/{orgId}/users/{userId}':
     summary: Update and get user details
     description: Updates and gets user details.
     post:
@@ -4322,19 +4243,11 @@ paths:
                     createdTime: '2016-07-23T16:30:49+0000'
                     updatedTime: '2017-11-15T12:17:02+0000'
     parameters:
-      - schema:
-          type: string
-        in: path
-        name: orgId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: userId
-        required: true
-  /api/v2/tenants/{tenantId}/resourceTypes/ARM:
+      - $ref: '#/components/parameters/orgId'
+      - $ref: '#/components/parameters/userId'
+  '/api/v2/tenants/{tenantId}/resourceTypes/ARM':
     summary: Get ARM cloud resources
-    description: Gets ARM cloud resources, using optional smart filters during discovery.
+    description: 'Gets ARM cloud resources, using optional smart filters during discovery.'
     get:
       tags:
         - tenancy-access-controls
@@ -4662,9 +4575,9 @@ paths:
           description: Enables smart filters on the cloud resource type.
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/resourceTypes/AWS:
+  '/api/v2/tenants/{tenantId}/resourceTypes/AWS':
     summary: Get AWS cloud resources
-    description: Gets AWS cloud resources, using optional smart filters during discovery.
+    description: 'Gets AWS cloud resources, using optional smart filters during discovery.'
     get:
       tags:
         - tenancy-access-controls
@@ -5023,9 +4936,9 @@ paths:
           description: Enables smart filters on the cloud resource type.
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/resourceTypes/GOOGLE:
+  '/api/v2/tenants/{tenantId}/resourceTypes/GOOGLE':
     summary: Get Google cloud resources
-    description: Gets Google cloud resources, using optional smart filters during discovery.
+    description: 'Gets Google cloud resources, using optional smart filters during discovery.'
     get:
       tags:
         - tenancy-access-controls
@@ -5207,7 +5120,7 @@ paths:
           description: Enables smart filters on the cloud resource type.
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/customBranding:
+  '/api/v2/tenants/{tenantId}/customBranding':
     summary: Get custom branding
     description: Gets custom branding.
     put:
@@ -5264,19 +5177,19 @@ paths:
                 example-1:
                   value:
                     logo":
-                      logoPath: https://app.opsramp.com/images//org/92/164.png?1600154254559
-                      thumbPath: https://app.opsramp.com/images//org/92/thumb-164.png?1600154254595
-                      tinyThumbPath: https://app.opsramp.com/images//org/92/tiny-thumb-164.png?1600154254635
+                      logoPath: 'https://app.opsramp.com/images//org/92/164.png?1600154254559'
+                      thumbPath: 'https://app.opsramp.com/images//org/92/thumb-164.png?1600154254595'
+                      tinyThumbPath: 'https://app.opsramp.com/images//org/92/tiny-thumb-164.png?1600154254635'
                       imageType: image/png"
                     favIcon":
-                      logoPath: https://app.opsramp.com/images//org/favicon/92/165.png?1600154254655
-                      thumbPath: https://app.opsramp.com/images//org/favicon/92/thumb-165.png?1600154254687
-                      tinyThumbPath: https://app.opsramp.com/images//org/favicon/92/tiny-thumb-165.png?1600154254707
+                      logoPath: 'https://app.opsramp.com/images//org/favicon/92/165.png?1600154254655'
+                      thumbPath: 'https://app.opsramp.com/images//org/favicon/92/thumb-165.png?1600154254687'
+                      tinyThumbPath: 'https://app.opsramp.com/images//org/favicon/92/tiny-thumb-165.png?1600154254707'
                       imageType: image/png"
                     loginPageImage":
-                      logoPath: https://app.opsramp.com/images//org/login/92/166.png?1600154254727
-                      thumbPath: https://app.opsramp.com/images//org/login/92/thumb-166.png?1600154254807
-                      tinyThumbPath: https://app.opsramp.com/images//org/login/92/tiny-thumb-166.png?1600154254851
+                      logoPath: 'https://app.opsramp.com/images//org/login/92/166.png?1600154254727'
+                      thumbPath: 'https://app.opsramp.com/images//org/login/92/thumb-166.png?1600154254807'
+                      tinyThumbPath: 'https://app.opsramp.com/images//org/login/92/tiny-thumb-166.png?1600154254851'
                       imageType: image/png"
                     appURL: cloud.app.opsramp.net
                     apiURL: cloud.api.opsramp.net
@@ -5290,20 +5203,20 @@ paths:
                 example-2:
                   value:
                     logo:
-                        logoPath: https://app.opsramp.com/images//org/69903/164.png?1600154254559
-                        thumbPath: https://app.opsramp.com/images//org/69903/thumb-164.png?1600154254595
-                        tinyThumbPath: https://app.opsramp.com/images//org/69903/tiny-thumb-164.png?1600154254635
-                        imageType: image/png
+                      logoPath: 'https://app.opsramp.com/images//org/69903/164.png?1600154254559'
+                      thumbPath: 'https://app.opsramp.com/images//org/69903/thumb-164.png?1600154254595'
+                      tinyThumbPath: 'https://app.opsramp.com/images//org/69903/tiny-thumb-164.png?1600154254635'
+                      imageType: image/png
                     favIcon:
-                        logoPath: https://app.opsramp.com/images//org/favicon/69903/165.png?1600154254655
-                        thumbPath: https://app.opsramp.com/images//org/favicon/69903/thumb-165.png?1600154254687
-                        tinyThumbPath: https://app.opsramp.com/images//org/favicon/69903/tiny-thumb-165.png?1600154254707
-                        imageType: image/png
+                      logoPath: 'https://app.opsramp.com/images//org/favicon/69903/165.png?1600154254655'
+                      thumbPath: 'https://app.opsramp.com/images//org/favicon/69903/thumb-165.png?1600154254687'
+                      tinyThumbPath: 'https://app.opsramp.com/images//org/favicon/69903/tiny-thumb-165.png?1600154254707'
+                      imageType: image/png
                     loginPageImage:
-                        logoPath: https://app.opsramp.com/images//org/login/69903/166.png?1600154254727
-                        thumbPath: https://app.opsramp.com/images//org/login/69903/thumb-166.png?1600154254807
-                        tinyThumbPath: https://app.opsramp.com/images//org/login/69903/tiny-thumb-166.png?1600154254851
-                        imageType: image/png
+                      logoPath: 'https://app.opsramp.com/images//org/login/69903/166.png?1600154254727'
+                      thumbPath: 'https://app.opsramp.com/images//org/login/69903/thumb-166.png?1600154254807'
+                      tinyThumbPath: 'https://app.opsramp.com/images//org/login/69903/tiny-thumb-166.png?1600154254851'
+                      imageType: image/png
                     applicationTitle: OpsRamp
                     headerBackgroundColor: ffffff
                     tabBackgroundColor: 444444
@@ -5403,7 +5316,7 @@ components:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: https://{subdomain}.api.opsramp.com
+          tokenUrl: 'https://{subdomain}.api.opsramp.com'
           scopes: {}
   parameters:
     tenantId:
@@ -5412,6 +5325,56 @@ components:
       schema:
         type: string
       required: true
+      description: Describes the clientId or mspId of the tenant
+    orgId:
+      name: orgId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: mspId defined for the tenant
+    credentialSetId:
+      name: credentialSetId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) the credential set
+    clientId:
+      name: clientId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Describes the clientId of the tenant's client
+    roleId:
+      name: roleId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) the role given to the OpsRamp user
+    userGroupId:
+      name: userGroupId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) the user group
+    userId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) for OpsRamp user
+    action:
+      name: action
+      in: path
+      required: true
+      schema:
+        type: string
+      description: System defned actions on the client by the tenant
   schemas:
     clientNote:
       title: clientNote
@@ -5437,7 +5400,7 @@ components:
           description: Date and time on which the note expires. This field is mandatory if expiryDateType is set as 2.
         expiryDateType:
           type: integer
-          description: Type of expiry. If expiryDateType is set as 1, it indicates Never Expire. If expiryDateType is set as 2, it indicates Validity period.
+          description: 'Type of expiry. If expiryDateType is set as 1, it indicates Never Expire. If expiryDateType is set as 2, it indicates Validity period.'
         createdBy:
           $ref: '#/components/schemas/user'
     user:
@@ -5912,13 +5875,13 @@ components:
         addOns:
           type: array
           items:
-             type: string
-          description: (Optional) Client specific addOns as provided by OPSRAMP on specific packages Viz "SMS and Voice", "Knowledgebase Management", "OS Service Start/Stop Actions", "Remote Access Management", "Process Automation", "Extended Data Retention", "Mask Resource Identity Management", "Event Enrichment".
+            type: string
+          description: '(Optional) Client specific addOns as provided by OPSRAMP on specific packages Viz "SMS and Voice", "Knowledgebase Management", "OS Service Start/Stop Actions", "Remote Access Management", "Process Automation", "Extended Data Retention", "Mask Resource Identity Management", "Event Enrichment".'
         packages:
           type: array
           items:
-             type: string
-          description: (Optional) Client specific Packages as provided by OPSRAMP i..e Hybrid Discovery and Monitoring", "Event and Incident Management", "Remediation and Automation".
+            type: string
+          description: '(Optional) Client specific Packages as provided by OPSRAMP i..e Hybrid Discovery and Monitoring", "Event and Incident Management", "Remediation and Automation".'
     credentialSet:
       title: credentialSet
       type: object
@@ -6258,6 +6221,6 @@ components:
           description: (Optional) User group email address.
         roles:
           type: array
-          description: (Optional) Assign roles to user group. Users part of a group automatically inherit the permissions associated with that group. To get roles within a tenant, use Search Roles API.
+          description: '(Optional) Assign roles to user group. Users part of a group automatically inherit the permissions associated with that group. To get roles within a tenant, use Search Roles API.'
           items:
             $ref: '#/components/schemas/role'
