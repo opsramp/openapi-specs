@@ -6,26 +6,23 @@ info:
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
-
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: patching
     description: Example description.
     externalDocs:
-      url: https://docs.opsramp.com/api/agents-gateways/
-
+      url: 'https://docs.opsramp.com/api/agents-gateways/'
 servers:
-  - url: https://api.opsramp.com
+  - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: https://{subdomain}.api.opsramp.com
+  - url: 'https://{subdomain}.api.opsramp.com'
     description: Partner or Client custom branded sub-domain
     variables:
       subdomain:
         default: demo
         description: Custom sub-domain assigned to the client
-
 paths:
-  /api/v2/tenants/{tenantId}/patches/baselines/{baselineId}/{action}:
+  '/api/v2/tenants/{tenantId}/patches/baselines/{baselineId}/{action}':
     summary: Activate and deactivate patch baseline
     description: Activates and deactivates a patch baseline.
     post:
@@ -36,17 +33,9 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: baselineId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: action
-        required: true
-  /api/v2/tenants/{tenantId}/patches/baselines/{baselineId}/{patchId}/{action}:
+      - $ref: '#/components/parameters/baselineId'
+      - $ref: '#/components/parameters/action'
+  '/api/v2/tenants/{tenantId}/patches/baselines/{baselineId}/{patchId}/{action}':
     summary: Add and remove patches from baseline
     description: Adds and removes patches from a baseline.
     post:
@@ -57,22 +46,10 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: baselineId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: patchId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: action
-        required: true
-  /api/v2/tenants/{tenantId}/patches/baselines:
+      - $ref: '#/components/parameters/baselineId'
+      - $ref: '#/components/parameters/patchId'
+      - $ref: '#/components/parameters/action'
+  '/api/v2/tenants/{tenantId}/patches/baselines':
     summary: Create and get patch baselines
     description: Creates and gets patch baselines.
     post:
@@ -448,9 +425,9 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/patches/baselines/{baselineId}:
-    summary: Get, update, and delete patch baselines
-    description: Gets, updates, and deletes patch baselines.
+  '/api/v2/tenants/{tenantId}/patches/baselines/{baselineId}':
+    summary: 'Get, update, and delete patch baselines'
+    description: 'Gets, updates, and deletes patch baselines.'
     delete:
       summary: Delete patch baseline
       description: Deletes a patch baseline.
@@ -751,12 +728,8 @@ paths:
                         name: Linux Patch Feed
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: baselineId
-        required: true
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/baselines/{baselineId}/{action}:
+      - $ref: '#/components/parameters/baselineId'
+  '/api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/baselines/{baselineId}/{action}':
     summary: Assign or unassign a baseline for patch compliance
     description: Assigns and unassigns a patch baseline attached for a patch compliance check.
     post:
@@ -767,22 +740,10 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: complianceId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: baselineId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: action
-        required: true
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/deviceGroups/{deviceGrpId}/{action}:
+      - $ref: '#/components/parameters/complianceId'
+      - $ref: '#/components/parameters/baselineId'
+      - $ref: '#/components/parameters/action'
+  '/api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/deviceGroups/{resourceGrpId}/{action}':
     summary: Assign or unassign device group for patch compliance
     description: Assigns and unassigns a device group for a patch compliance.
     post:
@@ -792,23 +753,16 @@ paths:
         '200':
           description: OK
     parameters:
-      - $ref: '#/components/parameters/tenantId'
-      - schema:
+      - in: path
+        name: tenantId
+        schema:
           type: string
-        in: path
-        name: complianceId
         required: true
-      - schema:
-          type: string
-        in: path
-        name: deviceGrpId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: action
-        required: true
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/devices/{deviceId}/{action}:
+        description: Describes the clientId or mspId of the tenant
+      - $ref: '#/components/parameters/complianceId'
+      - $ref: '#/components/parameters/action'
+      - $ref: '#/components/parameters/resourceGrpId'
+  '/api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/devices/{resourceId}/{action}':
     summary: Assign or unassign devices for patch compliance
     description: Assigns and unassigns devices for patch compliance.
     post:
@@ -818,23 +772,26 @@ paths:
         '200':
           description: OK
     parameters:
-      - $ref: '#/components/parameters/tenantId'
-      - schema:
+      - in: path
+        name: tenantId
+        schema:
           type: string
-        in: path
-        name: complianceId
         required: true
-      - schema:
+        description: Describes the clientId or mspId of the tenant
+      - name: complianceId
+        in: path
+        required: true
+        schema:
           type: string
+        description: Unique Identifier (UUID) of the compliance
+      - name: action
         in: path
-        name: deviceId
         required: true
-      - schema:
+        schema:
           type: string
-        in: path
-        name: action
-        required: true
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/baselines:
+        description: System defined action for patch baselining
+      - $ref: '#/components/parameters/resourceId'
+  '/api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/baselines':
     summary: Get baseline details of compliance
     description: Gets the baselines attached to a patch compliance.
     get:
@@ -1018,12 +975,8 @@ paths:
           name: sortName
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: complianceId
-        required: true
-  /api/v2/tenants/{tenantId}/patches/compliance:
+      - $ref: '#/components/parameters/baselineId'
+  '/api/v2/tenants/{tenantId}/patches/compliance':
     summary: Create compliance and get compliance checks
     description: Creates a patch compliance and gets the list of patch compliance checks.
     post:
@@ -1236,7 +1189,7 @@ paths:
           name: sortName
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}:
+  '/api/v2/tenants/{tenantId}/patches/compliance/{complianceId}':
     summary: Update and delete patch compliance
     description: Update sand deletes a patch compliance
     delete:
@@ -1291,12 +1244,8 @@ paths:
                     osType: LINUX
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: complianceId
-        required: true
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/devices:
+      - $ref: '#/components/parameters/complianceId'
+  '/api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/devices':
     summary: Get devices of a compliance
     description: Gets the list of devices attached to a patch compliance.
     get:
@@ -1375,12 +1324,8 @@ paths:
           name: sortName
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: complianceId
-        required: true
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/deviceGroups:
+      - $ref: '#/components/parameters/complianceId'
+  '/api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/deviceGroups':
     summary: Get device group details of a compliance
     description: Gets the device groups attached to a patch compliance.
     get:
@@ -1485,14 +1430,10 @@ paths:
           name: sortName
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: complianceId
-        required: true
-  /api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/run:
+      - $ref: '#/components/parameters/complianceId'
+  '/api/v2/tenants/{tenantId}/patches/compliance/{complianceId}/run':
     summary: Run patch compliance check
-    description: Runs a patch compliance, checking all devices and device groups for compliance.
+    description: 'Runs a patch compliance, checking all devices and device groups for compliance.'
     post:
       tags:
         - patching
@@ -1501,12 +1442,8 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: complianceId
-        required: true
-  /api/v2/tenants/{tenantId}/patches/configurations:
+      - $ref: '#/components/parameters/complianceId'
+  '/api/v2/tenants/{tenantId}/patches/configurations':
     summary: Create patch configuration and execute
     description: |-
       Creates a patch configuration and executes patches on the resources.
@@ -1607,9 +1544,9 @@ paths:
                   maintenancePeriod: 60
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/patches/configurations/{id}:
+  '/api/v2/tenants/{tenantId}/patches/configurations/{id}':
     summary: Manage patch configuration
-    description: Updates, gets, and deletes a patch configuration.
+    description: 'Updates, gets, and deletes a patch configuration.'
     delete:
       summary: Delete patch configuration
       description: Deletes a patch configuration.
@@ -1778,7 +1715,8 @@ paths:
         in: path
         name: id
         required: true
-  /api/v2/tenants/{tenantId}/patches/configurations/{id}/run:
+        description: Unique Identifier (UUID) of patch configuration
+  '/api/v2/tenants/{tenantId}/patches/configurations/{id}/run':
     summary: Run patch configuration
     description: Runs a patch configuration.
     post:
@@ -1810,7 +1748,8 @@ paths:
         in: path
         name: id
         required: true
-  /api/v2/tenants/{tenantId}/patches/configurations/search:
+        description: Unique Identifier (UUID) of patch configuration
+  '/api/v2/tenants/{tenantId}/patches/configurations/search':
     summary: Search patch configuration by client
     description: Searches for patch configurations by a client.
     get:
@@ -1867,7 +1806,7 @@ paths:
           name: sortName
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/patches/rating/{intgId}/feed/{patchId}:
+  '/api/v2/tenants/{tenantId}/patches/rating/{intgId}/feed/{patchId}':
     summary: Get and delete patch details
     description: Gets patch details and delete a patch qualification.
     get:
@@ -1925,12 +1864,9 @@ paths:
         in: path
         name: intgId
         required: true
-      - schema:
-          type: string
-        in: path
-        name: patchId
-        required: true
-  /api/v2/tenants/{tenantId}/patches:
+        description: Unique Identifier (UUID) of integration for patch feed
+      - $ref: '#/components/parameters/patchId'
+  '/api/v2/tenants/{tenantId}/patches':
     summary: Search patches
     description: |-
       Gets a tenant’s list of patches.
@@ -2024,9 +1960,17 @@ paths:
                 type: string
               type:
                 type: string
-            enum: [name: string, uid: string, startReleaseDate: string, endReleaseDate: string, extPatchId: string, severity: string, category: string, type: string]
+            enum:
+              - name: string
+              - uid: string
+              - startReleaseDate: string
+              - endReleaseDate: string
+              - extPatchId: string
+              - severity: string
+              - category: string
+              - type: string
             uniqueItems: true
-          description: >
+          description: |
             Search for patches using these patch attributes.
 
               There are special characters that can be used in a query string:
@@ -2036,14 +1980,7 @@ paths:
 
             Parameter Variables:
                 
-            - `name` Patch name.
-            - `uid` Patch unique ID.
-            - `startReleaseDate` Search for patches released within a specific duration.<br>startReleaseDate indicates the from date.For example, a user wants to fetch list of patches released between 12-Aug-2018 through 19-Aug-2018, provide startReleaseDate as 2018-08-12T05:40:51+0000 and endReleaseDate as 2018-08-19T08:30:20+0000.<br>Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
-            - `endReleaseDate` Search for patches released within a specific duration. endReleaseDate indicates the to date.<br>Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
-            - `extPatchId` External ID of a patch.
-            - `severity` Severity of patch.
-            - `category` Category in which a patch is created.
-            - `type` Type of patch. Example: Windows.
+            - `name` Patch name. - `uid` Patch unique ID. - `startReleaseDate` Search for patches released within a specific duration.<br>startReleaseDate indicates the from date.For example, a user wants to fetch list of patches released between 12-Aug-2018 through 19-Aug-2018, provide startReleaseDate as 2018-08-12T05:40:51+0000 and endReleaseDate as 2018-08-19T08:30:20+0000.<br>Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT). - `endReleaseDate` Search for patches released within a specific duration. endReleaseDate indicates the to date.<br>Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT). - `extPatchId` External ID of a patch. - `severity` Severity of patch. - `category` Category in which a patch is created. - `type` Type of patch. Example: Windows.
           in: query
           name: queryString
           allowReserved: true
@@ -2054,7 +1991,7 @@ paths:
           name: viewId
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/patches/{resourceId}/scan/status:
+  '/api/v2/tenants/{tenantId}/patches/{resourceId}/scan/status':
     summary: Get patch scan status of all devices of a missing job
     description: |-
       Gets the patch scan status of all devices assigned to a missing patch job and display paginated output.
@@ -2381,12 +2318,8 @@ paths:
                     descendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: jobId
-        required: true
-  /api/v2/tenants/{tenantId}/patches/{resourceId}/install/status:
+      - $ref: '#/components/parameters/resourceId'
+  '/api/v2/tenants/{tenantId}/patches/{resourceId}/install/status':
     summary: Get patching status of all devices in a patch configuration
     description: |-
       Gets the patching status of all devices in a patch configuration and display paginated output.
@@ -2692,7 +2625,8 @@ paths:
         in: path
         name: jobId
         required: true
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/{patchId}/{approvalType}:
+        description: Unique Identifier (UUID) of patch job
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}/patches/{patchId}/{approvalType}':
     summary: Approve and disapprove patch
     description: Approves and disapproves a patch.
     post:
@@ -2703,22 +2637,15 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: resourceId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: patchId
-        required: true
+      - $ref: '#/components/parameters/resourceId'
+      - $ref: '#/components/parameters/patchId'
       - schema:
           type: string
         in: path
         name: approvalType
         required: true
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/scan/status:
+        description: Supported approval type
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}/patches/scan/status':
     summary: Get patch scan status of a device
     description: |-
       Gets the details of patch scan status of a device.
@@ -2767,12 +2694,8 @@ paths:
                       noOfMissingPatchesFoundInLastScan: 0
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: resourceId
-        required: true
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/patches/install/status:
+      - $ref: '#/components/parameters/resourceId'
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}/patches/install/status':
     summary: Get patching status of a device
     description: |-
       Gets the patching status of a device.
@@ -2818,12 +2741,8 @@ paths:
                       lastMachineRebootDate: '2019-06-24T19:42:18+0000'
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: resourceId
-        required: true
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/baselines/{baselineId}/patches:
+      - $ref: '#/components/parameters/resourceId'
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}/baselines/{baselineId}/patches':
     summary: Check resource patch compliance against baseline
     description: |-
       Checks the compliance of a resource against a patch baseline.
@@ -2949,7 +2868,7 @@ paths:
         in: path
         name: baseLineId
         required: true
-  /api/v2/tenants/{tenantId}/resources/patches:
+  '/api/v2/tenants/{tenantId}/resources/patches':
     summary: Get patches on a resource
     description: |-
       Gets the details of installed, missing, or installation-failed patches for a client’s resources.
@@ -3210,7 +3129,7 @@ components:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: https://{subdomain}.api.opsramp.com
+          tokenUrl: 'https://{subdomain}.api.opsramp.com'
           scopes: {}
   parameters:
     tenantId:
@@ -3219,6 +3138,49 @@ components:
       schema:
         type: string
       required: true
+      description: Describes the clientId or mspId of the tenant
+    baselineId:
+      name: baselineId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) of the baseline patch
+    resourceGrpId:
+      name: resourceGrpId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) of the resource group
+    resourceId:
+      name: resourceId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) of patched resource
+    complianceId:
+      name: complianceId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) of the compliance
+    patchId:
+      name: patchId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) of the patch applied
+    action:
+      name: action
+      in: path
+      required: true
+      schema:
+        type: string
+      description: System defined action for patch baselining
   schemas:
     integration:
       title: integration
