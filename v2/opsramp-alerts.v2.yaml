@@ -2318,6 +2318,7 @@ paths:
 
 
 
+
                             Configure how to update an existing incident of an escalated alert.
 
                           If an Open incident (other than Closed) is available for the alert, the incident gets updated instead of creating a new incident.
@@ -4253,6 +4254,7 @@ paths:
                       updateIncident:
                         type: object
                         description: |2-
+
 
 
 
@@ -6445,11 +6447,7 @@ paths:
                   currentState: CRITICAL
         description: Provide either `device` or `resource` object.
     parameters:
-      - schema:
-          type: string
-        in: path
-        name: tenantId
-        required: true
+      - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/alerts':
     summary: Create alerts on resources
     description: |-
@@ -9369,10 +9367,9 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/smId'
   '/api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resume':
-    summary: Activate user
+    summary: Resumes a suspended maintainence window
     description: |
-      Activates a user.
-
+      Resumes a suspened maintainence window.
       Only suspended schedule maintenance windows can be resumed.
     post:
       tags:

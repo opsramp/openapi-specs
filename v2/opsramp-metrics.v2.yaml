@@ -679,6 +679,7 @@ paths:
           name: component
           description: |
             (Optional) Device component name that the metric is assigned.
+      summary: ''
     parameters: []
   '/api/v2/metric/tenants/{tenantId}/metrictype':
     summary: Create metric types
@@ -707,11 +708,7 @@ paths:
         '200':
           description: OK
     parameters:
-      - schema:
-          type: string
-        name: tenantId
-        in: path
-        required: true
+      - $ref: '#/components/parameters/tenantId'
   '/api/v2/metric/tenants/{tenantId}/metrics/{metric}/metricType':
     summary: Manage metric type
     description: Updates and gets metric type details.
