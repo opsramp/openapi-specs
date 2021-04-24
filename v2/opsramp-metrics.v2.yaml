@@ -6,26 +6,23 @@ info:
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
-
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: metrics
     description: Example description.
     externalDocs:
-      url: https://docs.opsramp.com/api/agents-gateways/
-
+      url: 'https://docs.opsramp.com/api/agents-gateways/'
 servers:
-  - url: https://api.opsramp.com
+  - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: https://{subdomain}.api.opsramp.com
+  - url: 'https://{subdomain}.api.opsramp.com'
     description: Partner or Client custom branded sub-domain
     variables:
       subdomain:
         default: demo
         description: Custom sub-domain assigned to the client
-
 paths:
-  /api/v2/metric/tenants/{tenantId}/rtypes/{rtype}/resources/{resource}/metrics:
+  '/api/v2/metric/tenants/{tenantId}/rtypes/{rtype}/resources/{resource}/metrics':
     summary: Manage resource metrics
     description: Updates and gets resource metrics.
     get:
@@ -122,16 +119,8 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: rtype
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: resource
-        required: true
+      - $ref: '#/components/parameters/rtype'
+      - $ref: '#/components/parameters/metric'
   /api/v2/metric/search:
     summary: Get metric (time series) on resources
     description: |-
@@ -691,7 +680,7 @@ paths:
           description: |
             (Optional) Device component name that the metric is assigned.
     parameters: []
-  /api/v2/metric/tenants/{tenantId}/metrictype:
+  '/api/v2/metric/tenants/{tenantId}/metrictype':
     summary: Create metric types
     description: The endpoint to assign agent policy for resources.
     post:
@@ -723,7 +712,7 @@ paths:
         name: tenantId
         in: path
         required: true
-  /api/v2/metric/tenants/{tenantId}/metrics/{metric}/metricType:
+  '/api/v2/metric/tenants/{tenantId}/metrics/{metric}/metricType':
     summary: Manage metric type
     description: Updates and gets metric type details.
     post:
@@ -777,18 +766,14 @@ paths:
                     topMetric: false
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: metric
-        required: true
+      - $ref: '#/components/parameters/metric'
 components:
   securitySchemes:
     accessToken:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: https://{subdomain}.api.opsramp.com
+          tokenUrl: 'https://{subdomain}.api.opsramp.com'
           scopes: {}
   parameters:
     tenantId:
@@ -797,6 +782,21 @@ components:
       schema:
         type: string
       required: true
+      description: Describes clientId or mspId of the tenant
+    metric:
+      name: metric
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Describes metric name
+    rtype:
+      name: rtype
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Describes supported resource type
   schemas:
     metric:
       title: metric

@@ -6,28 +6,25 @@ info:
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
-
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: monitoring
     description: Example description.
     externalDocs:
-      url: https://docs.opsramp.com/api/agents-gateways/
-
+      url: 'https://docs.opsramp.com/api/agents-gateways/'
 servers:
-  - url: https://api.opsramp.com
+  - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: https://{subdomain}.api.opsramp.com
+  - url: 'https://{subdomain}.api.opsramp.com'
     description: Partner or Client custom branded sub-domain
     variables:
       subdomain:
         default: demo
         description: Custom sub-domain assigned to the client
-
 paths:
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/templates:
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}/templates':
     summary: Manage resource templates
-    description: Assigns, unassigns, and updates resource templates.
+    description: 'Assigns, unassigns, and updates resource templates.'
     post:
       description: Assigns and updates resource templates.
       tags:
@@ -84,6 +81,7 @@ paths:
       responses:
         '200':
           description: OK
+      summary: ''
     delete:
       description: Unassigns resource templates.
       tags:
@@ -108,12 +106,8 @@ paths:
           description: OK
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: resourceId
-        required: true
-  /api/v2/tenants/{tenantId}/resources/{resourceId}/templates/search:
+      - $ref: '#/components/parameters/resourceId'
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}/templates/search':
     summary: Get assigned templates of resource
     description: |-
       Gets templates assigned to a resource.
@@ -316,12 +310,8 @@ paths:
           name: sortName
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: resourceId
-        required: true
-  /api/v2/tenants/{tenantId}/monitoring/templates/search:
+      - $ref: '#/components/parameters/resourceId'
+  '/api/v2/tenants/{tenantId}/monitoring/templates/search':
     summary: Activate a user
     description: |-
       Activates a user.
@@ -617,7 +607,7 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/resourceMonitors:
+  '/api/v2/tenants/{tenantId}/resourceMonitors':
     summary: Create resource monitors
     description: Creates resource monitors.
     post:
@@ -999,7 +989,7 @@ paths:
                     createdCount: 1
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/monitoring/metric/name/{name}:
+  '/api/v2/monitoring/metric/name/{name}':
     summary: Get monitoring metric by Name
     description: Gets the metric details by providing the name of the monitoring metrics.
     get:
@@ -1060,7 +1050,7 @@ paths:
                       - metricName: system.cpu.utilization
                         displayName: CPU Utilization
                         groupName: system.cpu.utilization
-                        factor: 1.0
+                        factor: 1
                         consolFunc: AVERAGE
                         displayByComponent: false
                         displayOrder: 100
@@ -1074,16 +1064,18 @@ paths:
                         recommended: 0
                         useExpression: false
                         formattedDataUsage: NONE
-                        unitConversionFactor: 0.0
+                        unitConversionFactor: 0
                         appType: CUSTOM
                         adapterType: Application
+      summary: ''
     parameters:
       - schema:
           type: string
         in: path
         name: name
         required: true
-  /api/v2/monitoring/metric/id/{id}:
+        description: Search for the metric name
+  '/api/v2/monitoring/metric/id/{id}':
     summary: Get monitoring metric by ID
     description: Gets the metric details by providing the ID of the monitoring metrics.
     get:
@@ -1144,7 +1136,7 @@ paths:
                       - metricName: system.cpu.utilization
                         displayName: CPU Utilization
                         groupName: system.cpu.utilization
-                        factor: 1.0
+                        factor: 1
                         consolFunc: AVERAGE
                         displayByComponent: false
                         displayOrder: 100
@@ -1158,7 +1150,7 @@ paths:
                         recommended: 0
                         useExpression: false
                         formattedDataUsage: NONE
-                        unitConversionFactor: 0.0
+                        unitConversionFactor: 0
                         appType: CUSTOM
                         adapterType: Application
     parameters:
@@ -1167,13 +1159,14 @@ paths:
         in: path
         name: id
         required: true
+        description: uuid of the metric
 components:
   securitySchemes:
     accessToken:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: https://{subdomain}.api.opsramp.com
+          tokenUrl: 'https://{subdomain}.api.opsramp.com'
           scopes: {}
   parameters:
     tenantId:
@@ -1182,6 +1175,14 @@ components:
       schema:
         type: string
       required: true
+      description: Describes the clientId or mspId of tenant
+    resourceId:
+      name: resourceId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Describes the uuid of the resource
   schemas:
     monitoringTemplate:
       title: monitoringTemplate

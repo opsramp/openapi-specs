@@ -15,7 +15,6 @@ tags:
 servers:
   - url: 'https://api.opsramp.com'
     description: Partner - All Others
-
   - url: 'https://{subdomain}.api.opsramp.com'
     description: Partner or Client custom branded sub-domain
     variables:
@@ -2317,6 +2316,8 @@ paths:
 
 
 
+
+
                             Configure how to update an existing incident of an escalated alert.
 
                           If an Open incident (other than Closed) is available for the alert, the incident gets updated instead of creating a new incident.
@@ -4328,6 +4329,8 @@ paths:
 
 
 
+
+
                             Configure how to update an existing incident of an escalated alert.
 
                           If an Open incident (other than Closed) is available for the alert, the incident gets updated instead of creating a new incident.
@@ -4924,6 +4927,7 @@ paths:
                     nextPage: false
                     previousPageNo: 0
                     descendingOrder: false
+      summary: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/alerts/{alertId}/acknowledge':
@@ -7312,6 +7316,7 @@ paths:
       responses:
         '200':
           description: OK
+      summary: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/alertId'

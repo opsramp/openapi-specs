@@ -6,26 +6,23 @@ info:
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
-
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: tickets
     description: Example description.
     externalDocs:
-      url: https://docs.opsramp.com/api/agents-gateways/
-
+      url: 'https://docs.opsramp.com/api/agents-gateways/'
 servers:
-  - url: https://api.opsramp.com
+  - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: https://{subdomain}.api.opsramp.com
+  - url: 'https://{subdomain}.api.opsramp.com'
     description: Partner or Client custom branded sub-domain
     variables:
       subdomain:
         default: demo
         description: Custom sub-domain assigned to the client
-
 paths:
-  /api/v2/tenants/{tenantId}/incidents/businessImpacts:
+  '/api/v2/tenants/{tenantId}/incidents/businessImpacts':
     summary: Manage incident business impact
     description: Creates and gets an incident business impact.
     post:
@@ -108,7 +105,7 @@ paths:
                       description: FDS issue
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/incidents/businessImpacts/{uniqueId}:
+  '/api/v2/tenants/{tenantId}/incidents/businessImpacts/{uniqueId}':
     summary: Update incident business impact
     description: Updates incident business impact.
     post:
@@ -158,7 +155,8 @@ paths:
         in: path
         name: uniqueId
         required: true
-  /api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/activitylog:
+        description: Unique Identifier (UUID) of the business impact as designed for the process
+  '/api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/activitylog':
     summary: Get activity log of a change request
     description: |-
       Gets user activities on a change request.
@@ -300,12 +298,8 @@ paths:
                     descendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: changeRequestId
-        required: true
-  /api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/responses:
+      - $ref: '#/components/parameters/changeRequestId'
+  '/api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/responses':
     summary: Add response to change request
     description: |-
       Adds a response to a change request.
@@ -370,12 +364,8 @@ paths:
                       file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: changeRequestId
-        required: true
-  /api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/responses/search:
+      - $ref: '#/components/parameters/changeRequestId'
+  '/api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/responses/search':
     summary: Get change request responses
     description: |-
       Gets responses of a change request.
@@ -508,12 +498,8 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: changeRequestId
-        required: true
-  /api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/close:
+      - $ref: '#/components/parameters/changeRequestId'
+  '/api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/close':
     summary: Close change request
     description: |-
       Closes a change request.
@@ -852,12 +838,8 @@ paths:
                   notes: Demo note on change request
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: changeRequestId
-        required: true
-  /api/v2/tenants/{tenantId}/changeRequests/categories:
+      - $ref: '#/components/parameters/changeRequestId'
+  '/api/v2/tenants/{tenantId}/changeRequests/categories':
     summary: Create change request categories
     description: |-
       Creates categories for the change request entity type.
@@ -1012,7 +994,7 @@ paths:
                     name: Internal Support
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/changeRequests:
+  '/api/v2/tenants/{tenantId}/changeRequests':
     summary: Create change request
     description: Creates a change request.
     post:
@@ -1132,7 +1114,7 @@ paths:
                       - 24
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/responses/{responseId}/resources/{resourceId}:
+  '/api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}/responses/{responseId}/resources/{resourceId}':
     summary: Download change request response attachment
     description: Downloads the response attachment attached to a change request.
     get:
@@ -1147,22 +1129,15 @@ paths:
                 type: string
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: changeRequestId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: responseId
-        required: true
+      - $ref: '#/components/parameters/changeRequestId'
+      - $ref: '#/components/parameters/responseId'
       - schema:
           type: string
         in: path
         name: resourceId
         required: true
-  /api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}:
+        description: Unique Identifier (UUID) of the associated resource
+  '/api/v2/tenants/{tenantId}/changeRequests/{changeRequestId}':
     summary: Manage change request
     description: Gets and update change requests.
     get:
@@ -1806,12 +1781,8 @@ paths:
                         subject: Best Practises in VPN Use and Data Security
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: changeRequestId
-        required: true
-  /api/v2/tenants/{tenantId}/changeRequests/search:
+      - $ref: '#/components/parameters/changeRequestId'
+  '/api/v2/tenants/{tenantId}/changeRequests/search':
     summary: Search change requests
     description: Searches for change requests.
     get:
@@ -2631,7 +2602,7 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/changeRequests/categories/{uniqueId}:
+  '/api/v2/tenants/{tenantId}/changeRequests/categories/{uniqueId}':
     summary: Update change request category
     description: |-
       Updates a category of the change request entity type.
@@ -2740,7 +2711,7 @@ paths:
         in: path
         name: uniqueId
         required: true
-  /api/v2/tenants/{tenantId}/incidents/customForm:
+  '/api/v2/tenants/{tenantId}/incidents/customForm':
     summary: Get incident custom form
     description: |-
       Gets the custom form for an incident.
@@ -2958,7 +2929,7 @@ paths:
                       customField: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/problems/customForm:
+  '/api/v2/tenants/{tenantId}/problems/customForm':
     summary: Get problem custom form
     description: |-
       Gets the custom form for a problem.
@@ -3169,7 +3140,7 @@ paths:
                       customField: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/serviceRequests/customForm:
+  '/api/v2/tenants/{tenantId}/serviceRequests/customForm':
     summary: Get service request custom form
     description: |-
       Gets the custom form for a service request.
@@ -3322,7 +3293,7 @@ paths:
                       customField: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/timeBoundRequests/customForm:
+  '/api/v2/tenants/{tenantId}/timeBoundRequests/customForm':
     summary: Get time-bound request custom form
     description: |-
       Gets the custom form for a time-bound request.
@@ -3468,7 +3439,7 @@ paths:
                       customField: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/changeRequests/customForm:
+  '/api/v2/tenants/{tenantId}/changeRequests/customForm':
     summary: Get change request custom form
     description: |-
       Gets the custom form for a change request.
@@ -3659,7 +3630,7 @@ paths:
                       customField: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/incidents/{incidentId}/activitylog:
+  '/api/v2/tenants/{tenantId}/incidents/{incidentId}/activitylog':
     summary: Get activity log of an incident
     description: |-
       Gets user activities on an incident.
@@ -3852,12 +3823,8 @@ paths:
             provide isDescendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: incidentId
-        required: true
-  /api/v2/tenants/{tenantId}/incidents/{incidentId}/responses:
+      - $ref: '#/components/parameters/incidentId'
+  '/api/v2/tenants/{tenantId}/incidents/{incidentId}/responses':
     summary: Add response to an incident
     description: |-
       Adds a response to an incident.
@@ -3924,12 +3891,8 @@ paths:
                     description: testing response
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: incidentId
-        required: true
-  /api/v2/tenants/{tenantId}/incidents/{incidentId}/close:
+      - $ref: '#/components/parameters/incidentId'
+  '/api/v2/tenants/{tenantId}/incidents/{incidentId}/close':
     summary: Close incident
     description: |-
       Closes an incident.
@@ -4192,12 +4155,8 @@ paths:
                   notes: Able to launch remote consoles on Windows devices
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: incidentId
-        required: true
-  /api/v2/tenants/{tenantId}/incidents/categories:
+      - $ref: '#/components/parameters/incidentId'
+  '/api/v2/tenants/{tenantId}/incidents/categories':
     summary: Create incident categories
     description: Creates categories for the incident entity type.
     post:
@@ -4303,7 +4262,7 @@ paths:
                     name: Hardware
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/incidents:
+  '/api/v2/tenants/{tenantId}/incidents':
     summary: Create incident
     description: |-
       Creates an incident.
@@ -4638,7 +4597,7 @@ paths:
                         subject: LAN Settings
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/incidents/{incidentId}/responses/{responseId}/resources/{resourceId}:
+  '/api/v2/tenants/{tenantId}/incidents/{incidentId}/responses/{responseId}/resources/{resourceId}':
     summary: Download incident response attachment
     description: Downloadsthe response attached to an incident.
     get:
@@ -4653,22 +4612,15 @@ paths:
                 type: string
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: incidentId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: responseId
-        required: true
+      - $ref: '#/components/parameters/incidentId'
+      - $ref: '#/components/parameters/responseId'
       - schema:
           type: string
         in: path
         name: resourceId
         required: true
-  /api/v2/tenants/{tenantId}/incidents/{incidentId}:
+        description: Unique Identifier (UUID) of the associated resource
+  '/api/v2/tenants/{tenantId}/incidents/{incidentId}':
     summary: Manage incident
     description: Updates and Gets incidents.
     get:
@@ -5324,12 +5276,8 @@ paths:
                         subject: Windows Network Connect Details
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: incidentId
-        required: true
-  /api/v2/tenants/{tenantId}/incidents/{incidentId}/responses/search:
+      - $ref: '#/components/parameters/incidentId'
+  '/api/v2/tenants/{tenantId}/incidents/{incidentId}/responses/search':
     summary: Get incident responses
     description: |-
       Gets responses of an incident.
@@ -5452,12 +5400,8 @@ paths:
                     descendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: incidentId
-        required: true
-  /api/v2/tenants/{tenantId}/incidents/search:
+      - $ref: '#/components/parameters/incidentId'
+  '/api/v2/tenants/{tenantId}/incidents/search':
     summary: Search incidents
     description: |-
       Searches for incidents.
@@ -5539,6 +5483,7 @@ paths:
                       - id: INC0000000104
                         subject: 'System uptime is critical  : 0day(s);1hour(s);23minute(s);'
                         description: |2-
+
 
 
 
@@ -5963,6 +5908,7 @@ paths:
                       - id: INC0000000094
                         subject: 'System uptime is critical  : 0day(s);4hour(s);58minute(s);'
                         description: |2-
+
 
 
 
@@ -6996,7 +6942,7 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/incidents/categories/{uniqueId}:
+  '/api/v2/tenants/{tenantId}/incidents/categories/{uniqueId}':
     summary: Update incident category
     description: |-
       Updates a category of entity type incident.
@@ -7080,15 +7026,111 @@ paths:
         in: path
         name: uniqueId
         required: true
-  /api/v2/tenants/{tenantId}/incidents/forwardMapping:
+        description: Unique Identifier of a given category
+  '/api/v2/tenants/{tenantId}/incidents/forwardMapping':
     summary: Manage forward mapping
-    description: Creates, updates, and gets forward mapping.
+    description: 'Creates, updates, and gets forward mapping.'
     post:
-        summary: Create or update forward mapping
-        description: Create or updates forward mapping based on priority.
-        tags:
-          - tickets
-        requestBody:
+      summary: Create or update forward mapping
+      description: Create or updates forward mapping based on priority.
+      tags:
+        - tickets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/mappingDetails'
+            examples:
+              example-1:
+                value:
+                  - priority: Normal
+                    businessImpact:
+                      uniqueId: SIMPACT-e994c246-7e8c-49b4-ad3d-c7d1028e2f4f
+                      name: Server Restart
+                      description: Servers in West Zone are restarted
+                    urgency:
+                      uniqueId: SURG-67154b42-0437-47a7-8fa0-0a63144c7bdd
+                      name: Very Low
+                      description: |
+                        description
+                  - priority: Normal
+                    businessImpact:
+                      uniqueId: SIMPACT-e11ed2b9-8196-4ee5-93e2-3a78a1d31fb9
+                      name: Software Updates
+                      description: Software updates on Windows devices
+                    urgency:
+                      uniqueId: SURG-67154b42-0437-47a7-8fa0-0a63144c7bdd
+                      name: 1 week
+                      description: Time limit for software updates on Windows devices
+                  - priority: High
+                    businessImpact:
+                      uniqueId: SIMPACT-0f8a87fb-e187-423a-9ff0-743dbcf1ca2b
+                      name: Servers down
+                      description: Network servers are down
+                    urgency:
+                      uniqueId: SURG-67154b42-0437-47a7-8fa0-0a63144c7bdd
+                      name: 2 hours
+                      description: Network servers should be up within 2 hours
+                  - priority: High
+                    businessImpact:
+                      uniqueId: SIMPACT-e994c246-7e8c-49b4-ad3d-c7d1028e2f4f
+                      name: Database slowdown
+                      description: Issue with database in East Zone
+                    urgency:
+                      uniqueId: SURG-77a42eb4-52d5-47c1-ab7f-2e084eaac23d
+                      name: 2 hours
+                      description: High load of transactional data
+                  - priority: Low
+                    businessImpact:
+                      uniqueId: SIMPACT-e11ed2b9-8196-4ee5-93e2-3a78a1d31fb9
+                      name: Unable to generate Incident logs
+                      description: Require Incident logs for ABC client
+                    urgency:
+                      uniqueId: SURG-77a42eb4-52d5-47c1-ab7f-2e084eaac23d
+                      name: Medium
+                      description: Require Incident logs of ABC client
+                  - priority: Low
+                    businessImpact:
+                      uniqueId: SIMPACT-0f8a87fb-e187-423a-9ff0-743dbcf1ca2b
+                      name: Antivirus updates on Windows devices
+                      description: Monthly Antivirus updates on Windows devices
+                    urgency:
+                      uniqueId: SURG-77a42eb4-52d5-47c1-ab7f-2e084eaac23d
+                      name: Medium
+                      description: 'Windows should be up by 12 noon PST '
+                  - priority: Very Low
+                    businessImpact:
+                      uniqueId: SIMPACT-e994c246-7e8c-49b4-ad3d-c7d1028e2f4f
+                      name: Test servers not accessible
+                      description: Servers for demo purpose are not accessible
+                    urgency:
+                      uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
+                      name: 5 days
+                      description: Test servers of the Trial project are down
+                  - priority: Very Low
+                    businessImpact:
+                      uniqueId: SIMPACT-e11ed2b9-8196-4ee5-93e2-3a78a1d31fb9
+                      name: Incident Report
+                      description: Unable to generate incident report for XYZ client
+                    urgency:
+                      uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
+                      name: 1 week
+                      description: Incident report for XYZ client
+                  - priority: Urgent
+                    businessImpact:
+                      uniqueId: SIMPACT-0f8a87fb-e187-423a-9ff0-743dbcf1ca2b
+                      name: Email server down
+                      description: Email server down from 30 minutes
+                    urgency:
+                      uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
+                      name: 1 hour
+                      description: Email servers down
+        description: ''
+      responses:
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -7180,101 +7222,6 @@ paths:
                         uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
                         name: 1 hour
                         description: Email servers down
-          description: ''
-        responses:
-          '200':
-            description: OK
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/mappingDetails'
-                examples:
-                  example-1:
-                    value:
-                      - priority: Normal
-                        businessImpact:
-                          uniqueId: SIMPACT-e994c246-7e8c-49b4-ad3d-c7d1028e2f4f
-                          name: Server Restart
-                          description: Servers in West Zone are restarted
-                        urgency:
-                          uniqueId: SURG-67154b42-0437-47a7-8fa0-0a63144c7bdd
-                          name: Very Low
-                          description: |
-                            description
-                      - priority: Normal
-                        businessImpact:
-                          uniqueId: SIMPACT-e11ed2b9-8196-4ee5-93e2-3a78a1d31fb9
-                          name: Software Updates
-                          description: Software updates on Windows devices
-                        urgency:
-                          uniqueId: SURG-67154b42-0437-47a7-8fa0-0a63144c7bdd
-                          name: 1 week
-                          description: Time limit for software updates on Windows devices
-                      - priority: High
-                        businessImpact:
-                          uniqueId: SIMPACT-0f8a87fb-e187-423a-9ff0-743dbcf1ca2b
-                          name: Servers down
-                          description: Network servers are down
-                        urgency:
-                          uniqueId: SURG-67154b42-0437-47a7-8fa0-0a63144c7bdd
-                          name: 2 hours
-                          description: Network servers should be up within 2 hours
-                      - priority: High
-                        businessImpact:
-                          uniqueId: SIMPACT-e994c246-7e8c-49b4-ad3d-c7d1028e2f4f
-                          name: Database slowdown
-                          description: Issue with database in East Zone
-                        urgency:
-                          uniqueId: SURG-77a42eb4-52d5-47c1-ab7f-2e084eaac23d
-                          name: 2 hours
-                          description: High load of transactional data
-                      - priority: Low
-                        businessImpact:
-                          uniqueId: SIMPACT-e11ed2b9-8196-4ee5-93e2-3a78a1d31fb9
-                          name: Unable to generate Incident logs
-                          description: Require Incident logs for ABC client
-                        urgency:
-                          uniqueId: SURG-77a42eb4-52d5-47c1-ab7f-2e084eaac23d
-                          name: Medium
-                          description: Require Incident logs of ABC client
-                      - priority: Low
-                        businessImpact:
-                          uniqueId: SIMPACT-0f8a87fb-e187-423a-9ff0-743dbcf1ca2b
-                          name: Antivirus updates on Windows devices
-                          description: Monthly Antivirus updates on Windows devices
-                        urgency:
-                          uniqueId: SURG-77a42eb4-52d5-47c1-ab7f-2e084eaac23d
-                          name: Medium
-                          description: 'Windows should be up by 12 noon PST '
-                      - priority: Very Low
-                        businessImpact:
-                          uniqueId: SIMPACT-e994c246-7e8c-49b4-ad3d-c7d1028e2f4f
-                          name: Test servers not accessible
-                          description: Servers for demo purpose are not accessible
-                        urgency:
-                          uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
-                          name: 5 days
-                          description: Test servers of the Trial project are down
-                      - priority: Very Low
-                        businessImpact:
-                          uniqueId: SIMPACT-e11ed2b9-8196-4ee5-93e2-3a78a1d31fb9
-                          name: Incident Report
-                          description: Unable to generate incident report for XYZ client
-                        urgency:
-                          uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
-                          name: 1 week
-                          description: Incident report for XYZ client
-                      - priority: Urgent
-                        businessImpact:
-                          uniqueId: SIMPACT-0f8a87fb-e187-423a-9ff0-743dbcf1ca2b
-                          name: Email server down
-                          description: Email server down from 30 minutes
-                        urgency:
-                          uniqueId: SURG-59b56741-21f8-4854-9306-b64d3cf93deb
-                          name: 1 hour
-                          description: Email servers down
     get:
       summary: Get forward mapping details
       description: Gets details of forward mapping priorities.
@@ -7375,14 +7322,10 @@ paths:
                         name: 1 hour
                         description: Email servers down
     parameters:
-      - schema:
-          type: string
-        in: path
-        name: tenantId
-        required: true
-  /api/v2/tenants/{tenantId}/incidents/reverseMapping:
+      - $ref: '#/components/parameters/tenantId'
+  '/api/v2/tenants/{tenantId}/incidents/reverseMapping':
     summary: Manage reverse mapping
-    description: Creates, updates, and gets reverse mappings.
+    description: 'Creates, updates, and gets reverse mappings.'
     post:
       summary: Create or update reverse mapping
       description: Creates or updates a reverse mapping of priorities for incidents.
@@ -7564,7 +7507,7 @@ paths:
                         description: Email servers down
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/problems/{problemId}/activitylog:
+  '/api/v2/tenants/{tenantId}/problems/{problemId}/activitylog':
     summary: Get activity log of a problem
     description: |-
       Gets user activities on a problem.
@@ -7712,12 +7655,8 @@ paths:
             Example: To arrange data from 30th Oct to 1st Oct, provide isDescendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: problemId
-        required: true
-  /api/v2/tenants/{tenantId}/problems/{problemId}/responses:
+      - $ref: '#/components/parameters/problemId'
+  '/api/v2/tenants/{tenantId}/problems/{problemId}/responses':
     summary: Add response to a problem
     description: |-
       Adds a response to a problem.
@@ -7783,12 +7722,8 @@ paths:
                     timeSpent: 120
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: problemId
-        required: true
-  /api/v2/tenants/{tenantId}/problems/{problemId}/close:
+      - $ref: '#/components/parameters/problemId'
+  '/api/v2/tenants/{tenantId}/problems/{problemId}/close':
     summary: Close problem
     description: |-
       Closes a problem.
@@ -7999,12 +7934,8 @@ paths:
                   notes: Able to receive device monitoring statistics
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: problemId
-        required: true
-  /api/v2/tenants/{tenantId}/problems/categories:
+      - $ref: '#/components/parameters/problemId'
+  '/api/v2/tenants/{tenantId}/problems/categories':
     summary: Create problem categories
     description: |-
       Creates categories for the problem entity type.
@@ -8130,7 +8061,7 @@ paths:
                     name: Network
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/problems:
+  '/api/v2/tenants/{tenantId}/problems':
     summary: Create problem
     description: Creates a problem.
     post:
@@ -8313,7 +8244,7 @@ paths:
                     estimatedMinutes: 45
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/problems/{problemId}/responses/{responseId}/resources/{resourceId}:
+  '/api/v2/tenants/{tenantId}/problems/{problemId}/responses/{responseId}/resources/{resourceId}':
     summary: Download problem response attachment
     description: Downloads the response attached to a problem.
     get:
@@ -8328,22 +8259,15 @@ paths:
                 type: string
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: problemId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: responseId
-        required: true
+      - $ref: '#/components/parameters/problemId'
+      - $ref: '#/components/parameters/responseId'
       - schema:
           type: string
         in: path
         name: resourceId
         required: true
-  /api/v2/tenants/{tenantId}/problems/{problemId}:
+        description: Unique Identifier (UUID) of the assoicated resource
+  '/api/v2/tenants/{tenantId}/problems/{problemId}':
     summary: Manage problem
     description: Updates and gets a problem
     get:
@@ -8816,12 +8740,8 @@ paths:
                     timeSpent: 120
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: problemId
-        required: true
-  /api/v2/tenants/{tenantId}/problems/{problemId}/responses/search:
+      - $ref: '#/components/parameters/problemId'
+  '/api/v2/tenants/{tenantId}/problems/{problemId}/responses/search':
     summary: Get problem responses
     description: |-
       Gets responses of a problem.
@@ -8965,12 +8885,8 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: problemId
-        required: true
-  /api/v2/tenants/{tenantId}/problems/search:
+      - $ref: '#/components/parameters/problemId'
+  '/api/v2/tenants/{tenantId}/problems/search':
     summary: Search problems
     description: |-
       Searches problems.
@@ -9751,7 +9667,7 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/problems/categories/{uniqueId}:
+  '/api/v2/tenants/{tenantId}/problems/categories/{uniqueId}':
     summary: Update problem category
     description: |-
       Updates a category of the entity type problem.
@@ -9833,7 +9749,8 @@ paths:
         in: path
         name: uniqueId
         required: true
-  /api/v2/tenants/{tenantId}/{ticketType}/categories/{parentCategoryId}:
+        description: Unique identifier of a given category
+  '/api/v2/tenants/{tenantId}/{ticketType}/categories/{parentCategoryId}':
     summary: Get service desk list of categories
     description: Gets the list of categories for an entity type.
     get:
@@ -9864,22 +9781,14 @@ paths:
                       name: Esc Level 3
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-          enum:
-            - changeRequests
-            - incidents
-            - problems
-            - serviceRequests
-        in: path
-        name: ticketType
-        required: true
+      - $ref: '#/components/parameters/ticketType'
       - schema:
           type: string
         in: path
         name: parentCategoryId
         required: true
-  /api/v2/tenants/{tenantId}/customFields/{classCode}/{customFieldId}:
+        description: Unique id of the parent category
+  '/api/v2/tenants/{tenantId}/customFields/{classCode}/{customFieldId}':
     summary: Get custom field
     description: |-
       Gets the details of a custom field.
@@ -10004,12 +9913,14 @@ paths:
         in: path
         name: classCode
         required: true
+        description: Unique name of the custom form
       - schema:
           type: string
         in: path
         name: customFieldId
         required: true
-  /api/v2/tenants/{tenantId}/customFields/{classCode}:
+        description: Unique Id of the custom field in the custom form
+  '/api/v2/tenants/{tenantId}/customFields/{classCode}':
     summary: Get custom fields
     description: |-
       Gets details of custom fields attached to an entity.
@@ -10139,7 +10050,8 @@ paths:
         in: path
         name: classCode
         required: true
-  /api/v2/tenants/{tenantId}/{ticketType}/statusReasons:
+        description: Unique name of the custom form
+  '/api/v2/tenants/{tenantId}/{ticketType}/statusReasons':
     summary: Get ticket status change reasons
     description: Gets ticket status change reasons.
     get:
@@ -10213,12 +10125,8 @@ paths:
                       enabled: 'false'
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: ticketType
-        required: true
-  /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/activitylog:
+      - $ref: '#/components/parameters/ticketType'
+  '/api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/activitylog':
     summary: Get activity log of a service request
     description: |-
       Gets user activities on a service request.
@@ -10344,12 +10252,8 @@ paths:
                     descendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: serviceRequestId
-        required: true
-  /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/responses:
+      - $ref: '#/components/parameters/serviceRequestId'
+  '/api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/responses':
     summary: Add response to a service request
     description: |-
       Adds a response to a service request.
@@ -10414,12 +10318,8 @@ paths:
                     description: Service Request Attachment
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: serviceRequestId
-        required: true
-  /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/close:
+      - $ref: '#/components/parameters/serviceRequestId'
+  '/api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/close':
     summary: Close service request
     description: |-
       Closes a service request.
@@ -10692,12 +10592,8 @@ paths:
                   notes: Windows services in North-West are accessible
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: serviceRequestId
-        required: true
-  /api/v2/tenants/{tenantId}/serviceRequests/categories:
+      - $ref: '#/components/parameters/serviceRequestId'
+  '/api/v2/tenants/{tenantId}/serviceRequests/categories':
     summary: Create service request categories
     description: |-
       Creates categories for the service request entity type.
@@ -10810,7 +10706,7 @@ paths:
                     name: Software
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/serviceRequests:
+  '/api/v2/tenants/{tenantId}/serviceRequests':
     summary: Create service request
     description: Creates a service request.
     post:
@@ -11000,7 +10896,7 @@ paths:
                     - 16
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/responses/{responseId}/resources/{resourceId}:
+  '/api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/responses/{responseId}/resources/{resourceId}':
     summary: Download service request response attachment
     description: Downloads the response attached to a service request.
     get:
@@ -11015,22 +10911,15 @@ paths:
                 type: string
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: serviceRequestId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: responseId
-        required: true
+      - $ref: '#/components/parameters/serviceRequestId'
+      - $ref: '#/components/parameters/responseId'
       - schema:
           type: string
         in: path
         name: resourceId
         required: true
-  /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}:
+        description: Unique Identifier (UUID) of the assoicated resource
+  '/api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}':
     summary: Manage service request
     description: Updates and gets a service request.
     get:
@@ -11510,12 +11399,8 @@ paths:
                         subject: Updated Windows Version
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: serviceRequestId
-        required: true
-  /api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/responses/search:
+      - $ref: '#/components/parameters/serviceRequestId'
+  '/api/v2/tenants/{tenantId}/serviceRequests/{serviceRequestId}/responses/search':
     summary: Get service request responses
     description: |-
       Gets responses of a service request.
@@ -11656,12 +11541,8 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: serviceRequestId
-        required: true
-  /api/v2/tenants/{tenantId}/serviceRequests/search:
+      - $ref: '#/components/parameters/serviceRequestId'
+  '/api/v2/tenants/{tenantId}/serviceRequests/search':
     summary: Search service requests
     description: |-
       Searches for service requests.
@@ -12588,7 +12469,7 @@ paths:
                     descendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/serviceRequests/categories/{uniqueId}:
+  '/api/v2/tenants/{tenantId}/serviceRequests/categories/{uniqueId}':
     summary: Update service request category
     description: |-
       Updates a category of entity type service request.
@@ -12671,7 +12552,8 @@ paths:
         in: path
         name: uniqueId
         required: true
-  /api/v2/tenants/{tenantId}/{ticketType}/slaPolicies/{id}:
+        description: Unique Identifier (UUID) for a given category
+  '/api/v2/tenants/{tenantId}/{ticketType}/slaPolicies/{id}':
     summary: Get SLA policy
     description: |-
       Gets the details of a service level agreement policy.
@@ -12745,17 +12627,14 @@ paths:
                       saturday: false
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: ticketType
-        required: true
+      - $ref: '#/components/parameters/ticketType'
       - schema:
           type: string
         in: path
         name: id
         required: true
-  /api/v2/tenants/{tenantId}/{ticketType}/slaPolicies/search:
+        description: Unique Identifier (UUID) of sla policy
+  '/api/v2/tenants/{tenantId}/{ticketType}/slaPolicies/search':
     summary: Search SLA policies
     description: |-
       Gets a list of all service level agreement policies along with their details.
@@ -12958,12 +12837,8 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: ticketType
-        required: true
-  /api/v2/tenants/{tenantId}/tasks/{taskId}/responses:
+      - $ref: '#/components/parameters/ticketType'
+  '/api/v2/tenants/{tenantId}/tasks/{taskId}/responses':
     summary: Add response to task
     description: |-
       Adds a response to a task.
@@ -13029,12 +12904,8 @@ paths:
                       file: U2FtcGxlIFRleHQgZmlsZS0gdGVzdGluZyB3aXRoIGF0dGFjaG1lbnQ=
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: taskId
-        required: true
-  /api/v2/tenants/{tenantId}/tasks/{taskId}/close:
+      - $ref: '#/components/parameters/taskId'
+  '/api/v2/tenants/{tenantId}/tasks/{taskId}/close':
     summary: Close task
     description: |-
       Closes a task.
@@ -13274,12 +13145,8 @@ paths:
                   notes: Project structure integration shared with the admin team and architect team.
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: taskId
-        required: true
-  /api/v2/tenants/{tenantId}/tasks:
+      - $ref: '#/components/parameters/taskId'
+  '/api/v2/tenants/{tenantId}/tasks':
     summary: Create task
     description: Creates a task.
     post:
@@ -13537,7 +13404,7 @@ paths:
                         subject: Frequently Asked Questions on Python
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/tasks/{taskId}/responses/{responseId}/resources/{resourceId}:
+  '/api/v2/tenants/{tenantId}/tasks/{taskId}/responses/{responseId}/resources/{resourceId}':
     summary: Download task response attachment
     description: Downloads the response attached to a task.
     get:
@@ -13552,22 +13419,15 @@ paths:
                 type: string
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: taskId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: responseId
-        required: true
+      - $ref: '#/components/parameters/taskId'
+      - $ref: '#/components/parameters/responseId'
       - schema:
           type: string
         in: path
         name: resourceId
         required: true
-  /api/v2/tenants/{tenantId}/tasks/{taskId}/responses/search:
+        description: Unique Identifier (UUID) of associated resource
+  '/api/v2/tenants/{tenantId}/tasks/{taskId}/responses/search':
     summary: Get task responses
     description: |-
       Gets responses of a task.
@@ -13710,12 +13570,8 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: taskId
-        required: true
-  /api/v2/tenants/{tenantId}/tasks/search:
+      - $ref: '#/components/parameters/taskId'
+  '/api/v2/tenants/{tenantId}/tasks/search':
     summary: Search tasks
     description: |-
       Searches tasks.
@@ -14414,7 +14270,7 @@ paths:
           name: include
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/tasks/{taskId}/activitylog:
+  '/api/v2/tenants/{tenantId}/tasks/{taskId}/activitylog':
     summary: Get activity log of a task
     description: |-
       Gets a list of user activities on a task..
@@ -14541,12 +14397,8 @@ paths:
             Example: To arrange data from 30th Oct to 1st Oct, provide isDescendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: taskId
-        required: true
-  /api/v2/tenants/{tenantId}/tasks/{taskId}:
+      - $ref: '#/components/parameters/taskId'
+  '/api/v2/tenants/{tenantId}/tasks/{taskId}':
     summary: Update and get tasks
     description: Updates and gets tasks.
     get:
@@ -15082,12 +14934,8 @@ paths:
                         subject: Frequently Asked Questions on Python
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: taskId
-        required: true
-  /api/v2/tenants/{tenantId}/{ticketType}/{ticketId}/notes:
+      - $ref: '#/components/parameters/taskId'
+  '/api/v2/tenants/{tenantId}/{ticketType}/{ticketId}/notes':
     summary: Create and get ticket notes
     description: Creates and gets ticket notes.
     post:
@@ -15128,7 +14976,7 @@ paths:
       summary: Get multiple ticket notes
       description: |-
         Gets multiple notes from a ticket.
-        
+
         |Query Variable|Description|
         |----|-----|
         |searchWord|Search for a note with a specific word provided in the note.|
@@ -15252,26 +15100,11 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-          enum:
-            - incidents
-            - serviceRequests
-            - changeRequests
-            - timeBoundRequests
-            - problems
-            - tasks
-        in: path
-        name: ticketType
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: ticketId
-        required: true
-  /api/v2/tenants/{tenantId}/{ticketType}/{ticketId}/notes/{noteId}:
+      - $ref: '#/components/parameters/ticketType'
+      - $ref: '#/components/parameters/ticketId'
+  '/api/v2/tenants/{tenantId}/{ticketType}/{ticketId}/notes/{noteId}':
     summary: Manage ticket notes by ID
-    description: Updates, gets, and deletes ticket notes by ID.
+    description: 'Updates, gets, and deletes ticket notes by ID.'
     delete:
       summary: Delete ticket note
       description: Deletes ticket note.
@@ -15343,22 +15176,15 @@ paths:
                   description: Sample Description
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: ticketType
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: ticketId
-        required: true
+      - $ref: '#/components/parameters/ticketType'
+      - $ref: '#/components/parameters/ticketId'
       - schema:
           type: string
         in: path
         name: noteId
         required: true
-  /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/activitylog:
+        description: Unique Identifier of the notes associated with the ticket
+  '/api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/activitylog':
     summary: Get activity log of a time bound request
     description: Gets user activities on a time bound request.
     get:
@@ -15469,12 +15295,8 @@ paths:
             Example: To arrange data from 30th Oct to 1st Oct, provide isDescendingOrder: true
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: timeBoundRequestId
-        required: true
-  /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/responses:
+      - $ref: '#/components/parameters/timeBoundRequestId'
+  '/api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/responses':
     summary: Add response to a time bound request
     description: |-
       Adds a response to a time bound request.
@@ -15539,12 +15361,8 @@ paths:
                     description: Timebound Request Attachment
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: timeBountRequestId
-        required: true
-  /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/close:
+      - $ref: '#/components/parameters/timeBoundRequestId'
+  '/api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/close':
     summary: Close time bound request
     description: |-
       Closes a time bound request.
@@ -15810,12 +15628,8 @@ paths:
                   notes: Network Servers issue solved in site CA.
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: timeBoundRequestId
-        required: true
-  /api/v2/tenants/{tenantId}/timeBoundRequests:
+      - $ref: '#/components/parameters/timeBoundRequestId'
+  '/api/v2/tenants/{tenantId}/timeBoundRequests':
     summary: Create time bound request
     description: "Creates a time bound request.\n\n## Sample URLs\n```\nhttps://{api-url}/api/v2/tenants/client_7/timeBoundRequests\n```\n\n|Timezones|Timezones|Timezones|\n|--------|\n|Pacific/Asia|Pacific/Honolulu|America/Anchorage|\n|America/Los_Angeles|America/Denver|America/Chicago|\n|America/New_York|America/Puerto_Rico|America/St_Johns|\n|America/Buenos_Aires|Atlantic/Azores|GMT|\n|Europe/Paris|Europe/Istanbul|Africa/Addis_Ababa|\n|Asia/Tehran|Asia/Yerevan|Asia/Karachi|\n|Asia/Calcutta|Asia/Dacca|Asia/Saigon|\n|Asia/Shanghai|Asia/Tokyo|Australia/Darwin|\n|Australia/Sydney|Pacific/Guadalcanal|Pacific/Auckland|\n\n### Schedule Pattern Types\nDefine the time duration for the time bound request to occur once or repeatedly.\n\nDefine the time bound request to occur for one-time only:\n```\n{\n\t\"type\": \"one-time\",\n\t\"startTime\": \"2016-04-10T12:15:00+0000\",\n\t\"endTime\": \"2016-04-10T12:15:00+0000\",\n\t\"timezone\": \"America/Los_Angeles\"\n}\n```\nDefine the time bound request to occur repeatedly:\n```\n{\n\t\"type\": \"recurring\",\n\t\"startTime\": \"2016-04-10T12:15:00+0000\",\n\t\"endTime\": \"2016-04-10T12:15:00+0000\",\n\t\"timezone\": \"America/Los_Angeles\",\n\t\"pattern\": {\n\t\t\"type\": \"daily\",\n\t\t\"dayFrequency\": \"everyday\"\n\t}\n}\n```\nBelow are the recurrence schedule pattern types:\n\n1. Daily\n```\n\"pattern\": {\n\t\t\"type\": \"daily\",\n\t\t\"dayFrequency\": \"everyday\"\n\t}\n```\n2. Weekly\n```\n\"pattern\": {\n\t\t\"type\": \"weekly\",\n\t\t\"weekDays\": \"Monday\"\n}\n```\n3. Monthly\n```\n\"pattern\": {\n\t\t\"type\": \"monthly\",\n\t\t\"dayOfMonth\": \"1\",\n\t\t\"weekIndex\": \"First\",\n\t\t\"dayOfWeek\": \"Monday\"\n}\n```"
     post:
@@ -16062,7 +15876,7 @@ paths:
                     - 13
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/responses/{responseId}/resources/{resourceId}:
+  '/api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/responses/{responseId}/resources/{resourceId}':
     summary: Download time bound request response attachment
     description: Downloads the response attached to a time bound request.
     get:
@@ -16077,22 +15891,15 @@ paths:
                 type: string
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: timeBoundRequestId
-        required: true
-      - schema:
-          type: string
-        in: path
-        name: responseId
-        required: true
+      - $ref: '#/components/parameters/timeBoundRequestId'
+      - $ref: '#/components/parameters/responseId'
       - schema:
           type: string
         in: path
         name: resourceId
         required: true
-  /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}:
+        description: Unique Identifier (UUID) of the resource
+  '/api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}':
     summary: Update and get time bound request
     description: Updates and gets time bound requests.
     get:
@@ -16630,12 +16437,8 @@ paths:
                     - 16
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: timeBoundRequestId
-        required: true
-  /api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/responses/search:
+      - $ref: '#/components/parameters/timeBoundRequestId'
+  '/api/v2/tenants/{tenantId}/timeBoundRequests/{timeBoundRequestId}/responses/search':
     summary: Get time bound responses
     description: |-
       Gets responses of a time bound request.
@@ -16776,12 +16579,8 @@ paths:
           name: queryString
     parameters:
       - $ref: '#/components/parameters/tenantId'
-      - schema:
-          type: string
-        in: path
-        name: timeBoundRequestId
-        required: true
-  /api/v2/tenants/{tenantId}/timeBoundRequests/search:
+      - $ref: '#/components/parameters/timeBoundRequestId'
+  '/api/v2/tenants/{tenantId}/timeBoundRequests/search':
     summary: Search time bound requests
     description: |-
       Searches for time bound requests.
@@ -17900,7 +17699,7 @@ paths:
           name: include
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/incidents/urgencies:
+  '/api/v2/tenants/{tenantId}/incidents/urgencies':
     summary: Manage incident urgency
     description: Create and gets urgencies for an incident.
     get:
@@ -17982,7 +17781,7 @@ paths:
                   description: Servers in site SJ are down. Need to resolve the issue immediately.
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/incidents/urgencies/{uniqueId}:
+  '/api/v2/tenants/{tenantId}/incidents/urgencies/{uniqueId}':
     summary: Update urgency
     description: Updates urgency.
     post:
@@ -18041,13 +17840,14 @@ paths:
         in: path
         name: uniqueId
         required: true
+        description: Unique Identifier (UUID) of a given urgency
 components:
   securitySchemes:
     accessToken:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: https://{subdomain}.api.opsramp.com
+          tokenUrl: 'https://{subdomain}.api.opsramp.com'
           scopes: {}
   parameters:
     tenantId:
@@ -18056,6 +17856,70 @@ components:
       schema:
         type: string
       required: true
+      description: Describes clientId or mspId of the tenant
+    changeRequestId:
+      name: changeRequestId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) of change request
+    incidentId:
+      name: incidentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) of incident
+    problemId:
+      name: problemId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) of problem
+    responseId:
+      name: responseId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) of a given response on tickets
+    ticketType:
+      name: ticketType
+      in: path
+      required: true
+      schema:
+        type: string
+      description: 'Supported ticket type:INCIDENT'
+    serviceRequestId:
+      name: serviceRequestId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) of service request
+    taskId:
+      name: taskId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) of task assigned
+    ticketId:
+      name: ticketId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: 'Unique Identifier (UUID) for incidents,service requests,problem universall called as tickets'
+    timeBoundRequestId:
+      name: timeBoundRequestId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Identifier (UUID) for time bound request
   schemas:
     problem:
       title: problem
