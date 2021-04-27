@@ -9369,9 +9369,9 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/smId'
   '/api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resume':
-    summary: Activate user
+    summary:  Resumes a suspended scheduled maintainence 
     description: |
-      Activates a user.
+      Resumes a suspended scheduled maintainence window.
 
       Only suspended schedule maintenance windows can be resumed.
     post:
