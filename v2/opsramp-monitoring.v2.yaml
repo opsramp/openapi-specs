@@ -312,9 +312,9 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/resourceId'
   '/api/v2/tenants/{tenantId}/monitoring/templates/search':
-    summary: Perform a template search
+    summary: Search templates
     description: |-
-      Searching for template based on query paramters
+      Searching for template based on query parameters
 
       ##### Query Variables
       |Query Variables|Description|

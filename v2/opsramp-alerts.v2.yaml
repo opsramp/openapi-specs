@@ -9370,10 +9370,10 @@ paths:
       - $ref: '#/components/parameters/smId'
   '/api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resume':
     summary:  Resumes a suspended scheduled maintainence 
-    description: |
-      Resumes a suspended scheduled maintainence window.
-
-      Only suspended schedule maintenance windows can be resumed.
+    description: |-
+      Resumes a suspendedc scheduled maintainence window.
+      ##### Notes
+      - Only suspended schedule maintenance windows can be resumed.
     post:
       tags:
         - alerts
