@@ -4474,6 +4474,7 @@ paths:
                 example-synthetic-resource:
                   value:
                     id: ed74701d-7f41-4fd1-861e-513647051734
+                    state: active
                     resourceType: SYNTHETIC
                     name: Google Monitor
                     consoles: []
@@ -4502,6 +4503,107 @@ paths:
                     clientId: 5
                     locationOffset: 0
                     totalLocations: 0
+                aws-resource:
+                  value:
+                    id: 4a74dc3b-807a-430c-a877-613acd78d195
+                    hostName: ''
+                    ipAddress: ''
+                    identity: 'arn:aws:events:us-east-1:095202543984:event-bus/default'
+                    createdDate: '2021-04-26T11:02:55+0000'
+                    type: AWS_EVENT_BRIDGE_BUS
+                    state: active
+                    source: PUBLICCLOUD
+                    status: UNKNOWN
+                    aliasName: ''
+                    location:
+                      id: 0
+                      name: us-east-1
+                    name: default
+                    resourceName: default
+                    consoles: []
+                    installedApp:
+                      id: INTG-e5084c50-cfbc-4619-be4d-248884b26481
+                      displayName: AWS-ExternalId-API
+                      integration:
+                        id: AWS
+                        name: AWS
+                        multipleInstallations: true
+                      installedBy: opsramp_api_user
+                      installedTime: '2021-04-26T11:17:15+0100'
+                      status: enabled
+                    properties:
+                      provider: AWS
+                      zone: us-east-1
+                      uniqueId: 3946ba4a-d5f9-4e5b-b977-e0f4085ff43a
+                      policy: null
+                      arn: 'arn:aws:events:us-east-1:095202543984:event-bus/default'
+                    clientUniqueId: client_809322
+                    resourceType: AWS_EVENT_BRIDGE_BUS
+                    frequency: 0
+                    paused: false
+                    deleted: false
+                    validateSSL: false
+                    port: 0
+                    encrypted: false
+                    timeout: 0
+                    ts: 0
+                    clientId: 0
+                    locationOffset: 0
+                    totalLocations: 0
+                    receiverHostPort: 0
+                    topologyEnabled: false
+                azure-resource:
+                  value:
+                    id: 5e24119a-8fd6-4295-9349-9e25a18fc072
+                    hostName: ''
+                    ipAddress: ''
+                    identity: /subscriptions/fa50c578-bd7f-4cfb-ae12-f205420131b9/resourcegroups/QA/providers/Microsoft.IoTCentral/IoTApps/qa-iot
+                    createdDate: '2021-04-14T12:45:23+0000'
+                    updatedDate: '2021-04-15T02:25:52+0000'
+                    type: AZ_IOT_CENTRAL
+                    state: active
+                    source: PUBLICCLOUD
+                    status: UNKNOWN
+                    aliasName: ''
+                    name: qa-iot
+                    resourceName: qa-iot
+                    consoles: []
+                    installedApp:
+                      id: INTG-74eeea20-3951-4397-a672-57bd4140ddca
+                      displayName: AzureARM
+                      integration:
+                        id: AZURE
+                        name: Azure
+                        multipleInstallations: true
+                      installedBy: opsramp_api_user
+                      installedTime: '2021-04-14T13:35:47+0100'
+                      status: enabled
+                    properties:
+                      provider: AZURE
+                      uniqueId: a05c51b2-dacb-4183-8c7b-f8e539c5754f
+                      applicationId: null
+                      state: null
+                      displayName: null
+                      subdomain: null
+                      createdDate: null
+                      geography: null
+                      template: null
+                    clientUniqueId: client_786966
+                    resourceType: AZ_IOT_CENTRAL
+                    frequency: 0
+                    paused: false
+                    deleted: false
+                    validateSSL: false
+                    port: 0
+                    encrypted: false
+                    timeout: 0
+                    ts: 0
+                    clientId: 0
+                    locationOffset: 0
+                    totalLocations: 0
+                    receiverHostPort: 0
+                    topologyEnabled: false
+      summary: ''
     post:
       description: Updates the details of a resource.
       tags:
@@ -5025,6 +5127,86 @@ paths:
                     totalPages: 1
                     nextPage: false
                     descendingOrder: false
+                example-site-resourceGrp:
+                  value:
+                    results:
+                      - id: 61fec02a-4370-4dfb-be4d-1bb9fe3e05aa
+                        hostName: TestHost
+                        ipAddress: 1.1.1.2
+                        dns: ''
+                        client:
+                          id: 4
+                          uniqueId: client_4
+                          name: EHR
+                        createdDate: '2019-05-20T09:31:50+0000'
+                        classCode: device
+                        deviceType: Desktop
+                        devicePath: Desktop
+                        type: DEVICE
+                        state: active
+                        make: ''
+                        model: ''
+                        osName: ''
+                        osArchitecture: '32'
+                        description: test dummy device
+                        gatewayProfileId: '0'
+                        source: MANUAL
+                        agentInstalled: false
+                        attributes:
+                          network:
+                            - ip: 172.24.133.91
+                              mac: 'f8:94:c2:0c:10:f2'
+                              aliasIp: '172.24.133.100, 172.24.133.101'
+                        aliasName: TestAlias
+                        location:
+                          id: 233
+                          name: Location2
+                          description: ''
+                          address: ''
+                          city: ''
+                          path: Location2
+                        name: TestHost
+                        resourceName: TestResource
+                        consoles: []
+                        deviceGroups:
+                          - id: '99'
+                            name: RegressionTest
+                            description: ''
+                            createdDate: '2021-03-15T15:01:39+0000'
+                            updatedDate: '2021-03-15T17:14:55+0000'
+                            linkedService: false
+                          - id: '102'
+                            name: PolicyDevGroup
+                            description: ''
+                            createdDate: '2021-04-22T01:04:45+0000'
+                            updatedDate: '2021-04-22T01:04:46+0000'
+                            linkedService: false
+                        resourceType: Desktop
+                        assetManagedTime: '2019-05-20T09:31:50+0000'
+                        firstAssetManagedTime: '2019-05-20T09:31:50+0000'
+                        deleted: false
+                        ts: 0
+                        clientId: 0
+                        locationOffset: 0
+                        totalLocations: 0
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    descendingOrder: false
+      description: |
+        - Query string should be valid input values
+          - Eg 1: **state** values are enum: active/inactive <br/>
+                  "queryString=state:active" or "queryString=state:inactive"
+          - Eg 2: we should allow only above listed variables<br/>
+                  "queryString=hostName:abc" //valid<br/>
+                  "queryString=hostName2:abc" //Invalid
+          - Eg 3: We should give both variable name and value<br/>
+                  "queryString=hostName:abc" //valid<br/>
+                  "queryString=hostName" //Invalid
+      summary: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/serviceGroups/{sgId}/childs':
@@ -6953,22 +7135,377 @@ components:
     resourceFull:
       title: resourceFull
       type: object
+      x-examples:
+        example-1:
+          agentInstalled: true
+          aliasName: string
+          appRoles:
+            - name: string
+          assetManagedTime: '2019-08-24T14:15:22Z'
+          attributes:
+            ami: string
+            instanceId: string
+            instanceState: string
+            instanceType: string
+            launchDate: string
+            monitoringState: string
+            network:
+              - aliasIp: string
+                ip: string
+                mac: string
+            owner: string
+            privateDns: string
+            privateIp: string
+            provider: string
+            publicIp: string
+            zone: string
+          bios:
+            biosName: string
+            biosVersion: string
+            smBiosMajorVersion: string
+            smBiosMinorVersion: string
+            smBiosPresent: string
+            smBiosVersion: string
+            systemManufacturer: string
+            systemModel: string
+            systemSerial: string
+          classCode: string
+          client:
+            id: 0
+            name: string
+            uniqueId: string
+          clientId: 0
+          clientUniqueId: string
+          components:
+            - string
+          consoles:
+            - null
+          cpus:
+            - dataWidth: 0
+              family: string
+              l2CacheSize: 0
+              manufacturer: string
+              maxClockSpeed: 0
+              numberOfCores: 0
+              powerManagementSupported: true
+              processor: string
+              processorName: string
+              processorVersion: string
+          createdDate: '2019-08-24T14:15:22Z'
+          deleted: true
+          description: string
+          devicePath: string
+          deviceType: string
+          dns: string
+          extResourceId: string
+          firstAssetManagedTime: '2019-08-24T14:15:22Z'
+          gatewayProfileId: string
+          generalInfo:
+            agentDeploytime: '2019-08-24T14:15:22Z'
+            aliasName: string
+            assetManagedTime: string
+            createdTime: '2019-08-24T14:15:22Z'
+            description: string
+            dns: string
+            encodingType: string
+            firstAssetManagedTime: string
+            hostName: string
+            keyboardType: string
+            make: string
+            osArchitecture: string
+            name: string
+            osName: string
+            physicalMemory: string
+            resourceName: string
+            resourceType: string
+            updatedTime: '2019-08-24T14:15:22Z'
+          history:
+            decommissionReason: string
+          hostName: string
+          id: string
+          installedApp:
+            displayName: string
+            id: string
+            integration:
+              id: string
+              name: string
+          ipAddress: string
+          location:
+            city: string
+            clientId: 0
+            id: 0
+            mspId: 0
+            name: string
+          locationOffset: 0
+          logicalDisks:
+            - description: string
+              fileSystem: string
+              free: 0
+              freeDiskCriticalThreshold: 0
+              freeDiskWarningThreshold: 0
+              monitor: true
+              name: string
+              total: 0
+              utilizationCriticalThreshold: 0
+              utilizationWarningThreshold: 0
+          macAddress: string
+          make: string
+          managementProfile:
+            id: 0
+            name: string
+            type: string
+          metricTypes:
+            - availabilityMetric: true
+              displayName: string
+              metricName: string
+              thresholdType: string
+              unit: string
+          model: string
+          name: string
+          networkCards:
+            - dhcpEnabled: true
+              id: 0
+              ipAddress: string
+              linkMode: string
+              macAddress: string
+              networkName: string
+          osArchitecture: string
+          osName: string
+          physicalDisks:
+            - interfaceType: string
+              manufacturer: string
+              mediaType: string
+              model: string
+              name: string
+              partitions: 0
+          properties:
+            ami: string
+            instanceId: string
+            instanceState: string
+            instanceType: string
+            launchDate: string
+            monitoringState: string
+            owner: string
+            privateDns: string
+            privateIp: string
+            provider: string
+            publicIp: string
+            zone: string
+          resourceName: string
+          resourceType: string
+          serialNumber: string
+          source: string
+          state: string
+          status: string
+          systemUID: string
+          tags:
+            - name: string
+              value: string
+          totalLocations: 0
+          ts: 0
+          type: string
+          updatedDate: '2019-08-24T14:15:22Z'
+          videoCards:
+            - bitsPerPixel: string
+              name: string
+              ram: string
+              resolution: string
+              version: string
+          wsusSettings: string
+        example-2:
+          agentInstalled: true
+          aliasName: string
+          appRoles:
+            - name: string
+          assetManagedTime: '2019-08-24T14:15:22Z'
+          attributes:
+            ami: string
+            instanceId: string
+            instanceState: string
+            instanceType: string
+            launchDate: string
+            monitoringState: string
+            network:
+              - aliasIp: string
+                ip: string
+                mac: string
+            owner: string
+            privateDns: string
+            privateIp: string
+            provider: string
+            publicIp: string
+            zone: string
+          bios:
+            biosName: string
+            biosVersion: string
+            smBiosMajorVersion: string
+            smBiosMinorVersion: string
+            smBiosPresent: string
+            smBiosVersion: string
+            systemManufacturer: string
+            systemModel: string
+            systemSerial: string
+          classCode: string
+          client:
+            id: 0
+            name: string
+            uniqueId: string
+          clientId: 0
+          clientUniqueId: string
+          components:
+            - string
+          consoles:
+            - null
+          cpus:
+            - dataWidth: 0
+              family: string
+              l2CacheSize: 0
+              manufacturer: string
+              maxClockSpeed: 0
+              numberOfCores: 0
+              powerManagementSupported: true
+              processor: string
+              processorName: string
+              processorVersion: string
+          createdDate: '2019-08-24T14:15:22Z'
+          deleted: true
+          description: string
+          devicePath: string
+          deviceType: string
+          dns: string
+          extResourceId: string
+          firstAssetManagedTime: '2019-08-24T14:15:22Z'
+          gatewayProfileId: string
+          generalInfo:
+            agentDeploytime: '2019-08-24T14:15:22Z'
+            aliasName: string
+            assetManagedTime: string
+            createdTime: '2019-08-24T14:15:22Z'
+            description: string
+            dns: string
+            encodingType: string
+            firstAssetManagedTime: string
+            hostName: string
+            keyboardType: string
+            make: string
+            osArchitecture: string
+            name: string
+            osName: string
+            physicalMemory: string
+            resourceName: string
+            resourceType: string
+            updatedTime: '2019-08-24T14:15:22Z'
+          history:
+            decommissionReason: string
+          hostName: string
+          id: string
+          installedApp:
+            displayName: string
+            id: string
+            integration:
+              id: string
+              name: string
+          ipAddress: string
+          location:
+            city: string
+            clientId: 0
+            id: 0
+            mspId: 0
+            name: string
+          locationOffset: 0
+          logicalDisks:
+            - description: string
+              fileSystem: string
+              free: 0
+              freeDiskCriticalThreshold: 0
+              freeDiskWarningThreshold: 0
+              monitor: true
+              name: string
+              total: 0
+              utilizationCriticalThreshold: 0
+              utilizationWarningThreshold: 0
+          macAddress: string
+          make: string
+          managementProfile:
+            id: 0
+            name: string
+            type: string
+          metricTypes:
+            - availabilityMetric: true
+              displayName: string
+              metricName: string
+              thresholdType: string
+              unit: string
+          model: string
+          name: string
+          networkCards:
+            - dhcpEnabled: true
+              id: 0
+              ipAddress: string
+              linkMode: string
+              macAddress: string
+              networkName: string
+          osArchitecture: string
+          osName: string
+          physicalDisks:
+            - interfaceType: string
+              manufacturer: string
+              mediaType: string
+              model: string
+              name: string
+              partitions: 0
+          properties:
+            ami: string
+            instanceId: string
+            instanceState: string
+            instanceType: string
+            launchDate: string
+            monitoringState: string
+            owner: string
+            privateDns: string
+            privateIp: string
+            provider: string
+            publicIp: string
+            zone: string
+          resourceName: string
+          resourceType: string
+          serialNumber: string
+          source: string
+          state: string
+          status: string
+          systemUID: string
+          tags:
+            - name: string
+              value: string
+          totalLocations: 0
+          ts: 0
+          type: string
+          updatedDate: '2019-08-24T14:15:22Z'
+          videoCards:
+            - bitsPerPixel: string
+              name: string
+              ram: string
+              resolution: string
+              version: string
+          wsusSettings: string
+          identity: string
       properties:
         agentInstalled:
           type: boolean
         aliasName:
           type: string
         appRoles:
+          type: array
           items:
+            type: object
             properties:
               name:
                 type: string
-            type: object
-          type: array
         assetManagedTime:
           format: date-time
           type: string
         attributes:
+          type: object
           properties:
             ami:
               type: string
@@ -6983,7 +7520,9 @@ components:
             monitoringState:
               type: string
             network:
+              type: array
               items:
+                type: object
                 properties:
                   aliasIp:
                     type: string
@@ -6991,8 +7530,6 @@ components:
                     type: string
                   mac:
                     type: string
-                type: object
-              type: array
             owner:
               type: string
             privateDns:
@@ -7005,8 +7542,8 @@ components:
               type: string
             zone:
               type: string
-          type: object
         bios:
+          type: object
           properties:
             biosName:
               type: string
@@ -7026,10 +7563,10 @@ components:
               type: string
             systemSerial:
               type: string
-          type: object
         classCode:
           type: string
         client:
+          type: object
           properties:
             id:
               type: integer
@@ -7037,20 +7574,21 @@ components:
               type: string
             uniqueId:
               type: string
-          type: object
         clientId:
           type: integer
         clientUniqueId:
           type: string
         components:
+          type: array
           items:
             type: string
-          type: array
         consoles:
-          items: {}
           type: array
+          items: {}
         cpus:
+          type: array
           items:
+            type: object
             properties:
               dataWidth:
                 type: integer
@@ -7072,8 +7610,6 @@ components:
                 type: string
               processorVersion:
                 type: string
-            type: object
-          type: array
         createdDate:
           format: date-time
           type: string
@@ -7095,6 +7631,7 @@ components:
         gatewayProfileId:
           type: string
         generalInfo:
+          type: object
           properties:
             agentDeploytime:
               format: date-time
@@ -7135,33 +7672,33 @@ components:
             updatedTime:
               format: date-time
               type: string
-          type: object
         history:
+          type: object
           properties:
             decommissionReason:
               type: string
-          type: object
         hostName:
           type: string
         id:
           type: string
         installedApp:
+          type: object
           properties:
             displayName:
               type: string
             id:
               type: string
             integration:
+              type: object
               properties:
                 id:
                   type: string
                 name:
                   type: string
-              type: object
-          type: object
         ipAddress:
           type: string
         location:
+          type: object
           properties:
             city:
               type: string
@@ -7173,11 +7710,12 @@ components:
               type: integer
             name:
               type: string
-          type: object
         locationOffset:
           type: integer
         logicalDisks:
+          type: array
           items:
+            type: object
             properties:
               description:
                 type: string
@@ -7199,13 +7737,12 @@ components:
                 type: integer
               utilizationWarningThreshold:
                 type: integer
-            type: object
-          type: array
         macAddress:
           type: string
         make:
           type: string
         managementProfile:
+          type: object
           properties:
             id:
               type: integer
@@ -7213,9 +7750,10 @@ components:
               type: string
             type:
               type: string
-          type: object
         metricTypes:
+          type: array
           items:
+            type: object
             properties:
               availabilityMetric:
                 type: boolean
@@ -7227,14 +7765,14 @@ components:
                 type: string
               unit:
                 type: string
-            type: object
-          type: array
         model:
           type: string
         name:
           type: string
         networkCards:
+          type: array
           items:
+            type: object
             properties:
               dhcpEnabled:
                 type: boolean
@@ -7248,14 +7786,14 @@ components:
                 type: string
               networkName:
                 type: string
-            type: object
-          type: array
         osArchitecture:
           type: string
         osName:
           type: string
         physicalDisks:
+          type: array
           items:
+            type: object
             properties:
               interfaceType:
                 type: string
@@ -7269,9 +7807,8 @@ components:
                 type: string
               partitions:
                 type: integer
-            type: object
-          type: array
         properties:
+          type: object
           properties:
             ami:
               type: string
@@ -7297,7 +7834,6 @@ components:
               type: string
             zone:
               type: string
-          type: object
         resourceName:
           type: string
         resourceType:
@@ -7313,14 +7849,14 @@ components:
         systemUID:
           type: string
         tags:
+          type: array
           items:
+            type: object
             properties:
               name:
                 type: string
               value:
                 type: string
-            type: object
-          type: array
         totalLocations:
           type: integer
         ts:
@@ -7331,7 +7867,9 @@ components:
           format: date-time
           type: string
         videoCards:
+          type: array
           items:
+            type: object
             properties:
               bitsPerPixel:
                 type: string
@@ -7343,9 +7881,9 @@ components:
                 type: string
               version:
                 type: string
-            type: object
-          type: array
         wsusSettings:
+          type: string
+        identity:
           type: string
     serviceGroup:
       title: serviceGroup
