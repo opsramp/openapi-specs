@@ -1,1 +1,0 @@
-{"summary":"Disable alert escalation policy","description":"Disables an alert escalation policy.","operations":{"post":{"description":"","parameters":"","responses":{"200":{"description":"OK"}}}},"parameters":[{"in":"path","name":"tenantId","schema":{"type":"string"},"required":true},{"schema":{"type":"string"},"in":"path","name":"id","required":true}]}

@@ -9367,10 +9367,11 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/smId'
   '/api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resume':
-    summary: Resumes a suspended maintainence window
-    description: |
-      Resumes a suspened maintainence window.
-      Only suspended schedule maintenance windows can be resumed.
+    summary:  Resumes scheduled maintainence window
+    description: |-
+      Resumes a suspended scheduled maintainence window.
+      ##### Notes
+      - Only suspended schedule maintenance windows can be resumed.
     post:
       tags:
         - alerts

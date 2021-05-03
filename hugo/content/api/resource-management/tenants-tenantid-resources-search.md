@@ -107,6 +107,8 @@ description: >
   |appRoles|Filter for resources based on applications running on the
   resources.List of supported applications:|
 
+  |osArchitecture|Filter for supported architecture 32 bit or 64 bit|
+
 
   |appRoles|appRoles|appRoles|appRoles|
 
