@@ -3432,8 +3432,8 @@ paths:
       operationId: ''
       description: ''
   '/api/v2/tenants/{tenantId}/resources/{resourceId}/patches/{approvalType}':
-    description: Approves and disapproves multiple patches.
     summary: Approves and disapproves multiple patches on a given resource.
+    description: Approves and disapproves multiple patches.
     parameters:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/resourceId'
@@ -3448,6 +3448,8 @@ paths:
         required: true
         description: Type of approval
     post:
+      tags:
+        - patching
       operationId: post-api-v2-tenants-tenantId-resources-resourceId-patches-approvalType
       responses:
         '200':
@@ -3474,8 +3476,6 @@ paths:
                     - 'Total Patches::3'
                     - 'Successfully unapproved Patches:2'
                     - 'Invalid Patches:[PATCH-6cb12d4d-e8a5-c51e-a391-c8870db7b234]'
-      tags:
-        - patching
       requestBody:
         content:
           application/json:
