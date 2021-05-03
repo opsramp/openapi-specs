@@ -2635,7 +2635,6 @@ paths:
       responses:
         '200':
           description: OK
-      summary: ''
     parameters:
       - schema:
           type: string
@@ -3434,19 +3433,6 @@ paths:
   '/api/v2/tenants/{tenantId}/resources/{resourceId}/patches/{approvalType}':
     summary: Approves and disapproves multiple patches on a given resource.
     description: Approves and disapproves multiple patches.
-    parameters:
-      - $ref: '#/components/parameters/tenantId'
-      - $ref: '#/components/parameters/resourceId'
-      - schema:
-          type: string
-          enum:
-            - unapprove
-            - approve
-          example: approve
-        name: approvalType
-        in: path
-        required: true
-        description: Type of approval
     post:
       tags:
         - patching
@@ -3492,7 +3478,19 @@ paths:
                   - PATCH-b270488b-a81f-627d-f089-89e020239913
                   - PATCH-6cb12d4d-e8a5-c51e-a391-c8870db7bbca
                   - PATCH-6cb12d4d-e8a5-c51e-a391-c8870db7b234
-      description: ''
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/resourceId'
+      - schema:
+          type: string
+          enum:
+            - unapprove
+            - approve
+          example: approve
+        name: approvalType
+        in: path
+        required: true
+        description: Type of approval
 components:
   securitySchemes:
     accessToken:
@@ -4107,8 +4105,4 @@ components:
         type: object
         required: []
         properties: {}
-      x-examples:
-        patch-list:
-          - PATCH-b270488b-a81f-627d-f089-89e020239913
-          - PATCH-6cb12d4d-e8a5-c51e-a391-c8870db7bbca
-          - PATCH-6cb12d4d-e8a5-c51e-a391-c8870db7b234
+      x-examples: {}
