@@ -2635,16 +2635,36 @@ paths:
       responses:
         '200':
           description: OK
+      summary: ''
     parameters:
-      - $ref: '#/components/parameters/tenantId'
-      - $ref: '#/components/parameters/resourceId'
-      - $ref: '#/components/parameters/patchId'
       - schema:
           type: string
+          enum:
+            - APPROVE
+            - NOT_APPROVE
+          example: APPROVE
         in: path
         name: approvalType
         required: true
         description: Supported approval type
+      - name: resourceId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique Identifier (UUID) of patched resource
+      - in: path
+        name: tenantId
+        schema:
+          type: string
+        required: true
+        description: Describes the clientId of the tenant
+      - name: patchId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique Identifier (UUID) of the patch applied
   '/api/v2/tenants/{tenantId}/resources/{resourceId}/patches/scan/status':
     summary: Get patch scan status of a device
     description: |-
@@ -3269,6 +3289,7 @@ paths:
                     nextPage: false
                     descendingOrder: false
       operationId: ''
+      description: ''
   '/api/v2/tenants/{tenantId}/patches/patchcompliance/{complianceId}/baselines/{baselineId}/group/{groupId}':
     summary: Get resources against a baseline in a resourcegroup
     description: Retrieves the compliance details of resource in resource group against a chosen baseline in the patch compliance configuration
@@ -3410,6 +3431,68 @@ paths:
                     descendingOrder: false
       operationId: ''
       description: ''
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}/patches/{approvalType}':
+    description: Approves and disapproves multiple patches.
+    summary: Approves and disapproves multiple patches on a given resource.
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/resourceId'
+      - schema:
+          type: string
+          enum:
+            - unapprove
+            - approve
+          example: approve
+        name: approvalType
+        in: path
+        required: true
+        description: Type of approval
+    post:
+      operationId: post-api-v2-tenants-tenantId-resources-resourceId-patches-approvalType
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                description: ''
+                minItems: 1
+                uniqueItems: true
+                items:
+                  type: object
+                  required: []
+                  properties: {}
+              examples:
+                approved-patches:
+                  value:
+                    - 'Total Patches::3'
+                    - 'Successfully approved Patches:2'
+                    - 'Invalid Patches:[PATCH-6cb12d4d-e8a5-c51e-a391-c8870db7b234]'
+                patchlist-unapprove:
+                  value:
+                    - 'Total Patches::3'
+                    - 'Successfully unapproved Patches:2'
+                    - 'Invalid Patches:[PATCH-6cb12d4d-e8a5-c51e-a391-c8870db7b234]'
+      tags:
+        - patching
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patchList'
+            examples:
+              patchList-approve:
+                value:
+                  - PATCH-b270488b-a81f-627d-f089-89e020239913
+                  - PATCH-6cb12d4d-e8a5-c51e-a391-c8870db7bbca
+                  - PATCH-6cb12d4d-e8a5-c51e-a391-c8870db7b234
+              patchList-unapprove:
+                value:
+                  - PATCH-b270488b-a81f-627d-f089-89e020239913
+                  - PATCH-6cb12d4d-e8a5-c51e-a391-c8870db7bbca
+                  - PATCH-6cb12d4d-e8a5-c51e-a391-c8870db7b234
+      description: ''
 components:
   securitySchemes:
     accessToken:
@@ -3425,7 +3508,7 @@ components:
       schema:
         type: string
       required: true
-      description: Describes the clientId or mspId of the tenant
+      description: Describes the clientId of the tenant
     baselineId:
       name: baselineId
       in: path
@@ -4015,3 +4098,17 @@ components:
         lastMachineRebootDate:
           type: string
           format: date-time
+    patchList:
+      type: array
+      description: ''
+      minItems: 1
+      uniqueItems: true
+      items:
+        type: object
+        required: []
+        properties: {}
+      x-examples:
+        patch-list:
+          - PATCH-b270488b-a81f-627d-f089-89e020239913
+          - PATCH-6cb12d4d-e8a5-c51e-a391-c8870db7bbca
+          - PATCH-6cb12d4d-e8a5-c51e-a391-c8870db7b234
