@@ -2,6 +2,12 @@
 
 const { argv } = require('yargs')
   .scriptName('api-build')
+  .options('p', {
+    alias: 'path',
+    describe: 'The relative path to the OpenAPI specification YAML files.',
+    default: '../v2',
+    type: 'string',
+  })
   .options('d', {
     alias: 'data',
     describe: 'This is the directory where the data files are generated.',
@@ -40,7 +46,7 @@ function Main() {
 
   // Loop through each yaml that was returned
   yamls.forEach(async (cur) => {
-    const pathToYAML = path.join('../v2', cur.file)
+    const pathToYAML = path.join(argv.p, cur.file)
 
     const api = await SwaggerParser.validate(pathToYAML)
     const paths = Object.entries(api.paths)
@@ -58,14 +64,13 @@ function Main() {
  */
 function initializeBuild() {
   const regex = /opsramp-([\w-]+?).v2.yaml/g
-  const tmpDir = '../v2'
 
   try {
-    fs.accessSync(tmpDir, fs.F_OK)
+    fs.accessSync(argv.p, fs.F_OK)
 
     // Get a list of the files we find in the api /v2/ directory
     // Then filter them to only include those we want
-    let files = fs.readdirSync(tmpDir)
+    let files = fs.readdirSync(argv.p)
     files = files.filter((val) => val.match(regex))
 
     // Create an array of objects containing the file name and its associated tag
@@ -77,7 +82,7 @@ function initializeBuild() {
       }
     })
   } catch {
-    console.error(`The path ${tmpDir} could not be accessed.`)
+    console.error(`The path ${argv.p} could not be accessed.`)
   }
 }
 
