@@ -1,1 +1,0 @@
-{"summary":"Restart network service","description":"Restarts the gateway network service.","operations":{"post":{"description":"","parameters":"","responses":{"200":{"description":"OK","schema":{"type":"object","properties":{"Success":{"type":"string"}}},"examples":{"example-1":{"value":{"Success":"Network service restarted successfully."}}}}}}}}
