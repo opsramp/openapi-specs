@@ -10,8 +10,11 @@
         color: $value;
       }
 
-      border-color: $value;
-      border-width: 0 0 0 4px;
+      border-color: rgba($value, 0.2);
+      border-left-color: $value;
+      border-width: 1px 1px 1px 6px;
+      border-radius: 6px;
+      box-shadow: $box-shadow;
     }
   }
 }
