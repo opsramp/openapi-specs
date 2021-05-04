@@ -6,5 +6,5 @@ public/
 resources/
 
 hugo/data/api
-hugo/content/api/*.md
+hugo/content/api/**/*.md
 !_index.md
