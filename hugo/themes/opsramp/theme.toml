@@ -1,7 +1,7 @@
 name = "OpsRamp"
 license = "Commercial"
 description = "Technical documentation website for OpsRamp"
-homepage = "https://docs.opsramp.com/"
+homepage = "http://docs-internal.opsramp.com.s3-website-us-east-1.amazonaws.com/api/"
 tags = []
 features = []
 min_version = 0.68

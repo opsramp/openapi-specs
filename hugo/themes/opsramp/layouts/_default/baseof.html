@@ -2,7 +2,7 @@
 <html lang="{{ .Site.Language.Lang }}">
 <head>
 {{ if .IsHome }}
-<meta http-equiv="refresh" content="0;url=http://localhost:1313/api/" />
+<meta http-equiv="refresh" content="0;url={{ .Site.BaseURL}}" />
 {{ else }}
 {{ partial "head/head.html" . }}
 {{ end }}
