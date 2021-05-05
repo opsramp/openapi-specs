@@ -2,7 +2,7 @@ version: '3'
 
 services:
   hugo:
-    image: mwaterous/hugo-docker:latest
+    image: hub.opsramp.com/api-sdk-utils/hugo-docker:latest
     working_dir: /srv/hugo
     volumes:
       - ./hugo:/srv/hugo
