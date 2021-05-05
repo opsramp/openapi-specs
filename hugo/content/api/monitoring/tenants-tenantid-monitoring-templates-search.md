@@ -1,8 +1,8 @@
 ---
 slug: tenants-tenantid-monitoring-templates-search
-title: Activate a user
+title: Search templates
 description: >-
-  Activates a user.
+  Searching for template based on query parameters
 
 
   ##### Query Variables
