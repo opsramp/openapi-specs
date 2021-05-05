@@ -2,10 +2,10 @@ version: '3'
 
 services:
   hugo:
-    image: hub.opsramp.com/api-sdk-utils/hugo-docker:latest
-    working_dir: /srv/hugo
+    image: mwaterous/hugo-docker
+    working_dir: /app/hugo
     volumes:
-      - ./hugo:/srv/hugo
-    command: 'hugo server --bind 0.0.0.0 --disableFastRender'
+      - ./hugo:/app/hugo
+    command: 'npm run docker'
     ports:
       - 1313:1313

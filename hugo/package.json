@@ -7,6 +7,7 @@
     "url": "https://github.com/opsramp/openapi-specs.git"
   },
   "scripts": {
+    "docker": "npm i && hugo server --bind 0.0.0.0 --disableFastRender",
     "dev": "./build.js && hugo server --minify",
     "dev:internal": "./build.js -i && hugo server --minify",
     "build": "./build.js && hugo --minify",
