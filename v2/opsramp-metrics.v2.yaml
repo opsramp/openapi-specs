@@ -22,7 +22,7 @@ servers:
         default: demo
         description: Custom sub-domain assigned to the client
 paths:
-  '/api/v2/metric/tenants/{tenantId}/rtypes/{rtype}/resources/{resource}/metrics':
+  '/api/v2/metric/tenants/{tenantId}/rtypes/{rtype}/resources/{resource}/metrics/{metric}':
     summary: Manage resource metrics
     description: Updates and gets resource metrics.
     get:
@@ -118,9 +118,30 @@ paths:
         '200':
           description: OK
     parameters:
-      - $ref: '#/components/parameters/tenantId'
-      - $ref: '#/components/parameters/rtype'
-      - $ref: '#/components/parameters/metric'
+      - in: path
+        name: tenantId
+        schema:
+          type: string
+        required: true
+        description: Describes clientId or mspId of the tenant
+      - name: rtype
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Describes supported resource type
+      - name: metric
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Describes metric name
+      - schema:
+          type: string
+        name: resource
+        in: path
+        required: true
+        description: Describes resource on which metric applied
   /api/v2/metric/search:
     summary: Get metric (time series) on resources
     description: |-
@@ -704,14 +725,26 @@ paths:
                   displayUnit: Percentage (%)
                   unitLabel: Percentage (%)
       responses:
-        '200':
-          description: OK
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/metric'
+              examples:
+                example-1:
+                  value:
+                    metricName: system.metric.device.test
+                    displayName: TestMetric
+                    description: Sample metric please ignore
+                    groupName: system.test.*
+                    unit: '%'
+                    type: Guage
+                    resourceType: CPU
+                    displayUnit: Percentage (%)
+                    unitLabel: Percentage (%)
     parameters:
-      - schema:
-          type: string
-        name: tenantId
-        in: path
-        required: true
+      - $ref: '#/components/parameters/tenantId'
   '/api/v2/metric/tenants/{tenantId}/metrics/{metric}/metricType':
     summary: Manage metric type
     description: Updates and gets metric type details.
@@ -737,6 +770,21 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/metric'
+              examples:
+                example-1:
+                  value:
+                    metricName: system.cpu.stats.kernel
+                    displayName: CPUSTATS
+                    description: Cpu Statistics
+                    groupName: system.cpustats.*
+                    unit: '%'
+                    type: Gauge
+                    displayUnit: '%'
+                    unitLabel: Percentage
     get:
       tags:
         - metrics
