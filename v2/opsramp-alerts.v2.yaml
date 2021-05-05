@@ -29,7 +29,6 @@ paths:
     post:
       tags:
         - alerts
-        - internal
       responses:
         '200':
           description: OK
