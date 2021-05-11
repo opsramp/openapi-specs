@@ -24,7 +24,7 @@ servers:
 paths:
   '/api/v2/tenants/internal':
     x-internal: true
-    summary: Demonstrate internal tagging for endpoints
+    summary: Demonstrate internal tagging for endpoints. Rediting once again.
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consectetur facilisis nulla, a mollis enim euismod eu. Morbi pharetra ante sit amet magna semper, ut faucibus est sagittis. Phasellus consequat cursus nunc, ut scelerisque diam pulvinar in. Nam ac leo et enim vehicula rutrum a eget augue.
     post:
       tags:
