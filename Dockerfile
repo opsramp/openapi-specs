@@ -10,5 +10,5 @@ RUN dpkg -i hugo.deb
 RUN rm hugo.deb
 
 
-WORKDIR ${HUGO_SITE}`
+WORKDIR ${HUGO_SITE}
 EXPOSE 1313
