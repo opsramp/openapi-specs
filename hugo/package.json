@@ -8,8 +8,8 @@
   },
   "scripts": {
     "docker": "npm i && hugo server --bind 0.0.0.0 --disableFastRender",
-    "dev": "./build.js && hugo server --minify",
-    "dev:internal": "./build.js -i && hugo server --minify",
+    "dev": "node build.js && hugo server --minify",
+    "dev:internal": "node build.js -i && hugo server --minify",
     "build": "./build.js && hugo --minify",
     "build:internal": "./build.js -i && hugo --minify",
     "lint": "spectral lint ../v2/**/*.yaml"
