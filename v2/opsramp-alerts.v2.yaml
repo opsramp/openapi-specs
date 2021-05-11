@@ -22,6 +22,16 @@ servers:
         default: demo
         description: Custom sub-domain assigned to the client
 paths:
+  '/api/v2/tenants/internal':
+    x-internal: true
+    summary: Demonstrate internal tagging for endpoints. Rediting once again.
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consectetur facilisis nulla, a mollis enim euismod eu. Morbi pharetra ante sit amet magna semper, ut faucibus est sagittis. Phasellus consequat cursus nunc, ut scelerisque diam pulvinar in. Nam ac leo et enim vehicula rutrum a eget augue.
+    post:
+      tags:
+        - alerts
+      responses:
+        '200':
+          description: OK
   '/api/v2/tenants/{tenantId}/policies/alertCorrelation/{policyId}/{action}':
     summary: Manage alert correlation policy
     description: 'Enables, disables, and creates an observed mode on an alert correlation policy.'

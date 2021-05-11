@@ -7,10 +7,12 @@
     "url": "https://github.com/opsramp/openapi-specs.git"
   },
   "scripts": {
-    "dev": "./build.js && hugo server --minify",
-    "dev:internal": "./build.js -i && hugo server --minify",
+    "docker": "npm i && hugo server --bind 0.0.0.0 --disableFastRender",
+    "dev": "node build.js && hugo server --minify",
+    "dev:internal": "node build.js -i && hugo server --minify",
     "build": "./build.js && hugo --minify",
-    "build:internal": "./build.js -i && hugo --minify"
+    "build:internal": "./build.js -i && hugo --minify",
+    "lint": "spectral lint ../v2/**/*.yaml"
   },
   "author": "OpsRamp, Inc",
   "license": "UNLICENSED",
@@ -20,6 +22,7 @@
   "homepage": "https://github.com/opsramp/openapi-specs#readme",
   "devDependencies": {
     "@apidevtools/swagger-parser": "^10.0.2",
+    "@stoplight/spectral": "^5.9.1",
     "autoprefixer": "^9.8.6",
     "js-yaml": "^3.13.1",
     "openapi-types": "^7.2.3",

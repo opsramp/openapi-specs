@@ -2,6 +2,12 @@
 
 const { argv } = require('yargs')
   .scriptName('api-build')
+  .options('p', {
+    alias: 'path',
+    describe: 'The relative path to the OpenAPI specification YAML files.',
+    default: '../v2',
+    type: 'string',
+  })
   .options('d', {
     alias: 'data',
     describe: 'This is the directory where the data files are generated.',
@@ -17,6 +23,7 @@ const { argv } = require('yargs')
   .options('i', {
     alias: 'internal',
     describe: 'Build all endpoints marked "internal"',
+    default: false,
     type: 'boolean',
   })
 
@@ -34,22 +41,22 @@ Main()
  * Main() - Clones the API spec to a temporary location, then runs all of our helpers in sequence.
  */
 function Main() {
-  const ignoreTags = argv.i ? [] : ['internal']
-
   yamls = initializeBuild()
 
+  yamls.forEach(({ tag }) => {
+    prepLocation(tag, argv.c)
+    prepLocation(tag, argv.d)
+  })
+
   // Loop through each yaml that was returned
-  yamls.forEach(async (cur) => {
-    const pathToYAML = path.join('../v2', cur.file)
+  yamls.forEach(async ({ file, tag }) => {
+    const pathToYAML = path.join(argv.p, file)
 
     const api = await SwaggerParser.validate(pathToYAML)
     const paths = Object.entries(api.paths)
 
-    prepLocation(cur.tag, argv.c)
-    prepLocation(cur.tag, argv.d)
-
-    generateContent(cur.tag, paths, ignoreTags)
-    generateData(cur.tag, paths, ignoreTags)
+    generateContent(tag, paths)
+    generateData(tag, paths)
   })
 }
 
@@ -58,14 +65,13 @@ function Main() {
  */
 function initializeBuild() {
   const regex = /opsramp-([\w-]+?).v2.yaml/g
-  const tmpDir = '../v2'
 
   try {
-    fs.accessSync(tmpDir, fs.F_OK)
+    fs.accessSync(argv.p, fs.F_OK)
 
     // Get a list of the files we find in the api /v2/ directory
     // Then filter them to only include those we want
-    let files = fs.readdirSync(tmpDir)
+    let files = fs.readdirSync(argv.p)
     files = files.filter((val) => val.match(regex))
 
     // Create an array of objects containing the file name and its associated tag
@@ -77,7 +83,7 @@ function initializeBuild() {
       }
     })
   } catch {
-    console.error(`The path ${tmpDir} could not be accessed.`)
+    console.error(`The path ${argv.p} could not be accessed.`)
   }
 }
 
@@ -111,20 +117,15 @@ function prepLocation(tag, dir) {
 /**
  * generateContent() - Creates all of the markdown files needed by Hugo
  */
-function generateContent(tag, endpoints, ignore) {
+function generateContent(tag, endpoints) {
   for (const [endpoint, data] of endpoints) {
+    // If we're not building internal paths and this is marked as internal, ignore
+    if (false === argv.i && 'x-internal' in data) {
+      continue
+    }
+
     const slug = getSlugForEndpoint(endpoint)
     const requestMethods = getRequestMethods(data)
-
-    if (ignore.length) {
-      const foundIgnore = requestMethods.filter((method) => {
-        const found = data[method].tags.some((tag) => ignore.includes(tag))
-        return found
-      })
-      if (requestMethods.length === foundIgnore.length) {
-        continue
-      }
-    }
 
     // Build the frontmatter object
     const frontmatter = {
@@ -136,6 +137,11 @@ function generateContent(tag, endpoints, ignore) {
       request: requestMethods.sort(),
       layout: 'api-doc',
       draft: false,
+    }
+
+    // If we are building internal and this is marked, include in frontmatter
+    if (true === argv.i && 'x-internal' in data) {
+      frontmatter.internal = true
     }
 
     const fileContents = `---\n${yaml.dump(frontmatter)}---\n`
@@ -153,73 +159,67 @@ function generateContent(tag, endpoints, ignore) {
 /**
  * generateData() - Creates all of the data files needed by Hugo
  */
-function generateData(tag, paths, ignore) {
+function generateData(tag, paths) {
   for (const [endpoint, data] of paths) {
+    // If we're not building internal paths and this is marked as internal, ignore
+    if (false === argv.i && 'x-internal' in data) {
+      continue
+    }
+    
     const slug = getSlugForEndpoint(endpoint)
     const requestMethods = getRequestMethods(data)
 
-    const operations = requestMethods
-      .filter((method) => {
-        const tags = data[method].tags
-        return !tags.some((tag) => ignore.includes(tag))
-      })
-      .map((method) => {
-        const methodData = data[method]
+    const operations = requestMethods.map((method) => {
+      const methodData = data[method]
 
-        const newOperation = {
-          description: methodData.description ?? '',
-          parameters: methodData.parameters ?? '',
+      const newOperation = {
+        description: methodData.description ?? '',
+        parameters: methodData.parameters ?? '',
+      }
+
+      if ('requestBody' in methodData) {
+        const requestBody = {
+          content: 'application/json',
+          schema: methodData.requestBody.content['application/json'].schema,
         }
 
-        if ('requestBody' in methodData) {
-          const requestBody = {
-            content: 'application/json',
-            schema: methodData.requestBody.content['application/json'].schema,
+        const examples =
+          methodData.requestBody.content['application/json'].examples
+
+        newOperation.requestBody = requestBody
+        newOperation.requestBodyExamples = examples
+      }
+
+      if ('responses' in methodData) {
+        const responses = {}
+
+        for (const [key, value] of Object.entries(methodData.responses)) {
+          responses[key] = {
+            description: value.description || '',
           }
 
-          const examples =
-            methodData.requestBody.content['application/json'].examples
+          if ('content' in value) {
+            const content = value.content['application/json']
 
-          newOperation.requestBody = requestBody
-          newOperation.requestBodyExamples = examples
-        }
-
-        if ('responses' in methodData) {
-          const responses = {}
-
-          for (const [key, value] of Object.entries(methodData.responses)) {
-            responses[key] = {
-              description: value.description || '',
-            }
-
-            if ('content' in value) {
-              const content = value.content['application/json']
-
-              if (undefined == content) {
-                // @TODO Needs better error handling
-                console.err('Undefined found in: ' + slug)
-              } else {
-                if ('schema' in content) {
-                  responses[key].schema =
-                    value.content['application/json'].schema
-                }
-                if ('examples' in content) {
-                  responses[key].examples =
-                    value.content['application/json'].examples
-                }
+            if (undefined == content) {
+              // @TODO Needs better error handling
+              console.err('Undefined found in: ' + slug)
+            } else {
+              if ('schema' in content) {
+                responses[key].schema = value.content['application/json'].schema
+              }
+              if ('examples' in content) {
+                responses[key].examples =
+                  value.content['application/json'].examples
               }
             }
           }
-          newOperation.responses = responses
         }
+        newOperation.responses = responses
+      }
 
-        return [method, newOperation]
-      })
-
-    // All operations were ignored, skip this iteration
-    if (operations.length === 0) {
-      continue
-    }
+      return [method, newOperation]
+    })
 
     let newObject = {
       summary: data.summary,
