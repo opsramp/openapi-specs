@@ -7,4 +7,5 @@ resources/
 
 hugo/data/api
 hugo/content/api/**/*.md
+hugo/package-lock.json
 !_index.md
