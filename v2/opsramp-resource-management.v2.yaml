@@ -6771,6 +6771,263 @@ paths:
                         zone: North America
     parameters:
       - $ref: '#/components/parameters/tenantId'
+  '/api/v2/tenants/{tenantId}/resources/auditRecordings':
+    parameters:
+      - schema:
+          type: string
+        name: tenantId
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    results:
+                      - client_Id: client_22
+                        name: ConsoleClient
+                        auditRecording:
+                          - resourceId: name
+                            auditDetails:
+                              ticketId: INC0000000001
+                              startTime: '2020-12-18T10:32:10+0000'
+                              endTime: '2020-12-18T10:35:57+0000'
+                              consoleProtocol: SSH
+                              url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/311'
+                              notes: tes lastest
+                          - resourceId: name
+                            auditDetails:
+                              ticketId: INC0000000001
+                              startTime: '2020-12-18T10:32:10+0000'
+                              endTime: '2020-12-18T10:35:57+0000'
+                              consoleProtocol: SSH
+                              url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/311'
+                              notes: tes lastest
+                      - client_Id: client_22
+                        name: ConsoleClient
+                        auditRecording:
+                          - resourceId: name
+                            auditDetails:
+                              ticketId: INC0000000001
+                              startTime: '2020-12-18T10:32:10+0000'
+                              endTime: '2020-12-18T10:35:57+0000'
+                              consoleProtocol: SSH
+                              url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/311'
+                              notes: tes lastest
+                          - resourceId: name
+                            auditDetails:
+                              ticketId: INC0000000001
+                              startTime: '2020-12-18T10:32:10+0000'
+                              endTime: '2020-12-18T10:35:57+0000'
+                              consoleProtocol: SSH
+                              url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/311'
+                              notes: tes lastest
+                    totalResults: 2
+                    orderBy: client_Id
+                    pageNo: 1
+                    pageSize: 5
+                    totalPages: 45
+                    nextPage: true
+                    nextPageNo: 2
+                    previousPageNo: 0
+                    descendingOrder: true
+                properties:
+                  results:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        client_Id:
+                          type: string
+                          minLength: 1
+                        name:
+                          type: string
+                          minLength: 1
+                        auditRecording:
+                          type: array
+                          uniqueItems: true
+                          minItems: 1
+                          items:
+                            type: object
+                            properties:
+                              resourceId:
+                                type: string
+                                minLength: 1
+                              auditDetails:
+                                type: object
+                                properties:
+                                  ticketId:
+                                    type: string
+                                    minLength: 1
+                                  startTime:
+                                    type: string
+                                    minLength: 1
+                                  endTime:
+                                    type: string
+                                    minLength: 1
+                                  consoleProtocol:
+                                    type: string
+                                    minLength: 1
+                                  url:
+                                    type: string
+                                    minLength: 1
+                                  notes:
+                                    type: string
+                                    minLength: 1
+                                  id:
+                                    type: string
+                                required:
+                                  - ticketId
+                                  - startTime
+                                  - endTime
+                                  - consoleProtocol
+                                  - url
+                                  - notes
+                            required:
+                              - resourceId
+                      required:
+                        - client_Id
+                        - name
+                  totalResults:
+                    type: number
+                  orderBy:
+                    type: string
+                    minLength: 1
+                  pageNo:
+                    type: number
+                  pageSize:
+                    type: number
+                  totalPages:
+                    type: number
+                  nextPage:
+                    type: boolean
+                  nextPageNo:
+                    type: number
+                  previousPageNo:
+                    type: number
+                  descendingOrder:
+                    type: boolean
+                required:
+                  - results
+                  - totalResults
+                  - orderBy
+                  - pageNo
+                  - pageSize
+                  - totalPages
+                  - nextPage
+                  - nextPageNo
+                  - previousPageNo
+                  - descendingOrder
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - client_Id: string
+                        name: string
+                        auditRecording:
+                          - resourceId: string
+                            auditDetails:
+                              ticketId: string
+                              startTime: string
+                              endTime: string
+                              consoleProtocol: string
+                              url: string
+                              notes: string
+                              id: string
+                    totalResults: 0
+                    orderBy: string
+                    pageNo: 0
+                    pageSize: 0
+                    totalPages: 0
+                    nextPage: true
+                    nextPageNo: 0
+                    previousPageNo: 0
+                    descendingOrder: true
+      operationId: get-api-v2-tenants-tenantId-resources-auditRecordings
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: pageNo
+        - schema:
+            type: number
+          in: query
+          name: pageSize
+        - schema:
+            type: string
+          in: query
+          name: queryString
+  '/api/v2/tenants/{varId}/customAttributes/{attributeId}/values/{valueId}/devices/{deviceId}':
+    parameters:
+      - schema:
+          type: string
+        name: varId
+        in: path
+        required: true
+        description: msp Id of the provider
+      - schema:
+          type: string
+        name: attributeId
+        in: path
+        required: true
+        description: custom attribute id
+      - schema:
+          type: string
+        name: valueId
+        in: path
+        required: true
+        description: custom attribute value id
+      - schema:
+          type: string
+        name: deviceId
+        in: path
+        required: true
+        description: 'resourceId '
+    delete:
+      summary: Unassign custom attributes on the  resources of organization
+      operationId: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+              examples:
+                successfull_unassign:
+                  value:
+                    FailedEntities: {}
+                    FailedCount: 0
+                    SuccessCount: 1
+                failed_unassign:
+                  value:
+                    FailedEntities:
+                      NRC-99de8eed-184b-4687-bbbb-6d06771f33ee: 'Invalid resource id for organization  : 3'
+                    FailedCount: 1
+                    SuccessCount: 0
+      parameters:
+        - schema:
+            type: string
+            default: RESOURCE
+            enum:
+              - RESOURCE
+              - NON_MON_RESOURCES
+          in: query
+          name: entityType
+          description: monitorable resource classification
+      description: Unassign custom attribute mapping on given resource of the organization.
+      tags:
+        - resource-management
 components:
   securitySchemes:
     accessToken:
