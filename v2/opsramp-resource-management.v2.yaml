@@ -6968,6 +6968,8 @@ paths:
           in: query
           name: queryString
   '/api/v2/tenants/{varId}/customAttributes/{attributeId}/values/{valueId}/devices/{deviceId}':
+    summary: Unassign custom attributes for a resource
+    description: Unassign custom attributes on the  resources of organization
     parameters:
       - schema:
           type: string
