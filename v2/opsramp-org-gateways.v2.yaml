@@ -1,4 +1,24 @@
 openapi: 3.0.0
+info:
+  version: '2.0'
+  title: opsramp-gateways
+  description: Standalone Gateways API Documentation
+  contact:
+    name: OpsRamp Support
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
+    email: support@opsramp.com
+servers:
+  - url: 'https://{gateway-ip}:{port}'
+    description: The Gateway collector API server
+    variables:
+      port:
+        default: '5480'
+tags:
+  - name: opsramp-gateways
+    description: Access API endpoints to configure gateway deployed within customer infrastrucutre
+    externalDocs:
+      url: 'https://docs.opsramp.com/api/opsramp-gateways/'
+
 paths:
   /v2/auth/token:
     x-internal: true
@@ -1022,22 +1042,3 @@ components:
           tokenUrl: ''
           refreshUrl: ''
           scopes: {}
-info:
-  version: '2.0'
-  title: opsramp-gateways
-  description: Standalone Gateways API Documentation
-  contact:
-    name: OpsRamp Support
-    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
-    email: support@opsramp.com
-servers:
-  - url: 'https://{gateway-ip}:{port}'
-    description: The Gateway collector API server
-    variables:
-      port:
-        default: '5480'
-tags:
-  - name: opsramp-gateways
-    description: Access API endpoints to configure gateway deployed within customer infrastrucutre
-    externalDocs:
-      url: 'https://docs.opsramp.com/api/opsramp-gateways/'
