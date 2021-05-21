@@ -1,0 +1,1079 @@
+openapi: 3.0.0
+paths:
+  /v2/auth/token:
+    x-internal: true
+    summary: Get auth token to organization gateway
+    description: Get authentication for organization gateway
+    post:
+      summary: Provides the auth token for gateway endpoints execution
+      operationId: post-v2-auth-token
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  token:
+                    type: string
+                    minLength: 1
+                  expires_in:
+                    type: string
+                    minLength: 1
+                required:
+                  - token
+                  - expires_in
+                x-examples:
+                  example-1:
+                    token: 73a55e4a91bce97a4a99fb16a3c42409a1668612
+                    expires_in: '3599.987177'
+              examples:
+                example-1:
+                  value:
+                    token: 73a55e4a91bce97a4a99fb16a3c42409a1668612
+                    expires_in: '3599.987177'
+      tags:
+        - opsramp-gateways
+      description: Generates the auth token.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+            examples:
+              example-1:
+                value:
+                  username: user
+                  password: passx
+  /v2/gateway:
+    x-internal: true
+    summary: Get organization gateway configuration details
+    description: Get configuration details of gateway deployed within an organization
+    get:
+      summary: Gets the gateway configuration details
+      description: |
+        Gets the gateway configuration details deployed in the organization
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayConfig'
+              examples:
+                generalInfo:
+                  value:
+                    generalInfo:
+                      networkInformation:
+                        macAddress: '00:50:56:98:B5:8D'
+                        dhcp: Enabled
+                        defaultGateway: 172.25.0.1
+                        domainName: domain.com
+                        defaultInterface: ens160
+                        subnetMask: 255.255.0.0
+                        hostName: host
+                        ipAddress: xxx.xx.xxx.xxx
+                        dnsEntries: '8.8.8.8,8.8.4.4'
+                      applianceInformation:
+                        tunnelStatus: Not Established
+                        model: OGVMAU18
+                        registrationStatus: Not Registered
+                        applianceFirmwareVersion: 9.0.0
+                        firmwareBuildTag: 9.0.0-b208-202105191005
+                syslogInfo:
+                  value:
+                    syslogInfoList:
+                      - syslogInfo:
+                          selectors: '*.*'
+                          protocol: udp
+                          port: '514'
+                          receiver: 172.25.0.1
+                      - syslogInfo:
+                          selectors: '*.*'
+                          protocol: udp
+                          port: '514'
+                          receiver: 172.25.1.1
+                ntpInfo:
+                  value:
+                    ntpInfo:
+                      ntpStatus: 'ON'
+                      servers: '216.239.35.4,45.32.199.189'
+                      time: 'Thu May 20 05:09:42 UTC 2021'
+                servicesInfo:
+                  value:
+                    servicesInfo:
+                      - status: Service VProbe is inactive (not Running..)
+                        name: vprobe
+                      - status: Service NTP is Active (Running..)
+                        name: ntp
+                      - status: Service Database is inactive (not Running..)
+                        name: postgresql
+                      - status: Service Network is Active (Running..)
+                        name: network
+                      - status: Service Squid Proxy is inactive (not Running..)
+                        name: squid
+                      - status: Service Nginx  is Active (Running..)
+                        name: nginx
+                routesInfo:
+                  value:
+                    routesInfo:
+                      srouteIP: 172.125.18.116
+                      srouteGateway: 172.125.0.0
+                      srouteMetric: 0
+                      srouteSubnet: 255.255.0.0
+                      srouteInterface: enp0sX
+                tzInfo:
+                  value:
+                    tzInfo:
+                      regionanlTimezoneInformation:
+                        '(GMT+10:00) Russia': Vladivostok
+                        '(GMT) UK ': London
+                        '(GMT+4:00) Armenia, Azerbaijan': Muscat
+                        '(GMT+5:00) Pakistan': Karachi
+                        '(GMT-7:00) Mountain Time (US & Canada)': Mountain
+                        '(GMT+2:00) Israel ': Israel
+                defaultInfo:
+                  value:
+                    routesInfo: []
+                    syslogInfoList:
+                      - syslogInfo:
+                          selectors: '*.*'
+                          protocol: udp
+                          port: '514'
+                          receiver: 172.12.112.154
+                      - syslogInfo:
+                          selectors: '*.*'
+                          protocol: udp
+                          port: '514'
+                          receiver: 172.25.112.154
+                    servicesInfo:
+                      - status: Service VProbe is Active (Running..)
+                        name: vprobe
+                      - status: Service NTP is Active (Running..)
+                        name: ntp
+                      - status: Service Database is Active (Running..)
+                        name: postgresql
+                      - status: Service Network is Active (Running..)
+                        name: network
+                      - status: Service Squid Proxy is Active (Running..)
+                        name: squid
+                      - status: Service Nginx  is Active (Running..)
+                        name: nginx
+                    generalInfo:
+                      networkInformation:
+                        macAddress: '00:50:56:98:B5:8D'
+                        dhcp: Enabled
+                        defaultGateway: 172.25.0.1
+                        domainName: domain.com
+                        defaultInterface: ens160
+                        subnetMask: 255.255.0.0
+                        hostName: localhost
+                        ipAddress: 172.25.252.149
+                        dnsEntries: '8.8.8.8,8.8.4.4'
+                      applianceInformation:
+                        tunnelStatus: Established
+                        model: OGVMAU18
+                        registrationStatus: Registered
+                        applianceFirmwareVersion: 9.0.0
+                        firmwareBuildTag: 9.0.0-b208-202105191005
+                    tzInfo:
+                      regionanlTimezoneInformation:
+                        '(GMT+10:00) Russia': Vladivostok
+                        '(GMT) UK ': London
+                        '(GMT+4:00) Armenia, Azerbaijan': Muscat
+                        '(GMT+5:00) Pakistan': Karachi
+                        '(GMT-7:00) Mountain Time (US & Canada)': Mountain
+                        '(GMT+2:00) Israel ': Israel
+                        '(GMT+6:00) Bangladesh ': Dhaka
+                        '(GMT+10:00) Tasmania': Tasmania
+                        ' (GMT-4:00) Caracas, LaPaz  ': Caracas
+                        ' (GMT) UTC': UTC
+                        '(GMT-9:00) Alaska  ': Alaska
+                        '(GMT+10:00) Papua New Guinea': Hobart
+                        '(GMT-3:00) BuenosAires, Georgetown': Buenos_Aires
+                        '(GMT+11:00) Solomon Is., Magadan  ': Magadan
+                        '(GMT+5:00) Russia': Yekaterinburg
+                        '(GMT-12:00) Eniwetok, Kwajalein': Kwajalein
+                        '(GMT-5:00) EasternTime (US & Canada) ': Eastern
+                        '(GMT-3:30) Newfoundland': Newfoundland
+                        '(GMT+12:00) Fiji, Kamchatka, Marshall Is': Fiji
+                        ' (GMT+3:30) Iran ': Iran
+                        '(GMT+11:30) Norfolk I.': Norfolk
+                        '(GMT-5:00) Indiana (East)': Indianapolis
+                        '(GMT+9:30) Darwin': Darwin
+                        ' (GMT-9:30) Marquesas Is.': Marquesas
+                        '(GMT+9:30) Adelaide ': Adelaide
+                        ' (GMT+8:00) Russia': Irkutsk
+                        '(GMT-8:30) Pitcairn Is. ': Pitcairn
+                        '(GMT+1:00) Europe ': Amsterdam
+                        '(GMT-1:00) Azores, CapeVerde Is.': Azores
+                        '(GMT+4:30) Afghanistan': Kabul
+                        '(GMT+12:00) Russia  ': Kamchatka
+                        '(GMT+3:00) Turkey ': Turkey
+                        '(GMT-6:00) Central Time(US & Canada)': Central
+                        '(GMT+6:30) Burma': Rangoon
+                        '(GMT+10:00) Brisbane, Guam': Brisbane
+                        '(GMT-8:00) Pacific Time (US & Canada)': Pacific
+                        '(GMT+9:00) Russia ': Yakutsk
+                        ' (GMT-10:00) Hawaii': Hawaii
+                        ' (GMT-11:00) Midway I.,Samoa ': Samoa
+                        '(GMT+3:00) Iraq, Syria': Baghdad
+                        '(GMT+2:00) Egypt, Finland, Romania, Greece': Cairo
+                        '(GMT-6:00) MexicoCity, Tegucigalpa': Mexico_City
+                        '(GMT+8:00) China, Mongolia, Indonesia, Philippines, Australia': Hong_Kong
+                        '(GMT) Casablanca, Monrovia': Casablanca
+                        '(GMT-4:00) Atlantic Time (US & Canada)': Atlantic
+                        '(GMT+7:00) Thailand, Cambodia, Laos': Bangkok
+                        '(GMT+3:00) Moscow': Moscow
+                        '(GMT+5:30) India, Kolkata': Kolkata
+                        '(GMT-5:00) Bogota, Lima, Quito': Bogota
+                        '(GMT-7:00) Arizona': Arizona
+                        '(GMT+9:00) Tokyo, Korea': Tokyo
+                        '(GMT+7:00) Russia': Krasnoyarsk
+                        ' (GMT+12:00) NewZealand ': Auckland
+                        '(GMT+2:00) Jordan': Jerusalem
+                        '(GMT+6:00) Russia': Almaty
+                        '(GMT+10:00) Sydney, Melbourne': Sydney
+                        '(GMT+10:30) LordHowe I.': 'Lord_Howe '
+                    ntpInfo:
+                      ntpStatus: 'ON'
+                      servers: 216.239.35.4
+                      time: 'Wed May 19 22:35:09 AKDT 2021'
+      operationId: get-v2-gateway
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - generalInfo
+              - syslogInfo
+              - ntpInfo
+              - tzInfo
+              - servicesInfo
+              - routesInfo
+          in: query
+          name: info
+          description: required type of info
+  '/v2/gateway/actions/{actionName}':
+    x-internal: true
+    summary: Update organization gateway configurations
+    description: Update the supported configurations changes for deployed gateway wihtin organization
+    parameters:
+      - schema:
+          type: string
+          enum:
+            - registration
+            - restartAllServices
+            - monitService
+            - syslogAdd
+            - syslogDelete
+            - syslogReset
+            - ntpSync
+            - networkSettings
+            - dateTime
+            - passwdChange
+            - timeZone
+            - externalProxy
+            - staticRoutes
+            - syslogUpdate
+            - ntpUpdate
+          example: registration
+        name: actionName
+        in: path
+        required: true
+        description: Supported gateway config updates
+    post:
+      summary: Update gateway configurations
+      operationId: post-v2-gateway-actions-actionName
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successInfo'
+              examples:
+                monit-service-response:
+                  value:
+                    success: Service Nginx  is Active (Running..)
+                syslogAdd:
+                  value:
+                    success: Added syslog receiver successfully
+                syslogDelete:
+                  value:
+                    success: removed syslog receiver successfully
+                syslogReset:
+                  value:
+                    success: Syslog settings has been reset successfully
+                ntpSync:
+                  value:
+                    success: Successfully synchronized date using NTP.
+                passwdChange:
+                  value:
+                    success: admin password has been changed successfully.
+                registeration:
+                  value:
+                    success: Appliance registered successfully
+                networkSettings:
+                  value:
+                    success: Successfully updated network configuration.
+                staticRoutes:
+                  value:
+                    success: Successfully added the static route configuration.
+                dateTime:
+                  value:
+                    success: Successfully updated time and date
+                timeZone:
+                  value:
+                    success: Alaska Time Zone Successfully updated
+                'external-proxy ':
+                  value:
+                    success: Successfully updated proxy settings.
+                syslogUpdate:
+                  value:
+                    success: Updated syslog receiver successfully
+                ntpUpdate:
+                  value:
+                    success: Successfully updated NTP details
+                restartAllServices:
+                  value:
+                    success: Successfully restarted all services
+      description: Update gateway configurations within the organization.
+      tags:
+        - opsramp-gateways
+      requestBody:
+        content:
+          application/json:
+            schema:
+              anyOf:
+                - $ref: '#/components/schemas/monitService'
+                - $ref: '#/components/schemas/registration'
+                - $ref: '#/components/schemas/passwdChange'
+                - $ref: '#/components/schemas/ntpUpdate'
+                - $ref: '#/components/schemas/dateTime'
+                - $ref: '#/components/schemas/externalProxy'
+                - $ref: '#/components/schemas/timeZone'
+                - $ref: '#/components/schemas/gatewayConfig'
+            examples:
+              monitService:
+                value:
+                  monitService:
+                    service: nginx
+                    action: status
+              syslogAdd:
+                value:
+                  syslogInfo:
+                    receiver: 192.168.0.116
+                    port: '514'
+                    selectors: '*.*'
+                    protocol: UDP
+              syslogDelete:
+                value:
+                  syslogInfo:
+                    receiver: 192.168.0.116
+                    port: '514'
+                    selectors: '*.*'
+                    protocol: UDP
+              passwdChange:
+                value:
+                  passwdChange:
+                    username: admin
+                    oldpasswd: Pass@1234
+                    newpasswd: Pass@12345
+              registration:
+                value:
+                  registration:
+                    server: <podName>
+                    activation_token: xyz123
+              networkSettings:
+                value:
+                  networkSettings:
+                    domainname: domain.com
+                    hostname: localhost
+                    interface: enp0s3
+                    dhcp: 'False'
+                    ipaddr: xxx.xxx.x.xxx
+                    subnet: 255.255.255.0
+                    gateway: xxx.xxx.0.1
+                    dnsArray: xxx.xxx.0.1
+              staticRoutes:
+                value:
+                  staticRoutes:
+                    srouteIP: 10.10.5.0
+                    srouteGateway: 192.168.0.1
+                    srouteSubnet: 255.255.255.0
+                    srouteMetric: '0'
+                    srouteInterface: enp0s3
+              ntpupdates:
+                value:
+                  ntpUpdate:
+                    ntpServers:
+                      - 216.239.35.4
+                      - 45.32.199.189
+              dateTime:
+                value:
+                  dateTime:
+                    hour: '13'
+                    min: '02'
+                    sec: '02'
+                    date: 04-13-2021
+              timeZone:
+                value:
+                  timeZone:
+                    tzs: Alaska
+              externalProxy:
+                value:
+                  externalProxy:
+                    connection: proxy
+                    proxy_ip: 172.xx.xxx.xxx
+                    proxy_port: '3128'
+                    proxy_usr: xxx
+                    proxy_pwd: xxx
+              syslogUpdate:
+                value:
+                  syslogInfo:
+                    receiver: 192.168.0.116
+                    port: '514'
+                    selectors: '*.*'
+                    protocol: UDP
+              ntpUpdate:
+                value:
+                  ntpUpdate:
+                    ntpServers:
+                      - 216.239.35.4
+                      - 45.32.199.189
+components:
+  schemas:
+    gatewayConfig:
+      description: ''
+      type: object
+      x-examples:
+        generalInfo:
+          routesInfo: []
+          syslogInfoList:
+            - syslogInfo:
+                selectors: '*.*'
+                protocol: udp
+                port: '514'
+                receiver: 172.xx.xxx.xxx
+            - syslogInfo:
+                selectors: '*.*'
+                protocol: udp
+                port: '514'
+                receiver: 172.25.xx.xx
+          servicesInfo:
+            - status: Service VProbe is Active (Running..)
+              name: vprobe
+            - status: Service NTP is Active (Running..)
+              name: ntp
+            - status: Service Database is Active (Running..)
+              name: postgresql
+            - status: Service Network is Active (Running..)
+              name: network
+            - status: Service Squid Proxy is Active (Running..)
+              name: squid
+            - status: Service Nginx  is Active (Running..)
+              name: nginx
+          generalInfo:
+            networkInformation:
+              macAddress: '00:50:56:98:B5:8D'
+              dhcp: Enabled
+              defaultGateway: 172.25.0.1
+              domainName: domain.com
+              defaultInterface: ens160
+              subnetMask: 255.255.0.0
+              hostName: localhost
+              ipAddress: 172.25.252.149
+              dnsEntries: '8.8.8.8,8.8.4.4'
+            applianceInformation:
+              tunnelStatus: Established
+              model: OGVMAU18
+              registrationStatus: Registered
+              applianceFirmwareVersion: 9.0.0
+              firmwareBuildTag: 9.0.0-b208-202105191005
+          ntpInfo:
+            ntpStatus: 'ON'
+            servers: 216.239.35.4
+            time: 'Wed May 19 22:35:09 AKDT 2021'
+          tzInfo:
+            regionanlTimezoneInformation:
+              '(GMT+10:00) Russia': Vladivostok
+              '(GMT) UK ': London
+              '(GMT+4:00) Armenia, Azerbaijan': Muscat
+              '(GMT+5:00) Pakistan': Karachi
+              '(GMT-7:00) Mountain Time (US & Canada)': Mountain
+              '(GMT+2:00) Israel ': Israel
+              '(GMT+6:00) Bangladesh ': Dhaka
+              '(GMT+10:00) Tasmania': Tasmania
+              ' (GMT-4:00) Caracas, LaPaz  ': Caracas
+              ' (GMT) UTC': UTC
+              '(GMT-9:00) Alaska  ': Alaska
+              '(GMT+10:00) Papua New Guinea': Hobart
+              '(GMT-3:00) BuenosAires, Georgetown': Buenos_Aires
+              '(GMT+11:00) Solomon Is., Magadan  ': Magadan
+              '(GMT+5:00) Russia': Yekaterinburg
+              '(GMT-12:00) Eniwetok, Kwajalein': Kwajalein
+              '(GMT-5:00) EasternTime (US & Canada) ': Eastern
+              '(GMT-3:30) Newfoundland': Newfoundland
+              '(GMT+12:00) Fiji, Kamchatka, Marshall Is': Fiji
+              ' (GMT+3:30) Iran ': Iran
+              '(GMT+11:30) Norfolk I.': Norfolk
+              '(GMT-5:00) Indiana (East)': Indianapolis
+              '(GMT+9:30) Darwin': Darwin
+              ' (GMT-9:30) Marquesas Is.': Marquesas
+              '(GMT+9:30) Adelaide ': Adelaide
+              ' (GMT+8:00) Russia': Irkutsk
+              '(GMT-8:30) Pitcairn Is. ': Pitcairn
+              '(GMT+1:00) Europe ': Amsterdam
+              '(GMT-1:00) Azores, CapeVerde Is.': Azores
+              '(GMT+4:30) Afghanistan': Kabul
+              '(GMT+12:00) Russia  ': Kamchatka
+              '(GMT+3:00) Turkey ': Turkey
+              '(GMT-6:00) Central Time(US & Canada)': Central
+              '(GMT+6:30) Burma': Rangoon
+              '(GMT+10:00) Brisbane, Guam': Brisbane
+              '(GMT-8:00) Pacific Time (US & Canada)': Pacific
+              '(GMT+9:00) Russia ': Yakutsk
+              ' (GMT-10:00) Hawaii': Hawaii
+              ' (GMT-11:00) Midway I.,Samoa ': Samoa
+              '(GMT+3:00) Iraq, Syria': Baghdad
+              '(GMT+2:00) Egypt, Finland, Romania, Greece': Cairo
+              '(GMT-6:00) MexicoCity, Tegucigalpa': Mexico_City
+              '(GMT+8:00) China, Mongolia, Indonesia, Philippines, Australia': Hong_Kong
+              '(GMT) Casablanca, Monrovia': Casablanca
+              '(GMT-4:00) Atlantic Time (US & Canada)': Atlantic
+              '(GMT+7:00) Thailand, Cambodia, Laos': Bangkok
+              '(GMT+3:00) Moscow': Moscow
+              '(GMT+5:30) India, Kolkata': Kolkata
+              '(GMT-5:00) Bogota, Lima, Quito': Bogota
+              '(GMT-7:00) Arizona': Arizona
+              '(GMT+9:00) Tokyo, Korea': Tokyo
+              '(GMT+7:00) Russia': Krasnoyarsk
+              ' (GMT+12:00) NewZealand ': Auckland
+              '(GMT+2:00) Jordan': Jerusalem
+              '(GMT+6:00) Russia': Almaty
+              '(GMT+10:00) Sydney, Melbourne': Sydney
+              '(GMT+10:30) LordHowe I.': 'Lord_Howe '
+          value:
+            generalInfo:
+              networkInformation:
+                macAddress: '00:50:56:98:B5:8D'
+                dhcp: Enabled
+                defaultGateway: 172.25.0.1
+                domainName: domain.com
+                defaultInterface: ens160
+                subnetMask: 255.255.0.0
+                hostName: host
+                ipAddress: xxx.xx.xxx.xxx
+                dnsEntries: '8.8.8.8,8.8.4.4'
+              applianceInformation:
+                tunnelStatus: Not Established
+                model: OGVMAU18
+                registrationStatus: Not Registered
+                applianceFirmwareVersion: 9.0.0
+                firmwareBuildTag: 9.0.0-b208-202105191005
+      properties:
+        routesInfo: {}
+        syslogInfoList:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              syslogInfo:
+                type: object
+                properties:
+                  selectors:
+                    type: string
+                    minLength: 1
+                  protocol:
+                    type: string
+                    minLength: 1
+                  port:
+                    type: string
+                    minLength: 1
+                  receiver:
+                    type: string
+                    minLength: 1
+        servicesInfo:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+                minLength: 1
+              name:
+                type: string
+                minLength: 1
+        generalInfo:
+          type: object
+          properties:
+            networkInformation:
+              type: object
+              required:
+                - macAddress
+                - dhcp
+                - defaultGateway
+                - domainName
+                - defaultInterface
+                - subnetMask
+                - hostName
+                - ipAddress
+                - dnsEntries
+              properties:
+                macAddress:
+                  type: string
+                  minLength: 1
+                dhcp:
+                  type: string
+                  minLength: 1
+                defaultGateway:
+                  type: string
+                  minLength: 1
+                domainName:
+                  type: string
+                  minLength: 1
+                defaultInterface:
+                  type: string
+                  minLength: 1
+                subnetMask:
+                  type: string
+                  minLength: 1
+                hostName:
+                  type: string
+                  minLength: 1
+                ipAddress:
+                  type: string
+                  minLength: 1
+                dnsEntries:
+                  type: string
+                  minLength: 1
+            applianceInformation:
+              type: object
+              properties:
+                tunnelStatus:
+                  type: string
+                  minLength: 1
+                model:
+                  type: string
+                  minLength: 1
+                registrationStatus:
+                  type: string
+                  minLength: 1
+                applianceFirmwareVersion:
+                  type: string
+                  minLength: 1
+                firmwareBuildTag:
+                  type: string
+                  minLength: 1
+        ntpInfo:
+          type: object
+          properties:
+            ntpStatus:
+              type: string
+              minLength: 1
+            servers:
+              type: string
+              minLength: 1
+            time:
+              type: string
+              minLength: 1
+        tzInfo:
+          type: object
+          properties:
+            regionanlTimezoneInformation:
+              type: object
+              properties:
+                '(GMT+10:00) Russia':
+                  type: string
+                  minLength: 1
+                '(GMT) UK ':
+                  type: string
+                  minLength: 1
+                '(GMT+4:00) Armenia, Azerbaijan':
+                  type: string
+                  minLength: 1
+                '(GMT+5:00) Pakistan':
+                  type: string
+                  minLength: 1
+                '(GMT-7:00) Mountain Time (US & Canada)':
+                  type: string
+                  minLength: 1
+                '(GMT+2:00) Israel ':
+                  type: string
+                  minLength: 1
+                '(GMT+6:00) Bangladesh ':
+                  type: string
+                  minLength: 1
+                '(GMT+10:00) Tasmania':
+                  type: string
+                  minLength: 1
+                ' (GMT-4:00) Caracas, LaPaz  ':
+                  type: string
+                  minLength: 1
+                ' (GMT) UTC':
+                  type: string
+                  minLength: 1
+                '(GMT-9:00) Alaska  ':
+                  type: string
+                  minLength: 1
+                '(GMT+10:00) Papua New Guinea':
+                  type: string
+                  minLength: 1
+                '(GMT-3:00) BuenosAires, Georgetown':
+                  type: string
+                  minLength: 1
+                '(GMT+11:00) Solomon Is., Magadan  ':
+                  type: string
+                  minLength: 1
+                '(GMT+5:00) Russia':
+                  type: string
+                  minLength: 1
+                '(GMT-12:00) Eniwetok, Kwajalein':
+                  type: string
+                  minLength: 1
+                '(GMT-5:00) EasternTime (US & Canada) ':
+                  type: string
+                  minLength: 1
+                '(GMT-3:30) Newfoundland':
+                  type: string
+                  minLength: 1
+                '(GMT+12:00) Fiji, Kamchatka, Marshall Is':
+                  type: string
+                  minLength: 1
+                ' (GMT+3:30) Iran ':
+                  type: string
+                  minLength: 1
+                '(GMT+11:30) Norfolk I.':
+                  type: string
+                  minLength: 1
+                '(GMT-5:00) Indiana (East)':
+                  type: string
+                  minLength: 1
+                '(GMT+9:30) Darwin':
+                  type: string
+                  minLength: 1
+                ' (GMT-9:30) Marquesas Is.':
+                  type: string
+                  minLength: 1
+                '(GMT+9:30) Adelaide ':
+                  type: string
+                  minLength: 1
+                ' (GMT+8:00) Russia':
+                  type: string
+                  minLength: 1
+                '(GMT-8:30) Pitcairn Is. ':
+                  type: string
+                  minLength: 1
+                '(GMT+1:00) Europe ':
+                  type: string
+                  minLength: 1
+                '(GMT-1:00) Azores, CapeVerde Is.':
+                  type: string
+                  minLength: 1
+                '(GMT+4:30) Afghanistan':
+                  type: string
+                  minLength: 1
+                '(GMT+12:00) Russia  ':
+                  type: string
+                  minLength: 1
+                '(GMT+3:00) Turkey ':
+                  type: string
+                  minLength: 1
+                '(GMT-6:00) Central Time(US & Canada)':
+                  type: string
+                  minLength: 1
+                '(GMT+6:30) Burma':
+                  type: string
+                  minLength: 1
+                '(GMT+10:00) Brisbane, Guam':
+                  type: string
+                  minLength: 1
+                '(GMT-8:00) Pacific Time (US & Canada)':
+                  type: string
+                  minLength: 1
+                '(GMT+9:00) Russia ':
+                  type: string
+                  minLength: 1
+                ' (GMT-10:00) Hawaii':
+                  type: string
+                  minLength: 1
+                ' (GMT-11:00) Midway I.,Samoa ':
+                  type: string
+                  minLength: 1
+                '(GMT+3:00) Iraq, Syria':
+                  type: string
+                  minLength: 1
+                '(GMT+2:00) Egypt, Finland, Romania, Greece':
+                  type: string
+                  minLength: 1
+                '(GMT-6:00) MexicoCity, Tegucigalpa':
+                  type: string
+                  minLength: 1
+                '(GMT+8:00) China, Mongolia, Indonesia, Philippines, Australia':
+                  type: string
+                  minLength: 1
+                '(GMT) Casablanca, Monrovia':
+                  type: string
+                  minLength: 1
+                '(GMT-4:00) Atlantic Time (US & Canada)':
+                  type: string
+                  minLength: 1
+                '(GMT+7:00) Thailand, Cambodia, Laos':
+                  type: string
+                  minLength: 1
+                '(GMT+3:00) Moscow':
+                  type: string
+                  minLength: 1
+                '(GMT+5:30) India, Kolkata':
+                  type: string
+                  minLength: 1
+                '(GMT-5:00) Bogota, Lima, Quito':
+                  type: string
+                  minLength: 1
+                '(GMT-7:00) Arizona':
+                  type: string
+                  minLength: 1
+                '(GMT+9:00) Tokyo, Korea':
+                  type: string
+                  minLength: 1
+                '(GMT+7:00) Russia':
+                  type: string
+                  minLength: 1
+                ' (GMT+12:00) NewZealand ':
+                  type: string
+                  minLength: 1
+                '(GMT+2:00) Jordan':
+                  type: string
+                  minLength: 1
+                '(GMT+6:00) Russia':
+                  type: string
+                  minLength: 1
+                '(GMT+10:00) Sydney, Melbourne':
+                  type: string
+                  minLength: 1
+                '(GMT+10:30) LordHowe I.':
+                  type: string
+                  minLength: 1
+    monitService:
+      description: ''
+      type: object
+      properties:
+        monitService:
+          type: object
+          properties:
+            service:
+              type: string
+              minLength: 1
+            action:
+              type: string
+              minLength: 1
+          required:
+            - service
+            - action
+      required:
+        - monitService
+      x-examples: {}
+    passwdChange:
+      description: ''
+      type: object
+      properties:
+        passwdChange:
+          type: object
+          properties:
+            username:
+              type: string
+              minLength: 1
+            oldpasswd:
+              type: string
+              minLength: 1
+            newpasswd:
+              type: string
+              minLength: 1
+          required:
+            - username
+            - oldpasswd
+            - newpasswd
+      required:
+        - passwdChange
+      x-examples:
+        example-1:
+          passwdChange:
+            username: admin
+            oldpasswd: Pass@1234
+            newpasswd: Pass@12345
+    registration:
+      description: ''
+      type: object
+      properties:
+        registration:
+          type: object
+          properties:
+            server:
+              type: string
+              minLength: 1
+            activation_token:
+              type: string
+              minLength: 1
+          required:
+            - server
+            - activation_token
+      required:
+        - registration
+      x-examples:
+        example-1:
+          registration:
+            server: <podName>
+            activation_token: xyz123
+    ntpUpdate:
+      title: ntpUpdate
+      type: object
+      properties:
+        id:
+          type: string
+    dateTime:
+      description: ''
+      type: object
+      properties:
+        dateTime:
+          type: object
+          properties:
+            hour:
+              type: string
+              minLength: 1
+            min:
+              type: string
+              minLength: 1
+            sec:
+              type: string
+              minLength: 1
+            date:
+              type: string
+              minLength: 1
+          required:
+            - hour
+            - min
+            - sec
+            - date
+      required:
+        - dateTime
+      x-examples:
+        example-1:
+          dateTime:
+            hour: '13'
+            min: '02'
+            sec: '02'
+            date: 04-13-2021
+    externalProxy:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          externalProxy:
+            connection: proxy
+            proxy_ip: 172.xx.xxx.xxx
+            proxy_port: '3128'
+            proxy_usr: xxx
+            proxy_pwd: xxx
+      properties:
+        externalProxy:
+          type: object
+          required:
+            - proxy_ip
+            - proxy_port
+            - proxy_usr
+            - proxy_pwd
+          properties:
+            connection:
+              type: string
+              minLength: 1
+              enum:
+                - proxy
+                - direct
+            proxy_ip:
+              type: string
+              minLength: 1
+            proxy_port:
+              type: string
+              minLength: 1
+            proxy_usr:
+              type: string
+              minLength: 1
+            proxy_pwd:
+              type: string
+              minLength: 1
+      required:
+        - externalProxy
+    timeZone:
+      description: ''
+      type: object
+      properties:
+        timeZone:
+          type: object
+          properties:
+            tzs:
+              type: string
+              minLength: 1
+          required:
+            - tzs
+      required:
+        - timeZone
+      x-examples:
+        tz-alaska:
+          timeZone:
+            tzs: Alaska
+          value:
+            timeZone:
+              tzs: Alaska
+    successInfo:
+      description: ''
+      type: object
+      properties:
+        success:
+          type: string
+          minLength: 1
+      required:
+        - success
+      x-examples:
+        restarted:
+          success: Successfully restarted all services
+          value:
+            success: Successfully restarted all services
+  securitySchemes:
+    key:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: ''
+          refreshUrl: ''
+          scopes: {}
+info:
+  version: '2.0'
+  title: opsramp-gateways
+  description: Standalone Gateways API Documentation
+  contact:
+    name: OpsRamp Support
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
+    email: support@opsramp.com
+servers:
+  - url: 'https://{gateway-ip}:{port}'
+    description: The Gateway collector API server
+    variables:
+      port:
+        default: '5480'
+tags:
+  - name: opsramp-gateways
+    description: Access API endpoints to configure gateway deployed within customer infrastrucutre
+    externalDocs:
+      url: 'https://docs.opsramp.com/api/opsramp-gateways/'
