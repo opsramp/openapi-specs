@@ -869,6 +869,7 @@ components:
     monitService:
       description: ''
       type: object
+      x-examples: {}
       properties:
         monitService:
           type: object
@@ -879,15 +880,15 @@ components:
             action:
               type: string
               minLength: 1
-          required:
-            - service
-            - action
-      required:
-        - monitService
-      x-examples: {}
     passwdChange:
       description: ''
       type: object
+      x-examples:
+        example-1:
+          passwdChange:
+            username: admin
+            oldpasswd: Pass@1234
+            newpasswd: Pass@12345
       properties:
         passwdChange:
           type: object
@@ -901,21 +902,14 @@ components:
             newpasswd:
               type: string
               minLength: 1
-          required:
-            - username
-            - oldpasswd
-            - newpasswd
-      required:
-        - passwdChange
-      x-examples:
-        example-1:
-          passwdChange:
-            username: admin
-            oldpasswd: Pass@1234
-            newpasswd: Pass@12345
     registration:
       description: ''
       type: object
+      x-examples:
+        example-1:
+          registration:
+            server: <podName>
+            activation_token: xyz123
       properties:
         registration:
           type: object
@@ -926,16 +920,6 @@ components:
             activation_token:
               type: string
               minLength: 1
-          required:
-            - server
-            - activation_token
-      required:
-        - registration
-      x-examples:
-        example-1:
-          registration:
-            server: <podName>
-            activation_token: xyz123
     ntpUpdate:
       title: ntpUpdate
       type: object
@@ -945,6 +929,13 @@ components:
     dateTime:
       description: ''
       type: object
+      x-examples:
+        example-1:
+          dateTime:
+            hour: '13'
+            min: '02'
+            sec: '02'
+            date: 04-13-2021
       properties:
         dateTime:
           type: object
@@ -961,20 +952,6 @@ components:
             date:
               type: string
               minLength: 1
-          required:
-            - hour
-            - min
-            - sec
-            - date
-      required:
-        - dateTime
-      x-examples:
-        example-1:
-          dateTime:
-            hour: '13'
-            min: '02'
-            sec: '02'
-            date: 04-13-2021
     externalProxy:
       description: ''
       type: object
@@ -989,11 +966,6 @@ components:
       properties:
         externalProxy:
           type: object
-          required:
-            - proxy_ip
-            - proxy_port
-            - proxy_usr
-            - proxy_pwd
           properties:
             connection:
               type: string
@@ -1013,22 +985,9 @@ components:
             proxy_pwd:
               type: string
               minLength: 1
-      required:
-        - externalProxy
     timeZone:
       description: ''
       type: object
-      properties:
-        timeZone:
-          type: object
-          properties:
-            tzs:
-              type: string
-              minLength: 1
-          required:
-            - tzs
-      required:
-        - timeZone
       x-examples:
         tz-alaska:
           timeZone:
@@ -1036,20 +995,25 @@ components:
           value:
             timeZone:
               tzs: Alaska
+      properties:
+        timeZone:
+          type: object
+          properties:
+            tzs:
+              type: string
+              minLength: 1
     successInfo:
       description: ''
       type: object
-      properties:
-        success:
-          type: string
-          minLength: 1
-      required:
-        - success
       x-examples:
         restarted:
           success: Successfully restarted all services
           value:
             success: Successfully restarted all services
+      properties:
+        success:
+          type: string
+          minLength: 1
   securitySchemes:
     key:
       type: oauth2
