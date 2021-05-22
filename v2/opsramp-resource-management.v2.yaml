@@ -6772,14 +6772,13 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/resources/auditRecordings':
+    x-internal: true
+    summary: Get console recording details of resources.
+    description: Get console recording of resources for an organizaion.
     parameters:
-      - schema:
-          type: string
-        name: tenantId
-        in: path
-        required: true
+      - $ref: '#/components/parameters/tenantId'
     get:
-      summary: Your GET endpoint
+      summary: Get console recording of resources
       tags: []
       responses:
         '200':
@@ -6893,11 +6892,6 @@ paths:
                                   - consoleProtocol
                                   - url
                                   - notes
-                            required:
-                              - resourceId
-                      required:
-                        - client_Id
-                        - name
                   totalResults:
                     type: number
                   orderBy:
@@ -6917,17 +6911,6 @@ paths:
                     type: number
                   descendingOrder:
                     type: boolean
-                required:
-                  - results
-                  - totalResults
-                  - orderBy
-                  - pageNo
-                  - pageSize
-                  - totalPages
-                  - nextPage
-                  - nextPageNo
-                  - previousPageNo
-                  - descendingOrder
               examples:
                 example-1:
                   value:
@@ -6953,7 +6936,7 @@ paths:
                     nextPageNo: 0
                     previousPageNo: 0
                     descendingOrder: true
-      operationId: get-api-v2-tenants-tenantId-resources-auditRecordings
+      operationId: ''
       parameters:
         - schema:
             type: number
