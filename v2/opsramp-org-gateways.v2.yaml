@@ -18,7 +18,6 @@ tags:
     description: Access API endpoints to configure gateway deployed within customer infrastrucutre
     externalDocs:
       url: 'https://docs.opsramp.com/api/opsramp-gateways/'
-
 paths:
   /v2/auth/token:
     x-internal: true
@@ -80,7 +79,8 @@ paths:
       summary: Gets the gateway configuration details
       description: |
         Gets the gateway configuration details deployed in the organization
-      tags: []
+      tags:
+        - opsramp-gateways
       responses:
         '200':
           description: OK
@@ -1035,10 +1035,10 @@ components:
           type: string
           minLength: 1
   securitySchemes:
-    key:
+    accessToken:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: ''
-          refreshUrl: ''
+          tokenUrl: 'https://gateway-ip:5480/v2/auth/token'
           scopes: {}
+         
