@@ -7013,6 +7013,62 @@ paths:
       description: Unassign custom attribute mapping on given resource of the organization.
       tags:
         - resource-management
+  '/api/v2/tenants/{clientId}/sites/{siteId}/childs':
+    summary: Manages resources for the Site.
+    description: Assign or Unassign resources for a Site.
+    parameters:
+      - schema:
+          type: string
+        name: siteId
+        in: path
+        required: true
+        description: Location SiteId
+      - schema:
+          type: string
+        name: clientId
+        in: path
+        required: true
+        description: ClientId of the tenant
+    post:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+      description: Assigns resources for a Site
+      tags:
+        - resource-management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/siteResources'
+            examples:
+              example-1:
+                value:
+                  - uuid: c7ee6551-ddc2-41ae-97bd-85066f22be1e
+                    name: location1
+                  - uuid: c722b5fc-bb86-40e3-8993-d59fd584c360
+                    name: location2
+    delete:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+      description: Unassigns resources for a Site
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/siteResources'
+            examples:
+              example-1:
+                value:
+                  - uuid: c7ee6551-ddc2-41ae-97bd-85066f22be1e
+                    name: location1
+                  - uuid: c722b5fc-bb86-40e3-8993-d59fd584c360
+                    name: location2
+      tags:
+        - resource-management
 components:
   securitySchemes:
     accessToken:
@@ -8427,4 +8483,27 @@ components:
           type: string
         ResourceName:
           type: string
+    siteResources:
+      type: array
+      description: ''
+      minItems: 1
+      uniqueItems: true
+      items:
+        type: object
+        required:
+          - uuid
+          - name
+        properties:
+          uuid:
+            type: string
+            minLength: 1
+          name:
+            type: string
+            minLength: 1
+      x-examples:
+        example-1:
+          - uuid: c7ee6551-ddc2-41ae-97bd-85066f22be1e
+            name: location1
+          - uuid: c722b5fc-bb86-40e3-8993-d59fd584c360
+            name: location2
   responses: {}
