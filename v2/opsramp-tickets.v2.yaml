@@ -5757,6 +5757,7 @@ paths:
 
 
 
+
                             System uptime is critical  : 0day(s);1hour(s);23minute(s);
                           Auto Stopped Services:
 
@@ -5908,6 +5909,7 @@ paths:
                       - id: INC0000000094
                         subject: 'System uptime is critical  : 0day(s);4hour(s);58minute(s);'
                         description: |2-
+
 
 
 
@@ -17856,7 +17858,7 @@ components:
       schema:
         type: string
       required: true
-      description: Describes clientId or mspId of the tenant
+      description: Describes the clientId of the tenant
     changeRequestId:
       name: changeRequestId
       in: path
