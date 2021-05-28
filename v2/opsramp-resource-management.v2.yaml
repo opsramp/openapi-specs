@@ -6774,167 +6774,266 @@ paths:
   '/api/v2/tenants/{tenantId}/resources/auditRecordings':
     x-internal: true
     summary: Get console recording details of resources.
-    description: Get console recording of resources for an organizaion.
+    description: "Get console recording of resources for an organization.\n\n##### Query Variables  \n| Variable         \t| Allowed Values    \t\t            | Description               |  Format / Example  \t\t\t|\n|-------------------|-----------------------------------|---------------------------|-------------------------|\n|\tid\t\t          \t|\t\t\t\t\t\t\t                      |\trecording id\t\t         \t|\t\t              \t\t\t\t|\n|\tclientId\t\t|\t\t\t\t\t\t\t            |\tclient uniqueId\t\t\t|Ex. client_1\t\t\t\t|\n|\tuserId\t\t\t|\t\t\t\t\t\t\t            |\tuser uniqueId\t\t\t|Ex. USR0000000001\t\t\t|\n|\tstartDate\t\t|\t\t\t\t\t\t\t            | Date range `start time`\t|Ex. 2021-01-05T05:17:58 0000|\n|\tendDate\t\t\t|\t\t\t\t\t\t\t            | Date range `end time`\t|Ex. 2021-01-05T05:17:58 0000    |\n|   resourceId      |\t\t\t\t\t\t\t            |   resource uniqueId\t  \t|\t\t\t\t\t\t\t|\n|\tticketId\t\t|\t\t\t\t\t\t\t            |\tticket uniqueId\t\t\t|Ex. INC0000000001\t\t\t|\n|\tgatewayId\t\t|\t\t\t\t\t\t\t            |\tgateway profile uniqueId|\t\t\t\t\t\t\t|\n|\tconsoleType\t\t| RDP,SSH,TELNET| \tprotocol                |\t\t\t\t\t\t\t|\n|\trecStatus\t\t| Open,Completed\t\t                | \trecording status\t    |\t\t\t\t\t\t\t|\n\n  "
     parameters:
       - $ref: '#/components/parameters/tenantId'
     get:
       summary: Get console recording of resources
-      tags: []
+      tags:
+        - resource-management
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                description: ''
-                type: object
-                x-examples:
-                  example-1:
+                $ref: '#/components/schemas/auditRecordings'
+              examples:
+                consoles-search-all:
+                  value:
                     results:
-                      - client_Id: client_22
-                        name: ConsoleClient
-                        auditRecording:
-                          - resourceId: name
-                            auditDetails:
-                              ticketId: INC0000000001
-                              startTime: '2020-12-18T10:32:10+0000'
-                              endTime: '2020-12-18T10:35:57+0000'
-                              consoleProtocol: SSH
-                              url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/311'
-                              notes: tes lastest
-                          - resourceId: name
-                            auditDetails:
-                              ticketId: INC0000000001
-                              startTime: '2020-12-18T10:32:10+0000'
-                              endTime: '2020-12-18T10:35:57+0000'
-                              consoleProtocol: SSH
-                              url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/311'
-                              notes: tes lastest
-                      - client_Id: client_22
-                        name: ConsoleClient
-                        auditRecording:
-                          - resourceId: name
-                            auditDetails:
-                              ticketId: INC0000000001
-                              startTime: '2020-12-18T10:32:10+0000'
-                              endTime: '2020-12-18T10:35:57+0000'
-                              consoleProtocol: SSH
-                              url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/311'
-                              notes: tes lastest
-                          - resourceId: name
-                            auditDetails:
-                              ticketId: INC0000000001
-                              startTime: '2020-12-18T10:32:10+0000'
-                              endTime: '2020-12-18T10:35:57+0000'
-                              consoleProtocol: SSH
-                              url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/311'
-                              notes: tes lastest
-                    totalResults: 2
-                    orderBy: client_Id
+                      - id: '743'
+                        resoruceId: ad05b24b-6e61-4101-8718-049ba5370b3a
+                        userId: USR000000003
+                        startTime: '2021-05-21T08:25:57+0000'
+                        endTime: '2021-05-21T08:26:32+0000'
+                        consoleProtocol: SSH
+                        url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/NzQz'
+                        notes: test
+                        playbackCodec: HTML5
+                        recStatus: Completed
+                      - id: '742'
+                        resoruceId: ad05b24b-6e61-4101-8718-049ba5370b3a
+                        userId: USR000000003
+                        gatewayId: 003cccd3-1283-4462-861f-de01a617ec4e
+                        ticketId: INC0000000001
+                        startTime: '2021-05-21T08:10:48+0000'
+                        endTime: '2021-05-21T08:11:19+0000'
+                        consoleProtocol: RDP
+                        url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/NzQy'
+                        notes: test RDP
+                        playbackCodec: HTML5
+                        recStatus: Completed
+                      - id: '741'
+                        resoruceId: ad05b24b-6e61-4101-8718-049ba5370b3a
+                        userId: USR000000003
+                        startTime: '2021-05-18T14:45:51+0000'
+                        endTime: '2021-05-18T14:46:12+0000'
+                        consoleProtocol: SSH
+                        url: 'https://app.opsramp.com/computer.do?action=launchPlayer&recId=741'
+                        notes: test
+                        playbackCodec: NRC
+                        recStatus: Completed
+                      - id: '740'
+                        resoruceId: ad05b24b-6e61-4101-8718-049ba5370b3a
+                        userId: USR000000003
+                        gatewayId: 003cccd3-1283-4462-861f-de01a617ec4e
+                        startTime: '2021-05-18T13:59:32+0000'
+                        endTime: '2021-05-18T14:01:17+0000'
+                        consoleProtocol: RDP
+                        url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/NzQw'
+                        notes: ops test
+                        playbackCodec: HTML5
+                        recStatus: Completed
+                      - id: '739'
+                        resoruceId: ad05b24b-6e61-4101-8718-049ba5370b3a
+                        userId: USR000000003
+                        ticketId: INC0000000001
+                        startTime: '2021-05-18T13:55:05+0000'
+                        endTime: '2021-05-18T14:01:14+0000'
+                        consoleProtocol: SSH
+                        url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/NzM5'
+                        notes: test
+                        playbackCodec: HTML5
+                        recStatus: Completed
+                    totalResults: 650
+                    orderBy: id
                     pageNo: 1
                     pageSize: 5
-                    totalPages: 45
+                    totalPages: 130
                     nextPage: true
                     nextPageNo: 2
                     previousPageNo: 0
                     descendingOrder: true
-                properties:
-                  results:
-                    type: array
-                    uniqueItems: true
-                    minItems: 1
-                    items:
-                      type: object
-                      properties:
-                        client_Id:
-                          type: string
-                          minLength: 1
-                        name:
-                          type: string
-                          minLength: 1
-                        auditRecording:
-                          type: array
-                          uniqueItems: true
-                          minItems: 1
-                          items:
-                            type: object
-                            properties:
-                              resourceId:
-                                type: string
-                                minLength: 1
-                              auditDetails:
-                                type: object
-                                properties:
-                                  ticketId:
-                                    type: string
-                                    minLength: 1
-                                  startTime:
-                                    type: string
-                                    minLength: 1
-                                  endTime:
-                                    type: string
-                                    minLength: 1
-                                  consoleProtocol:
-                                    type: string
-                                    minLength: 1
-                                  url:
-                                    type: string
-                                    minLength: 1
-                                  notes:
-                                    type: string
-                                    minLength: 1
-                                  id:
-                                    type: string
-                                required:
-                                  - ticketId
-                                  - startTime
-                                  - endTime
-                                  - consoleProtocol
-                                  - url
-                                  - notes
-                  totalResults:
-                    type: number
-                  orderBy:
-                    type: string
-                    minLength: 1
-                  pageNo:
-                    type: number
-                  pageSize:
-                    type: number
-                  totalPages:
-                    type: number
-                  nextPage:
-                    type: boolean
-                  nextPageNo:
-                    type: number
-                  previousPageNo:
-                    type: number
-                  descendingOrder:
-                    type: boolean
-              examples:
-                example-1:
+                single-console:
                   value:
                     results:
-                      - client_Id: string
-                        name: string
-                        auditRecording:
-                          - resourceId: string
-                            auditDetails:
-                              ticketId: string
-                              startTime: string
-                              endTime: string
-                              consoleProtocol: string
-                              url: string
-                              notes: string
-                              id: string
-                    totalResults: 0
-                    orderBy: string
-                    pageNo: 0
-                    pageSize: 0
-                    totalPages: 0
-                    nextPage: true
-                    nextPageNo: 0
+                      - id: '311'
+                        resoruceId: ad05b24b-6e61-4101-8718-049ba5370b3a
+                        userId: USR000000003
+                        ticketId: INC0000000001
+                        startTime: '2020-12-18T10:32:10+0000'
+                        endTime: '2020-12-18T10:35:57+0000'
+                        consoleProtocol: SSH
+                        url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/MzEx'
+                        notes: browser consoles test
+                        playbackCodec: HTML5
+                        recStatus: Completed
+                    totalResults: 1
+                    orderBy: id
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
                     previousPageNo: 0
+                    descendingOrder: true
+                consoles-by-users:
+                  value:
+                    results:
+                      - id: '503'
+                        resoruceId: ad05b24b-6e61-4101-8718-049ba5370b3a
+                        userId: USR000000005
+                        startTime: '2021-05-21T08:25:57+0000'
+                        endTime: '2021-05-21T08:26:32+0000'
+                        consoleProtocol: SSH
+                        url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/NzQz'
+                        notes: test
+                        playbackCodec: HTML5
+                        recStatus: Completed
+                      - id: '266'
+                        resoruceId: ad05b24b-6e61-4101-8718-049ba5370b3a
+                        userId: USR000000005
+                        gatewayId: 003cccd3-1283-4462-861f-de01a617ec4e
+                        ticketId: INC0000000001
+                        startTime: '2021-05-21T08:10:48+0000'
+                        endTime: '2021-05-21T08:11:19+0000'
+                        consoleProtocol: RDP
+                        url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/NzQy'
+                        notes: test
+                        playbackCodec: HTML5
+                        recStatus: Completed
+                    totalResults: 2
+                    orderBy: id
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                console-by-tenant:
+                  value:
+                    results:
+                      - id: '450'
+                        client:
+                          uniqueId: client_35
+                          name: Demo
+                        resoruceId: yx3z4e21-5e51-7101-3718-0d92a5376b0s
+                        userId: USR000000021
+                        startTime: '2021-04-16T15:14:43+0000'
+                        endTime: '2021-04-16T15:15:14+0000'
+                        consoleProtocol: SSH
+                        url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/NjQ3'
+                        notes: demo
+                        playbackCodec: HTML5
+                        recStatus: Completed
+                    totalResults: 1
+                    orderBy: id
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                console-by-mgmt-profiles:
+                  value:
+                    results:
+                      - id: '150'
+                        client:
+                          uniqueId: client_22
+                          name: ConsoleClient
+                        resoruceId: ad05b24b-6e61-4101-8718-049ba5370b3a
+                        userId: USR0000002711
+                        gatewayId: 010ddd3c-1283-4462-861f-ht673f48de2d
+                        startTime: '2020-08-27T15:00:23+0000'
+                        endTime: '2020-08-27T15:00:23+0000'
+                        consoleProtocol: SSH
+                        url: 'https://app.opsramp.com/computer.do?action=launchPlayer&recId=266'
+                        playbackCodec: NRC
+                        recStatus: Completed
+                    totalResults: 1
+                    orderBy: id
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                console-by-page:
+                  value:
+                    results:
+                      - id: '699'
+                        client:
+                          uniqueId: client_22
+                          name: ConsoleClient
+                        resoruceId: ad05b24b-6e61-4101-8718-049ba5370b3a
+                        userId: USR000000003
+                        startTime: '2021-05-06T07:51:35+0000'
+                        endTime: '2021-05-06T07:54:06+0000'
+                        consoleProtocol: SSH
+                        url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/Njk5'
+                        notes: test
+                        playbackCodec: HTML5
+                        recStatus: Completed
+                      - id: '698'
+                        client:
+                          uniqueId: client_22
+                          name: ConsoleClient
+                        resoruceId: ad05b24b-6e61-4101-8718-049ba5370b3a
+                        userId: USR000000003
+                        startTime: '2021-05-06T07:25:36+0000'
+                        endTime: '2021-05-06T07:50:34+0000'
+                        consoleProtocol: SSH
+                        url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/Njk4'
+                        notes: test
+                        playbackCodec: HTML5
+                        recStatus: Completed
+                      - id: '697'
+                        client:
+                          uniqueId: client_22
+                          name: ConsoleClient
+                        resoruceId: ad05b24b-6e61-4101-8718-049ba5370b3a
+                        userId: USR000000003
+                        startTime: '2021-05-06T07:10:03+0000'
+                        endTime: '2021-05-06T07:22:02+0000'
+                        consoleProtocol: SSH
+                        url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/Njk3'
+                        notes: test
+                        playbackCodec: HTML5
+                        recStatus: Completed
+                      - id: '696'
+                        client:
+                          uniqueId: client_22
+                          name: ConsoleClient
+                        resoruceId: ad05b24b-6e61-4101-8718-049ba5370b3a
+                        userId: USR000000003
+                        startTime: '2021-05-06T07:08:59+0000'
+                        endTime: '2021-05-06T07:09:37+0000'
+                        consoleProtocol: SSH
+                        url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/Njk2'
+                        notes: test
+                        playbackCodec: HTML5
+                        recStatus: Completed
+                      - id: '695'
+                        client:
+                          uniqueId: client_22
+                          name: ConsoleClient
+                        resoruceId: ad05b24b-6e61-4101-8718-049ba5370b3a
+                        userId: USR000000003
+                        startTime: '2021-05-06T07:07:07+0000'
+                        endTime: '2021-05-06T07:07:49+0000'
+                        consoleProtocol: SSH
+                        url: 'https://app.opsramp.com/itop/webconsole/launchHtml5Player/Njk1'
+                        notes: test
+                        playbackCodec: HTML5
+                        recStatus: Completed
+                    totalResults: 681
+                    orderBy: id
+                    pageNo: 10
+                    pageSize: 5
+                    totalPages: 137
+                    nextPage: true
+                    nextPageNo: 11
+                    previousPageNo: 9
                     descendingOrder: true
       operationId: ''
       parameters:
@@ -6942,14 +7041,32 @@ paths:
             type: number
           in: query
           name: pageNo
+          description: queried page
         - schema:
             type: number
           in: query
           name: pageSize
+          description: size of the query objects
         - schema:
             type: string
           in: query
           name: queryString
+          description: queryString
+      description: |
+        **Example**:
+        * https://api.opsramp.com/api/v2/tenants/msp_20/resources/auditRecordings/search
+        * https://api.opsramp.com/api/v2/tenants/client_22/resources/auditRecordings/search
+        * https://api.opsramp.com/api/v2/tenants/msp_20/resources/auditRecordings/search?pageSize=2&queryString=userId:USR0000002113+resourceId:ad05b24b-6e61-4101-8718-049ba5370b3a+ticketId:INC0000000001+startDate:2020-12-12T01:13:12 0000+endDate:2021-01-03T01:13:12 0000+clientId:client_35
+        * https://api.opsramp.com/api/v2/tenants/client_22/resources/auditRecordings/search?pageNo=1&pageSize=10&isDescendingOrder=true&queryString=recStatus:Completed+consoleType:SSH+playbackCodec:HTML5+gatewayId:003cccd3-1283-4462-861f-de01a617ec4e
+
+        **Note**: 
+        * _Special characters in Query string_
+          * **(+)** indicates next field and must be URL encoded.
+          * **(:)** indicates Equals. Example key : value
+          * **(,)** Indicates Multiple values for a key (_Ex_: Priority:P0,P1)
+          * Space characters must be URL encoded.
+          * Date format must be yyyy-MM-ddTHH:mm:ssZ (GMT).
+          * (+   or  %2B)  can be used in the above URL with queryString
   '/api/v2/tenants/{varId}/customAttributes/{attributeId}/values/{valueId}/devices/{deviceId}':
     summary: Unassign custom attributes for a resource
     description: Unassign custom attributes on the  resources of organization
@@ -7073,6 +7190,122 @@ paths:
                     name: hostname-2
       tags:
         - resource-management
+  '/api/v2/tenants/{tenantId}/resources/{resourceId}/remoteConsoles':
+    x-internal: true
+    summary: Manages remote consoles of the resource.
+    description: "Create or list all the remote consoles of the resource.\n##### Supported Fields\n|\tName\t\t\t|\tType\t| \tMandatory\t|\tReferences\t\t\t                |\n|-------------------|-----------|---------------|---------------------------------------|\n| consoleConnector\t|\tString\t| \ttrue\t\t| Agent, Gateway\t\t                |\n| consoleProtocol\t|\tString\t|\ttrue\t\t| SSH,RDP,TELNET  |\n| ipAddress         |   String \t|   true    \t|                   \t                |\n| port\t\t\t\t|\tInteger\t|\ttrue\t\t|\t\t\t\t\t\t                |\n| consoleAuthType\t|\tString\t| \tfalse\t\t| PASSWORD, PUBLICKEY\t                |\n| userName         \t|   String \t|   false   \t|                   \t                |\n| password\t\t\t|\tString\t|\tfalse\t\t|\t\t\t\t\t\t                |\n| name              |   String  |   false       |                                       |"
+    parameters:
+      - schema:
+          type: string
+        name: tenantId
+        in: path
+        required: true
+        description: clientId of the tenant
+      - schema:
+          type: string
+        name: resourceId
+        in: path
+        required: true
+        description: 'resource uuid '
+    get:
+      summary: List all the remote consoles on the resource
+      tags:
+        - resource-management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listRemoteConsoles'
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - consoleConnector: Agent
+                        consoleProtocol: RDP
+                        name: RDp console
+                      - consoleConnector: Agent
+                        consoleProtocol: RDP
+                        name: 'RDP 172.26.105.140:3389'
+                      - consoleConnector: Agent
+                        consoleProtocol: RDP
+                        name: RDP Test Console
+                      - consoleConnector: Gateway
+                        consoleProtocol: RDP
+                        name: 'RDP 192.168.56.121: 23'
+                      - consoleConnector: Agent
+                        consoleAuthType: PASSWORD
+                        consoleProtocol: SSH
+                        name: 'SSH 1.2.4.35: 22'
+                    totalResults: 17
+                    pageNo: 1
+                    pageSize: 5
+                    totalPages: 4
+                    nextPage: true
+                    nextPageNo: 2
+                    previousPageNo: 0
+                    descendingOrder: false
+      operationId: ''
+      description: |
+        **Example**:
+        * https://api.opsramp.com/api/v2/tenants/client_22/resources/ad05b24b-6e61-4101-8718-049ba5370b3a/remoteConsoles
+        * https://api.opsramp.com/api/v2/tenants/client_22/resources/ad05b24b-6e61-4101-8718-049ba5370b3a/remoteConsoles?pageNo=1&pageSize=5
+    post:
+      summary: Create remote consoles
+      operationId: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/remoteConsole'
+              examples:
+                example-1:
+                  value:
+                    - ipAddress: 192.168.56.103
+                      port: '22'
+                      consoleConnector: Agent
+                      consoleAuthType: PASSWORD
+                      consoleProtocol: SSH
+                      userName: vadmin
+                      name: Agent SSH console
+                    - ipAddress: 192.168.56.112
+                      port: '3389'
+                      consoleConnector: Gateway
+                      consoleProtocol: RDP
+                      name: Gateway RDP
+      tags:
+        - resource-management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/remoteConsole'
+            examples:
+              example-1:
+                value:
+                  - consoleConnector: Agent
+                    consoleAuthType: PASSWORD
+                    consoleProtocol: SSH
+                    ipAddress: 192.168.56.103
+                    port: '22'
+                    userName: vadmin
+                    name: Agent SSH console
+                  - consoleConnector: Gateway
+                    consoleProtocol: RDP
+                    ipAddress: 192.168.56.112
+                    port: '3389'
+                    name: Gateway RDP
+        description: ''
+      description: |
+        **Note**:
+        * consoleAuthTypes - PASSWORD or PUBLICKEY only applicable if the consoleProtocol is SSH.
+        * consoleProtocol - TELNET,SSH,RDP  for browser consoles
+
+        **Example**:
+        * https://api.opsramp.com/api/v2/tenants/client_22/resources/ad05b24b-6e61-4101-8718-049ba5370b3a/remoteConsoles
 components:
   securitySchemes:
     accessToken:
@@ -8509,4 +8742,163 @@ components:
             type: string
             minLength: 1
             description: Hostname of the resource
+    auditRecordings:
+      description: ''
+      type: object
+      x-examples: {}
+      title: remoteConsoles
+      properties:
+        results:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                minLength: 1
+              resoruceId:
+                type: string
+                minLength: 1
+              userId:
+                type: string
+                minLength: 1
+              gatewayId:
+                type: string
+                minLength: 1
+              ticketId:
+                type: string
+                minLength: 1
+              startTime:
+                type: string
+                minLength: 1
+              endTime:
+                type: string
+                minLength: 1
+              consoleProtocol:
+                type: string
+                minLength: 1
+              url:
+                type: string
+                minLength: 1
+              notes:
+                type: string
+                minLength: 1
+              playbackCodec:
+                type: string
+                minLength: 1
+              recStatus:
+                type: string
+                minLength: 1
+        totalResults:
+          type: number
+        orderBy:
+          type: string
+          minLength: 1
+        pageNo:
+          type: number
+        pageSize:
+          type: number
+        totalPages:
+          type: number
+        nextPage:
+          type: boolean
+        nextPageNo:
+          type: number
+        previousPageNo:
+          type: number
+        descendingOrder:
+          type: boolean
+      required:
+        - totalResults
+        - orderBy
+        - pageNo
+        - pageSize
+        - totalPages
+        - nextPage
+        - nextPageNo
+        - previousPageNo
+        - descendingOrder
+    listRemoteConsoles:
+      description: ''
+      type: object
+      x-examples: {}
+      title: remoteConsoles
+      properties:
+        results:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              consoleConnector:
+                type: string
+                minLength: 1
+              consoleAuthType:
+                type: string
+                minLength: 1
+              consoleProtocol:
+                type: string
+                minLength: 1
+              name:
+                type: string
+                minLength: 1
+        totalResults:
+          type: number
+        pageNo:
+          type: number
+        pageSize:
+          type: number
+        totalPages:
+          type: number
+        nextPage:
+          type: boolean
+        nextPageNo:
+          type: number
+        previousPageNo:
+          type: number
+        descendingOrder:
+          type: boolean
+      required:
+        - totalResults
+        - pageNo
+        - pageSize
+        - totalPages
+        - nextPage
+        - nextPageNo
+        - previousPageNo
+        - descendingOrder
+    remoteConsole:
+      type: array
+      description: ''
+      minItems: 1
+      uniqueItems: true
+      x-examples: {}
+      title: remoteConsole
+      items:
+        type: object
+        properties:
+          consoleConnector:
+            type: string
+            minLength: 1
+          consoleAuthType:
+            type: string
+            minLength: 1
+          consoleProtocol:
+            type: string
+            minLength: 1
+          ipAddress:
+            type: string
+            minLength: 1
+          port:
+            type: string
+            minLength: 1
+          userName:
+            type: string
+            minLength: 1
+          name:
+            type: string
+            minLength: 1
   responses: {}
