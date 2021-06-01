@@ -10,3 +10,14 @@ from uuid import UUID
 import semver
 
 
+# Tenant
+class Tenant(BaseModel):
+    tenantId: str
+
+# Agent policies
+class AgentPolicies(BaseModel):
+    agentPolicyId: UUID
+
+# List of agent policies
+ListAgentPolicies = {}
+

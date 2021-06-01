@@ -2,8 +2,7 @@ from typing import List, Optional
 from sqlalchemy.orm import Session
 from fastapi import Depends, FastAPI, HTTPException, File, Form, UploadFile
 from pydantic import BaseSettings
-from opsramp_api_utils import utils
-#from database import SessionLocal, engine
+from opsrampapiutils import utils as utils
 from uuid import UUID
 import schemas
 import semver
@@ -15,6 +14,11 @@ from openapi import openapi
 from security import security
 from servers import servers
 import yaml
+
+OAS_FILENAME = 'opsramp-alerts.v2.generated.yaml'
+OAS_DIR = 'oas-files'
+OAS_FILEPATH = OAS_DIR + '/' + OAS_FILENAME
+
 
 app = FastAPI( title = "Generate Agent Management APIs",
     description = "Live mock API endpoints",
@@ -52,5 +56,5 @@ if __name__ == '__main__':
     oas["servers"] = servers
     oas["security"] = security
 
-    with open('generated-opsramp.v2.yaml', 'w') as f:
+    with open(OAS_FILEPATH, 'w') as f:
         data = yaml.dump(oas, f, default_flow_style=False, sort_keys=False)

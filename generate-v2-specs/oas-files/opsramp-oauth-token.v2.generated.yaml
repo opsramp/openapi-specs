@@ -8,11 +8,17 @@ info:
     email: support@opsramp.com
     url: https://www.opsramp.com/about-opsramp/contact-us
 servers:
-  url: https://{subdomain}.api.opsramp.com
+- uri: https://{tenant-name}.api.opsramp.com
   description: OpsRamp API URL
 security:
   type: oauth2
   description: OAuth2 security using flow client_credentials
   flows:
     clientCredentials:
-      tokenUrl: https://{subdomain}.api.opsramp.com/auth/oauth/token
+      tokenUrl: https://{tenant-name}.api.opsramp.com/auth/oauth/token
+paths:
+- /auth/oauth/token:
+    summary: test summary
+    description: test description
+    post:
+      temp: temp
