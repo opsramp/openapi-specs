@@ -25,7 +25,7 @@ paths:
     x-internal: true
     summary: Get auth token to gateway
     description: |-
-      Get authentication for gateway
+      Get authentication for deployed gateway.
       - Base URL : 'https://{gateway-ip}:5480'
     post:
       summary: Provides the auth token for gateway endpoints execution
@@ -85,12 +85,17 @@ paths:
         - https://{gateway-ip}:5480/v2/gateway
         - https://{gateway-ip}:5480/v2/gateway/info?generalInfo
         - https://{gateway-ip}:5480/v2/gateway/info?syslogInfo
-      - Supported query values:
-        
     get:
       summary: Gets the gateway configuration details
-      description: |
-        Gets the gateway configuration details deployed in the organization
+      description: |-
+        Gets the deployed gateway configuration details.
+        - Supported query variable values
+          - generalInfo
+          - syslogInfo
+          - ntpInfo
+          - tzInfo
+          - servicesInfo
+          - routesInfo
       responses:
         '200':
           description: OK
@@ -292,13 +297,6 @@ paths:
           name: info
           description: |- 
             Required type of info
-            - Supported values
-              - generalInfo
-              - syslogInfo
-              - ntpInfo
-              - tzInfo
-              - servicesInfo
-              - routesInfo
       tags:
         - org-gateways
     parameters: []
@@ -333,23 +331,6 @@ paths:
         required: true
         description: |- 
           Update gateway config
-          - Supported values of config update actions:
-            - registration
-            - restartAllServices
-            - monitService
-            - syslogAdd
-            - syslogDelete
-            - syslogReset
-            - ntpSync
-            - networkSettings
-            - dateTime
-            - passwdChange
-            - timeZone
-            - externalProxy
-            - staticRoutes
-            - syslogUpdate
-            - ntpUpdate
-
     post:
       summary: Update gateway configurations
       operationId: post-v2-gateway-actions-actionName
@@ -406,7 +387,24 @@ paths:
                 restartAllServices:
                   value:
                     success: Successfully restarted all services
-      description: Update gateway configurations within the organization.
+      description: |- 
+        Update deployed gateway configurations.
+          - Supported values of config update actions:
+            - registration
+            - restartAllServices
+            - monitService
+            - syslogAdd
+            - syslogDelete
+            - syslogReset
+            - ntpSync
+            - networkSettings
+            - dateTime
+            - passwdChange
+            - timeZone
+            - externalProxy
+            - staticRoutes
+            - syslogUpdate
+            - ntpUpdate        
       requestBody:
         content:
           application/json:
