@@ -1,13 +1,13 @@
 openapi: 3.0.2
 info:
-  title: SPEC_NAME
-  description: Live mock API endpoints
+  title: oauth
+  description: API to obtain OAuth 2.0 Access Token
   version: '1.0'
 paths:
-  /api/v2:
+  /auth/oauth/token:
     post:
       summary: Post Client Credentiials
-      operationId: post_client_credentiials_api_v2_post
+      operationId: post_client_credentiials_auth_oauth_token_post
       parameters:
       - required: false
         schema:
@@ -23,6 +23,18 @@ paths:
           default: application/json
         name: accept
         in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Body
+              allOf:
+              - $ref: '#/components/schemas/OAuthAccessTokenRequestBody'
+              example:
+                grant_type: client_credentials
+                client_id: jzhyhYKGkpEWAXcJ9Qd6mMkpSDMFqYUS
+                client_secret: PCDNBBMx77RfdG3fCUsMnFvsEMu8y86BaN82JRpjqgBDqHbm8Hcxgj4ZKZg9gp88
+        required: true
       responses:
         '200':
           description: Successful Response
@@ -46,6 +58,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
+    OAuthAccessTokenRequestBody:
+      title: OAuthAccessTokenRequestBody
+      required:
+      - grant_type
+      - client_id
+      - client_secret
+      type: object
+      properties:
+        grant_type:
+          title: Grant Type
+          type: string
+        client_id:
+          title: Client Id
+          type: string
+        client_secret:
+          title: Client Secret
+          type: string
     ValidationError:
       title: ValidationError
       required:
