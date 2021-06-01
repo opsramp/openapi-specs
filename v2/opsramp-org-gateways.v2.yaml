@@ -1,9 +1,10 @@
 openapi: 3.0.0
 info:
-  version: '2.0'
+  version: 2.0.0
   title: opsramp-org-gateways
-  description: Standalone Gateways API Documentation
-  x-internal: true
+  description: |-
+    Standalone Gateways API Documentation.
+     - Base URL : 'https://{gateway-ip}:5480'
   contact:
     name: OpsRamp Support
     url: 'https://www.opsramp.com/about-opsramp/contact-us/'
@@ -20,10 +21,12 @@ tags:
     externalDocs:
       url: 'https://docs.opsramp.com/api/opsramp-gateways/'
 paths:
-  /v2/auth/token:
+  '/v2/auth/token':
     x-internal: true
-    summary: Get auth token to organization gateway
-    description: Get authentication for organization gateway
+    summary: Get auth token to gateway
+    description: |-
+      Get authentication for gateway
+      - Base URL : 'https://{gateway-ip}:5480'
     post:
       summary: Provides the auth token for gateway endpoints execution
       operationId: post-v2-auth-token
@@ -72,10 +75,18 @@ paths:
                   password: passx
       tags:
         - org-gateways
-  /v2/gateway:
+  '/v2/gateway':
     x-internal: true
-    summary: Get organization gateway configuration details
-    description: Get configuration details of gateway deployed within an organization
+    summary: Get  gateway configuration details
+    description: |-
+      Get configuration details of deployed gateway.
+      - Base URL : 'https://{gateway-ip}:5480'
+      - Example urls for querystring "info":
+        - https://{gateway-ip}:5480/v2/gateway
+        - https://{gateway-ip}:5480/v2/gateway/info?generalInfo
+        - https://{gateway-ip}:5480/v2/gateway/info?syslogInfo
+      - Supported query values:
+        
     get:
       summary: Gets the gateway configuration details
       description: |
@@ -279,13 +290,24 @@ paths:
               - routesInfo
           in: query
           name: info
-          description: required type of info
+          description: |- 
+            Required type of info
+            - Supported values
+              - generalInfo
+              - syslogInfo
+              - ntpInfo
+              - tzInfo
+              - servicesInfo
+              - routesInfo
       tags:
         - org-gateways
+    parameters: []
   '/v2/gateway/actions/{actionName}':
     x-internal: true
-    summary: Update organization gateway configurations
-    description: Update the supported configurations changes for deployed gateway wihtin organization
+    summary: Update deployed gateway configurations.
+    description: |-
+      Update the supported configurations changes for deployed gateway.
+      - Base URL : 'https://{gateway-ip}:5480'
     parameters:
       - schema:
           type: string
@@ -309,7 +331,25 @@ paths:
         name: actionName
         in: path
         required: true
-        description: Supported gateway config updates
+        description: |- 
+          Update gateway config
+          - Supported values of config update actions:
+            - registration
+            - restartAllServices
+            - monitService
+            - syslogAdd
+            - syslogDelete
+            - syslogReset
+            - ntpSync
+            - networkSettings
+            - dateTime
+            - passwdChange
+            - timeZone
+            - externalProxy
+            - staticRoutes
+            - syslogUpdate
+            - ntpUpdate
+
     post:
       summary: Update gateway configurations
       operationId: post-v2-gateway-actions-actionName
