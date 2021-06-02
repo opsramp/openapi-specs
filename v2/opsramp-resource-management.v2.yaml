@@ -6772,7 +6772,6 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/resources/auditRecordings':
-    x-internal: true
     summary: Get console recording details of resources.
     description: "Get console recording of resources for an organization.\n\n##### Query Variables  \n| Variable                 \t| Allowed Values          \t\t            | Description               |  Format / Example  \t\t\t|\n|----------------------------------------------|--------------------------------------------|-----------------------------------|---------------------------------|\n|\tid\t\t          \t|\t\t\t\t\t\t\t                      |\trecording id\t\t         \t|\t\t              \t\t\t\t|\n|\tclientId\t\t|\t\t\t\t\t\t\t            |\tclient uniqueId\t\t\t|Ex. client_1\t\t\t\t|\n|\tuserId\t\t\t|\t\t\t\t\t\t\t            |\tuser uniqueId\t\t\t|Ex. USR0000000001\t\t\t|\n|\tstartDate\t\t|\t\t\t\t\t\t\t            | Date range `start time`\t|Ex. 2021-01-05T05:17:58 0000|\n|\tendDate\t\t\t|\t\t\t\t\t\t\t            | Date range `end time`\t|Ex. 2021-01-05T05:17:58 0000    |\n|   resourceId      |\t\t\t\t\t\t\t            |   resource uniqueId\t  \t|\t\t\t\t\t\t\t|\n|\tticketId\t\t|\t\t\t\t\t\t\t            |\tticket uniqueId\t\t\t|Ex. INC0000000001\t\t\t|\n|\tgatewayId\t\t|\t\t\t\t\t\t\t            |\tgateway profile uniqueId|\t\t\t\t\t\t\t|\n|\tconsoleType\t\t   |   RDP,SSH,TELNET    | \tprotocol                |\t\t\t\t\t\t\t|\n|\trecStatus\t\t    |    Open,Completed\t\t                | \trecording status\t    |    \t\t\t\t\t\t\t   |   \n\n  "
     parameters:
@@ -7191,7 +7190,6 @@ paths:
       tags:
         - resource-management
   '/api/v2/tenants/{tenantId}/resources/{resourceId}/remoteConsoles':
-    x-internal: true
     summary: Manages remote consoles of the resource.
     description: "Create or list all the remote consoles of the resource.\n##### Supported Fields\n|\tName\t\t\t|\tType\t| \tMandatory\t|\tReferences\t\t\t                |\n|-------------------|-----------|---------------|---------------------------------------|\n| consoleConnector\t|\tString\t| \ttrue\t\t| Agent, Gateway\t\t                |\n| consoleProtocol\t|\tString\t|\ttrue\t\t| SSH,RDP,TELNET  |\n| ipAddress         |   String \t|   true    \t|                   \t                |\n| port\t\t\t\t|\tInteger\t|\ttrue\t\t|\t\t\t\t\t\t                |\n| consoleAuthType\t|\tString\t| \tfalse\t\t| PASSWORD, PUBLICKEY\t                |\n| userName         \t|   String \t|   false   \t|                   \t                |\n| password\t\t\t|\tString\t|\tfalse\t\t|\t\t\t\t\t\t                |\n| name              |   String  |   false       |                                       |"
     parameters:

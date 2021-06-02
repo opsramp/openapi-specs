@@ -6,27 +6,25 @@ info:
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
-
+    url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: agents-gateways
     description: Example description.
     externalDocs:
-      url: https://docs.opsramp.com/api/agents-gateways/
-
+      url: 'https://docs.opsramp.com/api/agents-gateways/'
 servers:
-  - url: https://api.opsramp.com
+  - url: 'https://api.opsramp.com'
     description: Partner - All Others
-  - url: https://{subdomain}.api.opsramp.com
+  - url: 'https://{subdomain}.api.opsramp.com'
     description: Partner or Client custom branded sub-domain
     variables:
       subdomain:
         default: demo
         description: Custom sub-domain assigned to the client
-
 paths:
   /api/v2/applicationservice:
-    summary: Get status, start and stop application services
+    x-internal: true
+    summary: 'Get status, start and stop application services'
     description: |-
       Gets the service status and starts and stops application services.
 
@@ -81,7 +79,7 @@ paths:
                   service: squid
                   action: start
         description: ''
-  /api/v2/download/gateway/{packagename}:
+  '/api/v2/download/gateway/{packageName}':
     summary: Download gateway files
     description: Downloads gateway files from the download server.
     get:
@@ -104,21 +102,23 @@ paths:
                   value:
                     expires_in: 900
                     url: 'https://dl01.opsramp.com/itop/download/gateway/d3873201-c303-4846-8ce4-b9fd4cf1306b'
+      summary: ''
     parameters:
       - schema:
           type: string
           enum:
-            - 'NULL'
             - ova
             - iso
             - windows
             - google
+            - 'NULL'
           default: 'NULL'
-        in: path
         name: packageName
-        required: true
+        in: path
         description: Refers to the gateway package.
+        required: true
   /api/v2/externalproxy:
+    x-internal: true
     summary: Configure gateway external proxy connection
     description: |-
       Configures the external proxy connection on the gateway.
@@ -180,8 +180,9 @@ paths:
         description: ''
       parameters: []
   /api/v2/generalinfo:
+    x-internal: true
     summary: Gets gateway information
-    description: Gets general information from the gateway, including appliance details and network information.
+    description: 'Gets general information from the gateway, including appliance details and network information.'
     get:
       tags:
         - agents-gateways
@@ -244,6 +245,7 @@ paths:
                       Domain Name: XXXX
                       Host Name: XXXX
   /api/v2/getntpdetails:
+    x-internal: true
     summary: Gets gateway NTP details
     description: Gets NTP details from the gateway.
     get:
@@ -272,8 +274,8 @@ paths:
                     servers: 'xxx,xxx'
                     NTP Status: 'OFF'
                     time: 'Tue May 19 21:40:08 UTC 2020'
-  /api/v2/tenants/{tenantId}/agents/{platform}/download/{package-name}:
-    summary: Download Linux agent 
+  '/api/v2/tenants/{tenantId}/agents/{platform}/download/{package-name}':
+    summary: Download Linux agent
     description: |-
       Downloads the Linux agents.
 
@@ -310,7 +312,7 @@ paths:
           The name of the package you want to download.
 
           Use the value in "name":"{package-name}" response from the Get Agent Package for Linux API.
-  /api/v2/tenants/{tenantId}/agents/{agentversion}/resourcesCountByAgentVersion:
+  '/api/v2/tenants/{tenantId}/agents/{agentversion}/resourcesCountByAgentVersion':
     summary: Get agent count by agent version
     description: Gets the number of installed agent resources by agent version.
     get:
@@ -336,7 +338,7 @@ paths:
         name: agentversion
         in: path
         required: true
-  /api/v2/tenants/{tenantId}/agents/deployAgentsScript:
+  '/api/v2/tenants/{tenantId}/agents/deployAgentsScript':
     summary: Download Linux agent installation script
     description: |-
       Downloads the Linux agent installation script.
@@ -383,7 +385,7 @@ paths:
           description: '(Optional) Used by the agent to connect to OpsRamp. If a profile ID is not provided, the agent connects directly to OpsRamp.'
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/agents/{platform}/info:
+  '/api/v2/tenants/{tenantId}/agents/{platform}/info':
     summary: Get the Linux agent
     description: |-
       Gets the Linux agent. This is usually followed by an API call to Download Linux Agent.
@@ -452,7 +454,6 @@ paths:
             For all other distributions, use x86_64 (64-bit) or i386 (32-bit)
     parameters:
       - $ref: '#/components/parameters/tenantId'
-        description: ''
       - schema:
           type: string
           enum:
@@ -461,7 +462,7 @@ paths:
         name: platform
         required: true
         description: Operating system on which you want to deploy the agent.
-  /api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices:
+  '/api/v2/tenants/{tenantId}/agentPolicies/{policyId}/devices':
     summary: Assign agent resources policy
     description: Assigns agent resource policies.
     post:
@@ -518,7 +519,7 @@ paths:
         name: policyId
         in: path
         required: true
-  /api/v2/tenants/{tenantId}/agentProfiles/{profileId}/devices:
+  '/api/v2/tenants/{tenantId}/agentProfiles/{profileId}/devices':
     summary: Assign agent resources profiles
     description: Assigns agent resource profiles.
     post:
@@ -572,8 +573,8 @@ paths:
         in: path
         name: profileId
         required: true
-  /api/v2/tenants/{tenantId}/agents/windows:
-    summary: Download Windows agent 
+  '/api/v2/tenants/{tenantId}/agents/windows':
+    summary: Download Windows agent
     description: |-
       Downloads the Windows agent.
 
@@ -613,6 +614,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   /api/v2/registration:
+    x-internal: true
     summary: Register gateway
     description: Registers the gateway.
     servers:
@@ -650,7 +652,8 @@ paths:
                 value:
                   activationKey: 360541b2-3f4e-407d-b61a-3aa73c638ed2
                   opsRampServer: xxx.opsramp.com
-  /api/v2/proxy:
+  '/api/v2/proxy/{action}':
+    x-internal: true
     summary: Turn Squid proxy service on and off
     description: Turn the gateway Squid proxy server on and off.
     servers:
@@ -684,7 +687,9 @@ paths:
         name: action
         in: path
         required: true
+        description: Supported actions
   /api/v2/apiTokenGen:
+    x-internal: true
     summary: Generate gateway access token
     description: |-
       Generates an access token on the gateway.
@@ -715,6 +720,7 @@ paths:
                     token: 4879423b58e637d140b77af3aeb09b53f1a4ed60
                     expires_in: '3599.965947'
   /api/v2/networksettings:
+    x-internal: true
     summary: Specifies gateway network settings
     description: Specifies the network settings on the gateway.
     post:
@@ -793,6 +799,7 @@ paths:
                   gateway: <Default Gateway>
                   dnsArray: '<xxx,xxx>'
   /api/v2/nginx:
+    x-internal: true
     summary: Gets gateway NGINX status and restart service
     description: Gets the NGINX service status and restarts the NGINX service on the gateway.
     post:
@@ -831,6 +838,7 @@ paths:
                 value:
                   action: status
   /api/v2/ntpmanualconfig:
+    x-internal: true
     summary: Manually set gateway NTP date and time
     description: Manually sets the NTP date and time on the gateway.
     post:
@@ -881,6 +889,7 @@ paths:
                   min: '15'
                   sec: '00'
   /api/v2/ntpservice:
+    x-internal: true
     summary: Start and stop gateway NTP service
     description: Starts and stops the gateway NTP service.
     post:
@@ -919,6 +928,7 @@ paths:
                 value:
                   service: 'ON'
   /api/v2/ntpupdateips:
+    x-internal: true
     summary: Update gateway NTP server IP addresses
     description: Updates gateway NTP server IP addresses.
     post:
@@ -958,6 +968,7 @@ paths:
                 value:
                   ntpArray: 'time-d-g.nist.gov,ime-a-wwv.nist.gov'
   /api/v2/ntpsyncips:
+    x-internal: true
     summary: Synchronize NTP servers time
     description: Synchronizes gateway NTP servers time.
     post:
@@ -996,6 +1007,7 @@ paths:
                 value:
                   ntpArray: 'time-d-g.nist.gov,ime-a-wwv.nist.gov'
   /api/v2/restartnetwork:
+    x-internal: true
     summary: Restart network service
     description: Restarts the gateway network service.
     post:
@@ -1016,6 +1028,7 @@ paths:
                   value:
                     Success: Network service restarted successfully.
   /api/v2/staticroute:
+    x-internal: true
     summary: Set static route configuration
     description: Sets the gateway static route configuration.
     post:
@@ -1075,6 +1088,7 @@ paths:
                   srouteMetric: <static route Metric>
                   srouteInterface: <static route Interface>
   /api/v2/gettimezoneinfo:
+    x-internal: true
     summary: Gets gateway timezone information
     description: Gets timezone information from the gateway.
     get:
@@ -1086,21 +1100,48 @@ paths:
           content:
             application/json:
               schema:
+                description: ''
                 type: object
                 properties:
-                  'Regions and Corresponding Timezone Information':
-                    type: array
-                    items:
-                      type: string
+                  Regions and Corresponding Timezone Information:
+                    type: object
+                    properties:
+                      '(GMT) UK ':
+                        type: string
+                        minLength: 1
+                      '(GMT+10:00) Russia':
+                        type: string
+                        minLength: 1
+                      '(GMT+4:00) Armenia, Azerbaijan':
+                        type: string
+                        minLength: 1
+                      '(GMT+5:00) Pakistan':
+                        type: string
+                        minLength: 1
+                    required:
+                      - '(GMT) UK '
+                      - '(GMT+10:00) Russia'
+                      - '(GMT+4:00) Armenia, Azerbaijan'
+                      - '(GMT+5:00) Pakistan'
+                required:
+                  - Regions and Corresponding Timezone Information
+                x-examples:
+                  example-1:
+                    Regions and Corresponding Timezone Information:
+                      '(GMT) UK ': London
+                      '(GMT+10:00) Russia': Vladivostok
+                      '(GMT+4:00) Armenia, Azerbaijan': Muscat
+                      '(GMT+5:00) Pakistan': Karachi
               examples:
                 example-1:
                   value:
                     Regions and Corresponding Timezone Information:
-                      '(GMT+10:00) Russia': Vladivostok
                       '(GMT) UK ': London
+                      '(GMT+10:00) Russia': Vladivostok
                       '(GMT+4:00) Armenia, Azerbaijan': Muscat
                       '(GMT+5:00) Pakistan': Karachi
   /api/v2/settimezone:
+    x-internal: true
     summary: Set gateway timezone
     description: Sets the gateway timezone.
     post:
@@ -1125,7 +1166,7 @@ paths:
               example-1:
                 value:
                   timezone: UTC
-  /api/v2/tenants/{tenantId}/managementProfiles/{id}/attach:
+  '/api/v2/tenants/{tenantId}/managementProfiles/{id}/attach':
     summary: Attach gateway to management profile
     description: Attaches a gateway to a management profile and generates an activation token. The generated activation token is used in gateway registration.
     get:
@@ -1175,7 +1216,7 @@ paths:
         in: path
         name: id
         required: true
-  /api/v2/tenants/{tenantId}/managementProfiles:
+  '/api/v2/tenants/{tenantId}/managementProfiles':
     summary: Create management profile
     description: Creates a management profile.
     post:
@@ -1288,9 +1329,9 @@ paths:
                   type: Gateway
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  /api/v2/tenants/{tenantId}/managementProfiles/{profileId}:
+  '/api/v2/tenants/{tenantId}/managementProfiles/{profileId}':
     summary: Manage management profile
-    description: Gets, updates, and deletes a management profile.
+    description: 'Gets, updates, and deletes a management profile.'
     delete:
       tags:
         - agents-gateways
@@ -1348,6 +1389,15 @@ paths:
                     type: boolean
                   uuId:
                     type: string
+                  services:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        string:
+                          type: string
               examples:
                 example-agent-profile:
                   value:
@@ -1366,22 +1416,38 @@ paths:
                       type: DEVICE
                 example-gateway-profile:
                   value:
-                    id: 74
-                    name: Gateway Profile
-                    description: Gateway Management Profile
+                    id: 10813
+                    name: Local_Gateway
+                    description: ManagementProfile
                     type: Gateway
-                    status: DOWN
-                    statusUpdatedDate: '2016-06-20T06:54:46+0000'
-                    softwareVersion: 1.4.3
-                    createdDate: '2016-06-14T06:57:46+0000'
+                    status: UP
+                    statusUpdatedDate: '2021-05-24T13:02:51+0000'
+                    softwareVersion: 9.0.0
+                    createdDate: '2021-05-23T09:07:46+0000'
                     device:
-                      id: fbfe0ecd-8200-4cbf-a13c-f309f341a8c8
+                      id: ef9ac394-d1e4-49f4-8b30-386c5c562f03
+                      uniqueId: ef9ac394-d1e4-49f4-8b30-386c5c562f03
                       generalInfo:
-                        ipAddresses: 172.30.31.137
-                        hostName: 172.30.31.137
-                    tunnelType: SSHD
+                        ipAddresses: 172.26.111.114
+                        hostName: host
+                    tunnelType: TLS
                     registered: true
-                    uuId: d004de59-3e72-4c9a-82d7-df3f27f5a7aa
+                    uuId: 45b163a1-69ec-4b2d-9b07-d3b79f5276c5
+                    services:
+                      - name: sipAgent
+                        status: true
+                      - name: syntheticsAgent
+                        status: true
+                example-gw-profile-unregistered:
+                  value:
+                    id: 10823
+                    name: Testing
+                    description: ''
+                    type: Gateway
+                    createdDate: '2021-05-24T14:13:15+0000'
+                    tunnelType: TLS
+                    registered: false
+                    activationToken: 0ebaa078-cea2-4a66-a5b8-360bc8274c30
     post:
       tags:
         - agents-gateways
@@ -1427,6 +1493,15 @@ paths:
                     type: boolean
                   activationToken:
                     type: string
+                  services:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        status:
+                          type: string
               examples:
                 example-agent-profile:
                   value:
@@ -1453,6 +1528,32 @@ paths:
                     tunnelType: SSHD
                     registered: false
                     activationToken: 6d8e4cc4-0be4-4706-bc1f-7e7e37a10b54
+                enable-disable-services:
+                  value:
+                    id: 12
+                    name: Local_Gateway
+                    description: ManagementProfile
+                    type: Gateway
+                    status: UP
+                    statusUpdatedDate: '2020-10-12T16:50:37+0000'
+                    softwareVersion: 7.0.0
+                    createdDate: '2020-09-24T06:18:29+0000'
+                    device:
+                      id: f837225c-6dad-4824-971b-11fbbddb3339
+                      uniqueId: f837225c-6dad-4824-971b-11fbbddb3339
+                      generalInfo:
+                        ipAddresses: 10.0.3.15
+                        hostName: 08002765289F.localdomain.com
+                    tunnelType: TLS
+                    registered: true
+                    uuId: 747aed37-ba61-4423-8500-929951d7397b
+                    services:
+                      - name: sipAgent
+                        status: sipAgent disable request initiated
+                      - name: syntheticsAgent
+                        status: syntheticsAgent enable request initiated
+        '422':
+          description: Unprocessable Entity (SIP Agent and SyntheticAgent are already disabled/enabled)
       requestBody:
         content:
           application/json:
@@ -1476,6 +1577,15 @@ paths:
                   properties:
                     id:
                       type: string
+                services:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      status:
+                        type: string
             examples:
               example-agent-profile:
                 value:
@@ -1489,6 +1599,16 @@ paths:
                   name: LB01 Gateway Profile
                   description: Gateway Management Profile
                   type: Gateway
+              enable-disable-services:
+                value:
+                  name: Local_Gateway
+                  type: Gateway
+                  description: ManagementProfile
+                  services:
+                    - name: sipAgent
+                      status: true
+                    - name: syntheticsAgent
+                      status: false
     parameters:
       - $ref: '#/components/parameters/tenantId'
       - schema:
@@ -1496,9 +1616,9 @@ paths:
         in: path
         name: profileId
         required: true
-  /api/v2/tenants/{tenantId}/managementProfiles/{profileId}/detach:
+  '/api/v2/tenants/{tenantId}/managementProfiles/{profileId}/detach':
     summary: Detach gateway from management profile
-    description: Unmaps, or detaches, the gateway from the management profile and invalidates the activation token.
+    description: 'Unmaps, or detaches, the gateway from the management profile and invalidates the activation token.'
     get:
       tags:
         - agents-gateways
@@ -1542,7 +1662,7 @@ paths:
         in: path
         name: profileId
         required: true
-  /api/v2/tenants/{tenantId}/managementProfiles/{profileId}/reconnectTunnel:
+  '/api/v2/tenants/{tenantId}/managementProfiles/{profileId}/reconnectTunnel':
     summary: Reconnect management profile tunnel
     description: Reconnects the management profile tunnel.
     get:
@@ -1569,7 +1689,7 @@ paths:
         in: path
         name: profileId
         required: true
-  /api/v2/tenants/{tenantId}/managementProfiles/search:
+  '/api/v2/tenants/{tenantId}/managementProfiles/search':
     summary: Search for management profile
     description: |-
       Searches for a management profiles.
@@ -1579,6 +1699,8 @@ paths:
       |id|{id}|The management profile ID.|
       |name|{name}|The management profile name.|
       |type|Agent, Gateway|The anagement profile type. An example is: Agent.|
+      |serviceStatus |all |List and display services status of all the registered  gateway profiles.|  
+      |registered |true,false | List all the registered gateway/agent profiles.|  
       |startCreationDate|{startCreationDate}|Search for the management profile created within a certain duration. Start indicates the from date. An example is: 2016-06-10T10:40:20 0000 (GMT).|
       |endCreationDate|{endCreationDate}|Search for the management profile created within a certain duration. End indicates the to date. An Example is: 2016-06-20T10:40:20 0000 (GMT).|
       ##### Notes
@@ -1643,6 +1765,15 @@ paths:
                           type: string
                         uuId:
                           type: string
+                        services:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              status:
+                                type: string
                   totalResults:
                     type: integer
                   orderBy:
@@ -1727,6 +1858,124 @@ paths:
                     nextPageNo: 0
                     previousPageNo: 0
                     descendingOrder: true
+                serviceStatus-all:
+                  value:
+                    results:
+                      - id: 10823
+                        name: Testing
+                      - id: 10813
+                        name: Local_Gateway
+                        services:
+                          - name: sipAgent
+                            status: true
+                          - name: syntheticsAgent
+                            status: true
+                      - id: 10693
+                        name: 'Test '
+                        services:
+                          - name: sipAgent
+                            status: false
+                          - name: syntheticsAgent
+                            status: true
+                      - id: 9323
+                        name: Testing 9.0.0
+                        services:
+                          - name: sipAgent
+                            status: false
+                          - name: syntheticsAgent
+                            status: false
+                    totalResults: 4
+                    orderBy: id
+                    pageNo: 1
+                    pageSize: 10
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+                registered-true-gw-profiles:
+                  value:
+                    results:
+                      - id: 10813
+                        name: Local_Gateway
+                        description: ManagementProfile
+                        type: Gateway
+                        status: UP
+                        statusUpdatedDate: '2021-05-24T13:02:51+0000'
+                        softwareVersion: 9.0.0
+                        createdDate: '2021-05-23T09:07:46+0000'
+                        device:
+                          id: ef9ac394-d1e4-49f4-8b30-386c5c562f03
+                          uniqueId: ef9ac394-d1e4-49f4-8b30-386c5c562f03
+                          generalInfo:
+                            ipAddresses: 172.26.111.114
+                            hostName: host
+                        tunnelType: TLS
+                        registered: true
+                        uuId: 45b163a1-69ec-4b2d-9b07-d3b79f5276c5
+                        services:
+                          - name: sipAgent
+                            status: true
+                          - name: syntheticsAgent
+                            status: true
+                      - id: 10693
+                        name: 'Test '
+                        description: testing
+                        type: Gateway
+                        status: DOWN
+                        statusUpdatedDate: '2021-05-22T16:53:51+0000'
+                        softwareVersion: 9.0.0
+                        createdDate: '2021-05-20T09:02:37+0000'
+                        device:
+                          id: ef9ac394-d1e4-49f4-8b30-386c5c562f03
+                          uniqueId: ef9ac394-d1e4-49f4-8b30-386c5c562f03
+                          generalInfo:
+                            ipAddresses: 172.26.111.114
+                            hostName: host
+                        tunnelType: TLS
+                        registered: true
+                        uuId: bddea263-90a5-4024-abe0-3ad09f3c945c
+                        services:
+                          - name: sipAgent
+                            status: false
+                          - name: syntheticsAgent
+                            status: true
+                      - id: 9323
+                        name: Testing 9.0.0
+                        description: ''
+                        type: Gateway
+                        status: UP
+                        statusUpdatedDate: '2021-05-24T13:02:03+0000'
+                        softwareVersion: 9.0.0
+                        createdDate: '2021-04-07T07:31:26+0000'
+                        device:
+                          id: c8e19c6b-8bcd-4783-b3e3-e03f248776ad
+                          uniqueId: c8e19c6b-8bcd-4783-b3e3-e03f248776ad
+                          generalInfo:
+                            ipAddresses: 172.26.111.200
+                            hostName: host
+                        tunnelType: TLS
+                        registered: true
+                        uuId: 99d5217d-a67f-4b06-bcda-34113a8a855a
+                        services:
+                          - name: sipAgent
+                            status: false
+                          - name: syntheticsAgent
+                            status: false
+                    totalResults: 3
+                    orderBy: id
+                    pageNo: 1
+                    pageSize: 10
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: true
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
       parameters:
         - schema:
             type: string
@@ -1749,7 +1998,7 @@ paths:
           name: sortName
           description: '{field}'
         - schema:
-            type: object
+            type: string
             properties:
               id:
                 type: string
@@ -1761,12 +2010,19 @@ paths:
                 type: string
               endCreationDate:
                 type: string
-            enum: [id: string, name: string, type: string, startCreationDate: string, endCreationDate: string]
+            enum:
+              - id: string
+              - name: string
+              - type: string
+              - startCreationDate: string
+              - endCreationDate: string
             uniqueItems: true
           in: query
           name: queryString
           allowReserved: true
           explode: false
+          description: query parameters
+      summary: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
 components:
@@ -1775,7 +2031,7 @@ components:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: https://{subdomain}.api.opsramp.com
+          tokenUrl: 'https://subdomain.api.opsramp.com'
           scopes: {}
   parameters:
     tenantId:
