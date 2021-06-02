@@ -23,7 +23,7 @@ servers:
         description: Custom sub-domain assigned to the client
 paths:
   /api/v2/applicationservice:
-    x-internal: true    
+    x-internal: true
     summary: 'Get status, start and stop application services'
     description: |-
       Gets the service status and starts and stops application services.
@@ -118,7 +118,7 @@ paths:
         description: Refers to the gateway package.
         required: true
   /api/v2/externalproxy:
-    x-internal: true    
+    x-internal: true
     summary: Configure gateway external proxy connection
     description: |-
       Configures the external proxy connection on the gateway.
@@ -180,7 +180,7 @@ paths:
         description: ''
       parameters: []
   /api/v2/generalinfo:
-    x-internal: true    
+    x-internal: true
     summary: Gets gateway information
     description: 'Gets general information from the gateway, including appliance details and network information.'
     get:
@@ -245,7 +245,7 @@ paths:
                       Domain Name: XXXX
                       Host Name: XXXX
   /api/v2/getntpdetails:
-    x-internal: true    
+    x-internal: true
     summary: Gets gateway NTP details
     description: Gets NTP details from the gateway.
     get:
@@ -614,7 +614,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   /api/v2/registration:
-    x-internal: true    
+    x-internal: true
     summary: Register gateway
     description: Registers the gateway.
     servers:
@@ -653,7 +653,7 @@ paths:
                   activationKey: 360541b2-3f4e-407d-b61a-3aa73c638ed2
                   opsRampServer: xxx.opsramp.com
   '/api/v2/proxy/{action}':
-    x-internal: true    
+    x-internal: true
     summary: Turn Squid proxy service on and off
     description: Turn the gateway Squid proxy server on and off.
     servers:
@@ -689,7 +689,7 @@ paths:
         required: true
         description: Supported actions
   /api/v2/apiTokenGen:
-    x-internal: true    
+    x-internal: true
     summary: Generate gateway access token
     description: |-
       Generates an access token on the gateway.
@@ -720,7 +720,7 @@ paths:
                     token: 4879423b58e637d140b77af3aeb09b53f1a4ed60
                     expires_in: '3599.965947'
   /api/v2/networksettings:
-    x-internal: true    
+    x-internal: true
     summary: Specifies gateway network settings
     description: Specifies the network settings on the gateway.
     post:
@@ -799,7 +799,7 @@ paths:
                   gateway: <Default Gateway>
                   dnsArray: '<xxx,xxx>'
   /api/v2/nginx:
-    x-internal: true    
+    x-internal: true
     summary: Gets gateway NGINX status and restart service
     description: Gets the NGINX service status and restarts the NGINX service on the gateway.
     post:
@@ -838,7 +838,7 @@ paths:
                 value:
                   action: status
   /api/v2/ntpmanualconfig:
-    x-internal: true    
+    x-internal: true
     summary: Manually set gateway NTP date and time
     description: Manually sets the NTP date and time on the gateway.
     post:
@@ -889,7 +889,7 @@ paths:
                   min: '15'
                   sec: '00'
   /api/v2/ntpservice:
-    x-internal: true    
+    x-internal: true
     summary: Start and stop gateway NTP service
     description: Starts and stops the gateway NTP service.
     post:
@@ -928,7 +928,7 @@ paths:
                 value:
                   service: 'ON'
   /api/v2/ntpupdateips:
-    x-internal: true    
+    x-internal: true
     summary: Update gateway NTP server IP addresses
     description: Updates gateway NTP server IP addresses.
     post:
@@ -968,7 +968,7 @@ paths:
                 value:
                   ntpArray: 'time-d-g.nist.gov,ime-a-wwv.nist.gov'
   /api/v2/ntpsyncips:
-    x-internal: true    
+    x-internal: true
     summary: Synchronize NTP servers time
     description: Synchronizes gateway NTP servers time.
     post:
@@ -1007,7 +1007,7 @@ paths:
                 value:
                   ntpArray: 'time-d-g.nist.gov,ime-a-wwv.nist.gov'
   /api/v2/restartnetwork:
-    x-internal: true    
+    x-internal: true
     summary: Restart network service
     description: Restarts the gateway network service.
     post:
@@ -1028,7 +1028,7 @@ paths:
                   value:
                     Success: Network service restarted successfully.
   /api/v2/staticroute:
-    x-internal: true    
+    x-internal: true
     summary: Set static route configuration
     description: Sets the gateway static route configuration.
     post:
@@ -1088,7 +1088,7 @@ paths:
                   srouteMetric: <static route Metric>
                   srouteInterface: <static route Interface>
   /api/v2/gettimezoneinfo:
-    x-internal: true    
+    x-internal: true
     summary: Gets gateway timezone information
     description: Gets timezone information from the gateway.
     get:
@@ -1141,7 +1141,7 @@ paths:
                       '(GMT+4:00) Armenia, Azerbaijan': Muscat
                       '(GMT+5:00) Pakistan': Karachi
   /api/v2/settimezone:
-    x-internal: true    
+    x-internal: true
     summary: Set gateway timezone
     description: Sets the gateway timezone.
     post:
@@ -1416,22 +1416,38 @@ paths:
                       type: DEVICE
                 example-gateway-profile:
                   value:
-                    id: 74
-                    name: Gateway Profile
-                    description: Gateway Management Profile
+                    id: 10813
+                    name: Local_Gateway
+                    description: ManagementProfile
                     type: Gateway
-                    status: DOWN
-                    statusUpdatedDate: '2016-06-20T06:54:46+0000'
-                    softwareVersion: 1.4.3
-                    createdDate: '2016-06-14T06:57:46+0000'
+                    status: UP
+                    statusUpdatedDate: '2021-05-24T13:02:51+0000'
+                    softwareVersion: 9.0.0
+                    createdDate: '2021-05-23T09:07:46+0000'
                     device:
-                      id: fbfe0ecd-8200-4cbf-a13c-f309f341a8c8
+                      id: ef9ac394-d1e4-49f4-8b30-386c5c562f03
+                      uniqueId: ef9ac394-d1e4-49f4-8b30-386c5c562f03
                       generalInfo:
-                        ipAddresses: 172.30.31.137
-                        hostName: 172.30.31.137
-                    tunnelType: SSHD
+                        ipAddresses: 172.26.111.114
+                        hostName: host
+                    tunnelType: TLS
                     registered: true
-                    uuId: d004de59-3e72-4c9a-82d7-df3f27f5a7aa
+                    uuId: 45b163a1-69ec-4b2d-9b07-d3b79f5276c5
+                    services:
+                      - name: sipAgent
+                        status: true
+                      - name: syntheticsAgent
+                        status: true
+                example-gw-profile-unregistered:
+                  value:
+                    id: 10823
+                    name: Testing
+                    description: ''
+                    type: Gateway
+                    createdDate: '2021-05-24T14:13:15+0000'
+                    tunnelType: TLS
+                    registered: false
+                    activationToken: 0ebaa078-cea2-4a66-a5b8-360bc8274c30
     post:
       tags:
         - agents-gateways
@@ -1536,6 +1552,8 @@ paths:
                         status: sipAgent disable request initiated
                       - name: syntheticsAgent
                         status: syntheticsAgent enable request initiated
+        '422':
+          description: Unprocessable Entity (SIP Agent and SyntheticAgent are already disabled/enabled)
       requestBody:
         content:
           application/json:
@@ -1681,6 +1699,8 @@ paths:
       |id|{id}|The management profile ID.|
       |name|{name}|The management profile name.|
       |type|Agent, Gateway|The anagement profile type. An example is: Agent.|
+      |serviceStatus |all |List and display services status of all the registered  gateway profiles.|  
+      |registered |true,false | List all the registered gateway/agent profiles.|  
       |startCreationDate|{startCreationDate}|Search for the management profile created within a certain duration. Start indicates the from date. An example is: 2016-06-10T10:40:20 0000 (GMT).|
       |endCreationDate|{endCreationDate}|Search for the management profile created within a certain duration. End indicates the to date. An Example is: 2016-06-20T10:40:20 0000 (GMT).|
       ##### Notes
