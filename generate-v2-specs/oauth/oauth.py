@@ -18,7 +18,8 @@ app = FastAPI( title = TITLE,
     openapi_url= ENDPOINT_SUFFIX + '/openapi.json')
 
 
-@app.post(ENDPOINT_SUFFIX, response_model = OAuthResponse)
+@app.post(ENDPOINT_SUFFIX, response_model=OAuthResponse,
+          summary="Get OAuth 2.0 Access Token")
 def post_client_credentiials(
     content_type = Header(..., example = "application/x-www-form-urlencoded"),
     accept = Header(..., example="application/json"),
@@ -30,6 +31,12 @@ def post_client_credentiials(
                  "client_secret": "PCDNBBMx77RfdG3fCUsMnFvsEMu8y86BaN82JRpjqgBDqHbm8Hcxgj4ZKZg9gp88"
              },
          )):
+    """
+    Post the following information to get an OAuth 2.0 Access Token.
+    - **grant_type**: "client_credentials. APIs use Client Credentials Grant type.
+    - **client_id**: *key* from the integration.
+    - **client_secret**: *secret* from the integration.
+    """
 
     headers = { "content-type": "application/x-www-form-urlencoded", "Accept": "application/json" }
     data = {

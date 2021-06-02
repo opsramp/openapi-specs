@@ -10,4 +10,7 @@ hugo/content/api/**/*.md
 hugo/package-lock.json
 !_index.md
 
+oas/
+
+
 __pycache__/

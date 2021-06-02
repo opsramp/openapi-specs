@@ -6,7 +6,14 @@ info:
 paths:
   /auth/oauth/token:
     post:
-      summary: Post Client Credentiials
+      summary: Get OAuth 2.0 Access Token
+      description: 'Post the following information to get an OAuth 2.0 Access Token.
+
+        - **grant_type**: "client_credentials. APIs use Client Credentials Grant type.
+
+        - **client_id**: *key* from the integration.
+
+        - **client_secret**: *secret* from the integration.'
       operationId: post_client_credentiials_auth_oauth_token_post
       parameters:
       - required: true
