@@ -2,25 +2,23 @@ openapi: 3.0.2
 info:
   title: oauth
   description: API to obtain OAuth 2.0 Access Token
-  version: '1.0'
+  version: 2.0.0
 paths:
   /auth/oauth/token:
     post:
       summary: Post Client Credentiials
       operationId: post_client_credentiials_auth_oauth_token_post
       parameters:
-      - required: false
+      - required: true
         schema:
           title: Content-Type
-          type: string
-          default: application/x-www-form-urlencoded
+          example: application/x-www-form-urlencoded
         name: content-type
         in: header
-      - required: false
+      - required: true
         schema:
           title: Accept
-          type: string
-          default: application/json
+          example: application/json
         name: accept
         in: header
       requestBody:
@@ -29,7 +27,7 @@ paths:
             schema:
               title: Body
               allOf:
-              - $ref: '#/components/schemas/OAuthAccessTokenRequestBody'
+              - $ref: '#/components/schemas/OAuthRequest'
               example:
                 grant_type: client_credentials
                 client_id: jzhyhYKGkpEWAXcJ9Qd6mMkpSDMFqYUS
@@ -40,7 +38,8 @@ paths:
           description: Successful Response
           content:
             application/json:
-              schema: {}
+              schema:
+                $ref: '#/components/schemas/OAuthResponse'
         '422':
           description: Validation Error
           content:
@@ -58,8 +57,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
-    OAuthAccessTokenRequestBody:
-      title: OAuthAccessTokenRequestBody
+    OAuthRequest:
+      title: OAuthRequest
       required:
       - grant_type
       - client_id
@@ -75,6 +74,32 @@ components:
         client_secret:
           title: Client Secret
           type: string
+    OAuthResponse:
+      title: OAuthResponse
+      required:
+      - access_token
+      - token_type
+      - expires_in
+      - scope
+      type: object
+      properties:
+        access_token:
+          title: Access Token
+          type: string
+        token_type:
+          title: Token Type
+          type: string
+        expires_in:
+          title: Expires In
+          type: string
+        scope:
+          title: Scope
+          type: string
+      example:
+        access_token: 8b8778e5-949a-495c-a730-22809e08aa42
+        token_type: bearer
+        expires_in: 7199
+        scope: global:manage
     ValidationError:
       title: ValidationError
       required:

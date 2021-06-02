@@ -70,11 +70,6 @@ SECURITY = {
 }
 
 
-class OAuthAccessTokenRequestBody(BaseModel):
-    grant_type: str
-    client_id: str
-    client_secret: str
-
 
 # Tenant
 class Tenant(BaseModel):
