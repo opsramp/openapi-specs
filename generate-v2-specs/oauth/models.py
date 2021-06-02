@@ -2,6 +2,9 @@ import sys
 sys.path.append("..")
 from oas_common_models import *
 
+with open('./example-response-1.json') as f:
+    example_response = json.load(f)
+
 
 # Request body
 class OAuthRequest(BaseModel):
@@ -18,6 +21,10 @@ class OAuthResponse(BaseModel):
     scope : str
 
     class Config:
+        schema_extra  = { "example" : example_response }
+
+'''
+    class Config:
         schema_extra  = {
             "example" : {
               "access_token": "8b8778e5-949a-495c-a730-22809e08aa42",
@@ -26,3 +33,4 @@ class OAuthResponse(BaseModel):
               "scope": "global:manage"
             }
         }
+'''

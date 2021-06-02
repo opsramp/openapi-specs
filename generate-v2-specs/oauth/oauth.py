@@ -54,5 +54,9 @@ def post_client_credentiials(
 if __name__ == '__main__':
 
     oas_fastapi = app.openapi()
+    oas_fastapi['openapi'] = OPENAPI
+    oas_fastapi['info'] = INFO
+    oas_fastapi['servers'] = SERVERS['opsramp']
+
     with open(OATH_FILEPATH + '/' + OAS_FILENAME, 'w') as f:
         data = yaml.dump(oas_fastapi, f, default_flow_style=False, sort_keys=False)
