@@ -22,7 +22,6 @@ tags:
       url: 'https://docs.opsramp.com/api/opsramp-gateways/'
 paths:
   '/v2/auth/token':
-    x-internal: true
     summary: Get auth token to gateway
     description: |-
       Get authentication for deployed gateway.
@@ -76,7 +75,6 @@ paths:
       tags:
         - org-gateways
   '/v2/gateway':
-    x-internal: true
     summary: Get  gateway configuration details
     description: |-
       Get configuration details of deployed gateway.
@@ -301,7 +299,6 @@ paths:
         - org-gateways
     parameters: []
   '/v2/gateway/actions/{actionName}':
-    x-internal: true
     summary: Update deployed gateway configurations.
     description: |-
       Update the supported configurations changes for deployed gateway.
