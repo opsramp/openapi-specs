@@ -22,7 +22,7 @@ OATH_FILEPATH = '../oas'
 
 app = FastAPI( title = TITLE,
     description = DESCRIPTION,
-    version="2.0.0",docs_url="/",
+    version="v2",docs_url="/",
     openapi_url= ENDPOINT_SUFFIX + '/openapi.json')
 
 
@@ -40,7 +40,7 @@ def post_client_credentiials(
              },
          )):
     """
-    Post the following information to get an OAuth 2.0 Access Token.
+    Post the following information to get an [OAuth 2.0](https://www.oauth.com/) Access Token.
     - **grant_type**: "client_credentials. APIs use Client Credentials Grant type.
     - **client_id**: *key* from the integration.
     - **client_secret**: *secret* from the integration.
@@ -66,7 +66,7 @@ if __name__ == '__main__':
     oas_fastapi['info'] = INFO
     oas_fastapi['servers'] = SERVERS['opsramp_auth']
 
-    ordered_oas_fastapi = OrderedDict()
+    ordered_oas_fastapi = dict()
 
     first_few_keys = ['openapi', 'info', 'servers']
 
@@ -76,9 +76,6 @@ if __name__ == '__main__':
     for k in oas_fastapi.keys():
         if k not in first_few_keys:
             ordered_oas_fastapi[k] = oas_fastapi[k]
-
-    utils.print_dict_to_file(ordered_oas_fastapi, 'original-dict.json')
-    utils.print_dict_to_file(ordered_oas_fastapi, 'ordered-dict.json')
 
 
     with open(OATH_FILEPATH + '/' + OAS_FILENAME, 'w') as f:

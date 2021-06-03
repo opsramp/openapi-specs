@@ -11,7 +11,8 @@ from pydantic import (
 from uuid import UUID
 import semver
 import shutil
-from collections import OrderedDict
+#from collections import OrderedDict
+#import collections
 
 
 from fastapi import (
@@ -24,6 +25,8 @@ from fastapi import (
     Form,
     UploadFile
 )
+from fastapi.testclient import TestClient
+
 from sqlalchemy.orm import Session
 import requests
 from opsrampapiutils import utils as utils
@@ -35,29 +38,34 @@ from opsrampapiutils import utils as utils
 OPENAPI = "3.0.0"
 
 INFO = {
-    "title": "opsramp",
-    "version": "2.0.0",
+    "title": "OpsRamp APIs",
     "description": "OpsRamp API Documentation",
-    "contact": {
+    "termsOfService": "https://www.opsramp.com/terms-of-use/",
+     "contact": {
         "name": "OpsRamp Support",
         "email": "support@opsramp.com",
         "url": "https://www.opsramp.com/about-opsramp/contact-us"
-    }
+    },
+    "license": {
+        "name": "OpsRamp Master Services Agreement",
+        "url": "https://www.opsramp.com/terms-of-use/"
+    },
+    "version": "v2"
 }
 
 SERVERS = {
-    "opsramp_auth" : {
-        "uri": "https://" + "{tenant-name}" + ".api.opsramp.com",
-        "description": "OpsRamp API server"
-    },
-    "opsramp_api": {
-        "uri": "https://" + "{tenant-name}"  + ".api.opsramp.com/api/v2",
-        "description" : "OpsRamp cloud API endpoint server"
-    },
-    "gateway" : {
-        "uri" : "https://{fully-qualified-gateway-domain-name | gateway-ip-address}/api/v2",
-        "description" : "OpsRamp Gateway API endpoint server"
-    }
+    "opsramp_auth" : [{
+        "url": "https://" + "{tenant-name}" + ".api.opsramp.com",
+        "description": "OpsRamp OAuth 2.0 access token API server"
+    }],
+    "opsramp_api": [{
+        "url": "https://" + "{tenant-name}"  + ".api.opsramp.com/api/v2",
+        "description" : "OpsRamp API server"
+    }],
+    "gateway" : [{
+        "url" : "https://{fully-qualified-gateway-domain-name | gateway-ip-address}/api/v2",
+        "description" : "OpsRamp Gateway API server"
+    }]
 }
 
 SECURITY = {
@@ -65,7 +73,7 @@ SECURITY = {
     "description" : "OAuth2 security using flow client_credentials",
     "flows" : {
         "clientCredentials" : {
-            "tokenUrl" : SERVERS["opsramp_auth"]["uri"] + "/auth/oauth/token"
+            "tokenUrl" : SERVERS["opsramp_auth"][0]["url"] + "/auth/oauth/token"
         }
     }
 }

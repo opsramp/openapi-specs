@@ -1,20 +1,25 @@
 openapi: 3.0.0
 info:
-  title: opsramp
-  version: 2.0.0
+  title: OpsRamp APIs
   description: OpsRamp API Documentation
+  termsOfService: https://www.opsramp.com/terms-of-use/
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
     url: https://www.opsramp.com/about-opsramp/contact-us
+  license:
+    name: OpsRamp Master Services Agreement
+    url: https://www.opsramp.com/terms-of-use/
+  version: v2
 servers:
-  uri: https://{tenant-name}.api.opsramp.com
-  description: OpsRamp API server
+- url: https://{tenant-name}.api.opsramp.com
+  description: OpsRamp OAuth 2.0 access token API server
 paths:
   /auth/oauth/token:
     post:
       summary: Get OAuth 2.0 Access Token
-      description: 'Post the following information to get an OAuth 2.0 Access Token.
+      description: 'Post the following information to get an [OAuth 2.0](https://www.oauth.com/)
+        Access Token.
 
         - **grant_type**: "client_credentials. APIs use Client Credentials Grant type.
 
@@ -80,14 +85,18 @@ components:
       type: object
       properties:
         grant_type:
-          title: Grant Type
+          title: grant_type
           type: string
+          description: '[OAuth](https://www.oauth.com/) grant type. Use *client_credentials*.'
         client_id:
-          title: Client Id
+          title: client_id
           type: string
+          description: This is the *key* from the integration.
         client_secret:
-          title: Client Secret
+          title: client_secret
           type: string
+          description: This is the *secret* from the integration.
+      description: This is the description of OAuthRequest
     OAuthResponse:
       title: OAuthResponse
       required:
@@ -98,8 +107,9 @@ components:
       type: object
       properties:
         access_token:
-          title: Access Token
+          title: access_token
           type: string
+          description: '[OAuth 2.0](https://www.oauth.com/) Access Token'
         token_type:
           title: Token Type
           type: string
@@ -109,6 +119,7 @@ components:
         scope:
           title: Scope
           type: string
+      description: This is the description of OAuthResponse
       example:
         access_token: 8b8778e5-949a-495c-a730-22809e08aa42
         token_type: bearer
