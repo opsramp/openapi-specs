@@ -11,6 +11,7 @@ from pydantic import (
 from uuid import UUID
 import semver
 import shutil
+from collections import OrderedDict
 
 
 from fastapi import (
@@ -28,8 +29,8 @@ import requests
 from opsrampapiutils import utils as utils
 
 
-API_PREFIX = '/api/v2'
-TENANT_NAME = 'api-2adc3'
+# API_PREFIX = '/api/v2'
+
 
 OPENAPI = "3.0.0"
 
@@ -44,27 +45,27 @@ INFO = {
     }
 }
 
-SERVERS = [
-    {
-        "opsramp" : {
-            "uri": "https://" + TENANT_NAME + ".api.opsramp.com",
-            "description" : "OpsRamp cloud API endpoint root"
-        }
+SERVERS = {
+    "opsramp_auth" : {
+        "uri": "https://" + "{tenant-name}" + ".api.opsramp.com",
+        "description": "OpsRamp API server"
     },
-    {
-        "gateway" : {
-            "uri" : "https://{fqdn-of-gateway}/api/v2",
-            "description" : "OpsRamp Gateway API endpoint root"
-        }
+    "opsramp_api": {
+        "uri": "https://" + "{tenant-name}"  + ".api.opsramp.com/api/v2",
+        "description" : "OpsRamp cloud API endpoint server"
+    },
+    "gateway" : {
+        "uri" : "https://{fully-qualified-gateway-domain-name | gateway-ip-address}/api/v2",
+        "description" : "OpsRamp Gateway API endpoint server"
     }
-]
+}
 
 SECURITY = {
     "type" : "oauth2",
     "description" : "OAuth2 security using flow client_credentials",
     "flows" : {
         "clientCredentials" : {
-            "tokenUrl" : SERVERS[0]["opsramp"]["uri"] + "/auth/oauth/token"
+            "tokenUrl" : SERVERS["opsramp_auth"]["uri"] + "/auth/oauth/token"
         }
     }
 }
