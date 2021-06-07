@@ -23,7 +23,6 @@ servers:
         description: Custom sub-domain assigned to the client
 paths:
   /api/v2/applicationservice:
-    x-internal: true
     summary: 'Get status, start and stop application services'
     description: |-
       Gets the service status and starts and stops application services.
@@ -118,7 +117,6 @@ paths:
         description: Refers to the gateway package.
         required: true
   /api/v2/externalproxy:
-    x-internal: true
     summary: Configure gateway external proxy connection
     description: |-
       Configures the external proxy connection on the gateway.
@@ -180,7 +178,6 @@ paths:
         description: ''
       parameters: []
   /api/v2/generalinfo:
-    x-internal: true
     summary: Gets gateway information
     description: 'Gets general information from the gateway, including appliance details and network information.'
     get:
@@ -245,7 +242,6 @@ paths:
                       Domain Name: XXXX
                       Host Name: XXXX
   /api/v2/getntpdetails:
-    x-internal: true
     summary: Gets gateway NTP details
     description: Gets NTP details from the gateway.
     get:
@@ -614,7 +610,6 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   /api/v2/registration:
-    x-internal: true
     summary: Register gateway
     description: Registers the gateway.
     servers:
@@ -653,7 +648,6 @@ paths:
                   activationKey: 360541b2-3f4e-407d-b61a-3aa73c638ed2
                   opsRampServer: xxx.opsramp.com
   '/api/v2/proxy/{action}':
-    x-internal: true
     summary: Turn Squid proxy service on and off
     description: Turn the gateway Squid proxy server on and off.
     servers:
@@ -689,7 +683,6 @@ paths:
         required: true
         description: Supported actions
   /api/v2/apiTokenGen:
-    x-internal: true
     summary: Generate gateway access token
     description: |-
       Generates an access token on the gateway.
@@ -720,7 +713,6 @@ paths:
                     token: 4879423b58e637d140b77af3aeb09b53f1a4ed60
                     expires_in: '3599.965947'
   /api/v2/networksettings:
-    x-internal: true
     summary: Specifies gateway network settings
     description: Specifies the network settings on the gateway.
     post:
@@ -799,7 +791,6 @@ paths:
                   gateway: <Default Gateway>
                   dnsArray: '<xxx,xxx>'
   /api/v2/nginx:
-    x-internal: true
     summary: Gets gateway NGINX status and restart service
     description: Gets the NGINX service status and restarts the NGINX service on the gateway.
     post:
@@ -838,7 +829,6 @@ paths:
                 value:
                   action: status
   /api/v2/ntpmanualconfig:
-    x-internal: true
     summary: Manually set gateway NTP date and time
     description: Manually sets the NTP date and time on the gateway.
     post:
@@ -889,7 +879,6 @@ paths:
                   min: '15'
                   sec: '00'
   /api/v2/ntpservice:
-    x-internal: true
     summary: Start and stop gateway NTP service
     description: Starts and stops the gateway NTP service.
     post:
@@ -928,7 +917,6 @@ paths:
                 value:
                   service: 'ON'
   /api/v2/ntpupdateips:
-    x-internal: true
     summary: Update gateway NTP server IP addresses
     description: Updates gateway NTP server IP addresses.
     post:
@@ -968,7 +956,6 @@ paths:
                 value:
                   ntpArray: 'time-d-g.nist.gov,ime-a-wwv.nist.gov'
   /api/v2/ntpsyncips:
-    x-internal: true
     summary: Synchronize NTP servers time
     description: Synchronizes gateway NTP servers time.
     post:
@@ -1007,7 +994,6 @@ paths:
                 value:
                   ntpArray: 'time-d-g.nist.gov,ime-a-wwv.nist.gov'
   /api/v2/restartnetwork:
-    x-internal: true
     summary: Restart network service
     description: Restarts the gateway network service.
     post:
@@ -1028,7 +1014,6 @@ paths:
                   value:
                     Success: Network service restarted successfully.
   /api/v2/staticroute:
-    x-internal: true
     summary: Set static route configuration
     description: Sets the gateway static route configuration.
     post:
@@ -1088,7 +1073,6 @@ paths:
                   srouteMetric: <static route Metric>
                   srouteInterface: <static route Interface>
   /api/v2/gettimezoneinfo:
-    x-internal: true
     summary: Gets gateway timezone information
     description: Gets timezone information from the gateway.
     get:
@@ -1141,7 +1125,6 @@ paths:
                       '(GMT+4:00) Armenia, Azerbaijan': Muscat
                       '(GMT+5:00) Pakistan': Karachi
   /api/v2/settimezone:
-    x-internal: true
     summary: Set gateway timezone
     description: Sets the gateway timezone.
     post:
