@@ -108,6 +108,6 @@ components:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: https://{subdomain}.api.opsramp.com
+          tokenUrl: 'https://subdomain.api.opsramp.com'
           scopes: {}
   parameters: {}
