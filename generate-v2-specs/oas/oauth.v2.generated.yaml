@@ -111,14 +111,18 @@ components:
           type: string
           description: '[OAuth 2.0](https://www.oauth.com/) Access Token'
         token_type:
-          title: Token Type
+          title: token_type
           type: string
+          description: 'Always of type: *bearer*'
         expires_in:
-          title: Expires In
+          title: expires_in
           type: string
+          description: "Seconds(*s*) to token expiry.\\\n                        \
+            \               OpsRamp's API Tokens expire in 7200s - 1s = 6199s"
         scope:
-          title: Scope
+          title: scope
           type: string
+          description: 'OAuth 2.0 scope: All APIs use the same scope: *global:manage*'
       description: This is the description of OAuthResponse
       example:
         access_token: 8b8778e5-949a-495c-a730-22809e08aa42

@@ -37,10 +37,20 @@ class OAuthResponse(BaseModel):
                            title='access_token',
                            description='[OAuth 2.0](https://www.oauth.com/) Access Token'
     )
-    token_type : str
-    expires_in : str
-    scope : str
+    token_type : str =  Field(...,
+                           title='token_type',
+                           description='Always of type: *bearer*'
+    )
+    expires_in : str =  Field(...,
+                           title='expires_in',
+                           description="""Seconds(*s*) to token expiry.\\
+                                       OpsRamp\'s API Tokens expire in 7200s - 1s = 6199s"""
+    )
+    scope : str =  Field(...,
+                           title='scope',
+                           description='OAuth 2.0 scope: All APIs use the same scope: *global:manage*'
 
+    )
     class Config:
         schema_extra  = { "example" : example_response }
 
