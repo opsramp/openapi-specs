@@ -686,7 +686,8 @@ paths:
     summary: Generate gateway access token
     description: |-
       Generates an access token on the gateway.
-      'curl --location --request POST '[https://192.168.0.123:5480/api/v2/apiTokenGen]' \ --form 'username="admin"' \ --form 'password="Pass@1234'
+      
+      Curl command : 'curl --location --request POST '[https://192.168.0.123:5480/api/v2/apiTokenGen]' \ --form 'username="admin"' \ --form 'password="Pass@1234'
 
       An access token is needed to:
 
