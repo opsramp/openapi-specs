@@ -1,40 +1,44 @@
 openapi: 3.0.0
 info:
-  title: opsramp
-  version: 2.0.0
+  title: OpsRamp APIs
   description: OpsRamp API Documentation
+  termsOfService: https://www.opsramp.com/terms-of-use/
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us/
+    url: https://www.opsramp.com/about-opsramp/contact-us
+  license:
+    name: OpsRamp Master Services Agreement
+    url: https://www.opsramp.com/terms-of-use/
+  version: v2
 
 tags:
   - name: auth
-    description: Example description.
+    description: API authentication
     externalDocs:
-      url: https://docs.opsramp.com/api/agents-gateways/
+      url: https://docs.opsramp.com/api/authentication/
 
 servers:
-  - url: https://api.opsramp.com
-    description: Partner - All Others
-  - url: https://{subdomain}.api.opsramp.com
-    description: Partner or Client custom branded sub-domain
-    variables:
-      subdomain:
-        default: demo
-        description: Custom sub-domain assigned to the client
-
+  - url: https://{tenant-name}.api.opsramp.com
+    description: OpsRamp OAuth 2.0 access token API server
 paths:
   /auth/oauth/token:
     post:
       operationId: auth-oauth-token
       summary: Get OAuth2 access token with client credentials
-      description: Generates an access token using client credentials.
+      description: 'Post the following information to get an [OAuth 2.0](https://www.oauth.com/)
+        Access Token.
+
+        - **grant_type**: "client_credentials. APIs use Client Credentials Grant type.
+
+        - **client_id**: *key* from the integration.
+
+        - **client_secret**: *secret* from the integration.'
       tags:
         - auth
       requestBody:
         content:
-          multipart/form-data:
+          application/x-www-form-urlencoded:
             schema:
               type: object
               properties:
