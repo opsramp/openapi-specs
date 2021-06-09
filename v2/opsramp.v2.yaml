@@ -2,78 +2,66 @@ openapi: 3.0.0
 info:
   title: OpsRamp APIs
   description: OpsRamp API Documentation
-  termsOfService: https://www.opsramp.com/terms-of-use/
+  termsOfService: 'https://www.opsramp.com/terms-of-use/'
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
-    url: https://www.opsramp.com/about-opsramp/contact-us
+    url: 'https://www.opsramp.com/about-opsramp/contact-us'
   license:
     name: OpsRamp Master Services Agreement
-    url: https://www.opsramp.com/terms-of-use/
+    url: 'https://www.opsramp.com/terms-of-use/'
   version: v2
-
 tags:
   - name: auth
     description: API authentication
     externalDocs:
-      url: https://docs.opsramp.com/api/authentication/
-
+      url: 'https://docs.opsramp.com/api/authentication/'
 servers:
-  - url: https://{tenant-name}.api.opsramp.com
+  - url: 'https://{tenant-name}.api.opsramp.com'
     description: OpsRamp OAuth 2.0 access token API server
 paths:
   /auth/oauth/token:
+    summary: Get OAuth 2.0 Access Token
+    description: |-
+      Post the following information to get an [OAuth 2.0](https://www.oauth.com/) Access Token.
+      - **grant_type**: "client_credentials. APIs use Client Credentials Grant type.
+      - **client_id**: *key* from the integration.
+      - **client_secret**: *secret* from the integration.
     post:
       operationId: auth-oauth-token
       summary: Get OAuth2 access token with client credentials
-      description: 'Post the following information to get an [OAuth 2.0](https://www.oauth.com/)
-        Access Token.
-
+      description: |-
+        Post the following information to get an [OAuth 2.0](https://www.oauth.com/) Access Token.
         - **grant_type**: "client_credentials. APIs use Client Credentials Grant type.
-
         - **client_id**: *key* from the integration.
-
-        - **client_secret**: *secret* from the integration.'
+        - **client_secret**: *secret* from the integration.
       tags:
         - auth
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
-              type: object
-              properties:
-                client_id:
-                  type: string
-                  description: Client ID (key)
-                client_secret:
-                  type: string
-                  description: Secret Key generated along with token (secret).
-                grant_type:
-                  type: string
-                  description: Credentials of client.
+              $ref: '#/components/schemas/OAuthRequest'
+            examples:
+              example-1:
+                value:
+                  grant_type: client_credentials
+                  client_id: jreMFqYUSytrutrii
+                  client_secret: PCDNfgkhkjhleyreutyiytoiyuouyo9gp88
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  access_token:
-                    type: string
-                  token_type:
-                    type: string
-                  expires_in:
-                    type: string
-                  scope:
-                    type: string
+                $ref: '#/components/schemas/OAuthResponse'
               examples:
                 example-1:
                   value:
                     access_token: 6b4a5f03-7d49-4915-9792-2d964806cbd1
                     token_type: bearer
-                    expires_in: '5999'
-                    scope: read write
+                    expires_in: '7199'
+                    scope: 'global:manage'
         '400':
           description: Bad Request
           content:
@@ -115,3 +103,41 @@ components:
           tokenUrl: 'https://subdomain.api.opsramp.com'
           scopes: {}
   parameters: {}
+  schemas:
+    OAuthRequest:
+      title: OAuthRequest
+      type: object
+      properties:
+        grant_type:
+          type: string
+          description: '''[OAuth](https://www.oauth.com/) grant type. Use *client_credentials*.'''
+        client_id:
+          type: string
+          description: ' This is the *key* from the integration.'
+        client_secret:
+          type: string
+          description: This is the *secret* from the integration.
+      required:
+        - grant_type
+        - client_id
+        - client_secret
+      description: ' This is the description of OAuthRequest'
+    OAuthResponse:
+      title: OAuthResponse
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: '''[OAuth 2.0](https://www.oauth.com/) Access Token'''
+        token_type:
+          type: string
+          description: '''Always of type: *bearer*'''
+        expires_in:
+          type: string
+          description: |-
+            "Seconds(*s*) to token expiry.\\\n                        \
+                        \               OpsRamp's API Tokens expire in 7200s - 1s = 6199s"
+        scope:
+          type: string
+          description: '''OAuth 2.0 scope: All APIs use the same scope: *global:manage*'''
+      description: Authentication response payload
