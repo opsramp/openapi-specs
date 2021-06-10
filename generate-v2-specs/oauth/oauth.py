@@ -1,12 +1,20 @@
-import sys
+import os, sys
 sys.path.append("..")
 from oas_common_models import *
 from models import *
 
+os.environ["TENANT_NAME"] = 'api-2adc3'
 
 TITLE = 'oauth'
 DESCRIPTION = 'API to obtain OAuth 2.0 Access Token'
 ENDPOINT_SUFFIX = '/auth/oauth/token'
+
+TENANT_NAME = os.getenv("TENANT_NAME")
+print("TENANT_NAME", TENANT_NAME)
+assert (TENANT_NAME != None), "TENANT_NAME is blank"
+
+
+
 URI = 'https://' +  TENANT_NAME + '.opsramp.com' + ENDPOINT_SUFFIX
 OAS_FILENAME = TITLE + '.v2.generated.yaml'
 OATH_FILEPATH = '../oas'
@@ -14,7 +22,7 @@ OATH_FILEPATH = '../oas'
 
 app = FastAPI( title = TITLE,
     description = DESCRIPTION,
-    version="2.0.0",docs_url="/",
+    version="v2",docs_url="/",
     openapi_url= ENDPOINT_SUFFIX + '/openapi.json')
 
 
@@ -32,7 +40,7 @@ def post_client_credentiials(
              },
          )):
     """
-    Post the following information to get an OAuth 2.0 Access Token.
+    Post the following information to get an [OAuth 2.0](https://www.oauth.com/) Access Token.
     - **grant_type**: "client_credentials. APIs use Client Credentials Grant type.
     - **client_id**: *key* from the integration.
     - **client_secret**: *secret* from the integration.
@@ -54,5 +62,21 @@ def post_client_credentiials(
 if __name__ == '__main__':
 
     oas_fastapi = app.openapi()
+    oas_fastapi['openapi'] = OPENAPI
+    oas_fastapi['info'] = INFO
+    oas_fastapi['servers'] = SERVERS['opsramp_auth']
+
+    ordered_oas_fastapi = dict()
+
+    first_few_keys = ['openapi', 'info', 'servers']
+
+    for k in first_few_keys:
+        ordered_oas_fastapi[k] = oas_fastapi[k]
+
+    for k in oas_fastapi.keys():
+        if k not in first_few_keys:
+            ordered_oas_fastapi[k] = oas_fastapi[k]
+
+
     with open(OATH_FILEPATH + '/' + OAS_FILENAME, 'w') as f:
-        data = yaml.dump(oas_fastapi, f, default_flow_style=False, sort_keys=False)
+        data = yaml.dump(dict(ordered_oas_fastapi), f, default_flow_style=False, sort_keys=False)

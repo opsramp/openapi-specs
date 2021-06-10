@@ -726,9 +726,9 @@ paths:
                   unitLabel: Percentage (%)
       responses:
         '200':
-          description: OK
+          description: MetricType already exists
         '201':
-          description: Created
+          description: MetricType  created
           content:
             application/json:
               schema:
@@ -745,6 +745,8 @@ paths:
                     resourceType: CPU
                     displayUnit: Percentage (%)
                     unitLabel: Percentage (%)
+        '400':
+          description: ' MetricName cannot be null'
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/metric/tenants/{tenantId}/metrics/{metric}/metricType':

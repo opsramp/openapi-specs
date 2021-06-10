@@ -22,10 +22,10 @@ servers:
         default: demo
         description: Custom sub-domain assigned to the client
 paths:
-  '/api/v2/tenants/internal':
+  /api/v2/tenants/internal:
     x-internal: true
     summary: Demonstrate internal tagging for endpoints.
-    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consectetur facilisis nulla, a mollis enim euismod eu. Morbi pharetra ante sit amet magna semper, ut faucibus est sagittis. Phasellus consequat cursus nunc, ut scelerisque diam pulvinar in. Nam ac leo et enim vehicula rutrum a eget augue.
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consectetur facilisis nulla, a mollis enim euismod eu. Morbi pharetra ante sit amet magna semper, ut faucibus est sagittis. Phasellus consequat cursus nunc, ut scelerisque diam pulvinar in. Nam ac leo et enim vehicula rutrum a eget augue.'
     post:
       tags:
         - alerts
@@ -2328,6 +2328,9 @@ paths:
 
 
 
+
+
+
                             Configure how to update an existing incident of an escalated alert.
 
                           If an Open incident (other than Closed) is available for the alert, the incident gets updated instead of creating a new incident.
@@ -4341,6 +4344,9 @@ paths:
 
 
 
+
+
+
                             Configure how to update an existing incident of an escalated alert.
 
                           If an Open incident (other than Closed) is available for the alert, the incident gets updated instead of creating a new incident.
@@ -4957,7 +4963,12 @@ paths:
     summary: Post action on an alert
     description: |-
       Posts an action on an alert.
-
+      - Supoorted actions
+        - acknowledge
+        - suppress
+        - close
+        - unsuppress
+        - unAcknowledge      
       ##### Notes
       When unacknowledge or unsuppress is specified, the alert status becomes either open or ticketed (if there is an incident ID associated with the alert).
     post:
@@ -4971,13 +4982,20 @@ paths:
               properties:
                 description:
                   type: string
+                snoozeDuration:
+                  type: number
             examples:
               example-1:
                 value:
                   description: close a ticket
+              suppress-snooze:
+                value:
+                  description: suppress Alert
+                  snoozeDuration: 10
       responses:
         '200':
           description: OK
+      description: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/alertId'
@@ -9379,7 +9397,7 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/smId'
   '/api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resume':
-    summary:  Resumes scheduled maintainence window
+    summary: Resumes scheduled maintainence window
     description: |-
       Resumes a suspended scheduled maintainence window.
       ##### Notes
@@ -10219,6 +10237,13 @@ components:
       required: true
       schema:
         type: string
+        enum:
+          - acknowledge
+          - suppress
+          - close
+          - unsuppress
+          - unAcknowledge
+        default: acknowledge
       description: Supported actions on alert
     userId:
       name: userId

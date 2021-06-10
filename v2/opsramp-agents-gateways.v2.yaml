@@ -686,12 +686,15 @@ paths:
     summary: Generate gateway access token
     description: |-
       Generates an access token on the gateway.
+      
+      Curl command : 'curl --location --request POST '[https://192.168.0.123:5480/api/v2/apiTokenGen]' \ --form 'username="admin"' \ --form 'password="Pass@1234'
 
       An access token is needed to:
 
       - Register the gateway.
       - Use all gateway-related activities.
       - Provides a secured connectivity with OpsRamp cloud
+      
     post:
       tags:
         - agents-gateways
@@ -712,6 +715,21 @@ paths:
                   value:
                     token: 4879423b58e637d140b77af3aeb09b53f1a4ed60
                     expires_in: '3599.965947'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+            examples:
+              example-1:
+                value:
+                  username: user
+                  password: passx
   /api/v2/networksettings:
     summary: Specifies gateway network settings
     description: Specifies the network settings on the gateway.
