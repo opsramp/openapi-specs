@@ -1,0 +1,13 @@
+{
+    "domain_name":"opsramp.com",
+    "tenant_subdomain_name":"api-2adc3",
+    "partner_id":"msp_8",
+    "client_ids": [ "client_3313" ],
+    "partner_name": "OPSRAMP-LAB",
+    "integration_id": "INTG-f3610b6e-f69f-4251-bde5-81b13713f4c6",
+    "integration_name": "MAHESH-API-INTEGRATION",
+    "integration_category": "Custom",
+    "integration_installed_at": "5/28/21, 2:10:44 PM",
+    "key": "jzhyhYKGkpEWAXcJ9Qd6mMkpSDMFqYUS",
+    "secret": "PCDNBBMx77RfdG3fCUsMnFvsEMu8y86BaN82JRpjqgBDqHbm8Hcxgj4ZKZg9gp88"
+}
