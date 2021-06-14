@@ -5709,7 +5709,7 @@ components:
           type: string
           description: |
             Phone number of client.
-        phoneNumberExt:
+        phoneExtension:
           type: string
           description: |
             Phone number extension.
@@ -5874,14 +5874,14 @@ components:
                 file converted to base64.
         addOns:
           type: array
+          description: '(Optional) Client specific addOns as provided by OPSRAMP on specific packages Viz "SMS and Voice", "Knowledgebase Management", "OS Service Start/Stop Actions", "Remote Access Management", "Process Automation", "Extended Data Retention", "Mask Resource Identity Management", "Event Enrichment".'
           items:
             type: string
-          description: '(Optional) Client specific addOns as provided by OPSRAMP on specific packages Viz "SMS and Voice", "Knowledgebase Management", "OS Service Start/Stop Actions", "Remote Access Management", "Process Automation", "Extended Data Retention", "Mask Resource Identity Management", "Event Enrichment".'
         packages:
           type: array
+          description: '(Optional) Client specific Packages as provided by OPSRAMP i..e Hybrid Discovery and Monitoring", "Event and Incident Management", "Remediation and Automation".'
           items:
             type: string
-          description: '(Optional) Client specific Packages as provided by OPSRAMP i..e Hybrid Discovery and Monitoring", "Event and Incident Management", "Remediation and Automation".'
     credentialSet:
       title: credentialSet
       type: object
