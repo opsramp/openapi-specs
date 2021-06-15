@@ -553,18 +553,21 @@ paths:
         required: true
   '/api/v2/tenants/{tenantId}/agents/windows':
     summary: Download Windows agent
-    description: Downloads the Windows agent.
+    description: |- 
+      Downloads the Windows agent.
+      This returns the octet-stream payload.
+      Prescribed headers:
+      - Content-Type: application/octet-stream
+      - Accept : application/octet-stream      
+      Example urls:
+      - https://<URL>/api/v2/tenants/client_id/agents/windows?agentType=MSI
+      - https://<URL>/api/v2/tenants/client_id/agents/windows?agentType=EXE      
     get:
       tags:
         - agents-gateways
       responses:
         '200':
           description: OK
-          content:
-            application/octet-stream:
-              schema:
-                type: object
-                properties: {}
       parameters:
         - schema:
             type: string
@@ -575,11 +578,6 @@ paths:
           in: query
           name: agentType
           description: Downloads the binary type of the agent installer
-        - schema:
-            type: string
-          in: header
-          description: application/octet-stream
-          name: Content-Type
       summary: ''
       description: ''
     parameters:
