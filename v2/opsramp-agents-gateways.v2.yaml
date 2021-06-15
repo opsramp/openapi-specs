@@ -340,56 +340,17 @@ paths:
       Downloads the Linux agent installation script.
 
       This payload has the octet-stream of the deployment script.
-      Headers
-      Content-Type: application/octet-stream
-      Accept : application/octet-stream
-      Example 
-      https://<URL>/api/v2/tenants/client_14/agent/deployAgentsScript?scriptType=SHELL
-      https://<URL>/api/v2/tenants/client_14/agent/deployAgentsScript?scriptType=PYTHON
-      Default scriptType query variable value = SHELL
+      Prescribed headers
+      - Content-Type: application/octet-stream
+      - Accept : application/octet-stream
+      Example urls
+      - https://<URL>/api/v2/tenants/client_14/agent/deployAgentsScript?scriptType=SHELL
+      - https://<URL>/api/v2/tenants/client_14/agent/deployAgentsScript?scriptType=PYTHON
+      - Default scriptType query variable value = SHELL
     get:
       tags:
         - agents-gateways
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  downloadUrl:
-                    type: string
-                  version:
-                    type: string
-                  size:
-                    type: integer
-                  checksum:
-                    type: string
-                  generation:
-                    type: string
-              examples:
-                example-1:
-                  value:
-                    name: <package-name>
-                    downloadUrl: <direct-s3-download-url>
-                    version: <agent-version>
-                    size: 100
-                    checksum: <checksum>
-                    generation: G2
-        '':
-          content:
-            application/octet-stream:
-              schema:
-                type: object
-                properties: {}
-          headers:
-            Content-Type:
-              schema:
-                type: string
-              description: application/octet-stream
+      responses: {}
       parameters:
         - schema:
             type: string
@@ -408,6 +369,7 @@ paths:
           name: 'Accept '
           description: application/octet-stream
       description: ''
+      summary: ''
     parameters:
       - schema:
           type: string
@@ -609,29 +571,16 @@ paths:
       Downloads the Windows agent.
 
       This returns the octet-stream payload.
-      Headers:
-      Content-Type: application/octet-stream
-      Accept : application/octet-stream      
+      Prescribed headers:
+      - Content-Type: application/octet-stream
+      - Accept : application/octet-stream      
       Example urls:
-      https://<URL>/api/v2/tenants/client_id/agents/windows?agentType=MSI
-      https://<URL>/api/v2/tenants/client_id/agents/windows?agentType=EXE
-
+      - https://<URL>/api/v2/tenants/client_id/agents/windows?agentType=MSI
+      - https://<URL>/api/v2/tenants/client_id/agents/windows?agentType=EXE
     get:
       tags:
         - agents-gateways
       responses:
-        '200':
-          description: OK
-          content:
-            application/octet-stream:
-              schema:
-                nullable: true
-              examples: {}
-          headers:
-            Content-Type:
-              schema:
-                type: string
-              description: application/octet-stream
         '':
           content:
             application/json:
@@ -657,6 +606,7 @@ paths:
           name: Content-Type
           description: application/octet-stream
       summary: ''
+      description: ''
     parameters:
       - schema:
           type: string
