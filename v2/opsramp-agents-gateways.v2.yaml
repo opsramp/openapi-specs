@@ -560,6 +560,11 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/octet-stream:
+              schema:
+                type: object
+                properties: {}
       parameters:
         - schema:
             type: string
