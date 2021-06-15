@@ -339,7 +339,14 @@ paths:
     description: |-
       Downloads the Linux agent installation script.
 
-      This returns the JSON payload containing package name, package size, package checksum, and the package S3 bucket URL to directly download the agent.
+      This payload has the octet-stream of the deployment script.
+      - Headers
+       - Content-Type: application/octet-stream
+       - Accept : application/octet-stream
+      - Example 
+        - https://<URL>/api/v2/tenants/client_14/agent/deployAgentsScript?scriptType=SHELL
+        - https://<URL>/api/v2/tenants/client_14/agent/deployAgentsScript?scriptType=PYTHON
+        - Default scriptType query variable value = SHELL
     get:
       tags:
         - agents-gateways
@@ -372,15 +379,42 @@ paths:
                     size: 100
                     checksum: <checksum>
                     generation: G2
+        '':
+          content:
+            application/octet-stream:
+              schema:
+                type: object
+                properties: {}
+          headers:
+            Content-Type:
+              schema:
+                type: string
+              description: application/octet-stream
       parameters:
         - schema:
             type: string
             default: 'NULL'
           in: query
-          name: profileId
-          description: '(Optional) Used by the agent to connect to OpsRamp. If a profile ID is not provided, the agent connects directly to OpsRamp.'
+          name: scriptType
+          description: (Optional) The type of the script to be downloaded(Shell or Python_
+        - schema:
+            type: string
+          in: header
+          description: ' application/octet-stream'
+          name: Content
+        - schema:
+            type: string
+          in: header
+          name: 'Accept '
+          description: application/octet-stream
+      description: ''
     parameters:
-      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        name: tenantId
+        in: path
+        required: true
+        description: ClientId of the tenant
   '/api/v2/tenants/{tenantId}/agents/{platform}/info':
     summary: Get the Linux agent
     description: |-
@@ -574,7 +608,13 @@ paths:
     description: |-
       Downloads the Windows agent.
 
-      This returns the JSON payload containing package name, package size, package checksum, and the package S3 bucket URL to directly download the agent.
+      This returns the octet-stream payload.
+      - Headers
+       - Content-Type: application/octet-stream
+       - Accept : application/octet-stream      
+      - Example urls
+       - https://<URL>/api/v2/tenants/client_id/agents/windows?agentType=MSI
+       - https://<URL>/api/v2/tenants/client_id/agents/windows?agentType=EXE
     get:
       tags:
         - agents-gateways
@@ -582,33 +622,47 @@ paths:
         '200':
           description: OK
           content:
+            application/octet-stream:
+              schema:
+                nullable: true
+              examples: {}
+          headers:
+            Content-Type:
+              schema:
+                type: string
+              description: application/octet-stream
+        '':
+          content:
             application/json:
               schema:
                 type: object
-                properties:
-                  name:
-                    type: string
-                  downloadUrl:
-                    type: string
-                  version:
-                    type: string
-                  size:
-                    type: integer
-                  checksum:
-                    type: string
-                  generation:
-                    type: string
+                properties: {}
               examples:
                 example-1:
-                  value:
-                    name: <package-name>
-                    downloadUrl: <direct-s3-download-url>
-                    version: <agent-version>
-                    size: 1000
-                    checksum: <checksum>
-                    generation: G2
+                  value: {}
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - EXE
+              - MSI
+            default: EXE
+          in: query
+          name: agentType
+          description: Downloads the binary type of the agent installer
+        - schema:
+            type: string
+          in: header
+          name: Content-Type
+          description: application/octet-stream
+      summary: ''
     parameters:
-      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        name: tenantId
+        in: path
+        required: true
+        description: ClientId of the tenant
   /api/v2/registration:
     summary: Register gateway
     description: Registers the gateway.
@@ -686,7 +740,7 @@ paths:
     summary: Generate gateway access token
     description: |-
       Generates an access token on the gateway.
-      
+
       Curl command : 'curl --location --request POST '[https://192.168.0.123:5480/api/v2/apiTokenGen]' \ --form 'username="admin"' \ --form 'password="Pass@1234'
 
       An access token is needed to:
@@ -694,7 +748,6 @@ paths:
       - Register the gateway.
       - Use all gateway-related activities.
       - Provides a secured connectivity with OpsRamp cloud
-      
     post:
       tags:
         - agents-gateways
