@@ -575,6 +575,11 @@ paths:
           in: query
           name: agentType
           description: Downloads the binary type of the agent installer
+        - schema:
+            type: string
+          in: header
+          description: application/octet-stream
+          name: Content-Type
       summary: ''
       description: ''
     parameters:
