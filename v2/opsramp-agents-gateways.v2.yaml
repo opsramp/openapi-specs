@@ -340,13 +340,6 @@ paths:
       Downloads the Linux agent installation script.
 
       This payload has the octet-stream of the deployment script.
-      Prescribed headers
-      - Content-Type: application/octet-stream
-      - Accept : application/octet-stream
-      Example urls
-      - https://<URL>/api/v2/tenants/client_14/agent/deployAgentsScript?scriptType=SHELL
-      - https://<URL>/api/v2/tenants/client_14/agent/deployAgentsScript?scriptType=PYTHON
-      - Default scriptType query variable value = SHELL
     get:
       tags:
         - agents-gateways
@@ -570,13 +563,6 @@ paths:
     description: |-
       Downloads the Windows agent.
 
-      This returns the octet-stream payload.
-      Prescribed headers:
-      - Content-Type: application/octet-stream
-      - Accept : application/octet-stream      
-      Example urls:
-      - https://<URL>/api/v2/tenants/client_id/agents/windows?agentType=MSI
-      - https://<URL>/api/v2/tenants/client_id/agents/windows?agentType=EXE
     get:
       tags:
         - agents-gateways
