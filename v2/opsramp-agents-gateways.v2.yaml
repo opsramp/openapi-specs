@@ -349,6 +349,11 @@ paths:
       - https://server/api/v2/tenants/client_id/agent/deployAgentsScript?scriptType=SHELL
       - https://server/api/v2/tenants/client_id/agent/deployAgentsScript?scriptType=PYTHON
       - Default scriptType = SHELL i..e  https://server/api/v2/tenants/client_14/agent/deployAgentsScript
+
+      Notes: Values are case insensitive supports (SHELL or h)
+      
+      *Response payload:*
+      - Consists of the octet-stream of the queried script.
     get:
       tags:
         - agents-gateways
@@ -575,6 +580,11 @@ paths:
       - https://server/api/v2/tenants/client_id/agents/windows?agentType=MSI
       - https://server/api/v2/tenants/client_id/agents/windows?agentType=EXE    
       - Default agentType = EXE  i..e https://server/api/v2/tenants/client_id/agents/windows
+      
+      Notes: Values are case insensitive supports (exe or EXE)
+
+      *Response payload:*
+      - Consists of the octet-stream of the agent installer in the requested format
 
     get:
       tags:
