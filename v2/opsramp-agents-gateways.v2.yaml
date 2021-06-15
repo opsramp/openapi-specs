@@ -343,7 +343,9 @@ paths:
     get:
       tags:
         - agents-gateways
-      responses: {}
+      responses:
+        '200':
+          description: OK
       parameters:
         - schema:
             type: string
@@ -351,18 +353,9 @@ paths:
           in: query
           name: scriptType
           description: (Optional) The type of the script to be downloaded(Shell or Python_
-        - schema:
-            type: string
-          in: header
-          description: ' application/octet-stream'
-          name: Content
-        - schema:
-            type: string
-          in: header
-          name: 'Accept '
-          description: application/octet-stream
       description: ''
       summary: ''
+      operationId: ''
     parameters:
       - schema:
           type: string
@@ -560,22 +553,13 @@ paths:
         required: true
   '/api/v2/tenants/{tenantId}/agents/windows':
     summary: Download Windows agent
-    description: |-
-      Downloads the Windows agent.
-
+    description: Downloads the Windows agent.
     get:
       tags:
         - agents-gateways
       responses:
-        '':
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-              examples:
-                example-1:
-                  value: {}
+        '200':
+          description: OK
       parameters:
         - schema:
             type: string
@@ -586,11 +570,6 @@ paths:
           in: query
           name: agentType
           description: Downloads the binary type of the agent installer
-        - schema:
-            type: string
-          in: header
-          name: Content-Type
-          description: application/octet-stream
       summary: ''
       description: ''
     parameters:
