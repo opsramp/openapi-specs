@@ -346,9 +346,9 @@ paths:
       - Accept : application/octet-stream
 
       *Example urls:*
-      - https://<URL>/api/v2/tenants/client_14/agent/deployAgentsScript?scriptType=SHELL
-      - https://<URL>/api/v2/tenants/client_14/agent/deployAgentsScript?scriptType=PYTHON
-      - Default scriptType = SHELL i..e  https://<URL>/api/v2/tenants/client_14/agent/deployAgentsScript
+      - https://server/api/v2/tenants/client_id/agent/deployAgentsScript?scriptType=SHELL
+      - https://server/api/v2/tenants/client_id/agent/deployAgentsScript?scriptType=PYTHON
+      - Default scriptType = SHELL i..e  https://server/api/v2/tenants/client_14/agent/deployAgentsScript
     get:
       tags:
         - agents-gateways
@@ -572,10 +572,10 @@ paths:
       - Accept : application/octet-stream      
      
       *Example urls:*
-      - https://<URL>/api/v2/tenants/client_id/agents/windows?agentType=MSI
-      - https://<URL>/api/v2/tenants/client_id/agents/windows?agentType=EXE    
-      - Default agentType = EXE  i..e https://<URL>/api/v2/tenants/client_id/agents/windows
-      
+      - https://server/api/v2/tenants/client_id/agents/windows?agentType=MSI
+      - https://server/api/v2/tenants/client_id/agents/windows?agentType=EXE    
+      - Default agentType = EXE  i..e https://server/api/v2/tenants/client_id/agents/windows
+
     get:
       tags:
         - agents-gateways
