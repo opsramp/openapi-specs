@@ -4085,6 +4085,40 @@ paths:
                       aliasName: ''
                       resourceName: ''
                       resourceType: CLOUD_PROVIDER
+                dns-example:
+                  value:
+                    - id: b081b43e-6c52-462c-bb6c-e81803c0d969
+                      name: Linux Server
+                      hostName: test-linux1
+                      ipAddress: ''
+                      aliasName: ''
+                      resourceName: XP_test
+                      resourceType: Server
+                      dnsName: test-linux1.sjc.net
+                    - id: 801bb8cf-4f93-4a5b-a7b4-ab734cea63b4
+                      name: Tri-Test-VM3
+                      hostName: test-win1
+                      ipAddress: 'fe80::d055:f2b2:6dd:d933'
+                      aliasName: ''
+                      resourceName: Tri-Test-VM3
+                      resourceType: Windows
+                      dnsName: test-win1.sjc.net
+                    - id: 31321789-ef92-41cd-bc96-01cc7bd38e1e
+                      name: DOT-TEST-NET
+                      hostName: test-win2
+                      ipAddress: ''
+                      aliasName: ''
+                      resourceName: DOT-TEST-NET
+                      resourceType: Server
+                      dnsName: test-win1.sjc.net
+                    - id: 543ea045-f9d5-410e-846c-27b5b772dea9
+                      name: Tri_test_VM
+                      hostName: test-win3
+                      ipAddress: 147.121.111.95
+                      aliasName: ''
+                      resourceName: Tri_test_VM
+                      resourceType: Windows
+                      dnsName: test-win3.sjc.net
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/resources/{resourceId}/applications':
@@ -5134,6 +5168,75 @@ paths:
                         hostName: TestHost
                         ipAddress: 1.1.1.2
                         dns: ''
+                        client:
+                          id: 4
+                          uniqueId: client_4
+                          name: EHR
+                        createdDate: '2019-05-20T09:31:50+0000'
+                        classCode: device
+                        deviceType: Desktop
+                        devicePath: Desktop
+                        type: DEVICE
+                        state: active
+                        make: ''
+                        model: ''
+                        osName: ''
+                        osArchitecture: '32'
+                        description: test dummy device
+                        gatewayProfileId: '0'
+                        source: MANUAL
+                        agentInstalled: false
+                        attributes:
+                          network:
+                            - ip: 172.24.133.91
+                              mac: 'f8:94:c2:0c:10:f2'
+                              aliasIp: '172.24.133.100, 172.24.133.101'
+                        aliasName: TestAlias
+                        location:
+                          id: 233
+                          name: Location2
+                          description: ''
+                          address: ''
+                          city: ''
+                          path: Location2
+                        name: TestHost
+                        resourceName: TestResource
+                        consoles: []
+                        deviceGroups:
+                          - id: '99'
+                            name: RegressionTest
+                            description: ''
+                            createdDate: '2021-03-15T15:01:39+0000'
+                            updatedDate: '2021-03-15T17:14:55+0000'
+                            linkedService: false
+                          - id: '102'
+                            name: PolicyDevGroup
+                            description: ''
+                            createdDate: '2021-04-22T01:04:45+0000'
+                            updatedDate: '2021-04-22T01:04:46+0000'
+                            linkedService: false
+                        resourceType: Desktop
+                        assetManagedTime: '2019-05-20T09:31:50+0000'
+                        firstAssetManagedTime: '2019-05-20T09:31:50+0000'
+                        deleted: false
+                        ts: 0
+                        clientId: 0
+                        locationOffset: 0
+                        totalLocations: 0
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    descendingOrder: false
+                example-dnsName:
+                  value:
+                    results:
+                      - id: 61fec02a-4370-4dfb-be4d-1bb9fe3e05aa
+                        hostName: TestHost
+                        ipAddress: 10.1.1.2
+                        dnsName: TestHost.testDomain.com
                         client:
                           id: 4
                           uniqueId: client_4
