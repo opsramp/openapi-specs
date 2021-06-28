@@ -4030,6 +4030,7 @@ paths:
             type: string
           in: query
           name: queryString
+          description: Prepared query string consists of query parameters
       responses:
         '200':
           description: OK
@@ -4054,6 +4055,9 @@ paths:
                       type: string
                     resourceType:
                       type: string
+                    dnsName:
+                      type: string
+                      description: DNS name of the resource.
               examples:
                 example-1:
                   value:
@@ -4085,6 +4089,40 @@ paths:
                       aliasName: ''
                       resourceName: ''
                       resourceType: CLOUD_PROVIDER
+                dns-example:
+                  value:
+                    - id: b081b43e-6c52-462c-bb6c-e81803c0d969
+                      name: Linux Server
+                      hostName: test-linux1
+                      ipAddress: ''
+                      aliasName: ''
+                      resourceName: XP_test
+                      resourceType: Server
+                      dnsName: test-linux1.sjc.net
+                    - id: 801bb8cf-4f93-4a5b-a7b4-ab734cea63b4
+                      name: Tri-Test-VM3
+                      hostName: test-win1
+                      ipAddress: 'fe80::d055:f2b2:6dd:d933'
+                      aliasName: ''
+                      resourceName: Tri-Test-VM3
+                      resourceType: Windows
+                      dnsName: test-win1.sjc.net
+                    - id: 31321789-ef92-41cd-bc96-01cc7bd38e1e
+                      name: DOT-TEST-NET
+                      hostName: test-win2
+                      ipAddress: ''
+                      aliasName: ''
+                      resourceName: DOT-TEST-NET
+                      resourceType: Server
+                      dnsName: test-win1.sjc.net
+                    - id: 543ea045-f9d5-410e-846c-27b5b772dea9
+                      name: Tri_test_VM
+                      hostName: test-win3
+                      ipAddress: 147.121.111.95
+                      aliasName: ''
+                      resourceName: Tri_test_VM
+                      resourceType: Windows
+                      dnsName: test-win3.sjc.net
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/resources/{resourceId}/applications':
@@ -5042,6 +5080,7 @@ paths:
                         hostName: SJLPT3311
                         ipAddress: 151.43.122.54
                         dns: opsrampdev
+                        dnsName: opsrampdev
                         updatedDate: '2019-08-02T10:24:16+0000'
                         deviceType: Linux
                         devicePath: Server >> Linux
@@ -5084,6 +5123,7 @@ paths:
                         hostName: SJJCD110022
                         ipAddress: 142.11.32.12
                         dns: opsrampdev
+                        dnsName: opsrampdev
                         updatedDate: '2018-08-02T10:24:16+0000'
                         deviceType: Linux
                         devicePath: Server >> Linux
@@ -5134,6 +5174,77 @@ paths:
                         hostName: TestHost
                         ipAddress: 1.1.1.2
                         dns: ''
+                        dnsName: ''
+                        client:
+                          id: 4
+                          uniqueId: client_4
+                          name: EHR
+                        createdDate: '2019-05-20T09:31:50+0000'
+                        classCode: device
+                        deviceType: Desktop
+                        devicePath: Desktop
+                        type: DEVICE
+                        state: active
+                        make: ''
+                        model: ''
+                        osName: ''
+                        osArchitecture: '32'
+                        description: test dummy device
+                        gatewayProfileId: '0'
+                        source: MANUAL
+                        agentInstalled: false
+                        attributes:
+                          network:
+                            - ip: 172.24.133.91
+                              mac: 'f8:94:c2:0c:10:f2'
+                              aliasIp: '172.24.133.100, 172.24.133.101'
+                        aliasName: TestAlias
+                        location:
+                          id: 233
+                          name: Location2
+                          description: ''
+                          address: ''
+                          city: ''
+                          path: Location2
+                        name: TestHost
+                        resourceName: TestResource
+                        consoles: []
+                        deviceGroups:
+                          - id: '99'
+                            name: RegressionTest
+                            description: ''
+                            createdDate: '2021-03-15T15:01:39+0000'
+                            updatedDate: '2021-03-15T17:14:55+0000'
+                            linkedService: false
+                          - id: '102'
+                            name: PolicyDevGroup
+                            description: ''
+                            createdDate: '2021-04-22T01:04:45+0000'
+                            updatedDate: '2021-04-22T01:04:46+0000'
+                            linkedService: false
+                        resourceType: Desktop
+                        assetManagedTime: '2019-05-20T09:31:50+0000'
+                        firstAssetManagedTime: '2019-05-20T09:31:50+0000'
+                        deleted: false
+                        ts: 0
+                        clientId: 0
+                        locationOffset: 0
+                        totalLocations: 0
+                    totalResults: 1
+                    orderBy: name
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    descendingOrder: false
+                example-dnsName:
+                  value:
+                    results:
+                      - id: 61fec02a-4370-4dfb-be4d-1bb9fe3e05aa
+                        hostName: TestHost
+                        ipAddress: 10.1.1.2
+                        dns: TestHost.testDomain.com
+                        dnsName: TestHost.testDomain.com
                         client:
                           id: 4
                           uniqueId: client_4
@@ -7319,7 +7430,7 @@ components:
       schema:
         type: string
       required: true
-      description: Describes the client ID or msp ID of the tenant
+      description: Describes the client ID of the tenant
   schemas:
     taggable:
       title: taggable
@@ -7686,360 +7797,7 @@ components:
     resourceFull:
       title: resourceFull
       type: object
-      x-examples:
-        example-1:
-          agentInstalled: true
-          aliasName: string
-          appRoles:
-            - name: string
-          assetManagedTime: '2019-08-24T14:15:22Z'
-          attributes:
-            ami: string
-            instanceId: string
-            instanceState: string
-            instanceType: string
-            launchDate: string
-            monitoringState: string
-            network:
-              - aliasIp: string
-                ip: string
-                mac: string
-            owner: string
-            privateDns: string
-            privateIp: string
-            provider: string
-            publicIp: string
-            zone: string
-          bios:
-            biosName: string
-            biosVersion: string
-            smBiosMajorVersion: string
-            smBiosMinorVersion: string
-            smBiosPresent: string
-            smBiosVersion: string
-            systemManufacturer: string
-            systemModel: string
-            systemSerial: string
-          classCode: string
-          client:
-            id: 0
-            name: string
-            uniqueId: string
-          clientId: 0
-          clientUniqueId: string
-          components:
-            - string
-          consoles:
-            - null
-          cpus:
-            - dataWidth: 0
-              family: string
-              l2CacheSize: 0
-              manufacturer: string
-              maxClockSpeed: 0
-              numberOfCores: 0
-              powerManagementSupported: true
-              processor: string
-              processorName: string
-              processorVersion: string
-          createdDate: '2019-08-24T14:15:22Z'
-          deleted: true
-          description: string
-          devicePath: string
-          deviceType: string
-          dns: string
-          extResourceId: string
-          firstAssetManagedTime: '2019-08-24T14:15:22Z'
-          gatewayProfileId: string
-          generalInfo:
-            agentDeploytime: '2019-08-24T14:15:22Z'
-            aliasName: string
-            assetManagedTime: string
-            createdTime: '2019-08-24T14:15:22Z'
-            description: string
-            dns: string
-            encodingType: string
-            firstAssetManagedTime: string
-            hostName: string
-            keyboardType: string
-            make: string
-            osArchitecture: string
-            name: string
-            osName: string
-            physicalMemory: string
-            resourceName: string
-            resourceType: string
-            updatedTime: '2019-08-24T14:15:22Z'
-          history:
-            decommissionReason: string
-          hostName: string
-          id: string
-          installedApp:
-            displayName: string
-            id: string
-            integration:
-              id: string
-              name: string
-          ipAddress: string
-          location:
-            city: string
-            clientId: 0
-            id: 0
-            mspId: 0
-            name: string
-          locationOffset: 0
-          logicalDisks:
-            - description: string
-              fileSystem: string
-              free: 0
-              freeDiskCriticalThreshold: 0
-              freeDiskWarningThreshold: 0
-              monitor: true
-              name: string
-              total: 0
-              utilizationCriticalThreshold: 0
-              utilizationWarningThreshold: 0
-          macAddress: string
-          make: string
-          managementProfile:
-            id: 0
-            name: string
-            type: string
-          metricTypes:
-            - availabilityMetric: true
-              displayName: string
-              metricName: string
-              thresholdType: string
-              unit: string
-          model: string
-          name: string
-          networkCards:
-            - dhcpEnabled: true
-              id: 0
-              ipAddress: string
-              linkMode: string
-              macAddress: string
-              networkName: string
-          osArchitecture: string
-          osName: string
-          physicalDisks:
-            - interfaceType: string
-              manufacturer: string
-              mediaType: string
-              model: string
-              name: string
-              partitions: 0
-          properties:
-            ami: string
-            instanceId: string
-            instanceState: string
-            instanceType: string
-            launchDate: string
-            monitoringState: string
-            owner: string
-            privateDns: string
-            privateIp: string
-            provider: string
-            publicIp: string
-            zone: string
-          resourceName: string
-          resourceType: string
-          serialNumber: string
-          source: string
-          state: string
-          status: string
-          systemUID: string
-          tags:
-            - name: string
-              value: string
-          totalLocations: 0
-          ts: 0
-          type: string
-          updatedDate: '2019-08-24T14:15:22Z'
-          videoCards:
-            - bitsPerPixel: string
-              name: string
-              ram: string
-              resolution: string
-              version: string
-          wsusSettings: string
-        example-2:
-          agentInstalled: true
-          aliasName: string
-          appRoles:
-            - name: string
-          assetManagedTime: '2019-08-24T14:15:22Z'
-          attributes:
-            ami: string
-            instanceId: string
-            instanceState: string
-            instanceType: string
-            launchDate: string
-            monitoringState: string
-            network:
-              - aliasIp: string
-                ip: string
-                mac: string
-            owner: string
-            privateDns: string
-            privateIp: string
-            provider: string
-            publicIp: string
-            zone: string
-          bios:
-            biosName: string
-            biosVersion: string
-            smBiosMajorVersion: string
-            smBiosMinorVersion: string
-            smBiosPresent: string
-            smBiosVersion: string
-            systemManufacturer: string
-            systemModel: string
-            systemSerial: string
-          classCode: string
-          client:
-            id: 0
-            name: string
-            uniqueId: string
-          clientId: 0
-          clientUniqueId: string
-          components:
-            - string
-          consoles:
-            - null
-          cpus:
-            - dataWidth: 0
-              family: string
-              l2CacheSize: 0
-              manufacturer: string
-              maxClockSpeed: 0
-              numberOfCores: 0
-              powerManagementSupported: true
-              processor: string
-              processorName: string
-              processorVersion: string
-          createdDate: '2019-08-24T14:15:22Z'
-          deleted: true
-          description: string
-          devicePath: string
-          deviceType: string
-          dns: string
-          extResourceId: string
-          firstAssetManagedTime: '2019-08-24T14:15:22Z'
-          gatewayProfileId: string
-          generalInfo:
-            agentDeploytime: '2019-08-24T14:15:22Z'
-            aliasName: string
-            assetManagedTime: string
-            createdTime: '2019-08-24T14:15:22Z'
-            description: string
-            dns: string
-            encodingType: string
-            firstAssetManagedTime: string
-            hostName: string
-            keyboardType: string
-            make: string
-            osArchitecture: string
-            name: string
-            osName: string
-            physicalMemory: string
-            resourceName: string
-            resourceType: string
-            updatedTime: '2019-08-24T14:15:22Z'
-          history:
-            decommissionReason: string
-          hostName: string
-          id: string
-          installedApp:
-            displayName: string
-            id: string
-            integration:
-              id: string
-              name: string
-          ipAddress: string
-          location:
-            city: string
-            clientId: 0
-            id: 0
-            mspId: 0
-            name: string
-          locationOffset: 0
-          logicalDisks:
-            - description: string
-              fileSystem: string
-              free: 0
-              freeDiskCriticalThreshold: 0
-              freeDiskWarningThreshold: 0
-              monitor: true
-              name: string
-              total: 0
-              utilizationCriticalThreshold: 0
-              utilizationWarningThreshold: 0
-          macAddress: string
-          make: string
-          managementProfile:
-            id: 0
-            name: string
-            type: string
-          metricTypes:
-            - availabilityMetric: true
-              displayName: string
-              metricName: string
-              thresholdType: string
-              unit: string
-          model: string
-          name: string
-          networkCards:
-            - dhcpEnabled: true
-              id: 0
-              ipAddress: string
-              linkMode: string
-              macAddress: string
-              networkName: string
-          osArchitecture: string
-          osName: string
-          physicalDisks:
-            - interfaceType: string
-              manufacturer: string
-              mediaType: string
-              model: string
-              name: string
-              partitions: 0
-          properties:
-            ami: string
-            instanceId: string
-            instanceState: string
-            instanceType: string
-            launchDate: string
-            monitoringState: string
-            owner: string
-            privateDns: string
-            privateIp: string
-            provider: string
-            publicIp: string
-            zone: string
-          resourceName: string
-          resourceType: string
-          serialNumber: string
-          source: string
-          state: string
-          status: string
-          systemUID: string
-          tags:
-            - name: string
-              value: string
-          totalLocations: 0
-          ts: 0
-          type: string
-          updatedDate: '2019-08-24T14:15:22Z'
-          videoCards:
-            - bitsPerPixel: string
-              name: string
-              ram: string
-              resolution: string
-              version: string
-          wsusSettings: string
-          identity: string
+      x-examples: {}
       properties:
         agentInstalled:
           type: boolean
@@ -8223,6 +7981,9 @@ components:
             updatedTime:
               format: date-time
               type: string
+            dnsName:
+              type: string
+              description: dnsName is duplicate of dns. Both represents same property.This has been introduced for naming consistenc for search parameters.
         history:
           type: object
           properties:
