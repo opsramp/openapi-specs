@@ -4055,6 +4055,9 @@ paths:
                       type: string
                     resourceType:
                       type: string
+                    dnsName:
+                      type: string
+                      description: DNS name of the resource.
               examples:
                 example-1:
                   value:
@@ -4103,7 +4106,6 @@ paths:
                       aliasName: ''
                       resourceName: Tri-Test-VM3
                       resourceType: Windows
-                      dns: test-win1.sjc.net
                       dnsName: test-win1.sjc.net
                     - id: 31321789-ef92-41cd-bc96-01cc7bd38e1e
                       name: DOT-TEST-NET
@@ -7427,7 +7429,7 @@ components:
       schema:
         type: string
       required: true
-      description: Describes the client ID or msp ID of the tenant
+      description: Describes the client ID of the tenant
   schemas:
     taggable:
       title: taggable
