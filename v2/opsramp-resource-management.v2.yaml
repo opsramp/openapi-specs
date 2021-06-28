@@ -4030,6 +4030,7 @@ paths:
             type: string
           in: query
           name: queryString
+          description: Prepared query string consists of query parameters
       responses:
         '200':
           description: OK
@@ -4102,6 +4103,7 @@ paths:
                       aliasName: ''
                       resourceName: Tri-Test-VM3
                       resourceType: Windows
+                      dns: test-win1.sjc.net
                       dnsName: test-win1.sjc.net
                     - id: 31321789-ef92-41cd-bc96-01cc7bd38e1e
                       name: DOT-TEST-NET
@@ -5076,6 +5078,7 @@ paths:
                         hostName: SJLPT3311
                         ipAddress: 151.43.122.54
                         dns: opsrampdev
+                        dnsName: opsrampdev
                         updatedDate: '2019-08-02T10:24:16+0000'
                         deviceType: Linux
                         devicePath: Server >> Linux
@@ -5118,6 +5121,7 @@ paths:
                         hostName: SJJCD110022
                         ipAddress: 142.11.32.12
                         dns: opsrampdev
+                        dnsName: opsrampdev
                         updatedDate: '2018-08-02T10:24:16+0000'
                         deviceType: Linux
                         devicePath: Server >> Linux
@@ -5236,6 +5240,7 @@ paths:
                       - id: 61fec02a-4370-4dfb-be4d-1bb9fe3e05aa
                         hostName: TestHost
                         ipAddress: 10.1.1.2
+                        dns: TestHost.testDomain.com
                         dnsName: TestHost.testDomain.com
                         client:
                           id: 4
@@ -8326,6 +8331,9 @@ components:
             updatedTime:
               format: date-time
               type: string
+            dnsName:
+              type: string
+              description: dnsName is duplicate of dns. Both represents same property.This has been introduced for naming consistency.
         history:
           type: object
           properties:
