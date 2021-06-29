@@ -351,7 +351,7 @@ paths:
       - Default scriptType = SHELL i..e  https://server/api/v2/tenants/client_14/agent/deployAgentsScript
 
       Notes: Values are case insensitive supports (SHELL or h)
-      
+
       *Response payload:*
       - Consists of the octet-stream of the queried script.
     get:
@@ -567,25 +567,24 @@ paths:
         required: true
   '/api/v2/tenants/{tenantId}/agents/windows':
     summary: Download Windows agent
-    description: |- 
+    description: |-
       Downloads the Windows agent.
-      
+
       This returns the octet-stream payload.
-      
+
       *Prescribed headers:*
       - Content-Type: application/octet-stream
       - Accept : application/octet-stream      
-     
+
       *Example urls:*
       - https://server/api/v2/tenants/client_id/agents/windows?agentType=MSI
       - https://server/api/v2/tenants/client_id/agents/windows?agentType=EXE    
       - Default agentType = EXE  i..e https://server/api/v2/tenants/client_id/agents/windows
-      
+
       Notes: Values are case insensitive supports (exe or EXE)
 
       *Response payload:*
       - Consists of the octet-stream of the agent installer in the requested format
-
     get:
       tags:
         - agents-gateways
@@ -1450,6 +1449,30 @@ paths:
                     tunnelType: TLS
                     registered: false
                     activationToken: 0ebaa078-cea2-4a66-a5b8-360bc8274c30
+                example-gw-services:
+                  value:
+                    id: 10813
+                    name: Local_Gateway
+                    description: ManagementProfile
+                    type: Gateway
+                    status: UP
+                    statusUpdatedDate: '2021-05-24T13:02:51+0000'
+                    softwareVersion: 9.0.0
+                    createdDate: '2021-05-23T09:07:46+0000'
+                    device:
+                      id: ef9ac394-d1e4-49f4-8b30-386c5c562f03
+                      uniqueId: ef9ac394-d1e4-49f4-8b30-386c5c562f03
+                      generalInfo:
+                        ipAddresses: 172.26.111.114
+                        hostName: host
+                    tunnelType: TLS
+                    registered: true
+                    uuId: 45b163a1-69ec-4b2d-9b07-d3b79f5276c5
+                    services:
+                      - name: sipAgent
+                        status: true
+                      - name: syntheticsAgent
+                        status: true
     post:
       tags:
         - agents-gateways
