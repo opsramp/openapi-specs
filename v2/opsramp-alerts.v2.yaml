@@ -9303,6 +9303,8 @@ paths:
         required: true
         description: 'Supported values for resourcetypes (resources,deviceGroups,sites)'
     get:
+      tags:
+        - alerts
       responses:
         '200':
           description: OK
