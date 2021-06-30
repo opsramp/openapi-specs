@@ -1951,6 +1951,8 @@ paths:
     get:
       summary: ''
       operationId: get-api-v2-tenants-tenantId-kb-category-categoryId
+      tags:
+        - knowledge-base
       responses:
         '200':
           description: OK
