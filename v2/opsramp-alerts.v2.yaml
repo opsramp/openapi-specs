@@ -489,7 +489,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: vm
                         - filterType: customAttributes
@@ -523,7 +523,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: Logix
                         - filterType: customAttributes
@@ -558,7 +558,7 @@ paths:
                     algorithmCorrelation:
                       alertsTimeWindow: 20
                       matchingConditions:
-                        - property: host_name
+                        - property: resource_name
                           matchType: Identical
                       primaryAlertSubject: IP policy api demo
                     createdBy:
@@ -580,7 +580,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: vm
                         - filterType: customAttributes
@@ -617,7 +617,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: vm
                         - filterType: customAttributes
@@ -876,7 +876,7 @@ paths:
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
-                        entityName: host_name
+                        entityName: resource_name
                         operator: Contains
                         entityValue: vm
                       - filterType: customAttributes
@@ -900,7 +900,7 @@ paths:
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
-                        entityName: host_name
+                        entityName: resource_name
                         operator: Contains
                         entityValue: Logix
                       - filterType: customAttributes
@@ -925,7 +925,7 @@ paths:
                   algorithmCorrelation:
                     alertsTimeWindow: 20
                     matchingConditions:
-                      - property: host_name
+                      - property: resource_name
                         matchType: Identical
                     primaryAlertSubject: IP policy api demo
               create-client-scope-w-algo-all-org-match:
@@ -937,7 +937,7 @@ paths:
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
-                        entityName: host_name
+                        entityName: resource_name
                         operator: Contains
                         entityValue: vm
                       - filterType: customAttributes
@@ -965,7 +965,7 @@ paths:
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
-                        entityName: host_name
+                        entityName: resource_name
                         operator: Contains
                         entityValue: vm
                       - filterType: customAttributes
@@ -1112,7 +1112,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: vm
                         - filterType: customAttributes
@@ -1190,7 +1190,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: Logix
                         - filterType: customAttributes
@@ -1225,7 +1225,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: vm
                         - filterType: customAttributes
@@ -1262,7 +1262,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: vm
                         - filterType: customAttributes
@@ -1369,7 +1369,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: vm
                         - filterType: customAttributes
@@ -1635,7 +1635,7 @@ paths:
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
-                        entityName: host_name
+                        entityName: resource_name
                         operator: Contains
                         entityValue: vm
                       - filterType: customAttributes
@@ -2247,91 +2247,8 @@ paths:
                                 4. User Group which has distributed list of email addresses. Click here to know more about User Group Distribution List. Provide only the user group IDs which have distributed list of email address configured in OpsRamp.
                       updateIncident:
                         type: object
-                        description: |2-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            Configure how to update an existing incident of an escalated alert.
+                        description: |-
+                          Configure how to update an existing incident of an escalated alert.
 
                           If an Open incident (other than Closed) is available for the alert, the incident gets updated instead of creating a new incident.
 
@@ -4266,6 +4183,52 @@ paths:
                       updateIncident:
                         type: object
                         description: |2-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7425,6 +7388,11 @@ paths:
             type: integer
           in: query
           name: pageSize
+      description: |-
+        Example:
+         - https://server.com/api/v2/tenants/client_4/policies/firstResponse/
+         - https://server.comp.com/api/v2/tenants/client_4/policies/firstResponse/?pageNo=1&pageSize=100
+         - https://server.comp.com/api/v2/tenants/msp_3/policies/firstResponse/?pageNo=1&pageSize=100
     post:
       tags:
         - alerts
@@ -7434,223 +7402,141 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  name:
-                    type: string
-                  enabled:
-                    type: boolean
-                  precedence:
-                    type: integer
-                  filterCriteria:
-                    type: object
-                    properties:
-                      filterBased:
-                        type: string
-                      matchingType:
-                        type: string
-                      rules:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            filterType:
-                              type: string
-                            entityName:
-                              type: string
-                            operator:
-                              type: string
-                            entityValue:
-                              type: string
-                  firstResponseType:
-                    type: string
-                  suppression:
-                    type: object
-                    properties:
-                      suppressSeasonalAlerts:
-                        type: boolean
-                      suppressByAttributes:
-                        type: boolean
-                      autoSnooze:
-                        type: boolean
-                      continuousLearning:
-                        type: boolean
-                      trainingFileId:
-                        type: string
-                  createdBy:
-                    type: object
-                    properties:
-                      loginName:
-                        type: string
-                      lastName:
-                        type: string
-                      firstName:
-                        type: string
-                      email:
-                        type: string
-                  createdTime:
-                    type: string
-                    format: date-time
-                  updatedTime:
-                    type: string
-                    format: date-time
+                $ref: '#/components/schemas/firstResponse'
               examples:
-                example-1:
+                client-policy:
                   value:
-                    id: POLICY-AC-c44f4193-154a-4aa5-b8a9-e5ea5acb386b
-                    name: Policy1
+                    id: POLICY-AC-d53e179d-8c9b-4564-b793-dc639f6a7cf2
+                    name: firstResponse_1
                     enabled: true
-                    precedence: 1
+                    enabledMode: 'ON'
                     filterCriteria:
                       filterBased: true
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Starts with
                           entityValue: vm
-                    firstResponseType: SUPPRESSION
-                    suppression:
-                      suppressSeasonalAlerts: true
-                      suppressByAttributes: true
-                      autoSnooze: true
+                        - filterType: nativeAttributes
+                          entityName: ip_address
+                          ipMatchingConditions:
+                            ipAddressMatchType: CIDR Match
+                            cidrNotation: 192.168.1.1/24
+                    attributeActions:
                       continuousLearning: true
-                      trainingFileId: ml_alert_suppression_training
+                      suppress:
+                        learnedConfiguration: true
+                        suppressDuration: 5
+                      runProcess:
+                        learnedConfiguration: true
+                        processIds:
+                          - PROCESS_9beade88-834a-4229-ab34-90380214cf74
+                    patternActions:
+                      suppress:
+                        seasonalAlerts: true
+                      seasonalityTimeFrame: 7D
                     createdBy:
                       loginName: opsramp_api_user
                       lastName: ' '
                       firstName: OpsRamp API User
                       email: opsAdmin@opsramp.com
-                    createdTime: '2019-02-27T12:50:44+0000'
-                    updatedTime: ''
+                    updatedBy:
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: opsAdmin@opsramp.com
+                    createdTime: '2019-02-28T09:25:56+0000'
+                    updatedTime: '2019-02-28T10:14:05+0000'
+                partner-policy:
+                  value:
+                    id: POLICY-AC-5c75b766-6dc3-4998-bf87-81d5fbf31961
+                    name: ml_time
+                    clientsIncluded: ALL
+                    enabled: true
+                    enabledMode: 'ON'
+                    filterCriteria:
+                      filterBased: true
+                      matchingType: ALL
+                      rules:
+                        - filterType: nativeAttributes
+                          entityName: resource_name
+                          operator: Starts with
+                          entityValue: vm
+                    attributeActions:
+                      suppress:
+                        learnedConfiguration: true
+                        suppressDuration: 5
+                    createdBy:
+                      id: USR0000000003
+                      loginName: superadmin
+                      lastName: ' '
+                      firstName: Super Admin
+                      email: helpdesk@opsramp.com
+                    updatedBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: API User
+                      email: helpdesk@opsramp.com
+                    createdTime: '2020-11-05T11:29:23+0000'
+                    updatedTime: '2020-11-06T14:00:18+0000'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: |
-                    Name of the first response policy. Maximum length: 250 characters.
-                enabled:
-                  type: boolean
-                  description: |
-                    (Optional) State of the first response policy. Default state: true.
-                precedence:
-                  type: integer
-                  description: |
-                    (Optional) Order of execution of the first response policy.
-                filterCriteria:
-                  type: object
-                  description: (Optional) Values used for filter criteria.
-                  properties:
-                    filterBased:
-                      type: string
-                      description: 'Defines the value used for filterBased. Default Value: False.'
-                      default: 'false'
-                    matchingType:
-                      type: string
-                      description: |-
-                        Defines the type of matching results either ANY or ALL.
-                        - Select ANY to match results based on any specified filter criteria.
-                        - Select ALL to match results based on all specified  filter criteria.
-                      enum:
-                        - ANY
-                        - ALL
-                    rules:
-                      type: array
-                      description: |-
-                        By default, the field rules is set to False. Mandatory only when filterBased is TRUE. Values for filterType are either
-                        - native attributes
-                            - dns_name
-                            - host_name
-                            - alias_name
-                            - ip_address
-                            - resource_type
-                            - agent_installed
-                            - operating_system
-                            - make
-                            - model
-                            - alert_source
-                            - alert_metric
-                        - custom attributes
-                            - Provide custom attribute names defined for client or partner or service provider assigned to the resources.
-                      items:
-                        type: object
-                        properties:
-                          filterType:
-                            type: string
-                          entityName:
-                            type: string
-                          operator:
-                            type: string
-                            description: ''
-                            enum:
-                              - Contains
-                              - Not Contains
-                              - Equals
-                              - Not Equals
-                              - Starts With
-                              - Ends With
-                              - Regex
-                              - Is
-                          entityValue:
-                            type: string
-                            description: Value used to compare.
-                firstResponseType:
-                  type: string
-                  description: 'The first response type. Supported value: SUPPRESSION.'
-                  enum:
-                    - SUPPRESSION
-                suppression:
-                  type: object
-                  description: |
-                    Used only for suppression type.
-                  properties:
-                    suppressSeasonalAlerts:
-                      type: boolean
-                      description: |
-                        Suppress alerts that happen regularly and at the same time approximately.
-                    suppressByAttributes:
-                      type: boolean
-                      description: |
-                        Suppress specific alerts.
-                    autoSnooze:
-                      type: boolean
-                      description: |
-                        Snooze specific alerts for a given time.
-                    continuousLearning:
-                      type: boolean
-                      description: |
-                        Enable/Disable continuous machine learning.
-                    trainingFileId:
-                      type: string
-                      description: |
-                        ID of the training file. This ID is used only when suppressByAttributes is TRUE.
-              required:
-                - name
+              $ref: '#/components/schemas/firstResponse'
             examples:
-              example-1:
+              client-policy:
                 value:
-                  name: Policy1
+                  name: firstResponse_1
+                  enabledMode: 'ON'
+                  filterCriteria:
+                    filterBased: true
+                    matchingType: ALL
+                    rules:
+                      - filterType: nativeAttributes
+                        entityName: resource_name
+                        operator: Starts with
+                        entityValue: vm
+                      - filterType: nativeAttributes
+                        entityName: ip_address
+                        ipMatchingConditions:
+                          ipAddressMatchType: CIDR Match
+                          cidrNotation: 192.168.1.1/24
+                  attributeActions:
+                    continuousLearning: true
+                    suppress:
+                      learnedConfiguration: true
+                      suppressDuration: 5
+                    runProcess:
+                      learnedConfiguration: true
+                      processIds:
+                        - PROCESS_9beade88-834a-4229-ab34-90380214cf74
+                  patternActions:
+                    seasonalityTimeFrame: 7D
+                    suppress:
+                      seasonalAlerts: true
+              msp-policy:
+                value:
+                  name: partnerPolicy1
+                  organizationMatchingType: INCLUDE
+                  includedClients:
+                    - client_8
+                    - client_9
+                  enabledMode: 'ON'
                   filterCriteria:
                     filterBased: 'true'
                     matchingType: ALL
                     rules:
                       - filterType: native
-                        entityName: host_name
-                        operator: Starts With
+                        entityName: resource_name
+                        operator: Starts  With
                         entityValue: vm
-                  firstResponseType: SUPPRESSION
-                  suppression:
-                    suppressSeasonalAlerts: true
-                    suppressByAttributes: true
-                    autoSnooze: true
-                    continuousLearning: true
-                    trainingFileId: ml_alert_suppression_training
+                  attributeActions:
+                    suppress:
+                      suppressDuration: 5
+                      learnedConfiguration: true
         description: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
@@ -7672,96 +7558,41 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  name:
-                    type: string
-                  enabled:
-                    type: boolean
-                  precedence:
-                    type: integer
-                  filterCriteria:
-                    type: object
-                    properties:
-                      filterBased:
-                        type: string
-                      matchingType:
-                        type: string
-                      rules:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            filterType:
-                              type: string
-                            entityName:
-                              type: string
-                            operator:
-                              type: string
-                            entityValue:
-                              type: string
-                  firstResponseType:
-                    type: string
-                  suppression:
-                    type: object
-                    properties:
-                      suppressSeasonalAlerts:
-                        type: boolean
-                      suppressByAttributes:
-                        type: boolean
-                      autoSnooze:
-                        type: boolean
-                      continuousLearning:
-                        type: boolean
-                      trainingFileId:
-                        type: string
-                  createdBy:
-                    type: object
-                    properties:
-                      loginName:
-                        type: string
-                      lastName:
-                        type: string
-                      firstName:
-                        type: string
-                      email:
-                        type: string
-                  createdTime:
-                    type: string
-                    format: date-time
-                  updatedTime:
-                    type: string
-                    format: date-time
+                $ref: '#/components/schemas/firstResponse'
               examples:
                 example-1:
                   value:
-                    id: POLICY-AC-d53e179d-8c9b-4564-b793-dc639f6a7cf2
-                    name: Policy2
+                    id: POLICY-AC-aa3186cb-5572-43ed-abb9-7830574ee1b2
+                    name: Policy1
                     enabled: true
-                    precedence: 2
+                    enabledMode: 'ON'
                     filterCriteria:
                       filterBased: true
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Starts with
                           entityValue: vm
-                    firstResponseType: SUPPRESSION
-                    suppression:
-                      suppressSeasonalAlerts: false
-                      suppressByAttributes: false
-                      autoSnooze: true
+                    attributeActions:
                       continuousLearning: true
-                      trainingFileId: ml_alert_suppression_training
+                      suppress:
+                        learnedConfiguration: true
+                        suppressDuration: 5
+                      runProcess:
+                        learnedConfiguration: true
+                        processIds:
+                          - PROCESS_9beade88-834a-4229-ab34-90380214cf74
+                    patternActions:
+                      suppress:
+                        seasonalAlerts: true
+                      seasonalityTimeFrame: 3M
                     createdBy:
                       loginName: opsramp_api_user
                       lastName: ' '
-                      firstName: OpsRamp API User
-                      email: opsAdmin@opsramp.com
-                    createdTime: '2019-02-28T09:25:56+0000'
+                      firstName: API User
+                      email: helpdesk@opsramp.com
+                    createdTime: '2020-08-17T13:35:29+0530'
                     updatedTime: ''
     post:
       tags:
@@ -7772,209 +7603,126 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  name:
-                    type: string
-                  enabled:
-                    type: boolean
-                  precedence:
-                    type: integer
-                  filterCriteria:
-                    type: object
-                    properties:
-                      filterBased:
-                        type: string
-                      matchingType:
-                        type: string
-                      rules:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            filterType:
-                              type: string
-                            entityName:
-                              type: string
-                            operator:
-                              type: string
-                            entityValue:
-                              type: string
-                  firstResponseType:
-                    type: string
-                  suppression:
-                    type: object
-                    properties:
-                      suppressSeasonalAlerts:
-                        type: boolean
-                      suppressByAttributes:
-                        type: boolean
-                      autoSnooze:
-                        type: boolean
-                      continuousLearning:
-                        type: boolean
-                      trainingFileId:
-                        type: string
-                  createdBy:
-                    type: object
-                    properties:
-                      loginName:
-                        type: string
-                      lastName:
-                        type: string
-                      firstName:
-                        type: string
-                      email:
-                        type: string
-                  createdTime:
-                    type: string
-                    format: date-time
-                  updatedTime:
-                    type: string
-                    format: date-time
+                $ref: '#/components/schemas/firstResponse'
               examples:
                 example-1:
                   value:
-                    id: POLICY-AC-c44f4193-154a-4aa5-b8a9-e5ea5acb386b
-                    name: Policy1
+                    id: POLICY-AC-d53e179d-8c9b-4564-b793-dc639f6a7cf2
+                    name: firstResponse_1
                     enabled: true
-                    precedence: 1
+                    enabledMode: 'ON'
                     filterCriteria:
                       filterBased: true
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Starts with
                           entityValue: vm
-                    firstResponseType: SUPPRESSION
-                    suppression:
-                      suppressSeasonalAlerts: true
-                      suppressByAttributes: true
-                      autoSnooze: true
+                        - filterType: nativeAttributes
+                          entityName: ip_address
+                          ipMatchingConditions:
+                            ipAddressMatchType: CIDR Match
+                            cidrNotation: 192.168.1.1/24
+                    attributeActions:
                       continuousLearning: true
-                      trainingFileId: ml_alert_suppression_training
+                      suppress:
+                        learnedConfiguration: true
+                        suppressDuration: 5
+                      runProcess:
+                        learnedConfiguration: true
+                        processIds:
+                          - PROCESS_9beade88-834a-4229-ab34-90380214cf74
+                    patternActions:
+                      suppress:
+                        seasonalAlerts: true
+                      seasonalityTimeFrame: 7D
                     createdBy:
                       loginName: opsramp_api_user
                       lastName: ' '
                       firstName: OpsRamp API User
                       email: opsAdmin@opsramp.com
-                    createdTime: '2019-02-27T12:50:44+0000'
-                    updatedTime: ''
+                    updatedBy:
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: OpsRamp API User
+                      email: opsAdmin@opsramp.com
+                    createdTime: '2019-02-28T09:25:56+0000'
+                    updatedTime: '2019-02-28T10:14:05+0000'
+                msp-update:
+                  value:
+                    id: POLICY-AC-5c75b766-6dc3-4998-bf87-81d5fbf31961
+                    name: ml_time
+                    clientsIncluded: ALL
+                    enabled: true
+                    enabledMode: 'ON'
+                    filterCriteria:
+                      filterBased: true
+                      matchingType: ALL
+                      rules:
+                        - filterType: nativeAttributes
+                          entityName: resource_name
+                          operator: Starts with
+                          entityValue: vm
+                    attributeActions:
+                      suppress:
+                        learnedConfiguration: true
+                        suppressDuration: 5
+                    createdBy:
+                      id: USR0000000003
+                      loginName: superadmin
+                      lastName: ' '
+                      firstName: Super Admin
+                      email: helpdesk@opsramp.com
+                    updatedBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: API User
+                      email: helpdesk@opsramp.com
+                    createdTime: '2020-11-05T11:29:23+0000'
+                    updatedTime: '2020-11-06T14:00:18+0000'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: |
-                    Name of the first response policy. Maximum length: 250 characters.
-                enabled:
-                  type: boolean
-                  description: |
-                    (Optional) State of the first response policy. Default state: true.
-                precedence:
-                  type: integer
-                  description: |
-                    (Optional) Order of execution of the first response policy.
-                filterCriteria:
-                  type: object
-                  description: (Optional) Values used for filter criteria.
-                  properties:
-                    filterBased:
-                      type: string
-                      description: 'Defines the value used for filterBased. Default Value: False.'
-                      default: 'false'
-                    matchingType:
-                      type: string
-                      description: |-
-                        Defines the type of matching results either ANY or ALL.
-                        - Select ANY to match results based on any specified filter criteria.
-                        - Select ALL to match results based on all specified  filter criteria.
-                      enum:
-                        - ANY
-                        - ALL
-                    rules:
-                      type: array
-                      description: |-
-                        By default, the field rules is set to False. Mandatory only when filterBased is TRUE. Values for filterType are either
-                        - native attributes
-                            - dns_name
-                            - host_name
-                            - alias_name
-                            - ip_address
-                            - resource_type
-                            - agent_installed
-                            - operating_system
-                            - make
-                            - model
-                            - alert_source
-                            - alert_metric
-                        - custom attributes
-                            - Provide custom attribute names defined for client or partner or service provider assigned to the resources.
-                      items:
-                        type: object
-                        properties:
-                          filterType:
-                            type: string
-                          entityName:
-                            type: string
-                          operator:
-                            type: string
-                            description: ''
-                            enum:
-                              - Contains
-                              - Not Contains
-                              - Equals
-                              - Not Equals
-                              - Starts With
-                              - Ends With
-                              - Regex
-                              - Is
-                          entityValue:
-                            type: string
-                            description: Value used to compare.
-                firstResponseType:
-                  type: string
-                  description: 'The first response type. Supported value: SUPPRESSION.'
-                  enum:
-                    - SUPPRESSION
-                suppression:
-                  type: object
-                  description: |
-                    Used only for suppression type.
-                  properties:
-                    suppressSeasonalAlerts:
-                      type: boolean
-                      description: |
-                        Suppress alerts that happen regularly and at the same time approximately.
-                    suppressByAttributes:
-                      type: boolean
-                      description: |
-                        Suppress specific alerts.
-                    autoSnooze:
-                      type: boolean
-                      description: |
-                        Snooze specific alerts for a given time.
-                    continuousLearning:
-                      type: boolean
-                      description: |
-                        Enable/Disable continuous machine learning.
-                    trainingFileId:
-                      type: string
-                      description: |
-                        ID of the training file. This ID is used only when suppressByAttributes is TRUE.
-              required:
-                - name
+              $ref: '#/components/schemas/firstResponse'
             examples:
               example-1:
                 value:
                   name: firstResponse_1
+                  enabledMode: 'ON'
+                  filterCriteria:
+                    filterBased: true
+                    matchingType: ALL
+                    rules:
+                      - filterType: nativeAttributes
+                        entityName: resource_name
+                        operator: Starts with
+                        entityValue: vm
+                      - filterType: nativeAttributes
+                        entityName: ip_address
+                        ipMatchingConditions:
+                          ipAddressMatchType: CIDR Match
+                          cidrNotation: 192.168.1.1/24
+                  attributeActions:
+                    continuousLearning: true
+                    suppress:
+                      learnedConfiguration: true
+                      suppressDuration: 5
+                    runProcess:
+                      learnedConfiguration: true
+                      processIds:
+                        - PROCESS_9beade88-834a-4229-ab34-90380214cf74
+                  patternActions:
+                    seasonalityTimeFrame: 7D
+                    suppress:
+                      seasonalAlerts: true
+              msp-update:
+                value:
+                  name: ml_time
                   enabled: true
+                  organizationMatchingType: ALL
                   filterCriteria:
                     filterBased: true
                     matchingType: ALL
@@ -7983,18 +7731,18 @@ paths:
                         entityName: host_name
                         operator: Starts with
                         entityValue: vm
-                      - filterType: nativeAttributes
-                        entityName: ip_address
-                        ipMatchingConditions:
-                          ipAddressMatchType: CIDR Match
-                          cidrNotation: 192.168.1.1/24
-                  firstResponseType: SUPPRESSION
-                  suppression:
-                    suppressSeasonalAlerts: true
-                    suppressByAttributes: true
-                    autoSnooze: true
+                  attributeActions:
                     continuousLearning: false
-                    trainingFileId: ml_alert_suppression_training
+                    suppress:
+                      suppressDuration: 5
+                      learnedConfiguration: true
+        description: ''
+      description: |-
+        Example:
+
+        - https://server.com/api/v2/tenants/client_7/policies/firstResponse/POLICY-AC-3218d82f-25c6-4d4d-bd88-b83c5e30721c
+        - https://server.com/api/v2/tenants/client_7/policies/firstResponse/POLICY-AC-aa3186cb-5572-43ed-abb9-7830574ee1b2
+        - https://server.com/api/v2/tenants/msp_3/policies/firstResponse/POLICY-AC-5c75b766-6dc3-4998-bf87-81d5fbf31961
     parameters:
       - $ref: '#/components/parameters/tenantId'
       - schema:
@@ -8011,6 +7759,7 @@ paths:
       responses:
         '200':
           description: OK
+      description: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/policyId'
@@ -8019,6 +7768,7 @@ paths:
           enum:
             - enable
             - disable
+            - observed
         in: path
         name: status
         required: true
@@ -9362,20 +9112,32 @@ paths:
                   value:
                     uniqueId: SM-a7aa1874-ee4f-4a12-add1-2313bd717d4e
                     status: Pending
+      description: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/smId'
-  '/api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resources/{resourcesType}':
-    summary: End scheduled maintenance window
+  '/api/v2/tenants/{tenantId}/scheduleMaintenances{smId}/resources/{resourcesType}':
+    summary: Get resources of schedule maintenance windows
     description: |-
-      Ends a scheduled maintenance window.
+      This endpoint is used to retrieve the list of devices (or device groups or sites) of a scheduled maintenance window.
 
       ##### Notes
-      - User can end only active schedule maintenance windows.
-      - Active schedule maintenance windows that are one-time maintenance windows move to a completed state. Recurring maintenance windows move to pending state.
-    post:
-      tags:
-        - alerts
+
+      Some examples:
+
+      - Ex1: https://api.opsramp.com/api/v2/tenants/client_44/scheduleMaintenances/SM-c11b6b44-c85a-426c-9963-0e977070ce98/resources/resources?pageNo=1&pageSize=5
+      - Ex2: https://api.opsramp.com/api/v2/tenants/client_44/scheduleMaintenances/SM-c11b6b44-c85a-426c-9963-0e977070ce98/resources/deviceGroups?pageNo=1&pageSize=2
+      - Ex3: https://api.opsramp.com/api/v2/tenants/client_44/scheduleMaintenances/SM-c11b6b44-c85a-426c-9963-0e977070ce98/resources/sites?pageNo=1&pageSize=2
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/smId'
+      - schema:
+          type: string
+        name: resourcesType
+        in: path
+        required: true
+        description: 'Supported values for resourcetypes (resources,deviceGroups,sites)'
+    get:
       responses:
         '200':
           description: OK
@@ -9384,18 +9146,104 @@ paths:
               schema:
                 type: object
                 properties:
-                  uniqueId:
-                    type: string
-                  status:
-                    type: string
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        description:
+                          type: string
+                  totalResults:
+                    type: number
+                  pageNo:
+                    type: number
+                  pageSize:
+                    type: number
+                  totalPages:
+                    type: number
+                  nextPage:
+                    type: number
+                  previousPageNo:
+                    type: number
+                  descendingOrder:
+                    type: number
+                readOnly: true
               examples:
-                example-1:
+                example-devices:
                   value:
-                    uniqueId: SM-a7aa1874-ee4f-4a12-add1-2313bd717d4e
-                    status: Pending
-    parameters:
-      - $ref: '#/components/parameters/tenantId'
-      - $ref: '#/components/parameters/smId'
+                    results:
+                      - id: 4b7e4bc4-2115-4f15-bbd9-642396d486b6
+                        hostName: cn-agent-docker01
+                        ipAddress: 212.328.345.123
+                        type: DOCKER
+                      - id: e8893d5c-5448-4123-992f-2a7631a97310
+                        hostName: k8-pool1-wk1
+                        ipAddress: 121.321.435.251
+                        type: DEVICE
+                      - id: 66296829-c08d-45fb-9c8c-b6702189611d
+                        hostName: WIN7-PC
+                        ipAddress: 132.346.768.121
+                        type: DEVICE
+                      - id: 9be5120f-f2f7-45d0-88e4-83d67461f751
+                        hostName: HYDLPT272167
+                        ipAddress: 121.345.321.134
+                        type: DEVICE
+                      - id: 8016775e-f1b4-47d5-bdd0-e039b115c45f
+                        hostName: DBMS10734
+                        ipAddress: 177.162.136.193
+                        type: DEVICE
+                    totalResults: 50
+                    pageNo: 1
+                    pageSize: 5
+                    totalPages: 10
+                    nextPage: true
+                    nextPageNo: 2
+                    previousPageNo: 0
+                    descendingOrder: false
+                example-deviceGroups:
+                  value:
+                    results:
+                      - id: DGP-98a9dac3-18ae-4456-88d3-e7ffa5ce4ace
+                        name: Windows Servers
+                        description: ''
+                        createdDate: '2018-02-10T10:15:32+0000'
+                        updatedDate: '2018-08-02T14:20:10+0000'
+                      - id: DGP-6fd28a3f-9f10-4c74-ac15-bd9de54ec056
+                        name: Network Devices
+                        description: ''
+                        createdDate: '2018-03-13T11:20:50+0000'
+                        updatedDate: '2018-08-02T17:15:40+0000'
+                    totalResults: 6
+                    pageNo: 1
+                    pageSize: 2
+                    totalPages: 3
+                    nextPage: true
+                    nextPageNo: 2
+                    previousPageNo: 0
+                    descendingOrder: false
+                example-sites:
+                  value:
+                    results:
+                      - id: 164
+                        name: Virginia-East
+                        description: Server locations in East Virgnia
+                      - id: 165
+                        name: California-Central
+                        description: Network Centers in California
+                    totalResults: 6
+                    pageNo: 1
+                    pageSize: 2
+                    totalPages: 3
+                    nextPage: true
+                    nextPageNo: 2
+                    previousPageNo: 0
+                    descendingOrder: false
+      description: ''
+      summary: ''
   '/api/v2/tenants/{tenantId}/scheduleMaintenances/{smId}/resume':
     summary: Resumes scheduled maintainence window
     description: |-
@@ -10237,13 +10085,6 @@ components:
       required: true
       schema:
         type: string
-        enum:
-          - acknowledge
-          - suppress
-          - close
-          - unsuppress
-          - unAcknowledge
-        default: acknowledge
       description: Supported actions on alert
     userId:
       name: userId
@@ -10283,3 +10124,105 @@ components:
       schema:
         type: string
       description: Training type option to train the policy
+  schemas:
+    firstResponse:
+      description: ''
+      type: object
+      x-examples: {}
+      title: firstResponse
+      properties:
+        name:
+          type: string
+          minLength: 1
+        enabledMode:
+          type: string
+          minLength: 1
+        organizationMatchingType:
+          type: string
+        matchingType:
+          type: string
+        filterCriteria:
+          type: object
+          properties:
+            filterBased:
+              type: boolean
+            matchingType:
+              type: string
+              minLength: 1
+            rules:
+              type: array
+              uniqueItems: true
+              minItems: 1
+              items:
+                type: object
+                properties:
+                  filterType:
+                    type: string
+                    minLength: 1
+                  entityName:
+                    type: string
+                    minLength: 1
+                  operator:
+                    type: string
+                    minLength: 1
+                  entityValue:
+                    type: string
+                    minLength: 1
+        attributeActions:
+          type: object
+          properties:
+            continuousLearning:
+              type: boolean
+            suppress:
+              type: object
+              properties:
+                learnedConfiguration:
+                  type: boolean
+                suppressDuration:
+                  type: number
+            runProcess:
+              type: object
+              properties:
+                learnedConfiguration:
+                  type: boolean
+                processIds:
+                  type: array
+                  items:
+                    type: object
+        patternActions:
+          type: object
+          properties:
+            seasonalityTimeFrame:
+              type: string
+              minLength: 1
+            suppress:
+              type: object
+              properties:
+                seasonalAlerts:
+                  type: boolean
+        createdBy:
+          type: object
+          properties:
+            loginName:
+              type: string
+            lastName:
+              type: string
+            firstName:
+              type: string
+            email:
+              type: string
+        updatedBy:
+          type: object
+          properties:
+            loginName:
+              type: string
+            lastName:
+              type: string
+            firstName:
+              type: string
+            email:
+              type: string
+        createdTime:
+          type: string
+        updatedTime:
+          type: string
