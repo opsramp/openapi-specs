@@ -489,7 +489,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: vm
                         - filterType: customAttributes
@@ -523,7 +523,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: Logix
                         - filterType: customAttributes
@@ -558,7 +558,7 @@ paths:
                     algorithmCorrelation:
                       alertsTimeWindow: 20
                       matchingConditions:
-                        - property: host_name
+                        - property: resource_name
                           matchType: Identical
                       primaryAlertSubject: IP policy api demo
                     createdBy:
@@ -580,7 +580,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: vm
                         - filterType: customAttributes
@@ -617,7 +617,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: vm
                         - filterType: customAttributes
@@ -876,7 +876,7 @@ paths:
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
-                        entityName: host_name
+                        entityName: resource_name
                         operator: Contains
                         entityValue: vm
                       - filterType: customAttributes
@@ -900,7 +900,7 @@ paths:
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
-                        entityName: host_name
+                        entityName: resource_name
                         operator: Contains
                         entityValue: Logix
                       - filterType: customAttributes
@@ -925,7 +925,7 @@ paths:
                   algorithmCorrelation:
                     alertsTimeWindow: 20
                     matchingConditions:
-                      - property: host_name
+                      - property: resource_name
                         matchType: Identical
                     primaryAlertSubject: IP policy api demo
               create-client-scope-w-algo-all-org-match:
@@ -937,7 +937,7 @@ paths:
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
-                        entityName: host_name
+                        entityName: resource_name
                         operator: Contains
                         entityValue: vm
                       - filterType: customAttributes
@@ -965,7 +965,7 @@ paths:
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
-                        entityName: host_name
+                        entityName: resource_name
                         operator: Contains
                         entityValue: vm
                       - filterType: customAttributes
@@ -1112,7 +1112,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: vm
                         - filterType: customAttributes
@@ -1190,7 +1190,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: Logix
                         - filterType: customAttributes
@@ -1225,7 +1225,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: vm
                         - filterType: customAttributes
@@ -1262,7 +1262,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: vm
                         - filterType: customAttributes
@@ -1369,7 +1369,7 @@ paths:
                       matchingType: ALL
                       rules:
                         - filterType: nativeAttributes
-                          entityName: host_name
+                          entityName: resource_name
                           operator: Contains
                           entityValue: vm
                         - filterType: customAttributes
@@ -1635,7 +1635,7 @@ paths:
                     matchingType: ALL
                     rules:
                       - filterType: nativeAttributes
-                        entityName: host_name
+                        entityName: resource_name
                         operator: Contains
                         entityValue: vm
                       - filterType: customAttributes
@@ -2248,11 +2248,11 @@ paths:
                       updateIncident:
                         type: object
                         description: |-
-                            Configure how to update an existing incident of an escalated alert.
+                          Configure how to update an existing incident of an escalated alert.
 
-                            If an Open incident (other than Closed) is available for the alert, the incident gets updated instead of creating a new incident.
+                          If an Open incident (other than Closed) is available for the alert, the incident gets updated instead of creating a new incident.
 
-                            Either "none" or "withAlertState" must be included
+                          Either "none" or "withAlertState" must be included
                         properties:
                           none:
                             type: boolean
@@ -4183,6 +4183,24 @@ paths:
                       updateIncident:
                         type: object
                         description: |2-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7340,6 +7358,11 @@ paths:
             type: integer
           in: query
           name: pageSize
+      description: |-
+        Example:
+         - https://server.com/api/v2/tenants/client_4/policies/firstResponse/
+         - https://server.comp.com/api/v2/tenants/client_4/policies/firstResponse/?pageNo=1&pageSize=100
+         - https://server.comp.com/api/v2/tenants/msp_3/policies/firstResponse/?pageNo=1&pageSize=100
     post:
       tags:
         - alerts
@@ -7357,8 +7380,14 @@ paths:
                     type: string
                   enabled:
                     type: boolean
+                  includedClients:
+                    type: array
+                    items:
+                      type: string
                   precedence:
                     type: integer
+                  firstResponseType:
+                    type: string
                   filterCriteria:
                     type: object
                     properties:
@@ -7379,8 +7408,6 @@ paths:
                               type: string
                             entityValue:
                               type: string
-                  firstResponseType:
-                    type: string
                   suppression:
                     type: object
                     properties:
@@ -7440,6 +7467,34 @@ paths:
                       email: opsAdmin@opsramp.com
                     createdTime: '2019-02-27T12:50:44+0000'
                     updatedTime: ''
+                example-2:
+                  value:
+                    id: POLICY-AC-aa3186cb-5572-43ed-abb9-7830574ee123
+                    name: partnerPolicy1
+                    includedClients:
+                      - client_8
+                      - client_9
+                    enabled: true
+                    enabledMode: 'ON'
+                    filterCriteria:
+                      filterBased: true
+                      matchingType: ALL
+                      rules:
+                        - filterType: nativeAttributes
+                          entityName: resource_name
+                          operator: Starts with
+                          entityValue: vm
+                    attributeActions:
+                      suppress:
+                        learnedConfiguration: true
+                        suppressDuration: 5
+                    createdBy:
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: API User
+                      email: helpdesk@opsramp.com
+                    createdTime: '2020-08-17T13:35:28+0530'
+                    updatedTime: ''
       requestBody:
         content:
           application/json:
@@ -7450,6 +7505,16 @@ paths:
                   type: string
                   description: |
                     Name of the first response policy. Maximum length: 250 characters.
+                organizationMatchingType:
+                  type: string
+                  description: Required for MSP policies
+                  enum:
+                    - ALL
+                    - INCLUDE
+                includedClients:
+                  type: array
+                  items:
+                    type: string
                 enabled:
                   type: boolean
                   description: |
@@ -7566,6 +7631,26 @@ paths:
                     autoSnooze: true
                     continuousLearning: true
                     trainingFileId: ml_alert_suppression_training
+              msp-policy:
+                value:
+                  name: partnerPolicy1
+                  organizationMatchingType: INCLUDE
+                  includedClients:
+                    - client_8
+                    - client_9
+                  enabledMode: 'ON'
+                  filterCriteria:
+                    filterBased: 'true'
+                    matchingType: ALL
+                    rules:
+                      - filterType: native
+                        entityName: resource_name
+                        operator: Starts  With
+                        entityValue: vm
+                  attributeActions:
+                    suppress:
+                      suppressDuration: 5
+                      learnedConfiguration: true
         description: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
@@ -7749,6 +7834,10 @@ paths:
                   updatedTime:
                     type: string
                     format: date-time
+                  clientsIncluded:
+                    type: array
+                    items:
+                      type: string
               examples:
                 example-1:
                   value:
@@ -7778,6 +7867,39 @@ paths:
                       email: opsAdmin@opsramp.com
                     createdTime: '2019-02-27T12:50:44+0000'
                     updatedTime: ''
+                msp-update:
+                  value:
+                    id: POLICY-AC-5c75b766-6dc3-4998-bf87-81d5fbf31961
+                    name: ml_time
+                    clientsIncluded: ALL
+                    enabled: true
+                    enabledMode: 'ON'
+                    filterCriteria:
+                      filterBased: true
+                      matchingType: ALL
+                      rules:
+                        - filterType: nativeAttributes
+                          entityName: resource_name
+                          operator: Starts with
+                          entityValue: vm
+                    attributeActions:
+                      suppress:
+                        learnedConfiguration: true
+                        suppressDuration: 5
+                    createdBy:
+                      id: USR0000000003
+                      loginName: superadmin
+                      lastName: ' '
+                      firstName: Super Admin
+                      email: helpdesk@opsramp.com
+                    updatedBy:
+                      id: USR0000000002
+                      loginName: opsramp_api_user
+                      lastName: ' '
+                      firstName: API User
+                      email: helpdesk@opsramp.com
+                    createdTime: '2020-11-05T11:29:23+0000'
+                    updatedTime: '2020-11-06T14:00:18+0000'
       requestBody:
         content:
           application/json:
@@ -7883,6 +8005,12 @@ paths:
                       type: string
                       description: |
                         ID of the training file. This ID is used only when suppressByAttributes is TRUE.
+                organizationMatchingType:
+                  type: string
+                includedClients:
+                  type: array
+                  items:
+                    type: string
               required:
                 - name
             examples:
@@ -7910,6 +8038,31 @@ paths:
                     autoSnooze: true
                     continuousLearning: false
                     trainingFileId: ml_alert_suppression_training
+              msp-update:
+                value:
+                  name: ml_time
+                  enabled: true
+                  organizationMatchingType: ALL
+                  filterCriteria:
+                    filterBased: true
+                    matchingType: ALL
+                    rules:
+                      - filterType: nativeAttributes
+                        entityName: host_name
+                        operator: Starts with
+                        entityValue: vm
+                  attributeActions:
+                    continuousLearning: false
+                    suppress:
+                      suppressDuration: 5
+                      learnedConfiguration: true
+        description: ''
+      description: |-
+        Example:
+
+        - https://server.com/api/v2/tenants/client_7/policies/firstResponse/POLICY-AC-3218d82f-25c6-4d4d-bd88-b83c5e30721c
+        - https://server.com/api/v2/tenants/client_7/policies/firstResponse/POLICY-AC-aa3186cb-5572-43ed-abb9-7830574ee1b2
+        - https://server.com/api/v2/tenants/msp_3/policies/firstResponse/POLICY-AC-5c75b766-6dc3-4998-bf87-81d5fbf31961
     parameters:
       - $ref: '#/components/parameters/tenantId'
       - schema:
@@ -7926,6 +8079,7 @@ paths:
       responses:
         '200':
           description: OK
+      description: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/policyId'
@@ -7934,6 +8088,7 @@ paths:
           enum:
             - enable
             - disable
+            - observed
         in: path
         name: status
         required: true
