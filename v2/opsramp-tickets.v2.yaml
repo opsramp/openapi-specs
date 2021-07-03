@@ -4813,6 +4813,7 @@ paths:
 
 
 
+
                        System uptime is critical     : 0day(s);1hour(s);23minute(s);
                       Auto Stopped Services:
 
@@ -5693,6 +5694,7 @@ paths:
 
 
 
+
                            System uptime is critical      : 0day(s);1hour(s);23minute(s);
                           Auto Stopped Services:
 
@@ -5848,6 +5850,7 @@ paths:
                       - id: INC0000000094
                         subject: 'System uptime is critical     : 0day(s);4hour(s);58minute(s);'
                         description: |2-
+
 
 
 
@@ -16451,168 +16454,6 @@ components:
     changeRequest:
       title: changeRequest
       type: object
-      properties:
-        id:
-          type: string
-        subject:
-          type: string
-          description: |
-            Ticket subject.
-        description:
-          type: string
-          description: |
-            Ticket description.
-        priority:
-          type: string
-          description: |
-            Ticket priority with supported priority values: Low, Normal, High, Urgent, and Very Low.
-        extTicketId:
-          type: string
-          description: Attach third party ticket ID.
-        changePlan:
-          type: string
-          description: |
-            Description of the change plan.
-        rollbackPlan:
-          type: string
-          description: |
-            Description of roll back plan.
-        testPlan:
-          type: string
-          description: |
-            Description of test plan.
-        plannedStart:
-          type: string
-          format: date-time
-        plannedEnd:
-          type: string
-          format: date-time
-        workStart:
-          type: string
-          format: date-time
-        workEnd:
-          type: string
-          format: date-time
-        cc:
-          type: string
-          description: Cc email.
-        category:
-          type: object
-          description: Add the change request under a category. Use the get API to get the list of categories.
-          properties:
-            id:
-              type: integer
-            uniqueId:
-              type: string
-              description: Category uuid
-        subCategory:
-          type: object
-          description: Add the change request under a sub-category. Use get categories to get the list of sub-categories.
-          properties:
-            id:
-              type: integer
-        changeType:
-          type: string
-          description: 'Normal or Emergency depending on the Priority of a change request. For example, create a change type Emergency for change requests that must be processed immediately or if Priority of a request is High.'
-        assigneeGroup:
-          $ref: '#/components/schemas/group'
-        channelId:
-          type: string
-        tags:
-          type: string
-        location:
-          type: string
-        assignedUser:
-          $ref: '#/components/schemas/user'
-        requester:
-          $ref: '#/components/schemas/user'
-        resources:
-          type: array
-          items:
-            $ref: '#/components/schemas/resource'
-        customFields:
-          type: array
-          items:
-            $ref: '#/components/schemas/customField'
-        attachments:
-          type: array
-          description: Attach files related to the change request. Convert attachment files to byte stream with base64-encoding. The file size limit of an attachment is 50 MB.
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              file:
-                type: string
-        knowledgeArticleIds:
-          type: array
-          description: |-
-            Attach knowledge base articles related to the change request for further reference. To get a knowledge base article ID:
-            1. Log into OpsRamp.
-            2. Click Knowledge Base.
-            3. Select the required article and then copy the article ID.
-            4. Provide the article ID in "knowledgeArticleIds" field.
-
-            Example: "knowledgeArticleIds": 25, 16.
-          items:
-            type: string
-        oldStatus:
-          type: string
-        oldPriority:
-          type: string
-        ticketArisedTime:
-          type: string
-        createdUser:
-          $ref: '#/components/schemas/user'
-        alertIds:
-          type: array
-          items: {}
-        createdDate:
-          type: string
-          format: date-time
-        allowedStatus:
-          type: array
-          items:
-            $ref: '#/components/schemas/status'
-        client:
-          $ref: '#/components/schemas/client'
-        updatedDate:
-          type: string
-          format: date-time
-        priorityUpdatedBy:
-          $ref: '#/components/schemas/user'
-        priorityUpdatedDate:
-          type: string
-          format: date-time
-        statusUpdatedBy:
-          $ref: '#/components/schemas/user'
-        statusUpdatedDate:
-          type: string
-          format: date-time
-        slaDetails:
-          $ref: '#/components/schemas/slaDetails'
-        source:
-          type: string
-        statusFlow:
-          type: array
-          items:
-            $ref: '#/components/schemas/statusHistory'
-        attachedArticles:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              subject:
-                type: string
-      required:
-        - subject
-        - description
-        - priority
-        - changePlan
-        - rollbackPlan
-        - testPlan
       x-examples:
         example-1:
           value:
@@ -16804,6 +16645,171 @@ components:
             attachedArticles:
               - id: string
                 subject: string
+      properties:
+        id:
+          type: string
+        subject:
+          type: string
+          description: |
+            Ticket subject.
+        description:
+          type: string
+          description: |
+            Ticket description.
+        priority:
+          type: string
+          description: |
+            Ticket priority with supported priority values: Low, Normal, High, Urgent, and Very Low.
+        extTicketId:
+          type: string
+          description: Attach third party ticket ID.
+        changePlan:
+          type: string
+          description: |
+            Description of the change plan.
+        rollbackPlan:
+          type: string
+          description: |
+            Description of roll back plan.
+        testPlan:
+          type: string
+          description: |
+            Description of test plan.
+        plannedStart:
+          type: string
+          format: date-time
+        plannedEnd:
+          type: string
+          format: date-time
+        workStart:
+          type: string
+          format: date-time
+        workEnd:
+          type: string
+          format: date-time
+        cc:
+          type: string
+          description: Cc email.
+        category:
+          type: object
+          description: Add the change request under a category. Use the get API to get the list of categories.
+          properties:
+            id:
+              type: integer
+            uniqueId:
+              type: string
+              description: Category uuid
+        subCategory:
+          type: object
+          description: Add the change request under a sub-category. Use get categories to get the list of sub-categories.
+          properties:
+            id:
+              type: integer
+            uniqueId:
+              type: string
+        changeType:
+          type: string
+          description: 'Normal or Emergency depending on the Priority of a change request. For example, create a change type Emergency for change requests that must be processed immediately or if Priority of a request is High.'
+        assigneeGroup:
+          $ref: '#/components/schemas/group'
+        channelId:
+          type: string
+        tags:
+          type: string
+        location:
+          type: string
+        assignedUser:
+          $ref: '#/components/schemas/user'
+        requester:
+          $ref: '#/components/schemas/user'
+        resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/resource'
+        customFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/customField'
+        attachments:
+          type: array
+          description: Attach files related to the change request. Convert attachment files to byte stream with base64-encoding. The file size limit of an attachment is 50 MB.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              file:
+                type: string
+        knowledgeArticleIds:
+          type: array
+          description: |-
+            Attach knowledge base articles related to the change request for further reference. To get a knowledge base article ID:
+            1. Log into OpsRamp.
+            2. Click Knowledge Base.
+            3. Select the required article and then copy the article ID.
+            4. Provide the article ID in "knowledgeArticleIds" field.
+
+            Example: "knowledgeArticleIds": 25, 16.
+          items:
+            type: string
+        oldStatus:
+          type: string
+        oldPriority:
+          type: string
+        ticketArisedTime:
+          type: string
+        createdUser:
+          $ref: '#/components/schemas/user'
+        alertIds:
+          type: array
+          items: {}
+        createdDate:
+          type: string
+          format: date-time
+        allowedStatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/status'
+        client:
+          $ref: '#/components/schemas/client'
+        updatedDate:
+          type: string
+          format: date-time
+        priorityUpdatedBy:
+          $ref: '#/components/schemas/user'
+        priorityUpdatedDate:
+          type: string
+          format: date-time
+        statusUpdatedBy:
+          $ref: '#/components/schemas/user'
+        statusUpdatedDate:
+          type: string
+          format: date-time
+        slaDetails:
+          $ref: '#/components/schemas/slaDetails'
+        source:
+          type: string
+        statusFlow:
+          type: array
+          items:
+            $ref: '#/components/schemas/statusHistory'
+        attachedArticles:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              subject:
+                type: string
+      required:
+        - subject
+        - description
+        - priority
+        - changePlan
+        - rollbackPlan
+        - testPlan
+      description: ''
     incidentResponse:
       title: incidentResponse
       type: object
