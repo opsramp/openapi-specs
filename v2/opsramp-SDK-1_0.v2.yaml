@@ -2801,7 +2801,7 @@ paths:
               examples:
                 app-hitachi-vsp-opscenter:
                   value:
-                    id: INTG-c0fe117c-8b39-4771-8cce-7fb13b7f0f61
+                    id: INTG-762e9a47-51b1-4502-8325-f6b7032ee8ab
                     displayName: hitachi-vsp-opscenter
                     integration:
                       id: HITACHI-VSP-OPSCENTER
@@ -2810,24 +2810,113 @@ paths:
                       manifest:
                         adapaterConfig:
                           - type: STRING
-                            name: IP Address
-                          - type: STRING
                             name: HostName
+                          - type: STRING
+                            name: Protocol
                           - type: CREDENTIAL
                             customProps:
                               - type: STRING
-                                name: secretToken
+                                name: Username
                               - type: STRING
-                                name: secretToken
+                                name: Password
                             name: Credential
+                          - type: STRING
+                            name: test3
+                        adapaterMetric:
+                          - resourceType: Desktop
+                            availabilityRule: ALL
+                            metrics:
+                              - metricName: testMetric123
+                                defaultMetric: true
+                                availibityMetric: false
+                                units: percentage
+                                multiplicationFactor: '1'
+                                dataPointType: Gauge
+                                graph:
+                                  graphPoint: true
+                                  formatPlottedValue: true
+                                notification:
+                                  alertOn: NONE
+                                  raiseAlert: false
+                                  formatAlertValue: true
+                                  sensitivity: HIGH
+                                  direction: NEGATIVE
+                                  limit: 10
+                                  warning:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '50'
+                                    repeat: 2
+                                  critical:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '65'
+                                    repeat: 1
+                                  subject: testmetric123 test
+                                  description: tstmtrc 123 test
+                                dataPointConverisonOptions:
+                                  - 'true': '1'
+                              - metricName: metric3
+                                defaultMetric: true
+                                availibityMetric: false
+                                units: percentage
+                                multiplicationFactor: '1'
+                                dataPointType: Gauge
+                                graph:
+                                  graphPoint: true
+                                  formatPlottedValue: true
+                                notification:
+                                  alertOn: NONE
+                                  raiseAlert: false
+                                  formatAlertValue: true
+                                  sensitivity: HIGH
+                                  direction: NEGATIVE
+                                  limit: 10
+                                  warning:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '50'
+                                    repeat: 2
+                                  critical:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '65'
+                                    repeat: 1
+                                  subject: metric 3 test
+                                  description: metric test 3
+                                dataPointConverisonOptions:
+                                  - 'true': '1'
+                              - metricName: metric2
+                                defaultMetric: true
+                                availibityMetric: false
+                                units: percentage
+                                multiplicationFactor: '1'
+                                dataPointType: Gauge
+                                graph:
+                                  graphPoint: true
+                                  formatPlottedValue: true
+                                notification:
+                                  alertOn: NONE
+                                  raiseAlert: false
+                                  formatAlertValue: true
+                                  sensitivity: HIGH
+                                  direction: NEGATIVE
+                                  limit: 10
+                                  warning:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '50'
+                                    repeat: 2
+                                  critical:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '65'
+                                    repeat: 1
+                                  subject: metric changes
+                                  description: metric chnaged 2
+                                dataPointConverisonOptions:
+                                  - 'true': '1'
                     inboundConfig:
                       authentication:
                         authType: OAUTH2
                         apiKeyPairs:
-                          - key: wK223qGRwJt7ZWyYmHH6vZdbKFFXSugA
-                            secret: hRtKbXpW7MZQKfYeaSWKeE5Dyy7eFqD4BzbWzmmGHvPx5tCCgcGbNYysM37xtRcU
+                          - key: fnB7g3CZrSJdSfwtnNSWGyBzFTDY7N2r
                     installedBy: opsramp_api_user
-                    installedTime: '2021-06-10T21:01:31+0100'
+                    installedTime: '2021-07-02T07:08:54+0100'
                     status: enabled
       operationId: ''
     delete:
@@ -4473,7 +4562,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: INTG-c0fe117c-8b39-4771-8cce-7fb13b7f0f61
+                    id: INTG-762e9a47-51b1-4502-8325-f6b7032ee8ab
                     displayName: hitachi-vsp-opscenter
                     integration:
                       id: HITACHI-VSP-OPSCENTER
@@ -4482,24 +4571,113 @@ paths:
                       manifest:
                         adapaterConfig:
                           - type: STRING
-                            name: IP Address
-                          - type: STRING
                             name: HostName
+                          - type: STRING
+                            name: Protocol
                           - type: CREDENTIAL
                             customProps:
                               - type: STRING
-                                name: secretToken
+                                name: Username
                               - type: STRING
-                                name: secretToken
+                                name: Password
                             name: Credential
+                          - type: STRING
+                            name: test3
+                        adapaterMetric:
+                          - resourceType: Desktop
+                            availabilityRule: ALL
+                            metrics:
+                              - metricName: testMetric123
+                                defaultMetric: true
+                                availibityMetric: false
+                                units: percentage
+                                multiplicationFactor: '1'
+                                dataPointType: Gauge
+                                graph:
+                                  graphPoint: true
+                                  formatPlottedValue: true
+                                notification:
+                                  alertOn: NONE
+                                  raiseAlert: false
+                                  formatAlertValue: true
+                                  sensitivity: HIGH
+                                  direction: NEGATIVE
+                                  limit: 10
+                                  warning:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '50'
+                                    repeat: 2
+                                  critical:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '65'
+                                    repeat: 1
+                                  subject: testmetric123 test
+                                  description: tstmtrc 123 test
+                                dataPointConverisonOptions:
+                                  - 'true': '1'
+                              - metricName: metric3
+                                defaultMetric: true
+                                availibityMetric: false
+                                units: percentage
+                                multiplicationFactor: '1'
+                                dataPointType: Gauge
+                                graph:
+                                  graphPoint: true
+                                  formatPlottedValue: true
+                                notification:
+                                  alertOn: NONE
+                                  raiseAlert: false
+                                  formatAlertValue: true
+                                  sensitivity: HIGH
+                                  direction: NEGATIVE
+                                  limit: 10
+                                  warning:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '50'
+                                    repeat: 2
+                                  critical:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '65'
+                                    repeat: 1
+                                  subject: metric 3 test
+                                  description: metric test 3
+                                dataPointConverisonOptions:
+                                  - 'true': '1'
+                              - metricName: metric2
+                                defaultMetric: true
+                                availibityMetric: false
+                                units: percentage
+                                multiplicationFactor: '1'
+                                dataPointType: Gauge
+                                graph:
+                                  graphPoint: true
+                                  formatPlottedValue: true
+                                notification:
+                                  alertOn: NONE
+                                  raiseAlert: false
+                                  formatAlertValue: true
+                                  sensitivity: HIGH
+                                  direction: NEGATIVE
+                                  limit: 10
+                                  warning:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '50'
+                                    repeat: 2
+                                  critical:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '65'
+                                    repeat: 1
+                                  subject: metric changes
+                                  description: metric chnaged 2
+                                dataPointConverisonOptions:
+                                  - 'true': '1'
                     inboundConfig:
                       authentication:
                         authType: OAUTH2
                         apiKeyPairs:
-                          - key: wK223qGRwJt7ZWyYmHH6vZdbKFFXSugA
-                            secret: hRtKbXpW7MZQKfYeaSWKeE5Dyy7eFqD4BzbWzmmGHvPx5tCCgcGbNYysM37xtRcU
+                          - key: fnB7g3CZrSJdSfwtnNSWGyBzFTDY7N2r
                     installedBy: opsramp_api_user
-                    installedTime: '2021-06-10T21:01:31+0100'
+                    installedTime: '2021-07-02T07:08:54+0100'
                     status: enabled
       requestBody:
         content:
@@ -5298,6 +5476,10 @@ paths:
                     configId: ADAPTER-MANIFEST-be2e25cb-4c93-43b9-998d-24a6219e2398
                     scheduleFlag: false
       description: |2
+
+
+
+
 
 
 
@@ -6311,6 +6493,8 @@ components:
             uuId:
               type: string
               description: The gateway profile uuid which monitors the resources.
+        adapaterMetric:
+          $ref: '#/components/schemas/resourceMetrics'
       required:
         - mngtGatewayProfile
     resourceMetrics:
