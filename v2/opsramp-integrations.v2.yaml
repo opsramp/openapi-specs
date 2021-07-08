@@ -5375,6 +5375,9 @@ components:
             properties:
               key:
                 type: string
+              secret:
+                type: string
+                description: The secret is available only during installation time.This is shown onetime as a security measure.
         token:
           type: string
     mapAttributes:
