@@ -24,7 +24,7 @@ paths:
     summary: Get OAuth 2.0 Access Token
     description: |-
       Post the following information to get an [OAuth 2.0](https://www.oauth.com/) Access Token.
-      - **grant_type**: "client_credentials. APIs use Client Credentials Grant type.
+      - **grant_type**: *client_credentials*. APIs use Client Credentials Grant type.
       - **client_id**: *key* from the integration.
       - **client_secret**: *secret* from the integration.
     post:
@@ -34,7 +34,7 @@ paths:
       summary: Get OAuth2 access token with client credentials
       description: |-
         Post the following information to get an [OAuth 2.0](https://www.oauth.com/) Access Token.
-        - **grant_type**: "client_credentials. APIs use Client Credentials Grant type.
+        - **grant_type**: *client_credentials*. APIs use Client Credentials Grant type.
         - **client_id**: *key* from the integration.
         - **client_secret**: *secret* from the integration.
       requestBody:

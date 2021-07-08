@@ -2001,7 +2001,7 @@ paths:
           name: viewId
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  '/api/v2/tenants/{tenantId}/patches/{resourceId}/scan/status':
+  '/api/v2/tenants/{tenantId}/patches/{jobId}/scan/status':
     summary: Get patch scan status of all devices of a missing job
     description: |-
       Gets the patch scan status of all devices assigned to a missing patch job and display paginated output.
@@ -2327,9 +2327,19 @@ paths:
                     previousPageNo: 0
                     descendingOrder: true
     parameters:
-      - $ref: '#/components/parameters/tenantId'
-      - $ref: '#/components/parameters/resourceId'
-  '/api/v2/tenants/{tenantId}/patches/{resourceId}/install/status':
+      - in: path
+        name: tenantId
+        schema:
+          type: string
+        required: true
+        description: Describes the clientId of the tenant
+      - schema:
+          type: string
+        name: jobId
+        in: path
+        required: true
+        description: Unique Identifier (UUID) of patch config job.
+  '/api/v2/tenants/{tenantId}/patches/{jobId}/install/status':
     summary: Get patching status of all devices in a patch configuration
     description: |-
       Gets the patching status of all devices in a patch configuration and display paginated output.
@@ -2629,13 +2639,18 @@ paths:
           in: query
           name: queryString
     parameters:
-      - $ref: '#/components/parameters/tenantId'
+      - in: path
+        name: tenantId
+        schema:
+          type: string
+        required: true
+        description: Describes the clientId of the tenant
       - schema:
           type: string
         in: path
         name: jobId
         required: true
-        description: Unique Identifier (UUID) of patch job
+        description: Unique Identifier (UUID) of patch config job
   '/api/v2/tenants/{tenantId}/resources/{resourceId}/patches/{patchId}/{approvalType}':
     summary: Approve and disapprove patch
     description: Approves and disapproves a patch.
