@@ -1347,6 +1347,30 @@ paths:
         required: true
         description: |
           The discovery profile Id.
+  '/api/v2/tenants/{tenantId}/integrations/available/{installedIntgId}/emailProps/{entityType}':
+    summary: Get configurable email properties
+    description: Gets the email properties of an entity.
+    get:
+      tags:
+        - integrations
+      responses:
+        '200':
+          description: OK
+    parameters:
+      - in: path
+        name: tenantId
+        schema:
+          type: string
+        description: Describes the client ID or msp ID of the tenant
+        required: true
+      - name: installedIntgId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: Unique Identifier of the installed integration
+      - $ref: '#/components/parameters/entityType'
   '/api/v2/tenants/{tenantId}/policies/discovery/search':
     summary: Search cloud discovery profiles
     description: 'Uses a discovery profile name to search for an AWS, Azure, and Google discovery profile.'
@@ -1628,30 +1652,6 @@ paths:
         description: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
-  '/api/v2/tenants/{tenantId}/integrations/available/{installedIntgId}/emailProps/{entityType}':
-    summary: Get configurable email properties
-    description: Gets the email properties of an entity.
-    get:
-      tags:
-        - integrations
-      responses:
-        '200':
-          description: OK
-    parameters:
-      - in: path
-        name: tenantId
-        schema:
-          type: string
-        description: Describes the client ID or msp ID of the tenant
-        required: true
-      - name: installedIntgId
-        in: path
-        required: true
-        schema:
-          type: string
-          format: uuid
-        description: Unique Identifier of the installed integration
-      - $ref: '#/components/parameters/entityType'
   '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/inbound/authentication':
     summary: Manage inbound authentication
     description: Creates and updates installed integration inbound authentication.
@@ -5373,6 +5373,9 @@ components:
             properties:
               key:
                 type: string
+              secret:
+                type: string
+                description: The secret is available only during installation time.This is shown onetime as a security measure.
         token:
           type: string
     mapAttributes:
