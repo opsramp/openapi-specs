@@ -10,7 +10,7 @@ info:
   license:
     name: OpsRamp Master Services Agreement
     url: 'https://www.opsramp.com/terms-of-use/'
-  version: v2
+  version: 2.0.0
 tags:
   - name: auth
     description: API authentication
@@ -28,6 +28,8 @@ paths:
       - **client_id**: *key* from the integration.
       - **client_secret**: *secret* from the integration.
     post:
+      tags:
+        - auth      
       operationId: auth-oauth-token
       summary: Get OAuth2 access token with client credentials
       description: |-
@@ -35,8 +37,6 @@ paths:
         - **grant_type**: "client_credentials. APIs use Client Credentials Grant type.
         - **client_id**: *key* from the integration.
         - **client_secret**: *secret* from the integration.
-      tags:
-        - auth
       requestBody:
         content:
           application/x-www-form-urlencoded:
