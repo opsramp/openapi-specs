@@ -1,20 +1,23 @@
 openapi: 3.0.0
 info:
-  title: opsramp-integrations
+  title: SDK 1.0 Apps APIs
+  x-logo:
+    url: 'https://www.opsramp.com/wp-content/themes/vistarait/assets/favicon.ico'
+    backgroundColor: '#FFFFFF'
+    altText: OpsRamp logo
   version: 2.0.0
-  description: Integrations API Documentation
+  description: SDK 1.0 based Apps API Documentation.
   contact:
     name: OpsRamp Support
     email: support@opsramp.com
     url: 'https://www.opsramp.com/about-opsramp/contact-us/'
 tags:
   - name: integrations
-    description: Example description.
+  - name: SDK 1.0 App APIs
+    description: SDK 1.0 Apps API Docs
     externalDocs:
-      url: 'https://docs.opsramp.com/api/agents-gateways/'
+      url: 'https://docs.opsramp.com/api/'
 servers:
-  - url: 'https://api.opsramp.com'
-    description: Partner - All Others
   - url: 'https://{subdomain}.api.opsramp.com'
     description: Partner or Client custom branded sub-domain
     variables:
@@ -23,6 +26,7 @@ servers:
         description: Custom sub-domain assigned to the client
 paths:
   '/api/v2/tenants/{tenantId}/integrations/activity':
+    x-internal: true
     summary: Get integration activity
     description: Gets the installation activity details of an installed integration activity.
     get:
@@ -395,6 +399,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/policies/discovery':
+    x-internal: true
     summary: Get and update discovery profiles
     description: |-
       Creates and updates AWS, Azure, and Google discovery profiles and gets a list of discovery profiles.
@@ -1168,6 +1173,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/policies/discovery/{discoveryProfileId}':
+    x-internal: true
     summary: Manage cloud discovery profile
     description: 'Gets and delete discovery profiles for AWS, Azure, and Google.'
     delete:
@@ -1309,6 +1315,7 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/discoveryProfileId'
   '/api/v2/tenants/{tenantId}/policies/discovery/action/scan/{discoveryProfileId}':
+    x-internal: true
     summary: Rescan discovery profiles
     description: 'Rescans an AWS, Azure, and Google discovery profile.'
     get:
@@ -1347,31 +1354,8 @@ paths:
         required: true
         description: |
           The discovery profile Id.
-  '/api/v2/tenants/{tenantId}/integrations/available/{installedIntgId}/emailProps/{entityType}':
-    summary: Get configurable email properties
-    description: Gets the email properties of an entity.
-    get:
-      tags:
-        - integrations
-      responses:
-        '200':
-          description: OK
-    parameters:
-      - in: path
-        name: tenantId
-        schema:
-          type: string
-        description: Describes the client ID or msp ID of the tenant
-        required: true
-      - name: installedIntgId
-        in: path
-        required: true
-        schema:
-          type: string
-          format: uuid
-        description: Unique Identifier of the installed integration
-      - $ref: '#/components/parameters/entityType'
   '/api/v2/tenants/{tenantId}/policies/discovery/search':
+    x-internal: true
     summary: Search cloud discovery profiles
     description: 'Uses a discovery profile name to search for an AWS, Azure, and Google discovery profile.'
     get:
@@ -1495,6 +1479,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/integrations/install/CUSTOM':
+    x-internal: true
     summary: Install custom integration
     description: Installs a custom integration.
     post:
@@ -1559,25 +1544,23 @@ paths:
                     direction: Inbound
                 example-authentication-only:
                   value:
-                    id: INTG-7a63759b-355f-41af-b729-38400efd33b7
-                    displayName: Custom-Integration
+                    id: INTG-58431d1c-1bdc-4a68-a49f-34435ead1d14
+                    displayName: API Testing
                     integration:
                       id: CUSTOM
                       name: Custom
                       multipleInstallations: true
+                    category: Custom
+                    installedBy: opsramp_api_user
+                    installedTime: '2020-10-08T07:25:24+0100'
+                    status: enabled
                     inboundConfig:
                       authentication:
                         authType: OAUTH2
-                        apiKeyPairs:
-                          - key: qaR9sbe**********vAuzd
-                            secret: VM5w***hUS7*************C7ZKtJ******XmHVY
+                        token: 7VttjkVtm7qk6AwaRpED4Uh4jdAFpaVb
                         role:
-                          uniqueId: ROLE-4d64a7ca-20ca-7c7c-e439-3977aa9c87a4
-                          name: Client Administrator
-                    category: Custom
-                    installedBy: opsramp_api_user
-                    installedTime: '2021-06-18T07:09:46+0100'
-                    status: enabled
+                          uniqueId: ROLE-4718b729-50cc-6634-42c4-ecd09558389d
+                          name: Customer
                 example-category-collaboration-entities:
                   value:
                     id: INTG-58431d1c-1bdc-4a68-a49f-34435ead1d14
@@ -1633,13 +1616,13 @@ paths:
                   direction: Inbound
               example-authentication-only:
                 value:
-                  displayName: Custom-Integration
+                  displayName: API Testing
                   category: Custom
                   inboundConfig:
                     authentication:
                       authType: OAUTH2
                       role:
-                        uniqueId: ROLE-4d64a7ca-20ca-7c7c-e439-3977aa9c87a4
+                        uniqueId: ROLE-4718b729-50cc-6634-42c4-ecd09558389d
               example-category-collaboration-entities:
                 value:
                   displayName: InboundApp
@@ -1654,7 +1637,33 @@ paths:
         description: ''
     parameters:
       - $ref: '#/components/parameters/tenantId'
+  '/api/v2/tenants/{tenantId}/integrations/available/{installedIntgId}/emailProps/{entityType}':
+    x-internal: true
+    summary: Get configurable email properties
+    description: Gets the email properties of an entity.
+    get:
+      tags:
+        - integrations
+      responses:
+        '200':
+          description: OK
+    parameters:
+      - in: path
+        name: tenantId
+        schema:
+          type: string
+        description: Describes the client ID or msp ID of the tenant
+        required: true
+      - name: installedIntgId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: Unique Identifier of the installed integration
+      - $ref: '#/components/parameters/entityType'
   '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/inbound/authentication':
+    x-internal: true
     summary: Manage inbound authentication
     description: Creates and updates installed integration inbound authentication.
     post:
@@ -1705,6 +1714,7 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/installedIntgId'
   '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/mappingAttr':
+    x-internal: true
     summary: Manage installed integration mapping attributes
     description: |
       Creates, updates, and gets installed integration mapping attributes.
@@ -1964,6 +1974,7 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/installedIntgId'
   '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/notifier':
+    x-internal: true
     summary: Manage installed integration base notifier
     description: Creates and updates an installed integration base notifier.
     post:
@@ -2059,6 +2070,7 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/installedIntgId'
   '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/disable':
+    x-internal: true
     summary: Disable integration
     description: 'Disables an installed integration, temporarily disabling the integration services.'
     post:
@@ -2071,6 +2083,7 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/installedIntgId'
   '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/enable':
+    x-internal: true
     summary: Enable installed integration
     description: Enables an installed integration.
     post:
@@ -2083,6 +2096,7 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/installedIntgId'
   '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}/activate':
+    x-internal: true
     summary: Activate integration event
     description: Activates an integration event.
     post:
@@ -2096,6 +2110,7 @@ paths:
       - $ref: '#/components/parameters/installedIntgId'
       - $ref: '#/components/parameters/eventId'
   '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event':
+    x-internal: true
     summary: Create integration event
     description: |-
       Creates an integration event.
@@ -2261,6 +2276,7 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/installedIntgId'
   '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}/deactivate':
+    x-internal: true
     summary: Deactivate integration event
     description: Deactivates an integration event.
     post:
@@ -2274,6 +2290,7 @@ paths:
       - $ref: '#/components/parameters/installedIntgId'
       - $ref: '#/components/parameters/eventId'
   '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}/event/{eventId}':
+    x-internal: true
     summary: Manage integration event
     description: 'Updates, gets, and deletes an integration event.'
     delete:
@@ -2415,6 +2432,7 @@ paths:
       - $ref: '#/components/parameters/installedIntgId'
       - $ref: '#/components/parameters/eventId'
   '/api/v2//tenants/{tenantId}/integrations/installed/{installedIntgId}/events':
+    x-internal: true
     summary: Get installed integration events
     description: Gets installed integration events.
     get:
@@ -2570,6 +2588,7 @@ paths:
         required: true
       - $ref: '#/components/parameters/installedIntgId'
   '/api/v2//tenants/{tenantId}/integrations/events/placeHolders/{entityType}':
+    x-internal: true
     summary: Get integration event placeholders
     description: |-
       Gets the integration event placeholders of an entity.
@@ -2764,617 +2783,14 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/entityType'
   '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}':
-    summary: Manage installed integration
-    description: 'Updates, gets, and deletes the installed integration details.'
-    post:
-      tags:
-        - integrations
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/integrationInstall'
-              examples:
-                example-authentication-oauth2:
-                  value:
-                    id: INTG-58431d1c-1bdc-4a68-a49f-34435ead1d14
-                    displayName: Custom Integration
-                    integration:
-                      id: CUSTOM
-                      name: Custom
-                    inboundConfig:
-                      authentication:
-                        authType: OAUTH2
-                        token: 7VttjkVtm7qk6AwaRpED4Uh4jdAFpaVb
-                        role:
-                          uniqueId: ROLE-4718b729-50cc-6634-42c4-ecd09558389d
-                          name: Customer
-                example-authentication-webhook:
-                  value:
-                    id: INTG-9c584c86-4ba9-4006-9ee2-c41a07b7c761
-                    integration:
-                      id: CASERVICEDESK
-                      name: Service Desk
-                    inboundConfig:
-                      authentication:
-                        authType: WEBHOOK
-                        token: YTxSGJdfkkfE3m7WaE8jYkwmsYjNU3VU
-                example-inbound-configuration:
-                  value:
-                    id: INTG-9c584c86-4ba9-4006-9ee2-c41a07b7c761
-                    integration:
-                      id: CASERVICEDESK
-                      name: Service Desk
-                    inboundConfig:
-                      authentication:
-                        authType: WEBHOOK
-                        token: YTxSGJdfkkfE3m7WaE8jYkwmsYjNU3VU
-                      mapAttributes:
-                        - name: Status
-                          attrName: serviceRequest.status.name
-                          thirdPartyAttrName: Status
-                          entityType: SERVICEREQUEST
-                          thirdPartyEntityType: SRQ
-                          attrValues:
-                            - attrValue: Open
-                              thirdPartyAttrValue: In Progress
-                            - attrValue: Closed
-                              thirdPartyAttrValue: Completed
-                        - name: Status
-                          attrName: incident.status.name
-                          thirdPartyAttrName: stats
-                          entityType: INCIDENT
-                          thirdPartyEntityType: Ticket
-                          attrValues:
-                            - attrValue: Ok
-                              thirdPartyAttrValue: good
-                            - attrValue: Critical
-                              thirdPartyAttrValue: bad
-                            - attrValue: Open
-                              thirdPartyAttrValue: In Progress
-                            - attrValue: Closed
-                              thirdPartyAttrValue: Completed
-                        - name: Priority
-                          attrName: incident.priority.name
-                          thirdPartyAttrName: severity
-                          entityType: INCIDENT
-                          thirdPartyEntityType: TICKET
-                          attrValues:
-                            - attrValue: High
-                              thirdPartyAttrValue: Max
-                            - attrValue: Low
-                              thirdPartyAttrValue: min
-                        - name: Priority
-                          attrName: serviceRequest.priority.name
-                          thirdPartyAttrName: severity
-                          entityType: SERVICEREQUEST
-                          thirdPartyEntityType: SRQ
-                          attrValues:
-                            - attrValue: High
-                              thirdPartyAttrValue: Max
-                            - attrValue: Low
-                              thirdPartyAttrValue: min
-                example-outbound-configuration:
-                  value:
-                    id: INTG-9c584c86-4ba9-4006-9ee2-c41a07b7c761
-                    integration:
-                      id: CASERVICEDESK
-                      name: Service Desk
-                    outboundConfig:
-                      baseNotifier:
-                        baseURI: www.google.com
-                        authType: OAUTH2
-                        grantType: PASSWORD
-                        userName: testUser
-                        apiKey: 6h67PAAFscVPMwhQZFcshpcqN5b6pyU9
-                        accessTokenURL: www.token.com/cred
-                      mapAttributes:
-                        - name: Status
-                          attrName: incident.status.name
-                          thirdPartyAttrName: stats
-                          entityType: INCIDENT
-                          thirdPartyEntityType: Ticket
-                          attrValues:
-                            - attrValue: Ok
-                              thirdPartyAttrValue: good
-                            - attrValue: Critical
-                              thirdPartyAttrValue: bad
-                            - attrValue: Ok
-                              thirdPartyAttrValue: good
-                            - attrValue: Critical
-                              thirdPartyAttrValue: bad
-                example-inbound-outbound:
-                  value:
-                    id: INTG-9c584c86-4ba9-4006-9ee2-c41a07b7c761
-                    integration:
-                      id: CASERVICEDESK
-                      name: Service Desk
-                    inboundConfig:
-                      authentication:
-                        authType: WEBHOOK
-                        token: YTxSGJdfkkfE3m7WaE8jYkwmsYjNU3VU
-                      mapAttributes:
-                        - name: Status
-                          attrName: serviceRequest.status.name
-                          thirdPartyAttrName: Status
-                          entityType: SERVICEREQUEST
-                          thirdPartyEntityType: SRQ
-                          attrValues:
-                            - attrValue: Open
-                              thirdPartyAttrValue: In Progress
-                            - attrValue: Closed
-                              thirdPartyAttrValue: Completed
-                        - name: Status
-                          attrName: incident.status.name
-                          thirdPartyAttrName: stats
-                          entityType: INCIDENT
-                          thirdPartyEntityType: Ticket
-                          attrValues:
-                            - attrValue: Ok
-                              thirdPartyAttrValue: good
-                            - attrValue: Critical
-                              thirdPartyAttrValue: bad
-                            - attrValue: Open
-                              thirdPartyAttrValue: In Progress
-                            - attrValue: Closed
-                              thirdPartyAttrValue: Completed
-                        - name: Priority
-                          attrName: incident.priority.name
-                          thirdPartyAttrName: severity
-                          entityType: INCIDENT
-                          thirdPartyEntityType: TICKET
-                          attrValues:
-                            - attrValue: High
-                              thirdPartyAttrValue: Max
-                            - attrValue: Low
-                              thirdPartyAttrValue: min
-                        - name: Priority
-                          attrName: serviceRequest.priority.name
-                          thirdPartyAttrName: severity
-                          entityType: SERVICEREQUEST
-                          thirdPartyEntityType: SRQ
-                          attrValues:
-                            - attrValue: High
-                              thirdPartyAttrValue: Max
-                            - attrValue: Low
-                              thirdPartyAttrValue: min
-                    outboundConfig:
-                      baseNotifier:
-                        baseURI: www.google.com
-                        authType: OAUTH2
-                        grantType: PASSWORD
-                        userName: testUser
-                        apiKey: 6h67PAAFscVPMwhQZFcshpcqN5b6pyU9
-                        accessTokenURL: www.token.com/cred
-                      mapAttributes:
-                        - name: Status
-                          attrName: incident.status.name
-                          thirdPartyAttrName: stats
-                          entityType: INCIDENT
-                          thirdPartyEntityType: Ticket
-                          attrValues:
-                            - attrValue: Ok
-                              thirdPartyAttrValue: good
-                            - attrValue: Critical
-                              thirdPartyAttrValue: bad
-                            - attrValue: Ok
-                              thirdPartyAttrValue: good
-                            - attrValue: Critical
-                              thirdPartyAttrValue: bad
-                example-jwt:
-                  value:
-                    id: INTG-3f62e5c1-643b-41e3-a836-11c616e6f5df
-                    displayName: AsPI Tnmesting
-                    integration:
-                      id: CUSTOM
-                      name: Custom
-                    outboundConfig:
-                      baseNotifier:
-                        baseURI: 'https://us1-smax.saas.microfocus.com'
-                        authType: JWT
-                        userName: test
-                      mapAttributes:
-                        - name: Status
-                          attrName: incident.status.name
-                          thirdPartyAttrName: stats
-                          entityType: INCIDENT
-                          thirdPartyEntityType: Ticket
-                          mode: OUTBOUND
-                          attrValues:
-                            - attrValue: Open
-                              thirdPartyAttrValue: good
-                    category: Custom
-                example-CASERVICEDESK:
-                  value:
-                    id: INTG-9c584c86-4ba9-4006-9ee2-c41a07b7c761
-                    integration:
-                      id: CASERVICEDESK
-                      name: Service Desk
-                    inboundConfig:
-                      authentication:
-                        authType: WEBHOOK
-                        token: YTxSGJdfkkfE3m7WaE8jYkwmsYjNU3VU
-                      mapAttributes:
-                        - name: Status
-                          attrName: ServiceRequest.status.name
-                          thirdPartyAttrName: Status
-                          entityType: SERVICEREQUEST
-                          thirdPartyEntityType: REQUEST
-                          attrValues:
-                            - attrValue: Open
-                              thirdPartyAttrValue: In Progress
-                            - attrValue: Closed
-                              thirdPartyAttrValue: Completed
-                        - name: Status
-                          attrName: incident.status.name
-                          thirdPartyAttrName: Status
-                          entityType: INCIDENT
-                          thirdPartyEntityType: Ticket
-                          attrValues:
-                            - attrValue: Ok
-                              thirdPartyAttrValue: Good
-                            - attrValue: Critical
-                              thirdPartyAttrValue: Bad
-                            - attrValue: Open
-                              thirdPartyAttrValue: In Progress
-                            - attrValue: Closed
-                              thirdPartyAttrValue: Completed
-                        - name: Priority
-                          attrName: incident.priority.name
-                          thirdPartyAttrName: Severity
-                          entityType: INCIDENT
-                          thirdPartyEntityType: TICKET
-                          attrValues:
-                            - attrValue: High
-                              thirdPartyAttrValue: Maximum
-                            - attrValue: Low
-                              thirdPartyAttrValue: Minimum
-                        - name: Priority
-                          attrName: serviceRequest.priority.name
-                          thirdPartyAttrName: Severity
-                          entityType: SERVICEREQUEST
-                          thirdPartyEntityType: REQUEST
-                          attrValues:
-                            - attrValue: High
-                              thirdPartyAttrValue: Maximum
-                            - attrValue: Low
-                              thirdPartyAttrValue: Minimum
-                    outboundConfig:
-                      baseNotifier:
-                        baseURI: www.google.com
-                        authType: OAUTH2
-                        grantType: PASSWORD
-                        userName: testUser
-                        apiKey: 6h67PAAFscVPMwhQZFcshpcqN5b6pyU9
-                        accessTokenURI: www.token.com/cred
-                      mapAttributes:
-                        - name: Status
-                          attrName: incident.status.name
-                          thirdPartyAttrName: stats
-                          entityType: INCIDENT
-                          thirdPartyEntityType: Ticket
-                          attrValues:
-                            - attrValue: Ok
-                              thirdPartyAttrValue: Good
-                            - attrValue: Critical
-                              thirdPartyAttrValue: Bad
-                            - attrValue: Ok
-                              thirdPartyAttrValue: Good
-                            - attrValue: Critical
-                              thirdPartyAttrValue: Bad
-                example-okta:
-                  value:
-                    id: INTG-d13fcb67-d8a9-4283-9bd1-e9fb162e219c
-                    integration:
-                      id: OKTA
-                      name: Okta
-                    singleSignOnAuthentication:
-                      type: Okta
-                      issuerUrl: 'https://localhost.com/modify'
-                      redirectionUrl: 'https://localhost.com/update'
-                      logoutUrl: 'https://localhost.com/change'
-                example-vmware-update:
-                  value:
-                    id: INTG-2e2854c6-8543-4a3c-be29-3ccc20542375
-                    displayName: VMWARE-Updated_API_VMWARE
-                    integration:
-                      id: VMWARE
-                      name: VMware
-                      multipleInstallations: true
-                    credential:
-                      Name: vmcenter
-                      autoMonitorable: false
-                      id: 326
-                      description: current credentials
-                      port: 443
-                      secure: true
-                    installedBy: Dev
-                    installedTime: '2021-02-29T12:40:07+0530'
-                    discoveryProfiles:
-                      - scanNow: true
-                        mgmtProfileUuid: 76a89355-9c0a-443e-a897-8f69e6ca2da2
-                        policy:
-                          entityType: All
-                          matchType: ANY
-                          rules:
-                            - filterType: ANY_CLOUD_RESOURCE
-                          actions:
-                            - action: Manage Device
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/integrationInstall'
-            examples:
-              example-authentication-oauth2:
-                value:
-                  displayName: Custom Integration
-                  inboundConfig:
-                    authentication:
-                      authType: OAUTH2
-                      role:
-                        uniqueId: ROLE-4718b729-50cc-6634-42c4-ecd09558389d
-              example-authentication-webhook:
-                value:
-                  displayName: Custom Integration
-                  inboundConfig:
-                    authentication:
-                      authType: WEBHOOK
-              example-inbound-configuration:
-                value:
-                  inboundConfig:
-                    authentication:
-                      authType: WEBHOOK
-                    mapAttributes:
-                      - name: Status
-                        thirdPartyAttrName: Status
-                        entityType: SERVICEREQUEST
-                        thirdPartyEntityType: SRQ
-                        attrValues:
-                          - attrValue: Open
-                            thirdPartyAttrValue: In Progress
-                          - attrValue: Closed
-                            thirdPartyAttrValue: Completed
-                      - name: Status
-                        thirdPartyAttrName: Status
-                        entityType: INCIDENT
-                        thirdPartyEntityType: TICKET
-                        attrValues:
-                          - attrValue: Open
-                            thirdPartyAttrValue: In Progress
-                          - attrValue: Closed
-                            thirdPartyAttrValue: Completed
-                      - name: Priority
-                        thirdPartyAttrName: severity
-                        entityType: INCIDENT
-                        thirdPartyEntityType: TICKET
-                        attrValues:
-                          - attrValue: High
-                            thirdPartyAttrValue: Max
-                          - attrValue: Low
-                            thirdPartyAttrValue: min
-                      - name: Priority
-                        thirdPartyAttrName: severity
-                        entityType: SERVICEREQUEST
-                        thirdPartyEntityType: SRQ
-                        attrValues:
-                          - attrValue: High
-                            thirdPartyAttrValue: Max
-                          - attrValue: Low
-                            thirdPartyAttrValue: min
-              example-outbound-configuration:
-                value:
-                  outboundConfig:
-                    mapAttributes:
-                      - name: Status
-                        thirdPartyAttrName: stats
-                        entityType: INCIDENT
-                        thirdPartyEntityType: Ticket
-                        attrValues:
-                          - attrValue: Ok
-                            thirdPartyAttrValue: good
-                          - attrValue: Critical
-                            thirdPartyAttrValue: bad
-                    baseNotifier:
-                      type: REST_API
-                      baseURI: www.google.com
-                      authType: OAUTH2
-                      grantType: PASSWORD
-                      userName: testUser
-                      password: pk
-                      accessTokenURI: www.token.com/cred
-                      apiKey: 6h67PAAFscVPMwhQZFcshpcqN5b6pyU9
-                      apiSecret: asdfgnasinfpaiwerpfawpeojporwjaeprfwpejprwje
-              example-inbound-outbound:
-                value:
-                  inboundConfig:
-                    authentication:
-                      authType: WEBHOOK
-                    mapAttributes:
-                      - name: Status
-                        thirdPartyAttrName: Status
-                        entityType: SERVICEREQUEST
-                        thirdPartyEntityType: SRQ
-                        attrValues:
-                          - attrValue: Open
-                            thirdPartyAttrValue: In Progress
-                          - attrValue: Closed
-                            thirdPartyAttrValue: Completed
-                      - name: Status
-                        thirdPartyAttrName: Status
-                        entityType: INCIDENT
-                        thirdPartyEntityType: TICKET
-                        attrValues:
-                          - attrValue: Open
-                            thirdPartyAttrValue: In Progress
-                          - attrValue: Closed
-                            thirdPartyAttrValue: Completed
-                      - name: Priority
-                        thirdPartyAttrName: severity
-                        entityType: INCIDENT
-                        thirdPartyEntityType: TICKET
-                        attrValues:
-                          - attrValue: High
-                            thirdPartyAttrValue: Max
-                          - attrValue: Low
-                            thirdPartyAttrValue: min
-                      - name: Priority
-                        thirdPartyAttrName: severity
-                        entityType: SERVICEREQUEST
-                        thirdPartyEntityType: SRQ
-                        attrValues:
-                          - attrValue: High
-                            thirdPartyAttrValue: Max
-                          - attrValue: Low
-                            thirdPartyAttrValue: min
-                  outboundConfig:
-                    mapAttributes:
-                      - name: Status
-                        thirdPartyAttrName: stats
-                        entityType: INCIDENT
-                        thirdPartyEntityType: Ticket
-                        attrValues:
-                          - attrValue: Ok
-                            thirdPartyAttrValue: good
-                          - attrValue: Critical
-                            thirdPartyAttrValue: bad
-                    baseNotifier:
-                      type: REST_API
-                      baseURI: www.google.com
-                      authType: OAUTH2
-                      grantType: PASSWORD
-                      userName: testUser
-                      password: pk
-                      accessTokenURL: www.token.com/cred
-                      apiKey: 6h67PAAFscVPMwhQZFcshpcqN5b6pyU9
-                      apiSecret: asdfgnasinfpaiwerpfawpeojporwjaeprfwpejprwje
-              example-jwt:
-                value:
-                  outboundConfig:
-                    mapAttributes:
-                      - name: Status
-                        thirdPartyAttrName: stats
-                        entityType: INCIDENT
-                        thirdPartyEntityType: Ticket
-                        attrValues:
-                          - attrValue: Open
-                            thirdPartyAttrValue: good
-                    baseNotifier:
-                      type: REST_API
-                      baseURI: 'https://us1-smax.saas.microfocus.com'
-                      authType: JWT
-                      userName: test
-                      password: Test
-                      tokenPayload:
-                        rest: ''
-                      tokenURL: 'https://us1-smax.saas.microfocus.com/auth/authentication-endpoint/authenticate/login'
-                      tokenHeaders:
-                        - key: Authorization
-                          value: Basic Base64EncodedCredentials
-                        - key: accept
-                          value: application/json
-                        - key: Content-Type
-                          value: application/json
-                      tokensPath:
-                        - key: jwtToken
-                          value: rest_access.access_key
-                      resourceAuthHeaders:
-                        - key: accept
-                          value: $jwtToken
-              example-CASERVICEDESK:
-                value:
-                  inboundConfig:
-                    authentication:
-                      authType: WEBHOOK
-                    mapAttributes:
-                      - name: Status
-                        thirdPartyAttrName: Status
-                        entityType: SERVICEREQUEST
-                        thirdPartyEntityType: REQUEST
-                        attrValues:
-                          - attrValue: Open
-                            thirdPartyAttrValue: In Progress
-                          - attrValue: Closed
-                            thirdPartyAttrValue: Completed
-                      - name: Status
-                        thirdPartyAttrName: Status
-                        entityType: INCIDENT
-                        thirdPartyEntityType: TICKET
-                        attrValues:
-                          - attrValue: Open
-                            thirdPartyAttrValue: In Progress
-                          - attrValue: Closed
-                            thirdPartyAttrValue: Completed
-                      - name: Priority
-                        thirdPartyAttrName: severity
-                        entityType: INCIDENT
-                        thirdPartyEntityType: TICKET
-                        attrValues:
-                          - attrValue: High
-                            thirdPartyAttrValue: Maximum
-                          - attrValue: Low
-                            thirdPartyAttrValue: Minimum
-                      - name: Priority
-                        thirdPartyAttrName: Severity
-                        entityType: SERVICEREQUEST
-                        thirdPartyEntityType: REQUEST
-                        attrValues:
-                          - attrValue: High
-                            thirdPartyAttrValue: Maximum
-                          - attrValue: Low
-                            thirdPartyAttrValue: Minimum
-                  outboundConfig:
-                    mapAttributes:
-                      - name: Status
-                        thirdPartyAttrName: Status
-                        entityType: INCIDENT
-                        thirdPartyEntityType: Ticket
-                        attrValues:
-                          - attrValue: Ok
-                            thirdPartyAttrValue: Good
-                          - attrValue: Critical
-                            thirdPartyAttrValue: Bad
-                    baseNotifier:
-                      type: REST_API
-                      baseURI: www.google.com
-                      authType: OAUTH2
-                      grantType: PASSWORD
-                      userName: testUser
-                      password: '*************'
-                      accessTokenURI: www.token.com/cred
-                      apiKey: 6h67PAAFscVPMwhQZFcshpcqN5b6pyU9
-                      apiSecret: '***************************'
-              example-okta:
-                value:
-                  singleSignOnAuthentication:
-                    issuerUrl: 'https://localhost.com/modify'
-                    redirectionUrl: 'https://localhost.com/update'
-                    logoutUrl: 'https://localhost.com/change'
-                    certificate: MIIDrTCCAxagAwIBAgIBADANBgkqhkiG9w0BAQQFADCBnDEbMBkGA1UEChMSVGhlIFNhbXBsZSBDb21wYW55MRQwEgYDVQQLEwtDQSBEaXZpc2lvbjEcMBoGCSqGSIb3DQEJARYNY2FAc2FtcGxlLmNvbTETMBEGA1UEBxMKTWV0cm9wb2xpczERMA8GA1UECBMITmV3IFlvcmsxCzAJBgNVBAYTAlVTMRQwEgYDVQQDEwtUU0MgUm9vdCBDQTAeFw0wMTEyMDgwNDI3MDVaFw0wMjEyMDgwNDI3MDVaMIGcMRswGQYDVQQKExJUaGUgU2FtcGxlIENvbXBhbnkxFDASBgNVBAsTC0NBIERpdmlzaW9uMRwwGgYJKoZIhvcNAQkBFg1jYUBzYW1wbGUuY29tMRMwEQYDVQQHEwpNZXRyb3BvbGlzMREwDwYDVQQIEwhOZXcgWW9yazELMAkGA1UEBhMCVVMxFDASBgNVBAMTC1RTQyBSb290IENBMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDaiAwfKB6ZBtnTRTIo6ddomt0S9ec0NcuvtJogt0s9dXpHowh98FCDjnLtCi8du6LDTZluhlOtTFARPlV/LVnpsbyMCXMsG2qpdjJop+XIBdvoCz2HpGXjUmym8WLqt+coWwJqUSwiEba74JG93v7TU+Xcvc005MWnxmKZzDR3QIDAQABo4H8MIH5MAwGA1UdEwQFMAMBAf8wHQYDVR0OBBYEFGvyytrBtEquMX2dreysixMlPMMIHJBgNVHSMEgcEwgb6AFGvyytrBtEquMX2dreysixMlPMoYGipIGfMIGcMRswGQYDVQQKExJUaGUgU2FtcGxlIENvbXBhbnkxFDASBgNVBAsTC0NBIERpdmlzaW9uMRwwGgYJKoZIhvcNAQkBFg1jYUBzYW1wbGUuY29tMRMwEQYDVQQHEwpNZXRyb3BvbGlzMREwDwYDVQQIEwhOZXcgWW9yazELMAkGA1UEBhMCVVMxFDASBgNVBAMTC1RTQyBSb290IENBggEAMA0GCSqGSIb3DQEBBAUAA4GBABclymJfsPOUazNQO8aIaxwVbXWS+8AFEkMMRx6O68ICAMubQBvs8Buz3ALXhqYeFS5G13pW2ZnAlSdTkSTKkE5wGZ1RYSfyiEKXb+uOKhDN9LnajDzaMPkNDU2NDXDzSqHk9ZiE1boQaMzjNLu+KabTLpmL9uXvFA/i+gdenFHv
-              example-vmware-update:
-                value:
-                  displayName: VMWARE-Updated_API_VMWARE
-                  credential: vmcenter
-                  ipAddress: 10.11.01.10
-                  discoveryProfiles:
-                    - id: 101
-                      scanNow: true
-                      mgmtProfileUuid: 76a89355-9c0a-443e-a897-8f69e6ca2da2
-                      policy:
-                        entityType: All
-                        matchType: ANY
-                        rules:
-                          - filterType: ANY_CLOUD_RESOURCE
-                        actions:
-                          - action: MANAGE DEVICE
-        description: ''
+    summary: 6. Manage installed apps
+    description: Gets and removes the installed integration/apps.
     get:
-      summary: Get installed integration
-      description: Gets installed integration details.
+      summary: Get installed apps/integration details
+      description: Gets installed integration/apps details.
       tags:
         - integrations
+        - SDK 1.0 App APIs
       responses:
         '200':
           description: OK
@@ -3383,101 +2799,129 @@ paths:
               schema:
                 $ref: '#/components/schemas/integrationInstall'
               examples:
-                example-1:
+                app-hitachi-vsp-opscenter:
                   value:
-                    id: INTG-30afec31-9c37-4784-a6de-051997a5715e
+                    id: INTG-762e9a47-51b1-4502-8325-f6b7032ee8ab
+                    displayName: hitachi-vsp-opscenter
                     integration:
-                      id: JIRA
-                      name: JIRA
+                      id: HITACHI-VSP-OPSCENTER
+                      name: hitachi-vsp-opscenter
+                      multipleInstallations: true
+                      manifest:
+                        adapaterConfig:
+                          - type: STRING
+                            name: HostName
+                          - type: STRING
+                            name: Protocol
+                          - type: CREDENTIAL
+                            customProps:
+                              - type: STRING
+                                name: Username
+                              - type: STRING
+                                name: Password
+                            name: Credential
+                          - type: STRING
+                            name: test3
+                        adapaterMetric:
+                          - resourceType: Desktop
+                            availabilityRule: ALL
+                            metrics:
+                              - metricName: testMetric123
+                                defaultMetric: true
+                                availibityMetric: false
+                                units: percentage
+                                multiplicationFactor: '1'
+                                dataPointType: Gauge
+                                graph:
+                                  graphPoint: true
+                                  formatPlottedValue: true
+                                notification:
+                                  alertOn: NONE
+                                  raiseAlert: false
+                                  formatAlertValue: true
+                                  sensitivity: HIGH
+                                  direction: NEGATIVE
+                                  limit: 10
+                                  warning:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '50'
+                                    repeat: 2
+                                  critical:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '65'
+                                    repeat: 1
+                                  subject: testmetric123 test
+                                  description: tstmtrc 123 test
+                                dataPointConverisonOptions:
+                                  - 'true': '1'
+                              - metricName: metric3
+                                defaultMetric: true
+                                availibityMetric: false
+                                units: percentage
+                                multiplicationFactor: '1'
+                                dataPointType: Gauge
+                                graph:
+                                  graphPoint: true
+                                  formatPlottedValue: true
+                                notification:
+                                  alertOn: NONE
+                                  raiseAlert: false
+                                  formatAlertValue: true
+                                  sensitivity: HIGH
+                                  direction: NEGATIVE
+                                  limit: 10
+                                  warning:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '50'
+                                    repeat: 2
+                                  critical:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '65'
+                                    repeat: 1
+                                  subject: metric 3 test
+                                  description: metric test 3
+                                dataPointConverisonOptions:
+                                  - 'true': '1'
+                              - metricName: metric2
+                                defaultMetric: true
+                                availibityMetric: false
+                                units: percentage
+                                multiplicationFactor: '1'
+                                dataPointType: Gauge
+                                graph:
+                                  graphPoint: true
+                                  formatPlottedValue: true
+                                notification:
+                                  alertOn: NONE
+                                  raiseAlert: false
+                                  formatAlertValue: true
+                                  sensitivity: HIGH
+                                  direction: NEGATIVE
+                                  limit: 10
+                                  warning:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '50'
+                                    repeat: 2
+                                  critical:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '65'
+                                    repeat: 1
+                                  subject: metric changes
+                                  description: metric chnaged 2
+                                dataPointConverisonOptions:
+                                  - 'true': '1'
                     inboundConfig:
                       authentication:
-                        authType: WEBHOOK
-                        token: w6bbEcYKnqggCkzPgBg745YXPKs3DuWb
-                      mapAttributes:
-                        - name: Status
-                          attrName: serviceRequest.status.name
-                          thirdPartyAttrName: Status
-                          entityType: SERVICEREQUEST
-                          thirdPartyEntityType: SRQ
-                          attrValues:
-                            - attrValue: Open
-                              thirdPartyAttrValue: In Progress
-                            - attrValue: Closed
-                              thirdPartyAttrValue: Completed
-                        - name: Status
-                          attrName: incident.status.name
-                          thirdPartyAttrName: Status
-                          entityType: INCIDENT
-                          thirdPartyEntityType: TICKET
-                          attrValues:
-                            - attrValue: Open
-                              thirdPartyAttrValue: In Progress
-                            - attrValue: Closed
-                              thirdPartyAttrValue: Completed
-                        - name: Priority
-                          attrName: incident.priority.name
-                          thirdPartyAttrName: severity
-                          entityType: INCIDENT
-                          thirdPartyEntityType: TICKET
-                          attrValues:
-                            - attrValue: High
-                              thirdPartyAttrValue: Max
-                            - attrValue: Low
-                              thirdPartyAttrValue: min
-                        - name: Priority
-                          attrName: serviceRequest.priority.name
-                          thirdPartyAttrName: severity
-                          entityType: SERVICEREQUEST
-                          thirdPartyEntityType: SRQ
-                          attrValues:
-                            - attrValue: High
-                              thirdPartyAttrValue: Max
-                            - attrValue: Low
-                              thirdPartyAttrValue: min
-                    outboundConfig:
-                      mapAttributes:
-                        - name: Status
-                          attrName: incident.status.name
-                          thirdPartyAttrName: state
-                          entityType: INCIDENT
-                          thirdPartyEntityType: ticket
-                          attrValues:
-                            - attrValue: Closed
-                              thirdPartyAttrValue: close
-                        - name: Priority
-                          attrName: incident.priority.name
-                          thirdPartyAttrName: priority
-                          entityType: INCIDENT
-                          thirdPartyEntityType: ticket
-                          attrValues:
-                            - attrValue: Very Low
-                              thirdPartyAttrValue: low
-                example-okta:
-                  value:
-                    id: INTG-d13fcb67-d8a9-4283-9bd1-e9fb162e219c
-                    integration:
-                      id: OKTA
-                      name: Okta
-                    singleSignOnAuthentication:
-                      type: Okta
-                      issuerUrl: 'https://localhost.com'
-                      redirectionUrl: 'https://localhost.com'
-                      logoutUrl: 'https://localhost.com'
-                example-other:
-                  value:
-                    id: INTG-4d3042af-af4e-4fa0-9629-b23ab6d745da
-                    displayName: testIntg
-                    integration:
-                      id: OTHER
-                      name: Other
-                    singleSignOnAuthentication:
-                      type: Other
-                      issuerUrl: 'https://localhost.com'
-                      redirectionUrl: 'https://localhost.com'
-                      logoutUrl: 'https://localhost.com'
+                        authType: OAUTH2
+                        apiKeyPairs:
+                          - key: fnB7g3CZrSJdSfwtnNSWGyBzFTDY7N2r
+                    installedBy: opsramp_api_user
+                    installedTime: '2021-07-02T07:08:54+0100'
+                    status: enabled
+      operationId: ''
     delete:
-      summary: Uninstall integration
-      description: Uninstalls an installed integration.
+      summary: Uninstall the apps
+      description: Uninstalls an installed integration/apps.
       tags:
         - integrations
       requestBody:
@@ -3499,6 +2943,7 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/installedIntgId'
   '/api/v2/tenants/{tenantId}/integrations/available/{installedIntgId}/mappingAttr/{entityType}':
+    x-internal: true
     summary: Get integration mappable properties
     description: Gets the integration mappable properties for an entity.
     get:
@@ -3616,11 +3061,12 @@ paths:
       - $ref: '#/components/parameters/installedIntgId'
       - $ref: '#/components/parameters/entityType'
   '/api/v2/tenants/{tenantId}/integrations/available/search':
-    summary: Search available integrations
-    description: Searches available integrations.
+    summary: 1. Search available apps/integrations
+    description: Searches available apps/integrations.
     get:
       tags:
         - integrations
+        - SDK 1.0 App APIs
       responses:
         '200':
           description: OK
@@ -3651,30 +3097,28 @@ paths:
                   pageNo:
                     type: integer
               examples:
-                example-1:
+                example-apps:
                   value:
                     results:
-                      - id: ALERTLOGIC
-                        name: Alert Logic
-                      - id: DELLCOMPELLENT
-                        name: Dell Compellent
-                      - id: Email Alerts
-                        name: Email Alerts
-                      - id: GRAPHITE
-                        name: Graphite
-                      - id: NAGIOS
-                        name: Nagios
-                      - id: NEUSTAR
-                        name: Neustar
-                      - id: NEWRELIC_LEGACY
-                        name: NewRelic_Legacy
-                      - id: NIMSOFT
-                        name: Nimsoft
-                      - id: OPSMANAGER
-                        name: OpsManager
-                      - id: CUSTOM
-                        name: Custom
-                    totalResults: 14
+                      - id: POLYCOM-VVX-CCX
+                        name: polycom-vvx-ccx
+                      - id: POLYCOM-TRIO-8800
+                        name: polycom-trio-8800
+                      - id: POLY-AV-STUDIO-SERIES
+                        name: poly-av-studio-series
+                      - id: POLY-AV-GROUP-SERIES
+                        name: poly-av-group-series
+                      - id: NEC-DISPLAYS
+                        name: nec-displays
+                      - id: HITACHI-VSP-OPSCENTER
+                        name: hitachi-vsp-opscenter
+                      - id: HITACHI-VSP
+                        name: hitachi-vsp
+                      - id: HITACHI-HNAS
+                        name: hitachi-hnas
+                      - id: HITACHI-HCI
+                        name: hitachi-hci
+                    totalResults: 12
                     pageNo: 1
                     pageSize: 10
                     totalPages: 2
@@ -3707,9 +3151,12 @@ paths:
             type: string
           in: query
           name: queryString
+      summary: List all the available integration/apps
+      description: "### Query Params:\n\t1. pageNo={pageNo} defaultValue=1 [optional]\n\t2. pageSize={pageSize} defaultValue=10 [optional]\n\t3. isDescendingOrder={true/false} defaultValue=false [optional]\n\t4. sortName={field} defaultValue=name [optional]\n\t5. queryString = {queryString} [optional]\n\t6. category = ADAPTER_INTEGRATION  for apps\n\t7. Possible categories:\n  \t   - ITSM_INTEGRATION\n  \t   - MONITORING_INTEGRATION\n  \t   - COMPUTE_INTEGRATION\n  \t   - PATCH_MANAGEMENT_INTEGRATION\n  \t   - SSO_INTEGRATION\n  \t   - DATA_EXPORT_INTEGRATION\n### Example:\n    - https://server.com/api/v2/tenants/tenant_id/integrations/available/search?pageNo=1&pageSize=10&isDescendingOrder=true&sortName=name&queryString=category:ADAPTER_INTEGRATION"
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/integrations/installed/search':
+    x-internal: true
     summary: Search installed integrations
     description: |
       Searches for installed integrations.
@@ -3934,6 +3381,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/integrations/install/EMAILINCIDENTS':
+    x-internal: true
     summary: Install email request integration
     description: |
       Installs an email request integration.
@@ -4018,6 +3466,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/integrations/install/EMAILALERTS':
+    x-internal: true
     summary: Install email alert integration
     description: |-
       Installs email alert integrations. OpsRamp processes all incoming Alert emails.
@@ -4112,6 +3561,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/integrations/install/AWS':
+    x-internal: true
     summary: Install AWS integrations
     description: |-
       These endpoint IDs are used to install third-party integrations.
@@ -4213,6 +3663,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/integrations/install/AZURE':
+    x-internal: true
     summary: Install Azure integration
     description: |-
       These endpoint IDs are used to install third-party integrations.
@@ -4285,6 +3736,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/integrations/install/GOOGLE':
+    x-internal: true
     summary: Install Google integration
     description: |-
       These endpoint IDs are used to install third-party integrations.
@@ -4335,6 +3787,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/integrations/install/VMWARE':
+    x-internal: true
     summary: Install VMWARE integration
     description: |-
       These endpoint IDs are used to install compute integrations
@@ -4440,6 +3893,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/integrations/install/{installedIntgId}':
+    x-internal: true
     summary: Install integrations
     description: |-
       Installs the following integrations:
@@ -4652,6 +4106,181 @@ paths:
                               thirdPartyAttrValue: good
                             - attrValue: Critical
                               thirdPartyAttrValue: bad
+                example-8:
+                  value:
+                    id: string
+                    displayName: string
+                    ipAddress: string
+                    credentialSet: string
+                    computeCredentials:
+                      name: string
+                      autoMonitorable: true
+                      id: 0
+                      uniqueId: string
+                      description: string
+                      port: 0
+                      secure: true
+                    logos:
+                      name: string
+                      file: string
+                    integration:
+                      id: string
+                      name: string
+                      multipleInstallations: true
+                      manifest:
+                        adapaterConfig:
+                          - type: string
+                            customProps:
+                              - type: string
+                                name: string
+                            name: string
+                        mngtGatewayProfile:
+                          uuId: string
+                    category: Custom
+                    installedBy: string
+                    installedTime: string
+                    status: string
+                    alertSource:
+                      id: 0
+                      name: string
+                      displayName: string
+                      techUid: string
+                    direction: Inbound
+                    description: string
+                    inboundConfig:
+                      dropAlerts: true
+                      authentication:
+                        authType: WEBHOOK
+                        role:
+                          uniqueId: string
+                        apiKeyPairs:
+                          - key: string
+                        token: string
+                      mapAttributes:
+                        - name: string
+                          tenantAttrName: string
+                          entityType: ALERT
+                          tenantEntityType: string
+                          attrValues:
+                            - attrValue: string
+                              tenantAttrValue: string
+                          mode: string
+                      discoveryProfile:
+                        id: 0
+                        name: string
+                        scanNow: true
+                        installedIntegrationId: string
+                        credentialSet: string
+                        credential:
+                          credentialName: string
+                          accountId: string
+                          credentialType: string
+                          SubscriptionId: string
+                          AzureType: string
+                          TenantId: string
+                          ClientID: string
+                          SecretKey: string
+                          Name: string
+                          AWSType: string
+                          Regions: string
+                          AccountNumber: string
+                          AccessKey: string
+                          SecurityKey: string
+                          AssumeRoleARN: string
+                          ExternalId: string
+                          ManagementCertificate: string
+                          KeystorePassword: string
+                          ServiceAccountEmail: string
+                          ProjectId: string
+                          ServiceAccountManagementCertificate: string
+                          ManagementCertificatePassPhrase: string
+                        policy:
+                          id: 0
+                          uid: string
+                          name: string
+                          matchType: string
+                          rules:
+                            - id: 0
+                              filterType: string
+                              key: string
+                              value: string
+                              operator: Contains
+                              resourceType: string
+                          actions:
+                            - action: string
+                              items:
+                                - item: string
+                                  parameters: {}
+                                  instances: {}
+                          entityType: string
+                          executionOrder: 0
+                        schedule:
+                          patternType: string
+                          pattern: string
+                          startTime: string
+                      entityTypes:
+                        - string
+                      webhookUris:
+                        - webhookEntityType: string
+                          url: string
+                    outboundConfig:
+                      mapAttributes:
+                        - name: string
+                          tenantAttrName: string
+                          entityType: ALERT
+                          tenantEntityType: string
+                          attrValues:
+                            - attrValue: string
+                              tenantAttrValue: string
+                          mode: string
+                      baseNotifier:
+                        type: REST_API
+                        authType: NONE
+                        grantType: CLIENT_CREDENTIALS
+                        userName: string
+                        password: string
+                        apiKey: string
+                        apiSecret: string
+                        accessTokenURL: string
+                        tokenPayload: {}
+                        tokenURL: string
+                        tokenHeaders:
+                          - key: string
+                            value: string
+                        tokensPath:
+                          - key: string
+                            value: string
+                        resourceAuthHeaders:
+                          - key: string
+                            value: string
+                        baseURI: string
+                    emailProps:
+                      - name: string
+                        identifier: string
+                        identifierSource: EMAIL_SUBJECT
+                        properties:
+                          - name: string
+                            defaultValue: string
+                            condition:
+                              contentSource: EMAIL_SUBJECT
+                              operator: BETWEEN
+                              startValue: string
+                              endValue: string
+                              regexStr: string
+                            propertyMappings:
+                              attrValues:
+                                - attrValue: string
+                                  thirdPartyAttrValue: string
+                    emailAddress: string
+                    ticketType: INCIDENT
+                    parentIntg:
+                      id: string
+                    deployment: string
+                    containerEngineType: string
+                    configFiles:
+                      id: string
+                      name: string
+                      contentURL: string
       requestBody:
         content:
           application/json:
@@ -4807,6 +4436,7 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/installedIntgId'
   '/api/v2/tenants/{tenantId}/integrations/install/OKTA':
+    x-internal: true
     summary: Install SSO integration
     description: Installs a SSO integration.
     post:
@@ -4904,21 +4534,1040 @@ paths:
                     certificate: MIIDrTCCAxagAwIBAgIBADANBgkqhkiG9w0BAQQFADCBnDEbMBkGA1UEChMSVGhlIFNhbXBsZSBDb21wYW55MRQwEgYDVQQLEwtDQSBEaXZpc2lvbjEcMBoGCSqGSIb3DQEJARYNY2FAc2FtcGxlLmNvbTETMBEGA1UEBxMKTWV0cm9wb2xpczERMA8GA1UECBMITmV3IFlvcmsxCzAJBgNVBAYTAlVTMRQwEgYDVQQDEwtUU0MgUm9vdCBDQTAeFw0wMTEyMDgwNDI3MDVaFw0wMjEyMDgwNDI3MDVaMIGcMRswGQYDVQQKExJUaGUgU2FtcGxlIENvbXBhbnkxFDASBgNVBAsTC0NBIERpdmlzaW9uMRwwGgYJKoZIhvcNAQkBFg1jYUBzYW1wbGUuY29tMRMwEQYDVQQHEwpNZXRyb3BvbGlzMREwDwYDVQQIEwhOZXcgWW9yazELMAkGA1UEBhMCVVMxFDASBgNVBAMTC1RTQyBSb290IENBMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDaiAwfKB6ZBtnTRTIo6ddomt0S9ec0NcuvtJogt0s9dXpHowh98FCDjnLtCi8du6LDTZluhlOtTFARPlV/LVnpsbyMCXMsG2qpdjJop+XIBdvoCz2HpGXjUmym8WLqt+coWwJqUSwiEba74JG93v7TU+Xcvc005MWnxmKZzDR3QIDAQABo4H8MIH5MAwGA1UdEwQFMAMBAf8wHQYDVR0OBBYEFGvyytrBtEquMX2dreysixMlPMMIHJBgNVHSMEgcEwgb6AFGvyytrBtEquMX2dreysixMlPMoYGipIGfMIGcMRswGQYDVQQKExJUaGUgU2FtcGxlIENvbXBhbnkxFDASBgNVBAsTC0NBIERpdmlzaW9uMRwwGgYJKoZIhvcNAQkBFg1jYUBzYW1wbGUuY29tMRMwEQYDVQQHEwpNZXRyb3BvbGlzMREwDwYDVQQIEwhOZXcgWW9yazELMAkGA1UEBhMCVVMxFDASBgNVBAMTC1RTQyBSb290IENBggEAMA0GCSqGSIb3DQEBBAUAA4GBABclymJfsPOUazNQO8aIaxwVbXWS+8AFEkMMRx6O68ICAMubQBvs8Buz3ALXhqYeFS5G13pW2ZnAlSdTkSTKkE5wGZ1RYSfyiEKXb+uOKhDN9LnajDzaMPkNDU2NDXDzSqHk9ZiE1boQaMzjNLu+KabTLpmL9uXvFA/i+gdenFHv
     parameters:
       - $ref: '#/components/parameters/tenantId'
+  '/api/v2/tenants/{tenantId}/integrations/install/{appName}':
+    summary: 2. Installs the available apps
+    description: |-
+      Installs the selected appName. 
+
+      ## Notes
+      Get the apps name by doing a search from the available apps
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        name: appName
+        in: path
+        required: true
+        description: Unique name of the apps.
+    post:
+      summary: 2. Installs the  Apps
+      operationId: post-api-v2-tenants-tenantId-integrations-install-appName
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/integrationInstall'
+              examples:
+                example-1:
+                  value:
+                    id: INTG-762e9a47-51b1-4502-8325-f6b7032ee8ab
+                    displayName: hitachi-vsp-opscenter
+                    integration:
+                      id: HITACHI-VSP-OPSCENTER
+                      name: hitachi-vsp-opscenter
+                      multipleInstallations: true
+                      manifest:
+                        adapaterConfig:
+                          - type: STRING
+                            name: HostName
+                          - type: STRING
+                            name: Protocol
+                          - type: CREDENTIAL
+                            customProps:
+                              - type: STRING
+                                name: Username
+                              - type: STRING
+                                name: Password
+                            name: Credential
+                          - type: STRING
+                            name: test3
+                        adapaterMetric:
+                          - resourceType: Desktop
+                            availabilityRule: ALL
+                            metrics:
+                              - metricName: testMetric123
+                                defaultMetric: true
+                                availibityMetric: false
+                                units: percentage
+                                multiplicationFactor: '1'
+                                dataPointType: Gauge
+                                graph:
+                                  graphPoint: true
+                                  formatPlottedValue: true
+                                notification:
+                                  alertOn: NONE
+                                  raiseAlert: false
+                                  formatAlertValue: true
+                                  sensitivity: HIGH
+                                  direction: NEGATIVE
+                                  limit: 10
+                                  warning:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '50'
+                                    repeat: 2
+                                  critical:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '65'
+                                    repeat: 1
+                                  subject: testmetric123 test
+                                  description: tstmtrc 123 test
+                                dataPointConverisonOptions:
+                                  - 'true': '1'
+                              - metricName: metric3
+                                defaultMetric: true
+                                availibityMetric: false
+                                units: percentage
+                                multiplicationFactor: '1'
+                                dataPointType: Gauge
+                                graph:
+                                  graphPoint: true
+                                  formatPlottedValue: true
+                                notification:
+                                  alertOn: NONE
+                                  raiseAlert: false
+                                  formatAlertValue: true
+                                  sensitivity: HIGH
+                                  direction: NEGATIVE
+                                  limit: 10
+                                  warning:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '50'
+                                    repeat: 2
+                                  critical:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '65'
+                                    repeat: 1
+                                  subject: metric 3 test
+                                  description: metric test 3
+                                dataPointConverisonOptions:
+                                  - 'true': '1'
+                              - metricName: metric2
+                                defaultMetric: true
+                                availibityMetric: false
+                                units: percentage
+                                multiplicationFactor: '1'
+                                dataPointType: Gauge
+                                graph:
+                                  graphPoint: true
+                                  formatPlottedValue: true
+                                notification:
+                                  alertOn: NONE
+                                  raiseAlert: false
+                                  formatAlertValue: true
+                                  sensitivity: HIGH
+                                  direction: NEGATIVE
+                                  limit: 10
+                                  warning:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '50'
+                                    repeat: 2
+                                  critical:
+                                    operator: GREATER_THAN_EQUAL
+                                    value: '65'
+                                    repeat: 1
+                                  subject: metric changes
+                                  description: metric chnaged 2
+                                dataPointConverisonOptions:
+                                  - 'true': '1'
+                    inboundConfig:
+                      authentication:
+                        authType: OAUTH2
+                        apiKeyPairs:
+                          - key: fnB7g3CZrSJdSfwtnNSWGyBzFTDY7N2r
+                    installedBy: opsramp_api_user
+                    installedTime: '2021-07-02T07:08:54+0100'
+                    status: enabled
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/integrationInstall'
+            examples:
+              hitachi-vsp-opscenter:
+                value:
+                  displayName: hitachi-vsp-opscenter
+                  category: ADAPTER_INTEGRATION
+                  integration:
+                    manifest:
+                      mngtGatewayProfile:
+                        uuId: 68509c25-bd4c-4917-9648-7690238c9dd7
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/integration'
+            examples:
+              example-1:
+                value: |-
+                  {
+                      "displayName": "installed name",
+                      "category": "ADAPTER_INTEGRATION",
+                      "integration": {
+                          "manifest": {
+                              "mngtGatewayProfile": {
+                                  "uuId": "68509c25-bd4c-4917-9648-7690238c9dd7"
+                              }
+                          }
+                      }
+                  }
+              example-2:
+                value: ''
+        description: ''
+      tags:
+        - SDK 1.0 App APIs
+      description: Installs the selected app.
+  '/api/v2/tenants/{tenant_id}/integrations/installed/config/{configId}':
+    summary: 7. Managed config details of profile on the installed app
+    description: Gets and deletes profiles details on the installed app.
+    parameters:
+      - schema:
+          type: string
+        name: configId
+        in: path
+        required: true
+        description: manifestConfigUUID
+      - $ref: '#/components/parameters/tenantId'
+    get:
+      summary: Get the config details of profile on the intalled app
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/config'
+              examples:
+                example-1:
+                  value:
+                    name: test-121
+                    properties:
+                      HostName: www3
+                      Credential:
+                        Custom:
+                          secret: secret
+                          secretToken: ''
+                      IP Address: 192.25.26.199
+                    adapaterMetric:
+                      - resourceType: Server
+                        availabilityRule: ALL
+                        metrics:
+                          - metricName: metric1
+                            defaultMetric: true
+                            availibityMetric: false
+                            units: percentage
+                            multiplicationFactor: '1'
+                            dataPointType: Gauge
+                            graph:
+                              graphPoint: true
+                              formatPlottedValue: true
+                            notification:
+                              alertOn: NONE
+                              raiseAlert: false
+                              formatAlertValue: true
+                              sensitivity: HIGH
+                              direction: NEGATIVE
+                              limit: 10
+                              warning:
+                                operator: NONE
+                                value: 'null'
+                                repeat: 2
+                              critical:
+                                operator: GREATER_THAN_EQUAL
+                                value: '65'
+                                repeat: 1
+                              subject: sample-app-metric1
+                              description: hnas file system percentage-metric-1
+                            dataPointConverisonOptions:
+                              - 'true': '1'
+                          - metricName: metric2
+                            defaultMetric: true
+                            availibityMetric: false
+                            units: percentage
+                            multiplicationFactor: '1'
+                            dataPointType: Gauge
+                            graph:
+                              graphPoint: true
+                              formatPlottedValue: true
+                            notification:
+                              alertOn: NONE
+                              raiseAlert: false
+                              formatAlertValue: true
+                              sensitivity: HIGH
+                              direction: NEGATIVE
+                              limit: 10
+                              warning:
+                                operator: NONE
+                                value: 'null'
+                                repeat: 2
+                              critical:
+                                operator: GREATER_THAN_EQUAL
+                                value: '65'
+                                repeat: 1
+                              subject: sample-app-meric-2
+                              description: hnas file system percentage-metric-2
+                            dataPointConverisonOptions:
+                              - 'true': '1'
+                          - metricName: metric3
+                            defaultMetric: true
+                            availibityMetric: false
+                            units: percentage
+                            multiplicationFactor: '1'
+                            dataPointType: Gauge
+                            graph:
+                              graphPoint: true
+                              formatPlottedValue: true
+                            notification:
+                              alertOn: NONE
+                              raiseAlert: true
+                              formatAlertValue: true
+                              sensitivity: HIGH
+                              direction: NEGATIVE
+                              limit: 10
+                              warning:
+                                operator: NONE
+                                value: 'null'
+                                repeat: 2
+                              critical:
+                                operator: GREATER_THAN_EQUAL
+                                value: '65'
+                                repeat: 1
+                              subject: changed-metric 3 checked
+                              description: 'changed metric 3 checked '
+                            dataPointConverisonOptions:
+                              - 'true': '1'
+                    schedule:
+                      patternType: DAILY
+                      pattern: '14'
+                      startTime: '9'
+                    frequency: 60
+                    installedUniqueId: INTG-65ccfb46-9431-4c47-9d3e-5645fabd53a9
+                    configId: ADAPTER-MANIFEST-be2e25cb-4c93-43b9-998d-24a6219e2398
+                    scheduleFlag: false
+      operationId: get-api-v2-tenants-tenant_id-integrations-installed-installedAppUUId-config-configId
+      tags:
+        - SDK 1.0 App APIs
+      description: Get the given profile config details on the installed app.
+    delete:
+      summary: Removes the config profile from the installed app
+      operationId: delete-api-v2-tenants-tenant_id-integrations-installed-installedAppIntgId-config-configId
+      responses:
+        '200':
+          description: OK
+      tags:
+        - SDK 1.0 App APIs
+      description: Delete existing config profiles present in the installed integration
+  '/api/v2/tenants/{tenant_id}/integrations/installed/{installedAppIntgId}/config':
+    summary: 3. Add a config profile details on the app
+    description: Create configuration profile for discovery and monitoring.
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        name: installedAppIntgId
+        in: path
+        required: true
+        description: Installed App Integration UUID
+    post:
+      summary: 3. Add a config profile details on the app
+      operationId: post-api-v2-tenants-tenant_id-integrations-installed-installedAppIntgId-config
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/config'
+              examples:
+                example-1:
+                  value:
+                    name: test-121
+                    properties:
+                      IP Address: 192.25.26.199
+                      Credential:
+                        Custom:
+                          secret: second-test-secret
+                          secretToken: second-test-secretToken
+                      HostName: hostName-schudule
+                    adapterMetric:
+                      - resourceType: Server
+                        availabilityRule: ALL
+                        metrics:
+                          - metricName: metric1
+                            defaultMetric: true
+                            availibityMetric: false
+                            units: percentage
+                            multiplicationFactor: '1'
+                            dataPointType: Gauge
+                            graph:
+                              graphPoint: true
+                              formatPlottedValue: true
+                            notification:
+                              alertOn: NONE
+                              raiseAlert: false
+                              formatAlertValue: true
+                              sensitivity: HIGH
+                              direction: NEGATIVE
+                              limit: 10
+                              warning:
+                                operator: NONE
+                                value: 'null'
+                                repeat: 2
+                              critical:
+                                operator: GREATER_THAN_EQUAL
+                                value: '65'
+                                repeat: 1
+                              subject: sample-app-metric1
+                              description: hnas file system percentage-metric-1
+                            dataPointConverisonOptions:
+                              - 'true': '1'
+                          - metricName: metric2
+                            defaultMetric: true
+                            availibityMetric: false
+                            units: percentage
+                            multiplicationFactor: '1'
+                            dataPointType: Gauge
+                            graph:
+                              graphPoint: true
+                              formatPlottedValue: true
+                            notification:
+                              alertOn: NONE
+                              raiseAlert: false
+                              formatAlertValue: true
+                              sensitivity: HIGH
+                              direction: NEGATIVE
+                              limit: 10
+                              warning:
+                                operator: NONE
+                                value: 'null'
+                                repeat: 2
+                              critical:
+                                operator: GREATER_THAN_EQUAL
+                                value: '65'
+                                repeat: 1
+                              subject: sample-app-meric-2
+                              description: hnas file system percentage-metric-2
+                            dataPointConverisonOptions:
+                              - 'true': '1'
+                          - metricName: metric3
+                            defaultMetric: true
+                            availibityMetric: false
+                            units: percentage
+                            multiplicationFactor: '1'
+                            dataPointType: Gauge
+                            graph:
+                              graphPoint: true
+                              formatPlottedValue: true
+                            notification:
+                              alertOn: NONE
+                              raiseAlert: false
+                              formatAlertValue: true
+                              sensitivity: HIGH
+                              direction: NEGATIVE
+                              limit: 10
+                              warning:
+                                operator: NONE
+                                value: 'null'
+                                repeat: 2
+                              critical:
+                                operator: GREATER_THAN_EQUAL
+                                value: '65'
+                                repeat: 1
+                              subject: sample-app-metric1
+                              description: hnas file system percentage-metric-1
+                            dataPointConverisonOptions:
+                              - 'true': '1'
+                    frequency: 120
+                    installedUniqueId: INTG-65ccfb46-9431-4c47-9d3e-5645fabd53a9
+                    configId: ADAPTER-MANIFEST-be2e25cb-4c93-43b9-998d-24a6219e2398
+                    scheduleFlag: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/config'
+            examples:
+              example-1:
+                value:
+                  name: test-121
+                  properties:
+                    IP Address: 192.25.26.199
+                    Credential:
+                      Custom:
+                        secret: second-test-secret
+                        secretToken: second-test-secretToken
+                    HostName: hostName-schudule
+                  schedule:
+                    patternType: WEEKLY
+                    pattern: 'sunday, monday, tuesday,'
+                    startTime: '9'
+                  frequency: 120
+                  adapterMetric:
+                    - resourceType: Server
+                      availabilityRule: ALL
+                      metrics:
+                        - metricName: metric1
+                          defaultMetric: true
+                          availibityMetric: false
+                          units: percentage
+                          multiplicationFactor: 1
+                          dataPointType: Gauge
+                          dataPointConverisonOptions:
+                            - 'true': '1'
+                          graph:
+                            graphPoint: true
+                            formatPlottedValue: true
+                          notification:
+                            alertOn: NONE
+                            formatAlertValue: true
+                            sensitivity: HIGH
+                            direction: NEGATIVE
+                            limit: 10
+                            warning:
+                              operator: NONE
+                              value: 'null'
+                              repeat: 2
+                            critical:
+                              operator: GREATER_THAN_EQUAL
+                              value: '65'
+                              repeat: 1
+                            subject: sample-app-metric1
+                            description: hnas file system percentage-metric-1
+                        - metricName: metric2
+                          defaultMetric: true
+                          availibityMetric: false
+                          units: percentage
+                          multiplicationFactor: 1
+                          dataPointType: Gauge
+                          dataPointConverisonOptions:
+                            - 'true': '1'
+                          graph:
+                            graphPoint: true
+                            formatPlottedValue: true
+                          notification:
+                            alertOn: NONE
+                            formatAlertValue: true
+                            sensitivity: HIGH
+                            direction: NEGATIVE
+                            limit: 10
+                            warning:
+                              operator: NONE
+                              value: 'null'
+                              repeat: 2
+                            critical:
+                              operator: GREATER_THAN_EQUAL
+                              value: '65'
+                              repeat: 1
+                            subject: sample-app-meric-2
+                            description: hnas file system percentage-metric-2
+                        - metricName: metric3
+                          defaultMetric: true
+                          availibityMetric: false
+                          units: percentage
+                          multiplicationFactor: 1
+                          dataPointType: Gauge
+                          dataPointConverisonOptions:
+                            - 'true': '1'
+                          graph:
+                            graphPoint: true
+                            formatPlottedValue: true
+                          notification:
+                            alertOn: NONE
+                            formatAlertValue: true
+                            sensitivity: HIGH
+                            direction: NEGATIVE
+                            limit: 10
+                            warning:
+                              operator: NONE
+                              value: 'null'
+                              repeat: 2
+                            critical:
+                              operator: GREATER_THAN_EQUAL
+                              value: '65'
+                              repeat: 1
+                            subject: sample-app-metric1
+                            description: hnas file system percentage-metric-1
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/config'
+            examples:
+              example-1:
+                value: |-
+                  {
+                      "name": "test-121",
+                      "properties": {
+                          "IP Address": "192.25.26.199",
+                          "Credential": {
+                              "Custom": {
+                                  "secret": "second-test-secret",
+                                  "secretToken": "second-test-secretToken"
+                              }
+                          },
+                          "HostName": "hostName-schudule"
+                      },
+                      "schedule": {
+                          "patternType": "WEEKLY",
+                          "pattern": "sunday, monday, tuesday,",
+                          "startTime": "9"
+                      },
+                      "frequency": 120,
+                      "adapaterMetric": [
+                          {
+                              "resourceType": "Server",
+                              "availabilityRule": "ALL",
+                              "metrics": [
+                                  {
+                                      "metricName": "metric1",
+                                      "defaultMetric": true,
+                                      "availibityMetric": false,
+                                      "units": "percentage",
+                                      "multiplicationFactor": 1,
+                                      "dataPointType": "Gauge",
+                                      "dataPointConverisonOptions": [
+                                          {
+                                              "true": "1"
+                                          }
+                                      ],
+                                      "graph": {
+                                          "graphPoint": true,
+                                          "formatPlottedValue": true
+                                      },
+                                      "notification": {
+                                          "alertOn": "NONE",
+                                          "formatAlertValue": true,
+                                          "sensitivity": "HIGH",
+                                          "direction": "NEGATIVE",
+                                          "limit": 10,
+                                          "warning": {
+                                              "operator": "NONE",
+                                              "value": "null",
+                                              "repeat": 2
+                                          },
+                                          "critical": {
+                                              "operator": "GREATER_THAN_EQUAL",
+                                              "value": "65",
+                                              "repeat": 1
+                                          },
+                                          "subject": "sample-app-metric1",
+                                          "description": "hnas file system percentage-metric-1"
+                                      }
+                                  },
+                                  {
+                                      "metricName": "metric2",
+                                      "defaultMetric": true,
+                                      "availibityMetric": false,
+                                      "units": "percentage",
+                                      "multiplicationFactor": 1,
+                                      "dataPointType": "Gauge",
+                                      "dataPointConverisonOptions": [
+                                          {
+                                              "true": "1"
+                                          }
+                                      ],
+                                      "graph": {
+                                          "graphPoint": true,
+                                          "formatPlottedValue": true
+                                      },
+                                      "notification": {
+                                          "alertOn": "NONE",
+                                          "formatAlertValue": true,
+                                          "sensitivity": "HIGH",
+                                          "direction": "NEGATIVE",
+                                          "limit": 10,
+                                          "warning": {
+                                              "operator": "NONE",
+                                              "value": "null",
+                                              "repeat": 2
+                                          },
+                                          "critical": {
+                                              "operator": "GREATER_THAN_EQUAL",
+                                              "value": "65",
+                                              "repeat": 1
+                                          },
+                                          "subject": "sample-app-meric-2",
+                                          "description": "hnas file system percentage-metric-2"
+                                      }
+                                  },
+                                  {
+                                      "metricName": "metric3",
+                                      "defaultMetric": true,
+                                      "availibityMetric": false,
+                                      "units": "percentage",
+                                      "multiplicationFactor": 1,
+                                      "dataPointType": "Gauge",
+                                      "dataPointConverisonOptions": [
+                                          {
+                                              "true": "1"
+                                          }
+                                      ],
+                                      "graph": {
+                                          "graphPoint": true,
+                                          "formatPlottedValue": true
+                                      },
+                                      "notification": {
+                                          "alertOn": "NONE",
+                                          "formatAlertValue": true,
+                                          "sensitivity": "HIGH",
+                                          "direction": "NEGATIVE",
+                                          "limit": 10,
+                                          "warning": {
+                                              "operator": "NONE",
+                                              "value": "null",
+                                              "repeat": 2
+                                          },
+                                          "critical": {
+                                              "operator": "GREATER_THAN_EQUAL",
+                                              "value": "65",
+                                              "repeat": 1
+                                          },
+                                          "subject": "sample-app-metric1",
+                                          "description": "hnas file system percentage-metric-1"
+                                      }
+                                  }
+                              ]
+                          }
+                      ]
+                  }
+      tags:
+        - SDK 1.0 App APIs
+      description: |-
+        - **Create configuration profile having**
+           - Target device connection details (config profile name, IP/hostname, credentials., etc) as defined in the manifest.
+           - Create alert conditions (threshold, alert enable/disable alert message settings)
+           - Set discovery & monitoring schedule
+  '/api/v2/tenants/{tenantId}/integrations/adapter/config/{installedAppIntgId}':
+    summary: 4.Lists all the config profiles details on the installed app
+    description: Get all the config profiles associated with the installed app.
+    parameters:
+      - in: path
+        name: tenantId
+        schema:
+          type: string
+        description: Describes the client ID or msp ID of the tenant
+        required: true
+      - schema:
+          type: string
+        name: installedAppIntgId
+        in: path
+        required: true
+        description: Installed App Integration UUID
+    get:
+      summary: Lists all the config profiles details on the installed app
+      tags:
+        - SDK 1.0 App APIs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/config'
+                  totalResults:
+                    type: number
+                  pageSize:
+                    type: number
+                  pageNo:
+                    type: number
+                  totalPages:
+                    type: number
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: number
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - name: test-112
+                        properties:
+                          HostName: hostname-changed
+                          Credential:
+                            Custom:
+                              secret: secret
+                              secretToken: token
+                          IP Address: 192.168.5.122
+                        schedule:
+                          patternType: DAILY
+                          pattern: '14'
+                          startTime: '9'
+                        frequency: 0
+                        installedUniqueId: INTG-65ccfb46-9431-4c47-9d3e-5645fabd53a9
+                        configId: ADAPTER-MANIFEST-156d706e-a06d-4ccc-ae89-a38a5e9ceda4
+                        scheduleFlag: false
+                      - name: test-115
+                        properties:
+                          HostName: hostName-schudule
+                          Credential:
+                            Custom:
+                              secret: second-test-secret
+                              secretToken: second-test-secretToken
+                          IP Address: 192.25.26.199
+                        schedule:
+                          patternType: WEEKLY
+                          pattern: 'sunday,'
+                          startTime: '9'
+                        frequency: 120
+                        installedUniqueId: INTG-65ccfb46-9431-4c47-9d3e-5645fabd53a9
+                        configId: ADAPTER-MANIFEST-2455975a-4d1d-4ef8-9c65-18fa4fe502eb
+                        scheduleFlag: false
+                      - name: test-121
+                        properties:
+                          HostName: www3
+                          Credential:
+                            Custom:
+                              secret: secret
+                              secretToken: token
+                          IP Address: 192.25.26.199
+                        schedule:
+                          patternType: DAILY
+                          pattern: '14'
+                          startTime: '9'
+                        frequency: 60
+                        installedUniqueId: INTG-65ccfb46-9431-4c47-9d3e-5645fabd53a9
+                        configId: ADAPTER-MANIFEST-be2e25cb-4c93-43b9-998d-24a6219e2398
+                        scheduleFlag: false
+                    totalResults: 3
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: false
+      operationId: get-api-v2-tenants-tenantId-integrations-adapter-config-installedIntgId
+      description: Get the list of config profiles available in each installed integration.
+  '/api/v2/tenants/{tenant_id}/integrations/installed/{installedAppIntgId}/config/{configId}':
+    description: Updates discovery and monitoring config profile.
+    summary: 5.Update the config profile details on the app
+    parameters:
+      - $ref: '#/components/parameters/tenantId'
+      - schema:
+          type: string
+        name: installedAppIntgId
+        in: path
+        required: true
+        description: Installed App Integration UUID
+      - schema:
+          type: string
+        name: configId
+        in: path
+        required: true
+        description: manifestConfigUUID
+    post:
+      summary: Update the config profile details on the app
+      operationId: post-api-v2-tenants-tenant_id-integrations-installed-installedIntgId-config-configId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/config'
+              examples:
+                example-1:
+                  value:
+                    name: test-121
+                    properties:
+                      HostName: www3
+                      Credential:
+                        Custom:
+                          secret: secret
+                          secretToken: ''
+                      IP Address: 192.25.26.199
+                    adapaterMetric:
+                      - resourceType: Server
+                        availabilityRule: ALL
+                        metrics:
+                          - metricName: metric1
+                            defaultMetric: true
+                            availibityMetric: false
+                            units: percentage
+                            multiplicationFactor: '1'
+                            dataPointType: Gauge
+                            graph:
+                              graphPoint: true
+                              formatPlottedValue: true
+                            notification:
+                              alertOn: NONE
+                              raiseAlert: false
+                              formatAlertValue: true
+                              sensitivity: HIGH
+                              direction: NEGATIVE
+                              limit: 10
+                              warning:
+                                operator: NONE
+                                value: 'null'
+                                repeat: 2
+                              critical:
+                                operator: GREATER_THAN_EQUAL
+                                value: '65'
+                                repeat: 1
+                              subject: sample-app-metric1
+                              description: hnas file system percentage-metric-1
+                            dataPointConverisonOptions:
+                              - 'true': '1'
+                          - metricName: metric2
+                            defaultMetric: true
+                            availibityMetric: false
+                            units: percentage
+                            multiplicationFactor: '1'
+                            dataPointType: Gauge
+                            graph:
+                              graphPoint: true
+                              formatPlottedValue: true
+                            notification:
+                              alertOn: NONE
+                              raiseAlert: false
+                              formatAlertValue: true
+                              sensitivity: HIGH
+                              direction: NEGATIVE
+                              limit: 10
+                              warning:
+                                operator: NONE
+                                value: 'null'
+                                repeat: 2
+                              critical:
+                                operator: GREATER_THAN_EQUAL
+                                value: '65'
+                                repeat: 1
+                              subject: sample-app-meric-2
+                              description: hnas file system percentage-metric-2
+                            dataPointConverisonOptions:
+                              - 'true': '1'
+                          - metricName: metric3
+                            defaultMetric: true
+                            availibityMetric: false
+                            units: percentage
+                            multiplicationFactor: '1'
+                            dataPointType: Gauge
+                            graph:
+                              graphPoint: true
+                              formatPlottedValue: true
+                            notification:
+                              alertOn: NONE
+                              raiseAlert: true
+                              formatAlertValue: true
+                              sensitivity: HIGH
+                              direction: NEGATIVE
+                              limit: 10
+                              warning:
+                                operator: NONE
+                                value: 'null'
+                                repeat: 2
+                              critical:
+                                operator: GREATER_THAN_EQUAL
+                                value: '65'
+                                repeat: 1
+                              subject: changed-metric 3 checked
+                              description: 'changed metric 3 checked '
+                            dataPointConverisonOptions:
+                              - 'true': '1'
+                    schedule:
+                      patternType: DAILY
+                      pattern: '14'
+                      startTime: '9'
+                    frequency: 60
+                    installedUniqueId: INTG-65ccfb46-9431-4c47-9d3e-5645fabd53a9
+                    configId: ADAPTER-MANIFEST-be2e25cb-4c93-43b9-998d-24a6219e2398
+                    scheduleFlag: false
+      description: |2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          - Update existing config profile (target connection details)
+          - Update one or more metric thresholds and alert conditions.
+          - Update discovery and monitoring schedule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/config'
+            examples:
+              example-1:
+                value:
+                  properties:
+                    HostName: www3
+                    Credential:
+                      Custom:
+                        secret: secret
+                        secretToken: token
+                  adapaterMetric:
+                    - resourceType: Server
+                      availabilityRule: ALL
+                      metrics:
+                        - metricName: metric3
+                          defaultMetric: true
+                          availibityMetric: false
+                          units: percentage
+                          multiplicationFactor: '1'
+                          dataPointType: Gauge
+                          graph:
+                            graphPoint: true
+                            formatPlottedValue: true
+                          notification:
+                            alertOn: NONE
+                            raiseAlert: true
+                            formatAlertValue: true
+                            sensitivity: HIGH
+                            direction: NEGATIVE
+                            limit: 10
+                            warning:
+                              operator: NONE
+                              value: 'null'
+                              repeat: 2
+                            critical:
+                              operator: GREATER_THAN_EQUAL
+                              value: '65'
+                              repeat: 1
+                            subject: changed-metric 3 checked
+                            description: 'changed metric 3 checked '
+                          dataPointConverisonOptions:
+                            - 'true': '1'
+                  scheduleFlag: true
+                  schedule:
+                    patternType: DAILY
+                    pattern: '14'
+                    startTime: '9'
+                  frequency: 60
+      tags:
+        - SDK 1.0 App APIs
 components:
   securitySchemes:
     accessToken:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: 'https://{subdomain}.api.opsramp.com'
-          scopes: {}
+          tokenUrl: 'https://{subdomain}.api.opsramp.com/auth/oauth/token '
+          scopes:
+            scope: 'global:manage'
+          refreshUrl: Token url
   parameters:
     tenantId:
       in: path
       name: tenantId
       schema:
         type: string
-      description: Describes the client ID or msp ID of the tenant
+      description: Describes the clientId  of the tenant
       required: true
     installedIntgId:
       name: installedIntgId
@@ -5143,6 +5792,12 @@ components:
           type: string
           description: |
             Define start time of discovery.
+      x-examples:
+        example-1:
+          value:
+            patternType: string
+            pattern: string
+            startTime: string
     action:
       title: action
       type: object
@@ -5205,6 +5860,10 @@ components:
           type: string
         multipleInstallations:
           type: boolean
+        manifest:
+          $ref: '#/components/schemas/manifest'
+      required:
+        - manifest
     logo:
       type: object
       properties:
@@ -5232,13 +5891,14 @@ components:
       title: integrationInstall
       type: object
       x-examples: {}
+      description: ''
       properties:
         id:
           type: string
         displayName:
           type: string
           description: |
-            Name used to identify the integration.
+            Name used to identify the apps/integration.
         ipAddress:
           type: string
           description: |
@@ -5255,15 +5915,16 @@ components:
           $ref: '#/components/schemas/integration'
         category:
           type: string
-          description: |-
-            Category describes the behavior of custom integration. Applicable only for Custom Integration installation.
-            Example: If monitoring is selected as category, the integration will work as monitoring integration.
+          description: Please select "ADAPTER_INTEGRATION" as category for the apps to be installed.
           enum:
-            - Custom
-            - Collaboration
-            - Monitoring
-            - SSO
-            - Automation
+            - ADAPTER_INTEGRATION
+            - ITSM_INTEGRATION
+            - MONITORING_INTEGRATION
+            - COMPUTE_INTEGRATION
+            - PATCH_MANAGEMENT_INTEGRATION
+            - SSO_INTEGRATION
+            - DATA_EXPORT_INTEGRATION
+          example: ADAPTER_INTEGRATION
         installedBy:
           type: string
         installedTime:
@@ -5296,7 +5957,7 @@ components:
         ticketType:
           type: string
           description: |
-            OpsRamp supports the following ticket types:
+            Only for ITSM inntegrations. OpsRamp supports the following ticket types:
           enum:
             - INCIDENT
             - SERVICEREQUEST
@@ -5321,6 +5982,10 @@ components:
               type: string
             contentURL:
               type: string
+      required:
+        - displayName
+        - integration
+        - category
     inboundConfig:
       title: inboundConfig
       type: object
@@ -5375,9 +6040,6 @@ components:
             properties:
               key:
                 type: string
-              secret:
-                type: string
-                description: The secret is available only during installation time.This is shown onetime as a security measure.
         token:
           type: string
     mapAttributes:
@@ -5789,3 +6451,313 @@ components:
         status:
           type: string
           description: Status of the Integration.
+    manifest:
+      description: Defines the manifest profile of the app
+      type: object
+      x-examples: {}
+      title: manifest
+      properties:
+        adapaterConfig:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          description: The profile details.
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                minLength: 1
+              customProps:
+                type: array
+                uniqueItems: true
+                minItems: 1
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      minLength: 1
+                    name:
+                      type: string
+                      minLength: 1
+              name:
+                type: string
+                minLength: 1
+        mngtGatewayProfile:
+          type: object
+          description: Gateway object
+          required:
+            - uuId
+          properties:
+            uuId:
+              type: string
+              description: The gateway profile uuid which monitors the resources.
+        adapaterMetric:
+          $ref: '#/components/schemas/resourceMetrics'
+      required:
+        - mngtGatewayProfile
+    resourceMetrics:
+      description: ''
+      type: object
+      x-examples: {}
+      title: ''
+      properties:
+        resourceType:
+          type: string
+        availabilityRule:
+          type: string
+        metrics:
+          type: array
+          uniqueItems: true
+          items:
+            type: object
+            properties:
+              metricName:
+                type: string
+              defaultMetric:
+                type: boolean
+              availibityMetric:
+                type: boolean
+              units:
+                type: string
+                minLength: 1
+              multiplicationFactor:
+                type: number
+              dataPointType:
+                type: string
+                minLength: 1
+              dataPointConverisonOptions:
+                type: array
+                uniqueItems: true
+                minItems: 1
+                items:
+                  type: object
+                  properties:
+                    'true':
+                      type: string
+                      minLength: 1
+                  required:
+                    - 'true'
+              graph:
+                type: object
+                properties:
+                  graphPoint:
+                    type: boolean
+                  formatPlottedValue:
+                    type: boolean
+                required:
+                  - graphPoint
+                  - formatPlottedValue
+              notification:
+                type: object
+                properties:
+                  alertOn:
+                    type: string
+                    minLength: 1
+                    enum:
+                      - NONE
+                      - NOT_EQUAL
+                      - GREATER_THAN_EQUAL
+                      - LESS_THAN_EQUAL
+                      - GREATER_THAN
+                      - LESS_THAN
+                  formatAlertValue:
+                    type: boolean
+                  sensitivity:
+                    type: string
+                    minLength: 1
+                  direction:
+                    type: string
+                    minLength: 1
+                  limit:
+                    type: number
+                  warning:
+                    type: object
+                    required:
+                      - operator
+                      - value
+                      - repeat
+                    properties:
+                      operator:
+                        type: string
+                        minLength: 1
+                        enum:
+                          - LESS_THAN_EQUAL
+                          - NOT_EQUAL
+                          - GREATER_THAN_EQUAL
+                          - GREATER_THAN
+                          - LESS_THAN
+                      value:
+                        type: string
+                        minLength: 1
+                      repeat:
+                        type: number
+                  critical:
+                    type: object
+                    required:
+                      - operator
+                      - value
+                      - repeat
+                    properties:
+                      operator:
+                        type: string
+                        minLength: 1
+                        enum:
+                          - NOT_EQUAL
+                          - GREATER_THAN_EQUAL
+                          - LESS_THAN_EQUAL
+                          - GREATER_THAN
+                          - LESS_THAN
+                      value:
+                        type: string
+                        minLength: 1
+                      repeat:
+                        type: number
+                  subject:
+                    type: string
+                    minLength: 1
+                  description:
+                    type: string
+                    minLength: 1
+                required:
+                  - alertOn
+                  - formatAlertValue
+                  - sensitivity
+                  - direction
+                  - limit
+                  - warning
+                  - critical
+                  - subject
+                  - description
+            required:
+              - metricName
+              - defaultMetric
+              - availibityMetric
+              - units
+              - multiplicationFactor
+              - dataPointType
+      required:
+        - resourceType
+        - availabilityRule
+        - metrics
+    resourceModel:
+      description: ''
+      type: object
+      properties:
+        IP Address:
+          type: string
+          minLength: 1
+        Credential:
+          type: object
+          properties:
+            Custom:
+              type: object
+              properties:
+                secret:
+                  type: string
+                  minLength: 1
+                secretToken:
+                  type: string
+                  minLength: 1
+              required:
+                - secret
+                - secretToken
+          required:
+            - Custom
+        HostName:
+          type: string
+          minLength: 1
+      required:
+        - IP Address
+        - Credential
+        - HostName
+      x-examples:
+        example-1:
+          IP Address: 192.25.26.199
+          Credential:
+            Custom:
+              secret: second-test-secret
+              secretToken: second-test-secretToken
+          HostName: hostName-schudule
+    config:
+      title: config
+      type: object
+      description: ''
+      x-examples:
+        example-1:
+          value:
+            name: string
+            properties:
+              IP Address: string
+              Credential:
+                Custom:
+                  secret: string
+                  secretToken: string
+              HostName: string
+            adapaterMetric:
+              - resourceType: string
+                availabilityRule: string
+                metrics:
+                  - metricName: string
+                    defaultMetric: true
+                    availibityMetric: true
+                    units: string
+                    multiplicationFactor: 0
+                    dataPointType: string
+                    dataPointConverisonOptions:
+                      - 'true': string
+                    graph:
+                      graphPoint: true
+                      formatPlottedValue: true
+                    notification:
+                      alertOn: string
+                      formatAlertValue: true
+                      sensitivity: string
+                      direction: string
+                      limit: 0
+                      warning:
+                        operator: string
+                        value: string
+                        repeat: 0
+                      critical:
+                        operator: string
+                        value: string
+                        repeat: 0
+                      subject: string
+                      description: string
+            installedUniqueId: string
+            configId: string
+            scheduleFlag: true
+            '': string
+            schedule: null
+      properties:
+        name:
+          type: string
+          description: This is name of the app as listed in available apps in the adapter category
+        properties:
+          $ref: '#/components/schemas/resourceModel'
+        adapaterMetric:
+          type: array
+          items:
+            $ref: '#/components/schemas/resourceMetrics'
+        installedUniqueId:
+          type: string
+          description: Installed app uuid.
+        configId:
+          type: string
+          description: 'configId,the adapter manifest uuid for profiles.'
+        scheduleFlag:
+          type: boolean
+        schedule:
+          $ref: '#/components/schemas/schedule'
+        frequency:
+          type: number
+    app:
+      title: app
+      type: object
+      properties:
+        displayName:
+          type: string
+        category:
+          type: string

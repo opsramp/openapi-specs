@@ -4814,7 +4814,6 @@ paths:
 
 
 
-
                        System uptime is critical     : 0day(s);1hour(s);23minute(s);
                       Auto Stopped Services:
 
@@ -5696,7 +5695,6 @@ paths:
 
 
 
-
                            System uptime is critical      : 0day(s);1hour(s);23minute(s);
                           Auto Stopped Services:
 
@@ -5852,7 +5850,6 @@ paths:
                       - id: INC0000000094
                         subject: 'System uptime is critical     : 0day(s);4hour(s);58minute(s);'
                         description: |2-
-
 
 
 
@@ -16812,6 +16809,7 @@ components:
         - changePlan
         - rollbackPlan
         - testPlan
+      description: ''
     incidentResponse:
       title: incidentResponse
       type: object

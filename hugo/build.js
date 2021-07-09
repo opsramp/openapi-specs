@@ -165,7 +165,7 @@ function generateData(tag, paths) {
     if (false === argv.i && 'x-internal' in data) {
       continue
     }
-    
+
     const slug = getSlugForEndpoint(endpoint)
     const requestMethods = getRequestMethods(data)
 
@@ -178,13 +178,15 @@ function generateData(tag, paths) {
       }
 
       if ('requestBody' in methodData) {
+        const contentType = ('application/json' in methodData.requestBody.content) ? 'application/json' : 'application/x-www-form-urlencoded'
+
         const requestBody = {
-          content: 'application/json',
-          schema: methodData.requestBody.content['application/json'].schema,
+          content: contentType,
+          schema: methodData.requestBody.content[contentType].schema,
         }
 
         const examples =
-          methodData.requestBody.content['application/json'].examples
+          methodData.requestBody.content[contentType].examples
 
         newOperation.requestBody = requestBody
         newOperation.requestBodyExamples = examples
@@ -199,18 +201,19 @@ function generateData(tag, paths) {
           }
 
           if ('content' in value) {
-            const content = value.content['application/json']
+            const contentType = ('application/json' in value.content) ? 'application/json' : 'application/x-www-form-urlencoded'
+            const content = value.content[contentType]
 
             if (undefined == content) {
               // @TODO Needs better error handling
-              console.err('Undefined found in: ' + slug)
+              console.error('Undefined found in: ' + slug)
             } else {
               if ('schema' in content) {
-                responses[key].schema = value.content['application/json'].schema
+                responses[key].schema = value.content[contentType].schema
               }
               if ('examples' in content) {
                 responses[key].examples =
-                  value.content['application/json'].examples
+                  value.content[contentType].examples
               }
             }
           }
