@@ -2783,6 +2783,7 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/entityType'
   '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}':
+    x-internal: true
     summary: 6. Manage installed apps
     description: Gets and removes the installed integration/apps.
     get:
@@ -3061,6 +3062,7 @@ paths:
       - $ref: '#/components/parameters/installedIntgId'
       - $ref: '#/components/parameters/entityType'
   '/api/v2/tenants/{tenantId}/integrations/available/search':
+    x-internal: true
     summary: 1. Search available apps/integrations
     description: Searches available apps/integrations.
     get:
@@ -4535,6 +4537,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/integrations/install/{appName}':
+    x-internal: true
     summary: 2. Installs the available apps
     description: |-
       Installs the selected appName. 
@@ -4717,6 +4720,7 @@ paths:
         - SDK 1.0 App APIs
       description: Installs the selected app.
   '/api/v2/tenants/{tenant_id}/integrations/installed/config/{configId}':
+    x-internal: true
     summary: 7. Managed config details of profile on the installed app
     description: Gets and deletes profiles details on the installed app.
     parameters:
@@ -4857,6 +4861,7 @@ paths:
         - SDK 1.0 App APIs
       description: Delete existing config profiles present in the installed integration
   '/api/v2/tenants/{tenant_id}/integrations/installed/{installedAppIntgId}/config':
+    x-internal: true
     summary: 3. Add a config profile details on the app
     description: Create configuration profile for discovery and monitoring.
     parameters:
@@ -5235,6 +5240,7 @@ paths:
            - Create alert conditions (threshold, alert enable/disable alert message settings)
            - Set discovery & monitoring schedule
   '/api/v2/tenants/{tenantId}/integrations/adapter/config/{installedAppIntgId}':
+    x-internal: true
     summary: 4.Lists all the config profiles details on the installed app
     description: Get all the config profiles associated with the installed app.
     parameters:
@@ -5342,6 +5348,7 @@ paths:
       operationId: get-api-v2-tenants-tenantId-integrations-adapter-config-installedIntgId
       description: Get the list of config profiles available in each installed integration.
   '/api/v2/tenants/{tenant_id}/integrations/installed/{installedAppIntgId}/config/{configId}':
+    x-internal: true
     description: Updates discovery and monitoring config profile.
     summary: 5.Update the config profile details on the app
     parameters:
