@@ -2569,7 +2569,7 @@ paths:
         name: tenantId
         required: true
       - $ref: '#/components/parameters/installedIntgId'
-  '/api/v2//tenants/{tenantId}/integrations/events/placeHolders/{entityType}':
+  '/api/v2/tenants/{tenantId}/integrations/events/placeHolders/{entityType}':
     summary: Get integration event placeholders
     description: |-
       Gets the integration event placeholders of an entity.

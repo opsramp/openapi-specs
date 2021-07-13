@@ -2783,7 +2783,6 @@ paths:
       - $ref: '#/components/parameters/tenantId'
       - $ref: '#/components/parameters/entityType'
   '/api/v2/tenants/{tenantId}/integrations/installed/{installedIntgId}':
-    x-internal: true
     summary: 6. Manage installed apps
     description: Gets and removes the installed integration/apps.
     get:
@@ -3062,12 +3061,10 @@ paths:
       - $ref: '#/components/parameters/installedIntgId'
       - $ref: '#/components/parameters/entityType'
   '/api/v2/tenants/{tenantId}/integrations/available/search':
-    x-internal: true
     summary: 1. Search available apps/integrations
     description: Searches available apps/integrations.
     get:
       tags:
-        - integrations
         - SDK 1.0 App APIs
       responses:
         '200':
@@ -4537,7 +4534,6 @@ paths:
     parameters:
       - $ref: '#/components/parameters/tenantId'
   '/api/v2/tenants/{tenantId}/integrations/install/{appName}':
-    x-internal: true
     summary: 2. Installs the available apps
     description: |-
       Installs the selected appName. 
@@ -4720,7 +4716,6 @@ paths:
         - SDK 1.0 App APIs
       description: Installs the selected app.
   '/api/v2/tenants/{tenant_id}/integrations/installed/config/{configId}':
-    x-internal: true
     summary: 7. Managed config details of profile on the installed app
     description: Gets and deletes profiles details on the installed app.
     parameters:
@@ -4861,7 +4856,6 @@ paths:
         - SDK 1.0 App APIs
       description: Delete existing config profiles present in the installed integration
   '/api/v2/tenants/{tenant_id}/integrations/installed/{installedAppIntgId}/config':
-    x-internal: true
     summary: 3. Add a config profile details on the app
     description: Create configuration profile for discovery and monitoring.
     parameters:
@@ -5239,116 +5233,7 @@ paths:
            - Target device connection details (config profile name, IP/hostname, credentials., etc) as defined in the manifest.
            - Create alert conditions (threshold, alert enable/disable alert message settings)
            - Set discovery & monitoring schedule
-  '/api/v2/tenants/{tenantId}/integrations/adapter/config/{installedAppIntgId}':
-    x-internal: true
-    summary: 4.Lists all the config profiles details on the installed app
-    description: Get all the config profiles associated with the installed app.
-    parameters:
-      - in: path
-        name: tenantId
-        schema:
-          type: string
-        description: Describes the client ID or msp ID of the tenant
-        required: true
-      - schema:
-          type: string
-        name: installedAppIntgId
-        in: path
-        required: true
-        description: Installed App Integration UUID
-    get:
-      summary: Lists all the config profiles details on the installed app
-      tags:
-        - SDK 1.0 App APIs
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  results:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/config'
-                  totalResults:
-                    type: number
-                  pageSize:
-                    type: number
-                  pageNo:
-                    type: number
-                  totalPages:
-                    type: number
-                  nextPage:
-                    type: boolean
-                  previousPageNo:
-                    type: number
-                  descendingOrder:
-                    type: boolean
-              examples:
-                example-1:
-                  value:
-                    results:
-                      - name: test-112
-                        properties:
-                          HostName: hostname-changed
-                          Credential:
-                            Custom:
-                              secret: secret
-                              secretToken: token
-                          IP Address: 192.168.5.122
-                        schedule:
-                          patternType: DAILY
-                          pattern: '14'
-                          startTime: '9'
-                        frequency: 0
-                        installedUniqueId: INTG-65ccfb46-9431-4c47-9d3e-5645fabd53a9
-                        configId: ADAPTER-MANIFEST-156d706e-a06d-4ccc-ae89-a38a5e9ceda4
-                        scheduleFlag: false
-                      - name: test-115
-                        properties:
-                          HostName: hostName-schudule
-                          Credential:
-                            Custom:
-                              secret: second-test-secret
-                              secretToken: second-test-secretToken
-                          IP Address: 192.25.26.199
-                        schedule:
-                          patternType: WEEKLY
-                          pattern: 'sunday,'
-                          startTime: '9'
-                        frequency: 120
-                        installedUniqueId: INTG-65ccfb46-9431-4c47-9d3e-5645fabd53a9
-                        configId: ADAPTER-MANIFEST-2455975a-4d1d-4ef8-9c65-18fa4fe502eb
-                        scheduleFlag: false
-                      - name: test-121
-                        properties:
-                          HostName: www3
-                          Credential:
-                            Custom:
-                              secret: secret
-                              secretToken: token
-                          IP Address: 192.25.26.199
-                        schedule:
-                          patternType: DAILY
-                          pattern: '14'
-                          startTime: '9'
-                        frequency: 60
-                        installedUniqueId: INTG-65ccfb46-9431-4c47-9d3e-5645fabd53a9
-                        configId: ADAPTER-MANIFEST-be2e25cb-4c93-43b9-998d-24a6219e2398
-                        scheduleFlag: false
-                    totalResults: 3
-                    pageNo: 1
-                    pageSize: 100
-                    totalPages: 1
-                    nextPage: false
-                    previousPageNo: 0
-                    descendingOrder: false
-      operationId: get-api-v2-tenants-tenantId-integrations-adapter-config-installedIntgId
-      description: Get the list of config profiles available in each installed integration.
   '/api/v2/tenants/{tenant_id}/integrations/installed/{installedAppIntgId}/config/{configId}':
-    x-internal: true
     description: Updates discovery and monitoring config profile.
     summary: 5.Update the config profile details on the app
     parameters:
@@ -5501,6 +5386,7 @@ paths:
 
 
 
+
           - Update existing config profile (target connection details)
           - Update one or more metric thresholds and alert conditions.
           - Update discovery and monitoring schedule
@@ -5558,6 +5444,113 @@ paths:
                   frequency: 60
       tags:
         - SDK 1.0 App APIs
+  '/api/v2/tenants/{tenantId}/integrations/adapter/config/{installedAppIntgId}':
+    summary: 4.Lists all the config profiles details on the installed app
+    description: Get all the config profiles associated with the installed app.
+    parameters:
+      - in: path
+        name: tenantId
+        schema:
+          type: string
+        description: Describes the client ID or msp ID of the tenant
+        required: true
+      - schema:
+          type: string
+        name: installedAppIntgId
+        in: path
+        required: true
+        description: Installed App Integration UUID
+    get:
+      summary: Lists all the config profiles details on the installed app
+      tags:
+        - SDK 1.0 App APIs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/config'
+                  totalResults:
+                    type: number
+                  pageSize:
+                    type: number
+                  pageNo:
+                    type: number
+                  totalPages:
+                    type: number
+                  nextPage:
+                    type: boolean
+                  previousPageNo:
+                    type: number
+                  descendingOrder:
+                    type: boolean
+              examples:
+                example-1:
+                  value:
+                    results:
+                      - name: test-112
+                        properties:
+                          HostName: hostname-changed
+                          Credential:
+                            Custom:
+                              secret: secret
+                              secretToken: token
+                          IP Address: 192.168.5.122
+                        schedule:
+                          patternType: DAILY
+                          pattern: '14'
+                          startTime: '9'
+                        frequency: 0
+                        installedUniqueId: INTG-65ccfb46-9431-4c47-9d3e-5645fabd53a9
+                        configId: ADAPTER-MANIFEST-156d706e-a06d-4ccc-ae89-a38a5e9ceda4
+                        scheduleFlag: false
+                      - name: test-115
+                        properties:
+                          HostName: hostName-schudule
+                          Credential:
+                            Custom:
+                              secret: second-test-secret
+                              secretToken: second-test-secretToken
+                          IP Address: 192.25.26.199
+                        schedule:
+                          patternType: WEEKLY
+                          pattern: 'sunday,'
+                          startTime: '9'
+                        frequency: 120
+                        installedUniqueId: INTG-65ccfb46-9431-4c47-9d3e-5645fabd53a9
+                        configId: ADAPTER-MANIFEST-2455975a-4d1d-4ef8-9c65-18fa4fe502eb
+                        scheduleFlag: false
+                      - name: test-121
+                        properties:
+                          HostName: www3
+                          Credential:
+                            Custom:
+                              secret: secret
+                              secretToken: token
+                          IP Address: 192.25.26.199
+                        schedule:
+                          patternType: DAILY
+                          pattern: '14'
+                          startTime: '9'
+                        frequency: 60
+                        installedUniqueId: INTG-65ccfb46-9431-4c47-9d3e-5645fabd53a9
+                        configId: ADAPTER-MANIFEST-be2e25cb-4c93-43b9-998d-24a6219e2398
+                        scheduleFlag: false
+                    totalResults: 3
+                    pageNo: 1
+                    pageSize: 100
+                    totalPages: 1
+                    nextPage: false
+                    previousPageNo: 0
+                    descendingOrder: false
+      operationId: get-api-v2-tenants-tenantId-integrations-adapter-config-installedIntgId
+      description: Get the list of config profiles available in each installed integration.
 components:
   securitySchemes:
     accessToken:
