@@ -167,6 +167,8 @@ paths:
                         tags: 'Monitors Status, Errors and Discards'
                         createdDate: '2012-02-24T07:29:59+0000'
                         updatedDate: '2012-09-10T11:22:52+0000'
+                        assignedTime: '2021-01-20T11:12:20+0000'
+                        appliedTime: '2021-01-20T11:13:16+0000'
                         monitors:
                           - name: interface health
                             frequency: 5
@@ -210,6 +212,8 @@ paths:
                         tags: oid
                         createdDate: '2013-11-08T12:50:53+0000'
                         updatedDate: '2014-01-27T09:08:56+0000'
+                        assignedTime: '2021-01-20T11:12:20+0000'
+                        appliedTime: '2021-01-20T11:13:16+0000'
                         monitors:
                           - name: TotalDirectories
                             frequency: 5
@@ -229,6 +233,8 @@ paths:
                         resourceType: DEVICE
                         createdDate: '2013-02-27T07:02:52+0000'
                         updatedDate: '2013-03-13T11:14:10+0000'
+                        assignedTime: '2021-01-20T11:12:20+0000'
+                        appliedTime: '2021-01-20T11:13:16+0000'
                         monitors:
                           - name: CPU
                             frequency: 5
@@ -409,6 +415,8 @@ paths:
                         notes: test cases
                         createdDate: '2016-06-06T08:25:06+0000'
                         updatedDate: '2016-06-06T08:25:06+0000'
+                        assignedTime: '2021-01-20T11:12:20+0000'
+                        appliedTime: '2021-01-20T11:13:16+0000'
                         monitors:
                           - name: testing form ui latest
                             metricName: testing.dynamic.metric
@@ -462,6 +470,8 @@ paths:
                         resourceType: DEVICE
                         createdDate: '2016-05-24T13:34:34+0000'
                         updatedDate: '2016-05-24T13:34:34+0000'
+                        assignedTime: '2021-01-20T11:12:20+0000'
+                        appliedTime: '2021-01-20T11:13:16+0000'
                         monitors:
                           - name: testing from API
                             metricName: metric for vmware
@@ -483,6 +493,8 @@ paths:
                         resourceType: DEVICE
                         createdDate: '2016-05-24T13:32:32+0000'
                         updatedDate: '2016-05-24T13:32:32+0000'
+                        assignedTime: '2021-01-20T11:12:20+0000'
+                        appliedTime: '2021-01-20T11:13:16+0000'
                         monitors:
                           - name: EVENTLOGS
                             frequency: 15
@@ -562,6 +574,8 @@ paths:
                         resourceType: DEVICE
                         createdDate: '2014-11-18T07:51:14+0000'
                         updatedDate: '2014-12-01T14:26:09+0000'
+                        assignedTime: '2021-01-20T11:12:20+0000'
+                        appliedTime: '2021-01-20T11:13:16+0000'
                         monitors:
                           - name: Agent Status
                             frequency: 15
@@ -579,6 +593,147 @@ paths:
                     nextPage: false
                     nextPageNo: 0
                     previousPageNo: 0
+                    descendingOrder: true
+                example-2:
+                  value:
+                    results:
+                      - id: 971
+                        uniqueId: 7EJFJGNXPPG6EIC00JX2EXE9
+                        name: '*Do not use* Standard Interface - IFMIB - Full Duplex'
+                        description: '*Do not use* This can be applied on all interfaces having the 64 bit counter OIDS and in the Full Duplex Transmission mode'
+                        templateType: INTERFACE
+                        collectorType: OpsRamp Gateway
+                        status: ACTIVE
+                        generation: 1
+                        resourceType: DEVICE
+                        tags: 'Monitors Status, Errors and Discards'
+                        createdDate: '2012-02-24T07:29:59+0000'
+                        updatedDate: '2012-09-10T11:22:52+0000'
+                        monitors:
+                          - name: interface health
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '70,70'
+                            criticalThreshHold: '80,80'
+                            raiseAlert: true
+                            availability: false
+                        assignedInterfaces:
+                          - id: 243935
+                            networkName: VLAN31
+                            status: UP
+                            ifName: VL31
+                            ifAlias: VL31
+                            ifDescription: VLAN31
+                            ifTxType: IFTXTYPE_AUTO
+                            ifType: ETHERNETCSMACD
+                            macAddress: '00:05:33:92:63:E4'
+                            speed: 10 Mbps
+                            confLinkSpeed: 10 Mbps
+                            adminStatus: UP
+                            operationalStatus: UP
+                          - id: 243751
+                            networkName: eth1
+                            status: DOWN
+                            ifName: eth1
+                            ifDescription: eth1
+                            speed: 1000 Mbps
+                            confLinkSpeed: 1000 Mbps
+                            adminStatus: DOWN
+                            operationalStatus: DOWN
+                        assignedTime: '2021-01-20T11:12:20+0000'
+                        appliedTime: '2021-01-20T11:13:16+0000'
+                      - id: 6650
+                        uniqueId: 7VTJ7AWNILGJ0QXFCE21XJY6
+                        name: agent test template
+                        description: asdfsdaf
+                        collectorType: Agent
+                        status: ACTIVE
+                        generation: 1
+                        resourceType: DEVICE
+                        tags: oid
+                        createdDate: '2013-11-08T12:50:53+0000'
+                        updatedDate: '2014-01-27T09:08:56+0000'
+                        monitors:
+                          - name: TotalDirectories
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '80'
+                            criticalThreshHold: '90'
+                            raiseAlert: false
+                            availability: false
+                        assignedTime: '2021-01-20T11:11:20+0000'
+                        appliedTime: '2021-01-20T11:12:16+0000'
+                      - id: 6632
+                        uniqueId: LBU9LAOHEIDCKSB00IVQ6GW3
+                        name: Agent_Basic_NCI_template
+                        description: Monitor basic performance monitors
+                        collectorType: Agent
+                        status: ACTIVE
+                        generation: 1
+                        resourceType: DEVICE
+                        createdDate: '2013-02-27T07:02:52+0000'
+                        updatedDate: '2013-03-13T11:14:10+0000'
+                        monitors:
+                          - name: CPU
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '60'
+                            criticalThreshHold: '90'
+                            raiseAlert: true
+                            availability: false
+                          - name: DISK
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '60'
+                            criticalThreshHold: '90'
+                            raiseAlert: true
+                            availability: false
+                          - name: MEMORY
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '60'
+                            criticalThreshHold: '90'
+                            raiseAlert: true
+                            availability: false
+                          - name: NETWORK
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '60'
+                            criticalThreshHold: '90'
+                            raiseAlert: true
+                            availability: false
+                          - name: FREEDISK
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '70'
+                            criticalThreshHold: '20'
+                            raiseAlert: true
+                            availability: false
+                          - name: MessagesReceived
+                            frequency: 5
+                            repeatFrequency: 1
+                            repeatCount: 1
+                            warningThreshHold: '80'
+                            criticalThreshHold: '90'
+                            raiseAlert: false
+                            availability: false
+                        assignedTime: '2021-01-20T11:10:20+0000'
+                        appliedTime: '2021-01-20T11:11:16+0000'
+                    totalResults: 9
+                    orderBy: t.id
+                    pageNo: 2
+                    pageSize: 3
+                    totalPages: 3
+                    nextPage: true
+                    nextPageNo: 3
+                    previousPageNo: 1
                     descendingOrder: true
       parameters:
         - schema:
@@ -1224,6 +1379,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/configParameter'
+        assignedTime:
+          type: string
+        appliedTime:
+          type: string
     monitor:
       title: monitor
       type: object
