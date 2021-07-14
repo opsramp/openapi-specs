@@ -114,7 +114,13 @@ paths:
           default: 'NULL'
         name: packageName
         in: path
-        description: Refers to the gateway package.
+        description: |-
+          Refers to the gateway package.
+          Supported values
+          - ova
+          - windows
+          - google
+
         required: true
   /api/v2/externalproxy:
     summary: Configure gateway external proxy connection
