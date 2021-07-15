@@ -3021,6 +3021,7 @@ paths:
     summary: Create generic resource
     description: |-
       Creates a generic resource.
+      Different fields are mandatory for different resource types. Refer to the examples.
 
       ### Resource Types Supported
       - GENERIC_RESOURCE
@@ -3045,7 +3046,6 @@ paths:
       - SSL
       - TCP
       - UDP
-      Different fields are mandatory for different resource types. Refer to the examples.
     post:
       tags:
         - resource-management
@@ -3146,8 +3146,8 @@ paths:
                 checkType:
                   type: string
                   description: |-
-                    Specifies the category type.
-                    Example: http, https, ftp, and so on.
+                    - Specifies the category type.
+                    - Example: http, https, ftp, and so on.
                 url:
                   type: string
                   description: |
@@ -3202,9 +3202,8 @@ paths:
                     - ScriptFor JSON script obtained from Selenium IDE: seleniumJsonScript
                 credentials:
                   type: array
-                  description: |2-
-
-                          ### Synthetics checkType supported
+                  description: |-
+                          Synthetics checkType supported:
                           - HTTP_PROXY
                           - HTTP
                           - FTP
