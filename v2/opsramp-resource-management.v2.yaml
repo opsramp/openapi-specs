@@ -3203,7 +3203,7 @@ paths:
                 credentials:
                   type: array
                   description: |-
-                          Synthetics checkType supported:
+                          Synthetics credentialType supported:
                           - HTTP_PROXY
                           - HTTP
                           - FTP
