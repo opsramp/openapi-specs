@@ -3023,7 +3023,12 @@ paths:
       Creates a generic resource.
 
       ### Resource Types Supported
-      - Generic
+      - GENERIC_RESOURCE
+      - SYNTHETIC 
+      - DEVICE
+      - Other
+
+      ### Synthetics checkType supported
       - DNS
       - FTP
       - HTTP Basic
@@ -3040,7 +3045,6 @@ paths:
       - SSL
       - TCP
       - UDP
-
       Different fields are mandatory for different resource types. Refer to the examples.
     post:
       tags:
@@ -3066,6 +3070,73 @@ paths:
                   type: string
                   description: |
                     Type of resource. Use SYNTHETIC for synthetic.
+                  enum:
+                    - AWS_KINESIS_SHARD
+                    - SQL_DATABASE
+                    - BIGQUERY_TABLE
+                    - VMware
+                    - AZ_APP_INSIGHTS
+                    - STORAGE_ARRAY_POOL
+                    - VI_CLUSTER
+                    - AZ_AM_ACC_RUNBOOK
+                    - AZ_RS_POINT_COLLECTION
+                    - BEAN_STALK
+                    - WEBSITE
+                    - iDRAC
+                    - VIRTUAL_NETWORK
+                    - AWS_KMS_CUSTOMER_MANAGED_KEYS
+                    - API_GATEWAY
+                    - AWS_APIGATEWAY_STAGE
+                    - AWS_ATHENA
+                    - RDS
+                    - Power
+                    - Network Device
+                    - ELASTICACHE
+                    - ELASTICACHENODE
+                    - ELASTICMAPREDUCE
+                    - AWS_STATE_MACHINE
+                    - Laptop
+                    - OpsRamp Gateway
+                    - ECS_SERVICE
+                    - AWS_MEDIA_CONVERT_QUEUE
+                    - CLOUD_PROVIDER
+                    - AZ_PUBLIC_IPADDRESS
+                    - OOB_INTERFACE
+                    - Management Controller
+                    - Router
+                    - AWS_EVENT_BRIDGE_BUS
+                    - VOIP Device
+                    - Blade Server
+                    - DYNAMO_DB
+                    - EMRINSTANCEGROUP
+                    - AZ_NETWORK_INTERFACE
+                    - LOAD_BALANCER
+                    - EMRBOOTSTRAPACTION
+                    - VMWAREHOST
+                    - STORAGE_ARRAY_LUN
+                    - CRIO_CONTAINER
+                    - Firewall
+                    - SYNTHETIC
+                    - AZ_COMPUTE_DISK
+                    - AUTO_SCALING
+                    - SQS
+                    - EMRSTEP
+                    - Server
+                    - Work Station
+                    - WLAN AP
+                    - AWS_S3_BUCKET
+                    - VI_DATASTORE
+                    - Switch
+                    - SNS
+                    - AWS_EVENT_BRIDGE_RULE
+                    - DOCKER_CONTAINER
+                    - LAMBDA
+                    - STORAGE_ARRAY_VOLUME
+                    - EBS
+                    - Windows
+                    - Linux
+                    - Other
+                    - Device
                 metaData:
                   type: object
                   description: |
@@ -3129,6 +3200,39 @@ paths:
                     Use this text only if the checkType is set to SCRIPT:
                     - For Python script: seleniumPython
                     - ScriptFor JSON script obtained from Selenium IDE: seleniumJsonScript
+                credentials:
+                  type: array
+                  description: |2-
+
+                          ### Synthetics checkType supported
+                          - HTTP_PROXY
+                          - HTTP
+                          - FTP
+                          - HTTP_AUTHENTICATION
+                          - POP3
+                          - IMAP
+                          - RTT
+                          - IMAP
+                  items:
+                    type: object
+                    properties:
+                      credentialType:
+                        type: string
+                        enum:
+                          - HTTP_PROXY
+                          - HTTP
+                          - FTP
+                          - HTTP_AUTHENTICATION
+                          - POP3
+                          - IMAP
+                          - RTT
+                          - SMTP
+                      password:
+                        type: string
+                      securityLevel:
+                        type: string
+                      userName:
+                        type: string
             examples:
               example-generic:
                 value:
@@ -3154,7 +3258,7 @@ paths:
                   name: string
                   extResourceId: string
                   hostName: string
-                  resourceType: string
+                  resourceType: Device
                   metaData: {}
                   resourceName: string
                   checkType: string
@@ -3330,6 +3434,54 @@ paths:
                   locationUuids:
                     - 223087d3-ef45-4efd-9587-0b20ad8ca355
                     - ac346708-cb6a-4221-adc2-6b15c0d6e5af
+              example-18:
+                value:
+                  name: string
+                  extResourceId: string
+                  hostName: string
+                  resourceType: Device
+                  metaData: {}
+                  resourceName: string
+                  checkType: string
+                  url: string
+                  locationUuids:
+                    - string
+                  sslCertKeyPath: string
+                  uploadStream: string
+                  downloadFilePath: string
+                  credential:
+                    userName: string
+                    password: string
+                    securityLevel: string
+                    oauthClientKey: string
+                    oauthClientSecret: string
+                    oauthAccessTokenUrl: string
+                    oauthGrantType: string
+                  sslCertPath: string
+                  script: string
+              synthetic-mutliple-credentials:
+                value:
+                  checkType: HTTP
+                  credential:
+                    password: s1234
+                    securityLevel: basic
+                    userName: s1234
+                  credentials:
+                    - credentialType: HTTP_PROXY
+                      password: s1234
+                      securityLevel: basic
+                      userName: opsramp
+                    - credentialType: POP3
+                      password: s1234
+                      userName: s1234
+                    - credentialType: FTP
+                      password: FTPPassword
+                      userName: FTP_creds
+                  locationUuids:
+                    - 9ede8f37-531c-463e-97d5-846d67d4ff58
+                  resourceName: HTTPWithMultCreds
+                  resourceType: SYNTHETIC
+                  url: www.oriental.com
       responses:
         '200':
           description: OK
