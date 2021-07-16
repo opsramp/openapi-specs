@@ -4814,6 +4814,9 @@ paths:
 
 
 
+
+
+
                        System uptime is critical     : 0day(s);1hour(s);23minute(s);
                       Auto Stopped Services:
 
@@ -4987,6 +4990,8 @@ paths:
                       name: Urgency
                     alertIds:
                       - 100
+                      - 200
+                      - 300
                     reason: 'Issue got fixed, hence moving to resolved'
                     toEmail: escalationmails@opsramp.com
                     reOpenCount: 1
@@ -5232,6 +5237,10 @@ paths:
                   knowledgeArticleIds:
                     - KB0000000016
                     - KB0000000025
+                  alertIds:
+                    - 119
+                    - 120
+                    - 121
       responses:
         '200':
           description: OK
@@ -5374,7 +5383,10 @@ paths:
                       firstName: John
                       email: john.smith@myorganization.com
                     reason: On Hold Reason
-                    alertIds: []
+                    alertIds:
+                      - 119
+                      - 120
+                      - 121
                     toEmail: 'sam.rivers@myorganzation.com,john.blake@myorganization.com'
                     createdDate: '2016-03-29T12:20:15+0000'
                     serviceRestoreDate: '2016-03-28T12:13:00+0000'
@@ -5695,6 +5707,9 @@ paths:
 
 
 
+
+
+
                            System uptime is critical      : 0day(s);1hour(s);23minute(s);
                           Auto Stopped Services:
 
@@ -5850,6 +5865,9 @@ paths:
                       - id: INC0000000094
                         subject: 'System uptime is critical     : 0day(s);4hour(s);58minute(s);'
                         description: |2-
+
+
+
 
 
 
